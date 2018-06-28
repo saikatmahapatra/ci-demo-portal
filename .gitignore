@@ -1,0 +1,7 @@
+.git/
+node_modules/
+assets/uploads/
+assets/captcha/
+ci_sessions/
+bower_components/
+package-lock.json
