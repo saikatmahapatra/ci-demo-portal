@@ -150,7 +150,7 @@ class User extends CI_Controller {
             $row[] = date('d-m-Y',strtotime($result['user_doj']));
             $row[] = $result['designation_name'];
             $row[] = $result['role_name'];
-            $row[] = ($result['user_account_active'] == 'Y') ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>';
+            $row[] = ($result['user_account_active'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive</span>';
             //add html for action
             $action_html = '';
 

@@ -1,77 +1,14 @@
-//-------------------------------------------//
-//------ CI Controller Specific JS ----------//
-//-------------------------------------------//
-
-var User = function(){
-	this.table = '';
-	
-	this.renderDataTable = function(){
-		this.table = $('#user-datatable').DataTable({
-			processing: true, //Feature control the processing indicator.
-			serverSide: true, //Feature control DataTables' server-side processing mode.
-			order: [], //Initial no order.
-			// Load data for the table's content from an Ajax source
-			ajax: {
-				url: SITE_URL+ROUTER_DIRECTORY+ROUTER_CLASS+'/render_datatable',
-			},
-			//Set column definition initialisation properties.
-			columnDefs: [
-				{
-					targets: [-1], //last column
-					orderable: false, //set not orderable
-				},
-			],
-		});
-	};
-	
-	this.changeAccountStatus = function(e){
-		var that = $(this);
-		var new_status = that.attr('data-status');
-		var user_id = that.attr('data-id');
-		
-		var XHR = new Ajax();
-		XHR.type ='POST';
-		XHR.url = SITE_URL+ROUTER_DIRECTORY+ROUTER_CLASS+'/change_account_status';
-		XHR.data = {active: new_status, user_id: user_id};
-		var promise = XHR.init();		
-		promise.done(function(response){
-			if (response.status == 'success') {
-				window.location.reload();
-				if (that.attr('data-status') == 'Y') {
-					that.attr('data-status', 'N');
-					that.text('Deactivate');
-					that.removeClass('btn-info').addClass('btn-warning');
-				}
-				else if (that.attr('data-status') == 'N') {
-					that.attr('data-status', 'Y');
-					that.text('Activate');
-					that.removeClass('btn-warning').addClass('btn-info');
-				}
-				
-			}
-		});
-		promise.fail(function(){
-			alert("Failed");
-		});
-		promise.always(function(){
-			clickedBtn.html('Delete');
-		});
-	};
-	
-};
-
-
-
-
-//Instantiate
-var user = new User();
-
-//Document Ready Handler
+/**
+ * ------------------------------------------------------------------------------
+ * Controller Specific DOM Interaction (Ready/Load, Click, Hover, Change)
+ * ------------------------------------------------------------------------------
+ */
+ 
 $(domReady);
 function domReady(){	
 	//Index View:
 	if(ROUTER_METHOD == 'manage'){
-		user.renderDataTable();
+		renderDataTable();
 	}
 	
 	//Date of Birth Date Picker
@@ -80,6 +17,79 @@ function domReady(){
 		weekStart: 1,
 		autoclose: true
 	});
-}
-$(document).on('click', '.change_account_status', user.changeAccountStatus);
+}//domready
 
+$('body').on('click','.change_account_status',changeAccountStatus);
+
+
+
+
+/**
+ * ------------------------------------------------------------------------------
+ * Controller Specific JS Function
+ * ------------------------------------------------------------------------------
+ */
+
+var table;
+function renderDataTable(){
+	table = $('#user-datatable').DataTable({
+		processing: true, //Feature control the processing indicator.
+		serverSide: true, //Feature control DataTables' server-side processing mode.
+		pageLength: 25,
+		order: [], //Initial no order.
+		// Load data for the table's content from an Ajax source
+		ajax: {
+			url: SITE_URL+ROUTER_DIRECTORY+ROUTER_CLASS+'/render_datatable',
+		},
+		//Set column definition initialisation properties.
+		columnDefs: [
+			{
+				targets: [-1], //last column
+				orderable: false, //set not orderable
+			},
+		],
+	});
+}
+
+
+
+
+function changeAccountStatus(e){
+	e.preventDefault();
+	
+	var elChangeStatusBtn = $(this);
+	var new_status = elChangeStatusBtn.attr('data-status');
+	var user_id = elChangeStatusBtn.attr('data-id');
+	
+	var xhr = new Ajax();
+	xhr.type ='POST';
+	xhr.url = SITE_URL+ROUTER_DIRECTORY+ROUTER_CLASS+'/change_account_status';
+	xhr.data = {active: new_status, user_id: user_id};
+	xhr.beforeSend = function(){
+		showAjaxLoader();
+	}
+	var promise = xhr.init();		
+	promise.done(function(response){
+		if (response.status == 'success') {			
+			hideAjaxLoader();
+			if (elChangeStatusBtn.attr('data-status') == 'Y') {
+				elChangeStatusBtn.attr('data-status', 'N');
+				elChangeStatusBtn.html('<i class="fa fa-toggle-on" aria-hidden="true"></i>');
+				$('.account-status[data-user-id="'+user_id+'"]').removeClass('badge-danger').addClass('badge-success').text('Active');
+				
+			}
+			else if (elChangeStatusBtn.attr('data-status') == 'N') {
+				elChangeStatusBtn.attr('data-status', 'Y');
+				elChangeStatusBtn.html('<i class="fa fa-toggle-off" aria-hidden="true"></i>');
+				$('.account-status[data-user-id="'+user_id+'"]').removeClass('badge-success').addClass('badge-danger').text('Inactive');
+			}
+			
+		}
+	});
+	promise.fail(function(){
+		alert("Failed");
+	});
+	promise.always(function(){
+		
+	});
+}

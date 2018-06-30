@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/united-emp-portal/';
+$config['base_url'] = 'http://192.168.1.103/united-emp-portal/';
 
 /*
 |--------------------------------------------------------------------------

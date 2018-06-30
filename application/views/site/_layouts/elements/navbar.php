@@ -7,7 +7,7 @@ $segment3 = $this->uri->segment(3);
 ?>
 <nav class="navbar navbar-expand-md navbar-dark bg-brand-secondary fixed-top" id="navbar1">
 	<a class="navbar-brand" href="<?php echo base_url($this->router->directory); ?>">
-		<img src="<?php echo base_url('assets/src/img/logo.png');?>">
+		<img class="img-fluid" style="width: 200px;" src="<?php echo base_url('assets/src/img/logo.png');?>">
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
 		aria-expanded="false" aria-label="Toggle navigation">

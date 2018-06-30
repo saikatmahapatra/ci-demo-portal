@@ -63,11 +63,11 @@ $("#clear_selected_days").on("click",function(e){
 });
 
 function get_timesheet_stat(){
-	var XHR = new Ajax();
-	XHR.type ='POST';
-	XHR.url = SITE_URL+ROUTER_DIRECTORY+ROUTER_CLASS+'/timesheet_stats';
-	XHR.data = {via: 'ajax'};
-	var promise = XHR.init();		
+	var xhr = new Ajax();
+	xhr.type ='POST';
+	xhr.url = SITE_URL+ROUTER_DIRECTORY+ROUTER_CLASS+'/timesheet_stats';
+	xhr.data = {via: 'ajax'};
+	var promise = xhr.init();		
 	promise.done(function(response){
 		console.log(r=response.data.stat_data);
 		if(response.data.stat_data.total_days != 'undefined'){

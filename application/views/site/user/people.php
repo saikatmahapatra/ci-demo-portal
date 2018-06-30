@@ -50,31 +50,6 @@
 								<!--<a href="<?php echo base_url($this->router->directory.'user/profile/'.$row['id']);?>" class="btn btn-info btn-sm">View Profile</a>-->
 							  </div>
 							</div>
-							
-							<div class="card mb-1 d-none">
-							<?php
-							$img_src = "";
-							$default_path = "assets/src/img/125x125.jpg";
-							if(isset($row['user_profile_pic'])){					
-								$user_dp = "assets/uploads/user/profile_pic/".$row['user_profile_pic'];					
-								if (file_exists(FCPATH . $user_dp)) {
-									$img_src = $user_dp;
-								}else{
-									$img_src = $default_path;
-								}
-							}else{
-								$img_src = $default_path;
-							}
-							?>
-							  <img class="card-img-top" src="<?php echo base_url($img_src);?>" alt="Card image cap">
-							  <div class="card-body">
-								<h5 class="card-title"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h5>
-								<div class="card-text"><?php echo $row['user_email']; ?></div>
-								<div class="card-text"><?php echo $row['user_phone1']; ?></div>
-								<div class="card-text"><?php echo $row['user_phone2']; ?></div>
-								<a href="<?php echo base_url($this->router->directory.'user/profile/'.$row['id']);?>" class="btn btn-info btn-sm">View Profile</a>
-							  </div>
-							</div>
 						</div>
 						
 						<?php
