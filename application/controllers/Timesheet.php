@@ -77,13 +77,11 @@ class Timesheet extends CI_Controller {
 		$template.='{cal_cell_no_content}{day}{/cal_cell_no_content}';
 		$template.='{cal_cell_no_content_today}<div class="highlight">{day}</div>{/cal_cell_no_content_today}';
 		$template.='{cal_cell_blank}&nbsp;{/cal_cell_blank}';
-		$template.='{cal_cell_end}</td>{/cal_cell_end}';
-		
-		$template.='{cal_row_end}</tr>{/cal_row_end}';
-		
-		
+		$template.='{cal_cell_end}</td>{/cal_cell_end}';		
+		$template.='{cal_row_end}</tr>{/cal_row_end}';	
 		
 		$template.='{table_close}</table>{/table_close}';
+		
 		$prefs = array (
                'start_day'    => 'monday',
                'month_type'   => 'short',
@@ -93,22 +91,20 @@ class Timesheet extends CI_Controller {
              );
 		$this->load->library('calendar',$prefs);
 		
-		
-		
 		$this->data['entry_for'] = date('Y/m/d');
 		
 		
 		
 		$data = array();
 		$this->data['cal'] = $this->calendar->generate($year,$month,$data);
-		$this->data['page_heading'] = 'Timesheet';
+		$month_name = date('M', mktime(0, 0, 0, $month, 10));		
+		$this->data['page_heading'] = 'Timesheet : '.$month_name.' '.$year;
 		
 		$this->add();
 		
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'timesheet/index', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
-	
 	
 	function add() {
         //Check user permission by permission name mapped to db
@@ -157,15 +153,10 @@ class Timesheet extends CI_Controller {
             return false;
         }
     }
-	
-	function get_uri_seg($no){
-		return $this->uri->segment($no);
-	}
-	
+		
 	function timesheet_stats(){		
-		$year = $this->uri->segment(3) ? $this->uri->segment(3) : date('Y');
-		$month = $this->uri->segment(4) ? $this->uri->segment(4) : date('m');
-		//die($this->get_uri_seg(4));
+		$year = $this->input->get_post('year') ? $this->input->get_post('year') : date('Y');
+		$month = $this->input->get_post('month') ? $this->input->get_post('month') : date('m');		
 		$response = array(
             'status' => 'init',
             'message' => '',
@@ -194,7 +185,6 @@ class Timesheet extends CI_Controller {
 			die("404: Not Found");
 		}
 	}
-	
 	
 	function render_datatable() {
         //Total rows - Refer to model method definition
@@ -225,12 +215,12 @@ class Timesheet extends CI_Controller {
             
             //add html for action
             $action_html = '<div class="float-right">';
-            $action_html.= anchor(base_url($this->router->directory.'timesheet/edit/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i>', array(
+            /*$action_html.= anchor(base_url($this->router->directory.'timesheet/edit/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i>', array(
                 'class' => 'text-dark mr-2',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit',
                 'title' => 'Edit',
-            ));            
+            ));*/            
             $action_html.= anchor(base_url($this->router->directory.'timesheet/delete/' . $result['id']), '<i class="fa fa-trash" aria-hidden="true"></i>', array(
                 'class' => 'text-danger btn-delete ml-2',
 				'data-confirmation'=>false,

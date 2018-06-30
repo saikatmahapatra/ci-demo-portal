@@ -1,5 +1,8 @@
 console.log("Timesheet Loaded...");
 var selectedDate = [];
+var splitted_uri;
+var month = '';
+var year = '';
 
 $(function(){	
 	var selected_date = $('input[name="selected_date"]').val();
@@ -22,6 +25,15 @@ $(function(){
 		}
 	}
 	
+	splitted_uri = window.location.href.split('timesheet/index/');
+	if(splitted_uri[1] != undefined){
+		var arr_month_year = splitted_uri[1].split('/');
+		if(arr_month_year){
+			month = arr_month_year[1];
+			year = arr_month_year[0];
+		}
+	}
+	console.log(month,year);
 	//Load Timesheet Data On Page Load
 	get_timesheet_stat();
 	
@@ -66,10 +78,14 @@ function get_timesheet_stat(){
 	var xhr = new Ajax();
 	xhr.type ='POST';
 	xhr.url = SITE_URL+ROUTER_DIRECTORY+ROUTER_CLASS+'/timesheet_stats';
-	xhr.data = {via: 'ajax'};
+	xhr.beforeSend = function(){
+		showAjaxLoader();
+	};
+	xhr.data = {via: 'ajax', month:month, year: year};
 	var promise = xhr.init();		
 	promise.done(function(response){
 		console.log(r=response.data.stat_data);
+		hideAjaxLoader();
 		if(response.data.stat_data.total_days != 'undefined'){
 			$('#total_days').html(response.data.stat_data.total_days);		
 		}

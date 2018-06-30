@@ -220,7 +220,7 @@ h2 {
   width: 100%;
   height: 100%;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .ajax-loader-img {
   position: absolute;
@@ -263,8 +263,7 @@ h2 {
 }
 /*CI Calendar*/
 .ci-calendar {
-  border: 5px solid #2672EC;
-  margin-top: 15px;
+  border: 2px solid #2672EC;
 }
 .ci-calendar th {
   background: #2672EC;
@@ -344,4 +343,6 @@ h2 {
 .ci-nav-tab .nav-link.active {
   border-color: transparent transparent #2672EC;
   border-bottom: 2px solid #2672EC !important;
+  background-color: #2672EC;
+  color: #fff;
 }

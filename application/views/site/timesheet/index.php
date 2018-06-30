@@ -16,7 +16,7 @@
 		<div class="mt-3 small">
 			<div class="d-inline-block"><span class="i-today pr-2 pl-2 m-1 text-white"></span>Today</div>
 			<div class="d-inline-block"><span class="i-selected pr-2 pl-2 m-1"></span>Selected</div>
-			<div class="d-inline-block"><span class="i-has-data pr-2 pl-2 m-1"></span>Task Filled</div>
+			<div class="d-inline-block"><span class="i-has-data pr-2 pl-2 m-1"></span>Task Logged</div>
 			<div class="d-inline-block"><span class="i-leave pr-2 pl-2 m-1"></span>Leave</div>
 			<div class="d-inline-block"><span class="i-holiday pr-2 pl-2 m-1"></span>Holiday</div>
 		</div>
@@ -36,9 +36,9 @@
 	<div class="col-md-9">		
 		<nav>
 			<div class="nav nav-tabs ci-nav-tab" id="nav-tab" role="tablist">
-				<a class="nav-item nav-link active" id="nav-add-tab" data-toggle="tab" href="#nav-add" role="tab" aria-controls="nav-add" aria-selected="true">Fill Timesheet</a>
+				<a class="nav-item nav-link active" id="nav-add-tab" data-toggle="tab" href="#nav-add" role="tab" aria-controls="nav-add" aria-selected="true">Log Tasks</a>
 				
-				<a class="nav-item nav-link" id="nav-list-tab" data-toggle="tab" href="#nav-list" role="tab" aria-controls="nav-list" aria-selected="false">My Timesheet</a>
+				<a class="nav-item nav-link" id="nav-list-tab" data-toggle="tab" href="#nav-list" role="tab" aria-controls="nav-list" aria-selected="false">View Logged Tasks</a>
 			</div>
 		</nav>
 		

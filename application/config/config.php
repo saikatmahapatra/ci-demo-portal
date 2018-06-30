@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://192.168.1.103/united-emp-portal/';
+$config['base_url'] = 'http://localhost/united-emp-portal/';
 
 /*
 |--------------------------------------------------------------------------
@@ -308,7 +308,7 @@ $config['cache_query_string'] = FALSE;
 | http://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '1A2B3C4D5E6F7G8H9I0J!rt%$jhkl';
+$config['encryption_key'] = 'a1z3-d5rt-6k4n';
 
 /*
 |--------------------------------------------------------------------------
