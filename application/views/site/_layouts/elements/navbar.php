@@ -93,9 +93,9 @@ $segment3 = $this->uri->segment(3);
 			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
 			<li class="nav-item dropdown <?php echo ($segment2=='cms') ? 'active':''?>">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Administration</a>
+					aria-expanded="false"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Admin</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">View & Manage Employees</a>
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Manage Employees</a>
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account');?>">Add New Employee</a>
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account');?>">Project Allocation</a>
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">View Timesheet</a>

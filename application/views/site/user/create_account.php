@@ -8,7 +8,7 @@
 </div><!--/.heading-container-->
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6">
         <?php
 		// Show server side flash messages
 		if (isset($alert_message)) {
@@ -50,24 +50,25 @@
 				<?php echo form_error('user_lastname'); ?>
 			</div>
 		</div>
-       
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				<label for="user_email" class="">Email Address <span class="required">*</span></label>
-				<?php
-				echo form_input(array(
-					'name' => 'user_email',
-					'value' => set_value('user_email'),
-					'id' => 'user_email',
-					'class' => 'form-control',
-					'maxlength' => '255',
-					'placeholder' => 'Enter organization\'s email address',
-				));
-				?> 
-				<?php echo form_error('user_email'); ?>
-			</div>
+		
+		<div class="form-group">
+			<label for="user_email" class="">Email (Work) <span class="required">*</span></label>
+			<?php
+			echo form_input(array(
+				'name' => 'user_email',
+				'value' => set_value('user_email'),
+				'id' => 'user_email',
+				'class' => 'form-control',
+				'maxlength' => '255',
+				'placeholder' => 'Email (Work)',
+			));
+			?> 
+			<?php echo form_error('user_email'); ?>
+		</div>
+		
+		<div class="form-row">			
 			<div class="form-group col-md-6">                           
-				<label for="user_phone1" class="">Mobile Number <span class="required">*</span></label>
+				<label for="user_phone1" class="">Mobile (Work) <span class="required">*</span></label>
 				<?php
 				echo form_input(array(
 					'name' => 'user_phone1',
@@ -80,21 +81,66 @@
 				?>
 				<?php echo form_error('user_phone1'); ?>
 			</div>
+			
+			<div class="form-group col-md-6">                            
+					<label for="user_dob" class="">Date of Birth <span class="required">*</span></label>					
+					<?php
+					echo form_input(array(
+						'name' => 'user_dob',
+						'value' => set_value('user_dob'),
+						'id' => 'user_dob',
+						'maxlength' => '10',
+						'class' => 'form-control dob-datepicker',
+						'placeholder' => 'dd/mm/yyyy',
+						'autocomplete'=>'off'
+					));
+					?>
+					<?php echo form_error('user_dob'); ?>
+            </div>
 		</div>
 			
-            <div class="form-row">
-                <div class="form-group col-md-6">                            
-					<label for="user_dob" class="">Date of Birth <span class="required">*</span></label>
-                    <div class="">
-                        <?php echo form_dropdown('dob_day', $day_arr, set_value('dob_day'), array('class' => 'form-control dob-inline',));?>
-                        <?php echo form_dropdown('dob_month', $month_arr, set_value('dob_month'), array('class' => 'form-control dob-inline',));?>
-                        <?php echo form_dropdown('dob_year', $year_arr, set_value('dob_year'), array('class' => 'form-control dob-inline'));?>
-                    </div>
-                    <?php echo form_error('dob_day'); ?>
-                    <?php echo form_error('dob_month'); ?>
-                    <?php echo form_error('dob_year'); ?>
-                </div>
             
+		
+		
+		<div class="form-row">
+			<?php /* ?><div class="form-group col-md-6">
+			  <label for="user_department" class="">Department <span class="required">*</span></label>
+				<?php
+				echo form_dropdown('user_department', $arr_departments, set_value('user_department'), array(
+					'class' => 'form-control'
+				));
+				?> 
+				<?php echo form_error('user_department'); ?>
+			</div><?php */ ?>
+			
+			<div class="form-group col-md-6">                            
+				<label for="user_doj" class="">Date of Joining <span class="required">*</span></label>				
+				<?php
+				echo form_input(array(
+					'name' => 'user_doj',
+					'value' => set_value('user_doj'),
+					'id' => 'user_doj',
+					'maxlength' => '10',
+					'class' => 'form-control dob-datepicker',
+					'placeholder' => 'dd/mm/yyyy',
+					'autocomplete'=>'off'
+				));
+				?>
+				<?php echo form_error('user_doj'); ?>
+			</div>
+			
+			<div class="form-group col-md-6">
+			  <label for="user_designation" class="">Designation <span class="required">*</span></label>
+				<?php
+				echo form_dropdown('user_designation', $arr_designations, set_value('user_designation'), array(
+					'class' => 'form-control',									
+				));
+				?> 
+				<?php echo form_error('user_designation'); ?>
+			</div>			
+		</div>
+		
+		<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="gender">Gender <span class="required">*</span></label>
 					<div class="form-radio">
@@ -140,42 +186,18 @@
 					<?php echo form_error('user_gender'); ?>
 			  </div>
 			</div>
-		
-		<?php /* ?>
-		<div class="form-row">
-			<div class="form-group col-md-6">
-			  <label for="user_department" class="">Department <span class="required">*</span></label>
-				<?php
-				echo form_dropdown('user_department', $arr_departments, set_value('user_department'), array(
-					'class' => 'form-control'
-				));
-				?> 
-				<?php echo form_error('user_department'); ?>
-			</div>
 			
-			<div class="form-group col-md-6">
-		  <label for="user_designation" class="">Designation <span class="required">*</span></label>
-			<?php
-			echo form_dropdown('user_designation', $arr_designations, set_value('user_designation'), array(
-				'class' => 'form-control',									
-			));
-			?> 
-			<?php echo form_error('user_designation'); ?>
-		</div>
-		</div>
-		<?php */ ?>
-			
-        <div class="form-row">
-			<div class="form-group col-md-6">
-			  <label for="user_role" class="">Role Group<span class="required">*</span></label>
-				<?php
-				echo form_dropdown('user_role', $arr_roles, set_value('user_role'), array(
-					'class' => 'form-control field-help'
-				));
-				?> 
-				<?php echo form_error('user_role'); ?>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+				  <label for="user_role" class="">RBAC Group<span class="required">*</span></label>
+					<?php
+					echo form_dropdown('user_role', $arr_roles, set_value('user_role'), array(
+						'class' => 'form-control field-help'
+					));
+					?> 
+					<?php echo form_error('user_role'); ?>
+				</div>
 			</div>
-		</div>
 
         <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 		<a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>

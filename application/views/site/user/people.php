@@ -23,8 +23,35 @@
 				if(isset($data_rows)){
 					foreach($data_rows as $key=>$row){
 						?>						
-						<div class="col-md-3">							
-							<div class="card mb-1">
+						<div class="col-md-4">
+							<div class="media border mb-2 mt-2 p-2">
+								<?php
+								$img_src = "";
+								$default_path = "assets/src/img/125x125.jpg";
+								if(isset($row['user_profile_pic'])){					
+									$user_dp = "assets/uploads/user/profile_pic/".$row['user_profile_pic'];					
+									if (file_exists(FCPATH . $user_dp)) {
+										$img_src = $user_dp;
+									}else{
+										$img_src = $default_path;
+									}
+								}else{
+									$img_src = $default_path;
+								}
+								?>
+							 <a target="blank" href="<?php echo base_url($this->router->directory.'user/profile/'.$row['id']);?>">
+							 <img class="mr-3" style="width:80px; height: 80px;" src="<?php echo base_url($img_src);?>" alt="Generic placeholder image">
+							 </a>
+							  <div class="media-body">
+								<div><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></div>								
+								<div class="small"><?php echo $row['designation_name']; ?></div>
+								<div class=""><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
+								<div class=""><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>								
+								<!--<a href="<?php echo base_url($this->router->directory.'user/profile/'.$row['id']);?>" class="btn btn-info btn-sm">View Profile</a>-->
+							  </div>
+							</div>
+							
+							<div class="card mb-1 d-none">
 							<?php
 							$img_src = "";
 							$default_path = "assets/src/img/125x125.jpg";

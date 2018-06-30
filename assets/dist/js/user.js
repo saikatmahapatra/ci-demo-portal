@@ -73,6 +73,13 @@ function domReady(){
 	if(ROUTER_METHOD == 'manage'){
 		user.renderDataTable();
 	}
+	
+	//Date of Birth Date Picker
+	$('.dob-datepicker').datepicker({
+		format: "dd-mm-yyyy",
+		weekStart: 1,
+		autoclose: true
+	});
 }
 $(document).on('click', '.change_account_status', user.changeAccountStatus);
 

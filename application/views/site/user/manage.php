@@ -20,7 +20,7 @@
 		?>
 		<div class="card ">
 			<div class="card-header">
-				<span class="">Users</span>
+				<span class="">Employees</span>
 				<span class="float-right">
 					<a href="<?php echo base_url($this->router->directory.'user/create_account');?>" class="btn btn-sm btn-success" title="Add"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
 				</span>
@@ -31,22 +31,26 @@
 					<table id="user-datatable" class="table table-sm">
 						<thead>
 							<tr>
-								<th>Name</th>
-								<th>Email</th>
-								<th>Phone</th>
-								<th>Role</th>
-								<th>Account Status</th>
+								<th>Employee Name</th>
+								<th>Email (Work)</th>
+								<th>Phone (Work)</th>
+								<th>DOJ</th>
+								<th>Designation</th>
+								<th>RBAC</th>
+								<th>Status</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody></tbody>
 						<tfoot>
 							<tr>
-								<th>Name</th>
-								<th>Email</th>
-								<th>Phone</th>
-								<th>Role</th>
-								<th>Account Status</th>
+								<th>Employee Name</th>
+								<th>Email (Work)</th>
+								<th>Phone (Work)</th>
+								<th>DOJ</th>
+								<th>Designation</th>
+								<th>RBAC</th>
+								<th>Status</th>
 								<th>Action</th>
 							</tr>
 						</tfoot>

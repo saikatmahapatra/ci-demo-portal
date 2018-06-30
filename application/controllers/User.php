@@ -84,7 +84,7 @@ class User extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		
-		$this->data['page_heading'] = 'Manage Users';
+		$this->data['page_heading'] = 'Manage Employees';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/manage', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
@@ -94,12 +94,7 @@ class User extends CI_Controller {
         if ($is_logged_in == FALSE) {
 			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
             redirect($this->router->directory.'user/login');
-        }
-        //Has logged in user permission to access this page or method?        
-        $this->common_lib->check_user_role_permission(array(
-            'default-super-admin-access',
-            'default-admin-access',
-        ));        
+        }               
 		$this->breadcrumbs->push('View', '/');		
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
@@ -152,6 +147,8 @@ class User extends CI_Controller {
             $row[] = $result['user_firstname'] . ' ' . $result['user_lastname'];
             $row[] = $result['user_email'];
             $row[] = $result['user_phone1'];
+            $row[] = date('d-m-Y',strtotime($result['user_doj']));
+            $row[] = $result['designation_name'];
             $row[] = $result['role_name'];
             $row[] = ($result['user_account_active'] == 'Y') ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>';
             //add html for action
@@ -281,14 +278,16 @@ class User extends CI_Controller {
         if ($this->input->post('form_action') == 'create_account') {
             if ($this->validate_create_account_form_data() == true) {
                 $activation_token = md5(time('Y-m-d h:i:s'));
-                $dob = $this->input->post('dob_year') . '-' . $this->input->post('dob_month') . '-' . $this->input->post('dob_day');
-				$password = $this->generate_password();
+                //$dob = $this->input->post('dob_year') . '-' . $this->input->post('dob_month') . '-' . $this->input->post('dob_day');
+				
+				$password = $this->generate_password();				
                 $postdata = array(
                     'user_firstname' => $this->input->post('user_firstname'),                    
                     'user_lastname' => $this->input->post('user_lastname'),
                     'user_gender' => $this->input->post('user_gender'),
                     'user_email' => strtolower($this->input->post('user_email')),
-                    'user_dob' => $dob,
+                    'user_dob' => date('Y-m-d',strtotime($this->input->post('user_dob'))),
+                    'user_doj' => date('Y-m-d',strtotime($this->input->post('user_doj'))),
                     'user_role' => $this->input->post('user_role'),
                     'user_department' => $this->input->post('user_department'),
                     'user_designation' => $this->input->post('user_designation'),
@@ -298,6 +297,7 @@ class User extends CI_Controller {
                     'user_registration_ip' => $_SERVER['REMOTE_ADDR'],
                     'user_account_active' => 'Y'
                 );
+				//print_r($postdata); die();
                 $insert_id = $this->user_model->insert($postdata);
                 if ($insert_id) {
                     $html = '<div style="font-family:Verdana, Geneva, sans-serif; font-size:12px;">';
@@ -326,7 +326,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_heading'] = "Create Account";
+		$this->data['page_heading'] = "Add New Employee";
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/create_account', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
@@ -339,12 +339,14 @@ class User extends CI_Controller {
         //$this->form_validation->set_rules('user_password', 'password', 'required|trim|min_length[6]');
         $this->form_validation->set_rules('user_phone1', 'mobile number', 'required|trim|min_length[10]|max_length[10]|numeric');
         //$this->form_validation->set_rules('user_password_confirm', 'confirm password', 'required|matches[user_password]');
-        $this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
-        $this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
-        $this->form_validation->set_rules('dob_year', 'birth year selection', 'required');
-        $this->form_validation->set_rules('user_role', 'role selection', 'required');
-        //$this->form_validation->set_rules('user_designation', 'designation selection', 'required');
-        //$this->form_validation->set_rules('user_department', 'department selection', 'required');
+        //$this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
+        //$this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
+        //$this->form_validation->set_rules('dob_year', 'birth year selection', 'required');
+        $this->form_validation->set_rules('user_dob', 'date of birth', 'required');
+        $this->form_validation->set_rules('user_doj', 'date of joining', 'required');
+        $this->form_validation->set_rules('user_role', 'role access group', 'required');
+        $this->form_validation->set_rules('user_designation', 'designation', 'required');
+        //$this->form_validation->set_rules('user_department', 'department', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -375,14 +377,14 @@ class User extends CI_Controller {
             $act_res = $this->user_model->update($postdata, $where);
             if ($act_res) {
                 $this->session->set_flashdata('flash_message', 'Your account has been activated successfully');
-                redirect('users/admin/login');
+                redirect($this->router->directory.'user/login');
             } else {
                 $this->session->set_flashdata('flash_message', 'Sorry ! Unable to activate your account');
-                redirect('users/admin/login');
+                redirect($this->router->directory.'user/login');
             }
         } else {
             $this->session->set_flashdata('flash_message', 'No activation token match found for you');
-            redirect('users/admin/login');
+            redirect($this->router->directory.'user/login');
         }
     }
 
@@ -527,18 +529,13 @@ class User extends CI_Controller {
     }
 
     function change_password() {
-
         ########### Validate User Auth #############
         $is_logged_in = $this->common_lib->is_logged_in();
         if ($is_logged_in == FALSE) {
 			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
             redirect($this->router->directory.'user/login');
         }
-        //Has logged in user permission to access this page or method?        
-        $this->common_lib->check_user_role_permission(array(
-            'default-super-admin-access',
-            'default-admin-access',
-        ));
+        
         ########### Validate User Auth End #############
 
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
@@ -602,10 +599,10 @@ class User extends CI_Controller {
             redirect($this->router->directory.'user/login');
         }
         //Has logged in user permission to access this page or method?        
-        $this->common_lib->check_user_role_permission(array(
+        /*$this->common_lib->check_user_role_permission(array(
             'default-super-admin-access',
             'default-admin-access',
-        ));
+        ));*/
         ########### Validate User Auth End #############
 		
 		//View Page Config
@@ -640,6 +637,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_phone1', 'primary mobile', 'required|trim|min_length[10]|max_length[10]|numeric');
         $this->form_validation->set_rules('user_phone2', 'secondary mobile', 'trim|min_length[10]|max_length[10]|numeric');
         $this->form_validation->set_rules('user_bio', 'about you', 'max_length[100]');
+        $this->form_validation->set_rules('user_email_secondary', 'email', 'valid_email');
         /* $this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
           $this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
           $this->form_validation->set_rules('dob_year', 'birth year selection', 'required'); */
@@ -969,10 +967,10 @@ class User extends CI_Controller {
             redirect($this->router->directory.'user/login');
         }
         //Has logged in user permission to access this page or method?        
-        $this->common_lib->check_user_role_permission(array(
+        /*$this->common_lib->check_user_role_permission(array(
             'default-super-admin-access',
             'default-admin-access',
-        ));
+        ));*/
         ########### Validate User Auth End #############
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
@@ -988,7 +986,8 @@ class User extends CI_Controller {
                     //'user_gender' => $this->input->post('user_gender'),                   
                     //'user_dob' => $dob,
                     'user_phone1' => $this->input->post('user_phone1'),
-                    'user_phone2' => $this->input->post('user_phone2')                    
+                    'user_phone2' => $this->input->post('user_phone2'),                  
+                    'user_email_secondary' => $this->input->post('user_email_secondary'),                  
                 );
                 $where = array('id' => $this->sess_user_id);
                 $res = $this->user_model->update($postdata, $where);
@@ -1013,10 +1012,10 @@ class User extends CI_Controller {
             redirect($this->router->directory.'user/login');
         }
         //Has logged in user permission to access this page or method?        
-        $this->common_lib->check_user_role_permission(array(
+        /*$this->common_lib->check_user_role_permission(array(
             'default-super-admin-access',
             'default-admin-access',
-        ));
+        ));*/
         ########### Validate User Auth End #############
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');

@@ -63,6 +63,8 @@ class User_model extends CI_Model {
                 't1.user_firstname',
                 't1.user_email',
                 't1.user_phone1',
+                't1.user_doj',
+                't4.designation_name',
                 't2.role_name',
                 NULL,
             );

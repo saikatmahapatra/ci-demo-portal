@@ -55,6 +55,7 @@
         ?>
     </h5>
     <!--<div class="small"><?php //echo isset($row['role_name']) ? $row['role_name'] : ''; ?></div>-->
+	<div class="small"><?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
     <div class="">
         <i class="fa fa-envelope-o" aria-hidden="true"></i> 
         <a class="mr-2" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
@@ -111,15 +112,23 @@
                 echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
                 echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
                 ?>
-			</dd>			
-			<dt class="col-sm-2">Email ID</dt>
-			<dd class="col-sm-10"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></dd>			
-			<dt class="col-sm-2">Phone Number 1</dt>
-			<dd class="col-sm-10"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></dd>			
-			<dt class="col-sm-2">Phone Number 2</dt>
-			<dd class="col-sm-10"><?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?></dd>
+			</dd>
+			<dt class="col-sm-2">Employee ID</dt>
+			<dd class="col-sm-10"><?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : '-'; ?></dd>
+			<dt class="col-sm-2">Date of Joining</dt>
+			<dd class="col-sm-10"><?php echo isset($row['user_doj']) ? date('d-m-Y', strtotime($row['user_doj'])) : '-'; ?></dd>
+			<dt class="col-sm-2">Designation</dt>
+			<dd class="col-sm-10"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
+			<dt class="col-sm-2">Email (Work)</dt>
+			<dd class="col-sm-10"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?></a></dd>			
+			<dt class="col-sm-2">Email (Personal)</dt>
+			<dd class="col-sm-10"><a href="mailto:<?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?>"><?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?></a></dd>			
+			<dt class="col-sm-2">Phone (Work)</dt>
+			<dd class="col-sm-10"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : '-'; ?></dd>			
+			<dt class="col-sm-2">Phone (Personal)</dt>
+			<dd class="col-sm-10"><?php echo isset($row['user_phone2']) ? $row['user_phone2'] : '-'; ?></dd>
 			<dt class="col-sm-2">Date of Birth</dt>
-			<dd class="col-sm-10"><?php echo isset($row['user_dob']) ? date('d-m-Y', strtotime($row['user_dob'])) : ''; ?></dd>
+			<dd class="col-sm-10"><?php echo isset($row['user_dob']) ? date('d-m-Y', strtotime($row['user_dob'])) : '-'; ?></dd>
 			<dt class="col-sm-2">Gender</dt>
 			<dd class="col-sm-10"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : ''; ?></dd>
 			

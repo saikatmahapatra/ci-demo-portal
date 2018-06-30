@@ -12,7 +12,10 @@
     <link href="<?php echo base_url('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css');?>" rel="stylesheet">
 	
 	<!--Select 2 CSS-->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />	
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+	
+	<!--Date Picker-->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" rel="stylesheet" />
 
     <!-- Custom CSS -->
     <link href="<?php echo base_url('assets/dist/css/admin.min.css');?>" rel="stylesheet">
@@ -59,6 +62,9 @@
     <!--<script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>	-->
 	<!-- Select 2 JS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+	
+	<!-- Datepicker JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
 	<!--Application Specific JS Loading Through Controllers-->
     <?php echo isset($app_js) ? $app_js : ''; ?>
 </body>
