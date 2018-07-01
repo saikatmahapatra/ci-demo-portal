@@ -53,7 +53,7 @@ class Timesheet_model extends CI_Model {
         return $result;
     }
 
-    function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
+    function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE, $checkDate = FALSE, $year=NULL, $month=NULL) {
         $result = array();
         $this->db->select('
 		t1.*,
@@ -65,6 +65,14 @@ class Timesheet_model extends CI_Model {
         if ($id) {
             $this->db->where('t1.id', $id);
         }
+		if($checkDate == TRUE){
+			$this->db->where(
+				array(
+				'YEAR(`timesheet_date`)' => $year,
+				'MONTH(`timesheet_date`)' => $month,
+				)
+			);
+		}
 		
         ####################################################################
         ##################### Display using Data Table #####################

@@ -66,7 +66,7 @@
 				
 			<div class="form-row">
 				<div class="form-group col-md-4">
-				  <label for="project_id" class="">Projects <span class="required">*</span></label>
+				  <label for="project_id" class="bmd-label-floating">Projects <span class="required">*</span></label>
 					<?php
 					echo form_dropdown('project_id', $project_arr, set_value('project_id'), array(
 						'class' => 'form-control',
@@ -76,7 +76,7 @@
 				</div>
 						
 				<div class="form-group col-md-4">
-				  <label for="activity_id" class="">Activity <span class="required">*</span></label>
+				  <label for="activity_id" class="bmd-label-floating">Activity <span class="required">*</span></label>
 					<?php
 					echo form_dropdown('activity_id', $task_task_activity_type_array, set_value('activity_id'), array(
 						'class' => 'form-control',
@@ -86,7 +86,7 @@
 				</div>
 					
 				<div class="form-group col-md-4">
-					<label for="timesheet_hours" class="">Hours <span class="required">*</span></label>		
+					<label for="timesheet_hours" class="bmd-label-floating">Hours <span class="required">*</span></label>		
 					<?php					
 					echo form_dropdown('timesheet_hours', $timesheet_hours, set_value('timesheet_hours'), array(
 						'class' => 'form-control',
@@ -98,7 +98,7 @@
 			 
 			
 			<div class="form-group">
-			<label for="timesheet_description" class="">Description <span class="required">*</span></label>
+			<label for="timesheet_description" class="bmd-label-floating">Description <span class="required">*</span></label>
 			<?php
 			echo form_textarea(array(
 				'name' => 'timesheet_description',
@@ -107,7 +107,6 @@
 				'class' => 'form-control',
 				'rows' => '2',
 				'cols' => '4',
-				'placeholder' => 'Write some short description...(200 characters)',
 				'maxlength' => '200'
 			));
 			?>

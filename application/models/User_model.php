@@ -166,6 +166,10 @@ class User_model extends CI_Model {
             't1.user_email' => $user_email,
             't1.user_password' => $user_password
         ));
+		/*$this->db->or_where(array(
+            't1.user_emp_id' => $user_email,
+            't1.user_password' => $user_password
+        ));*/
         $query = $this->db->get('users as t1');
         //echo $this->db->last_query();die();
         if ($query->num_rows() > 0) {

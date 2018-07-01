@@ -187,16 +187,18 @@ class Timesheet extends CI_Controller {
 	}
 	
 	function render_datatable() {
+		$year = $this->input->get_post('year') ? $this->input->get_post('year') : date('Y');
+		$month = $this->input->get_post('month') ? $this->input->get_post('month') : date('m');	
         //Total rows - Refer to model method definition
-        $result_array = $this->timesheet_model->get_rows();
+        $result_array = $this->timesheet_model->get_rows(NULL, NULL, NULL, FALSE, FALSE, TRUE, $year, $month);
         $total_rows = $result_array['num_rows'];
 
         // Total filtered rows - check without limit query. Refer to model method definition
-        $result_array = $this->timesheet_model->get_rows(NULL, NULL, NULL, TRUE, FALSE);
+        $result_array = $this->timesheet_model->get_rows(NULL, NULL, NULL, TRUE, FALSE, TRUE, $year, $month);
         $total_filtered = $result_array['num_rows'];
 
         // Data Rows - Refer to model method definition
-        $result_array = $this->timesheet_model->get_rows(NULL, NULL, NULL, TRUE);
+        $result_array = $this->timesheet_model->get_rows(NULL, NULL, NULL, TRUE, TRUE, TRUE, $year, $month);
         $data_rows = $result_array['data_rows'];
         $data = array();
         $no = $_REQUEST['start'];
