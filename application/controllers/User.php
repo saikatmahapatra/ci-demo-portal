@@ -1150,6 +1150,44 @@ class User extends CI_Controller {
 		//}
 	}
 	
+	
+	function allocate_projects() {
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+            redirect($this->router->directory.'user/login');
+        }
+		$this->load->model('project_model');
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+		$this->data['arr_projects'] = $this->project_model->get_project_dropdown();
+        if ($this->input->post('form_action') == 'add') {
+            if ($this->validate_user_project_assign_form_data('add') == true) {
+                $postdata = array(					
+                    'academic_qualification' => $this->input->post('academic_qualification')                 
+                );                
+                $res = $this->user_model->insert($postdata,'user_projects');
+                if ($res) {
+                    $this->session->set_flashdata('flash_message', 'Project has been added successfully');
+                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    redirect($this->router->directory.'user/profile');
+                }
+            }
+        }
+		$this->data['page_heading'] = "Allocate Projects";
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/allocate_projects', $this->data, true);
+        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+    }
+	
+	function validate_user_project_assign_form_data(){
+		$this->form_validation->set_rules('project_id', 'project', 'required');
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
+	}
+	
 
 }
 

@@ -27,7 +27,7 @@
 							<div class="media border mb-2 mt-2 p-2">
 								<?php
 								$img_src = "";
-								$default_path = "assets/src/img/125x125.jpg";
+								$default_path = "assets/src/img/user.svg";
 								if(isset($row['user_profile_pic'])){					
 									$user_dp = "assets/uploads/user/profile_pic/".$row['user_profile_pic'];					
 									if (file_exists(FCPATH . $user_dp)) {

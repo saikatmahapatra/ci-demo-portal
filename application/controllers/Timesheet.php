@@ -211,12 +211,12 @@ class Timesheet extends CI_Controller {
             //$row[] = $result['timesheet_hours'];
             //$row[] = $result['timesheet_review_status'];
 			
-			$html = '<h5>'.date('d/m/Y',strtotime($result['timesheet_date'])).' <span class="float-right">'.$result['timesheet_hours'].' hrs</span></h5>';			
+			$html = '<div class="font-weight-bold">'.date('d/m/Y',strtotime($result['timesheet_date'])).' <span class="float-right">'.$result['timesheet_hours'].' hrs</span></div>';			
 			$html.= '<div class="small">'.$result['project_name'].'<span class="float-right">'.$result['task_activity_name'].'</span></div>';			
-			$html.= '<div>'.$result['timesheet_description'].'</div>';		
+			
             
             //add html for action
-            $action_html = '<div class="float-right">';
+            $action_html = '<span class="float-right">';
             /*$action_html.= anchor(base_url($this->router->directory.'timesheet/edit/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i>', array(
                 'class' => 'text-dark mr-2',
                 'data-toggle' => 'tooltip',
@@ -231,8 +231,9 @@ class Timesheet extends CI_Controller {
                 'data-original-title' => 'Delete',
                 'title' => 'Delete',
             ));
-			$action_html.='</div>';
-			$html.=$action_html;
+			$action_html.='</span>';
+			$html.= '<div>'.$result['timesheet_description'].' '.$action_html.'</div>';		
+			//$html.=$action_html;
 
             //$row[] = $action_html;
 			$row[] = $html;

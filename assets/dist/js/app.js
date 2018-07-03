@@ -359,7 +359,7 @@ function initPage() {
 	hideAjaxLoader();
 	
 	//Select 2
-	$('.select2').select2();
+	$('.ci-js-select-2').select2();
 	
 }
 // End of initPage() i.e. document ready
