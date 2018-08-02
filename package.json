@@ -1,8 +1,8 @@
 {
-  "name": "CI_Demo_App",
-  "title": "CodeIgniter Sample Project",
+  "name": "united-emp-portal",
+  "title": "United Exploration India",
   "version": "3.1.4",
-  "homepage": "http://192.168.1.100:8009/CI_Demo_App",
+  "homepage": "http://localhost/united-emp-portal",
   "author": "Saikat Mahapatra",
   "license": {
     "type": "MIT",
@@ -34,7 +34,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/saikatmahapatra/ci-demo-app.git"
+    "url": "https://github.com/saikatmahapatra/ci-demo-portal.git"
   },
   "dependencies": {
     "bootstrap": "^4.1.0",
