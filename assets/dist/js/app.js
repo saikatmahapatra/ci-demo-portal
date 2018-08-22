@@ -3,7 +3,7 @@
 * @Support 
 * @Email   <mahapatra.saikat29@gmail.com>
 * @version 3.1.4
-* @repository https://github.com/saikatmahapatra/ci-demo-app.git
+* @repository https://github.com/saikatmahapatra/ci-demo-portal.git
 * @license MIT <http://opensource.org/licenses/MIT>
 */
 
@@ -347,7 +347,7 @@ var closeBootstrapAlertMsg = false; // true|false
 
 // Start of document ready
 $(document).ready(initPage);
-showAjaxLoader();
+
 function initPage() {
     //Alert message close after few seconds
     autoCloseAlertMessage(closeBootstrapAlertMsg);
@@ -355,8 +355,7 @@ function initPage() {
     scrollToTop(500, 100);
     panelGroupToggle();
     renderFieldHelp();
-	setActiveTarget();
-	hideAjaxLoader();
+	setActiveTarget();	
 	
 	//Select 2
 	$('.ci-js-select-2').select2();

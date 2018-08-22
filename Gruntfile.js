@@ -5,10 +5,14 @@ module.exports = function (grunt) { // jshint ignore:line
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     watch: {
-      less: {
+      /*less: {
         // Compiles less files upon saving
         files: ['assets/src/less/*.less'],
         tasks: ['less:development', 'less:production', 'notify:less']
+      },*/
+	  sass : {        
+        files: ['assets/src/sass/*.scss'],
+        tasks: ['sass','notify:sass']
       },
       js: {
         // Compile js files upon saving
@@ -22,6 +26,12 @@ module.exports = function (grunt) { // jshint ignore:line
         options: {
           title: 'CI App',
           message: 'LESS finished running'
+        }
+      },
+	  sass: {
+        options: {
+          title  : 'My App',
+          message: 'Ok. SASS done'
         }
       },
       js: {
@@ -218,45 +228,79 @@ module.exports = function (grunt) { // jshint ignore:line
     // for them
     clean: {
       build: ['assets/src/img/*']
-    }
+    },
+	
+	// SASS to CSS
+	sass: {
+		dist: {
+			options: {
+				outputStyle: 'expanded',
+				sourceMap: false
+			},
+			files: [{
+				expand: true,
+				cwd: 'assets/src/sass/',
+				src: ['*.scss'],
+				dest: 'assets/dist/css/',
+				ext: '.css'
+			}]
+		}
+	},
+	
+	// Post Compilation of CSS
+	postcss: {
+		options: {
+			map: false,
+			processors: [
+				require('autoprefixer')({browsers: 'last 3 versions'})
+			]
+		},
+		dist: {
+			src: ['assets/dist/css/*.css']
+		}
+	}
   })
 
   // Load all grunt tasks
 
   // LESS Compiler
-  grunt.loadNpmTasks('grunt-contrib-less')
+  grunt.loadNpmTasks('grunt-contrib-less');
+  //SASS Compiler
+  grunt.loadNpmTasks('grunt-sass');
+  //Post Compilation of CSS
+  grunt.loadNpmTasks('grunt-postcss');
   // Watch File Changes
-  grunt.loadNpmTasks('grunt-contrib-watch')
+  grunt.loadNpmTasks('grunt-contrib-watch');
   // Compress JS Files
-  grunt.loadNpmTasks('grunt-contrib-uglify')
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   // Include Files Within HTML
-  grunt.loadNpmTasks('grunt-includes')
+  grunt.loadNpmTasks('grunt-includes');
   // Optimize images
-  grunt.loadNpmTasks('grunt-image')
+  grunt.loadNpmTasks('grunt-image');
   // Validate JS code
-  grunt.loadNpmTasks('grunt-contrib-jshint')
-  grunt.loadNpmTasks('grunt-jscs')
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-jscs');
   // Delete not needed files
-  grunt.loadNpmTasks('grunt-contrib-clean')
+  grunt.loadNpmTasks('grunt-contrib-clean');
   // Lint CSS
-  grunt.loadNpmTasks('grunt-contrib-csslint')
+  grunt.loadNpmTasks('grunt-contrib-csslint');
   // Lint Bootstrap
-  grunt.loadNpmTasks('grunt-bootlint')
+  grunt.loadNpmTasks('grunt-bootlint');
   // Concatenate JS files
-  grunt.loadNpmTasks('grunt-contrib-concat')
+  grunt.loadNpmTasks('grunt-contrib-concat');
   // Notify
-  grunt.loadNpmTasks('grunt-notify')
+  grunt.loadNpmTasks('grunt-notify');
   // Replace
-  grunt.loadNpmTasks('grunt-text-replace')
+  grunt.loadNpmTasks('grunt-text-replace');
   // Copy Files
-  grunt.loadNpmTasks('grunt-contrib-copy')
+  grunt.loadNpmTasks('grunt-contrib-copy');
   // Linting task
-  grunt.registerTask('lint', ['jshint', 'csslint', 'bootlint'])
+  grunt.registerTask('lint', ['jshint', 'csslint', 'bootlint']);
   // JS task
-  grunt.registerTask('js', ['copy', 'concat', 'uglify'])
+  grunt.registerTask('js', ['copy', 'concat', 'uglify']);
   // CSS Task
-  grunt.registerTask('css', ['less:development', 'less:production', 'image'])
+  grunt.registerTask('css', ['image', 'sass','postcss']);
 
   // The default task (running 'grunt' in console) is 'watch'
-  grunt.registerTask('default', ['watch'])
+  grunt.registerTask('default', ['watch']);
 }

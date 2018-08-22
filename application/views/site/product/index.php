@@ -21,7 +21,7 @@
 			<div class="card-header">
 				<span class="">Products</span>
 				<span class="float-right">
-					<a href="<?php echo base_url($this->router->directory.'product/add');?>" class="btn btn-sm btn-success" title="Add"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
+					<a href="<?php echo base_url($this->router->directory.'product/add');?>" class="btn btn-sm btn-primary" title="Add"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
 				</span>
 			</div>
 			<!-- /.card-header -->

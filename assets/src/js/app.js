@@ -338,7 +338,7 @@ var closeBootstrapAlertMsg = false; // true|false
 
 // Start of document ready
 $(document).ready(initPage);
-showAjaxLoader();
+
 function initPage() {
     //Alert message close after few seconds
     autoCloseAlertMessage(closeBootstrapAlertMsg);
@@ -346,8 +346,7 @@ function initPage() {
     scrollToTop(500, 100);
     panelGroupToggle();
     renderFieldHelp();
-	setActiveTarget();
-	hideAjaxLoader();
+	setActiveTarget();	
 	
 	//Select 2
 	$('.ci-js-select-2').select2();
