@@ -206,4 +206,12 @@ select.form-control.dob-inline{
     .nav-link.active {
       font-weight: 700;
     }
-  }
+ }
+
+// Close Button
+button.close{
+	color: $white;
+	&:hover{
+		color: $white;
+	}
+}

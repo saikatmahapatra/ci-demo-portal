@@ -8636,3 +8636,11 @@ select.form-control.dob-inline {
 .navbar-nav .nav-link.active {
   font-weight: 700;
 }
+
+button.close {
+  color: #FFF;
+}
+
+button.close:hover {
+  color: #FFF;
+}
