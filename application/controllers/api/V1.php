@@ -32,7 +32,7 @@ class V1 extends REST_Controller {
         $this->api_response['code'] = 1000; //1000 =success, 1001 = error
         $this->api_response['status'] = 'success'; // success|error
         $this->api_response['message'] = null; // any custom message        
-        $this->api_response['css_class'] = 'alert alert-success';                
+        $this->api_response['css_class'] = 'alert bg-success text-white';                
         $this->api_response['data'] = array(); // data return by model
 
         // Configure limits on our controller methods

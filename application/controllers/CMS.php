@@ -189,7 +189,7 @@ class Cms extends CI_Controller {
                 $insert_id = $this->cms_model->insert($postdata);
                 if ($insert_id) {
                     $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i>Added successfully.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
                     redirect($this->router->directory.'cms/add');
                 }
             }
@@ -223,7 +223,7 @@ class Cms extends CI_Controller {
                 $res = $this->cms_model->update($postdata, $where_array);
                 if ($res) {
                     $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i>Updated successfully.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
                     redirect(current_url());
                 }
             }
@@ -243,7 +243,7 @@ class Cms extends CI_Controller {
         $res = $this->cms_model->delete($where_array);
         if ($res) {
             $this->session->set_flashdata('flash_message', '<strong>Deleted </strong> successfully.');
-            $this->session->set_flashdata('flash_message_css', 'alert-success');
+            $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
             redirect($this->router->directory.'cms');
         }
     }
