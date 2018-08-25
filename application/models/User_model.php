@@ -61,6 +61,7 @@ class User_model extends CI_Model {
             //set column field database for datatable orderable
             $column_order = array(
                 't1.user_firstname',
+                't1.user_emp_id',
                 't1.user_email',
                 't1.user_phone1',
                 't1.user_doj',
@@ -71,6 +72,7 @@ class User_model extends CI_Model {
             //set column field database(table column name) for datatable searchable
             $column_search = array(
                 't1.user_firstname',
+                't1.user_emp_id',
                 't1.user_lastname',
                 't1.user_email',
                 't1.user_phone1',
@@ -123,44 +125,13 @@ class User_model extends CI_Model {
         return array('num_rows' => $num_rows, 'data_rows' => $result);
     }
 
-    function authenticate_user_depricated($user_email, $user_password) {
-        $this->db->select('t1.id,t1.user_email,t1.user_firstname,t1.user_lastname,t1.user_role,t1.user_profile_pic,t1.user_account_active,t1.user_archived,t2.role_name,t2.role_weight');
-        $this->db->join('roles t2', 't1.user_role=t2.id');
-        $this->db->where(array(
-            't1.user_email' => $user_email,
-            't1.user_password' => $user_password,
-                /* 't1.user_account_active' => 'Y', 
-                  't1.user_archived' => 'N', */
-        ));
-        $query = $this->db->get('users as t1');
-        //echo $this->db->last_query();die();
-        if ($query->num_rows() > 0) {
-            $result = $query->result_array();
-            $row = $result[0];
-            $loggedin_data = array(
-                'id' => $row['id'],
-                'user_role' => $row['user_role'],
-                'user_role_name' => $row['role_name'],
-                'user_role_weight' => $row['role_weight'],
-                'user_firstname' => $row['user_firstname'],
-                'user_lastname' => $row['user_lastname'],
-                'user_email' => $row['user_email'],
-                'user_profile_pic' => $row['user_profile_pic'],
-            );
-            $this->session->set_userdata('sess_user', $loggedin_data);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     function authenticate_user($user_email, $user_password) {
         $login_status = 'error';
         $message = '';
         $loggedin_data = array();
         $auth_result = array('status' => $login_status, 'message' => $message, 'data' => $loggedin_data);
 
-        $this->db->select('t1.id,t1.user_email,t1.user_firstname,t1.user_lastname,t1.user_role,t1.user_profile_pic,t1.user_account_active,t1.user_archived,t2.role_name,t2.role_weight');
+        $this->db->select('t1.id,t1.user_email,t1.user_title, t1.user_firstname,t1.user_lastname,t1.user_role,t1.user_profile_pic,t1.user_account_active,t1.user_archived,t2.role_name,t2.role_weight');
 		$this->db->join('roles t2', 't1.user_role=t2.id');
         $this->db->where(array(
             't1.user_email' => $user_email,
@@ -192,6 +163,7 @@ class User_model extends CI_Model {
                     'id' => $row['id'],
                     'user_role' => $row['user_role'],
 					'user_role_name' => $row['role_name'],
+                    'user_title' => $row['user_title'],
                     'user_firstname' => $row['user_firstname'],
                     'user_lastname' => $row['user_lastname'],
                     'user_email' => $row['user_email'],
@@ -464,6 +436,17 @@ class User_model extends CI_Model {
         $num_rows = $query->num_rows();
         $result = $query->result_array();
         return $result;
+    }
+	
+	function get_new_emp_id() {
+        $this->db->select('max(user_emp_id)+1 as new_emp_id');        
+        $query = $this->db->get('users as t1');
+        $result = $query->result_array();
+		if($result){
+			return str_pad($result[0]['new_emp_id'], 4, '0', STR_PAD_LEFT);		
+		}else{
+			return 0;
+		}        
     }
 }
 

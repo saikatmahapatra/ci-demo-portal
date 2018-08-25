@@ -49,6 +49,7 @@
   <div class="media-body">
     <h5 class="mt-0">
         <?php
+            echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
             echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
             echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
             echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';

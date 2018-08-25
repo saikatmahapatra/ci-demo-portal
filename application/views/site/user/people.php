@@ -43,7 +43,7 @@
 							 <img class="rounded mr-3" style="width:75px; height: 75px;" src="<?php echo base_url($img_src);?>" alt="Generic placeholder image">
 							 </a>
 							  <div class="media-body">
-								<div><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></div>								
+								<div><?php echo $row['user_title'].' '.$row['user_firstname'].' '.$row['user_lastname']; ?></div>								
 								<div class="small"><?php echo $row['designation_name']; ?></div>
 								<div class=""><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
 								<div class=""><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>								
