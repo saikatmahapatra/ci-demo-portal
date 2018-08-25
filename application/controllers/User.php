@@ -46,8 +46,8 @@ class User extends CI_Controller {
 		// load Breadcrumbs
 		$this->load->library('breadcrumbs');
 		// add breadcrumbs. push() - Append crumb to stack
-		$this->breadcrumbs->push('Dashboard', '/admin');
-		$this->breadcrumbs->push('User', '/admin/user/manage');		
+		$this->breadcrumbs->push('Home', '/home');
+		//$this->breadcrumbs->push('User', '/user/manage');		
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		
 		// Address Types
@@ -62,6 +62,7 @@ class User extends CI_Controller {
 		$this->data['arr_roles'] = $this->user_model->get_user_role_dropdown();
 		$this->data['arr_designations'] = $this->user_model->get_designation_dropdown();
 		$this->data['arr_departments'] = $this->user_model->get_department_dropdown();
+		$this->data['arr_user_title'] = array(''=>'Select Title','Mr.'=>'Mr.','Ms.'=>'Ms.','Dr.'=>'Dr.','Mrs.'=>'Mrs.');
     }
 
     function index() {
@@ -95,7 +96,7 @@ class User extends CI_Controller {
 			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
             redirect($this->router->directory.'user/login');
         }               
-		$this->breadcrumbs->push('View', '/');		
+		$this->breadcrumbs->push('People', '/');		
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
@@ -279,30 +280,34 @@ class User extends CI_Controller {
             if ($this->validate_create_account_form_data() == true) {
                 $activation_token = md5(time('Y-m-d h:i:s'));
                 //$dob = $this->input->post('dob_year') . '-' . $this->input->post('dob_month') . '-' . $this->input->post('dob_day');
-				
+				$user_emp_id = time();
 				$password = $this->generate_password();				
                 $postdata = array(
+                    'user_title' => $this->input->post('user_title'),                    
                     'user_firstname' => $this->input->post('user_firstname'),                    
                     'user_lastname' => $this->input->post('user_lastname'),
                     'user_gender' => $this->input->post('user_gender'),
                     'user_email' => strtolower($this->input->post('user_email')),
+                    'user_email_secondary' => strtolower($this->input->post('user_email_secondary')),
                     'user_dob' => date('Y-m-d',strtotime($this->input->post('user_dob'))),
                     'user_doj' => date('Y-m-d',strtotime($this->input->post('user_doj'))),
                     'user_role' => $this->input->post('user_role'),
                     'user_department' => $this->input->post('user_department'),
                     'user_designation' => $this->input->post('user_designation'),
                     'user_phone1' => $this->input->post('user_phone1'),
+                    'user_phone2' => $this->input->post('user_phone2'),
                     'user_password' => md5($password),
                     'user_activation_key' => $activation_token,
                     'user_registration_ip' => $_SERVER['REMOTE_ADDR'],
-                    'user_account_active' => 'Y'
+                    'user_account_active' => 'Y',
+                    'user_emp_id' => $user_emp_id
                 );
 				//print_r($postdata); die();
                 $insert_id = $this->user_model->insert($postdata);
                 if ($insert_id) {
                     $html = '<div style="font-family:Verdana, Geneva, sans-serif; font-size:12px;">';
-                    $html.='<p>Hi ' . ucwords(strtolower($this->input->post('user_firstname'))) . ',</p>';
-                    $html.='<p>Your account has been created succesfully. Please note your login details mentioned below.</p><br>';
+                    $html.='<p>Dear ' . ucwords(strtolower($this->input->post('user_firstname'))) . ',</p>';
+                    $html.='<p>Congratulations! Welcome to United Exploration India Private Limited. Your employee id is <span style="font-size: 18px; font-weight:700;">'.$user_emp_id.'</span> and your basic profile been created by our team. You can update your personal details, contact information, academic and job experience details post login into United Employee Portal. Here is your access details.</p><br>';
                     #$html.='<br/> activate your account to login.<br><br>';
                     #$html.='Activatation Link : <a href="'.base_url('users/activate_account/'.strtolower(base64_encode($insert_id)).'/'.$activation_token).'" target="_blank">'.base_url('users/activate_account/'.strtolower(base64_encode($insert_id)).'/'.$activation_token).'</a></p><br>';
                     $html.='<p>URL: <a href="' . base_url() . '" target="_blank">' . base_url() . '</a><br>';
@@ -310,8 +315,8 @@ class User extends CI_Controller {
                     $html.='Password: ' . $password . '</p>';                    
 					$html.='<p>Your can change password after login.</p>';
                     $html.='</div>';
-                    echo $html;
-                    die();
+                    //echo $html;
+                    //die();
                     $config['mailtype'] = 'html';
                     $this->email->initialize($config);
                     $this->email->to($this->input->post('user_email'));
@@ -320,7 +325,7 @@ class User extends CI_Controller {
                     $this->email->message($html);
                     $this->email->send();
                     //echo $this->email->print_debugger();
-                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> User has been added succesfully.');
+                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Employee ID '.$user_emp_id.' has been created succesfully.');
                     $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
                     redirect(current_url());
                 }
@@ -332,12 +337,15 @@ class User extends CI_Controller {
     }
 
     function validate_create_account_form_data() {
+        $this->form_validation->set_rules('user_title', 'title', 'required');
         $this->form_validation->set_rules('user_firstname', 'first name', 'required');
         $this->form_validation->set_rules('user_lastname', 'last name', 'required');
         $this->form_validation->set_rules('user_gender', 'gender selection', 'required');
         $this->form_validation->set_rules('user_email', 'email', 'trim|required|valid_email|callback_is_email_registered');
+        $this->form_validation->set_rules('user_email_secondary', 'personal email', 'valid_email');
         //$this->form_validation->set_rules('user_password', 'password', 'required|trim|min_length[6]');
         $this->form_validation->set_rules('user_phone1', 'mobile number', 'required|trim|min_length[10]|max_length[10]|numeric');
+        $this->form_validation->set_rules('user_phone2', 'mobile number', 'trim|min_length[10]|max_length[10]|numeric');
         //$this->form_validation->set_rules('user_password_confirm', 'confirm password', 'required|matches[user_password]');
         //$this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
         //$this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
@@ -346,7 +354,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_doj', 'date of joining', 'required');
         $this->form_validation->set_rules('user_role', 'role access group', 'required');
         $this->form_validation->set_rules('user_designation', 'designation', 'required');
-        //$this->form_validation->set_rules('user_department', 'department', 'required');
+        $this->form_validation->set_rules('user_department', 'department', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;

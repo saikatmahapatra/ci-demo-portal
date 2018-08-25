@@ -52,8 +52,8 @@ class Cms extends CI_Controller {
 		// load Breadcrumbs
 		$this->load->library('breadcrumbs');
 		// add breadcrumbs. push() - Append crumb to stack
-		$this->breadcrumbs->push('Dashboard', '/admin');
-		$this->breadcrumbs->push('CMS', '/admin/cms');		
+		$this->breadcrumbs->push('Home', '/');
+		$this->breadcrumbs->push('CMS', '/cms');		
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		
 		//Pagination

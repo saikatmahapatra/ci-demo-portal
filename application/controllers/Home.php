@@ -48,7 +48,7 @@ class Home extends CI_Controller {
 		// load Breadcrumbs
 		$this->load->library('breadcrumbs');
 		// add breadcrumbs. push() - Append crumb to stack
-		$this->breadcrumbs->push('Dashboard', '/admin');		
+		$this->breadcrumbs->push('Home', '/');		
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 
     }

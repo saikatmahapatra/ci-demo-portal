@@ -8489,17 +8489,12 @@ select.form-control.dob-inline {
 }
 
 .dp {
-  border: 10px solid #eee;
-  transition: all 0.2s ease-in-out;
+  border: 2px solid #eeeeee;
   height: 100px;
   width: 100px;
 }
 
 .dp:hover {
-  border: 2px solid #eee;
-  transform: rotate(360deg);
-  -ms-transform: rotate(360deg);
-  -webkit-transform: rotate(360deg);
   /*-webkit-font-smoothing:antialiased;*/
 }
 
@@ -8596,11 +8591,6 @@ select.form-control.dob-inline {
   opacity: 0.5;
   cursor: default !important;
   background: #f8f8f8;
-}
-
-/*nav tab*/
-.form-timesheet label {
-  font-weight: bold;
 }
 
 .ajax-loader-ui {

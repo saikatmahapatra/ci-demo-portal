@@ -63,9 +63,7 @@
 					'name' => 'user_bio',
 					'value' => isset($row['user_bio']) ? $row['user_bio'] : set_value('user_bio'),
 					'id' => 'user_bio',
-					'class' => 'form-control',
-					'placeholder' => 'About me',
-					'title' => 'About me',							
+					'class' => 'form-control',						
 					'maxlength' => '100',
 				));
 				?>
@@ -108,10 +106,22 @@
                     </div>
                 </div>
 				<?php */ ?>
-        
+			<div class="form-group">
+				<label for="user_email_secondary" class="">Email (Personal)</label>
+				<?php
+				echo form_input(array(
+					'name' => 'user_email_secondary',
+					'value' => isset($row['user_email_secondary']) ? $row['user_email_secondary'] : set_value('user_email_secondary'),
+					'id' => 'user_email_secondary',
+					'class' => 'form-control'
+				));
+				?>
+				<?php echo form_error('user_email_secondary'); ?>
+			</div>
+			
             <div class="form-row">               
 				<div class="form-group col-md-6">
-					<label for="user_phone1" class="">Phone (Work) <span class="required">*</span></label>
+					<label for="user_phone1" class="">Mobile (Personal/Primary) <span class="required">*</span></label>
 					<?php
 					echo form_input(array(
 						'name' => 'user_phone1',
@@ -125,7 +135,7 @@
 					<?php echo form_error('user_phone1'); ?>
 				</div>
 				<div class="form-group col-md-6">
-					<label for="user_phone2" class="">Phone (Mobile)</label>
+					<label for="user_phone2" class="">Mobile (Work)</label>
 					<?php
 					echo form_input(array(
 						'name' => 'user_phone2',

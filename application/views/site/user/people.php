@@ -40,7 +40,7 @@
 								}
 								?>
 							 <a target="blank" href="<?php echo base_url($this->router->directory.'user/profile/'.$row['id']);?>">
-							 <img class="mr-3" style="width:80px; height: 80px;" src="<?php echo base_url($img_src);?>" alt="Generic placeholder image">
+							 <img class="rounded mr-3" style="width:75px; height: 75px;" src="<?php echo base_url($img_src);?>" alt="Generic placeholder image">
 							 </a>
 							  <div class="media-body">
 								<div><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></div>								

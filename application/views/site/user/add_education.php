@@ -50,7 +50,7 @@
 				</div>
 			<div class="form-row">
 				<div class="form-group col-md-4">        						
-					<label for="academic_from_year" class="">From</label>
+					<label for="academic_from_year" class="">From Year</label>
 					<?php
 					echo form_input(array(
 						'name' => 'academic_from_year',
@@ -58,13 +58,13 @@
 						'id' => 'academic_from_year',
 						'class' => 'form-control',
 						'maxlength' => '4',
-						'placeholder'=>'From Year'
+						'placeholder'=>''
 					));
 					?>
 					<?php echo form_error('academic_from_year'); ?>
 				</div>
 				<div class="form-group col-md-4">        						
-					<label for="academic_to_year" class="">To</label>
+					<label for="academic_to_year" class="">To Year</label>
 					<?php
 					echo form_input(array(
 						'name' => 'academic_to_year',
@@ -72,7 +72,7 @@
 						'id' => 'academic_to_year',
 						'class' => 'form-control',
 						'maxlength' => '4',
-						'placeholder'=>'To Year'
+						'placeholder'=>''
 					));
 					?>
 					<?php echo form_error('academic_to_year'); ?>
@@ -86,7 +86,7 @@
 						'id' => 'academic_marks_percentage',
 						'class' => 'form-control',
 						'maxlength' => '5',
-						'placeholder'=>'Marks'
+						'placeholder'=>''
 					));
 					?>
 					<?php echo form_error('academic_marks_percentage'); ?>

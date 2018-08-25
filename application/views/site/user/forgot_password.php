@@ -24,7 +24,7 @@
 				
 					<div class="form-group">
 					<label for="user_email">Registered Email address</label>
-						<?php echo form_input(array('name' => 'user_email','value' => set_value('user_email'),'id' => 'name','class'=> 'form-control','placeholder' => 'Email','maxlength' => '100','autofocus' => true,));?>
+						<?php echo form_input(array('name' => 'user_email','value' => set_value('user_email'),'id' => 'name','class'=> 'form-control','placeholder' => '','maxlength' => '100','autofocus' => true,));?>
 						<?php echo form_error('user_email'); ?>
 					</div>
 					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary btn-block'));?>

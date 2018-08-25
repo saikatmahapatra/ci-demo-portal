@@ -29,7 +29,7 @@
 						'name' => 'name',
 						'value' =>isset($row['name']) ? $row['name'] : set_value('name'),
 						'id' => 'address',
-						'placeholder'=>'Name',
+						'placeholder'=>'',
 						'class' => 'form-control',
 						'maxlength' => '100',
 						));
@@ -44,7 +44,7 @@
 							'name' => 'phone1',
 							'value' =>isset($row['phone1']) ? $row['phone1'] : set_value('phone1'),
 							'id' => 'phone1',
-							'placeholder'=>'Phone Number',
+							'placeholder'=>'',
 							'class' => 'form-control',
 							'maxlength' => '10',
 							));
@@ -78,7 +78,7 @@
 							'name' => 'locality',
 							'value' => isset($row['locality']) ? $row['locality'] : set_value('locality'),
 							'id' => 'locality',
-							'placeholder'=>'Locality',
+							'placeholder'=>'',
 							'class' => 'form-control',
 						));
 						?>
@@ -112,7 +112,7 @@
 						'id' => 'city',
 						'class' => 'form-control',
 						'maxlength' => '30',
-						'placeholder'=>'City/District/Town',
+						'placeholder'=>'',
 						));
 						?>
 						<?php echo form_error('city'); ?>
@@ -126,7 +126,7 @@
 						'name' => 'state',
 						'value' => isset($row['state']) ? $row['state'] : set_value('state'),
 						'id' => 'state',
-						'placeholder'=>'State',
+						'placeholder'=>'',
 						'class' => 'form-control',
 						'maxlength' => '30',
 						));
@@ -148,7 +148,7 @@
 						'id' => 'landmark',
 						'class' => 'form-control',
 						'maxlength' => '100',
-						'placeholder'=>'bus stop, railway, metro station',
+						'placeholder'=>'',
 						));
 						?>
 						<?php echo form_error('landmark'); ?>
@@ -162,7 +162,7 @@
 						'value' => isset($row['phone2']) ? $row['phone2'] :set_value('phone2'),
 						'id' => 'phone2',
 						'class' => 'form-control',
-						'placeholder'=>'Alternate Phone',
+						'placeholder'=>'',
 						'maxlength' => '10',
 						));
 						?>

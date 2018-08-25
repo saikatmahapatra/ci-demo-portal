@@ -21,19 +21,12 @@ $segment3 = $this->uri->segment(3);
 				<a class="nav-link" href="<?php echo base_url($this->router->directory.'home'); ?>">Home
 					<span class="sr-only">(current)</span>
 				</a>
-			</li>			
-			<?php if (isset($this->session->userdata['sess_user']['id'])) {  ?>
-			<li class="nav-item <?php echo ($segment2 == 'profile') ? 'active':''?>">
-				<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/profile'); ?>">My Profile</a>
-			</li>
-			<?php } ?>
+			</li>	
 			
-			<?php if (isset($this->session->userdata['sess_user']['id'])) {  ?>
-			<li class="nav-item <?php echo ($segment2 == 'change_password') ? 'active':''?>">
-				<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/change_password'); ?>">Change Password</a>
+			<li class="nav-item <?php echo ($segment2 == 'people') ? 'active':''?>">
+				<a class="nav-link"href="<?php echo base_url($this->router->directory.'user/people'); ?>">People</a>
 			</li>
-			<?php } ?>
-			
+						
 			<li class="nav-item <?php echo ($segment1=='timesheet') ? 'active':''?>">
 				<a class="nav-link" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet</a>
 			</li>
@@ -42,9 +35,6 @@ $segment3 = $this->uri->segment(3);
 				<a class="nav-link"href="<?php echo base_url($this->router->directory.'leave'); ?>">Apply Leave</a>
 			</li>
 			
-			<li class="nav-item <?php echo ($segment2 == 'people') ? 'active':''?>">
-				<a class="nav-link"href="<?php echo base_url($this->router->directory.'user/people'); ?>">People</a>
-			</li>
 			
 			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
 			<li class="nav-item dropdown <?php echo ($segment2=='user') ? 'active':''?>">
@@ -85,8 +75,5 @@ $segment3 = $this->uri->segment(3);
 			</li>
 			<?php  } ?>
 		</ul>
-		<form class="form-inline my-2 my-lg-0">
-		  <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Enterprise Search" aria-label="Search">
-		</form>
 	</div>
 </nav>

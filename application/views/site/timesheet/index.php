@@ -98,7 +98,7 @@
 			 
 			
 			<div class="form-group">
-			<label for="timesheet_description" class="bmd-label-floating">Description <span class="required">*</span></label>
+			<label for="timesheet_description" class="bmd-label-floating">Task Description <span class="required">*</span></label>
 			<?php
 			echo form_textarea(array(
 				'name' => 'timesheet_description',
