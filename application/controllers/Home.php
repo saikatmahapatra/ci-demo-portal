@@ -43,7 +43,6 @@ class Home extends CI_Controller {
         //View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
         $this->data['page_heading'] = $this->router->class.' : '.$this->router->method;
-        $this->data['datatable']['dt_id']= array('heading'=>'Data Table','cols'=>array());
 		
 		// load Breadcrumbs
 		$this->load->library('breadcrumbs');
@@ -60,7 +59,7 @@ class Home extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		$this->data['page_heading'] = 'Home';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'home/index', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 

@@ -8627,10 +8627,10 @@ select.form-control.dob-inline {
   font-weight: 700;
 }
 
-button.close {
+.alert button.close {
   color: #FFF;
 }
 
-button.close:hover {
+.alert button.close:hover {
   color: #FFF;
 }

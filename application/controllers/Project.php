@@ -33,7 +33,7 @@ class Project extends CI_Controller {
 
         //add required js files for this controller
         $app_js_src = array(
-            'assets/dist/js/project.js',
+            'assets/dist/js/'.$this->router->class.'.js', //create js file name same as controller name
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($app_js_src);
 
@@ -46,7 +46,6 @@ class Project extends CI_Controller {
         //View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
         $this->data['page_heading'] = $this->router->class.' : '.$this->router->method;
-        $this->data['datatable']['dt_id']= array('heading'=>'Data Table','cols'=>array());
 		
 		// load Breadcrumbs
 		$this->load->library('breadcrumbs');
@@ -71,7 +70,7 @@ class Project extends CI_Controller {
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		
 		$this->data['page_heading'] = 'Projects';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'project/index', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 	
@@ -149,7 +148,7 @@ class Project extends CI_Controller {
             }
         }
 		$this->data['page_heading'] = 'Add Project';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'project/add', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/add', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 
@@ -180,7 +179,7 @@ class Project extends CI_Controller {
         $result_array = $this->project_model->get_rows($this->uri->segment(3));
         $this->data['rows'] = $result_array['data_rows'];
 		$this->data['page_heading'] = 'Edit Project';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'project/edit', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 

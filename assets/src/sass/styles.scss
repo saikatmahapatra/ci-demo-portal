@@ -204,9 +204,11 @@ select.form-control.dob-inline{
  }
 
 // Close Button
-button.close{
-	color: $white;
-	&:hover{
+.alert {
+	button.close{
 		color: $white;
+		&:hover{
+			color: $white;
+		}
 	}
 }

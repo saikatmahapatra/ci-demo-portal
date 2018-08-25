@@ -18,7 +18,9 @@ class Timesheet extends CI_Controller {
         $this->common_lib->init_template_elements();
         
         //add required js files for this controller
-        $app_js_src = array('assets/dist/js/timesheet.js');         
+        $app_js_src = array(
+			'assets/dist/js/'.$this->router->class.'.js', //create js file name same as controller name
+		);         
         $this->data['app_js'] = $this->common_lib->add_javascript($app_js_src);
 		        
         $this->data['alert_message'] = NULL;
@@ -102,7 +104,7 @@ class Timesheet extends CI_Controller {
 		
 		$this->add();
 		
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'timesheet/index', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 	

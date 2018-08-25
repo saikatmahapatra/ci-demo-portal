@@ -33,7 +33,7 @@ class Cms extends CI_Controller {
 
         //add required js files for this controller
         $app_js_src = array(
-            'assets/dist/js/cms.js',
+            'assets/dist/js/'.$this->router->class.'.js', //create js file name same as controller name
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($app_js_src);
 
@@ -47,7 +47,6 @@ class Cms extends CI_Controller {
         //View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
         $this->data['page_heading'] = $this->router->class.' : '.$this->router->method;
-        $this->data['datatable']['dt_id']= array('heading'=>'Data Table','cols'=>array());
 		
 		// load Breadcrumbs
 		$this->load->library('breadcrumbs');
@@ -72,7 +71,7 @@ class Cms extends CI_Controller {
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		
 		$this->data['page_heading'] = 'Website CMS - Contents';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'cms/index', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 	
@@ -109,7 +108,7 @@ class Cms extends CI_Controller {
         $this->data['data_rows'] = $result_array['data_rows'];
 		
 		$this->data['page_heading'] = 'Website Contents (CI Pagination Version)';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'cms/index_ci_pagination', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index_ci_pagination', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 
@@ -195,7 +194,7 @@ class Cms extends CI_Controller {
             }
         }
 		$this->data['page_heading'] = 'Add Contents';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'cms/add', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/add', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 
@@ -231,7 +230,7 @@ class Cms extends CI_Controller {
         $result_array = $this->cms_model->get_rows($this->uri->segment(3));
         $this->data['rows'] = $result_array['data_rows'];
 		$this->data['page_heading'] = 'Edit Contents';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'cms/edit', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 
@@ -244,7 +243,7 @@ class Cms extends CI_Controller {
         if ($res) {
             $this->session->set_flashdata('flash_message', '<strong>Deleted </strong> successfully.');
             $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
-            redirect($this->router->directory.'cms');
+            redirect($this->router->directory.$this->router->class);
         }
     }
 

@@ -29,7 +29,7 @@ class CI_Example extends CI_Controller {
     }
 
     function index() {
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'ci_example/index', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 
@@ -71,7 +71,7 @@ class CI_Example extends CI_Controller {
                 redirect(current_url());
             }
         }
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'ci_example/form_helper', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/form_helper', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 
@@ -100,12 +100,12 @@ class CI_Example extends CI_Controller {
     }
     
     function download_as_pdf(){
-       $this->load->view($this->data['view_dir'].'ci_example/dom_pdf_gen_pdf'); 
+       $this->load->view($this->data['view_dir'].$this->router->class.'/dom_pdf_gen_pdf'); 
     }
             
     function dom_pdf_gen_pdf() {
         // Load all views as normal
-        $this->load->view($this->data['view_dir'].'ci_example/dom_pdf_gen_pdf');
+        $this->load->view($this->data['view_dir'].$this->router->class.'/dom_pdf_gen_pdf');
         // Get output html
         $html = $this->output->get_output();
         // Load library
@@ -119,7 +119,7 @@ class CI_Example extends CI_Controller {
     function date_helper() {
         $this->load->helper('date');
 
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'ci_example/date_helper', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/date_helper', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 
@@ -131,7 +131,7 @@ class CI_Example extends CI_Controller {
         $map = directory_map('./assets', 1);
         $this->data['sub_folders'] = $map;
 
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'ci_example/directory_helper', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/directory_helper', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 	
@@ -192,7 +192,7 @@ class CI_Example extends CI_Controller {
 		$data = array();
 		$this->data['cal'] = $this->calendar->generate($year,$month,$data);
 		$this->data['page_heading'] = 'Calendar';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'ci_example/calendar_lib', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/calendar_lib', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 

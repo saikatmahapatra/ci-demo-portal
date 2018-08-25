@@ -34,7 +34,7 @@ class User extends CI_Controller {
 
         //add required js files for this controller
         $app_js_src = array(
-            'assets/dist/js/user.js',
+            'assets/dist/js/'.$this->router->class.'.js', //create js file name same as controller name
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($app_js_src);
 
@@ -86,7 +86,7 @@ class User extends CI_Controller {
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		
 		$this->data['page_heading'] = 'Manage Employees';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/manage', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/manage', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 	
@@ -124,7 +124,7 @@ class User extends CI_Controller {
         $this->data['data_rows'] = $result_array['data_rows'];
 		
 		$this->data['page_heading'] = 'People';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/people', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/people', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 
@@ -235,7 +235,7 @@ class User extends CI_Controller {
             }
         }
 		$this->data['page_heading'] = 'Login';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/login', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/login', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_login', $this->data);
     }
 
@@ -245,7 +245,7 @@ class User extends CI_Controller {
 
     function auth_error() {
 		$this->data['page_heading'] = 'Authorization Error';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/auth_error', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/auth_error', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_login', $this->data);
     }
 
@@ -332,7 +332,7 @@ class User extends CI_Controller {
             }
         }
 		$this->data['page_heading'] = "Add New Employee";
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/create_account', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/create_account', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 
@@ -443,7 +443,7 @@ class User extends CI_Controller {
             }
         }
 		$this->data['page_heading'] = 'Forgot Password?';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/forgot_password', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/forgot_password', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_login', $this->data);
     }
 
@@ -496,7 +496,7 @@ class User extends CI_Controller {
             }
         }
 		$this->data['page_heading'] = 'Create New Password';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/reset_password', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/reset_password', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_login', $this->data);
     }
 
@@ -559,7 +559,7 @@ class User extends CI_Controller {
             }
         }
 		$this->data['page_heading'] = 'Change Password';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/change_password', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/change_password', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 
@@ -634,7 +634,7 @@ class User extends CI_Controller {
 		$this->data['address'] = $this->user_model->get_user_address(NULL,$user_id,NULL);
 		$this->data['education'] = $this->user_model->get_user_education(NULL, $user_id);
 		$this->data['page_heading'] = 'Profile';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/profile', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/profile', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 	
@@ -719,7 +719,7 @@ class User extends CI_Controller {
             }
         }
 		$this->data['page_heading'] = 'Add Address';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/add_address', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/add_address', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 	
@@ -761,7 +761,7 @@ class User extends CI_Controller {
         }
 		
 		$this->data['page_heading'] = 'Edit Address';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/edit_address', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit_address', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 	
@@ -888,7 +888,7 @@ class User extends CI_Controller {
             }
         }
 		$this->data['page_heading'] = "Add Educational Qualification";
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/add_education', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/add_education', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 	
@@ -927,7 +927,7 @@ class User extends CI_Controller {
             }
         }
 		$this->data['page_heading'] = "Edit Educational Qualification";
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/edit_education', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit_education', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 	
@@ -1008,7 +1008,7 @@ class User extends CI_Controller {
         }
 	
 		$this->data['page_heading'] = 'Edit Profile';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/edit_profile', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit_profile', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 	
@@ -1038,7 +1038,7 @@ class User extends CI_Controller {
         }
 	
 		$this->data['page_heading'] = 'Profile Photo';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/profile_pic', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/profile_pic', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 	
@@ -1182,7 +1182,7 @@ class User extends CI_Controller {
             }
         }
 		$this->data['page_heading'] = "Allocate Projects";
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].'user/allocate_projects', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/allocate_projects', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 	
