@@ -45,8 +45,8 @@ $segment3 = $this->uri->segment(3);
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account');?>">Add New Employee</a>
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account');?>">Project Allocation</a>
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">View Timesheet</a>
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account');?>">View Projects</a>
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account');?>">Add Project Details</a>
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'project');?>">Manage Projects</a>
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'project/add');?>">Add Project</a>
 				</div>
 			</li>
 			<?php } ?>

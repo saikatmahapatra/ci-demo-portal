@@ -8,8 +8,8 @@
 </div><!--/.heading-container-->
 
 <div class="row">
-    <div class="col-md-12">
-        <?php
+	<div class="col-md-12">
+		<?php
 		// Show server side flash messages
 		if (isset($alert_message)) {
 			$html_alert_ui = '';                
@@ -17,43 +17,36 @@
 			echo $html_alert_ui;
 		}
 		?>
-		<div class="card ">
+		<div class="card">
 			<div class="card-header">
-				<span class="">Products</span>
+				<span class="">Data Table</span>
 				<span class="float-right">
-					<a href="<?php echo base_url($this->router->directory.'product/add');?>" class="btn btn-sm btn-primary" title="Add"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
+					<a href="<?php echo base_url($this->router->directory.'project/add');?>" class="btn btn-sm btn-primary" title="Add"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
 				</span>
 			</div>
-			<!-- /.card-header -->
 			<div class="card-body">
 				<div class="table-responsive">
-					<table id="product-datatable" class="table table-sm">
+					<table id="project-datatable" class="table table-sm">
 						<thead>
 							<tr>
-								<th>SKU</th>
-								<th>Product</th>
-								<th>Category</th>
-								<th>MRP</th>
-								<th>Price</th>
-								<th>Status</th>
-								<th>Action</th>
+								<th scope="col">Project Title</th>
+								<th scope="col">Desription</th>
+								<th scope="col">Status</th>
+								<th scope="col">Action</th>
 							</tr>
 						</thead>
 						<tbody></tbody>
 						<tfoot>
 							<tr>
-								<th>SKU</th>
-								<th>Product</th>
-								<th>Category</th>
-								<th>MRP</th>
-								<th>Price</th>
-								<th>Status</th>
-								<th>Action</th>
+								<th scope="col">Project Title</th>
+								<th scope="col">Desription</th>
+								<th scope="col">Status</th>
+								<th scope="col">Action</th>
 							</tr>
 						</tfoot>
 					</table>
 				</div>
-			</div><!-- /.card-body -->
-		</div><!-- /.card -->
-    </div>
+			</div>
+		</div>
+	</div>
 </div><!--/.row-->

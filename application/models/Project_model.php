@@ -44,8 +44,7 @@ class Project_model extends CI_Model {
 
     function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
         $result = array();
-        $this->db->select('t1.*,t2.user_email');
-        $this->db->join('users as t2', 't2.id = t1.pagecontent_user_id', 'left');
+        $this->db->select('t1.*');        
         if ($id) {
             $this->db->where('t1.id', $id);
         }
@@ -56,21 +55,16 @@ class Project_model extends CI_Model {
         if ($dataTable == TRUE) {
             //set column field database for datatable orderable
             $column_order = array(
-                't1.pagecontent_title',
-                't1.pagecontent_type',
-                't1.pagecontent_text',
-                't1.pagecontent_status',
+                't1.project_name',
+                't1.project_desc',
+                't1.project_status',
                 NULL,
             );            
             //set column field database(table column name) for datatable searchable
             $column_search = array(
-                't1.pagecontent_type',
-                't1.pagecontent_title',
-                't1.pagecontent_text',
-                't1.pagecontent_status',
-                't1.pagecontent_meta_keywords',
-                't1.pagecontent_meta_description',
-                't1.pagecontent_meta_author',
+                't1.project_name',
+                't1.project_desc',
+                't1.project_status',
                 );
              // default order
             $order = array(
@@ -109,7 +103,7 @@ class Project_model extends CI_Model {
                 $this->db->limit($limit, $offset);
             }
         }
-        $query = $this->db->get('cms as t1');
+        $query = $this->db->get('projects as t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();
         $result = $query->result_array();
