@@ -55,7 +55,8 @@
 	<script src="<?php echo base_url('assets/vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js');?>"></script>	
     <!-- CK Editor -->
     <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>	
-	
+	<!-- Pace JS for page load progress -->
+	<script src="<?php echo base_url('assets/vendors/pace-js/pace.min.js'); ?>"></script>
 	<!--Application Specific JS Loading Through Controllers-->
     <?php echo isset($app_js) ? $app_js : ''; ?>
 </body>

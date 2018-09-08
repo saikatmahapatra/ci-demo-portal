@@ -36,6 +36,9 @@ $color_blue: #2672EC;
 $brand-color: $color_purple;
 $primary-color: $brand-color;
 
+// Complementry color is used to indecate the loading bar on the top
+// of the page with pace.js plugin
+$complementry-color: adjust_hue($primary-color, 180);
 
 //CI Calendar
 $calendar-border: $color_blue;

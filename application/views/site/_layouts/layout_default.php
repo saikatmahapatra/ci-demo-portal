@@ -59,7 +59,8 @@
     <script src="<?php echo base_url('assets/vendors/select2/dist/js/select2.min.js');?>"></script>	
 	<!-- Datepicker JS -->
 	<script src="<?php echo base_url('assets/vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js');?>"></script>	
-	
+	<!-- Pace JS for page load progress -->
+	<script src="<?php echo base_url('assets/vendors/pace-js/pace.min.js'); ?>"></script>
 	
 	<!--Application Specific JS Loading Through Controllers-->
     <?php echo isset($app_js) ? $app_js : ''; ?>
