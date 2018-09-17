@@ -343,7 +343,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_firstname', 'first name', 'required');
         $this->form_validation->set_rules('user_lastname', 'last name', 'required');
         $this->form_validation->set_rules('user_gender', 'gender selection', 'required');
-        $this->form_validation->set_rules('user_email', 'email', 'trim|required|valid_email|callback_is_email_registered');
+        $this->form_validation->set_rules('user_email', 'email', 'trim|required|valid_email|callback_valid_email_domain|callback_is_email_registered');
         $this->form_validation->set_rules('user_email_secondary', 'personal email', 'valid_email');
         //$this->form_validation->set_rules('user_password', 'password', 'required|trim|min_length[6]');
         $this->form_validation->set_rules('user_phone1', 'mobile number', 'required|trim|min_length[10]|max_length[10]|numeric');
@@ -364,6 +364,17 @@ class User extends CI_Controller {
             return false;
         }
     }
+	
+	function valid_email_domain($str){
+		if($str){
+			if(stristr($str,'@unitedexploration.co.in') !== false){
+				return true;
+			}else{
+				$this->form_validation->set_message('valid_email_domain', 'Please provide an acceptable email address');
+				return false;
+			}
+		}
+	}
 	
     function is_email_registered($user_email, $action_type = NULL) {
         //echo $user_email;die();
