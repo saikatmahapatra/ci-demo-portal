@@ -38,8 +38,8 @@ $segment3 = $this->uri->segment(3);
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
 					<a class="dropdown-item" href="#">Holiday Calendar</a>
 					<a class="dropdown-item" href="#">Apply Leave</a>
-					<a class="dropdown-item" href="#">Project Allocation</a>
-					<a class="dropdown-item" href="#">View Timesheet</a>
+					<a class="dropdown-item" href="#">Travel Request</a>
+					<a class="dropdown-item" href="#">My Request List</a>
 				</div>
 			</li>
 		</ul>
