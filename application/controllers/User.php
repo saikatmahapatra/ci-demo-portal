@@ -1209,7 +1209,7 @@ class User extends CI_Controller {
         }
 	}
 	
-	function app_admin() {
+	function administrator() {
 		########### Validate User Auth #############
         $is_logged_in = $this->common_lib->is_logged_in();
         if ($is_logged_in == FALSE) {
@@ -1223,7 +1223,7 @@ class User extends CI_Controller {
         ));
         ########### Validate User Auth End #############
 		$this->data['page_heading'] = "Administrator Control Panel";
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/app_admin', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/administrator', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 	

@@ -82,7 +82,7 @@ $segment3 = $this->uri->segment(3);
 				</div>
 			</li>-->
 			<li class="nav-item">
-			<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/app_admin'); ?>">
+			<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/administrator'); ?>">
 				<i class="fa fa-key"></i> Administrator</a>
 			</li>
 			<?php } ?>			
