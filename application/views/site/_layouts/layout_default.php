@@ -25,7 +25,7 @@
     <![endif]-->
 </head>
 
-<body data-layout="layout_authenticated" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
+<body data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
 	
 	
 	<?php echo $el_navbar; ?>

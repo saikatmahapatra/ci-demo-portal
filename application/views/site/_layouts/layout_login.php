@@ -24,7 +24,7 @@
     <![endif]-->
 </head>
 
-<body data-layout="layout_unauthenticated" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
+<body data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
 
     <main role="main" class="container">
         <?php echo $maincontent; ?>
