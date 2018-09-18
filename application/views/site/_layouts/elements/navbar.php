@@ -69,7 +69,7 @@ $segment3 = $this->uri->segment(3);
 			</li>
 			<?php  } ?>				
 			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
-			<li class="nav-item dropdown <?php echo ($segment2=='user') ? 'active':''?>">
+			<!--<li class="nav-item dropdown <?php echo ($segment2=='user') ? 'active':''?>">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> Administration</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -80,9 +80,16 @@ $segment3 = $this->uri->segment(3);
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'project');?>">Manage Projects</a>
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'project/add');?>">Add Project</a>
 				</div>
-			</li>			
+			</li>-->
+			<li class="nav-item">
+			<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/app_admin'); ?>">
+				<i class="fa fa-key"></i> Administrator</a>
+			</li>
 			<?php } ?>			
-			<li class="nav-item"><a class="nav-link" href="<?php echo base_url($this->router->directory.'user/logout'); ?>"><i class="fa fa-power-off"></i>  Logout</a></li>
+			<li class="nav-item">
+				<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/logout'); ?>">
+					<i class="fa fa-power-off"></i> Logout</a>
+			</li>
 		</ul>
 		
 	</div>

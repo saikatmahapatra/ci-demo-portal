@@ -1209,6 +1209,24 @@ class User extends CI_Controller {
         }
 	}
 	
+	function app_admin() {
+		########### Validate User Auth #############
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
+            redirect($this->router->directory.$this->router->class.'/login');
+        }
+        //Has logged in user permission to access this page or method?        
+        $this->common_lib->check_user_role_permission(array(
+            'default-super-admin-access',
+            'default-admin-access',
+        ));
+        ########### Validate User Auth End #############
+		$this->data['page_heading'] = "Administrator Control Panel";
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/app_admin', $this->data, true);
+        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+    }
+	
 
 }
 

@@ -6,5 +6,3 @@
         <?php echo $breadcrumbs; ?>
     </div>
 </div><!--/.heading-container-->
-
-
