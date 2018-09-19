@@ -36,6 +36,7 @@ class Home extends CI_Controller {
         $this->data['app_js'] = $this->common_lib->add_javascript($app_js_src);
 
         $this->load->model('home_model');
+        $this->load->model('cms_model');
         $this->data['alert_message'] = NULL;
         $this->data['alert_message_css'] = NULL;
         $this->id = $this->uri->segment(3);
@@ -55,9 +56,40 @@ class Home extends CI_Controller {
     function index() {
         // Check user permission by permission name mapped to db
         // $is_granted = $this->common_lib->check_user_role_permission('cms-list-view');
-
+		
+		// Check user permission by permission name mapped to db
+        // $is_granted = $this->common_lib->check_user_role_permission('cms-list-view');
+			
+		$this->breadcrumbs->push('View','/');				
+		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
+		
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+
+        // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
+		$result_array = $this->cms_model->get_contents(NULL, NULL, NULL, FALSE, FALSE);
+		$total_num_rows = $result_array['num_rows'];
+		
+		//pagination config
+		$additional_segment = $this->router->directory.$this->router->class.'/index';
+		$per_page = 20;
+		$config['uri_segment'] = 4;
+		$config['num_links'] = 1;
+		$config['use_page_numbers'] = TRUE;
+		//$this->pagination->initialize($config);
+		
+		$page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
+		$offset = ($page*$per_page);
+		$this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
+		//end of pagination config
+        
+
+        // Data Rows - Refer to model method definition
+        $result_array = $this->cms_model->get_contents(NULL, $per_page, $offset, FALSE, TRUE);
+        $this->data['data_rows'] = $result_array['data_rows'];
+		
+
+        
 		$this->data['page_heading'] = 'Welcome';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);

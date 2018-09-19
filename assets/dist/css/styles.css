@@ -8510,12 +8510,12 @@ select.form-control.dob-inline {
 }
 
 .ci-calendar {
-  border: 5px solid #2672EC;
+  border: 2px solid #5133AB;
   margin-top: 15px;
 }
 
 .ci-calendar th {
-  background: #2672EC;
+  background: #5133AB;
   font-size: 1rem;
   color: #FFF;
   vertical-align: center !important;
@@ -8523,9 +8523,9 @@ select.form-control.dob-inline {
 }
 
 .ci-calendar tr.wk_nm {
-  background: #5133AB;
+  background: #999999;
   color: #FFF;
-  font-weight: bold;
+  /*font-weight:bold;*/
 }
 
 .ci-calendar td {

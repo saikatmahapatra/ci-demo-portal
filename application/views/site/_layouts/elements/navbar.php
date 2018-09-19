@@ -19,7 +19,7 @@ $segment3 = $this->uri->segment(3);
 	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item <?php echo ($segment1=='home') ? 'active':''?>">
-				<a class="nav-link" href="<?php echo base_url($this->router->directory.'home'); ?>">Home
+				<a class="nav-link" href="<?php echo base_url($this->router->directory.'home'); ?>"><i class="fa fa-home" aria-hidden="true"></i> Home
 					<span class="sr-only">(current)</span>
 				</a>
 			</li>	

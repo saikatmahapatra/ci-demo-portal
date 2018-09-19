@@ -63,6 +63,9 @@ class Cms extends CI_Controller {
     function index() {
         // Check user permission by permission name mapped to db
         // $is_granted = $this->common_lib->check_user_role_permission('cms-list-view');
+		
+		// Get logged  in user id
+        $this->sess_user_id = $this->common_lib->get_sess_user('id');
 			
 		$this->breadcrumbs->push('View','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
@@ -184,6 +187,7 @@ class Cms extends CI_Controller {
                     'pagecontent_meta_keywords' => $this->input->post('pagecontent_meta_keywords'),
                     'pagecontent_meta_description' => $this->input->post('pagecontent_meta_description'),
                     'pagecontent_meta_author' => $this->input->post('pagecontent_meta_author'),
+                    'pagecontent_user_id' => $this->sess_user_id
                 );
                 $insert_id = $this->cms_model->insert($postdata);
                 if ($insert_id) {
@@ -217,6 +221,7 @@ class Cms extends CI_Controller {
                     'pagecontent_meta_author' => $this->input->post('pagecontent_meta_author'),
                     'pagecontent_status' => $this->input->post('pagecontent_status'),
                     'pagecontent_archived' => $this->input->post('pagecontent_archived'),
+					'pagecontent_user_id' => $this->sess_user_id
                 );
                 $where_array = array('id' => $this->input->post('id'));
                 $res = $this->cms_model->update($postdata, $where_array);

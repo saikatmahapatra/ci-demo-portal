@@ -115,14 +115,32 @@ class CMS_model extends CI_Model {
         $result = $query->result_array();
         return array('num_rows' => $num_rows, 'data_rows' => $result);
     }
+	
+	function get_contents($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
+        $result = array();
+        $this->db->select('t1.*,t2.user_email');
+        $this->db->join('users as t2', 't2.id = t1.pagecontent_user_id', 'left');
+        if ($id) {
+            $this->db->where('t1.id', $id);
+        }
+		if($limit){
+           $this->db->limit($limit, $offset);
+        }
+		$this->db->where('t1.pagecontent_status', 'Y');
+		$this->db->order_by('t1.id', 'desc');
+        $query = $this->db->get('cms as t1');
+        //print_r($this->db->last_query());
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return array('num_rows' => $num_rows, 'data_rows' => $result);
+    }
 
     function get_pagecontent_type() {
         $data = array(
             '' => 'Select',
-            'page' => 'Page',
-            'post' => 'Post',
-            'review' => 'Review',
-            'comment' => 'Comments'
+            'news' => 'News',
+            'notice' => 'Notice',
+            'policy' => 'Policy'
         );
         return $data;
     }

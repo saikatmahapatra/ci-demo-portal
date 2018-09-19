@@ -41,9 +41,10 @@ $primary-color: $brand-color;
 $complementry-color: adjust_hue($primary-color, 180);
 
 //CI Calendar
-$calendar-border: $color_blue;
+$calendar-border: $primary-color;
+$calendar-heading-bg: $primary-color;
 $day_selected : lighten($color_blue,30%);
-$calendar-week: $color_purple;
+$calendar-week-bg: $gray-light;
 $calendar-grid-border: lighten($black, 70%);
 $today-highlight: $color_blue;
 $holiday: lighten($color_red,40%);

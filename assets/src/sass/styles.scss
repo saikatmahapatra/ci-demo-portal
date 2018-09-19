@@ -89,11 +89,11 @@ select.form-control.dob-inline{
 }
 
 .ci-calendar{
-	border:5px solid $calendar-border;
+	border:2px solid $calendar-border;
 	margin-top: 15px;
 	
 	th{
-		background:$color_blue;
+		background:$calendar-heading-bg;
 		font-size:1rem;
 		color:$white;
 		vertical-align: center !important;
@@ -101,9 +101,9 @@ select.form-control.dob-inline{
 	}
 	
 	tr.wk_nm{
-		background:$calendar-week;
+		background:$calendar-week-bg;
 		color:$white;
-		font-weight:bold;
+		/*font-weight:bold;*/
 	}
 	
 	td{

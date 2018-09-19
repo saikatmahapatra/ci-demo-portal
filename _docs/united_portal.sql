@@ -3407,3 +3407,5 @@ ALTER TABLE `users` ADD `user_title` VARCHAR(10) NULL DEFAULT NULL AFTER `user_p
 --Sept 19
 ALTER TABLE `users` ADD `user_last_login_time` DATETIME NULL AFTER `user_account_active`;
 ALTER TABLE `users` CHANGE `user_last_login_time` `user_login_date_time` DATETIME NULL DEFAULT NULL;
+ALTER TABLE `cms` ADD `pagecontent_created_on` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `pagecontent_meta_author`;
+ALTER TABLE `cms` ADD `pagecontent_display_start_date` DATE NULL AFTER `pagecontent_meta_author`;

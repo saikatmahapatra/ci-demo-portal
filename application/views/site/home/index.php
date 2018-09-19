@@ -7,45 +7,27 @@
     </div>
 </div><!--/.heading-container-->
 
-<div class="row">
-	<div class="col-md-12 mb-2">
-		<div class="card-news  pl-2" style="border-left: 3px solid red;">
-			<div class="card-news-header h5">Font Awesome 5 released! New icons, SVG, ligatures, & tons more.</div>
-			<div class="card-news-sig text-muted small">
-				Administrator | 23-02-2018 23:11:09
-			</div>
-			<div class="card-news-body">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<p>
+
+<?php
+foreach($data_rows as $key=>$row){
+	?>
+	<div class="row">
+		<div class="col-md-12 mb-4" data-id="<?php echo $row['id'];?>">
+			<div data-cms-type="<?php echo $row['pagecontent_type'];?>" class="card-news pl-2" style="border-left: 3px solid blue;">
+				<div class="card-news-header h5">
+				<?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?>
+				</div>
+				<div class="card-news-sig text-muted small">
+					<?php echo isset($row['pagecontent_created_on']) ? $row['pagecontent_created_on'] : '';?>
+				</div>
+				<div class="card-news-body"><?php echo isset($row['pagecontent_text']) ? word_limiter($row['pagecontent_text'],30) : '';?></div>
 			</div>
 		</div>
 	</div>
-</div>
+	<?php
+}
+?>
 
 <div class="row">
-	<div class="col-md-12 mb-2">
-		<div class="card-news  pl-2" style="border-left: 3px solid red;">
-			<div class="card-news-header h5">Font Awesome 5 released! New icons, SVG, ligatures, & tons more.</div>
-			<div class="card-news-sig text-muted small">
-				Administrator | 23-02-2018 23:11:09
-			</div>
-			<div class="card-news-body">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<p>
-			</div>
-		</div>
-	</div>
+<div class="col-md-12"><?php echo $pagination_link; ?></div>
 </div>
-
-<div class="row">
-	<div class="col-md-12 mb-2">
-		<div class="card-news  pl-2" style="border-left: 3px solid blue;">
-			<div class="card-news-header h5">Font Awesome 5 released! New icons, SVG, ligatures, & tons more.</div>
-			<div class="card-news-sig text-muted small">
-				Administrator | 23-02-2018 23:11:09
-			</div>
-			<div class="card-news-body">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<p>
-			</div>
-		</div>
-	</div>
-</div>
-

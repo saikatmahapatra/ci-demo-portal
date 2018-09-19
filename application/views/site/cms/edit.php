@@ -25,23 +25,47 @@ $row = $rows[0];
 		<?php echo form_hidden('id', $row['id']); ?>
 		
 		<div class="form-row">		
-			<div class="form-group col-md-6">
-				<label for="pagecontent_type" class="">Content Type <span class="required">*</span></label>							
-				<?php echo form_dropdown('pagecontent_type', $arr_content_type, (isset($_POST['pagecontent_type']) ? set_value('pagecontent_type') : $row['pagecontent_type']), array('class' => 'form-control',));?>
-				<?php echo form_error('pagecontent_type'); ?>
-			</div>		
-			<div class="form-group col-md-6">
+			<div class="form-group col-md-12">
+				
+			</div>
+		</div>
+		
+		<div class="form-row">		
+			<div class="form-group col-md-12">
 				<label for="pagecontent_title" class="">Content Title <span class="required">*</span></label>
 				<?php echo form_input(array('name' => 'pagecontent_title', 'value' => (isset($_POST['pagecontent_title']) ? set_value('pagecontent_title') : $row['pagecontent_title']), 'id' => 'pagecontent_title', 'class' => 'form-control', 'placeholder' => ''));?>
 				<?php echo form_error('pagecontent_title'); ?>
-			</div>		
+			</div>
 		</div>
+		
+		
 		
 		<div class="form-group">
 			<label for="pagecontent_text" class="">Content(HTML) <span class="required">*</span></label>
 			<?php echo form_textarea(array('name' => 'pagecontent_text','value' => (isset($_POST['pagecontent_text']) ? set_value('pagecontent_text') : $row['pagecontent_text']),'class' => 'form-control textarea','id' => 'pagecontent_text','rows' => '2','cols' => '50','placeholder' => '')); ?>
 			<?php echo form_error('pagecontent_text'); ?>
 		</div>
+		
+		<div class="form-row">		
+			<div class="form-group col-md-4">
+				<label for="pagecontent_type" class="">Content Type <span class="required">*</span></label>
+				<?php echo form_dropdown('pagecontent_type', $arr_content_type, (isset($_POST['pagecontent_type']) ? set_value('pagecontent_type') : $row['pagecontent_type']), array('class' => 'form-control',));?>
+				<?php echo form_error('pagecontent_type'); ?>
+			</div>
+		
+			<div class="form-group col-md-4">
+				<label for="pagecontent_display_start_date" class="">Display from date</label>
+				<?php echo form_input(array('name' => 'pagecontent_display_start_date','value' => (isset($_POST['pagecontent_display_start_date']) ? set_value('pagecontent_display_start_date') : $row['pagecontent_display_start_date']),'id' => 'pagecontent_display_start_date','class' => 'form-control', 'placeholder' => ''));?>
+				<?php echo form_error('pagecontent_display_start_date'); ?>
+			</div>
+		
+			<div class="form-group col-md-4">
+				<label for="pagecontent_display_end_date" class="">Display to Date</label>
+				<?php echo form_input(array('name' => 'pagecontent_display_end_date','value' => (isset($_POST['pagecontent_display_end_date']) ? set_value('pagecontent_display_end_date') : $row['pagecontent_display_end_date']),'class' => 'form-control','id' => 'pagecontent_display_end_date','placeholder' => ''));?>
+				<?php echo form_error('pagecontent_display_end_date'); ?>
+			</div>		
+		</div>
+		
 		
 		<div class="form-row">		
 			<div class="form-group col-md-4">
