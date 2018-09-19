@@ -16,7 +16,7 @@
 			<div class="circle bg-primary text-white">
 				<div class="circle-body text-center p-4">
 					<i class="fa fa-user-plus fa-3x" aria-hidden="true"></i>
-					<p>Onboard New Employee</p>
+					<p>Add New Employee</p>
 				</div>
 			</div>
 		</a>
@@ -25,30 +25,33 @@
 		<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">
 			<div class="circle bg-primary text-white">
 				<div class="circle-body text-center p-4">
-					<i class="fa fa-user-plus fa-3x" aria-hidden="true"></i>
+					<i class="fa fa-users fa-3x" aria-hidden="true"></i>
 					<p>Manage Employees</p>
 				</div>
 			</div>
 		</a>
 	</div>
+	
 	<div class="col-md-3">
-		<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/timesheet'); ?>">
+		<a class="nav-link" href="<?php echo base_url($this->router->directory.'project/add'); ?>">
 			<div class="circle bg-primary text-white">
 				<div class="circle-body text-center p-4">
-					<i class="fa fa-user-plus fa-3x" aria-hidden="true"></i>
-					<p>Timesheet Tracker</p>
+					<i class="fa fa-cog fa-3x" aria-hidden="true"></i>
+					<p>Add Project</p>
 				</div>
 			</div>
 		</a>
 	</div>
+	
+	<div class="col-md-3">
+		<a class="nav-link" href="<?php echo base_url($this->router->directory.'project'); ?>">
+			<div class="circle bg-primary text-white">
+				<div class="circle-body text-center p-4">
+					<i class="fa fa-cog fa-3x" aria-hidden="true"></i>
+					<p>Manage Projects</p>
+				</div>
+			</div>
+		</a>
+	</div>
+	
 </div><!--/.row-->
-
-
-
-
-<a class="dropdown-item" href="">Manage Employees</a>
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account');?>">Add New Employee</a>
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account');?>">Project Allocation</a>
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">View Timesheet</a>
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'project');?>">Manage Projects</a>
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'project/add');?>">Add Project</a>

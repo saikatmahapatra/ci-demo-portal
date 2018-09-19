@@ -87,7 +87,7 @@
 				</div>
 					
 				<div class="form-group col-md-4">
-					<label for="timesheet_hours" class="bmd-label-floating">Time Spent (in Hours)<span class="required">*</span></label>		
+					<label for="timesheet_hours" class="bmd-label-floating">Time Spent (time should be in hours)<span class="required">*</span></label>		
 					<?php					
 					/*echo form_dropdown('timesheet_hours', $timesheet_hours, set_value('timesheet_hours'), array(
 						'class' => 'form-control',
