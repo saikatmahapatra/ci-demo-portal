@@ -3403,3 +3403,7 @@ COMMIT;
 
 
 ALTER TABLE `users` ADD `user_title` VARCHAR(10) NULL DEFAULT NULL AFTER `user_password`;
+
+--Sept 19
+ALTER TABLE `users` ADD `user_last_login_time` DATETIME NULL AFTER `user_account_active`;
+ALTER TABLE `users` CHANGE `user_last_login_time` `user_login_date_time` DATETIME NULL DEFAULT NULL;
