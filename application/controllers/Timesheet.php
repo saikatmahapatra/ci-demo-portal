@@ -146,7 +146,7 @@ class Timesheet extends CI_Controller {
         $this->form_validation->set_rules('selected_date', 'calendar date selection', 'required');
         $this->form_validation->set_rules('project_id', 'project selection', 'required');
         $this->form_validation->set_rules('activity_id', 'activity selection', 'required');
-        $this->form_validation->set_rules('timesheet_hours', 'hours spent', 'required');
+        $this->form_validation->set_rules('timesheet_hours', 'time spent', 'required|numeric|less_than[18]|greater_than[0]');
         $this->form_validation->set_rules('timesheet_description', 'description', 'required|max_length[200]');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
@@ -213,8 +213,8 @@ class Timesheet extends CI_Controller {
             //$row[] = $result['timesheet_hours'];
             //$row[] = $result['timesheet_review_status'];
 			
-			$html = '<div class="font-weight-bold">'.date('d/m/Y',strtotime($result['timesheet_date'])).' <span class="float-right">'.$result['timesheet_hours'].' hrs</span></div>';			
-			$html.= '<div class="small">'.$result['project_name'].'<span class="float-right">'.$result['task_activity_name'].'</span></div>';			
+			$html = '<div class="font-weight-bold">'.date('d/m/Y',strtotime($result['timesheet_date'])).' <span class="float-right"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$result['timesheet_hours'].' hrs</span></div>';			
+			$html.= '<div class="">'.$result['project_name'].'<span class="float-right">'.$result['task_activity_name'].'</span></div>';			
 			
             
             //add html for action

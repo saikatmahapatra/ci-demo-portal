@@ -43,16 +43,17 @@
 		</nav>
 		
 		<div class="tab-content" id="nav-tabContent">
-		
-			<div class="mt-3 tab-pane fade show active" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab">
+			
 			<?php
 			// Show server side flash messages
 			if (isset($alert_message)) {
 				$html_alert_ui = '';                
-				$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
+				$html_alert_ui.='<div class="mt-2 mb-2 auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
 				echo $html_alert_ui;
 			}
 			?>
+		
+			<div class="mt-3 tab-pane fade show active" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab">			
 			<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form form-timesheet','name' => '','id' => 'ci-form-timesheet',)); ?>
 			<?php echo form_hidden('form_action', 'add'); ?>		  
 			<?php echo form_hidden('selected_date',set_value('selected_date')); ?>		  
@@ -86,10 +87,20 @@
 				</div>
 					
 				<div class="form-group col-md-4">
-					<label for="timesheet_hours" class="bmd-label-floating">Hours <span class="required">*</span></label>		
+					<label for="timesheet_hours" class="bmd-label-floating">Time Spent (in Hours)<span class="required">*</span></label>		
 					<?php					
-					echo form_dropdown('timesheet_hours', $timesheet_hours, set_value('timesheet_hours'), array(
+					/*echo form_dropdown('timesheet_hours', $timesheet_hours, set_value('timesheet_hours'), array(
 						'class' => 'form-control',
+					));*/
+					?>
+					<?php
+					echo form_input(array(
+						'name' => 'timesheet_hours',
+						'value' => set_value('timesheet_hours'),
+						'id' => 'timesheet_hours',
+						'class' => 'form-control',
+						'maxlength' => '5',
+						'placeholder' => '',
 					));
 					?>
 					<?php echo form_error('timesheet_hours'); ?>
