@@ -1224,7 +1224,7 @@ class User extends CI_Controller {
         ########### Validate User Auth End #############
 		$this->data['page_heading'] = "Administrator Control Panel";
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/administrator', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+        $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
     }
 	
 

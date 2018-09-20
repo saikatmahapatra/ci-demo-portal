@@ -71,7 +71,7 @@ class Project extends CI_Controller {
 		
 		$this->data['page_heading'] = 'Projects';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+        $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
     }
 	
     function render_datatable() {
@@ -149,7 +149,7 @@ class Project extends CI_Controller {
         }
 		$this->data['page_heading'] = 'Add Project';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/add', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+        $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
     }
 
     function edit() {
@@ -180,7 +180,7 @@ class Project extends CI_Controller {
         $this->data['rows'] = $result_array['data_rows'];
 		$this->data['page_heading'] = 'Edit Project';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+        $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
     }
 
     function delete() {

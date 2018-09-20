@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Cms extends CI_Controller {
+class Holiday extends CI_Controller {
 
     var $data;
     var $id;
@@ -38,11 +38,10 @@ class Cms extends CI_Controller {
         $this->data['app_js'] = $this->common_lib->add_javascript($app_js_src);
 
         
-        $this->load->model('cms_model');
+        $this->load->model('holiday_model');
         $this->data['alert_message'] = NULL;
         $this->data['alert_message_css'] = NULL;
         $this->id = $this->uri->segment(3);
-        $this->data['arr_content_type'] = $this->cms_model->get_pagecontent_type();
 
         //View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
@@ -73,79 +72,40 @@ class Cms extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		
-		$this->data['page_heading'] = 'Website CMS - Contents';
+		$this->data['page_heading'] = 'Holiday Calendar';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
     }
 	
-	function index_ci_pagination() {
-        // Check user permission by permission name mapped to db
-        // $is_granted = $this->common_lib->check_user_role_permission('cms-list-view');
-			
-		$this->breadcrumbs->push('View','/');				
-		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-
-        // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
-		$result_array = $this->cms_model->get_rows(NULL, NULL, NULL, FALSE, FALSE);
-		$total_num_rows = $result_array['num_rows'];
-		
-		//pagination config
-		$additional_segment = 'admin/cms/index_ci_pagination';
-		$per_page = 10;
-		$config['uri_segment'] = 4;
-		$config['num_links'] = 1;
-		$config['use_page_numbers'] = TRUE;
-		//$this->pagination->initialize($config);
-		
-		$page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
-		$offset = ($page*$per_page);
-		$this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
-		//end of pagination config
-        
-
-        // Data Rows - Refer to model method definition
-        $result_array = $this->cms_model->get_rows(NULL, $per_page, $offset, FALSE, TRUE);
-        $this->data['data_rows'] = $result_array['data_rows'];
-		
-		$this->data['page_heading'] = 'Website Contents (CI Pagination Version)';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index_ci_pagination', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
-    }
-
-    function render_datatable() {
+	function render_datatable() {
         //Total rows - Refer to model method definition
-        $result_array = $this->cms_model->get_rows();
+        $result_array = $this->holiday_model->get_rows();
         $total_rows = $result_array['num_rows'];
 
         // Total filtered rows - check without limit query. Refer to model method definition
-        $result_array = $this->cms_model->get_rows(NULL, NULL, NULL, TRUE, FALSE);
+        $result_array = $this->holiday_model->get_rows(NULL, NULL, NULL, TRUE, FALSE);
         $total_filtered = $result_array['num_rows'];
 
         // Data Rows - Refer to model method definition
-        $result_array = $this->cms_model->get_rows(NULL, NULL, NULL, TRUE);
+        $result_array = $this->holiday_model->get_rows(NULL, NULL, NULL, TRUE);
         $data_rows = $result_array['data_rows'];
         $data = array();
         $no = $_REQUEST['start'];
         foreach ($data_rows as $result) {
             $no++;
             $row = array();
-            $row[] = $result['pagecontent_title'];
-            $row[] = $result['pagecontent_type'];
-            $row[] = word_limiter($result['pagecontent_text'], 20);
-            $row[] = (strtolower($result['pagecontent_status']) == 'y') ? 'Published' : 'Unpublished';
+            $row[] = $result['holiday_date'];
+            $row[] = $result['holiday_description'];
             //add html for action
             $action_html = '';
-            $action_html.= anchor(base_url($this->router->directory.'cms/edit/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i>', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i>', array(
                 'class' => 'text-dark mr-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit',
                 'title' => 'Edit',
             ));
             $action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.'cms/delete/' . $result['id']), '<i class="fa fa-trash" aria-hidden="true"></i>', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-trash" aria-hidden="true"></i>', array(
                 'class' => 'text-danger btn-delete ml-1',
 				'data-confirmation'=>true,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',
@@ -179,27 +139,19 @@ class Cms extends CI_Controller {
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         if ($this->input->post('form_action') == 'insert') {
             if ($this->validate_form_data('add') == true) {
-
                 $postdata = array(
-                    'pagecontent_type' => $this->input->post('pagecontent_type'),
-                    'pagecontent_title' => $this->input->post('pagecontent_title'),
-                    'pagecontent_text' => $this->input->post('pagecontent_text'),
-                    'pagecontent_meta_keywords' => $this->input->post('pagecontent_meta_keywords'),
-                    'pagecontent_meta_description' => $this->input->post('pagecontent_meta_description'),
-                    'pagecontent_display_start_date' => $this->input->post('pagecontent_display_start_date'),
-                    'pagecontent_display_end_date' => $this->input->post('pagecontent_display_end_date'),
-                    'pagecontent_meta_author' => $this->input->post('pagecontent_meta_author'),
-                    'pagecontent_user_id' => $this->sess_user_id
+                    'holiday_date' => $this->input->post('holiday_date'),
+                    'holiday_description' => $this->input->post('holiday_description')
                 );
-                $insert_id = $this->cms_model->insert($postdata);
+                $insert_id = $this->holiday_model->insert($postdata);
                 if ($insert_id) {
-                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i>Added successfully.');
+                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Added successfully.');
                     $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
-                    redirect($this->router->directory.'cms/add');
+                    redirect($this->router->directory.$this->router->class.'/add');
                 }
             }
         }
-		$this->data['page_heading'] = 'Add Contents';
+		$this->data['page_heading'] = 'Add a Holiday';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/add', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
     }
@@ -215,20 +167,11 @@ class Cms extends CI_Controller {
         if ($this->input->post('form_action') == 'update') {
             if ($this->validate_form_data('edit') == true) {
                 $postdata = array(
-                    'pagecontent_type' => $this->input->post('pagecontent_type'),
-                    'pagecontent_title' => $this->input->post('pagecontent_title'),
-                    'pagecontent_text' => $this->input->post('pagecontent_text'),
-                    'pagecontent_meta_keywords' => $this->input->post('pagecontent_meta_keywords'),
-                    'pagecontent_meta_description' => $this->input->post('pagecontent_meta_description'),
-                    'pagecontent_meta_author' => $this->input->post('pagecontent_meta_author'),
-                    'pagecontent_status' => $this->input->post('pagecontent_status'),
-					'pagecontent_display_start_date' => $this->input->post('pagecontent_display_start_date'),
-                    'pagecontent_display_end_date' => $this->input->post('pagecontent_display_end_date'),
-                    'pagecontent_archived' => $this->input->post('pagecontent_archived'),
-					'pagecontent_user_id' => $this->sess_user_id
+                    'holiday_date' => $this->input->post('holiday_date'),
+                    'holiday_description' => $this->input->post('holiday_description')
                 );
                 $where_array = array('id' => $this->input->post('id'));
-                $res = $this->cms_model->update($postdata, $where_array);
+                $res = $this->holiday_model->update($postdata, $where_array);
                 if ($res) {
                     $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i>Updated successfully.');
                     $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
@@ -236,9 +179,9 @@ class Cms extends CI_Controller {
                 }
             }
         }
-        $result_array = $this->cms_model->get_rows($this->uri->segment(3));
+        $result_array = $this->holiday_model->get_rows($this->uri->segment(3));
         $this->data['rows'] = $result_array['data_rows'];
-		$this->data['page_heading'] = 'Edit Contents';
+		$this->data['page_heading'] = 'Edit Holiday';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
     }
@@ -248,7 +191,7 @@ class Cms extends CI_Controller {
         //$is_granted = $this->common_lib->check_user_role_permission('cms-delete');
 
         $where_array = array('id' => $this->id);
-        $res = $this->cms_model->delete($where_array);
+        $res = $this->holiday_model->delete($where_array);
         if ($res) {
             $this->session->set_flashdata('flash_message', '<strong>Deleted </strong> successfully.');
             $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
@@ -257,9 +200,8 @@ class Cms extends CI_Controller {
     }
 
     function validate_form_data($action = NULL) {
-        $this->form_validation->set_rules('pagecontent_type', 'page content type', 'required');
-        $this->form_validation->set_rules('pagecontent_title', 'page content title', 'required');
-        $this->form_validation->set_rules('pagecontent_text', 'page content text', 'required');
+        $this->form_validation->set_rules('holiday_date', 'holiday date', 'required');
+        $this->form_validation->set_rules('holiday_description', 'holiday description', 'required');
 
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {

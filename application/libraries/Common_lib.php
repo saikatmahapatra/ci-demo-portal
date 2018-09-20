@@ -47,6 +47,7 @@ class Common_lib {
             $this->CI->data['el_html_tag_meta_author'] = isset($meta_author) ? $meta_author : $this->CI->config->item('app_meta_author');
             $this->CI->data['el_html_head'] = $this->CI->load->view('site/_layouts/elements/html_head', $this->CI->data, true);
             $this->CI->data['el_navbar'] = $this->CI->load->view('site/_layouts/elements/navbar', $this->CI->data, true);
+            $this->CI->data['el_navbar_admin'] = $this->CI->load->view('site/_layouts/elements/navbar_admin', $this->CI->data, true);
             $this->CI->data['el_footer'] = $this->CI->load->view('site/_layouts/elements/footer', $this->CI->data, true);
             
         }

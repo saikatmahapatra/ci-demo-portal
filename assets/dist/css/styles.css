@@ -8680,3 +8680,11 @@ select.form-control.dob-inline {
 [data-cms-type="policy"] {
   border-left: 3px solid #AC193D;
 }
+
+.bg-maroon {
+  background-color: #AC193D;
+}
+
+.bg-blue {
+  background-color: #2672EC;
+}
