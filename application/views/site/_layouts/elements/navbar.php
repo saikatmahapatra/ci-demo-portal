@@ -36,7 +36,7 @@ $segment3 = $this->uri->segment(3);
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">Employee Self Services</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
-					<a class="dropdown-item" href="#">Holiday Calendar</a>
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'holiday/view'); ?>">Holiday Calendar</a>
 					<a class="dropdown-item" href="#">Apply Leave</a>
 					<a class="dropdown-item" href="#">Travel Request</a>
 					<a class="dropdown-item" href="#">My Request List</a>

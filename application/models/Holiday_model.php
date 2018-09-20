@@ -66,7 +66,7 @@ class Holiday_model extends CI_Model {
                 );
              // default order
             $order = array(
-                't1.id' => 'desc'
+                't1.holiday_date' => 'desc'
                 );
             $i = 0;
             foreach ($column_search as $item) { // loop column
@@ -108,33 +108,25 @@ class Holiday_model extends CI_Model {
         return array('num_rows' => $num_rows, 'data_rows' => $result);
     }
 	
-	function get_contents($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
+	function get_holidays($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
         $result = array();
-        $this->db->select('t1.*,t2.user_email, t2.user_lastname, t2.user_firstname');
-        $this->db->join('users as t2', 't2.id = t1.pagecontent_user_id', 'left');
+        $this->db->select('t1.*');
         if ($id) {
             $this->db->where('t1.id', $id);
         }
 		if($limit){
            $this->db->limit($limit, $offset);
         }
-		$this->db->where('t1.pagecontent_status', 'Y');
-		$this->db->order_by('t1.id', 'desc');
-        $query = $this->db->get('cms as t1');
+		$this->db->where(
+			array(
+			'YEAR(`holiday_date`)' => date('Y'),
+			)
+		);
+		$this->db->order_by('t1.holiday_date', 'asc');
+        $query = $this->db->get('holidays as t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();
         $result = $query->result_array();
         return array('num_rows' => $num_rows, 'data_rows' => $result);
     }
-
-    function get_pagecontent_type() {
-        $data = array(
-            '' => 'Select',
-            'news' => 'News',
-            'notice' => 'Notice',
-            'policy' => 'Policy'
-        );
-        return $data;
-    }
-
 }

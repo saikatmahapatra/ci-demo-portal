@@ -59,9 +59,20 @@ class Holiday extends CI_Controller {
 		
     }
 
-    function index() {
-        // Check user permission by permission name mapped to db
-        // $is_granted = $this->common_lib->check_user_role_permission('cms-list-view');
+    function index() {		
+		########### Validate User Auth #############
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
+            redirect($this->router->directory.'user/login');
+        }
+        //Has logged in user permission to access this page or method?        
+        $this->common_lib->check_user_role_permission(array(
+            'default-super-admin-access',
+            'default-admin-access',
+            'default-holiday-access',
+        ));
+        ########### Validate User Auth End #############
 		
 		// Get logged  in user id
         $this->sess_user_id = $this->common_lib->get_sess_user('id');
@@ -130,9 +141,20 @@ class Holiday extends CI_Controller {
     }
 
     function add() {
-        //Check user permission by permission name mapped to db
-        //$is_granted = $this->common_lib->check_user_role_permission('cms-add');
-        //$this->data['page_heading'] = "Add Page Content";
+        ########### Validate User Auth #############
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
+            redirect($this->router->directory.'user/login');
+        }
+        //Has logged in user permission to access this page or method?        
+        $this->common_lib->check_user_role_permission(array(
+            'default-super-admin-access',
+            'default-admin-access',
+            'default-holiday-crud',
+        ));
+        ########### Validate User Auth End #############
+		
 		$this->breadcrumbs->push('Add','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
@@ -157,9 +179,20 @@ class Holiday extends CI_Controller {
     }
 
     function edit() {
-        //Check user permission by permission name mapped to db
-        //$is_granted = $this->common_lib->check_user_role_permission('cms-edit');
-		//$this->data['page_heading'] = "Edit Page Content";
+        ########### Validate User Auth #############
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
+            redirect($this->router->directory.'user/login');
+        }
+        //Has logged in user permission to access this page or method?        
+        $this->common_lib->check_user_role_permission(array(
+            'default-super-admin-access',
+            'default-admin-access',
+            'default-holiday-crud',
+        ));
+        ########### Validate User Auth End #############
+		
 		$this->breadcrumbs->push('Edit','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
@@ -187,8 +220,19 @@ class Holiday extends CI_Controller {
     }
 
     function delete() {
-        //Check user permission by permission name mapped to db
-        //$is_granted = $this->common_lib->check_user_role_permission('cms-delete');
+		########### Validate User Auth #############
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
+            redirect($this->router->directory.'user/login');
+        }
+        //Has logged in user permission to access this page or method?        
+        $this->common_lib->check_user_role_permission(array(
+            'default-super-admin-access',
+            'default-admin-access',
+            'default-holiday-crud',
+        ));
+        ########### Validate User Auth End #############
 
         $where_array = array('id' => $this->id);
         $res = $this->holiday_model->delete($where_array);
@@ -200,7 +244,14 @@ class Holiday extends CI_Controller {
     }
 
     function validate_form_data($action = NULL) {
-        $this->form_validation->set_rules('holiday_date', 'holiday date', 'required');
+		if($action == 'add'){			
+			$this->form_validation->set_rules('holiday_date', 'holiday date', 'required|is_unique[holidays.holiday_date]',array(
+                'is_unique'     => 'This %s already exists.'
+        ));
+		}
+		if($action == 'edit'){			
+			$this->form_validation->set_rules('holiday_date', 'holiday date', 'required');
+		}
         $this->form_validation->set_rules('holiday_description', 'holiday description', 'required');
 
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
@@ -209,6 +260,18 @@ class Holiday extends CI_Controller {
         } else {
             return false;
         }
+    }
+	
+	function view() {			
+		$this->breadcrumbs->push('View','/');				
+		$this->data['breadcrumbs'] = $this->breadcrumbs->show();		
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+		$result_array = $this->holiday_model->get_holidays(NULL, NULL, NULL, FALSE, FALSE);
+        $this->data['data_rows'] = $result_array['data_rows'];        
+		$this->data['page_heading'] = 'Holidays - '.date('Y');
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/view', $this->data, true);
+        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 
 }
