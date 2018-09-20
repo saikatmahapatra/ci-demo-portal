@@ -72,7 +72,7 @@ class Home extends CI_Controller {
 		
 		//pagination config
 		$additional_segment = $this->router->directory.$this->router->class.'/index';
-		$per_page = 20;
+		$per_page = 15;
 		$config['uri_segment'] = 4;
 		$config['num_links'] = 1;
 		$config['use_page_numbers'] = TRUE;
@@ -92,6 +92,27 @@ class Home extends CI_Controller {
         
 		$this->data['page_heading'] = 'Welcome';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index', $this->data, true);
+        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+    }
+	
+	function details() {
+        // Check user permission by permission name mapped to db
+        // $is_granted = $this->common_lib->check_user_role_permission('cms-list-view');
+		
+		// Check user permission by permission name mapped to db
+        // $is_granted = $this->common_lib->check_user_role_permission('cms-list-view');
+			
+		$this->breadcrumbs->push('View','/');				
+		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
+		
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+
+        $id = $this->uri->segment(3);		
+		$result_array = $this->cms_model->get_contents($id, NULL, NULL, FALSE, FALSE);
+        $this->data['data_rows'] = $result_array['data_rows'];        
+		$this->data['page_heading'] = 'Welcome';
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/details', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 

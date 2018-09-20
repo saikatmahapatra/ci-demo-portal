@@ -118,7 +118,7 @@ class CMS_model extends CI_Model {
 	
 	function get_contents($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
         $result = array();
-        $this->db->select('t1.*,t2.user_email');
+        $this->db->select('t1.*,t2.user_email, t2.user_lastname, t2.user_firstname');
         $this->db->join('users as t2', 't2.id = t1.pagecontent_user_id', 'left');
         if ($id) {
             $this->db->where('t1.id', $id);

@@ -8664,3 +8664,19 @@ select.form-control.dob-inline {
 .pace-inactive {
   display: none;
 }
+
+.card-news {
+  border-left: 3px solid #5133AB;
+}
+
+[data-cms-type="notice"] {
+  border-left: 3px solid #5133AB;
+}
+
+[data-cms-type="news"] {
+  border-left: 3px solid #00A600;
+}
+
+[data-cms-type="policy"] {
+  border-left: 3px solid #AC193D;
+}

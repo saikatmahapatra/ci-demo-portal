@@ -54,4 +54,15 @@
 		</a>
 	</div>
 	
+	<div class="col-md-3">
+		<a class="nav-link" href="<?php echo base_url($this->router->directory.'cms'); ?>">
+			<div class="circle bg-primary text-white">
+				<div class="circle-body text-center p-4">
+					<i class="fa fa-newspaper-o fa-3x" aria-hidden="true"></i>
+					<p>CMS</p>
+				</div>
+			</div>
+		</a>
+	</div>
+	
 </div><!--/.row-->
