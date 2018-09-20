@@ -24,7 +24,7 @@
 			<div class="card-header">
 				<span class="">Data Table</span>
 				<span class="float-right">
-					<a href="<?php echo base_url($this->router->directory.'cms/add');?>" class="btn btn-sm btn-primary" title="Add"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
+					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="btn btn-sm btn-primary" title="Add"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
 				</span>
 			</div>
 			<div class="card-body">

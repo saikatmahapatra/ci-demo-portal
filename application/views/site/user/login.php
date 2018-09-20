@@ -36,7 +36,7 @@
 					<?php form_close(); ?>
 
 					<div class="mt-3">
-						<a class="d-block" href="<?php echo base_url($this->router->directory.'user/forgot_password');?>">Forgot Password?</a>
+						<a class="d-block" href="<?php echo base_url($this->router->directory.$this->router->class.'/forgot_password');?>">Forgot Password?</a>
 					</div>
 				</div>
 			</div>

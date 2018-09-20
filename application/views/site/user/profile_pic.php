@@ -30,7 +30,7 @@
 				?>
 				<img style="width:150px; height: 150px;" src="<?php echo base_url($img_src);?>" alt="" class="img align-self-start mr-3 dp">
 				<?php if(isset($profile_pic) && sizeof($profile_pic)>0){ ?>
-					<div class="edit"><a href="<?php echo base_url($this->router->directory.'user/delete_profile_pic');?>"><i class="fa fa-remove"></i> Remove</a></div>
+					<div class="edit"><a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic');?>"><i class="fa fa-remove"></i> Remove</a></div>
 				<?php } ?>
 			</div>
 			<div class="col-md-9">
@@ -65,7 +65,7 @@
 					</div>
 				</div>
 				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Upload','class' => 'btn btn-primary'));?>
-				<a href="<?php echo base_url($this->router->directory.'user/profile');?>" class="btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
 				<?php echo form_close(); ?>
 			</div>
 		</div>

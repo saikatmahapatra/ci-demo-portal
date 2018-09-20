@@ -43,7 +43,7 @@
 	<div class="profile-pic">
 		<img class="img align-self-start mr-3 dp" src="<?php echo base_url($img_src);?>">
 		<?php if($my_profile == TRUE){ ?>
-		<div class="edit"><a href="<?php echo base_url($this->router->directory.'user/profile_pic');?>"><i class="fa fa-pencil"></i> Change</a></div>
+		<div class="edit"><a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><i class="fa fa-pencil"></i> Change</a></div>
 		<?php } ?>
 	</div>
   <div class="media-body">
@@ -70,7 +70,7 @@
     <div>
         <?php echo (isset($row['user_bio']) && strlen($row['user_bio'])>0) ? $row['user_bio'] : '<span class="text-greyed-out">Describe who you are...</span>'; ?>
         <?php if($my_profile == TRUE){ ?>
-		<a href="<?php echo base_url($this->router->directory.'user/edit_profile');?>">Edit</a>
+		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>">Edit</a>
 		<?php } ?>
     </div>
     <!--<hr style="m-8 auto">
@@ -102,7 +102,7 @@
 	<div class="row mt-3">
 		<div class="col-md-12">
 		<?php if($my_profile == TRUE){ ?>
-        <a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.'user/edit_profile');?>"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+        <a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
 		<?php } ?>
         <!--<h6>Basic Info</h6><hr>-->		
 		<dl class="row">
@@ -143,7 +143,7 @@
 	<div class="row mt-3">
 		<div class="col-md-12">
 		<?php if($my_profile == TRUE){ ?>
-		<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.'user/add_address');?>"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
+		<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
 		<?php } ?>
 			<!--<h6>Communication Address</h6><hr>-->
 				<?php if(isset($address)){
@@ -166,8 +166,8 @@
 							</div>
 							<div class="col-md-2">	
 								<?php if($my_profile == TRUE){ ?>
-								<a href="<?php echo base_url($this->router->directory.'user/edit_address/'.$addr["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
-								<a href="<?php echo base_url($this->router->directory.'user/delete_address/'.$addr["id"]);?>" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+								<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
+								<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
 								<?php } ?>
 							</div>
 						</div>
@@ -184,7 +184,7 @@
 	<div class="row mt-3">
 		<div class="col-md-12">
 			<?php if($my_profile == TRUE){ ?>
-			<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.'user/add_education');?>"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
+			<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
 			<?php } ?>
 			<!--<h6>Educational Qualification</h6><hr>-->
 				<table class="table table-sm mt-1">
@@ -210,8 +210,8 @@
 								<td><?php echo isset($edu['academic_marks_percentage'])?$edu['academic_marks_percentage']:'';?></td>
 								<td>
 									<?php if($my_profile == TRUE){ ?>
-									<a href="<?php echo base_url($this->router->directory.'user/edit_education/'.$edu["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
-									<a href="<?php echo base_url($this->router->directory.'user/delete_education/'.$edu["id"]);?>" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+									<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
+									<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_education/'.$edu["id"]);?>" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
 									<?php } ?>
 								</td>
 								

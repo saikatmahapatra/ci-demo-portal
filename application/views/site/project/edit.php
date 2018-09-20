@@ -48,7 +48,7 @@ $row = $rows[0];
 		
 		<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 		
-		<a href="<?php echo base_url($this->router->directory.'project');?>" class="btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>                             
+		<a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>                             
 		<?php echo form_close(); ?>
 	</div>
 </div>

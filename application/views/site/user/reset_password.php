@@ -62,8 +62,8 @@
 					<?php form_close(); ?>
 						
 					<div class="mt-3">
-						<a class="d-block" href="<?php echo base_url($this->router->directory.'user/login');?>">Back to login</a>
-						<a class="d-block" href="<?php echo base_url($this->router->directory.'user/forgot_password');?>" class="">Resend password reset link</a>
+						<a class="d-block" href="<?php echo base_url($this->router->directory.$this->router->class.'/login');?>">Back to login</a>
+						<a class="d-block" href="<?php echo base_url($this->router->directory.$this->router->class.'/forgot_password');?>" class="">Resend password reset link</a>
 					</div>
 
 				</div>
