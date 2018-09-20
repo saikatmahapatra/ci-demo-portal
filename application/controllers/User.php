@@ -947,7 +947,7 @@ class User extends CI_Controller {
 	function delete_education() {
         $is_logged_in = $this->common_lib->is_logged_in();
         if ($is_logged_in == FALSE) {
-            redirect('user/login');
+            redirect($this->router->directory.$this->router->class.'/login');
         }
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
@@ -957,11 +957,11 @@ class User extends CI_Controller {
 		if ($res) {
 			$this->session->set_flashdata('flash_message', 'Your education details has been deleted successfully.');
 			$this->session->set_flashdata('flash_message_css', 'bg-success text-white');
-			redirect('user/profile');
+			redirect($this->router->directory.$this->router->class.'/profile');
 		}else{
 			$this->session->set_flashdata('flash_message', 'We\'re unable to process your request.');
 			$this->session->set_flashdata('flash_message_css', 'bg-danger text-white');
-			redirect('user/profile');
+			redirect($this->router->directory.$this->router->class.'/profile');
 		}
     }
 	
