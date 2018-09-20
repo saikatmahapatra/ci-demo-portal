@@ -31,9 +31,10 @@ $color_red: #AC193D;
 $color_orange: #DC572E;
 $color_green: #00A600;
 $color_blue: #2672EC;
+$color_blue_bs3: #337ab7;
 
 //Override primary color (Nav, Button, Link)
-$brand-color: $color_purple;
+$brand-color: $color_blue_bs3;
 $primary-color: $brand-color;
 
 // Complementry color is used to indecate the loading bar on the top

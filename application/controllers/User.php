@@ -236,7 +236,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_heading'] = 'Login';
+		$this->data['page_heading'] = 'Employee Login';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/login', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_login', $this->data);
     }
