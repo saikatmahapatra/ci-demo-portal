@@ -62,6 +62,9 @@
 	<!-- Pace JS for page load progress -->
 	<script src="<?php echo base_url('assets/vendors/pace-js/pace.min.js'); ?>"></script>
 	
+	<!-- CKEditor -->
+	<script src="<?php echo base_url('assets/vendors/ckeditor5-build-classic/build/ckeditor.js'); ?>"></script>
+	
 	<!--Application Specific JS Loading Through Controllers-->
     <?php echo isset($app_js) ? $app_js : ''; ?>
 </body>

@@ -55,13 +55,13 @@ $row = $rows[0];
 		
 			<div class="form-group col-md-4">
 				<label for="pagecontent_display_start_date" class="">Display from date</label>
-				<?php echo form_input(array('name' => 'pagecontent_display_start_date','value' => (isset($_POST['pagecontent_display_start_date']) ? set_value('pagecontent_display_start_date') : $row['pagecontent_display_start_date']),'id' => 'pagecontent_display_start_date','class' => 'form-control', 'placeholder' => ''));?>
+				<?php echo form_input(array('name' => 'pagecontent_display_start_date','value' => (isset($_POST['pagecontent_display_start_date']) ? set_value('pagecontent_display_start_date') : $row['pagecontent_display_start_date']),'id' => 'pagecontent_display_start_date','class' => 'form-control cms-datepicker', 'placeholder' => 'yyyy-mm-dd','readonly'=>true));?>
 				<?php echo form_error('pagecontent_display_start_date'); ?>
 			</div>
 		
 			<div class="form-group col-md-4">
 				<label for="pagecontent_display_end_date" class="">Display to Date</label>
-				<?php echo form_input(array('name' => 'pagecontent_display_end_date','value' => (isset($_POST['pagecontent_display_end_date']) ? set_value('pagecontent_display_end_date') : $row['pagecontent_display_end_date']),'class' => 'form-control','id' => 'pagecontent_display_end_date','placeholder' => ''));?>
+				<?php echo form_input(array('name' => 'pagecontent_display_end_date','value' => (isset($_POST['pagecontent_display_end_date']) ? set_value('pagecontent_display_end_date') : $row['pagecontent_display_end_date']),'class' => 'form-control cms-datepicker','id' => 'pagecontent_display_end_date','placeholder' => 'yyyy-mm-dd','readonly'=>true));?>
 				<?php echo form_error('pagecontent_display_end_date'); ?>
 			</div>		
 		</div>
@@ -89,15 +89,17 @@ $row = $rows[0];
 		
 		<div class="form-row">		
 			<div class="form-group col-md-3">									
-				<label for="pagecontent_status" class="">Status</label>
-				<?php echo form_dropdown('pagecontent_status', array('Y'=>'Shown','N'=>'Hidden'), (isset($_POST['pagecontent_status']) ? set_value('pagecontent_status') : $row['pagecontent_status']), array('class' => 'form-control')); ?>
+				<label for="pagecontent_status" class="">Publish</label>
+				<?php echo form_dropdown('pagecontent_status', array('Y'=>'Yes','N'=>'No'), (isset($_POST['pagecontent_status']) ? set_value('pagecontent_status') : $row['pagecontent_status']), array('class' => 'form-control')); ?>
 				<?php echo form_error('pagecontent_status'); ?>
-			</div>		
+			</div>	
+			<?php /* ?>
 			<div class="form-group col-md-3">									
 				<label for="pagecontent_archived" class="">Archived</label>
 				<?php echo form_dropdown('pagecontent_archived', array('Y'=>'Yes','N'=>'No'), (isset($_POST['pagecontent_archived']) ? set_value('pagecontent_archived') : $row['pagecontent_archived']), array('class' => 'form-control'));?>
 				<?php echo form_error('pagecontent_archived'); ?>
-			</div>		
+			</div>	
+			<?php */ ?>
 		</div>
 		
 		<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>

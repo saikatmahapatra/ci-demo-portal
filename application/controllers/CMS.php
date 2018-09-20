@@ -186,6 +186,8 @@ class Cms extends CI_Controller {
                     'pagecontent_text' => $this->input->post('pagecontent_text'),
                     'pagecontent_meta_keywords' => $this->input->post('pagecontent_meta_keywords'),
                     'pagecontent_meta_description' => $this->input->post('pagecontent_meta_description'),
+                    'pagecontent_display_start_date' => $this->input->post('pagecontent_display_start_date'),
+                    'pagecontent_display_end_date' => $this->input->post('pagecontent_display_end_date'),
                     'pagecontent_meta_author' => $this->input->post('pagecontent_meta_author'),
                     'pagecontent_user_id' => $this->sess_user_id
                 );
@@ -220,6 +222,8 @@ class Cms extends CI_Controller {
                     'pagecontent_meta_description' => $this->input->post('pagecontent_meta_description'),
                     'pagecontent_meta_author' => $this->input->post('pagecontent_meta_author'),
                     'pagecontent_status' => $this->input->post('pagecontent_status'),
+					'pagecontent_display_start_date' => $this->input->post('pagecontent_display_start_date'),
+                    'pagecontent_display_end_date' => $this->input->post('pagecontent_display_end_date'),
                     'pagecontent_archived' => $this->input->post('pagecontent_archived'),
 					'pagecontent_user_id' => $this->sess_user_id
                 );

@@ -14,6 +14,23 @@ function domReady(){
 	if(ROUTER_METHOD == 'add' || ROUTER_METHOD == 'edit'){
 		
 	}
+	
+	//Display Start end date picker 
+	$('.cms-datepicker').datepicker({
+		format: "yyyy-mm-dd",
+		weekStart: 1,
+		autoclose: true
+	});
+	
+	// Classic CK Editor
+	ClassicEditor
+    .create( document.querySelector('#pagecontent_text') )
+    .then( editor => {
+        console.log( editor );
+    } )
+    .catch( error => {
+        console.error( error );
+    } );
 }
 
 
