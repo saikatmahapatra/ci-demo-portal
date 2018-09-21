@@ -55,7 +55,7 @@ $segment3 = $this->uri->segment(3);
 			<?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"><i class="fa fa-user-o" aria-hidden="true"></i> <?php echo isset($this->session->userdata['sess_user']['user_title'])? $this->session->userdata['sess_user']['user_title']:''; ?> <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></a>
+					aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Hi, <?php echo isset($this->session->userdata['sess_user']['user_title'])? $this->session->userdata['sess_user']['user_title']:''; ?> <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown03">					
 					<div class="dropdown-item welcome-user-container">					
 						<div class=""><?php echo isset($this->session->userdata['sess_user']['user_title'])? $this->session->userdata['sess_user']['user_title']:''; ?> <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></div>

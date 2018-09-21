@@ -145,7 +145,7 @@
 	<div class="row mt-3">
 		<div class="col-md-12">
 		<?php if($my_profile == TRUE){ ?>
-		<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
+		<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"> Add New</a>
 		<?php } ?>
 			<!--<h6>Communication Address</h6><hr>-->
 				<?php if(isset($address)){
@@ -186,7 +186,7 @@
 	<div class="row mt-3">
 		<div class="col-md-12">
 			<?php if($my_profile == TRUE){ ?>
-			<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
+			<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"> Add New</a>
 			<?php } ?>
 			<!--<h6>Educational Qualification</h6><hr>-->
 				<table class="table table-sm mt-1">
@@ -232,7 +232,7 @@
 	<div class="row mt-3">
 		<div class="col-md-12">
 		<?php if($my_profile == TRUE){ ?>
-		<a class="btn btn-primary btn-sm" href=""><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
+		<a class="btn btn-primary btn-sm" href=""> Add New</a>
 		<?php } ?>
 		</div>
 	</div>
