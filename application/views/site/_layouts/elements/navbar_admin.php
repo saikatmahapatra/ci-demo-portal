@@ -39,7 +39,6 @@ $segment3 = $this->uri->segment(3);
 				<div class="dropdown-menu" aria-labelledby="dropdown012">
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'cms/add');?>">Add New Content</a>
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'cms'); ?>">Manage Contents</a>
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'holiday'); ?>">Holiday</a>
 				</div>
 			</li>
 			
@@ -51,6 +50,11 @@ $segment3 = $this->uri->segment(3);
 					<a class="dropdown-item" href="<?php echo base_url('project/add'); ?>">Add Project Work</a>
 					<a class="dropdown-item" href="<?php echo base_url('project'); ?>">Manage Projects</a>
 				</div>
+			</li>
+			
+			<li class="nav-item <?php echo ($segment1=='home') ? 'active':''?>">
+				<a class="nav-link" href="<?php echo base_url('holiday'); ?>">Holiday
+				</a>
 			</li>
 			
 		</ul>

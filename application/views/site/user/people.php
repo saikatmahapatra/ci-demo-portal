@@ -39,8 +39,8 @@
 						?>
 						<div class="col-md-3">
 							<div class="card mb-3 text-center">
-							  <div class="card-header bg-light p-1">
-								<img style="min-width:100px; width:100px; height: 100px;" class="mt-1 rounded card-img-top mx-auto d-block" src="<?php echo base_url($img_src);?>" alt="<?php echo $row['user_title'].' '.$row['user_firstname'].' '.$row['user_lastname']; ?>">
+							  <div class="card-header">
+								<img style="min-width:100px; width:100px; height: 100px;" class="mx-auto" src="<?php echo base_url($img_src);?>" alt="<?php echo $row['user_title'].' '.$row['user_firstname'].' '.$row['user_lastname']; ?>">
 							  </div>
 							  <div class="card-body">
 								<h6 class="card-title"><?php echo $row['user_title'].' '.$row['user_firstname'].' '.$row['user_lastname']; ?></h6>
