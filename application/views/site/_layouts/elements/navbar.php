@@ -9,7 +9,6 @@ $segment3 = $this->uri->segment(3);
 <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">	
 	<a class="navbar-brand" href="<?php echo base_url($this->router->directory); ?>">
 		<img class="img-fluid" style="width:80px;" src="<?php echo base_url('assets/src/img/logo.svg');?>">
-		Portal
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
 		aria-expanded="false" aria-label="Toggle navigation">
@@ -46,19 +45,23 @@ $segment3 = $this->uri->segment(3);
 		
 		
 		<ul class="navbar-nav my-2 my-lg-0">
+			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
+			<li class="nav-item">
+			<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/administrator'); ?>">
+				<i class="fa fa-key"></i> Administrator</a>
+			</li>
+			<?php } ?>
+			
 			<?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false">Welcome, <?php echo isset($this->session->userdata['sess_user']['user_title'])? $this->session->userdata['sess_user']['user_title']:''; ?> <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></a>
-				<div class="dropdown-menu" aria-labelledby="dropdown03">
-					
-					<div class="dropdown-item welcome-user-container">
-					<!--<a class="dropdown-item" href="#">-->				
+					aria-expanded="false"><i class="fa fa-user-o" aria-hidden="true"></i> <?php echo isset($this->session->userdata['sess_user']['user_title'])? $this->session->userdata['sess_user']['user_title']:''; ?> <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></a>
+				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown03">					
+					<div class="dropdown-item welcome-user-container">					
 						<div class=""><?php echo isset($this->session->userdata['sess_user']['user_title'])? $this->session->userdata['sess_user']['user_title']:''; ?> <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></div>
 						<div class="small"><?php echo isset($this->session->userdata['sess_user']['user_email']) ? $this->session->userdata['sess_user']['user_email'] :'';?></div>
 						<div class="small">Role: <?php echo isset($this->session->userdata['sess_user']['user_role_name']) ? $this->session->userdata['sess_user']['user_role_name'] :'';?></div>
-						<div class="small">Last Login: <?php echo isset($this->session->userdata['sess_user']['user_login_date_time']) ? $this->common_lib->display_date($this->session->userdata['sess_user']['user_login_date_time'], true) :'';?></div>
-					<!--</a>-->
+						<div class="small">Last Login: <?php echo isset($this->session->userdata['sess_user']['user_login_date_time']) ? $this->common_lib->display_date($this->session->userdata['sess_user']['user_login_date_time'], true) :'';?></div>					
 					</div><!--/.welcome-user-container-->
 					
 					<div class="dropdown-divider mt-3"></div>			
@@ -67,29 +70,7 @@ $segment3 = $this->uri->segment(3);
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/logout'); ?>">Logout</a>			
 				</div>
 			</li>
-			<?php  } ?>				
-			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
-			<!--<li class="nav-item dropdown <?php echo ($segment2=='user') ? 'active':''?>">
-				<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Administration</a>
-				<div class="dropdown-menu" aria-labelledby="dropdown01">
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Manage Employees</a>
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account');?>">Add New Employee</a>
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account');?>">Project Allocation</a>
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">View Timesheet</a>
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'project');?>">Manage Projects</a>
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'project/add');?>">Add Project</a>
-				</div>
-			</li>-->
-			<li class="nav-item">
-			<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/administrator'); ?>">
-				<i class="fa fa-key"></i> Administrator</a>
-			</li>
-			<?php } ?>
-			<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/logout'); ?>">
-					<i class="fa fa-power-off"></i> Logout</a>
-			</li>
+			<?php  } ?>	
 		</ul>
 		
 	</div>
