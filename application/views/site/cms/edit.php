@@ -55,13 +55,13 @@ $row = $rows[0];
 		
 			<div class="form-group col-md-4">
 				<label for="pagecontent_display_start_date" class="">Display from date</label>
-				<?php echo form_input(array('name' => 'pagecontent_display_start_date','value' => (isset($_POST['pagecontent_display_start_date']) ? set_value('pagecontent_display_start_date') : $row['pagecontent_display_start_date']),'id' => 'pagecontent_display_start_date','class' => 'form-control cms-datepicker', 'placeholder' => 'yyyy-mm-dd','readonly'=>true));?>
+				<?php echo form_input(array('name' => 'pagecontent_display_start_date','value' => (isset($_POST['pagecontent_display_start_date']) ? set_value('pagecontent_display_start_date') : $row['pagecontent_display_start_date']),'id' => 'pagecontent_display_start_date','class' => 'form-control cms-datepicker', 'placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
 				<?php echo form_error('pagecontent_display_start_date'); ?>
 			</div>
 		
 			<div class="form-group col-md-4">
 				<label for="pagecontent_display_end_date" class="">Display to Date</label>
-				<?php echo form_input(array('name' => 'pagecontent_display_end_date','value' => (isset($_POST['pagecontent_display_end_date']) ? set_value('pagecontent_display_end_date') : $row['pagecontent_display_end_date']),'class' => 'form-control cms-datepicker','id' => 'pagecontent_display_end_date','placeholder' => 'yyyy-mm-dd','readonly'=>true));?>
+				<?php echo form_input(array('name' => 'pagecontent_display_end_date','value' => (isset($_POST['pagecontent_display_end_date']) ? set_value('pagecontent_display_end_date') : $row['pagecontent_display_end_date']),'class' => 'form-control cms-datepicker','id' => 'pagecontent_display_end_date','placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
 				<?php echo form_error('pagecontent_display_end_date'); ?>
 			</div>		
 		</div>

@@ -19,7 +19,7 @@ $row = $data_rows[0];
 			<div class="card-news-sig text-muted small">
 				<?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
 				<?php echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>
-				<?php echo isset($row['pagecontent_created_on']) ? $row['pagecontent_created_on'] : '';?>
+				<?php echo $this->common_lib->display_date($row['pagecontent_created_on'],true); ?>
 			</div>
 			<div class="card-news-body"><?php echo isset($row['pagecontent_text']) ? $row['pagecontent_text'] : '';?></div>
 		</div>

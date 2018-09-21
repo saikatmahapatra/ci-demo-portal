@@ -105,7 +105,7 @@ class Holiday extends CI_Controller {
         foreach ($data_rows as $result) {
             $no++;
             $row = array();
-            $row[] = $result['holiday_date'];
+            $row[] = $this->common_lib->display_date($result['holiday_date']);
             $row[] = $result['holiday_description'];
             //add html for action
             $action_html = '';
@@ -162,7 +162,7 @@ class Holiday extends CI_Controller {
         if ($this->input->post('form_action') == 'insert') {
             if ($this->validate_form_data('add') == true) {
                 $postdata = array(
-                    'holiday_date' => $this->input->post('holiday_date'),
+                    'holiday_date' => $this->common_lib->convert_to_mysql($this->input->post('holiday_date')),
                     'holiday_description' => $this->input->post('holiday_description')
                 );
                 $insert_id = $this->holiday_model->insert($postdata);
@@ -200,7 +200,7 @@ class Holiday extends CI_Controller {
         if ($this->input->post('form_action') == 'update') {
             if ($this->validate_form_data('edit') == true) {
                 $postdata = array(
-                    'holiday_date' => $this->input->post('holiday_date'),
+                    'holiday_date' => $this->common_lib->convert_to_mysql($this->input->post('holiday_date')),
                     'holiday_description' => $this->input->post('holiday_description')
                 );
                 $where_array = array('id' => $this->input->post('id'));

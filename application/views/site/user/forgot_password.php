@@ -9,13 +9,12 @@
 		}
 		?>
 		<div class="card">
-			<div class="card-header text-center bg-primary text-white">
-				<img class="img-fluid" src="<?php echo base_url('assets/src/img/logo.png');?>">
-				<h5 class="mt-3 d-none"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h5>
+			<div class="card-header text-center bg-primary text-white">				
+				<h5 class=""><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h5>
 			</div>
 			<div class="card-body">
 				<div class="text-center mt-4 mb-5">
-					<h4>Forgot your password?</h4>
+					
 					<p>Enter your email address and we will send you instructions on how to reset your password.</p>
 				</div>
 				

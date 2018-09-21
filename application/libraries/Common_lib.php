@@ -399,6 +399,20 @@ class Common_lib {
         $data = $this->CI->user_model->get_user_profile_pic($this->CI->session->userdata['sess_user']['id']);
 		return $data[0]['user_profile_pic'];
     }
+	
+	/*Convert input date to mysql date*/
+	function convert_to_mysql($date){
+		return date('Y-m-d',strtotime($date));
+	}
+	
+	/*Convert date to display format date*/
+	function display_date($date, $time=null){
+		if($time == true){
+			return date('d-m-Y h:i:s a',strtotime($date));
+		}else{
+			return date('d-m-Y',strtotime($date));
+		}		
+	}
 
 }
 

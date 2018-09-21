@@ -149,7 +149,7 @@ class User extends CI_Controller {
             $row[] = $result['user_emp_id'];
             $row[] = $result['user_email'];
             $row[] = $result['user_phone1'];
-            $row[] = date('d-m-Y',strtotime($result['user_doj']));
+            $row[] = $this->common_lib->display_date($result['user_doj']);
             $row[] = $result['designation_name'];
             //$row[] = $result['role_name'];
             $row[] = ($result['user_account_active'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive</span>';
@@ -291,8 +291,8 @@ class User extends CI_Controller {
                     'user_gender' => $this->input->post('user_gender'),
                     'user_email' => strtolower($this->input->post('user_email')),
                     'user_email_secondary' => strtolower($this->input->post('user_email_secondary')),
-                    'user_dob' => date('Y-m-d',strtotime($this->input->post('user_dob'))),
-                    'user_doj' => date('Y-m-d',strtotime($this->input->post('user_doj'))),
+                    'user_dob' => $this->common_lib->convert_to_mysql($this->input->post('user_dob')),
+                    'user_doj' => $this->common_lib->convert_to_mysql($this->input->post('user_doj')),
                     'user_role' => $this->input->post('user_role'),
                     'user_department' => $this->input->post('user_department'),
                     'user_designation' => $this->input->post('user_designation'),

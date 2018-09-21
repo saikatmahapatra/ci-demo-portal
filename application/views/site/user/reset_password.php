@@ -9,9 +9,8 @@
 		}
 		?>
 		<div class="card">
-			<div class="card-header text-center bg-primary text-white">
-				<img class="img-fluid" src="<?php echo base_url('assets/src/img/logo.png');?>">
-				<h5 class="mt-3 d-none"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h5>
+			<div class="card-header text-center bg-primary text-white">				
+				<h5 class=""><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h5>
 			</div>
 			<div class="card-body">
 				<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'ci-form')) ?>

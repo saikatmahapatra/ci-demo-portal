@@ -117,7 +117,7 @@
 			<dt class="col-sm-2">Employee ID</dt>
 			<dd class="col-sm-10"><?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : '-'; ?></dd>
 			<dt class="col-sm-2">Date of Joining</dt>
-			<dd class="col-sm-10"><?php echo isset($row['user_doj']) ? date('d-m-Y', strtotime($row['user_doj'])) : '-'; ?></dd>
+			<dd class="col-sm-10"><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></dd>
 			<dt class="col-sm-2">Designation</dt>
 			<dd class="col-sm-10"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
 			<dt class="col-sm-2">Email (Work)</dt>
@@ -129,7 +129,9 @@
 			<dt class="col-sm-2">Phone (Personal)</dt>
 			<dd class="col-sm-10"><?php echo isset($row['user_phone2']) ? $row['user_phone2'] : '-'; ?></dd>
 			<dt class="col-sm-2">Date of Birth</dt>
-			<dd class="col-sm-10"><?php echo isset($row['user_dob']) ? date('d-m-Y', strtotime($row['user_dob'])) : '-'; ?></dd>
+			<dd class="col-sm-10">
+			<?php echo isset($row['user_dob']) ? $this->common_lib->display_date($row['user_dob']) : '-'; ?>
+			</dd>
 			<dt class="col-sm-2">Gender</dt>
 			<dd class="col-sm-10"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : ''; ?></dd>
 			

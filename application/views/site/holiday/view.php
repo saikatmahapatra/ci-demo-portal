@@ -24,7 +24,7 @@
 					?>
 					<tr>
 					  <th scope="row"><?php echo $count;?></th>
-					  <td><?php echo $row['holiday_date']; ?></td>
+					  <td><?php echo $this->common_lib->display_date($row['holiday_date']); ?></td>
 					  <td><?php echo $row['holiday_description']; ?></td>					  
 					</tr>
 					<?php

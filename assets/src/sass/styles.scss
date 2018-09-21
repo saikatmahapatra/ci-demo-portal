@@ -10,9 +10,15 @@ body {
     margin-bottom: 3rem;
 }
 
-/*.navbar{
-	min-height: 4rem;
+/*body.login {
+    background-image: url(../../src/img/login-bg.svg);
+    background-size: cover;
+    background-position: center center;
 }*/
+
+.navbar{
+	min-height: 4rem;
+}
 
 h1.page-header{
 	font-size: 1.25rem;

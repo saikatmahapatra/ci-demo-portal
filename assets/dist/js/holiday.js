@@ -17,7 +17,7 @@ function domReady(){
 	
 	//Display Start end date picker 
 	$('.holiday-datepicker').datepicker({
-		format: "yyyy-mm-dd",
+		format: "dd-mm-yyyy",
 		weekStart: 1,
 		autoclose: true
 	});
