@@ -17,11 +17,11 @@ $config['admin_view_dir'] = 'admin/'; //application/views/admin/
 /*
  * Email Config Application Team/Admin
  */
-$config['app_admin_email'] = 'unet@unitedexploration.co.in';
+$config['app_admin_email'] = 'portaladmin@unitedexploration.co.in';
 $config['app_admin_email_cc'] = '';
 $config['app_admin_email_bcc'] = '';
-$config['app_admin_email_name'] = 'Employee Portal Admin';
-$config['app_email_subject_prefix'] = 'uNet - ';
+$config['app_admin_email_name'] = 'UEIPL Portal Admin';
+$config['app_email_subject_prefix'] = 'UEIPL Portal - ';
 
 
 /*
@@ -36,7 +36,7 @@ $config['app_html_title'] = 'Employee Portal - United Exploration India Pvt. Ltd
 $config['app_admin_html_title'] = 'United Exploration India Pvt. Ltd.';
 $config['app_meta_keywords'] = 'Code Igniter project';
 $config['app_meta_description'] = '';
-$config['app_meta_author'] = 'Saikat Mahapatra';
+$config['app_meta_author'] = 'UEIPL';
 
 
 $config['app_copy_right'] = 'Copyright '.date('Y').' &copy; United Exploration India Pvt. Ltd.';
