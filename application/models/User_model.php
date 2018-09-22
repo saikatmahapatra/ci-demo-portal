@@ -416,7 +416,7 @@ class User_model extends CI_Model {
         $this->db->select('t1.*,t2.role_name, t2.role_weight,t3.department_name, t4.designation_name');
         if ($id) {
             $this->db->where('t1.id', $id);
-        }
+        }		
         $this->db->join('roles t2', 't1.user_role=t2.id', 'left');
 		$this->db->join('departments t3', 't1.user_department=t3.id', 'left');
         $this->db->join('designations t4', 't1.user_designation=t4.id', 'left');

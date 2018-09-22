@@ -1,15 +1,8 @@
-<div class="row heading-container">
-    <div class="col-md-5">
-        <h1 class="page-header"><?php echo isset($page_heading)? $page_heading : 'Page Heading'; ?></h1>
-    </div>
-    <div class="col-md-7"></div>
-</div><!--/.heading-container-->
-
-<div class="row">
-    <div class="col-md-12">
-        <div class="h4 alert alert-danger">
-            <i class="icon fa fa-warning" aria-hidden="true"></i> You are not authorized to access the page.
-        </div>
-		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/login');?>" class="btn btn-primary">Please login to continue...</a>        
+<div class="row justify-content-center">
+    <div class="col-12 col-sm-8 col-md-6 text-center">
+		<i class="icon fa fa-warning fa-5x text-danger" aria-hidden="true"></i>
+		<h1 class="text-danger"><?php echo isset($page_heading)? $page_heading : 'Page Heading'; ?></h1>
+		<h5>We're sorry! You are not authorized to access the link you clicked. For security reason you have been logged out.</h5>
+		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/login');?>" class="btn btn-primary btn-lg">Please login to continue...</a>        
     </div>
 </div>

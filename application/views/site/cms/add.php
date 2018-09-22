@@ -8,7 +8,7 @@
 </div><!--/.heading-container-->
 
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-9">
 		<?php
 		// Show server side flash messages
 		if (isset($alert_message)) {
@@ -41,21 +41,27 @@
 				<?php echo form_dropdown('pagecontent_type', $arr_content_type, set_value('pagecontent_type'), array('class' => 'form-control',));?>
 				<?php echo form_error('pagecontent_type'); ?>
 			</div>
-		
 			<div class="form-group col-md-4">									
+				<label for="pagecontent_status" class="">Publish</label>
+				<?php echo form_dropdown('pagecontent_status', array('Y'=>'Yes','N'=>'No'), set_value('pagecontent_status'), array('class' => 'form-control')); ?>
+				<?php echo form_error('pagecontent_status'); ?>
+			</div>
+			<?php /*?>
+			<div class="form-group col-md-4 d-none">									
 				<label for="pagecontent_display_start_date" class="">Display from Date</label>
 				<?php echo form_input(array('name' => 'pagecontent_display_start_date','value' => set_value('pagecontent_display_start_date'),'id' => 'pagecontent_display_start_date','class' => 'form-control cms-datepicker', 'placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
 				<?php echo form_error('pagecontent_display_start_date'); ?>
 			</div>
 		
-			<div class="form-group col-md-4">									
+			<div class="form-group col-md-4 d-none">									
 				<label for="pagecontent_display_end_date" class="">Display to Date</label>
 				<?php echo form_input(array('name' => 'pagecontent_display_end_date','value' => set_value('pagecontent_display_end_date'),'class' => 'form-control cms-datepicker','id' => 'pagecontent_display_end_date','placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
 				<?php echo form_error('pagecontent_display_end_date'); ?>
-			</div>			
+			</div>	
+			<?php */ ?>
 		</div>
-		
-		<div class="form-row">			
+		<?php /* ?>
+		<div class="form-row d-none">			
 			<div class="form-group col-md-4">									
 				<label for="pagecontent_meta_keywords" class="">Meta Keywords</label>
 				<?php echo form_input(array('name' => 'pagecontent_meta_keywords','value' => set_value('pagecontent_meta_keywords'),'id' => 'pagecontent_meta_keywords','class' => 'form-control', 'placeholder' => '')); ?>
@@ -74,6 +80,7 @@
 				<?php echo form_error('pagecontent_meta_author'); ?>
 			</div>			
 		</div>
+		<?php */ ?>
 		<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 		<a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
 		<?php echo form_close(); ?>

@@ -9,7 +9,9 @@
 		}
 		?>
 		<div class="card">
-			<div class="card-header text-center bg-primary text-white">				
+			<div class="card-header text-center bg-primary text-white">
+				<img class="mb-1" style="width:80px;" src="<?php echo base_url('assets/src/img/logo.svg');?>">
+				<h6><?php echo $this->config->item('app_company_product');?></h6>
 				<h5 class=""><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h5>
 			</div>
 			<div class="card-body">				
@@ -17,13 +19,13 @@
 				<?php echo form_hidden('form_action', 'login'); ?>
 				
 					<div class="form-group">
-						<label for="user_email">Email</label>
-						<?php echo form_input(array('name' => 'user_email', 'value' => set_value('user_email'),'id' => 'name','class' => 'form-control','placeholder' => '','maxlength' => '100','autofocus' => true,));?>
+						<label for="user_email">Email ID</label>
+						<?php echo form_input(array('name' => 'user_email', 'value' => set_value('user_email'),'id' => 'name','class' => 'form-control','placeholder' => 'user@unitedexploration.co.in','maxlength' => '100','autofocus' => true,));?>
 						<?php echo form_error('user_email'); ?>
 					</div>
 					<div class="form-group">
 						<label for="user_password">Password</label>
-						<?php echo form_password(array('name' => 'user_password','value' => set_value('user_password'),'id' =>'user_password','placeholder' => '','class' => 'form-control','maxlength' => '16'));?>
+						<?php echo form_password(array('name' => 'user_password','value' => set_value('user_password'),'id' =>'user_password','placeholder' => 'Login password','class' => 'form-control','maxlength' => '16'));?>
 						<?php echo form_error('user_password'); ?>
 					</div>
 					<!--<div class="form-group">
@@ -35,7 +37,9 @@
 					<?php form_close(); ?>
 
 					<div class="mt-3">
-						<a class="d-block" href="<?php echo base_url($this->router->directory.$this->router->class.'/forgot_password');?>">Forgot Password?</a>
+						<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/forgot_password');?>">Forgot Password?</a>
+						<br>
+						<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/registration');?>">Don't have an account? Create your account</a>
 					</div>
 				</div>
 			</div>

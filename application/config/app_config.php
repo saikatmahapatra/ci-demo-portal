@@ -27,6 +27,7 @@ $config['app_email_subject_prefix'] = 'uNet - ';
 /*
  * Template Config
  */
+$config['app_company_product'] = 'United Exploration India Pvt. Ltd.';
 $config['app_logo_name_login'] = '<b>Admin</b> Dashboard';
 $config['app_logo_name_dashboard'] = '<b>Admin</b>';
 $config['app_logo_name_dashboard_xs'] = '<b>CI</b>A';

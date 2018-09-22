@@ -90,7 +90,7 @@ class Home extends CI_Controller {
 		
 
         
-		$this->data['page_heading'] = 'Welcome';
+		$this->data['page_heading'] = 'Welcome to '.$this->config->item('app_company_product');
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }

@@ -19,12 +19,6 @@ class Holiday extends CI_Controller {
             redirect($this->router->directory.'user/login');
         }
 
-        //Has logged in user permission to access this page or method?        
-        $this->common_lib->check_user_role_permission(array(
-            'default-super-admin-access',
-            'default-admin-access'
-        ));
-
         // Get logged  in user id
         $this->sess_user_id = $this->common_lib->get_sess_user('id');
 
@@ -262,7 +256,7 @@ class Holiday extends CI_Controller {
         }
     }
 	
-	function view() {			
+	function view() {
 		$this->breadcrumbs->push('View','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();		
         $this->data['alert_message'] = $this->session->flashdata('flash_message');

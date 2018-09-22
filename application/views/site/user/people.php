@@ -37,8 +37,14 @@
 							$img_src = $default_path;
 						}
 						?>
+						<?php 
+						$disabled_css = '';
+						if( (isset($row['user_account_active']) && $row['user_account_active'] == 'N') || (isset($row['user_archived']) && $row['user_archived'] == 'Y') ){
+							$disabled_css = 'disabled disabled-user';
+						}
+						?>
 						<div class="col-md-3">
-							<div class="card mb-3 text-center">
+							<div class="card mb-3 text-center <?php echo $disabled_css; ?>">
 							  <div class="card-header">
 								<img style="min-width:100px; width:100px; height: 100px;" class="mx-auto" src="<?php echo base_url($img_src);?>" alt="<?php echo $row['user_title'].' '.$row['user_firstname'].' '.$row['user_lastname']; ?>">
 							  </div>

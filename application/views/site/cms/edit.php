@@ -11,7 +11,7 @@ $row = $rows[0];
 </div><!--/.heading-container-->
 
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-9">
 		<?php
 		// Show server side flash messages
 		if (isset($alert_message)) {
@@ -46,27 +46,34 @@ $row = $rows[0];
 			<?php echo form_error('pagecontent_text'); ?>
 		</div>
 		
+		
 		<div class="form-row">		
 			<div class="form-group col-md-4">
 				<label for="pagecontent_type" class="">Content Type <span class="required">*</span></label>
 				<?php echo form_dropdown('pagecontent_type', $arr_content_type, (isset($_POST['pagecontent_type']) ? set_value('pagecontent_type') : $row['pagecontent_type']), array('class' => 'form-control',));?>
 				<?php echo form_error('pagecontent_type'); ?>
 			</div>
-		
-			<div class="form-group col-md-4">
+			<div class="form-group col-md-3">									
+				<label for="pagecontent_status" class="">Publish</label>
+				<?php echo form_dropdown('pagecontent_status', array('Y'=>'Yes','N'=>'No'), (isset($_POST['pagecontent_status']) ? set_value('pagecontent_status') : $row['pagecontent_status']), array('class' => 'form-control')); ?>
+				<?php echo form_error('pagecontent_status'); ?>
+			</div>
+			<?php /* ?>
+			<div class="form-group col-md-4 d-none">
 				<label for="pagecontent_display_start_date" class="">Display from date</label>
 				<?php echo form_input(array('name' => 'pagecontent_display_start_date','value' => (isset($_POST['pagecontent_display_start_date']) ? set_value('pagecontent_display_start_date') : $row['pagecontent_display_start_date']),'id' => 'pagecontent_display_start_date','class' => 'form-control cms-datepicker', 'placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
 				<?php echo form_error('pagecontent_display_start_date'); ?>
 			</div>
 		
-			<div class="form-group col-md-4">
+			<div class="form-group col-md-4 d-none">
 				<label for="pagecontent_display_end_date" class="">Display to Date</label>
 				<?php echo form_input(array('name' => 'pagecontent_display_end_date','value' => (isset($_POST['pagecontent_display_end_date']) ? set_value('pagecontent_display_end_date') : $row['pagecontent_display_end_date']),'class' => 'form-control cms-datepicker','id' => 'pagecontent_display_end_date','placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
 				<?php echo form_error('pagecontent_display_end_date'); ?>
-			</div>		
+			</div>
+			<?php */ ?>
 		</div>
 		
-		
+		<?php /* ?>
 		<div class="form-row">		
 			<div class="form-group col-md-4">
 				<label for="pagecontent_meta_keywords" class="">Meta Keywords</label>
@@ -86,22 +93,23 @@ $row = $rows[0];
 				<?php echo form_error('pagecontent_meta_author'); ?>
 			</div>		
 		</div>
-		
+		<?php */ ?>
+		<?php /* ?>
 		<div class="form-row">		
 			<div class="form-group col-md-3">									
 				<label for="pagecontent_status" class="">Publish</label>
 				<?php echo form_dropdown('pagecontent_status', array('Y'=>'Yes','N'=>'No'), (isset($_POST['pagecontent_status']) ? set_value('pagecontent_status') : $row['pagecontent_status']), array('class' => 'form-control')); ?>
 				<?php echo form_error('pagecontent_status'); ?>
 			</div>	
-			<?php /* ?>
+			
 			<div class="form-group col-md-3">									
 				<label for="pagecontent_archived" class="">Archived</label>
 				<?php echo form_dropdown('pagecontent_archived', array('Y'=>'Yes','N'=>'No'), (isset($_POST['pagecontent_archived']) ? set_value('pagecontent_archived') : $row['pagecontent_archived']), array('class' => 'form-control'));?>
 				<?php echo form_error('pagecontent_archived'); ?>
 			</div>	
-			<?php */ ?>
+			
 		</div>
-		
+		<?php */ ?>
 		<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 		
 		<a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>                             

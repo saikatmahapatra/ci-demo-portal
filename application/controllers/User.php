@@ -62,7 +62,7 @@ class User extends CI_Controller {
 		$this->data['arr_roles'] = $this->user_model->get_user_role_dropdown();
 		$this->data['arr_designations'] = $this->user_model->get_designation_dropdown();
 		$this->data['arr_departments'] = $this->user_model->get_department_dropdown();
-		$this->data['arr_user_title'] = array(''=>'Select Title','Mr.'=>'Mr.','Ms.'=>'Ms.','Dr.'=>'Dr.','Mrs.'=>'Mrs.');
+		$this->data['arr_user_title'] = array(''=>'Select Title','Mr.'=>'Mr.','Mrs.'=>'Mrs.','Dr.'=>'Dr.','Ms.'=>'Ms.');
     }
 
     function index() {
@@ -246,7 +246,7 @@ class User extends CI_Controller {
     }
 
     function auth_error() {
-		$this->data['page_heading'] = 'Authorization Error';
+		$this->data['page_heading'] = 'Authorization Error Occured';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/auth_error', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_login', $this->data);
     }
@@ -301,7 +301,7 @@ class User extends CI_Controller {
                     'user_password' => md5($password),
                     'user_activation_key' => $activation_token,
                     'user_registration_ip' => $_SERVER['REMOTE_ADDR'],
-                    'user_account_active' => 'Y',
+                    'user_account_active' => 'N',
                     'user_emp_id' => $user_emp_id
                 );
 				//print_r($postdata); die();
@@ -365,6 +365,84 @@ class User extends CI_Controller {
         }
     }
 	
+	function registration() {		
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        if ($this->input->post('form_action') == 'self_registration') {
+            if ($this->validate_registration_form_data() == true) {
+                $activation_token = md5(time('Y-m-d h:i:s'));
+                $dob = $this->input->post('dob_year') . '-' . $this->input->post('dob_month') . '-' . $this->input->post('dob_day');
+				$user_emp_id = $this->user_model->get_new_emp_id();				
+                $postdata = array(
+                    'user_title' => $this->input->post('user_title'),                    
+                    'user_firstname' => $this->input->post('user_firstname'),                    
+                    'user_lastname' => $this->input->post('user_lastname'),
+                    'user_gender' => $this->input->post('user_gender'),
+                    'user_email' => strtolower($this->input->post('user_email')),
+					'user_role' => $this->input->post('role_segment'),
+                    'user_email_secondary' => strtolower($this->input->post('user_email_secondary')),
+                    'user_dob' => $dob,
+					'user_phone1' => $this->input->post('user_phone1'),                    
+                    'user_password' => md5($this->input->post('user_password')),
+                    'user_activation_key' => $activation_token,
+                    'user_registration_ip' => $_SERVER['REMOTE_ADDR'],
+                    'user_account_active' => 'N',
+                    'user_emp_id' => $user_emp_id
+                );
+				//print_r($postdata); die();
+                $insert_id = $this->user_model->insert($postdata);
+                if ($insert_id) {
+                    $html = '<div style="font-family:Verdana, Geneva, sans-serif; font-size:12px;">';                
+					$html.='<p>Hi ' . ucwords(strtolower($this->input->post('user_firstname'))).' '.ucwords(strtolower($this->input->post('user_lasttname'))) . ',</p>';
+                    $html.='<p>Welcome to United Exploration India Pvt. Ltd. Employee Portal.<br> Your account has been created succssfully. Your employee# is <span style="font-size: 14px; font-weight:700;">'.$user_emp_id.'</span>.<br><br>You can add/update your personal details, contact information, academic records and job experience details post login into the application.</p><br>';
+                    $html.='Please <a href="'.base_url($this->router->class.'/activate_account/'.$insert_id.'/'.$activation_token).'" target="_blank">activate your account</a> to login. <br>';
+                    $html.='</p><br>';
+					
+                    $html.='<p>Portal URL: <a href="' . base_url() . '" target="_blank">' . base_url() . '</a><br>';
+                    $html.='Registered Email: ' . $this->input->post('user_email') . '<br/>';                    
+                    $html.='</div>';
+                    //echo $html;
+                    //die();
+                    $config['mailtype'] = 'html';
+                    $this->email->initialize($config);
+                    $this->email->to($this->input->post('user_email'));
+                    $this->email->from($this->config->item('app_admin_email'), $this->config->item('app_admin_email_name'));
+                    $this->email->subject($this->config->item('app_email_subject_prefix') . 'Your Account Details');
+                    $this->email->message($html);
+                    $this->email->send();
+                    //echo $this->email->print_debugger();
+                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Employee ID '.$user_emp_id.' has been created succesfully.');
+                    $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
+                    redirect(current_url());
+                }
+            }
+        }
+		$this->data['page_heading'] = "Create Employee Portal Account";
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/registration', $this->data, true);
+        $this->load->view($this->data['view_dir'].'_layouts/layout_login', $this->data);
+    }
+
+    function validate_registration_form_data() {
+        $this->form_validation->set_rules('user_title', 'title', 'required');
+        $this->form_validation->set_rules('user_firstname', 'first name', 'required');
+        $this->form_validation->set_rules('user_lastname', 'last name', 'required');
+        $this->form_validation->set_rules('user_gender', 'gender selection', 'required');
+        $this->form_validation->set_rules('user_email', 'email', 'trim|required|valid_email|callback_valid_email_domain|callback_is_email_registered');        
+        $this->form_validation->set_rules('user_password', 'password', 'required|trim|min_length[6]');
+        $this->form_validation->set_rules('user_phone1', 'mobile number', 'required|trim|min_length[10]|max_length[10]|numeric');        
+        $this->form_validation->set_rules('user_password_confirm', 'confirm password', 'required|matches[user_password]');
+        $this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
+        $this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
+        $this->form_validation->set_rules('dob_year', 'birth year selection', 'required');
+        //$this->form_validation->set_rules('user_dob', 'date of birth', 'required');
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+	
 	function valid_email_domain($str){
 		if($str){
 			if(stristr($str,'@unitedexploration.co.in') !== false){
@@ -391,6 +469,8 @@ class User extends CI_Controller {
     }
 
     function activate_account() {
+		$user_id = $this->uri->segment(3);
+		$activation_key = $this->uri->segment(4);
         $res = $this->user_model->check_user_activation_key($user_id, $activation_key);
         if ($res) {
             $postdata = array('user_account_active' => 'Y');
@@ -398,13 +478,16 @@ class User extends CI_Controller {
             $act_res = $this->user_model->update($postdata, $where);
             if ($act_res) {
                 $this->session->set_flashdata('flash_message', 'Your account has been activated successfully');
+				$this->session->set_flashdata('flash_message_css', 'bg-success text-white');
                 redirect($this->router->directory.$this->router->class.'/login');
             } else {
                 $this->session->set_flashdata('flash_message', 'Sorry ! Unable to activate your account');
+				$this->session->set_flashdata('flash_message_css', 'bg-danger text-white');
                 redirect($this->router->directory.$this->router->class.'/login');
             }
         } else {
             $this->session->set_flashdata('flash_message', 'No activation token match found for you');
+			$this->session->set_flashdata('flash_message_css', 'bg-danger text-white');
             redirect($this->router->directory.$this->router->class.'/login');
         }
     }

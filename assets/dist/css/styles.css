@@ -8440,11 +8440,11 @@ body {
   margin-bottom: 3rem;
 }
 
-/*body.login {
-    background-image: url(../../src/img/login-bg.svg);
-    background-size: cover;
-    background-position: center center;
-}*/
+body.login {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 /*.navbar{
 	min-height: 4rem;
 }*/
@@ -8692,4 +8692,13 @@ select.form-control.dob-inline {
 
 .bg-blue {
   background-color: #2672EC;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: .5;
+}
+
+.disabled-item {
+  border: 1px solid #ff0000;
 }

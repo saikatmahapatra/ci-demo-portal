@@ -24,7 +24,7 @@ $segment3 = $this->uri->segment(3);
 			</li>	
 			
 			<li class="nav-item <?php echo ($segment2 == 'people') ? 'active':''?>">
-				<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/people'); ?>">People</a>
+				<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/people'); ?>">Meet People</a>
 			</li>
 						
 			<li class="nav-item <?php echo ($segment1=='timesheet') ? 'active':''?>">
@@ -33,7 +33,7 @@ $segment3 = $this->uri->segment(3);
 			
 			<li class="nav-item dropdown <?php echo ($segment2=='user') ? 'active':''?>">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false">Employee Self Services</a>
+					aria-expanded="false">Self Service</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'holiday/view'); ?>">Holiday Calendar</a>
 					<a class="dropdown-item" href="#">Apply Leave</a>
@@ -65,7 +65,7 @@ $segment3 = $this->uri->segment(3);
 					</div><!--/.welcome-user-container-->
 					
 					<div class="dropdown-divider mt-3"></div>			
-					<a class="dropdown-item"  href="<?php echo base_url($this->router->directory.'user/profile/'.$this->session->userdata['sess_user']['id']); ?>">Profile</a>
+					<a class="dropdown-item"  href="<?php echo base_url($this->router->directory.'user/profile/'); ?>">Profile</a>
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/change_password'); ?>">Change Password</a>
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/logout'); ?>">Logout</a>			
 				</div>

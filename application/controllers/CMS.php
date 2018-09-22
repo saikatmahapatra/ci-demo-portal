@@ -132,10 +132,10 @@ class Cms extends CI_Controller {
         foreach ($data_rows as $result) {
             $no++;
             $row = array();
-            $row[] = $result['pagecontent_title'];
             $row[] = $result['pagecontent_type'];
-            $row[] = word_limiter($result['pagecontent_text'], 20);
-            $row[] = (strtolower($result['pagecontent_status']) == 'y') ? 'Published' : 'Unpublished';
+            $row[] = $result['pagecontent_title'];
+            $row[] = $this->common_lib->display_date($result['pagecontent_created_on'], true);
+            $row[] = (strtolower($result['pagecontent_status']) == 'y') ? 'Published' : 'Unpublished';            
             //add html for action
             $action_html = '';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i>', array(
@@ -189,7 +189,8 @@ class Cms extends CI_Controller {
                     'pagecontent_display_start_date' => $this->common_lib->convert_to_mysql($this->input->post('pagecontent_display_start_date')),
                     'pagecontent_display_end_date' => $this->common_lib->convert_to_mysql($this->input->post('pagecontent_display_end_date')),
                     'pagecontent_meta_author' => $this->input->post('pagecontent_meta_author'),
-                    'pagecontent_user_id' => $this->sess_user_id
+                    'pagecontent_user_id' => $this->sess_user_id,
+					'pagecontent_status' => $this->input->post('pagecontent_status')
                 );
                 $insert_id = $this->cms_model->insert($postdata);
                 if ($insert_id) {
