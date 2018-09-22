@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://192.168.1.103/united-emp-portal/';
+$config['base_url'] = 'http://localhost/united-emp-portal/';
 
 /*
 |--------------------------------------------------------------------------
@@ -362,7 +362,7 @@ $config['sess_driver'] = 'database';
 $config['sess_cookie_name'] = 'ci_sessions';
 $config['sess_expiration'] = 0;
 $config['sess_save_path'] = 'ci_sessions';
-$config['sess_match_ip'] = TRUE;
+$config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;
 

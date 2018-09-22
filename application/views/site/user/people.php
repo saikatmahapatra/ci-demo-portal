@@ -49,7 +49,7 @@
 								<img style="min-width:100px; width:100px; height: 100px;" class="mx-auto" src="<?php echo base_url($img_src);?>" alt="<?php echo $row['user_title'].' '.$row['user_firstname'].' '.$row['user_lastname']; ?>">
 							  </div>
 							  <div class="card-body">
-								<h6 class="card-title"><?php echo $row['user_title'].' '.$row['user_firstname'].' '.$row['user_lastname']; ?></h6>
+								<h6 class="card-title"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h6>
 								<div class="card-text">
 									<div class="small"><?php echo '# '.$row['user_emp_id']; ?></div>
 									<div class="small"><?php echo $row['designation_name']; ?></div>
