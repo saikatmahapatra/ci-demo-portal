@@ -1,4 +1,3 @@
-<?php //$row = $profile_pic; ?>
 <div class="row heading-container">
     <div class="col-md-5">
         <h1 class="page-header"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h1>
@@ -30,7 +29,7 @@
 				?>
 				<img style="width:150px; height: 150px;" src="<?php echo base_url($img_src);?>" alt="" class="img align-self-start mr-3 dp">
 				<?php if(isset($profile_pic) && sizeof($profile_pic)>0){ ?>
-					<div class="edit"><a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic');?>"><i class="fa fa-remove"></i> Remove</a></div>
+					<div class="edit"><a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><i class="fa fa-remove"></i> Remove</a></div>
 				<?php } ?>
 			</div>
 			<div class="col-md-9">
