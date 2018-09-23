@@ -100,9 +100,14 @@ class User extends CI_Controller {
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-		
+        $search_keywords = NULL;
+        if($this->input->get_post('form_action') == 'search'){
+            $search_keywords = $this->input->get_post('user_search_keywords');
+        }
+        //die($search_keywords);
+
 		// Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
-		$result_array = $this->user_model->get_users(NULL, NULL, NULL);
+		$result_array = $this->user_model->get_users(NULL, NULL, NULL, $search_keywords);
 		$total_num_rows = $result_array['num_rows'];
 		
 		//pagination config
@@ -120,7 +125,7 @@ class User extends CI_Controller {
         
 
         // Data Rows - Refer to model method definition
-        $result_array = $this->user_model->get_users(NULL, $per_page, $offset);
+        $result_array = $this->user_model->get_users(NULL, $per_page, $offset, $search_keywords);
         $this->data['data_rows'] = $result_array['data_rows'];
 		
 		$this->data['page_heading'] = 'People';

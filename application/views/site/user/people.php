@@ -7,6 +7,34 @@
     </div>
 </div><!--/.heading-container-->
 
+
+<div class="row mb-2">
+	<div class="col-md-6">
+	<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'','name' => '','id' => 'search-user-form',)); ?>
+	<?php echo form_hidden('form_action', 'search'); ?>
+	<div class="form-row">
+		<div class="form-group col-md-7">			
+			<?php
+			echo form_input(array(
+				'name' => 'user_search_keywords',
+				'value' => $this->input->get_post('user_search_keywords'),
+				'id' => 'user_search_keywords',
+				'class' => 'form-control',
+				'placeholder' => 'Search by name / email / mobile',			
+			));
+			?>
+			<?php echo form_error('user_search_keywords'); ?>
+		</div>
+		<div class="form-group col-md-5">
+		<?php echo form_button(array('type' => 'submit', 'content' => '<i class="fa fa-search" aria-hidden="true"></i> Search', 'class' => 'btn btn-primary')); ?>&nbsp;
+		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->router->method);?>" class="btn btn-secondary">Reset</a>
+		</div>
+	</div>
+	<?php echo form_close(); ?>
+	</div>
+</div>
+
+
 <div class="row">	
 	
 	<?php

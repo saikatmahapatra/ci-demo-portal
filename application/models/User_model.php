@@ -410,10 +410,19 @@ class User_model extends CI_Model {
         return $result;
     }
 
-	function get_users($id = NULL, $limit = NULL, $offset = NULL) {
+	function get_users($id = NULL, $limit = NULL, $offset = NULL, $search_keywords=NULL) {
         $this->db->select('t1.*,t2.role_name, t2.role_weight,t3.department_name, t4.designation_name');
         if ($id) {
             $this->db->where('t1.id', $id);
+        }
+        if($search_keywords){
+            $this->db->like('t1.user_firstname', $search_keywords);
+            $this->db->or_like('t1.user_lastname', $search_keywords);
+            $this->db->or_like('t1.user_email', $search_keywords);
+            $this->db->or_like('t1.user_email_secondary', $search_keywords);
+            $this->db->or_like('t1.user_phone1', $search_keywords);
+            $this->db->or_like('t1.user_phone2', $search_keywords);
+            $this->db->or_like('t4.designation_name', $search_keywords);
         }		
         $this->db->join('roles t2', 't1.user_role=t2.id', 'left');
 		$this->db->join('departments t3', 't1.user_department=t3.id', 'left');
