@@ -492,12 +492,13 @@ class User extends CI_Controller {
         }
     }
 
-    function forgot_password() {
+    function forgot_password() {		
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 
         if ($this->input->post('form_action') == 'forgot_password') {
             if ($this->validate_forgot_password_form() == true) {
+				//print_r($_POST);die();
                 $email = $this->input->post('user_email');
                 $password_reset_key = $this->generate_password();
 
@@ -531,10 +532,6 @@ class User extends CI_Controller {
                     $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Password reset link has been sent to ' . $email);
                     $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
                     redirect(current_url());
-                } else {
-                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-warning" aria-hidden="true"></i> Unable to send reset password link');
-                    $this->session->set_flashdata('flash_message_css', 'bg-danger text-white');
-                    redirect(current_url());
                 }
             }
         }
@@ -544,7 +541,7 @@ class User extends CI_Controller {
     }
 
     function validate_forgot_password_form() {		
-        $this->form_validation->set_rules('user_email', 'email address', 'trim|required|valid_email|callback_is_email_valid');
+        $this->form_validation->set_rules('user_email', 'email address', 'required|valid_email|callback_is_email_valid');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -621,14 +618,13 @@ class User extends CI_Controller {
 
     function is_email_valid($user_email) {		
         if($user_email){
-            $result = $this->user_model->check_is_email_registered($user_email);
-            if ($result == false) {
-                $this->form_validation->set_message('is_email_valid', $user_email . ' is not a registered email address.');
-                return false;
-            }
-            
-        }else{
-            return true;
+            $result = $this->user_model->check_is_email_registered($user_email);			
+            if ($result == true) {
+                return true;
+            }else{
+				$this->form_validation->set_message('is_email_valid', $user_email . ' is not a registered email address.');
+				return false;
+			}            
         }
     }
 

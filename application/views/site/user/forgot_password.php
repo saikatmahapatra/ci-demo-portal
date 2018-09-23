@@ -1,3 +1,4 @@
+
 <div class="row justify-content-center">
 	<div class="col-12 col-sm-8 col-md-4">	
 		<?php
@@ -24,7 +25,7 @@
 				<?php echo form_hidden('form_action', 'forgot_password'); ?>
 				
 					<div class="form-group">
-					<label for="user_email">Registered Email address</label>
+					<label for="user_email">Registered Email Address <span class="required">*</span></label>
 						<?php echo form_input(array('name' => 'user_email','value' => set_value('user_email'),'id' => 'name','class'=> 'form-control','placeholder' => '','maxlength' => '100','autofocus' => true,));?>
 						<?php echo form_error('user_email'); ?>
 					</div>
