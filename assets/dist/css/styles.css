@@ -8495,7 +8495,6 @@ select.form-control.dob-inline {
 }
 
 .dp {
-  border: 2px solid #eeeeee;
   height: 100px;
   width: 100px;
 }
@@ -8706,8 +8705,11 @@ a[data-link-type="user-profile-card"] {
 }
 
 .disabled {
-  pointer-events: none;
   opacity: .5;
+}
+
+.no-pointer {
+  pointer-events: none;
 }
 
 .disabled-item {
