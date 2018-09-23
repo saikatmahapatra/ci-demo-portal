@@ -41,7 +41,7 @@ class Project extends CI_Controller {
         $this->load->model('project_model');
         $this->data['alert_message'] = NULL;
         $this->data['alert_message_css'] = NULL;
-        $this->id = $this->uri->segment(3);
+        $this->id = $this->common_lib->decode($this->uri->segment(3));
 
         //View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
@@ -96,14 +96,14 @@ class Project extends CI_Controller {
             $row[] = (strtolower($result['project_status']) == 'y') ? 'Active' : 'Inactive';
             //add html for action
             $action_html = '';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i>', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $this->common_lib->encode($result['id'])), '<i class="fa fa-edit" aria-hidden="true"></i>', array(
                 'class' => 'text-dark mr-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit',
                 'title' => 'Edit',
             ));
             $action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-trash" aria-hidden="true"></i>', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $this->common_lib->encode($result['id'])), '<i class="fa fa-trash" aria-hidden="true"></i>', array(
                 'class' => 'text-danger btn-delete ml-1',
 				'data-confirmation'=>true,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',
@@ -176,7 +176,7 @@ class Project extends CI_Controller {
                 }
             }
         }
-        $result_array = $this->project_model->get_rows($this->uri->segment(3));
+        $result_array = $this->project_model->get_rows($this->id);
         $this->data['rows'] = $result_array['data_rows'];
 		$this->data['page_heading'] = 'Edit Project';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit', $this->data, true);
