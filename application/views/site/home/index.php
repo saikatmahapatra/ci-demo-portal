@@ -15,7 +15,7 @@ foreach($data_rows as $key=>$row){
 		<div class="col-md-12 mb-4" data-id="<?php echo $row['id'];?>">
 			<div data-cms-type="<?php echo $row['pagecontent_type'];?>" class="card-news pl-2">
 				<div class="card-news-header h5">
-					<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a>
+					<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$this->common_lib->encode($row['id']));?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a>
 				</div>
 				<div class="card-news-sig text-muted small">
 					<div><?php echo ucwords($row['pagecontent_type']);?></div>
@@ -27,7 +27,7 @@ foreach($data_rows as $key=>$row){
 				</div>
 				<div class="card-news-body">
 					<?php echo isset($row['pagecontent_text']) ? word_limiter($row['pagecontent_text'],50) : '';?>
-					<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>">Read more</a>
+					<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$this->common_lib->encode($row['id']));?>">Read more</a>
 				
 				</div>
 			</div>

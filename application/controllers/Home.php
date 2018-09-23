@@ -108,7 +108,7 @@ class Home extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 
-        $id = $this->uri->segment(3);		
+        $id = $this->common_lib->decode($this->uri->segment(3));		
 		$result_array = $this->cms_model->get_contents($id, NULL, NULL, FALSE, FALSE);
         $this->data['data_rows'] = $result_array['data_rows'];        
 		$this->data['page_heading'] = 'Welcome';
