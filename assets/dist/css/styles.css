@@ -8471,7 +8471,8 @@ h1.page-header {
   font-size: .75rem;
 }
 
-.tnc-content h1, .tnc-content h2 {
+.tnc-content h1,
+.tnc-content h2 {
   font-size: 1rem;
 }
 
@@ -8506,6 +8507,16 @@ select.form-control.dob-inline {
 .more-less {
   float: right;
   color: #212121;
+}
+
+/*profile card link*/
+a[data-link-type="user-profile-card"] {
+  text-decoration: none;
+  color: inherit;
+}
+
+.user-profile-card a {
+  text-decoration: none;
 }
 
 .heading-container .breadcrumb {

@@ -716,7 +716,7 @@ class User extends CI_Controller {
 
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-		$user_id = $this->uri->segment(3)? $this->uri->segment(3): $this->sess_user_id;
+		$user_id = $this->uri->segment(3)? $this->common_lib->decode($this->uri->segment(3)): $this->sess_user_id;
 		//die($user_id);
 		//$this->sess_user_id;
 		$this->data['my_profile'] = FALSE;

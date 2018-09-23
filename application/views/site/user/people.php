@@ -44,20 +44,22 @@
 						}
 						?>
 						<div class="col-md-3">
-							<div class="card mb-3 text-center <?php echo $disabled_css; ?>">
-							  <div class="card-header">
-								<img style="min-width:100px; width:100px; height: 100px;" class="mx-auto" src="<?php echo base_url($img_src);?>" alt="<?php echo $row['user_title'].' '.$row['user_firstname'].' '.$row['user_lastname']; ?>">
-							  </div>
-							  <div class="card-body">
-								<h6 class="card-title"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h6>
-								<div class="card-text">
-									<div class="small"><?php echo '# '.$row['user_emp_id']; ?></div>
-									<div class="small"><?php echo $row['designation_name']; ?></div>
-									<div class=""><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
-									<div class=""><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
+							<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile/'.$this->common_lib->encode($row['id']));?>" data-link-type="user-profile-card">
+								<div class="card user-profile-card mb-3 text-center <?php echo $disabled_css; ?>">
+								<div class="card-header">
+									<img style="min-width:100px; width:100px; height: 100px;" class="mx-auto" src="<?php echo base_url($img_src);?>" alt="<?php echo $row['user_title'].' '.$row['user_firstname'].' '.$row['user_lastname']; ?>">
 								</div>
-							  </div>
-							</div><!--/.card-->
+								<div class="card-body">
+									<h6 class="card-title"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h6>
+									<div class="card-text">
+										<div class="small"><?php echo '# '.$row['user_emp_id']; ?></div>
+										<div class="small"><?php echo $row['designation_name']; ?></div>
+										<div class=""><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
+										<div class=""><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
+									</div>
+								</div>
+								</div><!--/.card-->
+							</a>
 						</div>						
 						<?php
 					}

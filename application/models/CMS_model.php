@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class CMS_model extends CI_Model {
+class Cms_model extends CI_Model {
 
     function __construct() {
         parent::__construct();
