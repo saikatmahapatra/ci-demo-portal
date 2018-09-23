@@ -28,7 +28,7 @@
    <div class="media">
    <?php   
 	$img_src = "";
-	$default_path = "assets/dist/img/avatar_2x.png";
+	$default_path = "assets/dist/img/user.svg";
 	if(isset($profile_pic)){					
 		$user_dp = "assets/uploads/user/profile_pic/".$profile_pic;					
 		if (file_exists(FCPATH . $user_dp)) {
@@ -41,7 +41,7 @@
 	}
 	?>
 	<div class="profile-pic">
-		<img class="img align-self-start mr-3 dp" src="<?php echo base_url($img_src);?>">		
+		<img class="mr-3 dp img-thumbnail" src="<?php echo base_url($img_src);?>">		
 	</div>
   <div class="media-body">
     <h5 class="mt-0">
@@ -56,7 +56,7 @@
 	<div class="small"><?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
     <div class="">
         <i class="fa fa-envelope-o" aria-hidden="true"></i> 
-        <a class="mr-2" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
+		<a class="mr-2" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
     </div>
     <div class="">
         <i class="fa fa-phone" aria-hidden="true"></i>
@@ -95,7 +95,6 @@
   <div class="tab-pane fade show active" id="nav-basic" role="tabpanel" aria-labelledby="nav-basic-tab">
 	<div class="row mt-3">
 		<div class="col-md-12">
-		
         <!--<h6>Basic Info</h6><hr>-->		
 		<dl class="row">
 			<dt class="col-sm-2">Name</dt>
@@ -108,8 +107,8 @@
 			</dd>
 			<dt class="col-sm-2">Employee ID</dt>
 			<dd class="col-sm-10"><?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : '-'; ?></dd>
-			<dt class="col-sm-2">Date of Joining</dt>
-			<dd class="col-sm-10"><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></dd>
+			<!--<dt class="col-sm-2">Date of Joining</dt>
+			<dd class="col-sm-10"><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></dd>-->
 			<dt class="col-sm-2">Designation</dt>
 			<dd class="col-sm-10"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
 			<dt class="col-sm-2">Email (Work)</dt>

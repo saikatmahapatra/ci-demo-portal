@@ -87,7 +87,7 @@ class User extends CI_Controller {
 		
 		$this->data['page_heading'] = 'Manage Employees';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/manage', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+        $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
     }
 	
 	function people() {        
@@ -281,7 +281,7 @@ class User extends CI_Controller {
         if ($this->input->post('form_action') == 'create_account') {
             if ($this->validate_create_account_form_data() == true) {
                 $activation_token = md5(time('Y-m-d h:i:s'));
-                //$dob = $this->input->post('dob_year') . '-' . $this->input->post('dob_month') . '-' . $this->input->post('dob_day');
+                $dob = $this->input->post('dob_year') . '-' . $this->input->post('dob_month') . '-' . $this->input->post('dob_day');
 				$user_emp_id = $this->user_model->get_new_emp_id();
 				$password = $this->generate_password();				
                 $postdata = array(
@@ -291,7 +291,7 @@ class User extends CI_Controller {
                     'user_gender' => $this->input->post('user_gender'),
                     'user_email' => strtolower($this->input->post('user_email')),
                     'user_email_secondary' => strtolower($this->input->post('user_email_secondary')),
-                    'user_dob' => $this->common_lib->convert_to_mysql($this->input->post('user_dob')),
+                    'user_dob' => $dob,
                     'user_doj' => $this->common_lib->convert_to_mysql($this->input->post('user_doj')),
                     'user_role' => $this->input->post('user_role'),
                     'user_department' => $this->input->post('user_department'),
@@ -308,10 +308,10 @@ class User extends CI_Controller {
                 $insert_id = $this->user_model->insert($postdata);
                 if ($insert_id) {
                     $html = '<div style="font-family:Verdana, Geneva, sans-serif; font-size:12px;">';
-                    $html.='<p>Dear ' . ucwords(strtolower($this->input->post('user_firstname'))) . ',</p>';
-                    $html.='<p>Congratulations! Welcome to United Exploration India Private Limited. Your employee id is <span style="font-size: 18px; font-weight:700;">'.$user_emp_id.'</span> and your basic profile been created by our team. You can update your personal details, contact information, academic and job experience details post login into United Employee Portal. Here is your access details.</p><br>';
-                    #$html.='<br/> activate your account to login.<br><br>';
-                    #$html.='Activatation Link : <a href="'.base_url('users/activate_account/'.strtolower(base64_encode($insert_id)).'/'.$activation_token).'" target="_blank">'.base_url('users/activate_account/'.strtolower(base64_encode($insert_id)).'/'.$activation_token).'</a></p><br>';
+                    $html.='<p>Hi ' . ucwords(strtolower($this->input->post('user_firstname'))).' '.ucwords(strtolower($this->input->post('user_lasttname'))) . ',</p>';
+                    $html.='<p>Welcome to United Exploration India Pvt. Ltd. Employee Portal.<br> Your account has been created succssfully. Your employee# is <span style="font-size: 14px; font-weight:700;">'.$user_emp_id.'</span>.<br><br>You can add/update your personal details, contact information, academic records and job experience details post login into the application.</p><br>';
+                    $html.='Please <a href="'.base_url($this->router->class.'/activate_account/'.$insert_id.'/'.$activation_token).'" target="_blank">activate your account</a> to login. <br>';
+                    $html.='</p><br>';
                     $html.='<p>URL: <a href="' . base_url() . '" target="_blank">' . base_url() . '</a><br>';
                     $html.='Email: ' . $this->input->post('user_email') . '<br/>';
                     $html.='Password: ' . $password . '</p>';                    
@@ -327,7 +327,7 @@ class User extends CI_Controller {
                     $this->email->message($html);
                     $this->email->send();
                     //echo $this->email->print_debugger();
-                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Employee ID '.$user_emp_id.' has been created succesfully.');
+                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Employee account has been created successfully. Employee # is <span class="font-weight-bold">'.$user_emp_id.'</span>. Account activation link has been sent to your registered email address.');
                     $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
                     redirect(current_url());
                 }
@@ -335,7 +335,7 @@ class User extends CI_Controller {
         }
 		$this->data['page_heading'] = "Add New Employee";
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/create_account', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+        $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
     }
 
     function validate_create_account_form_data() {
@@ -344,15 +344,15 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_lastname', 'last name', 'required');
         $this->form_validation->set_rules('user_gender', 'gender selection', 'required');
         $this->form_validation->set_rules('user_email', 'email', 'trim|required|valid_email|callback_valid_email_domain|callback_is_email_registered');
-        $this->form_validation->set_rules('user_email_secondary', 'personal email', 'valid_email');
+        $this->form_validation->set_rules('user_email_secondary', 'personal email', 'valid_email|differs[user_email]');
         //$this->form_validation->set_rules('user_password', 'password', 'required|trim|min_length[6]');
-        $this->form_validation->set_rules('user_phone1', 'mobile number', 'required|trim|min_length[10]|max_length[10]|numeric');
-        $this->form_validation->set_rules('user_phone2', 'mobile number', 'trim|min_length[10]|max_length[10]|numeric');
+        $this->form_validation->set_rules('user_phone1', 'mobile (personal)', 'required|trim|min_length[10]|max_length[10]|numeric');
+        $this->form_validation->set_rules('user_phone2', 'mobile (work)', 'trim|min_length[10]|max_length[10]|numeric|differs[user_phone1]');
         //$this->form_validation->set_rules('user_password_confirm', 'confirm password', 'required|matches[user_password]');
-        //$this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
-        //$this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
-        //$this->form_validation->set_rules('dob_year', 'birth year selection', 'required');
-        $this->form_validation->set_rules('user_dob', 'date of birth', 'required');
+        $this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
+        $this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
+        $this->form_validation->set_rules('dob_year', 'birth year selection', 'required');
+        //$this->form_validation->set_rules('user_dob', 'date of birth', 'required');
         $this->form_validation->set_rules('user_doj', 'date of joining', 'required');
         $this->form_validation->set_rules('user_role', 'role access group', 'required');
         $this->form_validation->set_rules('user_designation', 'designation', 'required');

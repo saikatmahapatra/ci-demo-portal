@@ -47,7 +47,7 @@
 							<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile/'.$this->common_lib->encode($row['id']));?>" data-link-type="user-profile-card">
 								<div class="card user-profile-card mb-3 text-center <?php echo $disabled_css; ?>">
 								<div class="card-header">
-									<img style="min-width:100px; width:100px; height: 100px;" class="mx-auto" src="<?php echo base_url($img_src);?>" alt="<?php echo $row['user_title'].' '.$row['user_firstname'].' '.$row['user_lastname']; ?>">
+									<img style="min-width:75px; width:75px; height: 75px;" class="mx-auto img-thumbnail" src="<?php echo base_url($img_src);?>" alt="<?php echo $row['user_title'].' '.$row['user_firstname'].' '.$row['user_lastname']; ?>">
 								</div>
 								<div class="card-body">
 									<h6 class="card-title"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h6>
@@ -66,4 +66,4 @@
 				}
 				?>
 </div>
-<div class=""><?php echo $pagination_link;?></div>
+<div class="float-right"><?php echo $pagination_link;?></div>

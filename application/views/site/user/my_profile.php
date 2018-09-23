@@ -28,7 +28,7 @@
    <div class="media">
    <?php   
 	$img_src = "";
-	$default_path = "assets/dist/img/avatar_2x.png";
+	$default_path = "assets/dist/img/user.svg";
 	if(isset($profile_pic)){					
 		$user_dp = "assets/uploads/user/profile_pic/".$profile_pic;					
 		if (file_exists(FCPATH . $user_dp)) {
@@ -41,7 +41,7 @@
 	}
 	?>
 	<div class="profile-pic">
-		<img class="img align-self-start mr-3 dp" src="<?php echo base_url($img_src);?>">
+		<img class="mr-3 dp img-thumbnail" src="<?php echo base_url($img_src);?>">
 		<div class="edit"><a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><i class="fa fa-pencil"></i> Change/Remove</a></div>
 	</div>
   <div class="media-body">

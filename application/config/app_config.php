@@ -29,8 +29,9 @@ $config['app_email_subject_prefix'] = 'UEIPL Portal - ';
  */
 $config['app_company_product'] = 'United Exploration India Pvt. Ltd.';
 $config['app_logo_name_login'] = '<b>Admin</b> Dashboard';
-$config['app_logo_name_dashboard'] = '<b>Admin</b>';
-$config['app_logo_name_dashboard_xs'] = '<b>CI</b>A';
+$config['app_logo_name_admin_dashboard'] = 'UEIPL Portal Admin';
+$config['app_logo_name_dashboard'] = 'UEIPL Employee Portal';
+$config['app_logo_name_dashboard_xs'] = '<b>U</b>Aadmin';
 
 $config['app_html_title'] = 'Employee Portal - United Exploration India Pvt. Ltd.';
 $config['app_admin_html_title'] = 'United Exploration India Pvt. Ltd.';

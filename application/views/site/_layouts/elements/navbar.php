@@ -8,7 +8,8 @@ $segment3 = $this->uri->segment(3);
 
 <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">	
 	<a class="navbar-brand" href="<?php echo base_url($this->router->directory); ?>">
-		<img class="img-fluid" style="width:80px;" src="<?php echo base_url('assets/src/img/logo.svg');?>">
+		<img class="" style="width:80px;" src="<?php echo base_url('assets/src/img/logo.svg');?>">
+		<?php echo $this->config->item('app_logo_name_dashboard'); ?>
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
 		aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +49,7 @@ $segment3 = $this->uri->segment(3);
 			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
 			<li class="nav-item">
 			<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/administrator'); ?>">
-				<i class="fa fa-key"></i> Administrator</a>
+				<i class="fa fa-lock"></i> Admin</a>
 			</li>
 			<?php } ?>
 			

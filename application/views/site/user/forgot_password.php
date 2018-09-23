@@ -16,9 +16,8 @@
 				<h5 class=""><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h5>
 			</div>
 			<div class="card-body">
-				<div class="text-center mt-4 mb-5">
-					
-					<p>Enter your email address and we will send you instructions on how to reset your password.</p>
+				<div class="text-center mt-4 mb-5">					
+					<p>Enter your registered email address to get reset password link.</p>
 				</div>
 				
 				<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'ci-form')) ?>

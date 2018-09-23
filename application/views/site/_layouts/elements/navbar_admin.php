@@ -6,10 +6,10 @@ $segment3 = $this->uri->segment(3);
 //print_r($user_profile_image);
 ?>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-info fixed-top">	
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">	
 	<a class="navbar-brand" href="<?php echo base_url('user/administrator'); ?>">
-		<img class="img-fluid d-none" style="width: 200px;" src="<?php echo base_url('assets/src/img/logo.png');?>">
-		Administrator
+	<img class="" style="width:80px;" src="<?php echo base_url('assets/src/img/logo.svg');?>">
+		<?php echo $this->config->item('app_logo_name_admin_dashboard'); ?>
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
 		aria-expanded="false" aria-label="Toggle navigation">

@@ -18,9 +18,12 @@ foreach($data_rows as $key=>$row){
 					<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a>
 				</div>
 				<div class="card-news-sig text-muted small">
-					<?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
-					<?php echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>					
-					<?php echo $this->common_lib->display_date($row['pagecontent_created_on'],true); ?>
+					<div><?php echo ucwords($row['pagecontent_type']);?></div>
+					<div>
+						<?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
+						<?php echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>
+						<?php echo $this->common_lib->display_date($row['pagecontent_created_on'],true); ?>
+					</div>
 				</div>
 				<div class="card-news-body">
 					<?php echo isset($row['pagecontent_text']) ? word_limiter($row['pagecontent_text'],50) : '';?>
