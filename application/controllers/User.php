@@ -765,7 +765,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_phone2', 'office mobile', 'trim|min_length[10]|max_length[10]|numeric|differs[user_phone1]
 ');
         $this->form_validation->set_rules('user_bio', 'about you', 'max_length[100]');
-        $this->form_validation->set_rules('user_email', 'email', 'required|valid_email');
+        $this->form_validation->set_rules('user_email', 'registered email (work)', 'required|valid_email');
         $this->form_validation->set_rules('user_email_secondary', 'personal email', 'required|valid_email|differs[user_email]');
         /* $this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
           $this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
