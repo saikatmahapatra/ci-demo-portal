@@ -25,7 +25,7 @@ $segment3 = $this->uri->segment(3);
 			</li>	
 			
 			<li class="nav-item <?php echo ($segment2 == 'people') ? 'active':''?>">
-				<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/people'); ?>">Meet People</a>
+				<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/people'); ?>">People</a>
 			</li>
 						
 			<li class="nav-item <?php echo ($segment1=='timesheet') ? 'active':''?>">
