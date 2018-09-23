@@ -411,7 +411,7 @@ class User extends CI_Controller {
                     $this->email->message($html);
                     $this->email->send();
                     //echo $this->email->print_debugger();
-                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Employee ID '.$user_emp_id.' has been created succesfully.');
+                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Your account has been created successfully. Your Employee # is <span class="font-weight-bold">'.$user_emp_id.'</span>. Account activation link has been sent to your registered email address. Please activate your account to login.');
                     $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
                     redirect(current_url());
                 }
@@ -448,7 +448,7 @@ class User extends CI_Controller {
 			if(stristr($str,'@unitedexploration.co.in') !== false){
 				return true;
 			}else{
-				$this->form_validation->set_message('valid_email_domain', 'Please provide an acceptable email address');
+				$this->form_validation->set_message('valid_email_domain', 'Please provide an acceptable email address.');
 				return false;
 			}
 		}
