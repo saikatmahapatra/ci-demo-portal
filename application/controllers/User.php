@@ -696,7 +696,40 @@ class User extends CI_Controller {
         }
     }
 
-    function profile() {
+    function my_profile() {
+        ########### Validate User Auth #############
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+            redirect($this->router->directory.$this->router->class.'/login');
+        }
+        //Has logged in user permission to access this page or method?        
+        /*$this->common_lib->check_user_role_permission(array(
+            'default-super-admin-access',
+            'default-admin-access',
+        ));*/
+        ########### Validate User Auth End #############
+		
+		//View Page Config
+        $this->data['page_heading'] = "My Profile";
+        $this->breadcrumbs->push('Profile','/');				
+		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
+
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+		$user_id =  $this->sess_user_id;		
+        $rows = $this->user_model->get_rows($user_id);		
+		$res_pic = $this->user_model->get_user_profile_pic($user_id);
+		$this->data['profile_pic'] = $res_pic[0]['user_profile_pic'];
+        $this->data['row'] = $rows['data_rows'];
+		$this->data['address'] = $this->user_model->get_user_address(NULL,$user_id,NULL);
+		$this->data['education'] = $this->user_model->get_user_education(NULL, $user_id);
+		$this->data['page_heading'] = 'My Profile';
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/my_profile', $this->data, true);
+        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+    }
+	
+	
+	function profile() {
         ########### Validate User Auth #############
         $is_logged_in = $this->common_lib->is_logged_in();
         if ($is_logged_in == FALSE) {
@@ -716,13 +749,7 @@ class User extends CI_Controller {
 
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-		$user_id = $this->uri->segment(3)? $this->common_lib->decode($this->uri->segment(3)): $this->sess_user_id;
-		//die($user_id);
-		//$this->sess_user_id;
-		$this->data['my_profile'] = FALSE;
-		if($this->sess_user_id == $user_id){
-			$this->data['my_profile'] = TRUE;
-		}
+		$user_id = $this->uri->segment(3)? $this->common_lib->decode($this->uri->segment(3)): $this->sess_user_id;	
         $rows = $this->user_model->get_rows($user_id);		
 		$res_pic = $this->user_model->get_user_profile_pic($user_id);
 		$this->data['profile_pic'] = $res_pic[0]['user_profile_pic'];
@@ -738,10 +765,12 @@ class User extends CI_Controller {
         //$this->form_validation->set_rules('user_firstname', 'first name', 'required');
         //$this->form_validation->set_rules('user_lastname', 'last name', 'required');
         //$this->form_validation->set_rules('user_gender', 'gender selection', 'required');        
-        $this->form_validation->set_rules('user_phone1', 'primary mobile', 'required|trim|min_length[10]|max_length[10]|numeric');
-        $this->form_validation->set_rules('user_phone2', 'secondary mobile', 'trim|min_length[10]|max_length[10]|numeric');
+        $this->form_validation->set_rules('user_phone1', 'personal mobile', 'required|trim|min_length[10]|max_length[10]|numeric');
+        $this->form_validation->set_rules('user_phone2', 'office mobile', 'trim|min_length[10]|max_length[10]|numeric|differs[user_phone1]
+');
         $this->form_validation->set_rules('user_bio', 'about you', 'max_length[100]');
-        $this->form_validation->set_rules('user_email_secondary', 'email', 'valid_email');
+        $this->form_validation->set_rules('user_email', 'email', 'required|valid_email');
+        $this->form_validation->set_rules('user_email_secondary', 'personal email', 'required|valid_email|differs[user_email]');
         /* $this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
           $this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
           $this->form_validation->set_rules('dob_year', 'birth year selection', 'required'); */

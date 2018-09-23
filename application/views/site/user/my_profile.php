@@ -41,7 +41,8 @@
 	}
 	?>
 	<div class="profile-pic">
-		<img class="img align-self-start mr-3 dp" src="<?php echo base_url($img_src);?>">		
+		<img class="img align-self-start mr-3 dp" src="<?php echo base_url($img_src);?>">
+		<div class="edit"><a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><i class="fa fa-pencil"></i> Change/Remove</a></div>
 	</div>
   <div class="media-body">
     <h5 class="mt-0">
@@ -65,7 +66,8 @@
         
     </div>            
     <div>
-        <?php echo (isset($row['user_bio']) && strlen($row['user_bio'])>0) ? $row['user_bio'] : '<span class="text-greyed-out">Describe who you are...</span>'; ?>       
+        <?php echo (isset($row['user_bio']) && strlen($row['user_bio'])>0) ? $row['user_bio'] : '<span class="text-greyed-out">Describe who you are...</span>'; ?>
+        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>">Edit</a>
     </div>
     <!--<hr style="m-8 auto">
     <span class="label label-default">some text</span>
@@ -95,7 +97,7 @@
   <div class="tab-pane fade show active" id="nav-basic" role="tabpanel" aria-labelledby="nav-basic-tab">
 	<div class="row mt-3">
 		<div class="col-md-12">
-		
+		<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"> Edit</a>
         <!--<h6>Basic Info</h6><hr>-->		
 		<dl class="row">
 			<dt class="col-sm-2">Name</dt>
@@ -136,7 +138,7 @@
   <div class="tab-pane fade" id="nav-address" role="tabpanel" aria-labelledby="nav-address-tab">
 	<div class="row mt-3">
 		<div class="col-md-12">
-		
+		<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"> Add New</a>
 			<!--<h6>Communication Address</h6><hr>-->
 				<?php if(isset($address)){
 					foreach($address as $key=>$addr){
@@ -175,7 +177,7 @@
   <div class="tab-pane fade" id="nav-education" role="tabpanel" aria-labelledby="nav-education-tab">
 	<div class="row mt-3">
 		<div class="col-md-12">
-			
+			<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"> Add New</a>
 			<!--<h6>Educational Qualification</h6><hr>-->
 				<table class="table table-sm mt-1">
 					<thead>
@@ -218,7 +220,8 @@
   
   <div class="tab-pane fade" id="nav-exp" role="tabpanel" aria-labelledby="nav-exp-tab">
 	<div class="row mt-3">
-		<div class="col-md-12">		
+		<div class="col-md-12">
+		<a class="btn btn-primary btn-sm" href=""> Add New</a>
 		</div>
 	</div>
   </div><!--/#nav-exp-->
