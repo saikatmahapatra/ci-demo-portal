@@ -145,13 +145,28 @@ class User extends CI_Controller {
         foreach ($data_rows as $result) {
             $no++;
             $row = array();
-            $row[] = $result['user_title'].'&nbsp;'.$result['user_firstname'] . '&nbsp;' . $result['user_lastname'];
-            $row[] = $result['user_emp_id'];
-            $row[] = $result['user_email'];
-            $row[] = $result['user_phone1'];
-            $row[] = $this->common_lib->display_date($result['user_doj']);
-            $row[] = $result['designation_name'];
-            //$row[] = $result['role_name'];
+            $html_name='';
+            $html_name.= '<div class="">'.$result['user_title'].'&nbsp;'.$result['user_firstname'] . '&nbsp;' . $result['user_lastname'].'</div>';
+            $html_name.= '<div> DOB : '.$this->common_lib->display_date($result['user_dob']).'</div>';
+            $html_name.= '<div> Gender : '.$result['user_gender'].'</div>';
+            $html_name.= '<div class=""> Reg. On : '.$this->common_lib->display_date($result['user_registration_date'], true).'</div>';
+            $html_name.= '<div class=""> Last Login : '.($result['user_login_date_time'] != NULL ? $this->common_lib->display_date($result['user_login_date_time'], true) : '').'</div>';
+            $row[] = $html_name;           
+
+            $html_corp=''; 
+            $html_corp.= '<div class=""> Emp # : '.$result['user_emp_id'].'</div>';
+            $html_corp.= '<div> DOJ : '.($result['user_doj'] != NULL ? $this->common_lib->display_date($result['user_doj']) : '').'</div>';
+            $html_corp.= '<div class=""> Designation (P) : '.$result['designation_name'].'</div>';
+            $html_corp.= '<div class=""> RBAC Group : '.$result['role_name'].'</div>';
+            $row[] = $html_corp;
+
+            $html_contact=''; 
+            $html_contact.= '<div class=""> Email (W) : '.$result['user_email'].'</div>';
+            $html_contact.= '<div> Mobile (P) : '.$result['user_phone1'].'</div>';
+            $html_contact.= '<div> Email (P) : '.$result['user_email_secondary'].'</div>';            
+            $html_contact.= '<div> Mobile (W) : '.$result['user_phone2'].'</div>';
+            $row[] = $html_contact;
+
             $row[] = ($result['user_account_active'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive</span>';
             //add html for action
             $action_html = '';
@@ -161,7 +176,7 @@ class User extends CI_Controller {
             $acc_status_text = ($result['user_account_active'] == 'Y') ? 'Deactivate Account' : 'Activate Account';
             $acc_status_class = ($result['user_account_active'] == 'Y') ? 'text-info' : 'text-info';
             $acc_status_set = ($result['user_account_active'] == 'Y') ? 'N' : 'Y';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-user" aria-hidden="true"></i>', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $this->common_lib->encode($result['id'])), '<i class="fa fa-user" aria-hidden="true"></i>', array(
                 'class' => 'text-secondary mr-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'View Profile',

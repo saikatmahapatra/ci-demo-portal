@@ -31,13 +31,9 @@
 					<table id="user-datatable" class="table table-sm">
 						<thead>
 							<tr>
-								<th>Name</th>
-								<th>Emp #</th>
-								<th>Email</th>
-								<th>Mobile</th>
-								<th>DOJ</th>
-								<th>Designation</th>
-								<!--<th>RBAC</th>-->
+								<th>Name & Info</th>
+								<th>Corp Details</th>
+								<th>Contact Info</th>																
 								<th>Status</th>
 								<th>Action</th>
 							</tr>
@@ -45,15 +41,11 @@
 						<tbody></tbody>
 						<tfoot>
 							<tr>
-								<th>Name</th>
-								<th>Emp #</th>
-								<th>Email</th>
-								<th>Mobile</th>
-								<th>DOJ</th>
-								<th>Designation</th>
-								<th>RBAC</th>
-								<!--<th>Status</th>-->
-								<th>Action</th>
+							<th>Name & Info</th>
+							<th>Corp Details</th>
+							<th>Contact Info</th>																
+							<th>Status</th>
+							<th>Action</th>
 							</tr>
 						</tfoot>
 					</table>

@@ -63,10 +63,7 @@ class User_model extends CI_Model {
                 't1.user_firstname',
                 't1.user_emp_id',
                 't1.user_email',
-                't1.user_phone1',
-                't1.user_doj',
-                't4.designation_name',
-                't2.role_name',
+                't1.user_account_active',
                 NULL,
             );
             //set column field database(table column name) for datatable searchable
@@ -75,11 +72,12 @@ class User_model extends CI_Model {
                 't1.user_emp_id',
                 't1.user_lastname',
                 't1.user_email',
+                't1.user_email_secondary',
                 't1.user_phone1',
                 't1.user_phone2',
                 't2.role_name',
 				't3.department_name',
-				't4.designation_name'
+				't4.designation_name',
             );
             // default order
             $order = array(
