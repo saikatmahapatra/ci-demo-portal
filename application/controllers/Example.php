@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Ci_Example extends CI_Controller {
+class Example extends CI_Controller {
 
     var $data;
 
