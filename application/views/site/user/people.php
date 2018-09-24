@@ -20,7 +20,7 @@
 				'value' => $this->input->get_post('user_search_keywords'),
 				'id' => 'user_search_keywords',
 				'class' => 'form-control',
-				'placeholder' => 'Search by name / email / mobile',			
+				'placeholder' => 'Search by emp # / name / email / mobile',			
 			));
 			?>
 			<?php echo form_error('user_search_keywords'); ?>
@@ -47,6 +47,13 @@
 	?>
 		
 	<?php //print_r($data_rows); ?>
+				<?php
+				if(isset($data_rows) && sizeof($data_rows)<=0){
+					?>
+					<div class="col-md-12">We're sorry! No result found based on your search keyword. Please verify the search keyword.</div>
+					<?php
+				}
+				?>
 				<?php
 				if(isset($data_rows)){
 					foreach($data_rows as $key=>$row){

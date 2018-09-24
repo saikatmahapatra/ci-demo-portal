@@ -418,6 +418,7 @@ class User_model extends CI_Model {
         if($search_keywords){
             $this->db->like('t1.user_firstname', $search_keywords);
             $this->db->or_like('t1.user_lastname', $search_keywords);
+            $this->db->or_like('t1.user_emp_id', $search_keywords);
             $this->db->or_like('t1.user_email', $search_keywords);
             $this->db->or_like('t1.user_email_secondary', $search_keywords);
             $this->db->or_like('t1.user_phone1', $search_keywords);
