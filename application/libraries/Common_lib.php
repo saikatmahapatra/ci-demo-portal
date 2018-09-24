@@ -406,13 +406,31 @@ class Common_lib {
 	}
 	
 	/*Convert date to display format date*/
-	function display_date($date, $time=null){
+	function display_date($date, $time=null, $birthday=null){
 		if($time == true){
 			return date('d-m-Y h:i:s a',strtotime($date));
-		}else{
+        }
+        if($birthday == true){
+            $dob = explode('-',$date);            
+			return $this->display_ordinal_suffix($dob[2]).', '.date('F',strtotime($date));
+        }
+        else{
 			return date('d-m-Y',strtotime($date));
 		}		
-	}
+    }
+    
+    /*Display ordinal_suffix st, th, rd*/    
+    function display_ordinal_suffix($num){
+        $num = $num % 100; // protect against large numbers
+        if($num < 11 || $num > 13){
+             switch($num % 10){
+                case 1: return $num.'<sup>st</sup>';
+                case 2: return $num.'<sup>nd</sup>';
+                case 3: return $num.'<sup>rd</sup>';
+            }
+        }
+        return $num.'<sup>th</sup>';
+    }
 	
 	/* URL-safe encoding */	
 	function encode($string, $key="", $url_safe=TRUE){

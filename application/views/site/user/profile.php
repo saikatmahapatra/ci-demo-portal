@@ -114,9 +114,9 @@
 								<dd class="col-sm-10"><a href="mailto:<?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?>"><?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?></a></dd>			
 								<dt class="col-sm-2">Mobile (Personal)</dt>
 								<dd class="col-sm-10"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : '-'; ?></dd>						
-								<dt class="col-sm-2">Date of Birth</dt>
+								<dt class="col-sm-2">Birth Day</dt>
 								<dd class="col-sm-10">
-								<?php echo isset($row['user_dob']) ? $this->common_lib->display_date($row['user_dob']) : '-'; ?>
+								<?php echo isset($row['user_dob']) ? $this->common_lib->display_date($row['user_dob'],NULL, TRUE) : '-'; ?>
 								</dd>
 								<dt class="col-sm-2">Gender</dt>
 								<dd class="col-sm-10"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : ''; ?></dd>
