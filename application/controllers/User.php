@@ -306,8 +306,8 @@ class User extends CI_Controller {
 				$password = $this->generate_password();				
                 $postdata = array(
                     'user_title' => $this->input->post('user_title'),                    
-                    'user_firstname' => $this->input->post('user_firstname'),                    
-                    'user_lastname' => $this->input->post('user_lastname'),
+                    'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),                    
+                    'user_lastname' => ucwords(strtolower($this->input->post('user_lastname'))),
                     'user_gender' => $this->input->post('user_gender'),
                     'user_email' => strtolower($this->input->post('user_email')),
                     'user_email_secondary' => strtolower($this->input->post('user_email_secondary')),
@@ -360,8 +360,8 @@ class User extends CI_Controller {
 
     function validate_create_account_form_data() {
         $this->form_validation->set_rules('user_title', 'title', 'required');
-        $this->form_validation->set_rules('user_firstname', 'first name', 'required');
-        $this->form_validation->set_rules('user_lastname', 'last name', 'required');
+        $this->form_validation->set_rules('user_firstname', 'first name', 'required|alpha|min_length[3]|max_length[25]');
+        $this->form_validation->set_rules('user_lastname', 'last name', 'required|alpha_numeric_spaces|min_length[3]|max_length[30]');
         $this->form_validation->set_rules('user_gender', 'gender selection', 'required');
         $this->form_validation->set_rules('user_email', 'email', 'trim|required|valid_email|callback_valid_email_domain|callback_is_email_registered');
         $this->form_validation->set_rules('user_email_secondary', 'personal email', 'valid_email|differs[user_email]');
@@ -395,8 +395,8 @@ class User extends CI_Controller {
 				$user_emp_id = $this->user_model->get_new_emp_id();				
                 $postdata = array(
                     'user_title' => $this->input->post('user_title'),                    
-                    'user_firstname' => $this->input->post('user_firstname'),                    
-                    'user_lastname' => $this->input->post('user_lastname'),
+                    'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),                    
+                    'user_lastname' => ucwords(strtolower($this->input->post('user_lastname'))),
                     'user_gender' => $this->input->post('user_gender'),
                     'user_email' => strtolower($this->input->post('user_email')),
 					'user_role' => $this->input->post('role_segment'),
@@ -444,8 +444,8 @@ class User extends CI_Controller {
 
     function validate_registration_form_data() {
         $this->form_validation->set_rules('user_title', 'title', 'required');
-        $this->form_validation->set_rules('user_firstname', 'first name', 'required');
-        $this->form_validation->set_rules('user_lastname', 'last name', 'required');
+        $this->form_validation->set_rules('user_firstname', 'first name', 'required|alpha|min_length[3]|max_length[25]');
+        $this->form_validation->set_rules('user_lastname', 'last name', 'required|alpha_numeric_spaces|min_length[3]|max_length[30]');
         $this->form_validation->set_rules('user_gender', 'gender selection', 'required');
         $this->form_validation->set_rules('user_email', 'email', 'trim|required|valid_email|callback_valid_email_domain|callback_is_email_registered');        
         $this->form_validation->set_rules('user_password', 'password', 'required|trim|min_length[6]');

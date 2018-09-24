@@ -39,7 +39,7 @@
 					<div class="mt-3">
 						<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/forgot_password');?>">Forgot Password?</a>
 						<br>
-						<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/registration');?>">Don't have an account? Create your account</a>
+						<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/registration');?>">Create your account</a>
 					</div>
 				</div>
 			</div>

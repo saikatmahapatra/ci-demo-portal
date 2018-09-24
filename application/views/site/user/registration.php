@@ -202,7 +202,7 @@
 				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/login');?>" class="btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
 				<?php echo form_close(); ?>
 				<div class="mt-3">
-					<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/login');?>">I already have an account. Go back to login</a>
+					<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/login');?>">Back to login</a>
 				</div>
 			</div>
 		</div>
