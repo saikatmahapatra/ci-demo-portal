@@ -138,15 +138,15 @@ class Cms extends CI_Controller {
             $row[] = (strtolower($result['pagecontent_status']) == 'y') ? 'Published' : 'Unpublished';            
             //add html for action
             $action_html = '';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $this->common_lib->encode($result['id'])), '<i class="fa fa-edit" aria-hidden="true"></i>', array(
-                'class' => 'text-dark mr-1',
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $this->common_lib->encode($result['id'])), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
+                'class' => 'btn btn-sm btn-outline-secondary mr-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit',
                 'title' => 'Edit',
             ));
             $action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $this->common_lib->encode($result['id'])), '<i class="fa fa-trash" aria-hidden="true"></i>', array(
-                'class' => 'text-danger btn-delete ml-1',
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $this->common_lib->encode($result['id'])), '<i class="fa fa-trash" aria-hidden="true"></i> Delete', array(
+                'class' => 'btn btn-sm btn-outline-danger btn-delete ml-1',
 				'data-confirmation'=>true,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',
                 'data-toggle' => 'tooltip',

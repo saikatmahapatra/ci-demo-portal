@@ -112,7 +112,7 @@ class User extends CI_Controller {
 		
 		//pagination config
 		$additional_segment = $this->router->class.'/'.$this->router->method;
-		$per_page = 20;
+		$per_page = 12;
 		$config['uri_segment'] = 4;
 		$config['num_links'] = 1;
 		$config['use_page_numbers'] = TRUE;
@@ -154,8 +154,9 @@ class User extends CI_Controller {
             $html_name.= '<div class="">'.$result['user_title'].'&nbsp;'.$result['user_firstname'] . '&nbsp;' . $result['user_lastname'].'</div>';
             $html_name.= '<div> DOB : '.$this->common_lib->display_date($result['user_dob']).'</div>';
             $html_name.= '<div> Gender : '.$result['user_gender'].'</div>';
-            $html_name.= '<div class=""> Reg. On : '.$this->common_lib->display_date($result['user_registration_date'], true).'</div>';
-            $html_name.= '<div class=""> Last Login : '.($result['user_login_date_time'] != NULL ? $this->common_lib->display_date($result['user_login_date_time'], true) : '').'</div>';
+            $html_name.= '<div class="small"> Reg. On : '.$this->common_lib->display_date($result['user_registration_date'], true).'</div>';
+            $html_name.= '<div class="small"> Last Login : '.($result['user_login_date_time'] != NULL ? $this->common_lib->display_date($result['user_login_date_time'], true) : '').'</div>';
+            $html_name.= ($result['user_account_active'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active Account</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive Account</span>';
             $row[] = $html_name;           
 
             $html_corp=''; 
@@ -172,33 +173,29 @@ class User extends CI_Controller {
             $html_contact.= '<div> Mobile (W) : '.$result['user_phone2'].'</div>';
             $row[] = $html_contact;
 
-            $row[] = ($result['user_account_active'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive</span>';
+            //$row[] = ($result['user_account_active'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive</span>';
             //add html for action
             $action_html = '';
 
 
-            $acc_status_icon = ($result['user_account_active'] == 'Y') ? '<i class="fa fa-toggle-on" aria-hidden="true"></i>' : '<i class="fa fa-toggle-off" aria-hidden="true"></i>';
-            $acc_status_text = ($result['user_account_active'] == 'Y') ? 'Deactivate Account' : 'Activate Account';
-            $acc_status_class = ($result['user_account_active'] == 'Y') ? 'text-info' : 'text-info';
+            $acc_status_icon = ($result['user_account_active'] == 'Y') ? '' : '';
+            $acc_status_text = ($result['user_account_active'] == 'Y') ? 'Deactivate' : 'Activate';
+            $acc_status_class = ($result['user_account_active'] == 'Y') ? 'btn btn-sm btn-outline-danger' : 'btn btn-sm btn-outline-success';
             $acc_status_set = ($result['user_account_active'] == 'Y') ? 'N' : 'Y';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $this->common_lib->encode($result['id'])), '<i class="fa fa-user" aria-hidden="true"></i>', array(
-                'class' => 'text-secondary mr-1',
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $this->common_lib->encode($result['id'])), 'Profile', array(
+                'class' => 'btn btn-sm btn-outline-secondary mr-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'View Profile',
-                'title' => 'View Profile',
-				'data-rbac'=>$result['role_name']
+                'title' => 'View Profile'
             ));
-			$action_html.='&nbsp;';
-			if($result['role_weight'] <= 90){
-				$action_html.= anchor(base_url($this->router->directory.$this->router->class.'/manage'), $acc_status_icon, array(
-					'class' => 'change_account_status ' . $acc_status_class,
-					'data-toggle' => 'tooltip',
-					'data-original-title' => $acc_status_text,
-					'title' => $acc_status_text,
-					'data-status' => $acc_status_set,
-					'data-id' => $result['id'],
-				));
-			}
+			$action_html.= anchor(base_url($this->router->directory.$this->router->class.'/manage'), $acc_status_text, array(
+                'class' => 'change_account_status ' . $acc_status_class,
+                'data-toggle' => 'tooltip',
+                'data-original-title' => $acc_status_text,
+                'title' => $acc_status_text,
+                'data-status' => $acc_status_set,
+                'data-id' => $result['id'],
+            ));
             /* $action_html.='&nbsp;';
               $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), 'Delete', array(
               'class' => 'btn btn-sm btn-danger btn-delete',

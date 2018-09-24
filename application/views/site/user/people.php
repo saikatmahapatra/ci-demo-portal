@@ -35,7 +35,6 @@
 </div>
 
 
-<div class="row">	
 	
 	<?php
 	// Show server side flash messages
@@ -56,6 +55,7 @@
 				?>
 				<?php
 				if(isset($data_rows)){
+					$count = 1;
 					foreach($data_rows as $key=>$row){
 						?>
 						<?php
@@ -78,27 +78,31 @@
 							$disabled_css = 'disabled disabled-user';
 						}
 						?>
-						<div class="col-md-3">
+						
+						<?php if ($count%3 == 1){ echo '<div class="row">'; } ?>
+						
+						<div class="col-md-4 content-wrap">
 							<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile/'.$this->common_lib->encode($row['id']));?>" data-link-type="user-profile-card">
-								<div class="card user-profile-card mb-3 text-center <?php echo $disabled_css; ?>">
-								<div class="card-header">
-									<img style="min-width:75px; width:75px; height: 75px;" class="mx-auto img-thumbnail" src="<?php echo base_url($img_src);?>" alt="<?php echo $row['user_title'].' '.$row['user_firstname'].' '.$row['user_lastname']; ?>">
+							<div class="media border mb-2 mt-2 p-2">
+								<img class="align-self-center mr-3 rounded" src="<?php echo base_url($img_src);?>" data-holder-rendered="true" style="width: 96px; height: 96px;">
+								<div class="media-body">
+									<h6 class="mt-0"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h6>                            
+									<div class=""><?php echo 'Emp # '.$row['user_emp_id']; ?></div>
+									<div class=""><?php echo $row['designation_name']; ?></div> 
+									<div class="mt-1"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
+									<div class="mt-1"><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
+									                           
 								</div>
-								<div class="card-body">
-									<h6 class="card-title"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h6>
-									<div class="card-text">
-										<div class="small"><?php echo '# '.$row['user_emp_id']; ?></div>
-										<div class="small"><?php echo $row['designation_name']; ?></div>
-										<div class=""><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
-										<div class=""><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
-									</div>
-								</div>
-								</div><!--/.card-->
+							</div>
 							</a>
-						</div>						
+						</div>
+						<?php if ($count%3 == 0){ echo '</div>'; } ?>
+						
 						<?php
+						$count++;
 					}
+					if ($count%3 != 1) echo "</div>"; 
 				}
 				?>
-</div>
+
 <div class="float-right"><?php echo $pagination_link;?></div>

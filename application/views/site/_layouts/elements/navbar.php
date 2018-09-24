@@ -9,7 +9,7 @@ $segment3 = $this->uri->segment(3);
 <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">	
 	<a class="navbar-brand" href="<?php echo base_url($this->router->directory); ?>">
 		<img class="" style="width:80px;" src="<?php echo base_url('assets/src/img/logo.svg');?>">
-		<?php echo $this->config->item('app_logo_name_dashboard'); ?>
+		<?php //echo $this->config->item('app_logo_name_dashboard'); ?>
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
 		aria-expanded="false" aria-label="Toggle navigation">
@@ -19,11 +19,15 @@ $segment3 = $this->uri->segment(3);
 	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item <?php echo ($segment1=='home') ? 'active':''?>">
-				<a class="nav-link" href="<?php echo base_url($this->router->directory.'home'); ?>"><i class="fa fa-home" aria-hidden="true"></i> Home
+				<a class="nav-link" href="<?php echo base_url($this->router->directory.'home'); ?>">Home
 					<span class="sr-only">(current)</span>
 				</a>
-			</li>	
-			
+			</li>
+			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
+			<li class="nav-item">
+			<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/administrator'); ?>"><i class="fa fa-globe" aria-hidden="true"></i> Admin</a>
+			</li>
+			<?php } ?>			
 			<li class="nav-item <?php echo ($segment2 == 'people') ? 'active':''?>">
 				<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/people'); ?>">People</a>
 			</li>
@@ -31,7 +35,9 @@ $segment3 = $this->uri->segment(3);
 			<li class="nav-item <?php echo ($segment1=='timesheet') ? 'active':''?>">
 				<a class="nav-link" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet</a>
 			</li>
-			
+			<li class="nav-item <?php echo ($segment1=='timesheet') ? 'active':''?>">
+				<a class="nav-link" href="#">My Documents</a>
+			</li>
 			<li class="nav-item dropdown <?php echo ($segment2=='user') ? 'active':''?>">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">Self Service</a>
@@ -42,21 +48,10 @@ $segment3 = $this->uri->segment(3);
 					<a class="dropdown-item" href="#">My Request List</a>
 				</div>
 			</li>
-		</ul>
-		
-		
-		<ul class="navbar-nav my-2 my-lg-0">
-			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
-			<li class="nav-item">
-			<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/administrator'); ?>">
-				<i class="fa fa-lock"></i> Admin</a>
-			</li>
-			<?php } ?>
-			
 			<?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Hi, <?php echo isset($this->session->userdata['sess_user']['user_title'])? $this->session->userdata['sess_user']['user_title']:''; ?> <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></a>
+					aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> My Account</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown03">					
 					<div class="dropdown-item welcome-user-container">					
 						<div class=""><?php echo isset($this->session->userdata['sess_user']['user_title'])? $this->session->userdata['sess_user']['user_title']:''; ?> <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></div>
@@ -71,7 +66,16 @@ $segment3 = $this->uri->segment(3);
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/logout'); ?>">Logout</a>			
 				</div>
 			</li>
-			<?php  } ?>	
+			<?php  } ?>
+		</ul>
+		
+		
+		<ul class="navbar-nav my-2 my-lg-0">
+			<?php echo form_open(base_url('search/index'), array( 'method' => 'get','class'=>'form-inline','name' => '','id' => 'ci-form-helper',)); ?>
+			<?php echo form_hidden('form_action', 'search'); ?>
+                <input class="form-control mr-sm-2" name="search_keywords" type="text" value="<?php echo $this->input->post('search_keywords');?>" placeholder="Search..." aria-label="Search">
+                <button class="btn btn-light my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            <?php echo form_close(); ?>
 		</ul>
 		
 	</div>

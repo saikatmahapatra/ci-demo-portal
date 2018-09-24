@@ -33,8 +33,7 @@
 							<tr>
 								<th>Name & Info</th>
 								<th>Corp Details</th>
-								<th>Contact Info</th>																
-								<th>Status</th>
+								<th>Contact Info</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -43,8 +42,7 @@
 							<tr>
 							<th>Name & Info</th>
 							<th>Corp Details</th>
-							<th>Contact Info</th>																
-							<th>Status</th>
+							<th>Contact Info</th>
 							<th>Action</th>
 							</tr>
 						</tfoot>

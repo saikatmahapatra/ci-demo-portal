@@ -84,6 +84,10 @@ select.form-control.dob-inline {
 
 /*profile card link*/
 
+.content-wrap {
+    word-break: break-all;
+}
+
 a[data-link-type="user-profile-card"] {
     text-decoration: none;
     color: inherit;
