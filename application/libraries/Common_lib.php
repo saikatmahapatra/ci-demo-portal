@@ -412,7 +412,7 @@ class Common_lib {
         }
         if($birthday == true){
             $dob = explode('-',$date);            
-			return $this->display_ordinal_suffix($dob[2]).', '.date('F',strtotime($date));
+			return $this->display_ordinal_suffix($dob[2]).' '.date('F',strtotime($date));
         }
         else{
 			return date('d-m-Y',strtotime($date));
