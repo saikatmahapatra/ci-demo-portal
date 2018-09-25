@@ -312,3 +312,10 @@ a[data-link-type="user-profile-card"] {
         padding-top: 30px !important;
     }
 }
+
+// Custom Form Control
+.custom-control-label {
+    &::before {
+        border: $input-border-width solid $input-border-color;
+    }
+}

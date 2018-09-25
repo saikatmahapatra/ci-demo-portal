@@ -135,6 +135,12 @@ class Example extends CI_Controller {
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/directory_helper', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
+
+    function bootstrap() {
+        $this->data['page_heading'] = 'Bootstrap SASS Customized Theme Components : UX Guide';
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/bootstrap', $this->data, true);
+        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+    }
 	
 	function calendar_lib() {
 		//add required js files for this controller

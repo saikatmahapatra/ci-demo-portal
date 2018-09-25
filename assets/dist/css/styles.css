@@ -8737,3 +8737,7 @@ a[data-link-type="user-profile-card"] {
 .card-legend .card-body {
   padding-top: 30px !important;
 }
+
+.custom-control-label::before {
+  border: 1px solid #ced4da;
+}
