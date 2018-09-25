@@ -182,7 +182,7 @@ class User extends CI_Controller {
             $acc_status_text = ($result['user_account_active'] == 'Y') ? 'Deactivate' : 'Activate';
             $acc_status_class = ($result['user_account_active'] == 'Y') ? 'btn btn-sm btn-outline-danger' : 'btn btn-sm btn-outline-success';
             $acc_status_set = ($result['user_account_active'] == 'Y') ? 'N' : 'Y';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $this->common_lib->encode($result['id'])), 'Profile', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $this->common_lib->encode($result['id'])), 'Profile', array(
                 'class' => 'btn btn-sm btn-outline-secondary mr-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'View Profile',
@@ -1148,6 +1148,78 @@ class User extends CI_Controller {
 		$this->data['page_heading'] = 'Edit Profile';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit_profile', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+    }
+
+    function edit_user_profile() {
+        ########### Validate User Auth #############
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
+            redirect($this->router->directory.$this->router->class.'/login');
+        }
+        //Has logged in user permission to access this page or method?        
+        $this->common_lib->check_user_role_permission(array(
+            'default-super-admin-access',
+            'default-admin-access',
+            'update-emp-profile'
+        ));
+        ########### Validate User Auth End #############
+        $user_id = $this->common_lib->decode($this->uri->segment(3));
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        $rows = $this->user_model->get_rows($user_id);
+        $this->data['row'] = $rows['data_rows'];
+
+        if ($this->input->post('form_action') == 'update_profile') {
+            if ($this->validate_edit_user_profile_form() == true) {
+                $dob = $this->input->post('dob_year') . '-' . $this->input->post('dob_month') . '-' . $this->input->post('dob_day');
+                $postdata = array(
+                    'user_title' => $this->input->post('user_title'),                    
+                    'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),                    
+                    'user_lastname' => ucwords(strtolower($this->input->post('user_lastname'))),
+                    'user_gender' => $this->input->post('user_gender'),
+                    'user_dob' => $dob,
+                    'user_doj' => $this->common_lib->convert_to_mysql($this->input->post('user_doj')),
+                    'user_role' => $this->input->post('user_role'),
+                    'user_department' => $this->input->post('user_department'),
+                    'user_designation' => $this->input->post('user_designation'),
+                    'user_account_active' => $this->input->post('user_account_active')                
+                );
+                $where = array('id' => $user_id);
+                $res = $this->user_model->update($postdata, $where);
+                if ($res) {
+                    $this->session->set_flashdata('flash_message', 'Employee information has been updated successfully');
+                    $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
+                    redirect(current_url());
+                }
+            }
+        }
+	
+		$this->data['page_heading'] = 'Edit Employee Profile';
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit_user_profile', $this->data, true);
+        $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
+    }
+
+    function validate_edit_user_profile_form() {
+        $this->form_validation->set_rules('user_title', 'title', 'required');
+        $this->form_validation->set_rules('user_firstname', 'first name', 'required|alpha|min_length[3]|max_length[25]');
+        $this->form_validation->set_rules('user_lastname', 'last name', 'required|alpha_numeric_spaces|min_length[3]|max_length[30]');
+        $this->form_validation->set_rules('user_gender', 'gender selection', 'required');
+        $this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
+        $this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
+        $this->form_validation->set_rules('dob_year', 'birth year selection', 'required');
+        //$this->form_validation->set_rules('user_dob', 'date of birth', 'required');
+        $this->form_validation->set_rules('user_doj', 'date of joining', 'required');
+        $this->form_validation->set_rules('user_role', 'role access group', 'required');
+        $this->form_validation->set_rules('user_designation', 'designation', 'required');
+        $this->form_validation->set_rules('user_department', 'department', 'required');
+        $this->form_validation->set_rules('user_account_active', 'account statuc', 'required');
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 	
 	function profile_pic() {
