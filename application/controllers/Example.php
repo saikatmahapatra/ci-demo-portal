@@ -64,8 +64,9 @@ class Example extends CI_Controller {
             ),
         );
 
-        if ($this->input->post('form_action') == 'add') {
+        if ($this->input->post('form_action') == 'add') {            
             if ($this->validate_form() == TRUE) {
+                print_r($this->input->post());
                 $this->session->set_flashdata('flash_message', '<strong>Ok! </strong>Validated and Ready to Insert Data.');
                 $this->session->set_flashdata('flash_message_css', 'alert-info');
                 redirect(current_url());

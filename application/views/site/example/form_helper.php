@@ -18,7 +18,7 @@
 			echo $html_alert_ui;
 		}
 		?>
-		<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => 'ci-form-helper',)); ?>
+		<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => '')); ?>
 		<?php echo form_hidden('form_action', 'add'); ?>		  
 			<div class="form-group">
 				<label for="user_email" class="">Email <span class="required">*</span></label>			
@@ -118,62 +118,53 @@
 		  </div>
 		  
 		  <div class="form-group">
-			  <label for="functional_domain" class="">Resume <span class="required">*</span></label>
-				<?php
-				echo form_upload(array(
-					'name' => 'userfile',
-					'id' => 'userfile',
-					'class' => 'field-help',
-					'aria-describedby'=>'uploaderHelpBlock',
-					'data-help-text' => 'Please read the file upload instructions given below: <ul><li>doc, docx, pdf, jpg, png formats are supported.</li><li>File size should not exceed 2 MB</li></ul>',
-					'data-help-text-class' => 'p-3 mt-1 mb-2 bg-warning text-white'
-				));
-				?>                                
+			  <label for="userfile" class="">Resume <span class="required">*</span></label>
+				
+				<div class="custom-file">
+					<?php
+					echo form_upload(array(
+						'name' => 'userfile',
+						'id' => 'userfile',
+						'class' => 'custom-file-input field-help',
+						'aria-describedby'=>'uploaderHelpBlock',
+						'data-help-text' => 'Please read the file upload instructions given below: <ul><li>doc, docx, pdf, jpg, png formats are supported.</li><li>File size should not exceed 2 MB</li></ul>',
+						'data-help-text-class' => 'p-3 mt-1 mb-2 bg-warning text-white'
+					));
+					?>
+					<label class="custom-file-label" for="userfile">Choose file</label>
+				</div>
+				                                
 				<?php echo form_error('userfile'); ?>
 			</div>
 		  
 		  
 		  <div class="form-group">
 			<label for="gender">Gender <span class="required">*</span></label>
-			<div class="form-radio">
-				<?php
-				$radio_is_checked = $this->input->post('gender') === 'M';
-				echo form_radio(array(
-					'name' => 'gender',
-					'value' => 'M',
-					'id' => 'm',
-					'checked' => $radio_is_checked,
-					'class' => '',
-						), set_radio('gender', 'M')
-				);
-				?>
-				<label class="form-radio-label" for="m">Male</span></label>
+			
+			<div class="">
+				<div class="custom-control custom-radio custom-control-inline">
+					<?php
+						$radio_is_checked = $this->input->post('gender') === 'M';
+						echo form_radio(array('name' => 'gender','value' => 'M','id' => 'M','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('gender', 'M'));
+					?>
+					<label class="custom-control-label" for="M">Male</span></label>
+				</div>
 				
-				<?php
-				$radio_is_checked = $this->input->post('gender') === 'F';
-				echo form_radio(array(
-					'name' => 'gender',
-					'value' => 'F',
-					'id' => 'f',
-					'checked' => $radio_is_checked,
-					'class' => ''
-						), set_radio('gender', 'F')
-				);
-				?>
-				<label class="form-radio-label" for="f">Female</span></label>
+				<div class="custom-control custom-radio custom-control-inline">
+					<?php
+						$radio_is_checked = $this->input->post('gender') === 'F';
+						echo form_radio(array('name' => 'gender', 'value' => 'F', 'id' => 'F', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('gender', 'F'));
+					?>
+					<label class="custom-control-label" for="F">Female</span></label>
+				</div>
 				
-				<?php
-				$radio_is_checked = $this->input->post('gender') === 'T';
-				echo form_radio(array(
-					'name' => 'gender',
-					'value' => 'T',
-					'id' => 't',
-					'checked' => $radio_is_checked,
-					'class' => ''
-						), set_radio('gender', 'T')
-				);
-				?>
-				<label class="form-radio-label" for="t">Trans-gender</span></label>
+				<div class="custom-control custom-radio custom-control-inline">
+					<?php
+					$radio_is_checked = $this->input->post('gender') === 'T';
+					echo form_radio(array('name' => 'gender', 'value' => 'T', 'id' => 'T', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('gender', 'T'));
+					?>
+					<label class="custom-control-label" for="T">Better, I would not say</span></label>
+				</div>
 			</div>
 			<?php echo form_error('gender'); ?>
 		  </div>
