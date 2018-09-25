@@ -32,7 +32,7 @@
 						<input id="remember" name="remember" type="checkbox" value="1">
 						<label class="form-check-label" for="remember">Remember Password</label>
 					</div>	-->											
-					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Login','class' => 'btn btn-primary btn-block'));?>
+					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Log In','class' => 'btn btn-primary btn-block'));?>
 					
 					<?php form_close(); ?>
 

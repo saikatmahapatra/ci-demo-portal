@@ -214,8 +214,8 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="form-group"> 
-						<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
-						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/my_profile');?>" class="btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>						
+						<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="d-none fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
+						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/my_profile');?>" class="btn btn-secondary"><i class="d-none fa fa-fw fa-times-circle"></i> Cancel</a>						
 					</div>
 				</div>
 			</div>

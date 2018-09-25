@@ -28,7 +28,7 @@
 						<?php echo form_input(array('name' => 'user_email','value' => set_value('user_email'),'id' => 'name','class'=> 'form-control','placeholder' => '','maxlength' => '100','autofocus' => true,));?>
 						<?php echo form_error('user_email'); ?>
 					</div>
-					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary btn-block'));?>
+					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="d-none fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary btn-block'));?>
 					
 					<?php form_close(); ?>
 					<div class="mt-3">
