@@ -31,7 +31,7 @@
 			<div class="card-header">
 				<?php   
 				$img_src = "";
-				$default_path = "assets/dist/img/user.svg";
+				$default_path = "assets/dist/img/default_user.jpg";
 				if(isset($profile_pic)){					
 					$user_dp = "assets/uploads/user/profile_pic/".$profile_pic;					
 					if (file_exists(FCPATH . $user_dp)) {

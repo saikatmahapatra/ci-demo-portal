@@ -25,7 +25,7 @@ if(isset($data_rows)){
         ?>
         <?php
         $img_src = "";
-        $default_path = "assets/src/img/user.svg";
+        $default_path = "assets/src/img/default_user.jpg";
         if(isset($row['user_profile_pic'])){					
             $user_dp = "assets/uploads/user/profile_pic/".$row['user_profile_pic'];					
             if (file_exists(FCPATH . $user_dp)) {
