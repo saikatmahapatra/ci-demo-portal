@@ -108,7 +108,7 @@
 				<?php
 				echo form_input(array(
 					'name' => 'user_doj',
-					'value' => isset($row['user_doj']) ? $row['user_doj'] : set_value('user_doj'),
+					'value' => isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : set_value('user_doj'),
 					'id' => 'user_doj',
 					'maxlength' => '10',
 					'class' => 'form-control dob-datepicker',

@@ -182,13 +182,13 @@ class User extends CI_Controller {
             $acc_status_text = ($result['user_account_active'] == 'Y') ? 'Deactivate' : 'Activate';
             $acc_status_class = ($result['user_account_active'] == 'Y') ? 'btn btn-sm btn-outline-danger' : 'btn btn-sm btn-outline-success';
             $acc_status_set = ($result['user_account_active'] == 'Y') ? 'N' : 'Y';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $this->common_lib->encode($result['id'])), 'Profile', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $this->common_lib->encode($result['id'])), 'Edit', array(
                 'class' => 'btn btn-sm btn-outline-secondary mr-1',
                 'data-toggle' => 'tooltip',
-                'data-original-title' => 'View Profile',
-                'title' => 'View Profile'
+                'data-original-title' => 'Edit Profile',
+                'title' => 'Edit Profile'
             ));
-			$action_html.= anchor(base_url($this->router->directory.$this->router->class.'/manage'), $acc_status_text, array(
+			/*$action_html.= anchor(base_url($this->router->directory.$this->router->class.'/manage'), $acc_status_text, array(
                 'class' => 'change_account_status ' . $acc_status_class,
                 'data-toggle' => 'tooltip',
                 'data-original-title' => $acc_status_text,
