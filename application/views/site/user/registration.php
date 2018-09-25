@@ -154,45 +154,22 @@
 						</div>
 						<div class="form-group col-md-6">
 							<label for="gender">Gender <span class="required">*</span></label>
-							<div class="form-radio">
-								<?php
-								$radio_is_checked = $this->input->post('user_gender') === 'M';
-								echo form_radio(array(
-									'name' => 'user_gender',
-									'value' => 'M',
-									'id' => 'm',
-									'checked' => $radio_is_checked,
-									'class' => '',
-										), set_radio('user_gender', 'M')
-								);
-								?>
-								<label class="form-radio-label mr-3" for="m">Male</span></label>
+							<div class="">
+								<div class="custom-control custom-radio custom-control-inline">
+									<?php
+										$radio_is_checked = $this->input->post('user_gender') === 'M';
+										echo form_radio(array('name' => 'user_gender','value' => 'M','id' => 'M','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('user_gender', 'M'));
+									?>
+									<label class="custom-control-label" for="M">Male</span></label>
+								</div>
 								
-								<?php
-								$radio_is_checked = $this->input->post('user_gender') === 'F';
-								echo form_radio(array(
-									'name' => 'user_gender',
-									'value' => 'F',
-									'id' => 'f',
-									'checked' => $radio_is_checked,
-									'class' => ''
-										), set_radio('user_gender', 'F')
-								);
-								?>
-								<label class="form-radio-label mr-3" for="f">Female</span></label>
-								
-								<?php
-								$radio_is_checked = $this->input->post('user_gender') === 'T';
-								echo form_radio(array(
-									'name' => 'user_gender',
-									'value' => 'T',
-									'id' => 't',
-									'checked' => $radio_is_checked,
-									'class' => ''
-										), set_radio('user_gender', 'T')
-								);
-								?>
-								<label class="form-radio-label mr-3" for="t">Others</span></label>
+								<div class="custom-control custom-radio custom-control-inline">
+									<?php
+										$radio_is_checked = $this->input->post('user_gender') === 'F';
+										echo form_radio(array('name' => 'user_gender', 'value' => 'F', 'id' => 'F', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_gender', 'F'));
+									?>
+									<label class="custom-control-label" for="F">Female</span></label>
+								</div>								
 							</div>
 							<?php echo form_error('user_gender'); ?>
 					  </div>

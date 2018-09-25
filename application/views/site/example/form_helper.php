@@ -144,29 +144,29 @@
 			<div class="">
 				<div class="custom-control custom-radio custom-control-inline">
 					<?php
-						$radio_is_checked = $this->input->post('gender') === 'M';
-						echo form_radio(array('name' => 'gender','value' => 'M','id' => 'M','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('gender', 'M'));
+						$radio_is_checked = $this->input->post('user_gender') === 'M';
+						echo form_radio(array('name' => 'user_gender','value' => 'M','id' => 'M','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('user_gender', 'M'));
 					?>
 					<label class="custom-control-label" for="M">Male</span></label>
 				</div>
 				
 				<div class="custom-control custom-radio custom-control-inline">
 					<?php
-						$radio_is_checked = $this->input->post('gender') === 'F';
-						echo form_radio(array('name' => 'gender', 'value' => 'F', 'id' => 'F', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('gender', 'F'));
+						$radio_is_checked = $this->input->post('user_gender') === 'F';
+						echo form_radio(array('name' => 'user_gender', 'value' => 'F', 'id' => 'F', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_gender', 'F'));
 					?>
 					<label class="custom-control-label" for="F">Female</span></label>
 				</div>
 				
 				<div class="custom-control custom-radio custom-control-inline">
 					<?php
-					$radio_is_checked = $this->input->post('gender') === 'T';
-					echo form_radio(array('name' => 'gender', 'value' => 'T', 'id' => 'T', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('gender', 'T'));
+					$radio_is_checked = $this->input->post('user_gender') === 'T';
+					echo form_radio(array('name' => 'user_gender', 'value' => 'T', 'id' => 'T', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_gender', 'T'));
 					?>
 					<label class="custom-control-label" for="T">Better, I would not say</span></label>
 				</div>
 			</div>
-			<?php echo form_error('gender'); ?>
+			<?php echo form_error('user_gender'); ?>
 		  </div>
 		  
 		  
