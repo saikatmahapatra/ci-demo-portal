@@ -9,16 +9,21 @@
 </div><!--/.heading-container-->
 
 
+<div class="row">
+    <div class="col-md-12">
+       <?php
+			// Show server side flash messages
+			if (isset($alert_message)) {
+				$html_alert_ui = '';                
+				$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
+				echo $html_alert_ui;
+			}
+		?> 
+    </div>
+</div><!--/.row-->
+
 <div class="row">	
-    <div class="col-md-8">  
-		<?php
-		// Show server side flash messages
-		if (isset($alert_message)) {
-			$html_alert_ui = '';                
-			$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-			echo $html_alert_ui;
-		}
-		?>
+    <div class="col-md-8">        
         <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'edit_education', 'id' => 'edit_education'));?>
         <?php echo form_hidden('form_action', 'edit'); ?>
 			
@@ -95,8 +100,9 @@
 					<?php echo form_error('academic_marks_percentage'); ?>
 				</div>
 			</div>
-			<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="d-none fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
-			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/my_profile');?>" class="btn btn-secondary"><i class="d-none fa fa-fw fa-times-circle"></i> Cancel</a>
+			
+			<?php echo form_submit(array('name' => 'submit','value' => 'Save','class' => 'btn btn-primary'));?>
+			<a href="<?php echo base_url($this->router->directory.'user/profile');?>" class="btn btn-secondary">Back</a>
         <?php echo form_close(); ?>
     </div>  
 </div>

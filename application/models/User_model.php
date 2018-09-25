@@ -461,6 +461,17 @@ class User_model extends CI_Model {
 			return 0;
 		}        
     }
+
+    function check_address_type_exists($user_id, $address_type) {
+        $this->db->select('id');
+        $this->db->where(array('user_id' => $user_id, 'address_type' => $address_type));
+        $qury = $this->db->get('user_addresses');
+        if ($qury->num_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>

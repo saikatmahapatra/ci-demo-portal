@@ -79,8 +79,8 @@
 				<nav>
 					<div class="nav nav-tabs ci-nav-tab" id="nav-tab" role="tablist">
 						<a class="nav-item nav-link active" id="nav-basic-tab" data-toggle="tab" href="#nav-basic" role="tab" aria-controls="nav-basic" aria-selected="true">Basic Information</a>			
-						<a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab" href="#nav-address" role="tab" aria-controls="nav-address" aria-selected="false">Address Details</a>			
-						<a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Qualification</a>			
+						<a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab" href="#nav-address" role="tab" aria-controls="nav-address" aria-selected="false">Communication Address</a>			
+						<a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Academic Details</a>			
 						<a class="nav-item nav-link" id="nav-exp-tab" data-toggle="tab" href="#nav-exp" role="tab" aria-controls="nav-exp" aria-selected="false">Work Experience</a>
 					</div>
 				</nav>
@@ -130,32 +130,34 @@
 					<div class="tab-pane fade" id="nav-address" role="tabpanel" aria-labelledby="nav-address-tab">
 						<div class="row mt-3">
 							<div class="col-md-12">
-							<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"> Add New</a>
+								<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"> Add New</a>
 								<!--<h6>Communication Address</h6><hr>-->
 									<?php if(isset($address)){
 										foreach($address as $key=>$addr){
 										?>
-											<div class="row mb-3">
-												<div class="col-md-2"><?php echo isset($address_type[$addr['address_type']])?$address_type[$addr['address_type']]:'Address'; ?></div>
-												<div class="col-md-8">
-													<div class="">
+											<dl class="row">
+												<dt class="col-md-12"><?php echo isset($address_type[$addr['address_type']]) ? $address_type[$addr['address_type']] : 'Address'; ?></dt>
+												<dd class="col-md-12">
+													<div class="mt-2">
 														<?php echo isset($addr['name'])? $addr['name'].',&nbsp;' :'';?>
-														<?php echo isset($addr['phone1'])? $addr['phone1'].', ':'';?>
 														<?php echo isset($addr['address']) ? $addr['address'] : '';?>
 														<?php echo isset($addr['locality'])? ', '.$addr['locality'] : '';?>
 														<?php echo isset($addr['city']) ? ', '.$addr['city'].', ' : '';?>
 														<?php echo isset($addr['state']) ? $addr['state'] : '';?>
-														<?php echo isset($addr['zip']) ? ' - '.$addr['zip'] : '';?>                                
+														<?php echo isset($addr['zip']) ? ' - '.$addr['zip'] : '';?>  
+														<?php echo isset($addr['phone1'])? $addr['phone1'].', ':'';?>                              
+														<?php echo isset($addr['landmark'])? $addr['landmark'].' ':'';?>
 													</div>
-													<div>
+													<div class="mt-2 mb-2">
+														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 													</div>
-												</div>
-												<div class="col-md-2">	
-													<!--<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
-												<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>-->
-												</div>
-											</div>
-											<!--/.row-->
+												</dd>												
+											</dl><!--/dl.row-->
+
+
+
+
 										<?php
 										}
 									}?>
