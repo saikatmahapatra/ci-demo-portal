@@ -106,9 +106,9 @@
 								<dd class="col-sm-10"><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></dd>-->
 								<dt class="col-sm-2">Designation</dt>
 								<dd class="col-sm-10"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
-								<dt class="col-sm-2">Email (Office)</dt>
+								<dt class="col-sm-2">Email (Work)</dt>
 								<dd class="col-sm-10"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?></a></dd>
-								<dt class="col-sm-2">Mobile (Office)</dt>
+								<dt class="col-sm-2">Mobile (Work)</dt>
 								<dd class="col-sm-10"><?php echo isset($row['user_phone2']) ? $row['user_phone2'] : '-'; ?></dd>
 								<dt class="col-sm-2">Email (Personal)</dt>
 								<dd class="col-sm-10"><a href="mailto:<?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?>"><?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?></a></dd>			

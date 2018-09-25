@@ -63,7 +63,7 @@
 				
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label for="user_email" class="">Email ID (Office) <span class="required">*</span></label>
+						<label for="user_email" class="">Email ID (Work) <span class="required">*</span></label>
 						<?php
 						echo form_input(array(
 							'name' => 'user_email',

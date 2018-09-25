@@ -10,6 +10,14 @@
 
 <div class="row">
     <div class="col-md-8">
+	<?php
+		// Show server side flash messages
+		if (isset($alert_message)) {
+			$html_alert_ui = '';                
+			$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
+			echo $html_alert_ui;
+		}
+	?>
         <h3 class="mt-3"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h3>
         <h6 class="mt-1">
             <?php 
@@ -29,22 +37,12 @@
         <?php echo 'System Generated Emp # '.$row['user_emp_id']; ?>
         </h6>
         <h6 class="mt-1">
-        <i class="fa fa-envelope-open-o"></i> <?php echo $row['user_email'].' , '.$row['user_email_secondary']; ?>
+        <i class="fa fa-envelope-o"></i> <?php echo $row['user_email'].' , '.$row['user_email_secondary']; ?>
         </h6>
         <h6 class="mt-1 mb-4">
-            <i class="fa fa-mobile"></i> <?php echo $row['user_phone1'].' , '.$row['user_phone2']; ?>
+            <i class="fa fa-phone"></i> <?php echo $row['user_phone1'].' , '.$row['user_phone2']; ?>
         </h6>
 
-        
-
-        <?php
-		// Show server side flash messages
-		if (isset($alert_message)) {
-			$html_alert_ui = '';                
-			$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-			echo $html_alert_ui;
-		}
-		?>
         <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>
         <?php echo form_hidden('form_action', 'update_profile'); ?>
         <?php echo form_hidden('user_email', $row['user_email']); ?>        
@@ -172,45 +170,22 @@
 				</div>
 				<div class="form-group col-md-6">
 					<label for="gender">Gender <span class="required">*</span></label>
-					<div class="form-radio">
-						<?php
-						$radio_is_checked = ($this->input->post('user_gender') === 'M' || $row['user_gender'] == 'M');
-						echo form_radio(array(
-							'name' => 'user_gender',
-							'value' => 'M',
-							'id' => 'm',
-							'checked' => $radio_is_checked,
-							'class' => '',
-								), set_radio('user_gender', 'M')
-						);
-						?>
-						<label class="form-radio-label mr-3" for="m">Male</span></label>
+					<div class="">
+						<div class="custom-control custom-radio custom-control-inline">
+							<?php
+								$radio_is_checked = ($this->input->post('user_gender') === 'M' || $row['user_gender'] == 'M');
+								echo form_radio(array('name' => 'user_gender','value' => 'M','id' => 'M','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('user_gender', 'M'));
+							?>
+							<label class="custom-control-label" for="M">Male</span></label>
+						</div>
 						
-						<?php
-						$radio_is_checked = ($this->input->post('user_gender') === 'F' || $row['user_gender'] == 'F');
-						echo form_radio(array(
-							'name' => 'user_gender',
-							'value' => 'F',
-							'id' => 'f',
-							'checked' => $radio_is_checked,
-							'class' => ''
-								), set_radio('user_gender', 'F')
-						);
-						?>
-						<label class="form-radio-label mr-3" for="f">Female</span></label>
-						
-						<?php
-						$radio_is_checked = ($this->input->post('user_gender') === 'T' || $row['user_gender'] == 'T');
-						echo form_radio(array(
-							'name' => 'user_gender',
-							'value' => 'T',
-							'id' => 't',
-							'checked' => $radio_is_checked,
-							'class' => ''
-								), set_radio('user_gender', 'T')
-						);
-						?>
-						<label class="form-radio-label mr-3" for="t">Others</span></label>
+						<div class="custom-control custom-radio custom-control-inline">
+							<?php
+								$radio_is_checked = ($this->input->post('user_gender') === 'F' || $row['user_gender'] == 'F');
+								echo form_radio(array('name' => 'user_gender', 'value' => 'F', 'id' => 'F', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_gender', 'F'));
+							?>
+							<label class="custom-control-label" for="F">Female</span></label>
+						</div>								
 					</div>
 					<?php echo form_error('user_gender'); ?>
 			  </div>

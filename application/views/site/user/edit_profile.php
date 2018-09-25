@@ -136,7 +136,7 @@
 					<?php echo form_error('user_phone1'); ?>
 				</div>
 				<div class="form-group col-md-6">
-					<label for="user_phone2" class="">10-digit Mobile Number (Office/Work)</label>
+					<label for="user_phone2" class="">10-digit Mobile Number (Work)</label>
 					<?php
 					echo form_input(array(
 						'name' => 'user_phone2',
