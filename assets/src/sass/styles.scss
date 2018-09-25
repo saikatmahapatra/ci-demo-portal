@@ -295,3 +295,20 @@ a[data-link-type="user-profile-card"] {
 .disabled-item {
     border: 1px solid $red;
 }
+
+//Card Legend
+.card-legend {
+    border-top-width: 3px;
+    border-top-color: $primary-color;
+    .text-on-card {
+        background: #fff none repeat scroll 0 0;
+        height: auto;
+        padding: 3px 5px;
+        position: absolute;
+        margin-top: -47px;
+        border-radius: 8px;
+    }
+    .card-body {
+        padding-top: 30px !important;
+    }
+}

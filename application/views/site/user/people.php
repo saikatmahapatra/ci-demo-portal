@@ -10,26 +10,22 @@
 
 <div class="row mb-2">
 	<div class="col-md-6">
-	<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'','name' => '','id' => 'search-user-form',)); ?>
+	<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'form-inline','name' => '','id' => 'search-user-form',)); ?>
 	<?php echo form_hidden('form_action', 'search'); ?>
-	<div class="form-row">
-		<div class="form-group col-md-7">			
+				
 			<?php
 			echo form_input(array(
-				'name' => 'user_search_keywords',
-				'value' => $this->input->get_post('user_search_keywords'),
+				'name' => 'user_search_keywords',				
 				'id' => 'user_search_keywords',
 				'class' => 'form-control',
-				'placeholder' => 'Search by emp # / name / email / mobile',			
+				'placeholder' => 'name / email / mobile',			
 			));
 			?>
 			<?php echo form_error('user_search_keywords'); ?>
-		</div>
-		<div class="form-group col-md-5">
+		
 		<?php echo form_button(array('type' => 'submit', 'content' => '<i class="fa fa-search" aria-hidden="true"></i> Search', 'class' => 'btn btn-primary')); ?>&nbsp;
-		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->router->method);?>" class="btn btn-secondary">Reset</a>
-		</div>
-	</div>
+		
+		
 	<?php echo form_close(); ?>
 	</div>
 </div>
@@ -84,7 +80,7 @@
 						<div class="col-md-4 content-wrap">
 							<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile/'.$this->common_lib->encode($row['id']));?>" data-link-type="user-profile-card">
 							<div class="media border mb-2 mt-2 p-2">
-								<img class="align-self-center mr-3 rounded" src="<?php echo base_url($img_src);?>" data-holder-rendered="true" style="width: 96px; height: 96px;">
+								<img class="align-self-center mr-3 rounded" src="<?php echo base_url($img_src);?>" data-holder-rendered="true" style="width: 75px; height: 75px;">
 								<div class="media-body">
 									<h6 class="mt-0"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h6>                            
 									<div class=""><?php echo 'Emp # '.$row['user_emp_id']; ?></div>

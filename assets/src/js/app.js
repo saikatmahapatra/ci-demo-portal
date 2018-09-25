@@ -16,7 +16,7 @@ if (typeof jQuery === 'undefined') {
  * Overridden console.log for production
  * @type Function|common_L4.commonAnonym$0
  */
-window.console = (function (origConsole) {
+window.console = (function(origConsole) {
     if (!window.console)
         console = {};
     var isDebug = true; // set true to display console in browser console
@@ -27,26 +27,26 @@ window.console = (function (origConsole) {
         infos: []
     };
     return {
-        log: function () {
+        log: function() {
             logArray.logs.push(arguments)
             isDebug && origConsole.log && origConsole.log.apply(origConsole, arguments);
         },
-        warn: function () {
+        warn: function() {
             logArray.warns.push(arguments)
             isDebug && origConsole.warn && origConsole.warn.apply(origConsole, arguments);
         },
-        error: function () {
+        error: function() {
             logArray.errors.push(arguments)
             isDebug && origConsole.error && origConsole.error.apply(origConsole, arguments);
         },
-        info: function (v) {
+        info: function(v) {
             logArray.infos.push(arguments)
             isDebug && origConsole.info && origConsole.info.apply(origConsole, arguments);
         },
-        debug: function (bool) {
+        debug: function(bool) {
             isDebug = bool;
         },
-        logArray: function () {
+        logArray: function() {
             return logArray;
         }
     };
@@ -113,7 +113,8 @@ function scrollToBottom(el) {
 }
 
 function getQueryString() {
-    var vars = [], hash;
+    var vars = [],
+        hash;
     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
     for (var i = 0; i < hashes.length; i++) {
         hash = hashes[i].split('=');
@@ -165,7 +166,7 @@ function displayCountDownTimer() {
     //var deadline = new Date("Mar 16, 2018 15:23:59").getTime();
     var deadline = new Date().getTime() + 60000;
     //var countDown = "initializing timer...";
-    var x = setInterval(function () {
+    var x = setInterval(function() {
         var timeNow = new Date().getTime();
         var timeDiff = countTimeDifference(deadline, timeNow);
         var countDown = timeDiff.days + "d " + timeDiff.hours + "h " + timeDiff.minutes + "m " + timeDiff.seconds + "s ";
@@ -223,7 +224,7 @@ function generateBasicRandomNumber(length, type) {
  */
 function autoCloseAlertMessage(autoClose) {
     if (autoClose === true) {
-        $('.auto-closable-alert').fadeTo(5000, 500).slideUp(500, function () {
+        $('.auto-closable-alert').fadeTo(5000, 500).slideUp(500, function() {
             $('.auto-closable-alert').alert('clsoe');
         });
     }
@@ -234,14 +235,14 @@ function autoCloseAlertMessage(autoClose) {
  */
 
 function scrollToTop(minHeight, scrollSpeed) {
-    $(window).scroll(function () {
+    $(window).scroll(function() {
         if ($(this).scrollTop() > minHeight) {
             $('.scrollup').fadeIn();
         } else {
             $('.scrollup').fadeOut();
         }
     });
-    $('.scrollup').click(function () {
+    $('.scrollup').click(function() {
         $("html, body").animate({
             scrollTop: 0
         }, scrollSpeed);
@@ -259,6 +260,7 @@ function toggleIcon(e) {
         .find(".more-less")
         .toggleClass('glyphicon-plus glyphicon-minus');
 };
+
 function panelGroupToggle() {
     $('.panel-group').on('hidden.bs.collapse', toggleIcon);
     $('.panel-group').on('shown.bs.collapse', toggleIcon);
@@ -268,16 +270,16 @@ function panelGroupToggle() {
  * Field Help
  */
 function renderFieldHelp(e) {
-    $('.field-help').on('focusin', function (e) {
+    $('.field-help').on('focusin', function(e) {
         var elm = $(this);
         var helpText = elm.attr('data-help-text');
         var helpTextCssClass = elm.attr('data-help-text-class') ? elm.attr('data-help-text-class') : 'p-3 mt-1 mb-2 bg-light';
         if (typeof helpText != 'undefined' && helpText.length > 0) {
-            var html = '<div class="'+helpTextCssClass+'"><small>'+helpText+'</small></div>';            
+            var html = '<div class="' + helpTextCssClass + '"><small>' + helpText + '</small></div>';
             elm.after(html);
         }
     });
-    $('.field-help').on('focusout', function (e) {
+    $('.field-help').on('focusout', function(e) {
         var elm = $(this);
         var helpText = elm.attr('data-help-text');;
         if (typeof helpText != 'undefined' && helpText.length > 0) {
@@ -346,11 +348,20 @@ function initPage() {
     scrollToTop(500, 100);
     panelGroupToggle();
     renderFieldHelp();
-	setActiveTarget();	
-	
-	//Select 2
-	$('.ci-js-select-2').select2();
-	
+    setActiveTarget();
+
+    //Select 2
+    $('.ci-js-select-2').select2();
+
+    //Bootstrap tooltip
+    $('[data-toggle="tooltip"]').tooltip();
+
+    //Add random CSS class using JS
+    /*var classes = ["badge badge-primary", "badge badge-success", "badge badge-info", "badge badge-warning", "badge badge-dark", "badge badge-dark", "badge badge-danger"];
+    $(".tagcloud a").each(function() {
+        $(this).addClass(classes[~~(Math.random() * classes.length)]);
+    });*/
+
 }
 // End of initPage() i.e. document ready
 
@@ -360,31 +371,32 @@ $(document).on('click', '.btn-delete', askConfirmation);
 
 
 //Nav Tab Click : Display last clicked nav tab
-function setActiveTarget(){
-	var activeTab = localStorage.getItem('activeTab');
-	if(activeTab){
-		//console.log(activeTab);
-		//$('a[data-toggle="tab"]').removeClass('active');
-		$('a[data-toggle="tab"][id="'+activeTab+'"]').click();
-		
-	}
-	
-	
+function setActiveTarget() {
+    var activeTab = localStorage.getItem('activeTab');
+    if (activeTab) {
+        //console.log(activeTab);
+        //$('a[data-toggle="tab"]').removeClass('active');
+        $('a[data-toggle="tab"][id="' + activeTab + '"]').click();
+
+    }
+
+
 }
-$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-  var target = $(e.target).attr("id") // activated tab, // prev target e.relatedTarget
-  localStorage.setItem('activeTab',target);
-  //console.log(target);
+$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+    var target = $(e.target).attr("id") // activated tab, // prev target e.relatedTarget
+    localStorage.setItem('activeTab', target);
+    //console.log(target);
 });
 
 
 /**
-* Display Ajax Loader
-*/
+ * Display Ajax Loader
+ */
 
-function showAjaxLoader(){
-	$("#ajax-loader").css("display","block");
+function showAjaxLoader() {
+    $("#ajax-loader").css("display", "block");
 }
-function hideAjaxLoader(){
-	$("#ajax-loader").css("display","none");
+
+function hideAjaxLoader() {
+    $("#ajax-loader").css("display", "none");
 }

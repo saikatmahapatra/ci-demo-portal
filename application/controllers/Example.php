@@ -71,6 +71,7 @@ class Example extends CI_Controller {
                 redirect(current_url());
             }
         }
+        $this->data['page_heading'] = 'Code Igniter Form Helper';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/form_helper', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
