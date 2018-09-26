@@ -51,7 +51,7 @@ class User extends CI_Controller {
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		
 		// Address Types
-		$this->data['address_type'] = array('C'=>'Present','P'=>'Permanent');
+		$this->data['address_type'] = array('C'=>'Present Address','P'=>'Permanent Address');
 		
 		// DOB - DD MM YYYY drop down
         $this->data['day_arr'] = $this->calander_days();
@@ -837,7 +837,7 @@ class User extends CI_Controller {
                 $postdata = array(
 					'user_id' => $this->sess_user_id,
                     'address_type' => $this->input->post('address_type'),
-                    'name' => $this->input->post('name'),
+                    //'name' => $this->input->post('name'),
                     'phone1' => $this->input->post('phone1'),                    
                     'zip' => $this->input->post('zip'),                    
                     'locality' => $this->input->post('locality'),                    
@@ -852,11 +852,11 @@ class User extends CI_Controller {
                 if ($res) {
                     $this->session->set_flashdata('flash_message', 'Your address has been added successfully');
                     $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
-                    redirect($this->router->directory.$this->router->class.'/profile');
+                    redirect($this->router->directory.$this->router->class.'/my_profile');
                 }
             }
         }
-		$this->data['page_heading'] = 'Add Communication Address';
+		$this->data['page_heading'] = 'Add Communication Adrress';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/add_address', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
@@ -877,7 +877,7 @@ class User extends CI_Controller {
                 $postdata = array(
 					//'user_id' => $this->sess_user_id,
                     //'address_type' => $this->input->post('address_type'),
-                    'name' => $this->input->post('name'),
+                    //'name' => $this->input->post('name'),
                     'phone1' => $this->input->post('phone1'),                    
                     'zip' => $this->input->post('zip'),                    
                     'locality' => $this->input->post('locality'),                    
@@ -898,12 +898,12 @@ class User extends CI_Controller {
             }
         }
 		
-		$this->data['page_heading'] = 'Edit Address';
+		$this->data['page_heading'] = 'Edit Communication Adrress';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit_address', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 	
-	function delete_address() {
+	/*function delete_address() {
         $is_logged_in = $this->common_lib->is_logged_in();
         if ($is_logged_in == FALSE) {
             redirect($this->router->directory.$this->router->class.'/login');
@@ -917,13 +917,13 @@ class User extends CI_Controller {
 		if ($res) {
 			$this->session->set_flashdata('flash_message', 'Your address has been deleted successfully.');
 			$this->session->set_flashdata('flash_message_css', 'bg-success text-white');
-			redirect($this->router->directory.$this->router->class.'/profile');
+			redirect($this->router->directory.$this->router->class.'/my_profile');
 		}else{
 			$this->session->set_flashdata('flash_message', 'We\'re unable to process your request.');
 			$this->session->set_flashdata('flash_message_css', 'bg-danger text-white');
-			redirect($this->router->directory.$this->router->class.'/profile');
+			redirect($this->router->directory.$this->router->class.'/my_profile');
 		}
-    }
+    }*/
 	
 	function get_address_types($char_address_type){
 		if(isset($char_address_type)){
@@ -938,14 +938,14 @@ class User extends CI_Controller {
             $this->form_validation->set_rules('address_type', 'address type selection', 'required|callback_check_is_address_added');            
         }
         if($mode=="edit"){
-            $this->form_validation->set_rules('address_type', 'address type selection', 'required');        		            
+            //$this->form_validation->set_rules('address_type', 'address type selection', 'required');        		            
         }    
 
-        $this->form_validation->set_rules('name', ' ', 'required|min_length[3]|alpha_numeric_spaces');        
-        $this->form_validation->set_rules('phone1', ' ', 'trim|min_length[10]|max_length[10]|numeric');        
+        //$this->form_validation->set_rules('name', ' ', 'required|min_length[3]|alpha_numeric_spaces');        
+        $this->form_validation->set_rules('phone1', ' ', 'trim|min_length[10]|max_length[15]|numeric');        
         $this->form_validation->set_rules('zip', ' ', 'required|min_length[6]|max_length[6]|numeric');        
         $this->form_validation->set_rules('locality', ' ', 'required|min_length[3]');        
-        $this->form_validation->set_rules('address', ' ', 'required|max_length[200]');               
+        $this->form_validation->set_rules('address', ' ', 'required|max_length[120]');               
         $this->form_validation->set_rules('city', ' ', 'required|max_length[20]');        
         $this->form_validation->set_rules('state', ' ', 'required|max_length[30]');        
         //$this->form_validation->set_rules('country', ' ', 'required');        
@@ -964,7 +964,7 @@ class User extends CI_Controller {
         //die($str);  
         $result = $this->user_model->check_address_type_exists($this->sess_user_id, $str);
         if ($result) {
-            $this->form_validation->set_message('check_is_address_added', 'This address type is already added. You can edit that.');
+            $this->form_validation->set_message('check_is_address_added', 'This address type is already added by you. Please choose another.');
             return false;
         }
         return true;

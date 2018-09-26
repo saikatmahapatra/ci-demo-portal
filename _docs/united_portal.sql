@@ -3409,3 +3409,13 @@ ALTER TABLE `users` ADD `user_last_login_time` DATETIME NULL AFTER `user_account
 ALTER TABLE `users` CHANGE `user_last_login_time` `user_login_date_time` DATETIME NULL DEFAULT NULL;
 ALTER TABLE `cms` ADD `pagecontent_created_on` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `pagecontent_meta_author`;
 ALTER TABLE `cms` ADD `pagecontent_display_start_date` DATE NULL AFTER `pagecontent_meta_author`;
+
+
+--Sept 26
+ALTER TABLE `user_addresses` CHANGE `phone1` `phone1` VARCHAR(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+ALTER TABLE `user_addresses` CHANGE `phone2` `phone2` VARCHAR(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+ALTER TABLE `user_addresses` CHANGE `shipping_address_type` `shipping_address_type` ENUM('H','W') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+ALTER TABLE `user_addresses` ADD `address_verification_status` ENUM('P','V','C') NOT NULL DEFAULT 'P' AFTER `phone2`;

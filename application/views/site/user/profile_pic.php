@@ -11,11 +11,19 @@
 <div class="row">
 	
     <div class="col-md-8">
+		<?php
+		// Show server side flash messages
+		if (isset($alert_message)) {
+			$html_alert_ui = '';                
+			$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
+			echo $html_alert_ui;
+		}
+		?>
 		<div class="row">
 			<div class="col-md-3 profile-pic">
 				<?php
 				$img_src = "";
-				$default_path = "assets/src/img/125x125.jpg";
+				$default_path = "assets/src/img/default_user.jpg";
 				if(isset($profile_pic)){					
 					$user_dp = "assets/uploads/user/profile_pic/".$profile_pic;					
 					if (file_exists(FCPATH . $user_dp)) {
@@ -27,21 +35,13 @@
 					$img_src = $default_path;
 				}
 				?>
-				<img style="width:150px; height: 150px;" src="<?php echo base_url($img_src);?>" alt="" class="img align-self-start mr-3 dp">
+				<img style="width:130px; height: 130px;" src="<?php echo base_url($img_src);?>" alt="" class="align-self-center mr-3 rounded">
 				<?php if(isset($profile_pic) && sizeof($profile_pic)>0){ ?>
-					<div class="edit"><a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><i class="fa fa-remove"></i> Remove</a></div>
+					<div class="edit"><a class="btn btn-sm btn-link mt-2" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><i class="fa fa-remove"></i> Remove</a></div>
 				<?php } ?>
 			</div>
 			<div class="col-md-9">
 				<?php //print_r($row); ?>
-				<?php
-				// Show server side flash messages
-				if (isset($alert_message)) {
-					$html_alert_ui = '';                
-					$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-					echo $html_alert_ui;
-				}
-				?>
 				<?php echo form_open_multipart(current_url(), array('method' => 'post', 'class'=>'ci-form','role' => 'form'));?>
 				<?php echo form_hidden('form_action', 'file_upload'); ?>
 				
@@ -52,19 +52,19 @@
 					<?php echo form_error('userfile'); ?>
 					<?php echo isset($upload_error_message) ? $upload_error_message : ''; ?>
 					
-					<div class="text-muted help-block">
-						
+					<div class="text-muted help-block mt-3">
+						<h6>Instructions:</h6>
 						<ul>
+							<li>Upload your individual photo and not a group photo or logo/animation or cartoon etc.</li>
 							<li>Upload photos taken in professional attire only.</li>
-							<li>Upload your individual photo and not a group photo or logo.</li>
-							<li>Examine the quality and size of the image before uploading it. The image should be in <span class="font-weight-bold">.JPG, .JPEG</span> format and should be less than <span class="font-weight-bold">1 MB</span> in size.</li>
+							<li>The image should be in <span class="font-weight-bold">.JPG, .JPEG</span> format and should be less than <span class="font-weight-bold">1 MB</span> in size. Verify the quality and size of the image before uploading it.</li>
 							<li>Photos must have plain back ground.</li>
-							<li>You can opt to remove your photo from the Remove Photo page.</li>
+							<li>You can delete the uploaded photo anytime if you want.</li>
 						</ul>						
 					</div>
 				</div>
 				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Upload','class' => 'btn btn-primary'));?>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/my_profile');?>" class="btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/my_profile');?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
 				<?php echo form_close(); ?>
 			</div>
 		</div>

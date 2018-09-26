@@ -8,7 +8,7 @@
 </div><!--/.heading-container-->
 
 <div class="row">	
-    <div class="col-md-8">
+    <div class="col-md-6">
 		<?php
 			// Show server side flash messages
 			if (isset($alert_message)) {
@@ -42,33 +42,21 @@
 					<?php echo form_error('address_type'); ?>
 				</div>
 			</div>
-			<div class="form-row">                
-				<div class="form-group col-md-12">                                
-					<label for="name" class="">C/O, S/O, W/F, D/O, Owner Name <span class="required">*</span></label>
-					<?php 
-					echo form_input(array(
-					'name' => 'name',
-					'value' =>set_value('name'),
-					'id' => 'address',
-					'class' => 'form-control',
-					'maxlength' => '100',
-					'placeholder'=>'',
-					));
-					?>
-					<?php echo form_error('name'); ?>
-				</div>												
-            </div>
+			
 
 			<div class="form-row">
 				<div class="form-group col-md-12">        						
-					<label for="address" class="">Address Line (House/Building/Apartment Name & No , Street Name) <span class="required">*</span></label>
+					<label for="address" class="">Address <span class="required">*</span></label>
 					<?php 
-					echo form_input(array(
+					echo form_textarea(array(
 					'name' => 'address',
 					'value' => set_value('address'),
 					'id' => 'address',
 					'class' => 'form-control',
-					'maxlength' => '100',
+					'maxlength' => '120',
+					'rows'=>'2',
+					'cols'=>'2',
+					'placeholder' =>'House/Building/Apartment Name & No , Street Name & No'
 					));
 					?>
 					<?php echo form_error('address'); ?>
@@ -76,8 +64,23 @@
 			</div>
 			
 			<div class="form-row">
+
+				<div class="form-group col-md-6">						
+					<label for="locality" class="">Locality / Area Name<span class="required">*</span></label>
+					<?php
+					echo form_input(array(
+						'name' => 'locality',
+						'value' => set_value('locality'),
+						'id' => 'locality',
+						'class' => 'form-control',
+						'placeholder'=>''
+					));
+					?>
+					<?php echo form_error('locality'); ?>
+				</div>
+
 				<div class="form-group col-md-6">        						
-					<label for="zip" class="">Pincode <span class="required">*</span></label>
+					<label for="zip" class="">Pin Code <span class="required">*</span></label>
 					<?php
 					echo form_input(array(
 						'name' => 'zip',
@@ -89,19 +92,6 @@
 					));
 					?>
 					<?php echo form_error('zip'); ?>
-				</div>
-				<div class="form-group col-md-6">						
-					<label for="locality" class="">Locality / Area <span class="required">*</span></label>
-					<?php
-					echo form_input(array(
-						'name' => 'locality',
-						'value' => set_value('locality'),
-						'id' => 'locality',
-						'class' => 'form-control',
-						'placeholder'=>''
-					));
-					?>
-					<?php echo form_error('locality'); ?>
 				</div>
 			</div>
 			
@@ -148,7 +138,7 @@
 					'value' => set_value('phone1'),
 					'id' => 'phone1',
 					'class' => 'form-control',
-					'maxlength' => '10',
+					'maxlength' => '15',
 					'placeholder'=>'',
 					));
 					?>
@@ -170,17 +160,11 @@
 				</div>				
 			</div>
 			
+			<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
+			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/my_profile');?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
 			
 			
 			
-			<?php
-			echo form_submit(array(
-			'name' => 'submit',
-			'value' => 'Save',
-			'class' => 'btn btn-primary',
-			));
-			?>
-			<a href="<?php echo base_url($this->router->directory.'user/my_profile');?>" class="btn btn-secondary">Back</a>
         <?php echo form_close(); ?>
     </div>  
 </div>
