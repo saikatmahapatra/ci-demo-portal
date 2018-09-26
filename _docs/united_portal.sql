@@ -3420,4 +3420,4 @@ ALTER TABLE `user_addresses` CHANGE `shipping_address_type` `shipping_address_ty
 
 ALTER TABLE `user_addresses` ADD `address_verification_status` ENUM('P','V','C') NOT NULL DEFAULT 'P' AFTER `phone2`;
 
-LTER TABLE `users` ADD `user_blood_group` VARCHAR(4) NULL DEFAULT NULL AFTER `user_dob`;
+ALTER TABLE `users` ADD `user_blood_group` VARCHAR(4) NULL DEFAULT NULL AFTER `user_dob`;
