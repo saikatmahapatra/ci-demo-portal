@@ -51,7 +51,7 @@ class User extends CI_Controller {
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		
 		// Address Types
-		$this->data['address_type'] = array('C'=>'Present Address','P'=>'Permanent Address');
+		$this->data['address_type'] = array('P'=>'Permanent Address','C'=>'Present Address');
 		
 		// DOB - DD MM YYYY drop down
         $this->data['day_arr'] = $this->calander_days();
@@ -63,6 +63,7 @@ class User extends CI_Controller {
 		$this->data['arr_designations'] = $this->user_model->get_designation_dropdown();
 		$this->data['arr_departments'] = $this->user_model->get_department_dropdown();
 		$this->data['arr_user_title'] = array(''=>'Select Title','Mr.'=>'Mr.','Mrs.'=>'Mrs.','Dr.'=>'Dr.','Ms.'=>'Ms.');
+		$this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-');
     }
 
     function index() {
@@ -784,6 +785,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_bio', 'about you', 'max_length[100]');
         $this->form_validation->set_rules('user_email', 'registered email (work)', 'required|valid_email');
         $this->form_validation->set_rules('user_email_secondary', 'personal email', 'required|valid_email|differs[user_email]');
+        $this->form_validation->set_rules('user_blood_group', 'blood group', 'required');
         /* $this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
           $this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
           $this->form_validation->set_rules('dob_year', 'birth year selection', 'required'); */
@@ -1149,18 +1151,19 @@ class User extends CI_Controller {
                     'user_phone1' => $this->input->post('user_phone1'),
                     'user_phone2' => $this->input->post('user_phone2'),                  
                     'user_email_secondary' => $this->input->post('user_email_secondary'),                  
+                    'user_blood_group' => $this->input->post('user_blood_group'),                  
                 );
                 $where = array('id' => $this->sess_user_id);
                 $res = $this->user_model->update($postdata, $where);
                 if ($res) {
-                    $this->session->set_flashdata('flash_message', 'Basic info has been updated successfully');
+                    $this->session->set_flashdata('flash_message', 'Basic profile information has been updated successfully.');
                     $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
-                    redirect(current_url());
+                    redirect($this->router->directory.$this->router->class.'/my_profile');
                 }
             }
         }
 	
-		$this->data['page_heading'] = 'Edit Profile';
+		$this->data['page_heading'] = 'Edit My Profile';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit_profile', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }

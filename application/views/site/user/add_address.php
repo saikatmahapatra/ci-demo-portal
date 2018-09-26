@@ -22,7 +22,8 @@
         <?php echo form_hidden('form_action', 'insert_address'); ?>
 			<div class="form-row">
 				<div class="form-group col-md-12">
-					<label for="address_type" class="">Communication Address Type <span class="required">*</span></label>					
+					<label for="address_type" class="">Address Type <span class="required">*</span></label>					
+					<div>
 					<?php						
 					if(isset($address_type)){
 						foreach($address_type as $address_char=>$address_text){
@@ -38,7 +39,8 @@
 							<?php
 						}
 					}
-					?>					
+					?>
+					</div>					
 					<?php echo form_error('address_type'); ?>
 				</div>
 			</div>

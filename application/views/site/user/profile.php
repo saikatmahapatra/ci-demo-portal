@@ -120,6 +120,8 @@
 								</dd>
 								<dt class="col-sm-2">Gender</dt>
 								<dd class="col-sm-10"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : ''; ?></dd>
+								<dt class="col-sm-2">Blood Group</dt>
+								<dd class="col-sm-10"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : ''; ?></dd>
 								
 							</dl><!--/dl.row-->
 							

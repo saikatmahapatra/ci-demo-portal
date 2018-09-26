@@ -150,6 +150,19 @@
 					<?php echo form_error('user_phone2'); ?>
 				</div>                
             </div><!--/.form-row-->
+                    
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                <label for="user_blood_group" class="">Blood Group <span class="required">*</span></label>
+                    <?php
+                    echo form_dropdown('user_blood_group', $blood_group, isset($row['user_blood_group'])?$row['user_blood_group']:set_value('user_blood_group'), array(
+                        'class' => 'form-control',
+                    ));
+                    ?> 
+                    <?php echo form_error('user_blood_group'); ?>
+                </div>
+            </div><!--/.form-row-->
+
 			<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/my_profile');?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
         <?php echo form_close(); ?>

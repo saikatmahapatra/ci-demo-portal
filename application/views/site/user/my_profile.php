@@ -89,7 +89,7 @@
 					<div class="tab-pane fade show active" id="nav-basic" role="tabpanel" aria-labelledby="nav-basic-tab">
 						<div class="row mt-3">
 							<div class="col-md-12">
-							<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"> Edit</a>
+							<a class="btn btn-primary btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"> Edit</a>
 							<!--<h6>Basic Info</h6><hr>-->		
 							<dl class="row">
 								<dt class="col-sm-2">Name</dt>
@@ -120,6 +120,8 @@
 								</dd>
 								<dt class="col-sm-2">Gender</dt>
 								<dd class="col-sm-10"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : ''; ?></dd>
+								<dt class="col-sm-2">Blood Group</dt>
+								<dd class="col-sm-10"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : ''; ?></dd>
 								
 							</dl><!--/dl.row-->
 							
@@ -130,7 +132,7 @@
 					<div class="tab-pane fade" id="nav-address" role="tabpanel" aria-labelledby="nav-address-tab">
 						<div class="row mt-3">
 							<div class="col-md-12">
-								<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"> Add New</a>
+								<a class="btn btn-primary btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"> Add New</a>
 								<!--<h6>Communication Address</h6><hr>-->
 									<?php if(isset($address)){
 										foreach($address as $key=>$addr){

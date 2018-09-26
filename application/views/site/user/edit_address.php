@@ -46,7 +46,7 @@
 
 			<div class="form-row">
 				<div class="form-group col-md-12">        						
-					<label for="address" class="">Address<span class="required">*</span></label>
+					<label for="address" class="">Address <span class="required">*</span></label>
 					<?php 
 					echo form_textarea(array(
 					'name' => 'address',

@@ -3419,3 +3419,5 @@ ALTER TABLE `user_addresses` CHANGE `phone2` `phone2` VARCHAR(15) CHARACTER SET 
 ALTER TABLE `user_addresses` CHANGE `shipping_address_type` `shipping_address_type` ENUM('H','W') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
 
 ALTER TABLE `user_addresses` ADD `address_verification_status` ENUM('P','V','C') NOT NULL DEFAULT 'P' AFTER `phone2`;
+
+LTER TABLE `users` ADD `user_blood_group` VARCHAR(4) NULL DEFAULT NULL AFTER `user_dob`;
