@@ -20,7 +20,7 @@
 			<div class="d-inline-block"><span class="i-leave pr-2 pl-2 m-1"></span>Leave</div>
 			<div class="d-inline-block"><span class="i-holiday pr-2 pl-2 m-1"></span>Holiday</div>
 		</div>
-		<div class="mt-2"><a id="clear_selected_days" class="btn btn-outline-secondary btn-sm" href="#"><i class="d-none fa fa-fw fa-times-circle"></i> Clear all selected days</a></div>
+		<div class="mt-2"><a id="clear_selected_days" class="btn btn-outline-secondary btn-sm" href="#"><i class="fa fa-fw fa-times-circle"></i> Clear all selected days</a></div>
 		<div class="mt-3">
 			<h6>Monthly timesheet entry summary</h6>
 			<div class="">Tasks logged for: <span id="total_days">0.0</span> days</div>
@@ -113,7 +113,7 @@
 			<?php echo form_error('timesheet_description'); ?>
 			</div>
 			
-			<button type="submit" class="btn btn-primary"><i class="d-none fa fa-fw fa-check-circle"></i> Submit</button>
+			<button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Submit</button>
 			<?php echo form_close(); ?>
 			</div><!--/#nav-add-->
 			

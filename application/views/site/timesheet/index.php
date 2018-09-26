@@ -124,7 +124,7 @@
 			<?php echo form_error('timesheet_description'); ?>
 			</div>
 			
-			<button type="submit" class="btn btn-primary"><i class="d-none fa fa-fw fa-check-circle"></i> Submit</button>
+			<button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Submit</button>
 			<?php echo form_close(); ?>
 			</div><!--/#nav-add-->
 			
