@@ -155,6 +155,7 @@ class User extends CI_Controller {
             $html_name.= '<div class="">'.$result['user_title'].'&nbsp;'.$result['user_firstname'] . '&nbsp;' . $result['user_lastname'].'</div>';
             $html_name.= '<div> DOB : '.$this->common_lib->display_date($result['user_dob']).'</div>';
             $html_name.= '<div> Gender : '.$result['user_gender'].'</div>';
+            $html_name.= '<div> Blood Gr : '.$result['user_blood_group'].'</div>';
             $html_name.= '<div class="small"> Reg. On : '.$this->common_lib->display_date($result['user_registration_date'], true).'</div>';
             $html_name.= '<div class="small"> Last Login : '.($result['user_login_date_time'] != NULL ? $this->common_lib->display_date($result['user_login_date_time'], true) : '').'</div>';
             $html_name.= ($result['user_account_active'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active Account</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive Account</span>';
@@ -163,7 +164,7 @@ class User extends CI_Controller {
             $html_corp=''; 
             $html_corp.= '<div class=""> Emp # : '.$result['user_emp_id'].'</div>';
             $html_corp.= '<div> DOJ : '.($result['user_doj'] != NULL ? $this->common_lib->display_date($result['user_doj']) : '').'</div>';
-            $html_corp.= '<div class=""> Designation (P) : '.$result['designation_name'].'</div>';
+            $html_corp.= '<div class=""> Designation : '.$result['designation_name'].'</div>';
             $html_corp.= '<div class=""> RBAC Group : '.$result['role_name'].'</div>';
             $row[] = $html_corp;
 
@@ -183,6 +184,7 @@ class User extends CI_Controller {
             $acc_status_text = ($result['user_account_active'] == 'Y') ? 'Deactivate' : 'Activate';
             $acc_status_class = ($result['user_account_active'] == 'Y') ? 'btn btn-sm btn-outline-danger' : 'btn btn-sm btn-outline-success';
             $acc_status_set = ($result['user_account_active'] == 'Y') ? 'N' : 'Y';
+            
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $this->common_lib->encode($result['id'])), 'Edit', array(
                 'class' => 'btn btn-sm btn-outline-secondary mr-1',
                 'data-toggle' => 'tooltip',
@@ -319,7 +321,7 @@ class User extends CI_Controller {
                     'user_password' => md5($password),
                     'user_activation_key' => $activation_token,
                     'user_registration_ip' => $_SERVER['REMOTE_ADDR'],
-                    'user_account_active' => 'N',
+                    'user_account_active' => 'Y',
                     'user_emp_id' => $user_emp_id
                 );
 				//print_r($postdata); die();
@@ -341,11 +343,11 @@ class User extends CI_Controller {
                     $this->email->initialize($config);
                     $this->email->to($this->input->post('user_email'));
                     $this->email->from($this->config->item('app_admin_email'), $this->config->item('app_admin_email_name'));
-                    $this->email->subject($this->config->item('app_email_subject_prefix') . 'Your Account Details');
+                    $this->email->subject('Welcome to '.$this->config->item('app_email_subject_prefix') . 'Your Account Details');
                     $this->email->message($html);
                     $this->email->send();
                     //echo $this->email->print_debugger();
-                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Employee account has been created successfully. Employee # is <span class="font-weight-bold">'.$user_emp_id.'</span>. Account activation link has been sent to your registered email address.');
+                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Employee account has been created successfully. <br>System generated Employee ID <span class="font-weight-bold h5">'.$user_emp_id.'</span>. <br>Account activation link has been sent to the registered email address.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     redirect(current_url());
                 }
@@ -371,10 +373,10 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
         $this->form_validation->set_rules('dob_year', 'birth year selection', 'required');
         //$this->form_validation->set_rules('user_dob', 'date of birth', 'required');
-        $this->form_validation->set_rules('user_doj', 'date of joining', 'required');
-        $this->form_validation->set_rules('user_role', 'role access group', 'required');
-        $this->form_validation->set_rules('user_designation', 'designation', 'required');
-        $this->form_validation->set_rules('user_department', 'department', 'required');
+        //$this->form_validation->set_rules('user_doj', 'date of joining', 'required');
+        $this->form_validation->set_rules('user_role', 'access group', 'required');
+        //$this->form_validation->set_rules('user_designation', 'designation', 'required');
+        //$this->form_validation->set_rules('user_department', 'department', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -397,7 +399,7 @@ class User extends CI_Controller {
                     'user_lastname' => ucwords(strtolower($this->input->post('user_lastname'))),
                     'user_gender' => $this->input->post('user_gender'),
                     'user_email' => strtolower($this->input->post('user_email')),
-					'user_role' => $this->input->post('role_segment'),
+					'user_role' => $this->input->post('user_role'),
                     'user_email_secondary' => strtolower($this->input->post('user_email_secondary')),
                     'user_dob' => $dob,
 					'user_phone1' => $this->input->post('user_phone1'),                    
@@ -425,7 +427,7 @@ class User extends CI_Controller {
                     $this->email->initialize($config);
                     $this->email->to($this->input->post('user_email'));
                     $this->email->from($this->config->item('app_admin_email'), $this->config->item('app_admin_email_name'));
-                    $this->email->subject($this->config->item('app_email_subject_prefix') . 'Your Account Details');
+                    $this->email->subject('Welcome to '.$this->config->item('app_email_subject_prefix') . 'Your Account Details');
                     $this->email->message($html);
                     $this->email->send();
                     //echo $this->email->print_debugger();
@@ -1038,7 +1040,7 @@ class User extends CI_Controller {
                 if ($res) {
                     $this->session->set_flashdata('flash_message', 'Your education has been added successfully');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
-                    redirect($this->router->directory.$this->router->class.'/profile');
+                    redirect($this->router->directory.$this->router->class.'/my_profile');
                 }
             }
         }
@@ -1077,7 +1079,7 @@ class User extends CI_Controller {
                 if ($res) {
                     $this->session->set_flashdata('flash_message', 'Education has been updated successfully');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
-                    redirect(current_url());
+                    redirect($this->router->directory.$this->router->class.'/my_profile');
                 }
             }
         }
@@ -1099,11 +1101,11 @@ class User extends CI_Controller {
 		if ($res) {
 			$this->session->set_flashdata('flash_message', 'Your education details has been deleted successfully.');
 			$this->session->set_flashdata('flash_message_css', 'alert-success');
-			redirect($this->router->directory.$this->router->class.'/profile');
+			redirect($this->router->directory.$this->router->class.'/my_profile');
 		}else{
 			$this->session->set_flashdata('flash_message', 'We\'re unable to process your request.');
 			$this->session->set_flashdata('flash_message_css', 'alert-danger');
-			redirect($this->router->directory.$this->router->class.'/profile');
+			redirect($this->router->directory.$this->router->class.'/my_profile');
 		}
     }
 	
@@ -1187,6 +1189,8 @@ class User extends CI_Controller {
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         $rows = $this->user_model->get_rows($user_id);
         $this->data['row'] = $rows['data_rows'];
+        $res_pic = $this->user_model->get_user_profile_pic($user_id);
+		$this->data['profile_pic'] = $res_pic[0]['user_profile_pic'];
 
         if ($this->input->post('form_action') == 'update_profile') {
             if ($this->validate_edit_user_profile_form() == true) {
@@ -1228,7 +1232,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('dob_year', 'birth year selection', 'required');
         //$this->form_validation->set_rules('user_dob', 'date of birth', 'required');
         $this->form_validation->set_rules('user_doj', 'date of joining', 'required');
-        $this->form_validation->set_rules('user_role', 'role access group', 'required');
+        $this->form_validation->set_rules('user_role', 'access group', 'required');
         $this->form_validation->set_rules('user_designation', 'designation', 'required');
         $this->form_validation->set_rules('user_department', 'department', 'required');
         $this->form_validation->set_rules('user_account_active', 'account statuc', 'required');

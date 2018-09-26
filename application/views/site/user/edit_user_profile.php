@@ -8,38 +8,63 @@
 
 <div class="row">
     <div class="col-md-8">
-	<?php
-		// Show server side flash messages
-		if (isset($alert_message)) {
-			$html_alert_ui = '';                
-			$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-			echo $html_alert_ui;
-		}
-	?>
-        <h3 class="mt-3"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h3>
-        <h6 class="mt-1">
-            <?php 
-                if($row['user_account_active']=='Y'){
-                    ?>
-                    <span class="badge badge-success">Active Account</span>                        
-                    <?php
-                }
-                if($row['user_account_active']=='N'){
-                    ?>
-                    <span class="badge badge-danger">Inactive Account</span>
-                    <?php
-                }
-            ?>            
-        </h6>
-        <h6 class="mt-1">
-        <?php echo 'System Generated Emp # '.$row['user_emp_id']; ?>
-        </h6>
-        <h6 class="mt-1">
-        <i class="fa fa-envelope-o"></i> <?php echo $row['user_email'].' , '.$row['user_email_secondary']; ?>
-        </h6>
-        <h6 class="mt-1 mb-4">
-            <i class="fa fa-phone"></i> <?php echo $row['user_phone1'].' , '.$row['user_phone2']; ?>
-        </h6>
+		<?php
+			// Show server side flash messages
+			if (isset($alert_message)) {
+				$html_alert_ui = '';                
+				$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
+				echo $html_alert_ui;
+			}
+		?>
+		<?php   
+			$img_src = "";
+			$default_path = "assets/dist/img/default_user.jpg";
+			if(isset($profile_pic)){					
+				$user_dp = "assets/uploads/user/profile_pic/".$profile_pic;					
+				if (file_exists(FCPATH . $user_dp)) {
+					$img_src = $user_dp;
+				}else{
+					$img_src = $default_path;
+				}
+			}else{
+				$img_src = $default_path;
+			}
+		?>
+
+		<div class="row">
+			<div class="col-md-2 mt-3">
+				<img class="align-self-center mr-3 rounded dp" src="<?php echo base_url($img_src);?>">
+			</div>
+			<div class="col-md-10">
+				<h3 class="mt-3"><?php echo $row['user_title'].' '.$row['user_firstname'].' '.$row['user_lastname']; ?></h3>
+				<h6 class="mt-1">
+					<?php 
+						if($row['user_account_active']=='Y'){
+							?>
+							<span class="badge badge-success">Active Account</span>                        
+							<?php
+						}
+						if($row['user_account_active']=='N'){
+							?>
+							<span class="badge badge-danger">Inactive Account</span>
+							<?php
+						}
+					?>            
+				</h6>
+				<h6 class="mt-1">
+				<?php echo 'Emp # '.$row['user_emp_id']; ?>
+				</h6>
+				<h6 class="mt-1">
+				<i class="fa fa-envelope-o"></i> <?php echo $row['user_email'].' , '.$row['user_email_secondary']; ?>
+				</h6>
+				<h6 class="mt-1 mb-4">
+					<i class="fa fa-phone"></i> <?php echo $row['user_phone1'].' , '.$row['user_phone2']; ?>
+				</h6>
+			</div>
+		</div>
+
+		
+        
 
         <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>
         <?php echo form_hidden('form_action', 'update_profile'); ?>
@@ -189,9 +214,11 @@
 			  </div>
 			</div>
 			
+			<?php /* ?>
+
 			<div class="form-row">				
 				<div class="form-group col-md-4">
-				  <label for="user_role" class="">Role Access Group (Permission) <span class="required">*</span></label>
+				  <label for="user_role" class="">Access Group <span class="required">*</span></label>
 					<?php
 					echo form_dropdown('user_role', $arr_roles, isset($row['user_role'])?$row['user_role']:set_value('user_role'), array(
 						'class' => 'form-control field-help'
@@ -201,14 +228,29 @@
 				</div>
 			</div>
 
+			<?php */ ?>
+			<?php echo form_hidden('user_role', 3); ?>
+
             <div class="form-row">				
 				<div class="form-group col-md-4">
-				  <label for="user_account_active" class="">Account Status</label>
-					<?php
-					echo form_dropdown('user_account_active', array('Y'=>'Active','N'=>'Deactive'), isset($row['user_account_active'])?$row['user_account_active']:set_value('user_account_active'), array(
-						'class' => 'form-control field-help'
-					));
-					?> 
+				  <label for="user_account_active" class="">Account Active ? <span class="required">*</span></label>
+				  	<div class="">
+						<div class="custom-control custom-radio custom-control-inline">
+							<?php
+								$radio_is_checked = ($this->input->post('user_account_active') === 'Y' || $row['user_account_active'] == 'Y');
+								echo form_radio(array('name' => 'user_account_active','value' => 'Y','id' => 'Y','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('user_account_active', 'Y'));
+							?>
+							<label class="custom-control-label" for="Y">Yes</span></label>
+						</div>
+						
+						<div class="custom-control custom-radio custom-control-inline">
+							<?php
+								$radio_is_checked = ($this->input->post('user_account_active') === 'N' || $row['user_account_active'] == 'N');
+								echo form_radio(array('name' => 'user_account_active', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_account_active', 'N'));
+							?>
+							<label class="custom-control-label" for="N">No</span></label>
+						</div>								
+					</div>
 					<?php echo form_error('user_account_active'); ?>
 				</div>
 			</div>

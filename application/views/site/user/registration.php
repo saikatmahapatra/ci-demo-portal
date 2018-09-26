@@ -17,7 +17,7 @@
 			<div class="card-body">
 				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>
 				<?php echo form_hidden('form_action', 'self_registration'); ?>        
-				<?php echo form_hidden('role_segment', 3); ?>        
+				<?php echo form_hidden('user_role', 3); ?>        
 				<div class="form-row">
 				
 					<div class="form-group col-md-3">

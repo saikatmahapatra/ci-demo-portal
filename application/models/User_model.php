@@ -245,6 +245,7 @@ class User_model extends CI_Model {
 	function get_user_role_dropdown() {
         $result = array();
         $this->db->select('id,role_name,role_weight');
+        $this->db->where('role_active','Y');
         $query = $this->db->get('roles');
         $result = array('' => 'Select');
         if ($query->num_rows()) {

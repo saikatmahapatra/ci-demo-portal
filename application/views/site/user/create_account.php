@@ -139,7 +139,7 @@
 			</div><?php */ ?>
 			
 			<div class="form-group col-md-4">                            
-				<label for="user_doj" class="">Date of Joining <span class="required">*</span></label>				
+				<label for="user_doj" class="">Date of Joining </label>				
 				<?php
 				echo form_input(array(
 					'name' => 'user_doj',
@@ -156,7 +156,7 @@
 			</div>
 			
 			<div class="form-group col-md-4">
-			  <label for="user_designation" class="">Designation <span class="required">*</span></label>
+			  <label for="user_designation" class="">Designation </label>
 				<?php
 				echo form_dropdown('user_designation', $arr_designations, set_value('user_designation'), array(
 					'class' => 'form-control',									
@@ -166,7 +166,7 @@
 			</div>	
 
 			<div class="form-group col-md-4">
-			  <label for="user_department" class="">Department <span class="required">*</span></label>
+			  <label for="user_department" class="">Department </label>
 				<?php
 				echo form_dropdown('user_department', $arr_departments, set_value('user_department'), array(
 					'class' => 'form-control'
@@ -203,53 +203,31 @@
 				</div>
 				<div class="form-group col-md-6">
 					<label for="gender">Gender <span class="required">*</span></label>
-					<div class="form-radio">
-						<?php
-						$radio_is_checked = $this->input->post('user_gender') === 'M';
-						echo form_radio(array(
-							'name' => 'user_gender',
-							'value' => 'M',
-							'id' => 'm',
-							'checked' => $radio_is_checked,
-							'class' => '',
-								), set_radio('user_gender', 'M')
-						);
-						?>
-						<label class="form-radio-label mr-3" for="m">Male</span></label>
+					<div class="">
+						<div class="custom-control custom-radio custom-control-inline">
+							<?php
+								$radio_is_checked = $this->input->post('user_gender') === 'M';
+								echo form_radio(array('name' => 'user_gender','value' => 'M','id' => 'M','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('user_gender', 'M'));
+							?>
+							<label class="custom-control-label" for="M">Male</span></label>
+						</div>
 						
-						<?php
-						$radio_is_checked = $this->input->post('user_gender') === 'F';
-						echo form_radio(array(
-							'name' => 'user_gender',
-							'value' => 'F',
-							'id' => 'f',
-							'checked' => $radio_is_checked,
-							'class' => ''
-								), set_radio('user_gender', 'F')
-						);
-						?>
-						<label class="form-radio-label mr-3" for="f">Female</span></label>
-						
-						<?php
-						$radio_is_checked = $this->input->post('user_gender') === 'T';
-						echo form_radio(array(
-							'name' => 'user_gender',
-							'value' => 'T',
-							'id' => 't',
-							'checked' => $radio_is_checked,
-							'class' => ''
-								), set_radio('user_gender', 'T')
-						);
-						?>
-						<label class="form-radio-label mr-3" for="t">Others</span></label>
+						<div class="custom-control custom-radio custom-control-inline">
+							<?php
+								$radio_is_checked = $this->input->post('user_gender') === 'F';
+								echo form_radio(array('name' => 'user_gender', 'value' => 'F', 'id' => 'F', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_gender', 'F'));
+							?>
+							<label class="custom-control-label" for="F">Female</span></label>
+						</div>								
 					</div>
 					<?php echo form_error('user_gender'); ?>
 			  </div>
 			</div>
 			
+			<?php /* ?>
 			<div class="form-row">				
 				<div class="form-group col-md-6">
-				  <label for="user_role" class="">Role Access Group<span class="required">*</span></label>
+				  <label for="user_role" class="">Access Group <span class="required">*</span></label>
 					<?php
 					echo form_dropdown('user_role', $arr_roles, set_value('user_role'), array(
 						'class' => 'form-control field-help'
@@ -258,6 +236,8 @@
 					<?php echo form_error('user_role'); ?>
 				</div>
 			</div>
+			<?php */ ?>
+			<?php echo form_hidden('user_role', 3); ?>
 
         <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
