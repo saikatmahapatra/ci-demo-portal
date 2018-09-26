@@ -15,8 +15,8 @@
 */
 
 $config['crumb_divider'] = '<span class="divider"></span>';
-$config['tag_open'] = '<nav aria-label="breadcrumb"><ol class="breadcrumb float-right">';
-$config['tag_close'] = '</ol></nav>';
+$config['tag_open'] = '<div class="row"><div class="col-12"><nav aria-label="breadcrumb"><ol class="breadcrumb float-right">';
+$config['tag_close'] = '</ol></nav></div></div>';
 $config['crumb_open'] = '<li class="breadcrumb-item">';
 $config['crumb_last_open'] = '<li class="breadcrumb-item active">';
 $config['crumb_close'] = '</li>';
