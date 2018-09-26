@@ -8656,14 +8656,14 @@ a[data-link-type="user-profile-card"] {
   font-weight: 700;
 }
 
-.alert button.close {
-  color: #FFF;
-}
-
-.alert button.close:hover {
-  color: #FFF;
-}
-
+/*.alert {
+    button.close {
+        color: $white;
+        &:hover {
+            color: $white;
+        }
+    }
+}*/
 .pace {
   pointer-events: none;
   user-select: none;

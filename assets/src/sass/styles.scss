@@ -232,14 +232,15 @@ a[data-link-type="user-profile-card"] {
 }
 
 // Close Button
-.alert {
+
+/*.alert {
     button.close {
         color: $white;
         &:hover {
             color: $white;
         }
     }
-}
+}*/
 
 .pace {
     pointer-events: none;

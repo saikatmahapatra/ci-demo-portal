@@ -135,7 +135,7 @@ class Timesheet extends CI_Controller {
                 $insert_id = $this->timesheet_model->insert_batch($batch_post_data);
                 if ($insert_id) {
                     $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Timesheet entry added successfully.');
-                    $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
+                    $this->session->set_flashdata('flash_message_css', 'alert-success');
                     redirect(current_url());
                 }
             }
@@ -171,7 +171,7 @@ class Timesheet extends CI_Controller {
 				$response = array(
 					'status' => 'ok',
 					'message' => 'Records fetched',
-					'message_css' => 'alert bg-success text-white',
+					'message_css' => 'alert alert-success',
 					'data' => $result_array,
 				);
 			}else{
@@ -259,7 +259,7 @@ class Timesheet extends CI_Controller {
         $res = $this->timesheet_model->delete($where_array);
         if ($res) {
             $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Deleted successfully.');
-            $this->session->set_flashdata('flash_message_css', 'bg-success text-white');
+            $this->session->set_flashdata('flash_message_css', 'alert-success');
             redirect($this->router->directory.$this->router->class.'');
         }
     }
