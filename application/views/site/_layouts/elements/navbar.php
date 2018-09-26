@@ -32,13 +32,13 @@ $segment3 = $this->uri->segment(3);
 				<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/people'); ?>">People</a>
 			</li>
 						
-			<li class="nav-item <?php echo ($segment1=='timesheet') ? 'active':''?>">
+			<li class="d-none nav-item <?php echo ($segment1=='timesheet') ? 'active':''?>">
 				<a class="nav-link" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet</a>
 			</li>
-			<li class="nav-item <?php echo ($segment1=='timesheet') ? 'active':''?>">
+			<li class="d-none nav-item <?php echo ($segment1=='timesheet') ? 'active':''?>">
 				<a class="nav-link" href="#">My Documents</a>
 			</li>
-			<li class="nav-item dropdown <?php echo ($segment2=='user') ? 'active':''?>">
+			<li class="d-none nav-item dropdown <?php echo ($segment2=='user') ? 'active':''?>">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">Self Service</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01">

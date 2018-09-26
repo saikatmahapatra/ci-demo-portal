@@ -33,10 +33,10 @@ $segment3 = $this->uri->segment(3);
 			
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown011" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false">Employee</a>
+					aria-expanded="false">Manage Employees</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown011">
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account');?>">Add New Employee</a>
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Manage Employees</a>
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Manage Employee</a>
 				</div>
 			</li>
 			
@@ -49,7 +49,7 @@ $segment3 = $this->uri->segment(3);
 				</div>
 			</li>
 			
-			<li class="nav-item dropdown">
+			<li class="d-none nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown012" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">Track Timesheet</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown012">
@@ -59,7 +59,7 @@ $segment3 = $this->uri->segment(3);
 				</div>
 			</li>
 			
-			<li class="nav-item <?php echo ($segment1=='home') ? 'active':''?>">
+			<li class="d-none nav-item <?php echo ($segment1=='home') ? 'active':''?>">
 				<a class="nav-link" href="<?php echo base_url('holiday'); ?>">Holiday
 				</a>
 			</li>
