@@ -108,7 +108,7 @@
                 </div>
 				<?php */ ?>
 			<div class="form-group">
-				<label for="user_email_secondary" class="">Email ID (Personal) <span class="required">*</span></label>
+				<label for="user_email_secondary" class="">Email (Personal) <span class="required">*</span></label>
 				<?php
 				echo form_input(array(
 					'name' => 'user_email_secondary',

@@ -19,13 +19,13 @@
 				<?php echo form_hidden('form_action', 'login'); ?>
 				
 					<div class="form-group">
-						<label for="user_email">Email ID</label>
-						<?php echo form_input(array('name' => 'user_email', 'value' => set_value('user_email'),'id' => 'name','class' => 'form-control','placeholder' => 'user@unitedexploration.co.in','maxlength' => '100','autofocus' => true,));?>
+						<label for="user_email">Email <span class="required">*</span></label>
+						<?php echo form_input(array('name' => 'user_email', 'value' => set_value('user_email'),'id' => 'name','class' => 'form-control','placeholder' => '','maxlength' => '100','autofocus' => true,));?>
 						<?php echo form_error('user_email'); ?>
 					</div>
 					<div class="form-group">
-						<label for="user_password">Password</label>
-						<?php echo form_password(array('name' => 'user_password','value' => set_value('user_password'),'id' =>'user_password','placeholder' => 'Login password','class' => 'form-control','maxlength' => '16'));?>
+						<label for="user_password">Password <span class="required">*</span></label>
+						<?php echo form_password(array('name' => 'user_password','value' => set_value('user_password'),'id' =>'user_password','placeholder' => '','class' => 'form-control','maxlength' => '16'));?>
 						<?php echo form_error('user_password'); ?>
 					</div>
 					<!--<div class="form-group">

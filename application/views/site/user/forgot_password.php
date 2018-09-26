@@ -24,7 +24,7 @@
 				<?php echo form_hidden('form_action', 'forgot_password'); ?>
 				
 					<div class="form-group">
-					<label for="user_email">Registered Email Address <span class="required">*</span></label>
+					<label for="user_email">Registered Email <span class="required">*</span></label>
 						<?php echo form_input(array('name' => 'user_email','value' => set_value('user_email'),'id' => 'name','class'=> 'form-control','placeholder' => '','maxlength' => '100','autofocus' => true,));?>
 						<?php echo form_error('user_email'); ?>
 					</div>
