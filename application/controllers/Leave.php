@@ -34,7 +34,7 @@ class Leave extends CI_Controller {
         }
 
         //Has logged in user permission to access this page or method?        
-        $this->common_lib->check_user_role_permission(array(
+        $this->common_lib->is_auth(array(
             'default-super-admin-access',
             'default-admin-access',
             'default-user-access'			
@@ -110,7 +110,7 @@ class Leave extends CI_Controller {
 	
 	function add() {
         //Check user permission by permission name mapped to db
-        //$is_granted = $this->common_lib->check_user_role_permission('timesheet-add');
+        //$is_authorized = $this->common_lib->is_auth('timesheet-add');
         
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');

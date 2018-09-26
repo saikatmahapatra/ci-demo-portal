@@ -21,7 +21,7 @@ class User extends CI_Controller {
 //        }
 //
 //        //Has logged in user permission to access this page or method?        
-//        $this->common_lib->check_user_role_permission(array(
+//        $this->common_lib->is_auth(array(
 //            'default-super-admin-access',
 //            'default-admin-access'
 //        ));
@@ -77,7 +77,7 @@ class User extends CI_Controller {
             redirect($this->router->directory.$this->router->class.'/login');
         }
         //Has logged in user permission to access this page or method?        
-        $this->common_lib->check_user_role_permission(array(
+        $this->common_lib->is_auth(array(
             'default-super-admin-access',
             'default-admin-access',
         ));        
@@ -263,7 +263,7 @@ class User extends CI_Controller {
         $this->profile();
     }
 
-    function auth_error() {
+    function auth_error() {        
 		$this->data['page_heading'] = 'Authorization Error Occured';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/auth_error', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_login', $this->data);
@@ -288,7 +288,7 @@ class User extends CI_Controller {
             redirect($this->router->directory.$this->router->class.'/login');
         }
         //Has logged in user permission to access this page or method?        
-        $this->common_lib->check_user_role_permission(array(
+        $this->common_lib->is_auth(array(
             'default-super-admin-access',
             'default-admin-access',
         ));
@@ -717,7 +717,7 @@ class User extends CI_Controller {
             redirect($this->router->directory.$this->router->class.'/login');
         }
         //Has logged in user permission to access this page or method?        
-        /*$this->common_lib->check_user_role_permission(array(
+        /*$this->common_lib->is_auth(array(
             'default-super-admin-access',
             'default-admin-access',
         ));*/
@@ -750,7 +750,7 @@ class User extends CI_Controller {
             redirect($this->router->directory.$this->router->class.'/login');
         }
         //Has logged in user permission to access this page or method?        
-        /*$this->common_lib->check_user_role_permission(array(
+        /*$this->common_lib->is_auth(array(
             'default-super-admin-access',
             'default-admin-access',
         ));*/
@@ -1130,7 +1130,7 @@ class User extends CI_Controller {
             redirect($this->router->directory.$this->router->class.'/login');
         }
         //Has logged in user permission to access this page or method?        
-        /*$this->common_lib->check_user_role_permission(array(
+        /*$this->common_lib->is_auth(array(
             'default-super-admin-access',
             'default-admin-access',
         ));*/
@@ -1176,7 +1176,7 @@ class User extends CI_Controller {
             redirect($this->router->directory.$this->router->class.'/login');
         }
         //Has logged in user permission to access this page or method?        
-        $this->common_lib->check_user_role_permission(array(
+        $this->common_lib->is_auth(array(
             'default-super-admin-access',
             'default-admin-access',
             'update-emp-profile'
@@ -1248,7 +1248,7 @@ class User extends CI_Controller {
             redirect($this->router->directory.$this->router->class.'/login');
         }
         //Has logged in user permission to access this page or method?        
-        /*$this->common_lib->check_user_role_permission(array(
+        /*$this->common_lib->is_auth(array(
             'default-super-admin-access',
             'default-admin-access',
         ));*/
@@ -1432,7 +1432,7 @@ class User extends CI_Controller {
             redirect($this->router->directory.$this->router->class.'/login');
         }
         //Has logged in user permission to access this page or method?        
-        $this->common_lib->check_user_role_permission(array(
+        $this->common_lib->is_auth(array(
             'default-super-admin-access',
             'default-admin-access',
         ));

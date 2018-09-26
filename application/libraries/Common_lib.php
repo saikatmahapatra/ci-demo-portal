@@ -363,30 +363,30 @@ class Common_lib {
      * @param type $redirect
      * @param type $redirect_uri
      */
-    function check_user_role_permission($check_permissions, $redirect = TRUE, $redirect_uri = NULL) {
+    function is_auth($check_permissions, $redirect = TRUE, $redirect_uri = NULL) {
         $match_count = 0;
-        $result = array('is_granted' => FALSE, 'status' => '0', 'message' => 'checking permission');
+        $result = array('is_authorized' => FALSE, 'status' => '0', 'message' => 'checking permission');
         $user_role_id = $this->CI->session->userdata['sess_user']['user_role'];
         $arr_user_permissions = $this->CI->user_model->get_user_role_permission($user_role_id);
         if (isset($check_permissions) && count($check_permissions) > 0) {
             if (isset($arr_user_permissions) && count($arr_user_permissions) > 0) {
                 $match_count = count(array_intersect($arr_user_permissions, $check_permissions));
                 if ($match_count > 0) {
-                    $result = array('is_granted' => TRUE, 'status' => '2', 'message' => 'some of the permissions match found and validated');
+                    $result = array('is_authorized' => TRUE, 'status' => '2', 'message' => 'some of the permissions match found and validated');
                 } else {
                     $this->CI->session->unset_userdata('sess_user');
-                    $result = array('is_granted' => FALSE, 'status' => '3', 'message' => 'no permissions match found or validated');
+                    $result = array('is_authorized' => FALSE, 'status' => '3', 'message' => 'no permissions match found or validated');
                 }
             } else {
                 $this->CI->session->unset_userdata('sess_user');
-                $result = array('is_granted' => FALSE, 'status' => '5', 'message' => 'user role and permission list not found in database');
+                $result = array('is_authorized' => FALSE, 'status' => '5', 'message' => 'user role and permission list not found in database');
             }
         } else {
-            $result = array('is_granted' => TRUE, 'status' => '6', 'message' => 'no permissions checking array passed');
+            $result = array('is_authorized' => TRUE, 'status' => '6', 'message' => 'no permissions checking array passed');
         }
         //print_r($result);
         //die();
-        if ($redirect == TRUE && $result['is_granted'] == FALSE) {
+        if ($redirect == TRUE && $result['is_authorized'] == FALSE) {
             $uri = isset($redirect_uri) ? $redirect_uri : $this->router->directory.'/user/auth_error';
             redirect($uri);
         }

@@ -20,7 +20,7 @@ class Home extends CI_Controller {
         }
 
         //Has logged in user permission to access this page or method?        
-        /*$this->common_lib->check_user_role_permission(array(
+        /*$this->common_lib->is_auth(array(
             'default-super-admin-access',
             'default-admin-access'
         ));*/
@@ -55,10 +55,10 @@ class Home extends CI_Controller {
 
     function index() {
         // Check user permission by permission name mapped to db
-        // $is_granted = $this->common_lib->check_user_role_permission('cms-list-view');
+        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
 		
 		// Check user permission by permission name mapped to db
-        // $is_granted = $this->common_lib->check_user_role_permission('cms-list-view');
+        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
 			
 		$this->breadcrumbs->push('View','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
@@ -97,10 +97,10 @@ class Home extends CI_Controller {
 	
 	function details() {
         // Check user permission by permission name mapped to db
-        // $is_granted = $this->common_lib->check_user_role_permission('cms-list-view');
+        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
 		
 		// Check user permission by permission name mapped to db
-        // $is_granted = $this->common_lib->check_user_role_permission('cms-list-view');
+        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
 			
 		$this->breadcrumbs->push('View','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();

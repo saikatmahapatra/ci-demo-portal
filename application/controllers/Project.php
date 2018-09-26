@@ -20,7 +20,7 @@ class Project extends CI_Controller {
         }
 
         //Has logged in user permission to access this page or method?        
-        $this->common_lib->check_user_role_permission(array(
+        $this->common_lib->is_auth(array(
             'default-super-admin-access',
             'default-admin-access'
         ));
@@ -61,7 +61,7 @@ class Project extends CI_Controller {
 
     function index() {
         // Check user permission by permission name mapped to db
-        // $is_granted = $this->common_lib->check_user_role_permission('cms-list-view');
+        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
 			
 		$this->breadcrumbs->push('View','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
@@ -154,7 +154,7 @@ class Project extends CI_Controller {
 
     function edit() {
         //Check user permission by permission name mapped to db
-        //$is_granted = $this->common_lib->check_user_role_permission('cms-edit');
+        //$is_authorized = $this->common_lib->is_auth('cms-edit');
 		//$this->data['page_heading'] = "Edit Page Content";
 		$this->breadcrumbs->push('Edit','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
@@ -185,7 +185,7 @@ class Project extends CI_Controller {
 
     function delete() {
         //Check user permission by permission name mapped to db
-        //$is_granted = $this->common_lib->check_user_role_permission('cms-delete');
+        //$is_authorized = $this->common_lib->is_auth('cms-delete');
 
         $where_array = array('id' => $this->id);
         $res = $this->project_model->delete($where_array);
