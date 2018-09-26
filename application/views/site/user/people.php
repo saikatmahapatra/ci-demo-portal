@@ -18,7 +18,7 @@
 				'name' => 'user_search_keywords',				
 				'id' => 'user_search_keywords',
 				'class' => 'form-control',
-				'placeholder' => 'name / email / mobile',			
+				'placeholder' => 'Search Employee...',			
 			));
 			?>
 			<?php echo form_error('user_search_keywords'); ?>
@@ -80,7 +80,7 @@
 						<div class="col-md-4 content-wrap">
 							<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile/'.$this->common_lib->encode($row['id']));?>" data-link-type="user-profile-card">
 							<div class="media border mb-2 mt-2 p-2">
-								<img class="align-self-center mr-3 rounded" src="<?php echo base_url($img_src);?>" data-holder-rendered="true" style="width: 75px; height: 75px;">
+								<img class="align-self-center mr-3 rounded dp-sm" src="<?php echo base_url($img_src);?>">
 								<div class="media-body">
 									<h6 class="mt-0"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h6>                            
 									<div class=""><?php echo 'Emp # '.$row['user_emp_id']; ?></div>

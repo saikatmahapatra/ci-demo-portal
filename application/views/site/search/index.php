@@ -47,7 +47,7 @@ if(isset($data_rows)){
             <div class="col-md-12 mt-3 mb-3">
                 <a href="<?php echo base_url($this->router->directory.'user/profile/'.$this->common_lib->encode($row['id']));?>" data-link-type="user-profile-card">
                     <div class="media">
-                        <img class="align-self-center mr-3" data-src="holder.js/64x64" alt="64x64" src="<?php echo base_url($img_src);?>" data-holder-rendered="true" style="width: 75px; height: 75px;">
+                        <img class="align-self-center mr-3 rounded dp-sm" data-src="holder.js/64x64" alt="64x64" src="<?php echo base_url($img_src);?>">
                         <div class="media-body">
                             <h5 class="mt-0"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h5>                            
                             <div class="mt-1"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
