@@ -856,7 +856,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_heading'] = 'Add Communication Adrress';
+		$this->data['page_heading'] = 'Add Communication Address';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/add_address', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
@@ -898,7 +898,7 @@ class User extends CI_Controller {
             }
         }
 		
-		$this->data['page_heading'] = 'Edit Communication Adrress';
+		$this->data['page_heading'] = 'Edit Communication Address';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit_address', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
