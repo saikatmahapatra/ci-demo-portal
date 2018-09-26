@@ -178,7 +178,7 @@ class Leave extends CI_Controller {
 				$response = array(
 					'status' => 'ok',
 					'message' => 'No records found',
-					'message_css' => 'alert bg-danger text-white',
+					'message_css' => 'alert alert-danger',
 					'data' => $result_array,
 				);
 			}

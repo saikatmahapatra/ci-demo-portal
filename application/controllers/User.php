@@ -244,7 +244,7 @@ class User extends CI_Controller {
                     $login_data = $login_result['data'];
                     if ($login_status == 'error') {
                         $this->session->set_flashdata('flash_message', $message);
-                        $this->session->set_flashdata('flash_message_css', 'bg-danger text-white');
+                        $this->session->set_flashdata('flash_message_css', 'alert-danger');
                         redirect(current_url());
                     }
                     if ($login_status == 'success') {
@@ -500,12 +500,12 @@ class User extends CI_Controller {
                 redirect($this->router->directory.$this->router->class.'/login');
             } else {
                 $this->session->set_flashdata('flash_message', 'Sorry ! Unable to activate your account');
-				$this->session->set_flashdata('flash_message_css', 'bg-danger text-white');
+				$this->session->set_flashdata('flash_message_css', 'alert-danger');
                 redirect($this->router->directory.$this->router->class.'/login');
             }
         } else {
             $this->session->set_flashdata('flash_message', 'No activation token match found for you');
-			$this->session->set_flashdata('flash_message_css', 'bg-danger text-white');
+			$this->session->set_flashdata('flash_message_css', 'alert-danger');
             redirect($this->router->directory.$this->router->class.'/login');
         }
     }
@@ -575,7 +575,7 @@ class User extends CI_Controller {
 
         if (!isset($this->data['password_reset_key'])) {
             $this->data['alert_message'] = 'The password reset token not found.';
-            $this->data['alert_message_css'] = 'bg-danger text-white';
+            $this->data['alert_message_css'] = 'alert-danger';
         }
 
         if ($this->input->post('form_action') == 'reset_password') {
@@ -601,7 +601,7 @@ class User extends CI_Controller {
                     }
                 } else {
                     $this->session->set_flashdata('flash_message', '<strong>Sorry! </strong> Invalid email or password reset link.');
-                    $this->session->set_flashdata('flash_message_css', 'bg-danger text-white');
+                    $this->session->set_flashdata('flash_message_css', 'alert-danger');
                     redirect(current_url());
                 }
             }
@@ -819,7 +819,7 @@ class User extends CI_Controller {
             $response = array(
                 'status' => 'error',
                 'message' => 'Error Occured',
-                'message_css' => 'alert bg-danger text-white',
+                'message_css' => 'alert alert-danger',
                 'data' => array(),
             );
         }
@@ -922,7 +922,7 @@ class User extends CI_Controller {
 			redirect($this->router->directory.$this->router->class.'/my_profile');
 		}else{
 			$this->session->set_flashdata('flash_message', 'We\'re unable to process your request.');
-			$this->session->set_flashdata('flash_message_css', 'bg-danger text-white');
+			$this->session->set_flashdata('flash_message_css', 'alert-danger');
 			redirect($this->router->directory.$this->router->class.'/my_profile');
 		}
     }*/
@@ -1102,7 +1102,7 @@ class User extends CI_Controller {
 			redirect($this->router->directory.$this->router->class.'/profile');
 		}else{
 			$this->session->set_flashdata('flash_message', 'We\'re unable to process your request.');
-			$this->session->set_flashdata('flash_message_css', 'bg-danger text-white');
+			$this->session->set_flashdata('flash_message_css', 'alert-danger');
 			redirect($this->router->directory.$this->router->class.'/profile');
 		}
     }
@@ -1353,7 +1353,7 @@ class User extends CI_Controller {
             } else if (sizeof($upload_result['upload_error']) > 0) {
                 $error_message = $upload_result['upload_error'];
                 $this->session->set_flashdata('flash_message', '<strong>Error!</strong> ' . $error_message);
-                $this->session->set_flashdata('flash_message_css', 'bg-danger text-white');
+                $this->session->set_flashdata('flash_message_css', 'alert-danger');
                 redirect(current_url());
             }
         }
@@ -1379,7 +1379,7 @@ class User extends CI_Controller {
 					redirect($this->router->directory.$this->router->class.'/profile_pic');
 				}else{
 					$this->session->set_flashdata('flash_message', 'Error occured while processing your request.');
-					$this->session->set_flashdata('flash_message_css', 'bg-danger text-white');
+					$this->session->set_flashdata('flash_message_css', 'alert-danger');
 					redirect($this->router->directory.$this->router->class.'/profile_pic');
 				}
 			}
