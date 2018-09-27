@@ -56,8 +56,8 @@
 							?>
 						</div>
 						<!--<div class="small"><?php //echo isset($row['role_name']) ? $row['role_name'] : ''; ?></div>-->
-						<div class="small"><?php echo isset($row['user_emp_id']) ? 'Emp # '.$row['user_emp_id'] : ''; ?></div>
-						<div class="small"><?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
+						<div class=""><?php echo isset($row['user_emp_id']) ? 'Emp # '.$row['user_emp_id'] : ''; ?></div>
+						<div class=""><?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
 						<div class="">
 							<i class="fa fa-envelope-o" aria-hidden="true"></i> 
 							<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>

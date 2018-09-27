@@ -55,10 +55,10 @@ $segment3 = $this->uri->segment(3);
 			<li class="nav-item">
 				<?php echo form_open(base_url('search/index'), array( 'method' => 'get','class'=>'form-inline','name' => '','id' => 'ci-form-helper',)); ?>
 				<?php echo form_hidden('form_action', 'search'); ?>
-				<div class="input-group my-1">
-						<input type="text" name="q" class="form-control form-control-sm" placeholder="Search Employee..." aria-label="Search" aria-describedby="basic-addon2">
+				<div class="input-group">
+						<input type="text" name="q" class="form-control" placeholder="Search Employee..." aria-label="Search" aria-describedby="basic-addon2">
 						<div class="input-group-append">
-							<button class="btn btn-light btn-sm" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+							<button class="btn btn-light" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
 						</div>
 					</div>
 				<?php echo form_close(); ?>
