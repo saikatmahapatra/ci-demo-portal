@@ -439,7 +439,7 @@ class Common_lib {
 	/* URL-safe encoding */	
 	function encode($string, $key="", $url_safe=TRUE){
 		$output = $string;
-		$required_encryption = true;
+		$required_encryption = FALSE;
 		$this->CI->load->library('MY_Encrypt');
 		if($required_encryption==true){
 			$output =  $this->CI->my_encrypt->encode($string, $key="", $url_safe=TRUE);
@@ -450,7 +450,7 @@ class Common_lib {
 	/* URL-safe decoding */
 	function decode($string, $key=""){
 		$output = $string;
-		$required_encryption = true;
+		$required_encryption = FALSE;
 		$this->CI->load->library('MY_Encrypt');
 		if($required_encryption==true){
 			$output =  $this->CI->my_encrypt->decode($string, $key="");
