@@ -373,12 +373,10 @@ class Common_lib {
                 $match_count = count(array_intersect($arr_user_permissions, $check_permissions));
                 if ($match_count > 0) {
                     $result = array('is_authorized' => TRUE, 'status' => '2', 'message' => 'some of the permissions match found and validated');
-                } else {
-                    $this->CI->session->unset_userdata('sess_user');
+                } else {                    
                     $result = array('is_authorized' => FALSE, 'status' => '3', 'message' => 'no permissions match found or validated');
                 }
-            } else {
-                $this->CI->session->unset_userdata('sess_user');
+            } else {                
                 $result = array('is_authorized' => FALSE, 'status' => '5', 'message' => 'user role and permission list not found in database');
             }
         } else {
@@ -386,9 +384,15 @@ class Common_lib {
         }
         //print_r($result);
         //die();
-        if ($redirect == TRUE && $result['is_authorized'] == FALSE) {
-            $uri = isset($redirect_uri) ? $redirect_uri : $this->router->directory.'/user/auth_error';
-            redirect($uri);
+        if ($redirect == TRUE) {
+            if($result['is_authorized'] == FALSE){
+                $this->CI->session->unset_userdata('sess_user');
+                $uri = isset($redirect_uri) ? $redirect_uri : $this->router->directory.'/user/auth_error';
+                redirect($uri);
+            }            
+        }
+        if($redirect == FALSE){
+            return $result['is_authorized'];
         }
         //return $result;
     }
