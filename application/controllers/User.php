@@ -185,7 +185,14 @@ class User extends CI_Controller {
             $acc_status_class = ($result['user_account_active'] == 'Y') ? 'btn btn-sm btn-outline-danger' : 'btn btn-sm btn-outline-success';
             $acc_status_set = ($result['user_account_active'] == 'Y') ? 'N' : 'Y';
             
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $this->common_lib->encode($result['id'])), 'Edit', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $this->common_lib->encode($result['id'])), '<i class="fa fa-eye" aria-hidden="true"></i> View', array(
+                'class' => 'btn btn-sm btn-outline-secondary mr-1',
+                'data-toggle' => 'tooltip',
+                'data-original-title' => 'View Profile',
+                'title' => 'View Profile'
+            ));
+
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $this->common_lib->encode($result['id'])), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
                 'class' => 'btn btn-sm btn-outline-secondary mr-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit Profile',
@@ -431,7 +438,7 @@ class User extends CI_Controller {
                     $this->email->message($html);
                     $this->email->send();
                     //echo $this->email->print_debugger();
-                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Your account has been created successfully. Your Employee # is <span class="font-weight-bold">'.$user_emp_id.'</span>. Account activation link has been sent to your registered email address. Please activate your account to login.');
+                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Your account has been created successfully.<br>Your System generated Employee ID is <span class="font-weight-bold h5">'.$user_emp_id.'</span>. <br>Account activation link has been sent to your registered email address. Please activate your account to login.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     redirect(current_url());
                 }
@@ -854,7 +861,7 @@ class User extends CI_Controller {
                 );                
                 $res = $this->user_model->insert($postdata,'user_addresses');
                 if ($res) {
-                    $this->session->set_flashdata('flash_message', 'Your address has been added successfully');
+                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Address has been added successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     redirect($this->router->directory.$this->router->class.'/my_profile');
                 }
@@ -895,7 +902,7 @@ class User extends CI_Controller {
                 $where = array('id'=>$address_id, 'user_id' => $this->sess_user_id);
                 $res = $this->user_model->update($postdata, $where,'user_addresses');
                 if ($res) {
-                    $this->session->set_flashdata('flash_message', 'Address has been updated successfully');
+                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Address has been updated successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     redirect($this->router->directory.$this->router->class.'/my_profile');
                 }
@@ -919,7 +926,7 @@ class User extends CI_Controller {
 		$where = array('id'=>$address_id, 'user_id' => $this->sess_user_id);
 		$res = $this->user_model->delete($where,'user_addresses');
 		if ($res) {
-			$this->session->set_flashdata('flash_message', 'Your address has been deleted successfully.');
+			$this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Address has been deleted successfully.');
 			$this->session->set_flashdata('flash_message_css', 'alert-success');
 			redirect($this->router->directory.$this->router->class.'/my_profile');
 		}else{
@@ -1038,7 +1045,7 @@ class User extends CI_Controller {
                 );                
                 $res = $this->user_model->insert($postdata,'user_academics');
                 if ($res) {
-                    $this->session->set_flashdata('flash_message', 'Your education has been added successfully');
+                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Education has been added successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     redirect($this->router->directory.$this->router->class.'/my_profile');
                 }
@@ -1077,7 +1084,7 @@ class User extends CI_Controller {
                 $where = array('id'=>$education_id, 'user_id' => $this->sess_user_id);
                 $res = $this->user_model->update($postdata, $where,'user_academics');
                 if ($res) {
-                    $this->session->set_flashdata('flash_message', 'Education has been updated successfully');
+                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Education has been updated successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     redirect($this->router->directory.$this->router->class.'/my_profile');
                 }
@@ -1099,7 +1106,7 @@ class User extends CI_Controller {
 		$where = array('id'=>$id, 'user_id' => $this->sess_user_id);
 		$res = $this->user_model->delete($where,'user_academics');
 		if ($res) {
-			$this->session->set_flashdata('flash_message', 'Your education details has been deleted successfully.');
+			$this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Dducation details has been deleted successfully.');
 			$this->session->set_flashdata('flash_message_css', 'alert-success');
 			redirect($this->router->directory.$this->router->class.'/my_profile');
 		}else{
@@ -1158,7 +1165,7 @@ class User extends CI_Controller {
                 $where = array('id' => $this->sess_user_id);
                 $res = $this->user_model->update($postdata, $where);
                 if ($res) {
-                    $this->session->set_flashdata('flash_message', 'Basic profile information has been updated successfully.');
+                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Basic information has been updated successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     redirect($this->router->directory.$this->router->class.'/my_profile');
                 }
@@ -1197,12 +1204,12 @@ class User extends CI_Controller {
                 $dob = $this->input->post('dob_year') . '-' . $this->input->post('dob_month') . '-' . $this->input->post('dob_day');
                 $postdata = array(
                     'user_title' => $this->input->post('user_title'),                    
-                    'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),                    
+                    'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),
                     'user_lastname' => ucwords(strtolower($this->input->post('user_lastname'))),
                     'user_gender' => $this->input->post('user_gender'),
                     'user_dob' => $dob,
                     'user_doj' => $this->common_lib->convert_to_mysql($this->input->post('user_doj')),
-                    'user_role' => $this->input->post('user_role'),
+                    //'user_role' => $this->input->post('user_role'),
                     'user_department' => $this->input->post('user_department'),
                     'user_designation' => $this->input->post('user_designation'),
                     'user_account_active' => $this->input->post('user_account_active')                
@@ -1210,7 +1217,7 @@ class User extends CI_Controller {
                 $where = array('id' => $user_id);
                 $res = $this->user_model->update($postdata, $where);
                 if ($res) {
-                    $this->session->set_flashdata('flash_message', 'Employee information has been updated successfully');
+                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Employee information has been updated successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     redirect(current_url());
                 }
@@ -1232,10 +1239,10 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('dob_year', 'birth year selection', 'required');
         //$this->form_validation->set_rules('user_dob', 'date of birth', 'required');
         $this->form_validation->set_rules('user_doj', 'date of joining', 'required');
-        $this->form_validation->set_rules('user_role', 'access group', 'required');
+        //$this->form_validation->set_rules('user_role', 'access group', 'required');
         $this->form_validation->set_rules('user_designation', 'designation', 'required');
         $this->form_validation->set_rules('user_department', 'department', 'required');
-        $this->form_validation->set_rules('user_account_active', 'account statuc', 'required');
+        //$this->form_validation->set_rules('user_account_active', 'account statuc', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -1378,7 +1385,7 @@ class User extends CI_Controller {
 				$where_array = array('id'=>$this->sess_user_id);
 				$res = $this->user_model->update($postdata, $where_array);
 				if($res){
-					$this->session->set_flashdata('flash_message', 'Profile picture has been deleted.');
+					$this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Profile picture has been deleted successfully.');
 					$this->session->set_flashdata('flash_message_css', 'alert-success');
 					redirect($this->router->directory.$this->router->class.'/profile_pic');
 				}else{
@@ -1407,7 +1414,7 @@ class User extends CI_Controller {
                 );                
                 $res = $this->user_model->insert($postdata,'user_projects');
                 if ($res) {
-                    $this->session->set_flashdata('flash_message', 'Project has been added successfully');
+                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Project has been added successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     redirect($this->router->directory.$this->router->class.'/profile');
                 }

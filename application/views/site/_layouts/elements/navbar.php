@@ -23,11 +23,16 @@ $segment3 = $this->uri->segment(3);
 					<span class="sr-only">(current)</span>
 				</a>
 			</li>
+			
+			
 			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
-			<li class="nav-item">
-			<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/administrator'); ?>"><i class="fa fa-globe" aria-hidden="true"></i> Admin</a>
-			</li>
-			<?php } ?>			
+				<li class="nav-item">
+					<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/administrator'); ?>"><i class="fa fa-globe" aria-hidden="true"></i> Admin</a>
+				</li>
+				
+			<?php } ?>	
+
+
 			<li class="nav-item <?php echo ($segment2 == 'people') ? 'active':''?>">
 				<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/people'); ?>">People</a>
 			</li>
@@ -73,7 +78,7 @@ $segment3 = $this->uri->segment(3);
 		<ul class="navbar-nav my-2 my-lg-0">
 			<?php echo form_open(base_url('search/index'), array( 'method' => 'get','class'=>'form-inline','name' => '','id' => 'ci-form-helper',)); ?>
 			<?php echo form_hidden('form_action', 'search'); ?>
-                <input class="form-control mr-sm-2" name="search_keywords" type="text" value="<?php echo $this->input->post('search_keywords');?>" placeholder="Search..." aria-label="Search">
+                <input class="form-control mr-sm-2" name="search_keywords" type="text" value="<?php echo $this->input->post('search_keywords');?>" placeholder="Search Employee..." aria-label="Search">
                 <button class="btn btn-light my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
             <?php echo form_close(); ?>
 		</ul>

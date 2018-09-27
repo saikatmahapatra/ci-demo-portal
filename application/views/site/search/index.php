@@ -47,11 +47,11 @@ if(isset($data_rows)){
                     <div class="media">
                         <img class="align-self-center mr-3 rounded dp-sm" data-src="holder.js/64x64" alt="64x64" src="<?php echo base_url($img_src);?>">
                         <div class="media-body">
-                            <h5 class="mt-0"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h5>                            
-                            <div class="mt-1"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
-                            <div class=""><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
-                            <div class=""><?php echo 'Emp # '.$row['user_emp_id']; ?></div>
-                            <div class=""><?php echo $row['designation_name']; ?></div>                            
+                        <h6 class="mt-0"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h6>                            
+                        <div class=""><?php echo 'Emp # '.$row['user_emp_id']; ?></div>
+                        <div class=""><?php echo $row['designation_name']; ?></div> 
+                        <div class="mt-1"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
+                        <div class="mt-1"><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>                            
                         </div>
                     </div>
                 </a>

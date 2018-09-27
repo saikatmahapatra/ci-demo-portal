@@ -6,7 +6,7 @@ $segment3 = $this->uri->segment(3);
 //print_r($user_profile_image);
 ?>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">	
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">	
 	<a class="navbar-brand" href="<?php echo base_url('user/administrator'); ?>">
 	<img class="" style="width:80px;" src="<?php echo base_url('assets/src/img/logo.svg');?>">
 		<?php //echo $this->config->item('app_logo_name_admin_dashboard'); ?>
@@ -88,7 +88,11 @@ $segment3 = $this->uri->segment(3);
 		
 		
 		<ul class="navbar-nav my-2 my-lg-0">
-				
+			<?php echo form_open(base_url('search/index'), array( 'method' => 'get','class'=>'form-inline','name' => '','id' => 'ci-form-helper',)); ?>
+			<?php echo form_hidden('form_action', 'search'); ?>
+                <input class="form-control mr-sm-2" name="search_keywords" type="text" value="<?php echo $this->input->post('search_keywords');?>" placeholder="Search Employee..." aria-label="Search">
+                <button class="btn btn-light my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            <?php echo form_close(); ?>
 		</ul>
 		
 	</div>

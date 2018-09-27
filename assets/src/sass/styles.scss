@@ -272,19 +272,19 @@ a[data-link-type="user-profile-card"] {
 
 //CMS Feed Style
 .card-news {
-    border-left: 2px solid $primary-color;
+    border-left: 1px solid $primary-color;
 }
 
 [data-cms-type="notice"] {
-    border-left: 2px solid $primary-color;
+    border-left: 1px solid $color_blue;
 }
 
 [data-cms-type="news"] {
-    border-left: 2px solid $color_green;
+    border-left: 1px solid $color_green;
 }
 
 [data-cms-type="policy"] {
-    border-left: 2px solid $color_red;
+    border-left: 1px solid $color_red;
 }
 
 .bg-maroon {

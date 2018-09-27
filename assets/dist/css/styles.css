@@ -8695,19 +8695,19 @@ a[data-link-type="user-profile-card"] {
 }
 
 .card-news {
-  border-left: 2px solid #5133AB;
+  border-left: 1px solid #5133AB;
 }
 
 [data-cms-type="notice"] {
-  border-left: 2px solid #5133AB;
+  border-left: 1px solid #2672EC;
 }
 
 [data-cms-type="news"] {
-  border-left: 2px solid #00A600;
+  border-left: 1px solid #00A600;
 }
 
 [data-cms-type="policy"] {
-  border-left: 2px solid #AC193D;
+  border-left: 1px solid #AC193D;
 }
 
 .bg-maroon {

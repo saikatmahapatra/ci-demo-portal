@@ -155,10 +155,6 @@
 													</div>
 												</dd>												
 											</dl><!--/dl.row-->
-
-
-
-
 										<?php
 										}
 									}?>
@@ -170,41 +166,26 @@
 					<div class="tab-pane fade" id="nav-education" role="tabpanel" aria-labelledby="nav-education-tab">
 						<div class="row mt-3">
 							<div class="col-md-12">
-								<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"> Add</a>
-								<!--<h6>Educational Qualification</h6><hr>-->
-									<table class="table table-sm mt-1">
-										<thead>
-											<tr class="small">
-												<th>Qualification</th>
-												<th>Specialization</th>
-												<th>Duration</th>
-												<th>Institute/University</th>
-												<th>Marks(%)</th>
-												<th></th>
-											</tr>
-										</thead>
-										<tbody>
-										<?php if(isset($education)){
-											foreach($education as $key=>$edu){
-											?>
-												<tr>
-													<td><?php echo isset($edu['qualification_name'])?$edu['qualification_name']:'';?></td>
-													<td><?php echo isset($edu['specialization_name'])?$edu['specialization_name']:$edu['academic_other_specialization'];?></td>
-													<td><?php echo isset($edu['academic_from_year'])?$edu['academic_from_year'].'-'.$edu['academic_to_year']:'';?></td>
-													<td><?php echo isset($edu['institute_name']) ? $edu['institute_name']: $edu['academic_other_inst'];?></td>
-													<td><?php echo isset($edu['academic_marks_percentage'])?$edu['academic_marks_percentage']:'';?></td>
-													<td>														
-														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
-														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_education/'.$edu["id"]);?>" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>														
-													</td>
-													
-												</tr>
-											<?php
-											}
-										}?>
-										</tbody>				
-									</table>
-											
+								<a class="btn btn-primary btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"> Add</a>
+									<?php if(isset($education)){
+										foreach($education as $key=>$edu){
+										?>
+											<dl class="row">
+												<dt class="col-md-12"><?php echo isset($edu['qualification_name'])?$edu['qualification_name']:'';?> : <?php echo isset($edu['academic_from_year'])?$edu['academic_from_year'].'-'.$edu['academic_to_year']:'';?></dt>
+												<dd class="col-md-12">
+													<div class="mt-2"></div>
+													<div class=""><?php echo isset($edu['specialization_name'])?$edu['specialization_name']:$edu['academic_other_specialization'];?></div>
+													<div class=""><?php echo isset($edu['institute_name']) ? $edu['institute_name']: $edu['academic_other_inst'];?></div>
+													<div class=""><?php echo isset($edu['academic_marks_percentage'])?$edu['academic_marks_percentage'].' %':'';?></div>
+													<div class="mt-2 mb-2">
+													<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+													<!--<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_education/'.$edu["id"]);?>" class="btn btn-outline-danger btn-sm ml-1"><i class="fa fa-trash" aria-hidden="true"> Delete</i></a>-->
+													</div>
+												</dd>												
+											</dl><!--/dl.row-->
+										<?php
+										}
+									}?>
 							</div>
 						</div>
 					</div> <!--/#nav-education-->

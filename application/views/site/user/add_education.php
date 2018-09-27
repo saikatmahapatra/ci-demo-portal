@@ -20,7 +20,7 @@
         <?php echo form_hidden('form_action', 'add'); ?>
 			<div class="form-row">                
 				<div class="form-group col-md-6">                                
-					<label for="academic_qualification" class="">Qualification</label>
+					<label for="academic_qualification" class="">Degree/Qualification <span class="required">*</span></label>
 					<?php
 					echo form_dropdown('academic_qualification', $arr_academic_qualification, set_value('academic_qualification'), array(
 						'class' => 'form-control',
@@ -29,7 +29,7 @@
 					<?php echo form_error('academic_qualification'); ?>
 				</div>			
 				<div class="form-group col-md-6">        							
-					<label for="academic_specialization" class="">Specialization</label>
+					<label for="academic_specialization" class="">Specialization <span class="required">*</span></label>
 					<?php
 					echo form_dropdown('academic_specialization', $arr_academic_specialization, set_value('academic_specialization'), array(
 						'class' => 'form-control',
@@ -39,7 +39,7 @@
 				</div>					
             </div>
 			<div class="form-group">                                
-					<label for="academic_inst" class="">Institute/College/University</label>
+					<label for="academic_inst" class="">Institute/College/University <span class="required">*</span></label>
 					<?php
 					echo form_dropdown('academic_inst', $arr_academic_inst, set_value('academic_inst'), array(
 						'class' => 'form-control',
@@ -49,7 +49,7 @@
 				</div>
 			<div class="form-row">
 				<div class="form-group col-md-4">        						
-					<label for="academic_from_year" class="">From Year</label>
+					<label for="academic_from_year" class="">From Year <span class="required">*</span></label>
 					<?php
 					echo form_input(array(
 						'name' => 'academic_from_year',
@@ -57,13 +57,13 @@
 						'id' => 'academic_from_year',
 						'class' => 'form-control',
 						'maxlength' => '4',
-						'placeholder'=>''
+						'placeholder'=>'YYYY'
 					));
 					?>
 					<?php echo form_error('academic_from_year'); ?>
 				</div>
 				<div class="form-group col-md-4">        						
-					<label for="academic_to_year" class="">To Year</label>
+					<label for="academic_to_year" class="">To Year <span class="required">*</span></label>
 					<?php
 					echo form_input(array(
 						'name' => 'academic_to_year',
@@ -71,13 +71,13 @@
 						'id' => 'academic_to_year',
 						'class' => 'form-control',
 						'maxlength' => '4',
-						'placeholder'=>''
+						'placeholder'=>'YYYY'
 					));
 					?>
 					<?php echo form_error('academic_to_year'); ?>
 				</div>
 				<div class="form-group col-md-4">        						
-					<label for="academic_marks_percentage" class="">Marks/Grade (in percentage)</label>
+					<label for="academic_marks_percentage" class="">% Marks/Grade <span class="required">*</span></label>
 					<?php
 					echo form_input(array(
 						'name' => 'academic_marks_percentage',

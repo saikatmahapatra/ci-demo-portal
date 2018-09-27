@@ -50,8 +50,8 @@
 $count = 1;
 foreach($data_rows as $key=>$row){
 	?>
-	<?php if ($count%3 == 1){ echo '<div class="row mb-5">'; } ?>
-		<div class="col-md-4" data-id="<?php echo $row['id'];?>">
+	<?php //if ($count%3 == 1){ echo '<div class="row mb-5">'; } ?>
+		<div class="col-md-12 mb-3" data-id="<?php echo $row['id'];?>">
 			<div data-cms-type="<?php echo $row['pagecontent_type'];?>" class="card-news pl-2">
 				<div class="card-news-header h6">
 					<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$this->common_lib->encode($row['id']));?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a>
@@ -69,12 +69,12 @@ foreach($data_rows as $key=>$row){
 					<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$this->common_lib->encode($row['id']));?>">Read more</a>				
 				</div>
 			</div>
-		<?php if ($count%3 == 0){ echo '</div>'; } ?>
+		<?php //if ($count%3 == 0){ echo '</div>'; } ?>
 	</div>
 	<?php
 	$count++;
 }
-if ($count%3 != 1) echo "</div>"; 
+//if ($count%3 != 1) echo "</div>"; 
 ?>
 
 <div class="row">

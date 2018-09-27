@@ -81,8 +81,8 @@
 								<img class="align-self-center mr-3 rounded dp-sm" src="<?php echo base_url($img_src);?>">
 								<div class="media-body">
 									<h6 class="mt-0"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h6>                            
-									<div class="small"><?php echo 'Emp # '.$row['user_emp_id']; ?></div>
-									<div class="small"><?php echo $row['designation_name']; ?></div> 
+									<div class=""><?php echo 'Emp # '.$row['user_emp_id']; ?></div>
+									<div class=""><?php echo $row['designation_name']; ?></div> 
 									<div class="mt-1"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
 									<div class="mt-1"><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
 									                           
