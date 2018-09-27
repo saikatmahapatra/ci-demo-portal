@@ -63,8 +63,8 @@ class Search extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         $search_keywords = NULL;
-        if($this->input->get_post('form_action') == 'search' && $this->input->get_post('search_keywords')){
-            $search_keywords = $this->input->get_post('search_keywords');
+        if($this->input->get_post('form_action') == 'search' && $this->input->get_post('q')){
+            $search_keywords = $this->input->get_post('q');
                         
             // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
             $result_array = $this->user_model->get_users(NULL, NULL, NULL, $search_keywords);

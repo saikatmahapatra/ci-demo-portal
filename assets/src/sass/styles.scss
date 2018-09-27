@@ -65,8 +65,8 @@ select.form-control.dob-inline {
 
 .dp {
     //transition: all 0.2s ease-in-out;
-    height: 120px;
-    width: 120px;
+    height: 100px;
+    width: 100px;
     &:hover {
         //border:2px solid #eee;
         //transform:rotate(360deg);
@@ -77,13 +77,18 @@ select.form-control.dob-inline {
 }
 
 .dp-sm {
-    height: 75px;
-    width: 75px;
+    height: 70px;
+    width: 70px;
 }
 
 .dp-xs {
-    height: 64px;
-    width: 64px;
+    height: 50px;
+    width: 50px;
+}
+
+.dp-xxs {
+    height: 32px;
+    width: 32px;
 }
 
 .more-less {

@@ -47,16 +47,17 @@
 						<!--<div class=""><a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><i class="fa fa-pencil"></i> Change/Remove</a></div>-->
 					</div>
 					<div class="col-md-10">
-						<h5 class="">
+						<div class="h5">
 							<?php
 								echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 								echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
 								echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
 								echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
 							?>
-						</h5>
+						</div>
 						<!--<div class="small"><?php //echo isset($row['role_name']) ? $row['role_name'] : ''; ?></div>-->
-						<div class=""><?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
+						<div class="small"><?php echo isset($row['user_emp_id']) ? 'Emp # '.$row['user_emp_id'] : ''; ?></div>
+						<div class="small"><?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
 						<div class="">
 							<i class="fa fa-envelope-o" aria-hidden="true"></i> 
 							<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>

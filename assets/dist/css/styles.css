@@ -8495,8 +8495,8 @@ select.form-control.dob-inline {
 }
 
 .dp {
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
 }
 
 .dp:hover {
@@ -8504,13 +8504,18 @@ select.form-control.dob-inline {
 }
 
 .dp-sm {
-  height: 75px;
-  width: 75px;
+  height: 70px;
+  width: 70px;
 }
 
 .dp-xs {
-  height: 64px;
-  width: 64px;
+  height: 50px;
+  width: 50px;
+}
+
+.dp-xxs {
+  height: 32px;
+  width: 32px;
 }
 
 .more-less {

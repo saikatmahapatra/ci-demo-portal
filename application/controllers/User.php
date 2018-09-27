@@ -1238,11 +1238,11 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
         $this->form_validation->set_rules('dob_year', 'birth year selection', 'required');
         //$this->form_validation->set_rules('user_dob', 'date of birth', 'required');
-        $this->form_validation->set_rules('user_doj', 'date of joining', 'required');
+        //$this->form_validation->set_rules('user_doj', 'date of joining', 'required');
         //$this->form_validation->set_rules('user_role', 'access group', 'required');
-        $this->form_validation->set_rules('user_designation', 'designation', 'required');
-        $this->form_validation->set_rules('user_department', 'department', 'required');
-        //$this->form_validation->set_rules('user_account_active', 'account statuc', 'required');
+        //$this->form_validation->set_rules('user_designation', 'designation', 'required');
+        //$this->form_validation->set_rules('user_department', 'department', 'required');
+        //$this->form_validation->set_rules('user_account_active', 'account status', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;

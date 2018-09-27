@@ -23,18 +23,13 @@ $segment3 = $this->uri->segment(3);
 					<span class="sr-only">(current)</span>
 				</a>
 			</li>
-			
-			
-			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/administrator'); ?>"><i class="fa fa-globe" aria-hidden="true"></i> Admin</a>
-				</li>
-				
-			<?php } ?>	
-
 
 			<li class="nav-item <?php echo ($segment2 == 'people') ? 'active':''?>">
 				<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/people'); ?>">People</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">My Profile</a>
 			</li>
 						
 			<li class="d-none nav-item <?php echo ($segment1=='timesheet') ? 'active':''?>">
@@ -53,6 +48,30 @@ $segment3 = $this->uri->segment(3);
 					<a class="dropdown-item" href="#">My Request List</a>
 				</div>
 			</li>
+		</ul>
+		
+		
+		<ul class="navbar-nav my-2 my-lg-0">
+			<li class="nav-item">
+				<?php echo form_open(base_url('search/index'), array( 'method' => 'get','class'=>'form-inline','name' => '','id' => 'ci-form-helper',)); ?>
+				<?php echo form_hidden('form_action', 'search'); ?>
+				<div class="input-group my-1">
+						<input type="text" name="q" class="form-control form-control-sm" placeholder="Search Employee..." aria-label="Search" aria-describedby="basic-addon2">
+						<div class="input-group-append">
+							<button class="btn btn-light btn-sm" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+						</div>
+					</div>
+				<?php echo form_close(); ?>
+			</li>
+
+			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
+				<li class="nav-item">
+					<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/administrator'); ?>"><i class="fa fa-globe" aria-hidden="true"></i> Admin</a>
+				</li>
+				
+			<?php } ?>
+
+
 			<?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true"
@@ -61,7 +80,7 @@ $segment3 = $this->uri->segment(3);
 					<div class="dropdown-item welcome-user-container">					
 						<div class=""><?php echo isset($this->session->userdata['sess_user']['user_title'])? $this->session->userdata['sess_user']['user_title']:''; ?> <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></div>
 						<div class="small"><?php echo isset($this->session->userdata['sess_user']['user_email']) ? $this->session->userdata['sess_user']['user_email'] :'';?></div>
-						<div class="small">Role: <?php echo isset($this->session->userdata['sess_user']['user_role_name']) ? $this->session->userdata['sess_user']['user_role_name'] :'';?></div>
+						<div class="small">Access Group: <?php echo isset($this->session->userdata['sess_user']['user_role_name']) ? $this->session->userdata['sess_user']['user_role_name'] :'';?></div>
 						<div class="small">Last Login: <?php echo isset($this->session->userdata['sess_user']['user_login_date_time']) ? $this->common_lib->display_date($this->session->userdata['sess_user']['user_login_date_time'], true) :'';?></div>					
 					</div><!--/.welcome-user-container-->
 					
@@ -72,15 +91,6 @@ $segment3 = $this->uri->segment(3);
 				</div>
 			</li>
 			<?php  } ?>
-		</ul>
-		
-		
-		<ul class="navbar-nav my-2 my-lg-0">
-			<?php echo form_open(base_url('search/index'), array( 'method' => 'get','class'=>'form-inline','name' => '','id' => 'ci-form-helper',)); ?>
-			<?php echo form_hidden('form_action', 'search'); ?>
-                <input class="form-control mr-sm-2" name="search_keywords" type="text" value="<?php echo $this->input->post('search_keywords');?>" placeholder="Search Employee..." aria-label="Search">
-                <button class="btn btn-light my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
-            <?php echo form_close(); ?>
 		</ul>
 		
 	</div>

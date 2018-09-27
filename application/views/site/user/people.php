@@ -6,7 +6,7 @@
 </div><!--/.heading-container-->
 
 
-<div class="row mb-2">
+<div class="row mb-2 d-none">
 	<div class="col-md-6">
 	<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'form-inline','name' => '','id' => 'search-user-form',)); ?>
 	<?php echo form_hidden('form_action', 'search'); ?>
@@ -80,11 +80,10 @@
 							<div class="media border mb-2 mt-2 p-2">
 								<img class="align-self-center mr-3 rounded dp-sm" src="<?php echo base_url($img_src);?>">
 								<div class="media-body">
-									<h6 class="mt-0"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h6>                            
-									<div class=""><?php echo 'Emp # '.$row['user_emp_id']; ?></div>
-									<div class=""><?php echo $row['designation_name']; ?></div> 
-									<div class="mt-1"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
-									<div class="mt-1"><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
+									<div class="h6"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></div>                            
+									<div class="small"><?php echo 'Emp # '.$row['user_emp_id']; ?></div>									
+									<div class=""><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
+									<div class=""><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
 									                           
 								</div>
 							</div>

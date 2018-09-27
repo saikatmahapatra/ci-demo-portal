@@ -44,19 +44,20 @@
 				<div class="row">
 					<div class="col-md-2">
 						<img class="align-self-center mr-3 rounded dp" src="<?php echo base_url($img_src);?>">
-						<div class=""><a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><i class="fa fa-pencil"></i> Change/Remove</a></div>
+						<div class="mt-2"><a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><i class="fa fa-pencil"></i> Change/Remove</a></div>
 					</div>
 					<div class="col-md-10">
-						<h5 class="">
+						<div class="h5">
 							<?php
 								echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 								echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
 								echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
 								echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
 							?>
-						</h5>
+						</div>
 						<!--<div class="small"><?php //echo isset($row['role_name']) ? $row['role_name'] : ''; ?></div>-->
-						<div class=""><?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
+						<div class="small"><?php echo isset($row['user_emp_id']) ? 'Emp # '.$row['user_emp_id'] : ''; ?></div>
+						<div class="small"><?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
 						<div class="">
 							<i class="fa fa-envelope-o" aria-hidden="true"></i> 
 							<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
@@ -67,8 +68,7 @@
 							<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>        
 						</div>            
 						<div>
-							<?php echo (isset($row['user_bio']) && strlen($row['user_bio'])>0) ? '<span class="text-muted">'.$row['user_bio'].'</span>' : ''; ?>
-							<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>">Edit</a>
+							<?php echo (isset($row['user_bio']) && strlen($row['user_bio'])>0) ? '<span class="text-muted">'.$row['user_bio'].'</span>' : ''; ?>							
 						</div>
 					</div>
 				</div>

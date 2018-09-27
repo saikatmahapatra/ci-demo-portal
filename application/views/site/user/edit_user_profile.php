@@ -33,35 +33,44 @@
 		
 			
 
-		<div class="row">
-			<div class="col-md-2 mt-3">
+		<div class="row mt-3 mb-3">
+			<div class="col-md-2">
 				<img class="align-self-center mr-3 rounded dp" src="<?php echo base_url($img_src);?>">
 			</div>
 			<div class="col-md-10">
-				<h3 class="mt-3"><?php echo $row['user_title'].' '.$row['user_firstname'].' '.$row['user_lastname']; ?></h3>
-				<h6 class="mt-1">
-					<?php 
-						if($row['user_account_active']=='Y'){
-							?>
-							<span class="badge badge-success">Active Account</span>                        
-							<?php
-						}
-						if($row['user_account_active']=='N'){
-							?>
-							<span class="badge badge-danger">Inactive Account</span>
-							<?php
-						}
-					?>            
-				</h6>
-				<h6 class="mt-1">
-				<?php echo 'Emp # '.$row['user_emp_id']; ?>
-				</h6>
-				<h6 class="mt-1">
-				<i class="fa fa-envelope-o"></i> <?php echo $row['user_email'].' , '.$row['user_email_secondary']; ?>
-				</h6>
-				<h6 class="mt-1 mb-4">
-					<i class="fa fa-phone"></i> <?php echo $row['user_phone1'].' , '.$row['user_phone2']; ?>
-				</h6>
+				
+			<div class="h5">
+				<?php
+					echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
+					echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
+					echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
+					echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
+				?>
+			</div>
+			<?php 
+				if($row['user_account_active']=='Y'){
+					?>
+					<span class="badge badge-success">Active Account</span>                        
+					<?php
+				}
+				if($row['user_account_active']=='N'){
+					?>
+					<span class="badge badge-danger">Inactive Account</span>
+					<?php
+				}
+			?> 
+			<!--<div class="small"><?php //echo isset($row['role_name']) ? $row['role_name'] : ''; ?></div>-->
+			<div class="small"><?php echo isset($row['user_emp_id']) ? 'Emp # '.$row['user_emp_id'] : ''; ?></div>
+			<div class="small"><?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
+			<div class="">
+				<i class="fa fa-envelope-o" aria-hidden="true"></i> 
+				<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
+			</div>
+			<div class="">
+				<i class="fa fa-phone" aria-hidden="true"></i>
+				<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
+				<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>        
+			</div>
 			</div>
 		</div>
 
@@ -127,7 +136,7 @@
 			</div><?php */ ?>
 			
 			<div class="form-group col-md-4">                            
-				<label for="user_doj" class="">Date of Joining <span class="required">*</span></label>				
+				<label for="user_doj" class="">Date of Joining </label>				
 				<?php
 				echo form_input(array(
 					'name' => 'user_doj',
@@ -144,7 +153,7 @@
 			</div>
 			
 			<div class="form-group col-md-4">
-			  <label for="user_designation" class="">Designation <span class="required">*</span></label>
+			  <label for="user_designation" class="">Designation </label>
 				<?php
 				echo form_dropdown('user_designation', $arr_designations, isset($row['user_designation']) ? $row['user_designation'] : set_value('user_designation'), array(
 					'class' => 'form-control',									
@@ -154,7 +163,7 @@
 			</div>	
 
 			<div class="form-group col-md-4">
-			  <label for="user_department" class="">Department <span class="required">*</span></label>
+			  <label for="user_department" class="">Department </label>
 				<?php
 				echo form_dropdown('user_department', $arr_departments, isset($row['user_department']) ? $row['user_department'] : set_value('user_department'), array(
 					'class' => 'form-control'
