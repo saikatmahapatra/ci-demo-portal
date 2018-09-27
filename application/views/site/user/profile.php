@@ -76,11 +76,21 @@
 			</div><!--/.card-header-->
 			<div class="card-body">
 				<nav>
+					
 					<div class="nav nav-tabs ci-nav-tab" id="nav-tab" role="tablist">
-						<a class="nav-item nav-link active" id="nav-basic-tab" data-toggle="tab" href="#nav-basic" role="tab" aria-controls="nav-basic" aria-selected="true">Basic Information</a>			
-						<!--<a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab" href="#nav-address" role="tab" aria-controls="nav-address" aria-selected="false">Address Details</a>			
-						<a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Qualification</a>			
-						<a class="nav-item nav-link" id="nav-exp-tab" data-toggle="tab" href="#nav-exp" role="tab" aria-controls="nav-exp" aria-selected="false">Work Experience</a>-->			
+					<a class="nav-item nav-link active" id="nav-basic-tab" data-toggle="tab" href="#nav-basic" role="tab" aria-controls="nav-basic" aria-selected="true">Basic Information</a>
+					<?php if($this->common_lib->is_auth(array('view-user-address'),false) == true){ ?>		
+					<a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab" href="#nav-address" role="tab" aria-controls="nav-address" aria-selected="false">Address</a>								
+					<?php } ?>
+					<?php if($this->common_lib->is_auth(array('view-user-education'),false) == true){ ?>		
+					<a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Academic Qualification</a>			
+					<?php } ?>
+					<?php if($this->common_lib->is_auth(array('view-user-exp'),false) == true){ ?>		
+					<a class="nav-item nav-link" id="nav-exp-tab" data-toggle="tab" href="#nav-exp" role="tab" aria-controls="nav-exp" aria-selected="false">Work Experience</a>
+					<?php } ?>
+					<?php if($this->common_lib->is_auth(array('view-user-bank'),false) == true){ ?>		
+					<a class="nav-item nav-link" id="nav-bank-tab" data-toggle="tab" href="#nav-bank" role="tab" aria-controls="nav-bank" aria-selected="false">Bank Account</a>
+					<?php } ?>
 					</div>
 				</nav>
 
@@ -128,91 +138,80 @@
 						</div>
 					</div> <!--/#nav-basic-->
 					
+					<?php if($this->common_lib->is_auth(array('view-user-address'),false) == true){ ?>	
 					<div class="tab-pane fade" id="nav-address" role="tabpanel" aria-labelledby="nav-address-tab">
 						<div class="row mt-3">
 							<div class="col-md-12">
-							<!--<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"> Add New</a>-->
-								<!--<h6>Communication Address</h6><hr>-->
-									<?php if(isset($address)){
+							<?php if(isset($address)){
 										foreach($address as $key=>$addr){
 										?>
-											<div class="row mb-3">
-												<div class="col-md-2"><?php echo isset($address_type[$addr['address_type']])?$address_type[$addr['address_type']]:'Address'; ?></div>
-												<div class="col-md-8">
-													<div class="">
-														<?php echo isset($addr['name'])? $addr['name'].',&nbsp;' :'';?>
-														<?php echo isset($addr['phone1'])? $addr['phone1'].', ':'';?>
+											<dl class="row">
+												<dt class="col-md-12"><?php echo isset($address_type[$addr['address_type']]) ? $address_type[$addr['address_type']] : 'Address'; ?></dt>
+												<dd class="col-md-12">
+													<div class="mt-2">
+														<?php //echo isset($addr['name'])? $addr['name'].',&nbsp;' :'';?>
 														<?php echo isset($addr['address']) ? $addr['address'] : '';?>
 														<?php echo isset($addr['locality'])? ', '.$addr['locality'] : '';?>
 														<?php echo isset($addr['city']) ? ', '.$addr['city'].', ' : '';?>
 														<?php echo isset($addr['state']) ? $addr['state'] : '';?>
-														<?php echo isset($addr['zip']) ? ' - '.$addr['zip'] : '';?>                                
-													</div>
-													<div>
-													</div>
-												</div>
-												<div class="col-md-2">	
-												<!--<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
-												<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>-->
-												</div>
-											</div>
-											<!--/.row-->
+														<?php echo isset($addr['zip']) ? ' - '.$addr['zip'] : '';?>  
+														<?php echo isset($addr['phone1'])? '<div>Phone: '.$addr['phone1'].'</div> ':'';?>                              
+														<?php echo isset($addr['landmark'])? '<div>Landmark: '.$addr['landmark'].'</div> ':'';?>
+													</div>													
+												</dd>												
+											</dl><!--/dl.row-->
 										<?php
 										}
 									}?>
 							</div>
 						</div>
 					</div> <!--/#nav-address-->
+					<?php } ?>
 					
-					
+					<?php if($this->common_lib->is_auth(array('view-user-education'),false) == true){ ?>	
 					<div class="tab-pane fade" id="nav-education" role="tabpanel" aria-labelledby="nav-education-tab">
 						<div class="row mt-3">
 							<div class="col-md-12">
-								<!--<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"> Add New</a>-->
-								<!--<h6>Educational Qualification</h6><hr>-->
-									<table class="table table-sm mt-1">
-										<thead>
-											<tr class="small">
-												<th>Qualification</th>
-												<th>Specialization</th>
-												<th>Duration</th>
-												<th>Institute/University</th>
-												<th>Marks(%)</th>
-												<!--<th></th>-->
-											</tr>
-										</thead>
-										<tbody>
-										<?php if(isset($education)){
-											foreach($education as $key=>$edu){
-											?>
-												<tr>
-													<td><?php echo isset($edu['qualification_name'])?$edu['qualification_name']:'';?></td>
-													<td><?php echo isset($edu['specialization_name'])?$edu['specialization_name']:$edu['academic_other_specialization'];?></td>
-													<td><?php echo isset($edu['academic_from_year'])?$edu['academic_from_year'].'-'.$edu['academic_to_year']:'';?></td>
-													<td><?php echo isset($edu['institute_name']) ? $edu['institute_name']: $edu['academic_other_inst'];?></td>
-													<td><?php echo isset($edu['academic_marks_percentage'])?$edu['academic_marks_percentage']:'';?></td>
-													<!--<td>														
-														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
-														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_education/'.$edu["id"]);?>" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>														
-													</td>-->													
-												</tr>
-											<?php
-											}
-										}?>
-										</tbody>				
-									</table>
-											
+							<?php if(isset($education)){
+										foreach($education as $key=>$edu){
+										?>
+											<dl class="row">
+												<dt class="col-md-12"><?php echo isset($edu['qualification_name'])?$edu['qualification_name']:'';?> : <?php echo isset($edu['academic_from_year'])?$edu['academic_from_year'].'-'.$edu['academic_to_year']:'';?></dt>
+												<dd class="col-md-12">
+													<div class="mt-2"></div>
+													<div class=""><?php echo isset($edu['specialization_name'])?$edu['specialization_name']:$edu['academic_other_specialization'];?></div>
+													<div class=""><?php echo isset($edu['institute_name']) ? $edu['institute_name']: $edu['academic_other_inst'];?></div>
+													<div class=""><?php echo isset($edu['academic_marks_percentage'])?$edu['academic_marks_percentage'].' %':'';?></div>
+													
+												</dd>												
+											</dl><!--/dl.row-->
+										<?php
+										}
+									}?>											
 							</div>
 						</div>
 					</div> <!--/#nav-education-->
+					<?php } ?>
 					
+					<?php if($this->common_lib->is_auth(array('view-user-exp'),false) == true){ ?>	
 					<div class="tab-pane fade" id="nav-exp" role="tabpanel" aria-labelledby="nav-exp-tab">
 						<div class="row mt-3">
 							<div class="col-md-12">
-							<a class="btn btn-primary btn-sm" href=""> Add New</a>
+								
 							</div>
 						</div>
 					</div><!--/#nav-exp-->
+					<?php } ?>
+
+					<?php if($this->common_lib->is_auth(array('view-user-bank'),false) == true){ ?>	
+					<div class="tab-pane fade" id="nav-bank" role="tabpanel" aria-labelledby="nav-bank-tab">
+						<div class="row mt-3">
+							<div class="col-md-12">
+								
+							</div>
+						</div>
+					</div><!--/#nav-bank-->
+					<?php } ?>
 					
 					</div><!--/.tab-content-->
 			</div><!--/.carrd-body-->
