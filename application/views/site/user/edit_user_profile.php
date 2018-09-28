@@ -85,7 +85,7 @@
 			<div class="form-group col-md-3">
 			  <label for="user_title" class="">Title <span class="required">*</span></label>
 				<?php
-				echo form_dropdown('user_title', $arr_user_title, isset($row['user_title']) ? $row['user_title'] : set_value('user_title'), array(
+				echo form_dropdown('user_title', $arr_user_title, isset($_POST['user_title']) ? set_value('user_title') : $row['user_title'], array(
 					'class' => 'form-control field-help'
 				));
 				?> 
@@ -97,7 +97,7 @@
 				<?php
 				echo form_input(array(
 					'name' => 'user_firstname',
-					'value' => isset($row['user_firstname']) ? $row['user_firstname'] : set_value('user_firstname'),
+					'value' => isset($_POST['user_firstname']) ? set_value('user_firstname') : $row['user_firstname'],
 					'id' => 'user_firstname',
 					'class' => 'form-control',
 					'maxlength' => '30',
@@ -112,7 +112,7 @@
 				<?php
 				echo form_input(array(
 					'name' => 'user_lastname',
-					'value' => isset($row['user_lastname']) ? $row['user_lastname'] : set_value('user_lastname'),
+					'value' => isset($_POST['user_lastname']) ? set_value('user_lastname') : $row['user_lastname'],
 					'id' => 'user_lastname',
 					'class' => 'form-control',
 					'maxlength' => '50',
@@ -140,7 +140,7 @@
 				<?php
 				echo form_input(array(
 					'name' => 'user_doj',
-					'value' => isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : set_value('user_doj'),
+					'value' => isset($_POST['user_doj']) ? set_value('user_doj') : $this->common_lib->display_date($row['user_doj']),
 					'id' => 'user_doj',
 					'maxlength' => '10',
 					'class' => 'form-control dob-datepicker',
@@ -155,7 +155,7 @@
 			<div class="form-group col-md-4">
 			  <label for="user_designation" class="">Designation </label>
 				<?php
-				echo form_dropdown('user_designation', $arr_designations, isset($row['user_designation']) ? $row['user_designation'] : set_value('user_designation'), array(
+				echo form_dropdown('user_designation', $arr_designations, isset($_POST['user_designation']) ? set_value('user_designation') : $row['user_designation'], array(
 					'class' => 'form-control',									
 				));
 				?> 
@@ -165,7 +165,7 @@
 			<div class="form-group col-md-4">
 			  <label for="user_department" class="">Department </label>
 				<?php
-				echo form_dropdown('user_department', $arr_departments, isset($row['user_department']) ? $row['user_department'] : set_value('user_department'), array(
+				echo form_dropdown('user_department', $arr_departments, isset($_POST['user_department']) ? set_value('user_department') : $row['user_department'] , array(
 					'class' => 'form-control'
 				));
 				?> 
@@ -194,9 +194,9 @@
                         $dob = explode('-',$row['user_dob']);
                         //print_r($dob);
                         ?>
-						<?php echo form_dropdown('dob_day', $day_arr, isset($dob[2])?$dob[2]:set_value('dob_day'), array('class' => 'form-control dob-inline',));?>
-						<?php echo form_dropdown('dob_month', $month_arr, isset($dob[1])?$dob[1]:set_value('dob_month'), array('class' => 'form-control dob-inline',));?>
-						<?php echo form_dropdown('dob_year', $year_arr, isset($dob[0])?$dob[0]:set_value('dob_year'), array('class' => 'form-control dob-inline'));?>
+						<?php echo form_dropdown('dob_day', $day_arr, isset($_POST['dob_day']) ? set_value('dob_day') :  $dob[2] , array('class' => 'form-control dob-inline',));?>
+						<?php echo form_dropdown('dob_month', $month_arr, isset($_POST['dob_day']) ? set_value('dob_month') : $dob[1], array('class' => 'form-control dob-inline',));?>
+						<?php echo form_dropdown('dob_year', $year_arr, isset($_POST['dob_day']) ? set_value('dob_year') : $dob[0], array('class' => 'form-control dob-inline'));?>
 					</div>
 					<?php echo form_error('dob_day'); ?>
 					<?php echo form_error('dob_month'); ?>
@@ -207,7 +207,9 @@
 					<div class="">
 						<div class="custom-control custom-radio custom-control-inline">
 							<?php
-								$radio_is_checked = ($this->input->post('user_gender') === 'M' || $row['user_gender'] == 'M');
+								
+								$radio_is_checked = isset($_POST['user_gender']) ? $_POST['user_gender'] == 'M' : ($row['user_gender'] == 'M');
+
 								echo form_radio(array('name' => 'user_gender','value' => 'M','id' => 'M','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('user_gender', 'M'));
 							?>
 							<label class="custom-control-label" for="M">Male</span></label>
@@ -215,7 +217,8 @@
 						
 						<div class="custom-control custom-radio custom-control-inline">
 							<?php
-								$radio_is_checked = ($this->input->post('user_gender') === 'F' || $row['user_gender'] == 'F');
+								$radio_is_checked = isset($_POST['user_gender']) ? $_POST['user_gender'] == 'F' : ($row['user_gender'] == 'F');
+
 								echo form_radio(array('name' => 'user_gender', 'value' => 'F', 'id' => 'F', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_gender', 'F'));
 							?>
 							<label class="custom-control-label" for="F">Female</span></label>
@@ -250,7 +253,8 @@
 				  	<div class="">
 						<div class="custom-control custom-radio custom-control-inline">
 							<?php
-								$radio_is_checked = ($this->input->post('user_account_active') === 'Y' || $row['user_account_active'] == 'Y');
+								$radio_is_checked = isset($_POST['user_account_active']) ? $_POST['user_account_active'] == 'Y' : ($row['user_account_active'] == 'Y');
+
 								echo form_radio(array('name' => 'user_account_active','value' => 'Y','id' => 'Y','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('user_account_active', 'Y'));
 							?>
 							<label class="custom-control-label" for="Y">Yes</span></label>
@@ -258,7 +262,8 @@
 						
 						<div class="custom-control custom-radio custom-control-inline">
 							<?php
-								$radio_is_checked = ($this->input->post('user_account_active') === 'N' || $row['user_account_active'] == 'N');
+								$radio_is_checked = isset($_POST['user_account_active']) ? $_POST['user_account_active'] == 'N' : ($row['user_account_active'] == 'N');
+
 								echo form_radio(array('name' => 'user_account_active', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_account_active', 'N'));
 							?>
 							<label class="custom-control-label" for="N">No</span></label>

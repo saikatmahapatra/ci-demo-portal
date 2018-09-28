@@ -31,7 +31,7 @@
                         <?php
                         echo form_input(array(
                             'name' => 'user_firstname',
-                            'value' => isset($row['user_firstname']) ? $row['user_firstname'] : set_value('user_firstname'),
+                            'value' => (isset($_POST['user_firstname']) ? set_value('user_firstname') : $row['user_firstname'])
                             'id' => 'user_firstname',
                             'class' => 'form-control',
                             'maxlength' => '30',
@@ -45,7 +45,7 @@
                         <?php
                         echo form_input(array(
                             'name' => 'user_lastname',
-                            'value' => isset($row['user_lastname']) ? $row['user_lastname'] : set_value('user_lastname'),
+                            'value' => (isset($_POST['user_lastname']) ? set_value('user_lastname') : $row['user_lastname']),
                             'id' => 'user_lastname',
                             'class' => 'form-control',
                             'maxlength' => '50',
@@ -60,7 +60,7 @@
 				<?php
 				echo form_input(array(
 					'name' => 'user_bio',
-					'value' => isset($row['user_bio']) ? $row['user_bio'] : set_value('user_bio'),
+					'value' => (isset($_POST['user_bio']) ? set_value('user_bio') : $row['user_bio']),
 					'id' => 'user_bio',
 					'class' => 'form-control',						
 					'maxlength' => '100',
@@ -110,7 +110,7 @@
 				<?php
 				echo form_input(array(
 					'name' => 'user_email_secondary',
-					'value' => isset($row['user_email_secondary']) ? $row['user_email_secondary'] : set_value('user_email_secondary'),
+					'value' => (isset($_POST['user_email_secondary']) ? set_value('user_email_secondary') : $row['user_email_secondary']),
 					'id' => 'user_email_secondary',
 					'class' => 'form-control'
 				));
@@ -124,7 +124,7 @@
 					<?php
 					echo form_input(array(
 						'name' => 'user_phone1',
-						'value' => isset($row['user_phone1']) ? $row['user_phone1'] : set_value('user_phone1'),
+						'value' => (isset($_POST['user_phone1']) ? set_value('user_phone1') : $row['user_phone1']),
 						'id' => 'user_phone1',
 						'class' => 'form-control',
 						'maxlength' => '10',
@@ -138,7 +138,7 @@
 					<?php
 					echo form_input(array(
 						'name' => 'user_phone2',
-						'value' => isset($row['user_phone2']) ? $row['user_phone2'] : set_value('user_phone2'),
+						'value' => (isset($_POST['user_phone2']) ? set_value('user_phone2') : $row['user_phone2']),
 						'id' => 'user_phone2',
 						'class' => 'form-control',
 						'maxlength' => '10',
@@ -153,7 +153,7 @@
                 <div class="form-group col-md-6">
                 <label for="user_blood_group" class="">Blood Group <span class="required">*</span></label>
                     <?php
-                    echo form_dropdown('user_blood_group', $blood_group, isset($row['user_blood_group'])?$row['user_blood_group']:set_value('user_blood_group'), array(
+                    echo form_dropdown('user_blood_group', $blood_group, isset($_POST['user_blood_group']) ? set_value('user_blood_group') : $row['user_blood_group'], array(
                         'class' => 'form-control',
                     ));
                     ?> 

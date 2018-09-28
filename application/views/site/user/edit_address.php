@@ -49,7 +49,7 @@
 					<?php 
 					echo form_textarea(array(
 					'name' => 'address',
-					'value' => isset($row['address']) ? $row['address'] : set_value('address'),
+					'value' => isset($_POST['address']) ? set_value('address') : $row['address'],
 					'id' => 'address',
 					'class' => 'form-control',
 					'maxlength' => '120',
@@ -68,7 +68,7 @@
 					<?php
 					echo form_input(array(
 						'name' => 'locality',
-						'value' => isset($row['locality']) ? $row['locality'] : set_value('locality'),
+						'value' => isset($_POST['locality']) ? set_value('locality') : $row['locality'],
 						'id' => 'locality',
 						'class' => 'form-control',
 						'placeholder'=>''
@@ -82,7 +82,7 @@
 					<?php
 					echo form_input(array(
 						'name' => 'zip',
-						'value' => isset($row['zip']) ? $row['zip'] : set_value('zip'),
+						'value' => isset($_POST['zip']) ? set_value('zip') : $row['zip'],
 						'id' => 'zip',
 						'class' => 'form-control',
 						'maxlength' => '6',
@@ -101,7 +101,7 @@
 					<?php 
 					echo form_input(array(
 					'name' => 'city',
-					'value' =>isset($row['city']) ? $row['city'] : set_value('city'),
+					'value' =>isset($_POST['city']) ? set_value('city') : $row['city'],
 					'id' => 'city',
 					'class' => 'form-control',
 					'maxlength' => '30',
@@ -115,7 +115,7 @@
 					<?php 
 					echo form_input(array(
 					'name' => 'state',
-					'value' => isset($row['state']) ? $row['state'] : set_value('state'),
+					'value' => isset($_POST['state']) ? set_value('state') : $row['state'],
 					'id' => 'state',
 					'class' => 'form-control',
 					'maxlength' => '30',
@@ -133,7 +133,7 @@
 					<?php 
 					echo form_input(array(
 					'name' => 'phone1',
-					'value' => isset($row['phone1']) ? $row['phone1'] : set_value('phone1'),
+					'value' => isset($_POST['phone1']) ? set_value('phone1') : $row['phone1'],
 					'id' => 'phone1',
 					'class' => 'form-control',
 					'maxlength' => '15',
@@ -147,7 +147,7 @@
 					<?php 
 					echo form_input(array(
 					'name' => 'landmark',
-					'value' => isset($row['landmark']) ? $row['landmark'] :set_value('landmark'),
+					'value' => isset($_POST['landmark']) ? set_value('landmark') : $row['landmark'],
 					'id' => 'landmark',
 					'class' => 'form-control',
 					'maxlength' => '100',

@@ -82,7 +82,8 @@
 					<?php if($this->common_lib->is_auth(array('view-user-address'),false) == true){ ?>		
 					<a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab" href="#nav-address" role="tab" aria-controls="nav-address" aria-selected="false">Address</a>								
 					<?php } ?>
-					<?php if($this->common_lib->is_auth(array('view-user-education'),false) == true){ ?>		
+					<?php /* ?>
+					<?php  if($this->common_lib->is_auth(array('view-user-education'),false) == true){ ?>		
 					<a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Academic Qualification</a>			
 					<?php } ?>
 					<?php if($this->common_lib->is_auth(array('view-user-exp'),false) == true){ ?>		
@@ -91,6 +92,7 @@
 					<?php if($this->common_lib->is_auth(array('view-user-bank'),false) == true){ ?>		
 					<a class="nav-item nav-link" id="nav-bank-tab" data-toggle="tab" href="#nav-bank" role="tab" aria-controls="nav-bank" aria-selected="false">Bank Account</a>
 					<?php } ?>
+					<?php */ ?>
 					</div>
 				</nav>
 
