@@ -43,7 +43,7 @@ if(isset($data_rows)){
         ?>
         <div class="row border-bottom">
             <div class="col-md-12 mt-3 mb-3">
-                <a href="<?php echo base_url($this->router->directory.'user/profile/'.$this->common_lib->encode($row['id']));?>" data-link-type="user-profile-card">
+                <a href="<?php echo base_url($this->router->directory.'user/profile/'.$row['id']);?>" data-link-type="user-profile-card">
                     <div class="media">
                         <img class="align-self-center mr-3 rounded dp-sm" data-src="holder.js/64x64" alt="64x64" src="<?php echo base_url($img_src);?>">
                         <div class="media-body">

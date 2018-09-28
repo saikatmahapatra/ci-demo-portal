@@ -185,14 +185,14 @@ class User extends CI_Controller {
             $acc_status_class = ($result['user_account_active'] == 'Y') ? 'btn btn-sm btn-outline-danger' : 'btn btn-sm btn-outline-success';
             $acc_status_set = ($result['user_account_active'] == 'Y') ? 'N' : 'Y';
             
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $this->common_lib->encode($result['id'])), '<i class="fa fa-eye" aria-hidden="true"></i> View', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-eye" aria-hidden="true"></i> View', array(
                 'class' => 'btn btn-sm btn-outline-secondary mr-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'View Profile',
                 'title' => 'View Profile'
             ));
 
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $this->common_lib->encode($result['id'])), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
                 'class' => 'btn btn-sm btn-outline-secondary mr-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit Profile',
@@ -772,7 +772,7 @@ class User extends CI_Controller {
 
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-		$user_id = $this->uri->segment(3)? $this->common_lib->decode($this->uri->segment(3)): $this->sess_user_id;	
+		$user_id = $this->uri->segment(3)? $this->uri->segment(3): $this->sess_user_id;	
         $rows = $this->user_model->get_rows($user_id);		
 		$res_pic = $this->user_model->get_user_profile_pic($user_id);
 		$this->data['profile_pic'] = $res_pic[0]['user_profile_pic'];
@@ -1191,7 +1191,7 @@ class User extends CI_Controller {
             'update-emp-profile'
         ));
         ########### Validate User Auth End #############
-        $user_id = $this->common_lib->decode($this->uri->segment(3));
+        $user_id = $this->uri->segment(3);
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         $rows = $this->user_model->get_rows($user_id);

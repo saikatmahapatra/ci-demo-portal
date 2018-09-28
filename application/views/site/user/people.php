@@ -76,7 +76,7 @@
 						<?php if ($count%3 == 1){ echo '<div class="row">'; } ?>
 						
 						<div class="col-md-4 content-wrap">
-							<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile/'.$this->common_lib->encode($row['id']));?>" data-link-type="user-profile-card">
+							<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile/'.$row['id']);?>" data-link-type="user-profile-card">
 							<div class="media border mb-2 mt-2 p-2">
 								<img class="align-self-center mr-3 rounded dp-sm" src="<?php echo base_url($img_src);?>">
 								<div class="media-body">
