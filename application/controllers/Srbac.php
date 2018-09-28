@@ -73,7 +73,7 @@ class Srbac extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		
-		$this->data['page_heading'] = 'Website CMS - Contents';
+		$this->data['page_heading'] = 'SRBAC';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
     }
@@ -200,7 +200,7 @@ class Srbac extends CI_Controller {
                 }
             }
         }
-		$this->data['page_heading'] = 'Add Contents';
+		$this->data['page_heading'] = 'Add Roles | Permission';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/add', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
     }
@@ -239,7 +239,7 @@ class Srbac extends CI_Controller {
         }
         $result_array = $this->cms_model->get_rows($this->id);
         $this->data['rows'] = $result_array['data_rows'];
-		$this->data['page_heading'] = 'Edit Contents';
+		$this->data['page_heading'] = 'Edit Roles | Permission';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
     }

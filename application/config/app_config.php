@@ -43,4 +43,4 @@ $config['app_meta_author'] = 'UEIPL';
 $config['app_copy_right'] = 'Copyright '.date('Y').' &copy; United Exploration India Pvt. Ltd.';
 $config['app_admin_copy_right'] = 'Copyright &copy; '.date('Y').' <a href="http://unitedexploration.co.in/">United Exploration India Pvt. Ltd.</a>. All rights reserved.';
 $config['app_ui_version'] = 'v1.0.1';
-$config['app_admin_ui_version'] = '2.3.6';
+$config['app_admin_ui_version'] = '2.1 , CI '.CI_VERSION;
