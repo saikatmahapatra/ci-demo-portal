@@ -107,9 +107,9 @@ $row = $rows[0];
 
 		<div class="form-row">
 		<div class="form-group col-md-12">									
-				<!--<label for="pagecontent_status" class="">Publish</label>-->
+			<label for="pagecontent_status" class="">Display Status <span class="required">*</span></label>
 				<?php //echo form_dropdown('pagecontent_status', array('Y'=>'Yes','N'=>'No'), (isset($_POST['pagecontent_status']) ? set_value('pagecontent_status') : $row['pagecontent_status']), array('class' => 'form-control')); ?>
-				  	<div class="">
+				  	<!--<div class="">-->
 						<div class="custom-control custom-radio custom-control-inline">
 							<?php
 								$radio_is_checked = isset($_POST['pagecontent_status']) ? $_POST['pagecontent_status'] == 'Y' : ($row['pagecontent_status'] == 'Y');
@@ -127,7 +127,7 @@ $row = $rows[0];
 							?>
 							<label class="custom-control-label" for="N">Unpublish</span></label>
 						</div>								
-					</div>
+					<!--</div>-->
 					<small id="emailHelp" class="form-text text-muted">If you unpublish this, it will not displayed for public user(employees)</small>
 					<?php echo form_error('pagecontent_status'); ?>
 

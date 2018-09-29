@@ -39,11 +39,7 @@
 				<?php echo form_dropdown('pagecontent_type', $arr_content_type, set_value('pagecontent_type'), array('class' => 'form-control',));?>
 				<?php echo form_error('pagecontent_type'); ?>
 			</div>
-			<div class="form-group col-md-4">									
-				<label for="pagecontent_status" class="">Publish</label>
-				<?php echo form_dropdown('pagecontent_status', array('Y'=>'Yes','N'=>'No'), set_value('pagecontent_status'), array('class' => 'form-control')); ?>
-				<?php echo form_error('pagecontent_status'); ?>
-			</div>
+			
 			<?php /*?>
 			<div class="form-group col-md-4 d-none">									
 				<label for="pagecontent_display_start_date" class="">Display from Date</label>
@@ -79,6 +75,36 @@
 			</div>			
 		</div>
 		<?php */ ?>
+
+		<div class="form-row">
+			<div class="form-group col-md-12">									
+				<label for="pagecontent_status" class="">Display Status <span class="required">*</span></label>
+				<?php //echo form_dropdown('pagecontent_status', array('Y'=>'Yes','N'=>'No'), set_value('pagecontent_status'), array('class' => 'form-control')); ?>
+				<?php //echo form_error('pagecontent_status'); ?>
+
+				<!-- <div class=""> -->
+					<div class="custom-control custom-radio custom-control-inline">
+						<?php
+							$radio_is_checked = $this->input->post('pagecontent_status') == 'Y';
+							echo form_radio(array('name' => 'pagecontent_status','value' => 'Y','id' => 'Y','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('pagecontent_status', 'Y'));
+						?>
+						<label class="custom-control-label" for="Y">Publish</span></label>
+					</div>
+					
+					<div class="custom-control custom-radio custom-control-inline">
+						<?php
+							$radio_is_checked = $this->input->post('pagecontent_status') == 'N';
+							echo form_radio(array('name' => 'pagecontent_status', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('pagecontent_status', 'N'));
+						?>
+						<label class="custom-control-label" for="N">Unpublish</span></label>
+					</div>								
+				<!-- </div> -->
+				<small id="emailHelp" class="form-text text-muted">If you unpublish this, it will not displayed for public user(employees)</small>
+				<?php echo form_error('pagecontent_status'); ?>
+			</div>		
+		</div>
+
+
 		<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 		<a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
 		<?php echo form_close(); ?>
