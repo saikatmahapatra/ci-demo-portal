@@ -47,7 +47,7 @@
 						<div class="mt-2"><a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><i class="fa fa-pencil"></i> Change/Remove</a></div>
 					</div>
 					<div class="col-md-10">
-						<div class="h5">
+						<div class="h6 mt-2">
 							<?php
 								echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 								echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';

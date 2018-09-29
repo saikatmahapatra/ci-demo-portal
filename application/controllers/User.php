@@ -185,11 +185,12 @@ class User extends CI_Controller {
             $acc_status_class = ($result['user_account_active'] == 'Y') ? 'btn btn-sm btn-outline-danger' : 'btn btn-sm btn-outline-success';
             $acc_status_set = ($result['user_account_active'] == 'Y') ? 'N' : 'Y';
             
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-eye" aria-hidden="true"></i> View', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-info-circle" aria-hidden="true"></i> Details', array(
                 'class' => 'btn btn-sm btn-outline-secondary mr-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'View Profile',
-                'title' => 'View Profile'
+                'title' => 'View Profile',
+                'target'=>'_new'
             ));
 
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
