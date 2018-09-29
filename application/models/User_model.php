@@ -364,7 +364,7 @@ class User_model extends CI_Model {
         $this->db->where('specialization_status','Y');
 		$this->db->order_by('specialization_name');
         $query = $this->db->get('academic_specialization');
-        $result = array('' => 'Select');
+        $result = array('' => 'Select','-1'=>'ADD NEW');
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {

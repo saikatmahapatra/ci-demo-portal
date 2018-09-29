@@ -97,3 +97,29 @@
         <?php echo form_close(); ?>
     </div>  
 </div>
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="addNewItemModal" tabindex="-1" role="dialog" aria-labelledby="addNewItemModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addNewItemModal">Add New</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" id="new_input_value" name="new_input_value" placeholder="Add New">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="saveNewItem" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

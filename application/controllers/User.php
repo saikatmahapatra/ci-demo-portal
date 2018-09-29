@@ -1454,7 +1454,13 @@ class User extends CI_Controller {
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/administrator', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
     }
-	
+    
+    function add_user_input_specialization(){
+        print_r($_POST); die();
+        if(($this->input->post('action')=='add') && $this->input->post('new_input_value')){
+
+        }
+    }
 
 }
 

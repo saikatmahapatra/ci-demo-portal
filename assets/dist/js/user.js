@@ -18,6 +18,9 @@ function domReady() {
         weekStart: 1,
         autoclose: true
     });
+
+    //select2  #academic_specialization
+    render_select2_specialization();
 } //domready
 
 $('body').on('click', '.change_account_status', changeAccountStatus);
@@ -64,7 +67,10 @@ function changeAccountStatus(e) {
     var xhr = new Ajax();
     xhr.type = 'POST';
     xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/change_account_status';
-    xhr.data = { active: new_status, user_id: user_id };
+    xhr.data = {
+        active: new_status,
+        user_id: user_id
+    };
     xhr.beforeSend = function() {
         showAjaxLoader();
     }
@@ -92,5 +98,43 @@ function changeAccountStatus(e) {
     });
     promise.always(function() {
 
+    });
+}
+
+
+function render_select2_specialization() {
+    $('#academic_specialization').select2({
+        //tags: true,
+    }).on('select2:close', function() {
+        var el = $(this);
+        if (el.val() == "-1") {
+            //var newval = prompt("Enter new value: ");
+            $('#addNewItemModal').modal('show');
+            $('#saveNewItem').on('click', function() {
+                var xhr = new Ajax();
+                xhr.type = 'POST';
+                xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/add_user_input_specialization';
+                xhr.data = {
+                    new_input_value: $('#new_input_value').val(),
+                    action: 'add'
+                };
+                xhr.beforeSend = function() {}
+                var promise = xhr.init();
+                promise.done(function(response) {
+                    console.log(response);
+                });
+                promise.fail(function() {
+
+                });
+                promise.always(function() {
+
+                });
+            });
+
+            /*if (newval !== null) {
+                el.append('<option>' + newval + '</option>')
+                    .val(newval);
+            }*/
+        }
     });
 }
