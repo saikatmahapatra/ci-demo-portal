@@ -156,8 +156,8 @@ class Common_lib {
         $file_name = $_FILES[$html_control]['name'];
         $config['file_name'] = isset($upload_param['file_new_name']) ? $upload_param['file_new_name'] : $file_name;
         $this->CI->load->library('upload', $config);
-        if (!$this->CI->upload->do_upload($html_control)) {
-            return array('upload_error' => $this->CI->upload->display_errors());
+        if (!$this->CI->upload->do_upload($html_control)) {            
+            return array('upload_error' => $this->CI->upload->display_errors('<div>', '</div>'));
             //$this->CI->form_validation->set_message($html_control, $this->CI->upload->display_errors());
             //return false;
         } else {
