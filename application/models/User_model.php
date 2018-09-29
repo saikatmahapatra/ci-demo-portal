@@ -308,8 +308,24 @@ class User_model extends CI_Model {
         return $main_res;
     }
 
+    function get_state_dropdown() {
+        $result = array();
+        $this->db->select('id,state_name');
+        $this->db->where('state_status','Y');
+		$this->db->order_by('state_name');
+        $query = $this->db->get('states');
+        $result = array('' => 'Select');
+        if ($query->num_rows()) {
+            $res = $query->result();
+            foreach ($res as $r) {
+                $result[$r->id] = $r->state_name;
+            }
+        }
+        return $result;
+    }
+
     function get_user_address($id = NULL, $user_id, $address_type) {
-        $this->db->select('t1.*');    
+        $this->db->select('t1.*,t2.state_name');    
         if(isset($id)){
             $this->db->where(array('t1.id' => $id));
         }  
@@ -318,7 +334,8 @@ class User_model extends CI_Model {
         } 
         if(isset($address_type)){
             $this->db->where(array('t1.address_type' => $address_type));
-        }    
+        }  
+        $this->db->join('states as t2', 't1.state=t2.id', 'left');  
         $query = $this->db->get('user_addresses as t1');
         //echo $this->db->last_query();
         $result = $query->result_array();        

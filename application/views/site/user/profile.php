@@ -155,7 +155,7 @@
 														<?php echo isset($addr['address']) ? $addr['address'] : '';?>
 														<?php echo isset($addr['locality'])? ', '.$addr['locality'] : '';?>
 														<?php echo isset($addr['city']) ? ', '.$addr['city'].', ' : '';?>
-														<?php echo isset($addr['state']) ? $addr['state'] : '';?>
+														<?php echo isset($addr['state_name']) ? $addr['state_name'] : '';?>
 														<?php echo isset($addr['zip']) ? ' - '.$addr['zip'] : '';?>  
 														<?php echo isset($addr['phone1'])? '<div>Phone: '.$addr['phone1'].'</div> ':'';?>                              
 														<?php echo isset($addr['landmark'])? '<div>Landmark: '.$addr['landmark'].'</div> ':'';?>

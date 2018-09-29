@@ -3425,3 +3425,6 @@ ALTER TABLE `users` ADD `user_blood_group` VARCHAR(4) NULL DEFAULT NULL AFTER `u
 
 --29/9
 INSERT INTO `academic_qualification` (`id`, `qualification_name`, `qualification_status`) VALUES (NULL, 'Doctorate', 'Y');
+
+
+ALTER TABLE `user_addresses` CHANGE `state` `state` INT(11) NULL DEFAULT NULL;

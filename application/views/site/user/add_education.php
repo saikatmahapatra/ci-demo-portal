@@ -33,6 +33,7 @@
 					<?php
 					echo form_dropdown('academic_specialization', $arr_academic_specialization, set_value('academic_specialization'), array(
 						'class' => 'form-control',
+						'id' => 'academic_specialization'
 					));
 					?> 
 					<?php echo form_error('academic_specialization'); ?>

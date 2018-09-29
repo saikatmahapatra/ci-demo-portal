@@ -111,15 +111,19 @@
 					<?php echo form_error('city'); ?>
 				</div>				
 				<div class="form-group col-md-6">
-					<label for="state" class="">State <span class="required">*</span></label>
+					<label for="state" class="">State/Union Territory <span class="required">*</span></label>
 					<?php 
-					echo form_input(array(
+					/*echo form_input(array(
 					'name' => 'state',
 					'value' => isset($_POST['state']) ? set_value('state') : $row['state'],
 					'id' => 'state',
 					'class' => 'form-control',
 					'maxlength' => '30',
 					'placeholder'=>'',
+					));*/
+					echo form_dropdown('state', $arr_states, isset($_POST['state']) ? set_value('state') : $row['state'], array(
+						'class' => 'form-control',
+						'id' => 'state'
 					));
 					?>
 					<?php echo form_error('state'); ?>

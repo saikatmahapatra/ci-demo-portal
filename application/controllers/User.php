@@ -842,7 +842,8 @@ class User extends CI_Controller {
             redirect($this->router->directory.$this->router->class.'/login');
         }
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');		
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        $this->data['arr_states'] = $this->user_model->get_state_dropdown();		
         if ($this->input->post('form_action') == 'insert_address') {
             if ($this->validate_user_address_form_data('add') == true) {
                 $postdata = array(
@@ -882,6 +883,7 @@ class User extends CI_Controller {
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		$address_id = $this->uri->segment(3);        
         $this->data['address'] = $this->user_model->get_user_address($address_id, $this->sess_user_id,NULL);
+        $this->data['arr_states'] = $this->user_model->get_state_dropdown();
         //print_r($this->data['address']);die();
         if ($this->input->post('form_action') == 'update_address') {
             if ($this->validate_user_address_form_data('edit') == true) {
