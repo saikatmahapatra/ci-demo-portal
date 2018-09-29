@@ -194,7 +194,7 @@ class Srbac extends CI_Controller {
                 );
                 $insert_id = $this->cms_model->insert($postdata);
                 if ($insert_id) {
-                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i>Added successfully.');
+                    $this->session->set_flashdata('flash_message', 'Data Added Successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     redirect($this->router->directory.$this->router->class.'/add');
                 }
@@ -231,7 +231,7 @@ class Srbac extends CI_Controller {
                 $where_array = array('id' => $this->input->post('id'));
                 $res = $this->cms_model->update($postdata, $where_array);
                 if ($res) {
-                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i>Updated successfully.');
+                    $this->session->set_flashdata('flash_message', 'Data Updated Successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     redirect(current_url());
                 }
@@ -251,7 +251,7 @@ class Srbac extends CI_Controller {
         $where_array = array('id' => $this->id);
         $res = $this->cms_model->delete($where_array);
         if ($res) {
-            $this->session->set_flashdata('flash_message', '<strong>Deleted </strong> successfully.');
+            $this->session->set_flashdata('flash_message', 'Data Deleted Successfully.');
             $this->session->set_flashdata('flash_message_css', 'alert-success');
             redirect($this->router->directory.$this->router->class);
         }

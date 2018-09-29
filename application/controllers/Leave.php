@@ -134,7 +134,7 @@ class Leave extends CI_Controller {
 				}
                 $insert_id = $this->leave_model->insert_batch($batch_post_data);
                 if ($insert_id) {
-                    $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Timesheet entry added successfully.');
+                    $this->session->set_flashdata('flash_message', 'Timesheet Entry Added Successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     redirect(current_url());
                 }
@@ -258,7 +258,7 @@ class Leave extends CI_Controller {
         $where_array = array('id' => $this->id);
         $res = $this->leave_model->delete($where_array);
         if ($res) {
-            $this->session->set_flashdata('flash_message', '<i class="icon fa fa-check" aria-hidden="true"></i> Deleted successfully.');
+            $this->session->set_flashdata('flash_message', 'Timesheet Entry Deleted Successfully');
             $this->session->set_flashdata('flash_message_css', 'alert-success');
             redirect($this->router->directory.$this->router->class.'');
         }
