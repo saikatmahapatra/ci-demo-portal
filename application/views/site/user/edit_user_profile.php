@@ -248,7 +248,7 @@
 			<?php if($row['id'] != $this->common_lib->get_sess_user('id')){?>
 
             <div class="form-row">				
-				<div class="form-group col-md-4">
+				<div class="form-group col-md-12">
 				  <label for="user_account_active" class="">Account Active ? <span class="required">*</span></label>
 				  	<div class="">
 						<div class="custom-control custom-radio custom-control-inline">
@@ -269,6 +269,7 @@
 							<label class="custom-control-label" for="N">No</span></label>
 						</div>								
 					</div>
+					<small id="emailHelp" class="form-text text-muted">If you deactivate this user account, user will  not be able to login.</small>
 					<?php echo form_error('user_account_active'); ?>
 				</div>
 			</div>
