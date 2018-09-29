@@ -146,12 +146,12 @@ class User_model extends CI_Model {
             $row = $result[0];            
             if (isset($row) && ($row['user_account_active'] == 'N')) {
                 $login_status = 'error';
-                $message = '<i class="icon fa fa-warning" aria-hidden="true"></i> Your account is not activated yet. Please activate your account to login.';
+                $message = 'Your account is not activated yet. Please activate your account to login.';
                 $auth_result = array('status' => $login_status,'message' => $message, 'data' => $loggedin_data);
                 return $auth_result;
             } else if (isset($row) && ($row['user_archived'] == 'Y')) {
                 $login_status = 'error';
-                $message = '<i class="icon fa fa-warning" aria-hidden="true"></i> Your account has been deactivated.';
+                $message = 'Your account has been deactivated.';
                 $auth_result = array('status' => $login_status, 'message' => $message, 'data' => $loggedin_data);
                 return $auth_result;
             } else {
@@ -177,7 +177,7 @@ class User_model extends CI_Model {
             }
         } else {
             $login_status = 'error';
-            $message = '<i class="icon fa fa-warning" aria-hidden="true"></i> Login failed. Please try again.';
+            $message = 'Login failed. Please try again.';
             $auth_result = array('status' => $login_status, 'message' => $message, 'data' => $loggedin_data);
             return $auth_result;
         }
