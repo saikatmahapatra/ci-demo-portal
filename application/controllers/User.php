@@ -1039,13 +1039,11 @@ class User extends CI_Controller {
 					'user_id' => $this->sess_user_id,
                     'academic_qualification' => $this->input->post('academic_qualification'),
                     'academic_degree' => $this->input->post('academic_degree'),
+                    'academic_specialization' => $this->input->post('academic_specialization'),
+                    'academic_institute' => $this->input->post('academic_institute'), 
                     'academic_from_year' => $this->input->post('academic_from_year'),
-                    'academic_to_year' => $this->input->post('academic_to_year'),                    
-                    'academic_institute' => $this->input->post('academic_institute'),                    
-                    'academic_other_inst' => $this->input->post('academic_other_inst'),                    
-                    'academic_marks_percentage' => $this->input->post('academic_marks_percentage'),                    
-                    'academic_specialization' => $this->input->post('academic_specialization'),                    
-                    'academic_other_specialization' => $this->input->post('academic_other_specialization')                  
+                    'academic_to_year' => $this->input->post('academic_to_year'),
+                    'academic_marks_percentage' => $this->input->post('academic_marks_percentage')                    
                 );                
                 $res = $this->user_model->insert($postdata,'user_academics');
                 if ($res) {
@@ -1070,21 +1068,20 @@ class User extends CI_Controller {
 		$education_id = $this->uri->segment(3);
 		$this->data['arr_academic_qualification'] = $this->user_model->get_qualification_dropdown();
 		$this->data['arr_academic_inst'] = $this->user_model->get_institute_dropdown();
-		$this->data['arr_academic_specialization'] = $this->user_model->get_specialization_dropdown();
+        $this->data['arr_academic_specialization'] = $this->user_model->get_specialization_dropdown();
+        $this->data['arr_academic_degree'] = $this->user_model->get_degree_dropdown();
         $this->data['education'] = $this->user_model->get_user_education($education_id, $this->sess_user_id);
 
         if ($this->input->post('form_action') == 'edit') {
             if ($this->validate_user_education_form_data('edit') == true) {
-                $postdata = array(
+                $postdata = array(                    
                     'academic_qualification' => $this->input->post('academic_qualification'),
                     'academic_degree' => $this->input->post('academic_degree'),
+                    'academic_specialization' => $this->input->post('academic_specialization'),
+                    'academic_institute' => $this->input->post('academic_institute'), 
                     'academic_from_year' => $this->input->post('academic_from_year'),
-                    'academic_to_year' => $this->input->post('academic_to_year'),                    
-                    'academic_institute' => $this->input->post('academic_institute'),                    
-                    'academic_other_inst' => $this->input->post('academic_other_inst'),                    
-                    'academic_marks_percentage' => $this->input->post('academic_marks_percentage'),                    
-                    'academic_specialization' => $this->input->post('academic_specialization'),                    
-                    'academic_other_specialization' => $this->input->post('academic_other_specialization')                    
+                    'academic_to_year' => $this->input->post('academic_to_year'),
+                    'academic_marks_percentage' => $this->input->post('academic_marks_percentage')                    
                 );
                 $where = array('id'=>$education_id, 'user_id' => $this->sess_user_id);
                 $res = $this->user_model->update($postdata, $where,'user_academics');
@@ -1123,11 +1120,11 @@ class User extends CI_Controller {
 	
 	function validate_user_education_form_data($mode) {		
         $this->form_validation->set_rules('academic_qualification', 'qualification', 'required'); 
-        $this->form_validation->set_rules('academic_degree', 'degree', 'required'); 
+        $this->form_validation->set_rules('academic_degree', 'degree', 'required|greater_than_equal_to[0]',array('greater_than_equal_to' => 'The %s field is required.')); 
 		$this->form_validation->set_rules('academic_from_year', 'from year', 'required|min_length[4]|max_length[4]|numeric');        
         $this->form_validation->set_rules('academic_to_year', 'to year', 'required|min_length[4]|max_length[4]|numeric'); 
-        $this->form_validation->set_rules('academic_institute', 'academic institute', 'required');
-        $this->form_validation->set_rules('academic_specialization', 'specialization', 'required');
+        $this->form_validation->set_rules('academic_institute', 'academic institute', 'required|greater_than_equal_to[0]',array('greater_than_equal_to' => 'The %s field is required.'));
+        $this->form_validation->set_rules('academic_specialization', 'specialization', 'required|greater_than_equal_to[0]',array('greater_than_equal_to' => 'The %s field is required.'));
         $this->form_validation->set_rules('academic_marks_percentage', 'marks in percentage', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {

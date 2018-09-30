@@ -41,7 +41,7 @@
 				</div>
 
 				<div class="form-group col-md-4">        							
-					<label for="academic_specialization" class="">Subject / Specialization <span class="required">*</span></label>
+					<label for="academic_specialization" class="">Specialization <span class="required">*</span></label>
 					<?php
 					echo form_dropdown('academic_specialization', $arr_academic_specialization, set_value('academic_specialization'), array(
 						'class' => 'form-control',
@@ -91,7 +91,7 @@
 					<?php echo form_error('academic_to_year'); ?>
 				</div>
 				<div class="form-group col-md-4">        						
-					<label for="academic_marks_percentage" class="">% Marks/Grade <span class="required">*</span></label>
+					<label for="academic_marks_percentage" class="">% Marks <span class="required">*</span></label>
 					<?php
 					echo form_input(array(
 						'name' => 'academic_marks_percentage',
@@ -113,28 +113,74 @@
 
 
 
-
-
-
 <!-- Modal -->
-<div class="modal fade" id="addNewItemModal" tabindex="-1" role="dialog" aria-labelledby="addNewItemModal" aria-hidden="true">
+<div class="modal fade" id="addDegree" tabindex="-1" role="dialog" aria-labelledby="addDegree" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addNewItemModalTitle"></h5>
+        <h5 class="modal-title" id="addDegreeTitle">Add New Degree</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-				<div id="responseMessage"></div>
-        <input type="text" class="form-control" id="new_input_value" name="new_input_value" placeholder="">				
+				<div id="responseMessage_addDegree"></div>
+        <input type="text" class="form-control" id="new_degree_name" name="new_degree_name" placeholder="">				
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times-circle"></i> Close</button>
-        <button type="button" data-action="" id="btnAddDegree" class="btn btn-primary d-none modal-action-btn"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
-        <button type="button" data-action="" id="btnAddSpecialization" class="btn btn-primary d-none modal-action-btn"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
-        <button type="button" data-action="" id="btnAddInstitute" class="btn btn-primary d-none modal-action-btn"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
+        <button type="button" id="btnAddDegree" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="addSpecialization" tabindex="-1" role="dialog" aria-labelledby="addSpecialization" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addSpecializationTitle">Add New Specialization</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+				<div id="responseMessage_addSpecialization"></div>
+        <input type="text" class="form-control" id="new_specialization_name" name="new_specialization_name" placeholder="">				
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times-circle"></i> Close</button>
+        <button type="button" id="btnAddSpecialization" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="addInst" tabindex="-1" role="dialog" aria-labelledby="addInst" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addInstTitle">Add New University</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+				<div id="responseMessage_addInst"></div>
+        <input type="text" class="form-control" id="new_inst_name" name="new_inst_name" placeholder="">				
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times-circle"></i> Close</button>
+        <button type="button" id="btnAddInst" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
+        
       </div>
     </div>
   </div>

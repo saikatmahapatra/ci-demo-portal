@@ -20,14 +20,36 @@ function domReady() {
     });
 
     //select2  #academic_specialization
-    render_select2_specialization();
-    render_select2_degree();
-    render_select2_institute();
+    //render_select2_specialization();
+    //render_select2_degree();
+    //render_select2_institute();
+
+    $('#academic_degree').select2({
+        //tags: true,
+    }).on('select2:close', function() {
+        add_new_item1('degree', $(this));
+    });
+
+    $('#academic_specialization').select2({
+        //tags: true,
+    }).on('select2:close', function() {
+        add_new_item2('specialization', $(this));
+    });
+
+    $('#academic_institute').select2({
+        //tags: true,
+    }).on('select2:close', function() {
+        add_new_item3('institute', $(this));
+    });
+
 } //domready
 
 $('body').on('click', '.change_account_status', changeAccountStatus);
 
-
+function add_new_item(type, el) {
+    console.log(type);
+    console.log(el);
+}
 
 
 /**
@@ -103,203 +125,143 @@ function changeAccountStatus(e) {
     });
 }
 
+function add_new_item1(item, el) {
+    if (el.val() == "-1") {
+        var modal = $('#addDegree');
+        var input_text = $('#new_degree_name');
+        var modalMsgDiv = $('#responseMessage_addDegree');
+        var btnSave = $('#btnAddDegree');
+        modalMsgDiv.html('');
+        input_text.val('');
+        modal.modal('show');
+        btnSave.on('click', function() {
+            //alert('D');
+            var xhr = new Ajax();
+            xhr.type = 'POST';
+            xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/add_user_input_degree';
+            xhr.data = {
+                degree_name: input_text.val(),
+                action: 'add'
+            };
+            xhr.beforeSend = function() {}
+            var promise = xhr.init();
+            promise.done(function(response) {
+                console.log(response);
+                if (response.msg) {
+                    modalMsgDiv.html(response.msg);
+                }
+                if (response.insert_id) {
+                    // Append Newly added Data and Make Seleetd it                        
+                    el.append($('<option>', {
+                        value: response.insert_id,
+                        text: input_text.val()
+                    }));
+                    $('#academic_degree option[value=' + response.insert_id + ']').attr('selected', 'selected');
 
-function render_select2_specialization() {
-    var formControlSelectSpecialization = $('#academic_specialization');
-    formControlSelectSpecialization.select2({
-        //tags: true,
-    }).on('select2:close', function() {
-        var el = $(this);
-        if (el.val() == "-1") {
-            //var newval = prompt("Enter new value: ");
-            var modal = $('#addNewItemModal');
-            var input_text = $('#new_input_value');
-            var modalMsgDiv = $('#responseMessage');
-
-            var btnAddSpecialization = $('#btnAddSpecialization');
-            var btnAddDegree = $('#btnAddDegree');
-            var btnAddInstitute = $('#btnAddInstitute');
-
-            modalMsgDiv.html('');
-            input_text.val('');
-            $('#addNewItemModalTitle').html('Add New Specialization');
-            btnAddSpecialization.removeClass('d-none');
-            btnAddDegree.addClass('d-none');
-            btnAddInstitute.addClass('d-none');
-            modal.modal('show');
-
-            btnAddSpecialization.on('click', function() {
-                var xhr = new Ajax();
-                xhr.type = 'POST';
-                xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/add_user_input_specialization';
-                xhr.data = {
-                    specialization_name: input_text.val(),
-                    action: 'add'
-                };
-                xhr.beforeSend = function() {}
-                var promise = xhr.init();
-                promise.done(function(response) {
-                    console.log(response);
-                    if (response.msg) {
-                        modalMsgDiv.html(response.msg);
-                    }
-                    if (response.insert_id) {
-                        // Append Newly added Data and Make Seleetd it                        
-                        el.append($('<option>', {
-                            value: response.insert_id,
-                            text: input_text.val()
-                        }));
-                        $('#academic_specialization option[value=' + response.insert_id + ']').attr('selected', 'selected');
-
-                        // Reset UI
-                        modalMsgDiv.html();
-                        input_text.val('');
-                        $('.modal-action-btn').addClass('d-none');
-                        $('#addNewItemModalTitle').html('');
-                        modal.modal('hide');
-                    }
-                });
-                promise.fail(function() {
-                    alert("Sorry, Can not process your request.");
-                });
-                promise.always(function() {
-
-                });
+                    // Reset UI
+                    modal.modal('hide');
+                }
             });
-        }
-    });
+            promise.fail(function() {
+                alert("Sorry, Can not process your request.");
+            });
+            promise.always(function() {
+
+            });
+        });
+    }
 }
 
+function add_new_item2(item, el) {
+    if (el.val() == "-1") {
+        var modal = $('#addSpecialization');
+        var input_text = $('#new_specialization_name');
+        var modalMsgDiv = $('#responseMessage_addSpecialization');
+        var btnSave = $('#btnAddSpecialization');
+        modalMsgDiv.html('');
+        input_text.val('');
+        modal.modal('show');
+        btnSave.on('click', function() {
+            alert('S');
+            var xhr = new Ajax();
+            xhr.type = 'POST';
+            xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/add_user_input_specialization';
+            xhr.data = {
+                specialization_name: input_text.val(),
+                action: 'add'
+            };
+            xhr.beforeSend = function() {}
+            var promise = xhr.init();
+            promise.done(function(response) {
+                console.log(response);
+                if (response.msg) {
+                    modalMsgDiv.html(response.msg);
+                }
+                if (response.insert_id) {
+                    // Append Newly added Data and Make Seleetd it                        
+                    el.append($('<option>', {
+                        value: response.insert_id,
+                        text: input_text.val()
+                    }));
+                    $('#academic_specialization option[value=' + response.insert_id + ']').attr('selected', 'selected');
 
-function render_select2_degree() {
-    var formControlSelectDegree = $('#academic_degree');
-    formControlSelectDegree.select2({
-        //tags: true,
-    }).on('select2:close', function() {
-        var el = $(this);
-        if (el.val() == "-1") {
-            //var newval = prompt("Enter new value: ");
-            var modal = $('#addNewItemModal');
-            var input_text = $('#new_input_value');
-            var modalMsgDiv = $('#responseMessage');
-
-            var btnAddSpecialization = $('#btnAddSpecialization');
-            var btnAddDegree = $('#btnAddDegree');
-            var btnAddInstitute = $('#btnAddInstitute');
-
-            modalMsgDiv.html('');
-            input_text.val('');
-            $('#addNewItemModalTitle').html('Add New Degree');
-            btnAddDegree.removeClass('d-none');
-            btnAddInstitute.addClass('d-none');
-            btnAddSpecialization.addClass('d-none');
-            modal.modal('show');
-
-            btnAddDegree.on('click', function() {
-                var xhr = new Ajax();
-                xhr.type = 'POST';
-                xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/add_user_input_degree';
-                xhr.data = {
-                    degree_name: input_text.val(),
-                    action: 'add'
-                };
-                xhr.beforeSend = function() {}
-                var promise = xhr.init();
-                promise.done(function(response) {
-                    console.log(response);
-                    if (response.msg) {
-                        modalMsgDiv.html(response.msg);
-                    }
-                    if (response.insert_id) {
-                        // Append Newly added Data and Make Seleetd it                        
-                        el.append($('<option>', {
-                            value: response.insert_id,
-                            text: input_text.val()
-                        }));
-                        $('#academic_degree option[value=' + response.insert_id + ']').attr('selected', 'selected');
-
-                        // Reset UI
-                        modalMsgDiv.html();
-                        input_text.val('');
-                        $('#addNewItemModalTitle').html('');
-                        $('.modal-action-btn').addClass('d-none');
-                        modal.modal('hide');
-                    }
-                });
-                promise.fail(function() {
-                    alert("Sorry, Can not process your request.");
-                });
-                promise.always(function() {
-
-                });
+                    // Reset UI
+                    modal.modal('hide');
+                }
             });
-        }
-    });
+            promise.fail(function() {
+                alert("Sorry, Can not process your request.");
+            });
+            promise.always(function() {
+
+            });
+        });
+    }
 }
 
+function add_new_item3(item, el) {
+    if (el.val() == "-1") {
+        var modal = $('#addInst');
+        var input_text = $('#new_inst_name');
+        var modalMsgDiv = $('#responseMessage_addInst');
+        var btnSave = $('#btnAddInst');
+        modalMsgDiv.html('');
+        input_text.val('');
+        modal.modal('show');
+        btnSave.on('click', function() {
+            alert('I');
+            var xhr = new Ajax();
+            xhr.type = 'POST';
+            xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/add_user_input_institute';
+            xhr.data = {
+                institute_name: input_text.val(),
+                action: 'add'
+            };
+            xhr.beforeSend = function() {}
+            var promise = xhr.init();
+            promise.done(function(response) {
+                console.log(response);
+                if (response.msg) {
+                    modalMsgDiv.html(response.msg);
+                }
+                if (response.insert_id) {
+                    // Append Newly added Data and Make Seleetd it                        
+                    el.append($('<option>', {
+                        value: response.insert_id,
+                        text: input_text.val()
+                    }));
+                    $('#academic_institute option[value=' + response.insert_id + ']').attr('selected', 'selected');
 
-function render_select2_institute() {
-    var formControlSelectInst = $('#academic_institute');
-    formControlSelectInst.select2({
-        //tags: true,
-    }).on('select2:close', function() {
-        var el = $(this);
-        if (el.val() == "-1") {
-            //var newval = prompt("Enter new value: ");
-            var modal = $('#addNewItemModal');
-            var input_text = $('#new_input_value');
-            var modalMsgDiv = $('#responseMessage');
-
-            var btnAddSpecialization = $('#btnAddSpecialization');
-            var btnAddDegree = $('#btnAddDegree');
-            var btnAddInstitute = $('#btnAddInstitute');
-
-            modalMsgDiv.html('');
-            input_text.val('');
-            $('#addNewItemModalTitle').html('Add New University/Board/Council');
-            btnAddInstitute.removeClass('d-none');
-            btnAddSpecialization.addClass('d-none');
-            btnAddDegree.addClass('d-none');
-            modal.modal('show');
-
-            btnAddInstitute.on('click', function() {
-                var xhr = new Ajax();
-                xhr.type = 'POST';
-                xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/add_user_input_institute';
-                xhr.data = {
-                    institute_name: input_text.val(),
-                    action: 'add'
-                };
-                xhr.beforeSend = function() {}
-                var promise = xhr.init();
-                promise.done(function(response) {
-                    console.log(response);
-                    if (response.msg) {
-                        modalMsgDiv.html(response.msg);
-                    }
-                    if (response.insert_id) {
-                        // Append Newly added Data and Make Seleetd it                        
-                        el.append($('<option>', {
-                            value: response.insert_id,
-                            text: input_text.val()
-                        }));
-                        $('#academic_institute option[value=' + response.insert_id + ']').attr('selected', 'selected');
-
-                        // Reset UI
-                        modalMsgDiv.html();
-                        input_text.val('');
-                        $('.modal-action-btn').addClass('d-none');
-                        $('#addNewItemModalTitle').html('');
-                        modal.modal('hide');
-                    }
-                });
-                promise.fail(function() {
-                    alert("Sorry, Can not process your request.");
-                });
-                promise.always(function() {
-
-                });
+                    // Reset UI
+                    modal.modal('hide');
+                }
             });
-        }
-    });
+            promise.fail(function() {
+                alert("Sorry, Can not process your request.");
+            });
+            promise.always(function() {
+
+            });
+        });
+    }
 }

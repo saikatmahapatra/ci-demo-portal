@@ -78,9 +78,9 @@
 					<div class="nav nav-tabs ci-nav-tab" id="nav-tab" role="tablist">
 						<a class="nav-item nav-link active" id="nav-basic-tab" data-toggle="tab" href="#nav-basic" role="tab" aria-controls="nav-basic" aria-selected="true">Basic Information</a>			
 						<a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab" href="#nav-address" role="tab" aria-controls="nav-address" aria-selected="false">Address</a>									
-						<!--<a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Academic Qualification</a>			
+						<a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Academic Qualification</a>			
 						<a class="nav-item nav-link" id="nav-exp-tab" data-toggle="tab" href="#nav-exp" role="tab" aria-controls="nav-exp" aria-selected="false">Work Experience</a>
-						<a class="nav-item nav-link" id="nav-bank-tab" data-toggle="tab" href="#nav-bank" role="tab" aria-controls="nav-bank" aria-selected="false">Bank Account</a>-->
+						<a class="nav-item nav-link" id="nav-bank-tab" data-toggle="tab" href="#nav-bank" role="tab" aria-controls="nav-bank" aria-selected="false">Bank Account</a>
 					</div>
 				</nav>
 
@@ -171,11 +171,10 @@
 										foreach($education as $key=>$edu){
 										?>
 											<dl class="row">
-												<dt class="col-md-12"><?php echo isset($edu['qualification_name'])?$edu['qualification_name']:'';?> : <?php echo isset($edu['academic_from_year'])?$edu['academic_from_year'].'-'.$edu['academic_to_year']:'';?></dt>
+												<dt class="col-md-12"><?php echo isset($edu['qualification_name'])?$edu['qualification_name']: ' ';?> : <?php echo isset($edu['degree_name'])?$edu['degree_name']:'';?> <?php echo isset($edu['academic_from_year']) ? $edu['academic_from_year'].'-'.$edu['academic_to_year']:'';?></dt>
 												<dd class="col-md-12">
-													<div class="mt-2"></div>
-													<div class=""><?php echo isset($edu['specialization_name'])?$edu['specialization_name']:$edu['academic_other_specialization'];?></div>
-													<div class=""><?php echo isset($edu['institute_name']) ? $edu['institute_name']: $edu['academic_other_inst'];?></div>
+													<div class=""><?php echo isset($edu['specialization_name'])?$edu['specialization_name']:'';?></div>
+													<div class=""><?php echo isset($edu['institute_name']) ? $edu['institute_name']: '';?></div>
 													<div class=""><?php echo isset($edu['academic_marks_percentage'])?$edu['academic_marks_percentage'].' %':'';?></div>
 													<div class="mt-2 mb-2">
 													<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>

@@ -347,7 +347,8 @@ class User_model extends CI_Model {
         $this->db->select('id,qualification_name');
         $this->db->where('qualification_status','Y');
 		$this->db->order_by('qualification_name');
-        $query = $this->db->get('academic_qualification');        
+        $query = $this->db->get('academic_qualification'); 
+        $result = array('' => 'Select');       
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
@@ -406,7 +407,7 @@ class User_model extends CI_Model {
     }
 	
 	function get_user_education($id = NULL, $user_id) {
-        $this->db->select('t1.*,t2.qualification_name,t3.specialization_name,t4.institute_name');    
+        $this->db->select('t1.*,t2.qualification_name,t3.specialization_name,t4.institute_name, t5.degree_name');    
         if(isset($id)){
             $this->db->where(array('t1.id' => $id));
         }  
@@ -415,8 +416,9 @@ class User_model extends CI_Model {
         }
 		$this->db->join('academic_qualification t2', 't1.academic_qualification=t2.id', 'left');
 		$this->db->join('academic_specialization t3', 't1.academic_specialization=t3.id', 'left');
-		$this->db->join('academic_institute t4', 't1.academic_inst=t4.id', 'left');	
-		$this->db->order_by('t1.academic_to_year','desc');
+		$this->db->join('academic_institute t4', 't1.academic_institute=t4.id', 'left');	
+		$this->db->join('academic_degree t5', 't1.academic_degree=t5.id', 'left');	
+		$this->db->order_by('t1.academic_qualification','desc');
         $query = $this->db->get('user_academics as t1');
         //echo $this->db->last_query();
         $result = $query->result_array();        
