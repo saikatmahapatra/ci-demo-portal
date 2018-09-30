@@ -19,17 +19,29 @@
         <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form', 'name' => 'address_add','id' => 'address_add')); ?>
         <?php echo form_hidden('form_action', 'add'); ?>
 			<div class="form-row">                
-				<div class="form-group col-md-6">                                
-					<label for="academic_qualification" class="">Degree/Qualification <span class="required">*</span></label>
+				<div class="form-group col-md-4">                                
+					<label for="academic_qualification" class="">Qualification <span class="required">*</span></label>
 					<?php
 					echo form_dropdown('academic_qualification', $arr_academic_qualification, set_value('academic_qualification'), array(
 						'class' => 'form-control',
 					));
 					?> 
 					<?php echo form_error('academic_qualification'); ?>
-				</div>			
-				<div class="form-group col-md-6">        							
-					<label for="academic_specialization" class="">Specialization <span class="required">*</span></label>
+				</div>
+
+				<div class="form-group col-md-4">                                
+					<label for="academic_degree" class="">Degree <span class="required">*</span></label>
+					<?php
+					echo form_dropdown('academic_degree', $arr_academic_degree, set_value('academic_degree'), array(
+						'class' => 'form-control',
+						'id' => 'academic_degree'
+					));
+					?> 
+					<?php echo form_error('academic_degree'); ?>
+				</div>
+
+				<div class="form-group col-md-4">        							
+					<label for="academic_specialization" class="">Subject / Specialization <span class="required">*</span></label>
 					<?php
 					echo form_dropdown('academic_specialization', $arr_academic_specialization, set_value('academic_specialization'), array(
 						'class' => 'form-control',
@@ -38,15 +50,16 @@
 					?> 
 					<?php echo form_error('academic_specialization'); ?>
 				</div>					
-            </div>
+      </div>
 			<div class="form-group">                                
-					<label for="academic_inst" class="">Institute/College/University <span class="required">*</span></label>
+					<label for="academic_institute" class="">University / Board / Council <span class="required">*</span></label>
 					<?php
-					echo form_dropdown('academic_inst', $arr_academic_inst, set_value('academic_inst'), array(
+					echo form_dropdown('academic_institute', $arr_academic_inst, set_value('academic_institute'), array(
 						'class' => 'form-control',
+						'id' =>'academic_institute'
 					));
 					?> 
-					<?php echo form_error('academic_inst'); ?>
+					<?php echo form_error('academic_institute'); ?>
 				</div>
 			<div class="form-row">
 				<div class="form-group col-md-4">        						
@@ -114,11 +127,12 @@
         </button>
       </div>
       <div class="modal-body">
+				<div id="responseMessage"></div>
         <input type="text" class="form-control" id="new_input_value" name="new_input_value" placeholder="Add New">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="saveNewItem" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times-circle"></i> Close</button>
+        <button type="button" id="saveNewItem" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
       </div>
     </div>
   </div>

@@ -3428,3 +3428,5 @@ INSERT INTO `academic_qualification` (`id`, `qualification_name`, `qualification
 
 
 ALTER TABLE `user_addresses` CHANGE `state` `state` INT(11) NULL DEFAULT NULL;
+
+ALTER TABLE `user_academics` ADD `academic_degree` INT(11) NULL DEFAULT NULL AFTER `academic_qualification`;

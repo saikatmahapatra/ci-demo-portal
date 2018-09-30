@@ -1029,7 +1029,8 @@ class User extends CI_Controller {
         }
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-		$this->data['arr_academic_qualification'] = $this->user_model->get_qualification_dropdown();
+        $this->data['arr_academic_qualification'] = $this->user_model->get_qualification_dropdown();
+        $this->data['arr_academic_degree'] = $this->user_model->get_degree_dropdown();
 		$this->data['arr_academic_inst'] = $this->user_model->get_institute_dropdown();
 		$this->data['arr_academic_specialization'] = $this->user_model->get_specialization_dropdown();
         if ($this->input->post('form_action') == 'add') {
@@ -1037,9 +1038,10 @@ class User extends CI_Controller {
                 $postdata = array(
 					'user_id' => $this->sess_user_id,
                     'academic_qualification' => $this->input->post('academic_qualification'),
+                    'academic_degree' => $this->input->post('academic_degree'),
                     'academic_from_year' => $this->input->post('academic_from_year'),
                     'academic_to_year' => $this->input->post('academic_to_year'),                    
-                    'academic_inst' => $this->input->post('academic_inst'),                    
+                    'academic_institute' => $this->input->post('academic_institute'),                    
                     'academic_other_inst' => $this->input->post('academic_other_inst'),                    
                     'academic_marks_percentage' => $this->input->post('academic_marks_percentage'),                    
                     'academic_specialization' => $this->input->post('academic_specialization'),                    
@@ -1075,9 +1077,10 @@ class User extends CI_Controller {
             if ($this->validate_user_education_form_data('edit') == true) {
                 $postdata = array(
                     'academic_qualification' => $this->input->post('academic_qualification'),
+                    'academic_degree' => $this->input->post('academic_degree'),
                     'academic_from_year' => $this->input->post('academic_from_year'),
                     'academic_to_year' => $this->input->post('academic_to_year'),                    
-                    'academic_inst' => $this->input->post('academic_inst'),                    
+                    'academic_institute' => $this->input->post('academic_institute'),                    
                     'academic_other_inst' => $this->input->post('academic_other_inst'),                    
                     'academic_marks_percentage' => $this->input->post('academic_marks_percentage'),                    
                     'academic_specialization' => $this->input->post('academic_specialization'),                    
@@ -1120,9 +1123,10 @@ class User extends CI_Controller {
 	
 	function validate_user_education_form_data($mode) {		
         $this->form_validation->set_rules('academic_qualification', 'qualification', 'required'); 
+        $this->form_validation->set_rules('academic_degree', 'degree', 'required'); 
 		$this->form_validation->set_rules('academic_from_year', 'from year', 'required|min_length[4]|max_length[4]|numeric');        
         $this->form_validation->set_rules('academic_to_year', 'to year', 'required|min_length[4]|max_length[4]|numeric'); 
-        $this->form_validation->set_rules('academic_inst', 'academic inst', 'required');
+        $this->form_validation->set_rules('academic_institute', 'academic institute', 'required');
         $this->form_validation->set_rules('academic_specialization', 'specialization', 'required');
         $this->form_validation->set_rules('academic_marks_percentage', 'marks in percentage', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
@@ -1456,11 +1460,102 @@ class User extends CI_Controller {
     }
     
     function add_user_input_specialization(){
-        print_r($_POST); die();
-        if(($this->input->post('action')=='add') && $this->input->post('new_input_value')){
+        $message = array('is_valid'=>false, 'insert_id'=>'','msg'=>'');
+        if(($this->input->post('action')=='add')){
+            if ($this->validate_add_user_input_specialization_data() == true) {
+                $postdata = array(					
+                    'specialization_name' => ucwords(strtolower($this->input->post('specialization_name')))
+                );                
+                $insert_id = $this->user_model->insert($postdata,'academic_specialization');
+                if ($insert_id) {
+                    $message = array('is_valid'=>true, 'insert_id'=>$insert_id,'msg'=>'<div class="alert alert-success">Specialization has been added succesfully.</div>'); 
+                }
+            }else{
+                $message = array('is_valid'=>false, 'insert_id'=>'','msg'=>validation_errors()); 
+            }
+        }
+        echo json_encode($message); die();
+    }
 
+
+    function validate_add_user_input_specialization_data(){        
+		$this->form_validation->set_rules('specialization_name', 'specialization name', 'required|alpha_numeric_spaces|min_length[5]|max_length[100]|is_unique[academic_specialization.specialization_name]',
+        array(                
+                'is_unique'     => 'This %s already exists.'
+        ));
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
         }
     }
+    
+
+    function add_user_input_degree(){
+        $message = array('is_valid'=>false, 'insert_id'=>'','msg'=>'');
+        if(($this->input->post('action')=='add')){
+            if ($this->validate_add_user_input_degree_data() == true) {
+                $postdata = array(					
+                    'degree_name' => ucwords(strtolower($this->input->post('degree_name')))
+                );                
+                $insert_id = $this->user_model->insert($postdata,'academic_degree');
+                if ($insert_id) {
+                    $message = array('is_valid'=>true, 'insert_id'=>$insert_id,'msg'=>'<div class="alert alert-success">degree has been added succesfully.</div>'); 
+                }
+            }else{
+                $message = array('is_valid'=>false, 'insert_id'=>'','msg'=>validation_errors()); 
+            }
+        }
+        echo json_encode($message); die();
+    }
+
+
+    function validate_add_user_input_degree_data(){        
+		$this->form_validation->set_rules('degree_name', 'degree name', 'required|alpha_numeric_spaces|min_length[5]|max_length[50]|is_unique[academic_degree.degree_name]',
+        array(                
+                'is_unique'     => 'This %s already exists.'
+        ));
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+
+    function add_user_input_institute(){
+        $message = array('is_valid'=>false, 'insert_id'=>'','msg'=>'');
+        if(($this->input->post('action')=='add')){
+            if ($this->validate_add_user_input_institute_data() == true) {
+                $postdata = array(					
+                    'institute_name' => ucwords(strtolower($this->input->post('institute_name')))
+                );                
+                $insert_id = $this->user_model->insert($postdata,'academic_institute');
+                if ($insert_id) {
+                    $message = array('is_valid'=>true, 'insert_id'=>$insert_id,'msg'=>'<div class="alert alert-success">institute has been added succesfully.</div>'); 
+                }
+            }else{
+                $message = array('is_valid'=>false, 'insert_id'=>'','msg'=>validation_errors()); 
+            }
+        }
+        echo json_encode($message); die();
+    }
+
+
+    function validate_add_user_input_institute_data(){
+		$this->form_validation->set_rules('institute_name', 'institute name', 'required|alpha_numeric_spaces|min_length[5]|max_length[200]|is_unique[academic_institute.institute_name]',
+        array(                
+                'is_unique'     => 'This %s already exists.'
+        ));
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
+	}
 
 }
 

@@ -347,12 +347,27 @@ class User_model extends CI_Model {
         $this->db->select('id,qualification_name');
         $this->db->where('qualification_status','Y');
 		$this->db->order_by('qualification_name');
-        $query = $this->db->get('academic_qualification');
-        $result = array('' => 'Select');
+        $query = $this->db->get('academic_qualification');        
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
                 $result[$r->id] = $r->qualification_name;
+            }
+        }
+        return $result;
+    }
+
+    function get_degree_dropdown() {
+        $result = array();
+        $this->db->select('id,degree_name');
+        $this->db->where('degree_status','Y');
+		$this->db->order_by('degree_name');
+        $query = $this->db->get('academic_degree');
+        $result = array('' => 'Select','-1'=>'ADD NEW');
+        if ($query->num_rows()) {
+            $res = $query->result();
+            foreach ($res as $r) {
+                $result[$r->id] = $r->degree_name;
             }
         }
         return $result;
@@ -380,7 +395,7 @@ class User_model extends CI_Model {
         $this->db->where('institute_status','Y');
         $this->db->order_by('institute_name');
         $query = $this->db->get('academic_institute');
-        $result = array('' => 'Select');
+        $result = array('' => 'Select','-1'=>'ADD NEW');
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
