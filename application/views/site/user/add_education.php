@@ -121,18 +121,20 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addNewItemModal">Add New</h5>
+        <h5 class="modal-title" id="addNewItemModalTitle"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
 				<div id="responseMessage"></div>
-        <input type="text" class="form-control" id="new_input_value" name="new_input_value" placeholder="Add New">
+        <input type="text" class="form-control" id="new_input_value" name="new_input_value" placeholder="">				
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times-circle"></i> Close</button>
-        <button type="button" id="saveNewItem" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
+        <button type="button" data-action="" id="btnAddDegree" class="btn btn-primary d-none modal-action-btn"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
+        <button type="button" data-action="" id="btnAddSpecialization" class="btn btn-primary d-none modal-action-btn"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
+        <button type="button" data-action="" id="btnAddInstitute" class="btn btn-primary d-none modal-action-btn"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
       </div>
     </div>
   </div>

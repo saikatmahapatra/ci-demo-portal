@@ -115,13 +115,20 @@ function render_select2_specialization() {
             var modal = $('#addNewItemModal');
             var input_text = $('#new_input_value');
             var modalMsgDiv = $('#responseMessage');
-            var saveBtn = $('#saveNewItem');
+
+            var btnAddSpecialization = $('#btnAddSpecialization');
+            var btnAddDegree = $('#btnAddDegree');
+            var btnAddInstitute = $('#btnAddInstitute');
 
             modalMsgDiv.html('');
             input_text.val('');
+            $('#addNewItemModalTitle').html('Add New Specialization');
+            btnAddSpecialization.removeClass('d-none');
+            btnAddDegree.addClass('d-none');
+            btnAddInstitute.addClass('d-none');
             modal.modal('show');
 
-            saveBtn.on('click', function() {
+            btnAddSpecialization.on('click', function() {
                 var xhr = new Ajax();
                 xhr.type = 'POST';
                 xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/add_user_input_specialization';
@@ -147,8 +154,9 @@ function render_select2_specialization() {
                         // Reset UI
                         modalMsgDiv.html();
                         input_text.val('');
+                        $('.modal-action-btn').addClass('d-none');
+                        $('#addNewItemModalTitle').html('');
                         modal.modal('hide');
-
                     }
                 });
                 promise.fail(function() {
@@ -174,13 +182,20 @@ function render_select2_degree() {
             var modal = $('#addNewItemModal');
             var input_text = $('#new_input_value');
             var modalMsgDiv = $('#responseMessage');
-            var saveBtn = $('#saveNewItem');
+
+            var btnAddSpecialization = $('#btnAddSpecialization');
+            var btnAddDegree = $('#btnAddDegree');
+            var btnAddInstitute = $('#btnAddInstitute');
 
             modalMsgDiv.html('');
             input_text.val('');
+            $('#addNewItemModalTitle').html('Add New Degree');
+            btnAddDegree.removeClass('d-none');
+            btnAddInstitute.addClass('d-none');
+            btnAddSpecialization.addClass('d-none');
             modal.modal('show');
 
-            saveBtn.on('click', function() {
+            btnAddDegree.on('click', function() {
                 var xhr = new Ajax();
                 xhr.type = 'POST';
                 xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/add_user_input_degree';
@@ -206,8 +221,9 @@ function render_select2_degree() {
                         // Reset UI
                         modalMsgDiv.html();
                         input_text.val('');
+                        $('#addNewItemModalTitle').html('');
+                        $('.modal-action-btn').addClass('d-none');
                         modal.modal('hide');
-
                     }
                 });
                 promise.fail(function() {
@@ -233,13 +249,20 @@ function render_select2_institute() {
             var modal = $('#addNewItemModal');
             var input_text = $('#new_input_value');
             var modalMsgDiv = $('#responseMessage');
-            var saveBtn = $('#saveNewItem');
+
+            var btnAddSpecialization = $('#btnAddSpecialization');
+            var btnAddDegree = $('#btnAddDegree');
+            var btnAddInstitute = $('#btnAddInstitute');
 
             modalMsgDiv.html('');
             input_text.val('');
+            $('#addNewItemModalTitle').html('Add New University/Board/Council');
+            btnAddInstitute.removeClass('d-none');
+            btnAddSpecialization.addClass('d-none');
+            btnAddDegree.addClass('d-none');
             modal.modal('show');
 
-            saveBtn.on('click', function() {
+            btnAddInstitute.on('click', function() {
                 var xhr = new Ajax();
                 xhr.type = 'POST';
                 xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/add_user_input_institute';
@@ -265,8 +288,9 @@ function render_select2_institute() {
                         // Reset UI
                         modalMsgDiv.html();
                         input_text.val('');
+                        $('.modal-action-btn').addClass('d-none');
+                        $('#addNewItemModalTitle').html('');
                         modal.modal('hide');
-
                     }
                 });
                 promise.fail(function() {
