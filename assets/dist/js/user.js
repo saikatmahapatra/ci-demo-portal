@@ -143,10 +143,13 @@ function add_new_item1(item, el) {
                 degree_name: input_text.val(),
                 action: 'add'
             };
-            xhr.beforeSend = function() {}
+            xhr.beforeSend = function() {
+                showAjaxLoader();
+            }
             var promise = xhr.init();
             promise.done(function(response) {
                 //console.log(response);
+                hideAjaxLoader();
                 if (response.msg) {
                     modalMsgDiv.html(response.msg);
                 }
@@ -190,9 +193,12 @@ function add_new_item2(item, el) {
                 specialization_name: input_text.val(),
                 action: 'add'
             };
-            xhr.beforeSend = function() {}
+            xhr.beforeSend = function() {
+                showAjaxLoader();
+            }
             var promise = xhr.init();
             promise.done(function(response) {
+                hideAjaxLoader();
                 //console.log(response);
                 if (response.msg) {
                     modalMsgDiv.html(response.msg);
@@ -237,9 +243,12 @@ function add_new_item3(item, el) {
                 institute_name: input_text.val(),
                 action: 'add'
             };
-            xhr.beforeSend = function() {}
+            xhr.beforeSend = function() {
+                showAjaxLoader();
+            }
             var promise = xhr.init();
             promise.done(function(response) {
+                hideAjaxLoader();
                 //console.log(response);
                 if (response.msg) {
                     modalMsgDiv.html(response.msg);

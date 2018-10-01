@@ -134,7 +134,7 @@
       </div>
       <div class="modal-body">
 				<div id="responseMessage_addDegree"></div>
-        <input type="text" class="form-control" id="new_degree_name" name="new_degree_name" placeholder="">				
+        <input type="text" class="form-control" id="new_degree_name" name="new_degree_name" placeholder="Degree Name">				
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times-circle"></i> Close</button>
@@ -159,7 +159,7 @@
       </div>
       <div class="modal-body">
 				<div id="responseMessage_addSpecialization"></div>
-        <input type="text" class="form-control" id="new_specialization_name" name="new_specialization_name" placeholder="">				
+        <input type="text" class="form-control" id="new_specialization_name" name="new_specialization_name" placeholder="Specialization Name">				
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times-circle"></i> Close</button>
@@ -184,7 +184,7 @@
       </div>
       <div class="modal-body">
 				<div id="responseMessage_addInst"></div>
-        <input type="text" class="form-control" id="new_inst_name" name="new_inst_name" placeholder="">				
+        <input type="text" class="form-control" id="new_inst_name" name="new_inst_name" placeholder="University/Board/Council Name">				
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times-circle"></i> Close</button>

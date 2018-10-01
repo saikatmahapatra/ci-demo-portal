@@ -1122,7 +1122,7 @@ class User extends CI_Controller {
         $max_year = (date('Y')+4);	
         $this->form_validation->set_rules('academic_qualification', 'qualification', 'required'); 
         $this->form_validation->set_rules('academic_degree', 'degree', 'required|greater_than_equal_to[0]',array('greater_than_equal_to' => 'The %s field is required.')); 
-		$this->form_validation->set_rules('academic_from_year', 'from year', 'required|min_length[4]|max_length[4]|numeric|greater_than_equal_to[1970]|less_than_equal_to['.$max_year.']');        
+		$this->form_validation->set_rules('academic_from_year', 'from year', 'required|min_length[4]|max_length[4]|numeric|greater_than_equal_to[1970]|less_than_equal_to['.date('Y').']');        
         $this->form_validation->set_rules('academic_to_year', 'to year', 'required|min_length[4]|max_length[4]|numeric|greater_than_equal_to[1970]|less_than_equal_to['.$max_year.']'); 
         $this->form_validation->set_rules('academic_institute', 'academic institute', 'required|greater_than_equal_to[0]',array('greater_than_equal_to' => 'The %s field is required.'));
         $this->form_validation->set_rules('academic_specialization', 'specialization', 'required|greater_than_equal_to[0]',array('greater_than_equal_to' => 'The %s field is required.'));
