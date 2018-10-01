@@ -146,7 +146,7 @@ function add_new_item1(item, el) {
             xhr.beforeSend = function() {}
             var promise = xhr.init();
             promise.done(function(response) {
-                console.log(response);
+                //console.log(response);
                 if (response.msg) {
                     modalMsgDiv.html(response.msg);
                 }
@@ -182,7 +182,7 @@ function add_new_item2(item, el) {
         input_text.val('');
         modal.modal('show');
         btnSave.on('click', function() {
-            alert('S');
+            //alert('S');
             var xhr = new Ajax();
             xhr.type = 'POST';
             xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/add_user_input_specialization';
@@ -193,7 +193,7 @@ function add_new_item2(item, el) {
             xhr.beforeSend = function() {}
             var promise = xhr.init();
             promise.done(function(response) {
-                console.log(response);
+                //console.log(response);
                 if (response.msg) {
                     modalMsgDiv.html(response.msg);
                 }
@@ -229,7 +229,7 @@ function add_new_item3(item, el) {
         input_text.val('');
         modal.modal('show');
         btnSave.on('click', function() {
-            alert('I');
+            //alert('I');
             var xhr = new Ajax();
             xhr.type = 'POST';
             xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/add_user_input_institute';
@@ -240,7 +240,7 @@ function add_new_item3(item, el) {
             xhr.beforeSend = function() {}
             var promise = xhr.init();
             promise.done(function(response) {
-                console.log(response);
+                //console.log(response);
                 if (response.msg) {
                     modalMsgDiv.html(response.msg);
                 }

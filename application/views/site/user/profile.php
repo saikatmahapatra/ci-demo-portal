@@ -82,10 +82,11 @@
 					<?php if($this->common_lib->is_auth(array('view-user-address'),false) == true){ ?>		
 					<a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab" href="#nav-address" role="tab" aria-controls="nav-address" aria-selected="false">Address</a>								
 					<?php } ?>
-					<?php /* ?>
+					
 					<?php  if($this->common_lib->is_auth(array('view-user-education'),false) == true){ ?>		
 					<a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Academic Qualification</a>			
 					<?php } ?>
+					<?php /* ?>
 					<?php if($this->common_lib->is_auth(array('view-user-exp'),false) == true){ ?>		
 					<a class="nav-item nav-link" id="nav-exp-tab" data-toggle="tab" href="#nav-exp" role="tab" aria-controls="nav-exp" aria-selected="false">Work Experience</a>
 					<?php } ?>
@@ -175,21 +176,23 @@
 						<div class="row mt-3">
 							<div class="col-md-12">
 							<?php if(isset($education)){
-										foreach($education as $key=>$edu){
-										?>
-											<dl class="row">
-												<dt class="col-md-12"><?php echo isset($edu['qualification_name'])?$edu['qualification_name']:'';?> : <?php echo isset($edu['academic_from_year'])?$edu['academic_from_year'].'-'.$edu['academic_to_year']:'';?></dt>
-												<dd class="col-md-12">
-													<div class="mt-2"></div>
-													<div class=""><?php echo isset($edu['specialization_name'])?$edu['specialization_name']:$edu['academic_other_specialization'];?></div>
-													<div class=""><?php echo isset($edu['institute_name']) ? $edu['institute_name']: $edu['academic_other_inst'];?></div>
-													<div class=""><?php echo isset($edu['academic_marks_percentage'])?$edu['academic_marks_percentage'].' %':'';?></div>
-													
-												</dd>												
-											</dl><!--/dl.row-->
-										<?php
-										}
-									}?>											
+								foreach($education as $key=>$edu){
+								?>
+									<dl class="row">
+										<dt class="col-md-12"><?php echo isset($edu['qualification_name'])?$edu['qualification_name']: ' ';?> : <?php echo isset($edu['degree_name'])?$edu['degree_name']:'';?> <?php echo isset($edu['academic_from_year']) ? $edu['academic_from_year'].'-'.$edu['academic_to_year']:'';?></dt>
+										<dd class="col-md-12">
+											<div class=""><?php echo isset($edu['specialization_name'])?$edu['specialization_name']:'';?></div>
+											<div class=""><?php echo isset($edu['institute_name']) ? $edu['institute_name']: '';?></div>
+											<div class=""><?php echo isset($edu['academic_marks_percentage'])?$edu['academic_marks_percentage'].' %':'';?></div>
+											<div class="mt-2 mb-2">
+											<!--<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>-->
+											<!--<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_education/'.$edu["id"]);?>" class="btn btn-outline-danger btn-sm ml-1"><i class="fa fa-trash" aria-hidden="true"> Delete</i></a>-->
+											</div>
+										</dd>												
+									</dl><!--/dl.row-->
+								<?php
+								}
+							}?>										
 							</div>
 						</div>
 					</div> <!--/#nav-education-->

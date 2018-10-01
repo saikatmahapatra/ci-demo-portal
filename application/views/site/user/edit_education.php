@@ -107,7 +107,7 @@
 						'id' => 'academic_marks_percentage',
 						'class' => 'form-control',
 						'maxlength' => '5',
-						'placeholder'=>''
+						'placeholder'=>'ex. 78.0'
 					));
 					?>
 					<?php echo form_error('academic_marks_percentage'); ?>
