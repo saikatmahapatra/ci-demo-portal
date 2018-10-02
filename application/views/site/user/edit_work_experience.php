@@ -27,7 +27,7 @@
 						<?php
 						echo form_dropdown('company_id', $arr_company, isset($_POST['company_id']) ? set_value('company_id') : $row['company_id'], array(
 							'class' => 'form-control',
-							'id' => 'company_id'
+							'id' => 'prev_company_id'
 						));
 						?> 
 						<?php echo form_error('company_id'); ?>
@@ -75,7 +75,7 @@
 						<?php
 						echo form_dropdown('designation_id', $arr_designation_prev_work, isset($_POST['designation_id']) ? set_value('designation_id') : $row['designation_id'], array(
 							'class' => 'form-control',
-							'id' => 'designation_id'
+							'id' => 'prev_designation_id'
 						));
 						?> 
 						<?php echo form_error('designation_id'); ?>

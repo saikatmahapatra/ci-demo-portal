@@ -8756,3 +8756,41 @@ a[data-link-type="user-profile-card"] {
 .custom-control-label::before {
   border: 1px solid #ced4da;
 }
+
+.select2-selection {
+  height: calc(2.0625rem + 2px) !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered,
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 31px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 33px !important;
+}
+
+.select2-container--default .select2-selection--single {
+  border: 1px solid #ced4da !important;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .select2-container--default .select2-selection--single {
+    transition: none;
+  }
+}
+
+.select2-container--default .select2-selection--single::-ms-expand {
+  background-color: transparent;
+  border: 0;
+}
+
+.select2-container--default .select2-selection--single:focus {
+  color: #495057;
+  background-color: #FFF;
+  border-color: #9983da;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(81, 51, 171, 0.25);
+}

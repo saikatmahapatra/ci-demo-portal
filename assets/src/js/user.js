@@ -42,6 +42,18 @@ function domReady() {
         add_new_item3('institute', $(this));
     });
 
+    $('#prev_company_id').select2({
+        //tags: true,
+    }).on('select2:close', function() {
+        add_new_item4('prev_company', $(this));
+    });
+
+    $('#prev_designation_id').select2({
+        //tags: true,
+    }).on('select2:close', function() {
+        add_new_item5('prev_designation', $(this));
+    });
+
 } //domready
 
 $('body').on('click', '.change_account_status', changeAccountStatus);
@@ -231,6 +243,59 @@ function add_new_item3(item, el) {
         var input_text = $('#new_inst_name');
         var modalMsgDiv = $('#responseMessage_addInst');
         var btnSave = $('#btnAddInst');
+        modalMsgDiv.html('');
+        input_text.val('');
+        modal.modal('show');
+        btnSave.on('click', function() {
+            //alert('I');
+            var xhr = new Ajax();
+            xhr.type = 'POST';
+            xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/add_user_input_institute';
+            xhr.data = {
+                institute_name: input_text.val(),
+                action: 'add'
+            };
+            xhr.beforeSend = function() {
+                showAjaxLoader();
+            }
+            var promise = xhr.init();
+            promise.done(function(response) {
+                hideAjaxLoader();
+                //console.log(response);
+                if (response.msg) {
+                    modalMsgDiv.html(response.msg);
+                }
+                if (response.insert_id) {
+                    // Append Newly added Data and Make Seleetd it                        
+                    el.append($('<option>', {
+                        value: response.insert_id,
+                        text: input_text.val()
+                    }));
+                    $('#academic_institute option[value=' + response.insert_id + ']').attr('selected', 'selected');
+
+                    // Reset UI
+                    modal.modal('hide');
+                }
+            });
+            promise.fail(function() {
+                alert("Sorry, Can not process your request.");
+            });
+            promise.always(function() {
+
+            });
+        });
+    }
+}
+
+
+
+
+function add_new_item4(item, el) {
+    if (el.val() == "-1") {
+        var modal = $('#addCompany');
+        var input_text = $('#new_inst_name');
+        var modalMsgDiv = $('#responseMessage_addCompany');
+        var btnSave = $('#btnaddCompany');
         modalMsgDiv.html('');
         input_text.val('');
         modal.modal('show');

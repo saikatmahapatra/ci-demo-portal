@@ -335,3 +335,39 @@ a[data-link-type="user-profile-card"] {
         border: $input-border-width solid $input-border-color;
     }
 }
+
+// Select2 Style
+.select2-selection {
+    height: calc(2.0625rem + 2px) !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered,
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 31px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 33px !important;
+}
+
+.select2-container--default .select2-selection--single {
+    border: $input-border-width solid $input-border-color !important;
+    // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+    @if $enable-rounded {
+        // Manually use the if/else instead of the mixin to account for iOS override
+        border-radius: $input-border-radius;
+    }
+    @else {
+        // Otherwise undo the iOS default
+        border-radius: 0;
+    }
+    @include box-shadow($input-box-shadow);
+    @include transition($input-transition);
+    // Unstyle the caret on `<select>`s in IE10+.
+    &::-ms-expand {
+        background-color: transparent;
+        border: 0;
+    }
+    // Customize the `:focus` state to imitate native WebKit styles.
+    @include form-control-focus();
+}
