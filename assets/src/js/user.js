@@ -13,7 +13,7 @@ function domReady() {
     }
 
     //Date of Birth Date Picker
-    $('.dob-datepicker').datepicker({
+    $('.dob-datepicker, .job-exp-datepicker').datepicker({
         format: "dd-mm-yyyy",
         weekStart: 1,
         autoclose: true

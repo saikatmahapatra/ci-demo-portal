@@ -60,7 +60,7 @@ class User extends CI_Controller {
 		
 		//User Roles drop down
 		$this->data['arr_roles'] = $this->user_model->get_user_role_dropdown();
-		$this->data['arr_designations'] = $this->user_model->get_designation_dropdown();
+		$this->data['arr_designations'] = $this->user_model->get_designation_dropdown('Y');
 		$this->data['arr_departments'] = $this->user_model->get_department_dropdown();
 		$this->data['arr_user_title'] = array(''=>'Select Title','Mr.'=>'Mr.','Mrs.'=>'Mrs.','Dr.'=>'Dr.','Ms.'=>'Ms.');
 		$this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-');
@@ -745,7 +745,8 @@ class User extends CI_Controller {
 		$this->data['profile_pic'] = $res_pic[0]['user_profile_pic'];
         $this->data['row'] = $rows['data_rows'];
 		$this->data['address'] = $this->user_model->get_user_address(NULL,$user_id,NULL);
-		$this->data['education'] = $this->user_model->get_user_education(NULL, $user_id);
+        $this->data['education'] = $this->user_model->get_user_education(NULL, $user_id);
+        $this->data['job_exp'] = $this->user_model->get_user_work_experience(NULL, $user_id);
 		$this->data['page_heading'] = 'My Profile';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/my_profile', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
@@ -778,7 +779,8 @@ class User extends CI_Controller {
 		$this->data['profile_pic'] = $res_pic[0]['user_profile_pic'];
         $this->data['row'] = $rows['data_rows'];
 		$this->data['address'] = $this->user_model->get_user_address(NULL,$user_id,NULL);
-		$this->data['education'] = $this->user_model->get_user_education(NULL, $user_id);
+        $this->data['education'] = $this->user_model->get_user_education(NULL, $user_id);
+        $this->data['job_exp'] = $this->user_model->get_user_work_experience(NULL, $user_id);
 		$this->data['page_heading'] = 'Profile';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/profile', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
@@ -868,7 +870,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_heading'] = 'Add Communication Address';
+		$this->data['page_heading'] = 'Add Address';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/add_address', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
@@ -911,7 +913,7 @@ class User extends CI_Controller {
             }
         }
 		
-		$this->data['page_heading'] = 'Edit Communication Address';
+		$this->data['page_heading'] = 'Edit Address';
         $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit_address', $this->data, true);
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
@@ -1097,7 +1099,7 @@ class User extends CI_Controller {
         $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
     }
 	
-	function delete_education() {
+	/*function delete_education() {
         $is_logged_in = $this->common_lib->is_logged_in();
         if ($is_logged_in == FALSE) {
             redirect($this->router->directory.$this->router->class.'/login');
@@ -1116,7 +1118,7 @@ class User extends CI_Controller {
 			$this->session->set_flashdata('flash_message_css', 'alert-danger');
 			redirect($this->router->directory.$this->router->class.'/my_profile');
 		}
-    }
+    }*/
 	
 	function validate_user_education_form_data($mode) {	
         $max_year = (date('Y')+4);	
@@ -1553,7 +1555,113 @@ class User extends CI_Controller {
         } else {
             return false;
         }
-	}
+    }
+    
+    function add_work_experience() {
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+            redirect($this->router->directory.$this->router->class.'/login');
+        }
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        		
+        $this->data['arr_company'] = $this->user_model->get_company_dropdown();
+        $this->data['arr_designation_prev_work'] = $this->user_model->get_designation_dropdown();
+        
+		
+        if ($this->input->post('form_action') == 'add') {
+            if ($this->validate_user_work_exp_form_data('add') == true) {
+                $postdata = array(
+					'user_id' => $this->sess_user_id,
+                    'company_id' => $this->input->post('company_id'),
+                    'from_date' => $this->common_lib->convert_to_mysql($this->input->post('from_date')),
+                    'to_date' => $this->common_lib->convert_to_mysql($this->input->post('to_date')),
+                    'designation_id' => $this->input->post('designation_id'), 
+                    'job_description' => $this->input->post('job_description')
+                );                
+                $res = $this->user_model->insert($postdata,'user_work_exp');
+                if ($res) {
+                    $this->session->set_flashdata('flash_message', 'Job experience has been added successfully.');
+                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    redirect($this->router->directory.$this->router->class.'/my_profile');
+                }
+            }
+        }
+		$this->data['page_heading'] = "Add Previous Work Experiences";
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/add_work_experience', $this->data, true);
+        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+    }
+	
+	function edit_work_experience() {
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+            redirect($this->router->directory.$this->router->class.'/login');
+        }
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+		$id = $this->uri->segment(3);
+		$this->data['arr_company'] = $this->user_model->get_company_dropdown();
+        $this->data['arr_designation_prev_work'] = $this->user_model->get_designation_dropdown();
+        $this->data['job_exp'] = $this->user_model->get_user_work_experience($id, $this->sess_user_id);
+
+        if ($this->input->post('form_action') == 'edit') {
+            if ($this->validate_user_work_exp_form_data('edit') == true) {
+                $postdata = array(                    
+                    'company_id' => $this->input->post('company_id'),
+                    'from_date' => $this->common_lib->convert_to_mysql($this->input->post('from_date')),
+                    'to_date' => $this->common_lib->convert_to_mysql($this->input->post('to_date')),
+                    'designation_id' => $this->input->post('designation_id'), 
+                    'job_description' => $this->input->post('job_description')                    
+                );
+                $where = array('id'=>$id, 'user_id' => $this->sess_user_id);
+                $res = $this->user_model->update($postdata, $where,'user_work_exp');
+                if ($res) {
+                    $this->session->set_flashdata('flash_message', 'Job experience has been updated successfully.');
+                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    redirect($this->router->directory.$this->router->class.'/my_profile');
+                }
+            }
+        }
+		$this->data['page_heading'] = "Edit Previous Work Experiences";
+        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit_work_experience', $this->data, true);
+        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+    }
+	
+	/*function delete_education() {
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+            redirect($this->router->directory.$this->router->class.'/login');
+        }
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+		$id = $this->uri->segment(3);
+		$where = array('id'=>$id, 'user_id' => $this->sess_user_id);
+		$res = $this->user_model->delete($where,'user_academics');
+		if ($res) {
+			$this->session->set_flashdata('flash_message', 'Education details has been deleted successfully.');
+			$this->session->set_flashdata('flash_message_css', 'alert-success');
+			redirect($this->router->directory.$this->router->class.'/my_profile');
+		}else{
+			$this->session->set_flashdata('flash_message', 'We\'re unable to process your request.');
+			$this->session->set_flashdata('flash_message_css', 'alert-danger');
+			redirect($this->router->directory.$this->router->class.'/my_profile');
+		}
+    }*/
+	
+	function validate_user_work_exp_form_data($mode) {	
+        $max_year = (date('Y')+4);	
+        $this->form_validation->set_rules('company_id', 'company selection', 'required|greater_than_equal_to[0]',array('greater_than_equal_to' => 'The %s field is required.')); 
+        $this->form_validation->set_rules('from_date', 'from date', 'required'); 
+		$this->form_validation->set_rules('to_date', 'to date', 'required');        
+        $this->form_validation->set_rules('designation_id', 'designation', 'required|greater_than_equal_to[0]',array('greater_than_equal_to' => 'The %s field is required.')); 
+        $this->form_validation->set_rules('job_description', 'job description', 'max_length[400]');
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
 

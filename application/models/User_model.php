@@ -275,10 +275,12 @@ class User_model extends CI_Model {
     }
 	
 	
-	function get_designation_dropdown() {
+	function get_designation_dropdown($status=NULL) {
         $result = array();
         $this->db->select('id,designation_name');
-		$this->db->where('designation_status','Y');
+        if($status){
+            $this->db->where('designation_status',$status);
+        }        
         $this->db->order_by('designation_name');
         $query = $this->db->get('designations');
         $result = array('' => 'Select');
@@ -507,6 +509,54 @@ class User_model extends CI_Model {
             return false;
         }
     }
+
+    function get_company_dropdown() {
+        $result = array();
+        $this->db->select('id,company_name');        
+        $this->db->order_by('company_name');
+        $query = $this->db->get('companies');
+        $result = array('' => 'Select','-1'=>'ADD NEW');
+        if ($query->num_rows()) {
+            $res = $query->result();
+            foreach ($res as $r) {
+                $result[$r->id] = $r->company_name;
+            }
+        }
+        return $result;
+    }
+
+    function get_bank_dropdown() {
+        $result = array();
+        $this->db->select('id,bank_name');        
+        $this->db->order_by('bank_name');
+        $query = $this->db->get('banks');
+        $result = array('' => 'Select');
+        if ($query->num_rows()) {
+            $res = $query->result();
+            foreach ($res as $r) {
+                $result[$r->id] = $r->bank_name;
+            }
+        }
+        return $result;
+    }
+
+    function get_user_work_experience($id = NULL, $user_id) {
+        $this->db->select('t1.*, t2.company_name,t3.designation_name');    
+        if(isset($id)){
+            $this->db->where(array('t1.id' => $id));
+        }  
+        if(isset($user_id)){
+            $this->db->where(array('t1.user_id' => $user_id));
+        }
+		$this->db->join('companies t2', 't1.company_id=t2.id', 'left');
+		$this->db->join('designations t3', 't1.designation_id=t3.id', 'left');
+		$this->db->order_by('t1.to_date','desc');
+        $query = $this->db->get('user_work_exp as t1');
+        //echo $this->db->last_query();
+        $result = $query->result_array();        
+        return $result;
+    }
+
 }
 
 ?>
