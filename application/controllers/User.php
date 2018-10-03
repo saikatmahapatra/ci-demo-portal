@@ -417,14 +417,13 @@ class User extends CI_Controller {
                     $message_html.='<p>Welcome to United Exploration India Pvt Ltd Employee Portal. Your have been successfully registered. Please click on the below link to activate your account. Once your account is activated you will be able to login.</p>';
                     $message_html.='<p>'.anchor(base_url($this->router->class.'/activate_account/'.$insert_id.'/'.$activation_token),NULL).'</p>';
                     $message_html.='<p>Here is your details -</p>';
-                    $message_html.='<p>Portal URL : '.anchor(base_url()).' <br> Username/Email : '.strtolower($this->input->post('user_email')).'<br> Password : '. $password .'</p>';
+                    $message_html.='<p>Portal URL : '.anchor(base_url()).' <br> Username/Email : '.strtolower($this->input->post('user_email')).'<br> Password : '.$this->input->post('user_password').'</p>';
                     $message_html.='</div><!--/#message_body-->';
                     $message_html.='<div id="message_footer" style="padding: 10px; font-size: 11px;">';
                     $message_html.='<p>* This is a system generated email message. Please do not reply.</p>';
                     $message_html.='</div><!--/#message_footer-->';
                     $message_html.='</div><!--/#message_wrapper-->';
-                    //echo $message_html;
-                    //die();
+                    //echo $message_html; die();
                     $config['mailtype'] = 'html';
                     $this->email->initialize($config);
                     $this->email->to($this->input->post('user_email'));
