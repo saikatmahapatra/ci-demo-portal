@@ -203,6 +203,19 @@
 					<div class="tab-pane fade" id="nav-exp" role="tabpanel" aria-labelledby="nav-exp-tab">
 						<div class="row mt-3">
 							<div class="col-md-12">
+								<dl class="row">
+									<dt class="col-md-12">United Exploration India Pvt Ltd</dt>
+									<dd class="col-md-12">
+										<div class="row">
+											<div class="col-md-9">
+												<div class=""><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></div>													
+												</div>
+											<div class="col-md-3">
+												<?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']).' to Present' : '-'; ?>
+											</div>
+										</div>
+									</dd>												
+								</dl><!--/dl.row-->
 								<?php if(isset($job_exp)){
 										foreach($job_exp as $key=>$row){
 										?>
@@ -213,10 +226,7 @@
 												<dd class="col-md-12">
 													<div class="row">
 														<div class="col-md-9">
-															<div class=""><?php echo isset($row['designation_name']) ? $row['designation_name'] : '';?></div>
-																<div class="">
-																	<?php echo isset($row['from_date']) ? $this->common_lib->display_date($row['from_date']).' to '.$this->common_lib->display_date($row['to_date']):'';?>
-																</div>
+															<div class=""><?php echo isset($row['designation_name']) ? $row['designation_name'] : '';?></div>																
 																<div class="mt-1">
 																	Key Roles  : 
 																	<?php echo isset($row['job_description']) ? $row['job_description'] : '';?>
