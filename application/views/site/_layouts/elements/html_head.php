@@ -2,8 +2,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
+
+<meta name="description" content="<?php echo $this->config->item('app_meta_description'); ?>">
+<meta name="keywords" content="<?php echo $this->config->item('app_meta_keywords'); ?>">
+<meta name="author" content="<?php echo $this->config->item('app_meta_author'); ?>">
 
 <link rel="icon" href="<?php echo base_url('assets/dist/img/favicon.ico'); ?>">
 

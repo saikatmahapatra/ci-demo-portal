@@ -35,12 +35,13 @@ $config['app_logo_name_dashboard_xs'] = '<b>U</b>Aadmin';
 
 $config['app_html_title'] = 'Employee Portal - United Exploration India Pvt. Ltd.';
 $config['app_admin_html_title'] = 'United Exploration India Pvt. Ltd.';
-$config['app_meta_keywords'] = 'Code Igniter project';
-$config['app_meta_description'] = '';
-$config['app_meta_author'] = 'UEIPL';
+
+$config['app_meta_keywords'] = 'UEIPL, United Exploration Kolkata, GIS Company, Coal Mining Consultant, Web GIS company Kolkata, Mining Company';
+$config['app_meta_description'] = 'Employee Portal of United Exploration India Pvt Ltd unitedexploration.co.in';
+$config['app_meta_author'] = 'WebUIDevs';
 
 
 $config['app_copy_right'] = 'Copyright '.date('Y').' &copy; United Exploration India Pvt. Ltd.';
 $config['app_admin_copy_right'] = 'Copyright &copy; '.date('Y').' <a href="http://unitedexploration.co.in/">United Exploration India Pvt. Ltd.</a>. All rights reserved.';
 $config['app_ui_version'] = 'v1.0.1';
-$config['app_admin_ui_version'] = '2.1 , CI '.CI_VERSION;
+$config['app_admin_ui_version'] = '2.6 , CI '.CI_VERSION;
