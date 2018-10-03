@@ -17,7 +17,7 @@ $config['admin_view_dir'] = 'admin/'; //application/views/admin/
 /*
  * Email Config Application Team/Admin
  */
-$config['app_admin_email'] = 'portaladmin@unitedexploration.co.in';
+$config['app_admin_email'] = 'admin@unitedexploration.co.in';
 $config['app_admin_email_cc'] = '';
 $config['app_admin_email_bcc'] = '';
 $config['app_admin_email_name'] = 'UEIPL Portal Admin';
