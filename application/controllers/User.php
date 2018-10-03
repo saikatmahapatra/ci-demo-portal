@@ -12,19 +12,6 @@ class User extends CI_Controller {
         $this->load->model('user_model');
         $this->data['alert_message'] = NULL;
         $this->data['alert_message_css'] = NULL;
-        
-//        //Check if any user logged in else redirect to login
-//        $is_logged_in = $this->common_lib->is_logged_in();
-//        if ($is_logged_in == FALSE) {
-//			  $this->session->set_userdata('sess_post_login_redirect_url', current_url());	
-//            redirect($this->router->directory.$this->router->class.'/login');
-//        }
-//
-//        //Has logged in user permission to access this page or method?        
-//        $this->common_lib->is_auth(array(
-//            'default-super-admin-access',
-//            'default-admin-access'
-//        ));
 
         // Get logged  in user id
         $this->sess_user_id = $this->common_lib->get_sess_user('id');
@@ -313,7 +300,7 @@ class User extends CI_Controller {
 				$password = $this->generate_password();				
                 $postdata = array(
                     'user_title' => $this->input->post('user_title'),                    
-                    'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),                    
+                    'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),                   
                     'user_lastname' => ucwords(strtolower($this->input->post('user_lastname'))),
                     'user_gender' => $this->input->post('user_gender'),
                     'user_email' => strtolower($this->input->post('user_email')),
@@ -334,24 +321,27 @@ class User extends CI_Controller {
 				//print_r($postdata); die();
                 $insert_id = $this->user_model->insert($postdata);
                 if ($insert_id) {
-                    $html = '<div style="font-family:Verdana, Geneva, sans-serif; font-size:12px;">';
-                    $html.='<p>Hi ' . ucwords(strtolower($this->input->post('user_firstname'))).' '.ucwords(strtolower($this->input->post('user_lasttname'))) . ',</p>';
-                    $html.='<p>Welcome to United Exploration India Pvt. Ltd. Employee Portal.<br> Your account has been created succssfully. Your employee# is <span style="font-size: 14px; font-weight:700;">'.$user_emp_id.'</span>.<br><br>You can add/update your personal details, contact information, academic records and job experience details post login into the application.</p><br>';
-                    $html.='Please <a href="'.base_url($this->router->class.'/activate_account/'.$insert_id.'/'.$activation_token).'" target="_blank">activate your account</a> to login. <br>';
-                    $html.='</p><br>';
-                    $html.='<p>URL: <a href="' . base_url() . '" target="_blank">' . base_url() . '</a><br>';
-                    $html.='Email: ' . $this->input->post('user_email') . '<br/>';
-                    $html.='Password: ' . $password . '</p>';                    
-					$html.='<p>Your can change password after login.</p>';
-                    $html.='</div>';
-                    //echo $html;
-                    //die();
+                    $message_html = '';
+                    $message_html.='<div id="message_wrapper" style="font-family:Arial, Helvetica, sans-serif; border: 3px solid #5133AB; border-left:0px; border-right: 0px;">';
+                    $message_html.='<div id="message_header" style="display:none;background-color:#5133AB; padding: 10px;"></div>';
+                    $message_html.='<div id="message_body" style="padding: 10px;">';
+                    $message_html.='<h4>Hi '. ucwords(strtolower($this->input->post('user_firstname'))).' '.ucwords(strtolower($this->input->post('user_lasttname'))) .' ,</h4>';
+                    $message_html.='<p>Welcome to United Exploration India Pvt Ltd Employee Portal. Your have been successfully registered. Please click on the below link to activate your account. Once your account is activated you will be able to login.</p>';
+                    $message_html.='<p>'.anchor(base_url($this->router->class.'/activate_account/'.$insert_id.'/'.$activation_token),NULL).'</p>';
+                    $message_html.='<p>Here is your details -</p>';
+                    $message_html.='<p>Portal URL : '.anchor(base_url()).' <br> Username/Email : '.strtolower($this->input->post('user_email')).'<br> Password : '. $password .'</p>';
+                    $message_html.='</div><!--/#message_body-->';
+                    $message_html.='<div id="message_footer" style="padding: 10px; font-size: 11px;">';
+                    $message_html.='<p>* This is a system generated email message. Please do not reply.</p>';
+                    $message_html.='</div><!--/#message_footer-->';
+                    $message_html.='</div><!--/#message_wrapper-->';
+                    //echo $message_html; die();
                     $config['mailtype'] = 'html';
                     $this->email->initialize($config);
                     $this->email->to($this->input->post('user_email'));
                     $this->email->from($this->config->item('app_admin_email'), $this->config->item('app_admin_email_name'));
                     $this->email->subject('Welcome to '.$this->config->item('app_email_subject_prefix') . 'Your Account Details');
-                    $this->email->message($html);
+                    $this->email->message($message_html);
                     $this->email->send();
                     //echo $this->email->print_debugger();
                     $this->session->set_flashdata('flash_message', 'Employee account has been created successfully. <br>System generated Employee ID <span class="font-weight-bold h5">'.$user_emp_id.'</span>. <br>Account activation link will be sent to the registered email address.');
@@ -402,7 +392,7 @@ class User extends CI_Controller {
 				$user_emp_id = $this->user_model->get_new_emp_id();				
                 $postdata = array(
                     'user_title' => $this->input->post('user_title'),                    
-                    'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),                    
+                    'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),                   
                     'user_lastname' => ucwords(strtolower($this->input->post('user_lastname'))),
                     'user_gender' => $this->input->post('user_gender'),
                     'user_email' => strtolower($this->input->post('user_email')),
@@ -419,23 +409,28 @@ class User extends CI_Controller {
 				//print_r($postdata); die();
                 $insert_id = $this->user_model->insert($postdata);
                 if ($insert_id) {
-                    $html = '<div style="font-family:Verdana, Geneva, sans-serif; font-size:12px;">';                
-					$html.='<p>Hi ' . ucwords(strtolower($this->input->post('user_firstname'))).' '.ucwords(strtolower($this->input->post('user_lasttname'))) . ',</p>';
-                    $html.='<p>Welcome to United Exploration India Pvt. Ltd. Employee Portal.<br> Your account has been created succssfully. Your employee# is <span style="font-size: 14px; font-weight:700;">'.$user_emp_id.'</span>.<br><br>You can add/update your personal details, contact information, academic records and job experience details post login into the application.</p><br>';
-                    $html.='Please <a href="'.base_url($this->router->class.'/activate_account/'.$insert_id.'/'.$activation_token).'" target="_blank">activate your account</a> to login. <br>';
-                    $html.='</p><br>';
-					
-                    $html.='<p>Portal URL: <a href="' . base_url() . '" target="_blank">' . base_url() . '</a><br>';
-                    $html.='Registered Email: ' . $this->input->post('user_email') . '<br/>';                    
-                    $html.='</div>';
-                    //echo $html;
+                    $message_html = '';
+                    $message_html.='<div id="message_wrapper" style="font-family:Arial, Helvetica, sans-serif; border: 3px solid #5133AB; border-left:0px; border-right: 0px;">';
+                    $message_html.='<div id="message_header" style="display:none;background-color:#5133AB; padding: 10px;"></div>';
+                    $message_html.='<div id="message_body" style="padding: 10px;">';
+                    $message_html.='<h4>Hi '. ucwords(strtolower($this->input->post('user_firstname'))).' '.ucwords(strtolower($this->input->post('user_lasttname'))) .' ,</h4>';
+                    $message_html.='<p>Welcome to United Exploration India Pvt Ltd Employee Portal. Your have been successfully registered. Please click on the below link to activate your account. Once your account is activated you will be able to login.</p>';
+                    $message_html.='<p>'.anchor(base_url($this->router->class.'/activate_account/'.$insert_id.'/'.$activation_token),NULL).'</p>';
+                    $message_html.='<p>Here is your details -</p>';
+                    $message_html.='<p>Portal URL : '.anchor(base_url()).' <br> Username/Email : '.strtolower($this->input->post('user_email')).'<br> Password : '. $password .'</p>';
+                    $message_html.='</div><!--/#message_body-->';
+                    $message_html.='<div id="message_footer" style="padding: 10px; font-size: 11px;">';
+                    $message_html.='<p>* This is a system generated email message. Please do not reply.</p>';
+                    $message_html.='</div><!--/#message_footer-->';
+                    $message_html.='</div><!--/#message_wrapper-->';
+                    //echo $message_html;
                     //die();
                     $config['mailtype'] = 'html';
                     $this->email->initialize($config);
                     $this->email->to($this->input->post('user_email'));
                     $this->email->from($this->config->item('app_admin_email'), $this->config->item('app_admin_email_name'));
                     $this->email->subject('Welcome to '.$this->config->item('app_email_subject_prefix') . 'Your Account Details');
-                    $this->email->message($html);
+                    $this->email->message($message_html);
                     $this->email->send();
                     //echo $this->email->print_debugger();
                     $this->session->set_flashdata('flash_message', 'Your account has been created successfully.<br>Your System generated Employee ID is <span class="font-weight-bold h5">'.$user_emp_id.'</span>. <br>You will receive account activation link in your registered email. Please activate your account to login.');
@@ -534,25 +529,28 @@ class User extends CI_Controller {
 
                 $result = $this->user_model->update($postdata, $where);
                 if ($result) {
-                    $to_email = $email;
-                    $html = '<div style="margin:10px 0;padding:0;width:580px;float:left;border:1px solid #ccc;padding:9px">';
-                    $html.='<div style="font:14px Arial,Helvetica,sans-serif;margin-bottom:5px;color:#222222;padding:10px 0 10px 0">Dear User,</div>';
-                    $html.='<div style="font:14px Arial,Helvetica,sans-serif;margin-bottom:5px;color:#222222;padding:0px 0 10px 0">';
-                    $html.='<p>Please click on the password reset link to create a new login password.</p>';
-                    $html.='<p><strong>Password Reset Link:</strong><br />';
-                    $html.= anchor(base_url($this->router->directory.$this->router->class.'/reset_password/' . md5($password_reset_key)), NULL);
-                    $html.='</p>';
-                    $html.='</div>';
-                    $html.='</div>';
+                    $to_email = $email;                    
+                    $message_html = '';
+                    $message_html.='<div id="message_wrapper" style="font-family:Arial, Helvetica, sans-serif; border: 3px solid #5133AB; border-left:0px; border-right: 0px;">';
+                    $message_html.='<div id="message_header" style="display:none;background-color:#5133AB; padding: 10px;"></div>';
+                    $message_html.='<div id="message_body" style="padding: 10px;">';
+                    $message_html.='<h4>Hi ,</h4>';
+                    $message_html.='<p>Please click on the below link to create new password.</p>';
+                    $message_html.='<p>'.anchor(base_url($this->router->directory.$this->router->class.'/reset_password/' . md5($password_reset_key)), NULL).'</p>';                    
+                    $message_html.='</div><!--/#message_body-->';
+                    $message_html.='<div id="message_footer" style="padding: 10px; font-size: 11px;">';
+                    $message_html.='<p>* This is a system generated email message. Please do not reply.</p>';
+                    $message_html.='</div><!--/#message_footer-->';
+                    $message_html.='</div><!--/#message_wrapper-->';
 
                     // load email lib and email results
-                    //die($html);
+                    //die($message_html);
                     $config['mailtype'] = 'html';
                     $this->email->initialize($config);
                     $this->email->to($email);
                     $this->email->from($this->config->item('app_admin_email'), $this->config->item('app_admin_email_name'));
                     $this->email->subject($this->config->item('app_email_subject_prefix') . ' Password Reset Link');
-                    $this->email->message($html);
+                    $this->email->message($message_html);
                     $this->email->send();
                     //echo $this->email->print_debugger();
 
