@@ -1663,6 +1663,71 @@ class User extends CI_Controller {
         }
     }
 
+    function add_user_input_company(){
+        $message = array('is_valid'=>false, 'insert_id'=>'','msg'=>'');
+        if(($this->input->post('action')=='add')){
+            if ($this->validate_add_user_input_company_data() == true) {
+                $postdata = array(					
+                    'company_name' => $this->input->post('company_name')
+                );                
+                $insert_id = $this->user_model->insert($postdata,'companies');
+                if ($insert_id) {
+                    $message = array('is_valid'=>true, 'insert_id'=>$insert_id,'msg'=>'<div class="alert alert-success">institute has been added succesfully.</div>'); 
+                }
+            }else{
+                $message = array('is_valid'=>false, 'insert_id'=>'','msg'=>validation_errors()); 
+            }
+        }
+        echo json_encode($message); die();
+    }
+
+
+    function validate_add_user_input_company_data(){
+		$this->form_validation->set_rules('company_name', 'company name', 'required|min_length[5]|max_length[200]|is_unique[companies.company_name]',
+        array(                
+                'is_unique'     => 'This %s already exists.'
+        ));
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function add_user_input_designation(){
+        $message = array('is_valid'=>false, 'insert_id'=>'','msg'=>'');
+        if(($this->input->post('action')=='add')){
+            if ($this->validate_add_user_input_designation_data() == true) {
+                $postdata = array(					
+                    'designation_name' => $this->input->post('designation_name'),
+                    'designation_status' => 'N'
+                );                
+                $insert_id = $this->user_model->insert($postdata,'designations');
+                if ($insert_id) {
+                    $message = array('is_valid'=>true, 'insert_id'=>$insert_id,'msg'=>'<div class="alert alert-success">institute has been added succesfully.</div>'); 
+                }
+            }else{
+                $message = array('is_valid'=>false, 'insert_id'=>'','msg'=>validation_errors()); 
+            }
+        }
+        echo json_encode($message); die();
+    }
+
+
+    function validate_add_user_input_designation_data(){
+		$this->form_validation->set_rules('designation_name', 'designation name', 'required|min_length[3]|max_length[200]|is_unique[designations.designation_name]',
+        array(                
+                'is_unique'     => 'This %s already exists.'
+        ));
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
 
 ?>

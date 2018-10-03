@@ -293,7 +293,7 @@ function add_new_item3(item, el) {
 function add_new_item4(item, el) {
     if (el.val() == "-1") {
         var modal = $('#addCompany');
-        var input_text = $('#new_inst_name');
+        var input_text = $('#new_company_name');
         var modalMsgDiv = $('#responseMessage_addCompany');
         var btnSave = $('#btnaddCompany');
         modalMsgDiv.html('');
@@ -303,9 +303,9 @@ function add_new_item4(item, el) {
             //alert('I');
             var xhr = new Ajax();
             xhr.type = 'POST';
-            xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/add_user_input_institute';
+            xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/add_user_input_company';
             xhr.data = {
-                institute_name: input_text.val(),
+                company_name: input_text.val(),
                 action: 'add'
             };
             xhr.beforeSend = function() {
@@ -324,7 +324,60 @@ function add_new_item4(item, el) {
                         value: response.insert_id,
                         text: input_text.val()
                     }));
-                    $('#academic_institute option[value=' + response.insert_id + ']').attr('selected', 'selected');
+                    $('#prev_company_id option[value=' + response.insert_id + ']').attr('selected', 'selected');
+
+                    // Reset UI
+                    modal.modal('hide');
+                }
+            });
+            promise.fail(function() {
+                alert("Sorry, Can not process your request.");
+            });
+            promise.always(function() {
+
+            });
+        });
+    }
+}
+
+
+
+
+function add_new_item5(item, el) {
+    if (el.val() == "-1") {
+        var modal = $('#addDesignation');
+        var input_text = $('#new_designation_name');
+        var modalMsgDiv = $('#responseMessage_addDesignation');
+        var btnSave = $('#btnaddDesignation');
+        modalMsgDiv.html('');
+        input_text.val('');
+        modal.modal('show');
+        btnSave.on('click', function() {
+            //alert('I');
+            var xhr = new Ajax();
+            xhr.type = 'POST';
+            xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/add_user_input_designation';
+            xhr.data = {
+                designation_name: input_text.val(),
+                action: 'add'
+            };
+            xhr.beforeSend = function() {
+                showAjaxLoader();
+            }
+            var promise = xhr.init();
+            promise.done(function(response) {
+                hideAjaxLoader();
+                //console.log(response);
+                if (response.msg) {
+                    modalMsgDiv.html(response.msg);
+                }
+                if (response.insert_id) {
+                    // Append Newly added Data and Make Seleetd it                        
+                    el.append($('<option>', {
+                        value: response.insert_id,
+                        text: input_text.val()
+                    }));
+                    $('#prev_designation_id option[value=' + response.insert_id + ']').attr('selected', 'selected');
 
                     // Reset UI
                     modal.modal('hide');

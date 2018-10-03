@@ -60,7 +60,7 @@
 				</div>					
             </div>
 			<div class="form-group">                                
-					<label for="academic_institute" class="">University / Board / Council</label>
+					<label for="academic_institute" class="">University / Board / Council <span class="required">*</span></label>
 					<?php
 					echo form_dropdown('academic_institute', $arr_academic_inst, isset($_POST['academic_institute']) ? set_value('academic_institute') : $row['academic_institute'], array(
 						'class' => 'form-control',

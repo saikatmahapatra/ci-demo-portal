@@ -283,7 +283,13 @@ class User_model extends CI_Model {
         }        
         $this->db->order_by('designation_name');
         $query = $this->db->get('designations');
-        $result = array('' => 'Select');
+        if($status == NULL){
+            $result = array('' => 'Select','-1'=>'ADD NEW');
+        }else{
+            $result = array('' => 'Select');
+        }
+        
+        
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {

@@ -84,7 +84,7 @@
 
 			<div class="form-row">
 						<div class="form-group col-md-12">
-						<label for="job_description" class="">Job Description (Optional) </label>
+						<label for="job_description" class="">Key Roles (Optional) </label>
 						<?php echo form_textarea(array('name' => 'job_description','value' => isset($_POST['job_description']) ? set_value('job_description') : $row['job_description'],'class' => 'form-control','id' => 'job_description','rows' => '2','cols' => '50','placeholder' => 'Describe roles')); ?>
 						<?php echo form_error('job_description'); ?>
 						</div>
@@ -115,6 +115,30 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times-circle"></i> Close</button>
         <button type="button" id="btnaddCompany" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Add Designation Modal -->
+<div class="modal fade" id="addDesignation" tabindex="-1" role="dialog" aria-labelledby="addDesignation" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addDesignationTitle">Add New Designation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+				<div id="responseMessage_addDesignation"></div>
+        <input type="text" class="form-control" id="new_designation_name" name="new_designation_name" placeholder="Designation Name">				
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times-circle"></i> Close</button>
+        <button type="button" id="btnaddDesignation" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
         
       </div>
     </div>

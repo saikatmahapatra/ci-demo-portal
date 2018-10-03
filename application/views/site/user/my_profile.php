@@ -80,7 +80,7 @@
 						<a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab" href="#nav-address" role="tab" aria-controls="nav-address" aria-selected="false">Address</a>									
 						<a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Academic Qualification</a>			
 						<a class="nav-item nav-link" id="nav-exp-tab" data-toggle="tab" href="#nav-exp" role="tab" aria-controls="nav-exp" aria-selected="false">Work Experience</a>
-						<a class="nav-item nav-link" id="nav-bank-tab" data-toggle="tab" href="#nav-bank" role="tab" aria-controls="nav-bank" aria-selected="false">Bank Account</a>
+						<!--<a class="nav-item nav-link" id="nav-bank-tab" data-toggle="tab" href="#nav-bank" role="tab" aria-controls="nav-bank" aria-selected="false">Bank Account</a>-->
 					</div>
 				</nav>
 
@@ -198,17 +198,24 @@
 										foreach($job_exp as $key=>$row){
 										?>
 											<dl class="row">
-												<dt class="col-md-12">													
-													<?php echo isset($row['designation_name']) ? $row['designation_name'].' at ' : '';?>
-													<?php echo isset($row['company_name'])? $row['company_name']: ' ';?>													
+												<dt class="col-md-12">																										
+													<?php echo isset($row['company_name'])? $row['company_name']: ' ';?><br>												
 												</dt>
 												<dd class="col-md-12">
-													<div class="">
-														<?php echo isset($row['from_date']) ? $this->common_lib->display_date($row['from_date']).' to '.$this->common_lib->display_date($row['to_date']):'';?>
+													<div class="row">
+														<div class="col-md-9">
+															<div class=""><?php echo isset($row['designation_name']) ? $row['designation_name'] : '';?></div>
+																<div class="">
+																	<?php echo isset($row['from_date']) ? $this->common_lib->display_date($row['from_date']).' to '.$this->common_lib->display_date($row['to_date']):'';?>
+																</div>
+																<div class="mt-1">
+																	Key Roles  : 
+																	<?php echo isset($row['job_description']) ? $row['job_description'] : '';?>
+																</div>
+															</div>
+														<div class="col-md-3"><?php echo isset($row['from_date']) ? $this->common_lib->display_date($row['from_date']).' to '.$this->common_lib->display_date($row['to_date']):'';?></div>
 													</div>
-													<div class="">
-														<?php echo isset($row['job_description']) ? $row['job_description'] : '';?>
-													</div>
+													
 													<div class="mt-2 mb-2">
 													<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>													
 													</div>
