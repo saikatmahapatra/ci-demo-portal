@@ -90,8 +90,8 @@ class Search extends CI_Controller {
         //die($search_keywords);
 
 		$this->data['page_heading'] = 'Search Result';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 }
 

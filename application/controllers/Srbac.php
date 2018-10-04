@@ -74,8 +74,8 @@ class Srbac extends CI_Controller {
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		
 		$this->data['page_heading'] = 'SRBAC';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
+        $this->load->view('_layouts/layout_admin_default', $this->data);
     }
 	
 	function index_ci_pagination() {
@@ -111,8 +111,8 @@ class Srbac extends CI_Controller {
         $this->data['data_rows'] = $result_array['data_rows'];
 		
 		$this->data['page_heading'] = 'Website Contents (CI Pagination Version)';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index_ci_pagination', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/index_ci_pagination', $this->data, true);
+        $this->load->view('_layouts/layout_admin_default', $this->data);
     }
 
     function render_datatable() {
@@ -201,8 +201,8 @@ class Srbac extends CI_Controller {
             }
         }
 		$this->data['page_heading'] = 'Add Roles | Permission';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/add', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/add', $this->data, true);
+        $this->load->view('_layouts/layout_admin_default', $this->data);
     }
 
     function edit() {
@@ -240,8 +240,8 @@ class Srbac extends CI_Controller {
         $result_array = $this->cms_model->get_rows($this->id);
         $this->data['rows'] = $result_array['data_rows'];
 		$this->data['page_heading'] = 'Edit Roles | Permission';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/edit', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_admin_default', $this->data);
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/edit', $this->data, true);
+        $this->load->view('_layouts/layout_admin_default', $this->data);
     }
 
     function delete() {

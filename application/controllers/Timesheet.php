@@ -104,8 +104,8 @@ class Timesheet extends CI_Controller {
 		
 		$this->add();
 		
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 	
 	function add() {

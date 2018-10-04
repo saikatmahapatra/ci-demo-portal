@@ -32,32 +32,23 @@ class Common_lib {
      * @param type $meta_author
      * @return type
      */
-    function init_template_elements($template_view_elements_dir_name = NULL, $title = NULL, $meta_keywords = NULL, $meta_desc = NULL, $meta_author = NULL) {
-        $el_type = isset($template_view_elements_dir_name) ? $template_view_elements_dir_name : 'site';
-
+    function init_template_elements($html_title = NULL, $meta_keywords = NULL, $meta_desc = NULL, $meta_author = NULL) {
         $this->CI->data['sess_user_name'] = isset($this->CI->session->userdata['sess_user']['user_firstname']) ? ucwords(strtolower($this->CI->session->userdata['sess_user']['user_firstname'])) : 'Guest';
         $this->CI->data['sess_user_id'] = isset($this->CI->session->userdata['sess_user']['id']) ? ucwords(strtolower($this->CI->session->userdata['sess_user']['id'])) : NULL;
+        
+        //Public, Common, Site Template
+        $this->CI->data['el_html_tag_title'] = isset($html_title) ? $html_title : $this->CI->config->item('app_html_title');			
+        //$this->CI->data['el_user_profile_pic'] = isset($this->CI->session->userdata['sess_user']['id'])? $this->get_user_profile_img(): null;
+        $this->CI->data['el_html_tag_meta_keywords'] = isset($meta_keyword) ? $meta_keyword : $this->CI->config->item('app_meta_keywords');
+        $this->CI->data['el_html_tag_meta_description'] = isset($meta_desc) ? $meta_desc : $this->CI->config->item('app_meta_description');
+        $this->CI->data['el_html_tag_meta_author'] = isset($meta_author) ? $meta_author : $this->CI->config->item('app_meta_author');
+        $this->CI->data['el_html_head'] = $this->CI->load->view('_layouts/elements/html_head', $this->CI->data, true);
+        $this->CI->data['el_navbar'] = $this->CI->load->view('_layouts/elements/navbar', $this->CI->data, true);        
+        $this->CI->data['el_footer'] = $this->CI->load->view('_layouts/elements/footer', $this->CI->data, true);
 
-        if (strtolower($el_type) == 'site') {
-            $this->CI->data['el_html_tag_title'] = isset($title) ? $title : $this->CI->config->item('app_html_title');
-			
-			//$this->CI->data['el_user_profile_pic'] = isset($this->CI->session->userdata['sess_user']['id'])? $this->get_user_profile_img(): null;
-            $this->CI->data['el_html_tag_meta_keywords'] = isset($meta_keyword) ? $meta_keyword : $this->CI->config->item('app_meta_keywords');
-            $this->CI->data['el_html_tag_meta_description'] = isset($meta_desc) ? $meta_desc : $this->CI->config->item('app_meta_description');
-            $this->CI->data['el_html_tag_meta_author'] = isset($meta_author) ? $meta_author : $this->CI->config->item('app_meta_author');
-            $this->CI->data['el_html_head'] = $this->CI->load->view('site/_layouts/elements/html_head', $this->CI->data, true);
-            $this->CI->data['el_navbar'] = $this->CI->load->view('site/_layouts/elements/navbar', $this->CI->data, true);
-            $this->CI->data['el_navbar_admin'] = $this->CI->load->view('site/_layouts/elements/navbar_admin', $this->CI->data, true);
-            $this->CI->data['el_footer'] = $this->CI->load->view('site/_layouts/elements/footer', $this->CI->data, true);
-            
-        }
-        if (strtolower($el_type) == 'admin') {
-            $this->CI->data['el_html_tag_title'] = isset($title) ? $title : $this->CI->config->item('app_admin_html_title');
-			//$this->CI->data['el_user_profile_pic'] = isset($this->CI->session->userdata['sess_user']['id'])? $this->get_user_profile_img(): null;
-            $this->CI->data['el_html_head'] = $this->CI->load->view('admin/_layouts/elements/html_head', $this->CI->data, true);
-            $this->CI->data['el_navbar'] = $this->CI->load->view('admin/_layouts/elements/navbar', $this->CI->data, true);            
-            $this->CI->data['el_footer'] = $this->CI->load->view('admin/_layouts/elements/footer', $this->CI->data, true);
-        }
+        //Admin Template
+        $this->CI->data['el_navbar_admin'] = $this->CI->load->view('_layouts/elements/navbar_admin', $this->CI->data, true);
+
         return $this->CI->data;
     }
 

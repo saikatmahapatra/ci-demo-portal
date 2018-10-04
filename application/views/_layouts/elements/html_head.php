@@ -3,9 +3,9 @@
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta name="description" content="<?php echo $this->config->item('app_meta_description'); ?>">
-<meta name="keywords" content="<?php echo $this->config->item('app_meta_keywords'); ?>">
-<meta name="author" content="<?php echo $this->config->item('app_meta_author'); ?>">
+<meta name="description" content="<?php echo $el_html_tag_meta_description; ?>">
+<meta name="keywords" content="<?php echo $el_html_tag_meta_keywords; ?>">
+<meta name="author" content="<?php echo $el_html_tag_meta_author; ?>">
 
 <link rel="icon" href="<?php echo base_url('assets/dist/img/favicon.ico'); ?>">
 

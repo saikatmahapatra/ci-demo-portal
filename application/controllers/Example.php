@@ -29,8 +29,8 @@ class Example extends CI_Controller {
     }
 
     function index() {
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/index', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 
     function form_helper() {
@@ -73,8 +73,8 @@ class Example extends CI_Controller {
             }
         }
         $this->data['page_heading'] = 'Code Igniter Form Helper';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/form_helper', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/form_helper', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 
     function validate_form() {
@@ -102,12 +102,12 @@ class Example extends CI_Controller {
     }
     
     function download_as_pdf(){
-       $this->load->view($this->data['view_dir'].$this->router->class.'/dom_pdf_gen_pdf'); 
+       $this->load->view($this->router->class.'/dom_pdf_gen_pdf'); 
     }
             
     function dom_pdf_gen_pdf() {
         // Load all views as normal
-        $this->load->view($this->data['view_dir'].$this->router->class.'/dom_pdf_gen_pdf');
+        $this->load->view($this->router->class.'/dom_pdf_gen_pdf');
         // Get output html
         $html = $this->output->get_output();
         // Load library
@@ -121,8 +121,8 @@ class Example extends CI_Controller {
     function date_helper() {
         $this->load->helper('date');
 
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/date_helper', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/date_helper', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 
     function directory_helper() {
@@ -133,14 +133,14 @@ class Example extends CI_Controller {
         $map = directory_map('./assets', 1);
         $this->data['sub_folders'] = $map;
 
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/directory_helper', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/directory_helper', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 
     function bootstrap() {
         $this->data['page_heading'] = 'Bootstrap SASS Customized Theme Components : UX Guide';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/bootstrap', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/bootstrap', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 	
 	function calendar_lib() {
@@ -200,8 +200,8 @@ class Example extends CI_Controller {
 		$data = array();
 		$this->data['cal'] = $this->calendar->generate($year,$month,$data);
 		$this->data['page_heading'] = 'Calendar';
-        $this->data['maincontent'] = $this->load->view($this->data['view_dir'].$this->router->class.'/calendar_lib', $this->data, true);
-        $this->load->view($this->data['view_dir'].'_layouts/layout_default', $this->data);
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/calendar_lib', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 
 }
