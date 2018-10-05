@@ -220,6 +220,10 @@ a[data-link-type="user-profile-card"] {
 }
 
 // Nav Tabs
+.nav-tabs {
+    border-bottom: 1px solid $gray-lighter;
+}
+
 .nav-link.active {
     border: 0;
     border-bottom: 3px solid $nav-tabs-border-color;

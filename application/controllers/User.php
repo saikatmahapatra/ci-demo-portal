@@ -316,6 +316,7 @@ class User extends CI_Controller {
                     'user_activation_key' => $activation_token,
                     'user_registration_ip' => $_SERVER['REMOTE_ADDR'],
                     'user_account_active' => 'Y',
+                    'user_registration_date' => date('Y-m-d H:i:s'),
                     'user_emp_id' => $user_emp_id
                 );
 				//print_r($postdata); die();
@@ -404,6 +405,7 @@ class User extends CI_Controller {
                     'user_activation_key' => $activation_token,
                     'user_registration_ip' => $_SERVER['REMOTE_ADDR'],
                     'user_account_active' => 'N',
+                    'user_registration_date' => date('Y-m-d H:i:s'),
                     'user_emp_id' => $user_emp_id
                 );
 				//print_r($postdata); die();

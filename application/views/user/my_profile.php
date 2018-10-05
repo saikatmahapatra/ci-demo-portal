@@ -44,7 +44,7 @@
 				<div class="row">
 					<div class="col-md-2">
 						<img class="align-self-center mr-3 rounded dp" src="<?php echo base_url($img_src);?>">
-						<div class="mt-2"><a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><i class="fa fa-pencil"></i> Change/Remove</a></div>
+						<div class="mt-2"><a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><i class="fa fa-pencil"></i> Change</a></div>
 					</div>
 					<div class="col-md-10">
 						<div class="h6 mt-2">
