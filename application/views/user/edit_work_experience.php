@@ -71,7 +71,7 @@
 						<?php echo form_error('to_date'); ?>
 				</div>
 						<div class="form-group col-md-4">
-						<label for="designation_id" class="">Designation <span class="required">*</span></label>
+						<label for="designation_id" class="">Designation/Role <span class="required">*</span></label>
 						<?php
 						echo form_dropdown('designation_id', $arr_designation_prev_work, isset($_POST['designation_id']) ? set_value('designation_id') : $row['designation_id'], array(
 							'class' => 'form-control',
@@ -82,7 +82,7 @@
 						</div>
 			</div>
 
-			<div class="form-row">
+			<div class="form-row d-none">
 						<div class="form-group col-md-12">
 						<label for="job_description" class="">Key Roles (Optional) </label>
 						<?php echo form_textarea(array('name' => 'job_description','value' => isset($_POST['job_description']) ? set_value('job_description') : $row['job_description'],'class' => 'form-control','id' => 'job_description','rows' => '2','cols' => '50','placeholder' => 'Describe roles')); ?>

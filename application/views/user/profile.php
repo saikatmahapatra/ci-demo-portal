@@ -176,7 +176,7 @@
 					<div class="tab-pane fade" id="nav-education" role="tabpanel" aria-labelledby="nav-education-tab">
 						<div class="row mt-3">
 							<div class="col-md-12">
-							<?php if(isset($education)){
+							<?php /*if(isset($education)){
 								foreach($education as $key=>$edu){
 								?>
 									<dl class="row">
@@ -193,7 +193,39 @@
 									</dl><!--/dl.row-->
 								<?php
 								}
-							}?>										
+							}*/?>
+								<div class="table-responsive-sm">
+									<table class="table">
+										<thead>
+											<tr>
+											<th scope="col">Degree & Specialization</th>												
+											<th scope="col">University/Board/Council</th>
+											<th scope="col">Duration</th>
+											<th scope="col">Marks</th>
+											<!--<th scope="col"></th>-->
+											</tr>
+										</thead>
+										<tbody>
+										<?php if(isset($education)){
+												foreach($education as $key=>$edu){
+												?>
+												<tr>
+													<td>
+														<?php echo isset($edu['qualification_name'])?$edu['qualification_name']: ' ';?> - <?php echo isset($edu['degree_name'])?$edu['degree_name']:'';?><br>
+														<?php echo isset($edu['specialization_name'])?$edu['specialization_name']:'';?>
+													</td>
+													<td><?php echo isset($edu['institute_name']) ? $edu['institute_name']: '';?></td>
+													<td><?php echo isset($edu['academic_from_year']) ? $edu['academic_from_year'].'-'.$edu['academic_to_year']:'';?></td>
+													<td><?php echo isset($edu['academic_marks_percentage'])?$edu['academic_marks_percentage'].' %':'';?></td>
+													<!--<td><a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a></td>-->
+												</tr>
+												<?php
+												}
+											}?>
+											
+										</tbody>
+									</table>
+								</div><!--/.table-responsive-sm-->
 							</div>
 						</div>
 					</div> <!--/#nav-education-->
@@ -203,6 +235,7 @@
 					<div class="tab-pane fade" id="nav-exp" role="tabpanel" aria-labelledby="nav-exp-tab">
 						<div class="row mt-3">
 							<div class="col-md-12">
+								<?php /* ?>
 								<dl class="row">
 									<dt class="col-md-12">United Exploration India Pvt Ltd</dt>
 									<dd class="col-md-12">
@@ -243,6 +276,42 @@
 										<?php
 										}
 									}?>
+									<?php */?>
+									<div class="table-responsive-sm">
+										<table class="table">
+											<thead>
+												<tr>
+													<th scope="col">Employer</th>												
+													<th scope="col">Designation/Role</th>
+													<th scope="col">From</th>
+													<th scope="col">To</th>
+													<!--<th scope="col"></th>-->
+												</tr>
+												<tr>
+													<td>United Exploration India Pvt. Ltd.</td>
+													<td><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></td>
+													<td><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></td>
+													<td>Present</td>
+													<!--<td>-</td>-->
+												</tr>
+											</thead>
+											<tbody>
+												<?php if(isset($job_exp)){
+													foreach($job_exp as $key=>$row){
+													?>
+														<tr>
+															<td><?php echo isset($row['company_name'])? $row['company_name']: ' ';?></td>
+															<td><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></td>
+															<td><?php echo isset($row['from_date']) ? $this->common_lib->display_date($row['from_date']) :'';?></td>
+															<td><?php echo isset($row['to_date']) ? $this->common_lib->display_date($row['to_date']) :'';?></td>															
+															<!--<td><a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a></td>-->
+														</tr>
+													<?php
+													}
+												}?>
+											</tbody>
+										</table>
+									</div><!--/.table-responsive-sm-->
 							</div>
 						</div>
 					</div><!--/#nav-exp-->

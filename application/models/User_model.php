@@ -170,7 +170,7 @@ class User_model extends CI_Model {
                 );
                 $auth_result = array('status' => $login_status, 'message' => $message, 'data' => $loggedin_data);
 				// update login date time
-				$postdata = array('user_login_date_time'=>date('Y-m-d H:i:s'));
+				$postdata = array('user_login_date_time'=>date('Y-m-d h:i:s'));
 				$where = array('id'=>$row['id']);
 				$this->update($postdata, $where);
                 return $auth_result;
