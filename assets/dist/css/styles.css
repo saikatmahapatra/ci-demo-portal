@@ -8648,10 +8648,6 @@ a[data-link-type="user-profile-card"] {
   display: block;
 }
 
-.nav-tabs {
-  border-bottom: 1px solid #eeeeee;
-}
-
 .nav-link.active {
   border: 0;
   border-bottom: 3px solid #5133AB;

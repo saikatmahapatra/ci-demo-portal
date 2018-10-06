@@ -1727,6 +1727,87 @@ class User extends CI_Controller {
         }
     }
 
+    function add_bank_account() {
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+            redirect($this->router->directory.$this->router->class.'/login');
+        }
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        		
+        $this->data['arr_banks'] = $this->user_model->get_bank_dropdown();
+        $this->data['bank_ac_type'] = array('SB'=>'Savings','CU'=>'Current');        
+		
+        if ($this->input->post('form_action') == 'add') {
+            if ($this->validate_user_bank_account_form_data('add') == true) {
+                $postdata = array(
+					'user_id' => $this->sess_user_id,
+                    'account_type' => $this->input->post('account_type'),                    
+                    'bank_id' => $this->input->post('bank_id'), 
+                    'bank_account_no' => $this->input->post('bank_account_no'),
+                    'ifsc_code' => $this->input->post('ifsc_code')
+                );                
+                $res = $this->user_model->insert($postdata,'user_bank_account');
+                if ($res) {
+                    $this->session->set_flashdata('flash_message', 'Bank account details has been added successfully.');
+                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    redirect($this->router->directory.$this->router->class.'/my_profile');
+                }
+            }
+        }
+		$this->data['page_heading'] = "Add Salary Account";
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/add_bank_account', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+
+    function edit_bank_account() {
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+            redirect($this->router->directory.$this->router->class.'/login');
+        }
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+		$id = $this->uri->segment(3);
+        $this->data['arr_banks'] = $this->user_model->get_bank_dropdown();
+        $this->data['bank_ac_type'] = array('SB'=>'Savings','CU'=>'Current');
+
+        if ($this->input->post('form_action') == 'edit') {
+            if ($this->validate_user_bank_account_form_data('edit') == true) {
+                $postdata = array(
+                    'account_type' => $this->input->post('account_type'),                    
+                    'bank_id' => $this->input->post('bank_id'), 
+                    'bank_account_no' => $this->input->post('bank_account_no'),
+                    'ifsc_code' => $this->input->post('ifsc_code')                   
+                );
+                $where = array('id'=>$id, 'user_id' => $this->sess_user_id);
+                $res = $this->user_model->update($postdata, $where,'user_bank_account');
+                if ($res) {
+                    $this->session->set_flashdata('flash_message', 'Bank account details has been updated successfully.');
+                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    redirect($this->router->directory.$this->router->class.'/my_profile');
+                }
+            }
+        }
+		$this->data['page_heading'] = "Edit Salary Account";
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_bank_account', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function validate_user_bank_account_form_data($mode) {	        
+        $this->form_validation->set_rules('bank_id', 'bank selection', 'required'); 
+        $this->form_validation->set_rules('bank_account_no', 'account no', 'required|numeric'); 
+        $this->form_validation->set_rules('confirm_bank_account_no', 'confirm account no', 'required|numeric|matches[bank_account_no]'); 		
+        $this->form_validation->set_rules('ifsc_code', 'ifsc code', 'required'); 
+        $this->form_validation->set_rules('account_type', 'account type', 'required');
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
 
 ?>

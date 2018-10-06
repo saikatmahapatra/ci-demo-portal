@@ -80,7 +80,7 @@
 						<a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab" href="#nav-address" role="tab" aria-controls="nav-address" aria-selected="false">Address</a>									
 						<a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Academic Qualification</a>			
 						<a class="nav-item nav-link" id="nav-exp-tab" data-toggle="tab" href="#nav-exp" role="tab" aria-controls="nav-exp" aria-selected="false">Work Experience</a>
-						<!--<a class="nav-item nav-link" id="nav-bank-tab" data-toggle="tab" href="#nav-bank" role="tab" aria-controls="nav-bank" aria-selected="false">Bank Account</a>-->
+						<a class="nav-item nav-link" id="nav-bank-tab" data-toggle="tab" href="#nav-bank" role="tab" aria-controls="nav-bank" aria-selected="false">Bank Account</a>
 					</div>
 				</nav>
 
@@ -316,7 +316,7 @@
 					<div class="tab-pane fade" id="nav-bank" role="tabpanel" aria-labelledby="nav-bank-tab">
 						<div class="row mt-3">
 							<div class="col-md-12">
-							<a class="btn btn-primary btn-sm" href=""> Add</a>
+							<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"> Add</a>
 							</div>
 						</div>
 					</div><!--/#nav-bank-->
