@@ -80,7 +80,7 @@
 						<a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab" href="#nav-address" role="tab" aria-controls="nav-address" aria-selected="false">Address</a>									
 						<a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Academic Qualification</a>			
 						<a class="nav-item nav-link" id="nav-exp-tab" data-toggle="tab" href="#nav-exp" role="tab" aria-controls="nav-exp" aria-selected="false">Work Experience</a>
-						<a class="nav-item nav-link" id="nav-bank-tab" data-toggle="tab" href="#nav-bank" role="tab" aria-controls="nav-bank" aria-selected="false">Bank Account</a>
+						<a class="nav-item nav-link" id="nav-bank-tab" data-toggle="tab" href="#nav-bank" role="tab" aria-controls="nav-bank" aria-selected="false">Bank Account & Others</a>
 					</div>
 				</nav>
 
@@ -91,36 +91,36 @@
 							<a class="btn btn-primary btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"> Edit</a>
 							<!--<h6>Basic Info</h6><hr>-->		
 							<dl class="row">
-								<dt class="col-sm-2">Name</dt>
-								<dd class="col-sm-10">
+								<dt class="col-md-2">Name</dt>
+								<dd class="col-md-10">
 									<?php
 									echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
 									echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
 									echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
 									?>
 								</dd>
-								<dt class="col-sm-2">Employee ID</dt>
-								<dd class="col-sm-10"><?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : '-'; ?></dd>
-								<dt class="col-sm-2">Date of Joining</dt>
-								<dd class="col-sm-10"><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></dd>
-								<dt class="col-sm-2">Designation</dt>
-								<dd class="col-sm-10"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
-								<dt class="col-sm-2">Email (Work)</dt>
-								<dd class="col-sm-10"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?></a></dd>
-								<dt class="col-sm-2">Mobile (Work)</dt>
-								<dd class="col-sm-10"><?php echo isset($row['user_phone2']) ? $row['user_phone2'] : '-'; ?></dd>
-								<dt class="col-sm-2">Email (Personal)</dt>
-								<dd class="col-sm-10"><a href="mailto:<?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?>"><?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?></a></dd>			
-								<dt class="col-sm-2">Mobile (Personal)</dt>
-								<dd class="col-sm-10"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : '-'; ?></dd>						
-								<dt class="col-sm-2">Date of Birth</dt>
-								<dd class="col-sm-10">
+								<dt class="col-md-2">Employee ID</dt>
+								<dd class="col-md-10"><?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : '-'; ?></dd>
+								<dt class="col-md-2">Date of Joining</dt>
+								<dd class="col-md-10"><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></dd>
+								<dt class="col-md-2">Designation</dt>
+								<dd class="col-md-10"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
+								<dt class="col-md-2">Email (Work)</dt>
+								<dd class="col-md-10"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?></a></dd>
+								<dt class="col-md-2">Mobile (Work)</dt>
+								<dd class="col-md-10"><?php echo isset($row['user_phone2']) ? $row['user_phone2'] : '-'; ?></dd>
+								<dt class="col-md-2">Email (Personal)</dt>
+								<dd class="col-md-10"><a href="mailto:<?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?>"><?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?></a></dd>			
+								<dt class="col-md-2">Mobile (Personal)</dt>
+								<dd class="col-md-10"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : '-'; ?></dd>						
+								<dt class="col-md-2">Date of Birth</dt>
+								<dd class="col-md-10">
 								<?php echo isset($row['user_dob']) ? $this->common_lib->display_date($row['user_dob']) : '-'; ?>
 								</dd>
-								<dt class="col-sm-2">Gender</dt>
-								<dd class="col-sm-10"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : ''; ?></dd>
-								<dt class="col-sm-2">Blood Group</dt>
-								<dd class="col-sm-10"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : ''; ?></dd>
+								<dt class="col-md-2">Gender</dt>
+								<dd class="col-md-10"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : ''; ?></dd>
+								<dt class="col-md-2">Blood Group</dt>
+								<dd class="col-md-10"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : ''; ?></dd>
 								
 							</dl><!--/dl.row-->
 							
@@ -316,7 +316,59 @@
 					<div class="tab-pane fade" id="nav-bank" role="tabpanel" aria-labelledby="nav-bank-tab">
 						<div class="row mt-3">
 							<div class="col-md-12">
-							<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"> Add</a>
+								<a class="btn btn-primary btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"> Add</a>
+								<?php //print_r($bank_details);?>
+								<?php $uni = isset($user_national_identifiers) ? $user_national_identifiers[0] : ''; ?>
+								
+								<dl class="row">
+									<dt class="col-md-2">PAN No</dt>
+									<dd class="col-md-10">
+										<?php echo isset($uni['user_pan_no']) ? $uni['user_pan_no'] : '-';?>
+									</dd>
+									<dt class="col-md-2">Aadhar No</dt>
+									<dd class="col-md-10">
+										<?php echo isset($uni['user_aadhar_no']) ? $uni['user_aadhar_no'] : '-';?>
+									</dd>
+									<dt class="col-md-2">Passport No</dt>
+									<dd class="col-md-10">
+										<?php echo isset($uni['user_passport_no']) ? $uni['user_passport_no'] : '-';?>
+									</dd>
+									<dt class="col-md-2">UAN No (PF)</dt>
+									<dd class="col-md-10">
+										<?php echo isset($uni['user_uan_no']) ? $uni['user_uan_no'] : '-';?>
+									</dd>
+								</dl>
+
+								<div class="table-responsive-sm">
+										<table class="table">
+											<thead>
+												<tr>
+													<th scope="col">Account Uses</th>
+													<th scope="col">Account No</th>
+													<th scope="col">Account Type</th>
+													<th scope="col">IFSC</th>
+													<th scope="col">Bank</th>
+													<th scope="col"></th>
+												</tr>												
+											</thead>
+											<tbody>
+												<?php if(isset($bank_details)){
+													foreach($bank_details as $key=>$row){
+													?>
+														<tr>
+															<td><?php echo isset($row['account_uses'])? $account_uses[$row['account_uses']]: ' ';?></td>
+															<td><?php echo isset($row['bank_account_no'])? $row['bank_account_no']: ' ';?></td>
+															<td><?php echo isset($row['account_type']) ? $bank_ac_type[$row['account_type']] : '-'; ?></td>															
+															<td><?php echo isset($row['ifsc_code']) ? $row['ifsc_code'] : '-'; ?></td>
+															<td><?php echo isset($row['bank_name'])? $row['bank_name']: ' ';?></td>															
+															<td><a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a></td>
+														</tr>
+													<?php
+													}
+												}?>
+											</tbody>
+										</table>
+									</div><!--/.table-responsive-sm-->
 							</div>
 						</div>
 					</div><!--/#nav-bank-->

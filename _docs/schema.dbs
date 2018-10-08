@@ -3430,3 +3430,8 @@ INSERT INTO `academic_qualification` (`id`, `qualification_name`, `qualification
 ALTER TABLE `user_addresses` CHANGE `state` `state` INT(11) NULL DEFAULT NULL;
 
 ALTER TABLE `user_academics` ADD `academic_degree` INT(11) NULL DEFAULT NULL AFTER `academic_qualification`;
+
+ALTER TABLE `users`  ADD `user_pan_no` VARCHAR(10) NULL DEFAULT NULL  AFTER `user_phone2`,  ADD `user_aadhar_no` VARCHAR(12) NULL DEFAULT NULL  AFTER `user_pan_no`,  ADD `user_passport_no` VARCHAR(12) NULL DEFAULT NULL  AFTER `user_aadhar_no`,  ADD `user_uan_no` INT(12) NULL DEFAULT NULL  AFTER `user_passport_no`;
+
+INSERT INTO `permissions` (`id`, `permission_name`, `permission_description`, `permission_active`) VALUES (NULL, 'view-user-nationalid', NULL, 'Y');
+ALTER TABLE `users` CHANGE `user_uan_no` `user_uan_no` VARCHAR(16) NULL DEFAULT NULL;

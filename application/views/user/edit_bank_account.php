@@ -1,5 +1,5 @@
-<?php $row = $job_exp[0]; ?>
-
+<?php $row = $bank_details[0]; ?>
+<?php $uni = isset($user_national_identifiers) ? $user_national_identifiers[0] : ''; ?>
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <div class="row heading-container mb-3">
     <div class="col-12">
@@ -8,7 +8,7 @@
 </div><!--/.heading-container-->
 
 <div class="row">	
-    <div class="col-md-8">
+    <div class="col-md-10">
 		<?php
 			// Show server side flash messages
 			if (isset($alert_message)) {
@@ -20,127 +20,197 @@
 
         <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form', 'name' => 'address_add','id' => 'address_add')); ?>
         <?php echo form_hidden('form_action', 'edit'); ?>
-				
-				<div class="form-row">                
-					<div class="form-group col-md-12">                                
-						<label for="company_id" class="">Company Name <span class="required">*</span></label>
-						<?php
-						echo form_dropdown('company_id', $arr_company, isset($_POST['company_id']) ? set_value('company_id') : $row['company_id'], array(
-							'class' => 'form-control',
-							'id' => 'prev_company_id'
-						));
-						?> 
-						<?php echo form_error('company_id'); ?>
-				</div>
+			<div class="card card-legend">			
+				<div class="card-body">
+					<h6 class="card-title text-on-card">National Identification</h6>
+					<div class="form-row">
+						<div class="form-group col-md-3">                                
+							<label for="user_pan_no" class="">PAN Number <span class="required">*</span></label>				
+							<?php
+							echo form_input(array(
+								'name' => 'user_pan_no',
+								'value' => isset($_POST['user_pan_no']) ? set_value('user_pan_no') : $uni['user_pan_no'],
+								'id' => 'user_pan_no',
+								'maxlength' => '10',
+								'class' => 'form-control text-uppercase',
+								'placeholder' => '',
+								'autocomplete'=>'off'
+							));
+							?>
+							<?php echo form_error('user_pan_no'); ?>
+						</div>
+						
+						<div class="form-group col-md-3">        							
+							<label for="user_aadhar_no" class="">Aadhar Number <span class="required">*</span></label>				
+								<?php
+								echo form_input(array(
+									'name' => 'user_aadhar_no',
+									'value' => isset($_POST['user_aadhar_no']) ? set_value('user_aadhar_no') : $uni['user_aadhar_no'],
+									'id' => 'user_aadhar_no',
+									'maxlength' => '12',
+									'class' => 'form-control',
+									'placeholder' => '',
+									'autocomplete'=>'off',
+								));
+								?>
+								<?php echo form_error('user_aadhar_no'); ?>
+						</div>
 
+						<div class="form-group col-md-3">        							
+							<label for="user_passport_no" class="">Passport No</label>				
+								<?php
+								echo form_input(array(
+									'name' => 'user_passport_no',
+									'value' => isset($_POST['user_passport_no']) ? set_value('user_passport_no') : $uni['user_passport_no'],
+									'id' => 'user_passport_no',
+									'maxlength' => '12',
+									'class' => 'form-control text-uppercase',
+									'placeholder' => '',
+									'autocomplete'=>'off',
+								));
+								?>
+								<?php echo form_error('user_passport_no'); ?>
+						</div>
+
+						<div class="form-group col-md-3">        							
+							<label for="user_uan_no" class="">UAN No</label>				
+								<?php
+								echo form_input(array(
+									'name' => 'user_uan_no',
+									'value' => isset($_POST['user_uan_no']) ? set_value('user_uan_no') : $uni['user_uan_no'],
+									'id' => 'user_uan_no',
+									'maxlength' => '12',
+									'class' => 'form-control',
+									'placeholder' => '',
+									'autocomplete'=>'off',
+								));
+								?>
+								<?php echo form_error('user_uan_no'); ?>
+						</div>
+					</div>					
+				</div><!--./card-body-->
+			</div>
+			<div class="card card-legend my-3">			
+				<div class="card-body">
+					<h6 class="card-title text-on-card">Bank Account Details</h6>
+					<h6>Edit <?php echo $account_uses[$row['account_uses']];?> Account</h6>
+					<div class="form-row">				
+							<!--<div class="form-group col-md-4">-->
+									<!--<label for="account_uses" class="">Account For <span class="required">*</span></label>-->
+									<!--<div>-->
+									<?php						
+									/*if(isset($account_uses)){
+										foreach($account_uses as $key=>$val){
+											?>							
+											<div class="custom-control custom-radio custom-control-inline">
+												<?php
+													$radio_is_checked = $this->input->post('account_uses') === $key;
+													echo form_radio(array('name' => 'account_uses','value' => $key,'id' => $key,'checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('account_uses', $key));
+												?>
+												<label class="custom-control-label" for="<?php echo $key;?>"><?php echo $val;?></span></label>
+											</div>
+											
+											<?php
+										}
+									}*/
+									?>
+							<!--</div>-->
+							<?php //echo form_error('account_uses'); ?>
+							<!-- <h6>Edit <?php echo $account_uses[$row['account_uses']];?> Account</h6> -->
+							<!-- </div> -->
+					               
+						<div class="form-group col-md-4">                                
+							<label for="bank_id" class="">Bank <span class="required">*</span></label>
+							<?php
+							echo form_dropdown('bank_id', $arr_banks, isset($_POST['bank_id']) ? set_value('bank_id') : $row['bank_id'], array(
+								'class' => 'form-control',
+								'id' => 'bank_id'
+							));
+							?> 
+							<?php echo form_error('bank_id'); ?>
+						</div>		
+					</div>
+					
+					<div class="form-row">
+						<div class="form-group col-md-4">                                
+							<label for="bank_account_no" class="">Account Number <span class="required">*</span></label>				
+							<?php
+							echo form_input(array(
+								'name' => 'bank_account_no',
+								'value' => isset($_POST['bank_account_no']) ? set_value('bank_account_no') : $row['bank_account_no'],
+								'id' => 'bank_account_no',
+								'maxlength' => '16',
+								'class' => 'form-control',
+								'placeholder' => '',
+								'autocomplete'=>'off'
+							));
+							?>
+							<?php echo form_error('bank_account_no'); ?>
+						</div>
+						
+							<div class="form-group col-md-4">        							
+							<label for="confirm_bank_account_no" class="">Confirm Account Number <span class="required">*</span></label>				
+								<?php
+								echo form_input(array(
+									'name' => 'confirm_bank_account_no',
+									'value' => isset($_POST['confirm_bank_account_no']) ? set_value('confirm_bank_account_no') : $row['bank_account_no'],
+									'id' => 'confirm_bank_account_no',
+									'maxlength' => '16',
+									'class' => 'form-control',
+									'placeholder' => '',
+									'autocomplete'=>'off',
+								));
+								?>
+								<?php echo form_error('confirm_bank_account_no'); ?>
+						</div>
+					
+						<div class="form-group col-md-4">        							
+							<label for="ifsc_code" class="">IFSC Code <span class="required">*</span></label>				
+								<?php
+								echo form_input(array(
+									'name' => 'ifsc_code',
+									'value' => isset($_POST['ifsc_code']) ? set_value('ifsc_code') : $row['ifsc_code'],
+									'id' => 'ifsc_code',
+									'maxlength' => '11',
+									'class' => 'form-control text-uppercase',
+									'placeholder' => '',
+									'autocomplete'=>'off',
+								));
+								?>
+								<?php echo form_error('ifsc_code'); ?>
+						</div>
+						<div class="form-row">
+						<div class="form-group col-md-12">        							
+							<label for="account_type" class="">Account Type <span class="required">*</span></label>
+							<div>
+							<?php						
+							if(isset($bank_ac_type)){
+								foreach($bank_ac_type as $key=>$val){
+									?>							
+									<div class="custom-control custom-radio custom-control-inline">
+										<?php
+											//$radio_is_checked = $this->input->post('account_type') === $key;
+											$radio_is_checked = isset($_POST['account_type']) ? ($this->input->post('account_type') === $key) : ($row['account_type'] === $key);
+											echo form_radio(array('name' => 'account_type','value' => $key,'id' => $key,'checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('account_type', $key));
+										?>
+										<label class="custom-control-label" for="<?php echo $key;?>"><?php echo $val;?></span></label>
+									</div>
 									
-      </div>
+									<?php
+								}
+							}
+							?>
+							</div>
+							<?php echo form_error('account_type'); ?>
+						</div>
+						</div>
+					</div>
+				</div><!--./card-body-->
+			</div>
 			
-			<div class="form-row">
-			<div class="form-group col-md-4">                                
-					<label for="from_date" class="">From Date <span class="required">*</span></label>				
-					<?php
-					echo form_input(array(
-						'name' => 'from_date',
-						'value' => isset($_POST['from_date']) ? set_value('from_date') : $this->common_lib->display_date($row['from_date']),
-						'id' => 'from_date',
-						'maxlength' => '10',
-						'class' => 'form-control job-exp-datepicker',
-						'placeholder' => '',
-						'autocomplete'=>'off',
-						'readonly'=>true
-					));
-					?>
-					<?php echo form_error('from_date'); ?>
-				</div>
-
-				<div class="form-group col-md-4">        							
-					<label for="to_date" class="">To Date <span class="required">*</span></label>				
-						<?php
-						echo form_input(array(
-							'name' => 'to_date',
-							'value' => isset($_POST['to_date']) ? set_value('to_date') : $this->common_lib->display_date($row['to_date']),
-							'id' => 'to_date',
-							'maxlength' => '10',
-							'class' => 'form-control job-exp-datepicker',
-							'placeholder' => '',
-							'autocomplete'=>'off',
-							'readonly'=>true
-						));
-						?>
-						<?php echo form_error('to_date'); ?>
-				</div>
-						<div class="form-group col-md-4">
-						<label for="designation_id" class="">Designation/Role <span class="required">*</span></label>
-						<?php
-						echo form_dropdown('designation_id', $arr_designation_prev_work, isset($_POST['designation_id']) ? set_value('designation_id') : $row['designation_id'], array(
-							'class' => 'form-control',
-							'id' => 'prev_designation_id'
-						));
-						?> 
-						<?php echo form_error('designation_id'); ?>
-						</div>
-			</div>
-
-			<div class="form-row d-none">
-						<div class="form-group col-md-12">
-						<label for="job_description" class="">Key Roles (Optional) </label>
-						<?php echo form_textarea(array('name' => 'job_description','value' => isset($_POST['job_description']) ? set_value('job_description') : $row['job_description'],'class' => 'form-control','id' => 'job_description','rows' => '2','cols' => '50','placeholder' => 'Describe roles')); ?>
-						<?php echo form_error('job_description'); ?>
-						</div>
-			</div>
 			
 			<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/my_profile');?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
         <?php echo form_close(); ?>
     </div>  
-</div>
-
-
-
-<!-- Add Company Modal -->
-<div class="modal fade" id="addCompany" tabindex="-1" role="dialog" aria-labelledby="addCompany" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addCompanyTitle">Add New Company</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-				<div id="responseMessage_addCompany"></div>
-        <input type="text" class="form-control" id="new_company_name" name="new_company_name" placeholder="Company Name">				
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times-circle"></i> Close</button>
-        <button type="button" id="btnaddCompany" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Add Designation Modal -->
-<div class="modal fade" id="addDesignation" tabindex="-1" role="dialog" aria-labelledby="addDesignation" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addDesignationTitle">Add New Designation</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-				<div id="responseMessage_addDesignation"></div>
-        <input type="text" class="form-control" id="new_designation_name" name="new_designation_name" placeholder="Designation Name">				
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times-circle"></i> Close</button>
-        <button type="button" id="btnaddDesignation" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
-        
-      </div>
-    </div>
-  </div>
 </div>

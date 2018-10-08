@@ -50,7 +50,9 @@ class User extends CI_Controller {
 		$this->data['arr_designations'] = $this->user_model->get_designation_dropdown('Y');
 		$this->data['arr_departments'] = $this->user_model->get_department_dropdown();
 		$this->data['arr_user_title'] = array(''=>'Select Title','Mr.'=>'Mr.','Mrs.'=>'Mrs.','Dr.'=>'Dr.','Ms.'=>'Ms.');
-		$this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-');
+        $this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-');
+        $this->data['bank_ac_type'] = array('SB'=>'Savings','CU'=>'Current');
+        $this->data['account_uses'] = array('SAL'=>'Salary Credit','REI'=>'Reimbursement');
     }
 
     function index() {
@@ -746,6 +748,8 @@ class User extends CI_Controller {
 		$this->data['address'] = $this->user_model->get_user_address(NULL,$user_id,NULL);
         $this->data['education'] = $this->user_model->get_user_education(NULL, $user_id);
         $this->data['job_exp'] = $this->user_model->get_user_work_experience(NULL, $user_id);
+        $this->data['user_national_identifiers'] = $this->user_model->get_user_national_identifiers($this->sess_user_id);
+        $this->data['bank_details'] = $this->user_model->get_user_bank_account_details(NULL, $user_id);
 		$this->data['page_heading'] = 'My Profile';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/my_profile', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
@@ -780,6 +784,8 @@ class User extends CI_Controller {
 		$this->data['address'] = $this->user_model->get_user_address(NULL,$user_id,NULL);
         $this->data['education'] = $this->user_model->get_user_education(NULL, $user_id);
         $this->data['job_exp'] = $this->user_model->get_user_work_experience(NULL, $user_id);
+        $this->data['user_national_identifiers'] = $this->user_model->get_user_national_identifiers($user_id);        
+        $this->data['bank_details'] = $this->user_model->get_user_bank_account_details(NULL, $user_id);
 		$this->data['page_heading'] = 'Profile';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/profile', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
@@ -1734,14 +1740,23 @@ class User extends CI_Controller {
         }
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-        		
         $this->data['arr_banks'] = $this->user_model->get_bank_dropdown();
-        $this->data['bank_ac_type'] = array('SB'=>'Savings','CU'=>'Current');        
+        $this->data['user_national_identifiers'] = $this->user_model->get_user_national_identifiers($this->sess_user_id);
 		
         if ($this->input->post('form_action') == 'add') {
             if ($this->validate_user_bank_account_form_data('add') == true) {
+                $postdata_user = array(					
+                    'user_pan_no' => $this->input->post('user_pan_no'),                    
+                    'user_aadhar_no' => $this->input->post('user_aadhar_no'),                    
+                    'user_passport_no' => $this->input->post('user_passport_no'), 
+                    'user_uan_no' => $this->input->post('user_uan_no')
+                );                
+                $where = array('id' => $this->sess_user_id);
+                $res = $this->user_model->update($postdata_user, $where);
+
                 $postdata = array(
 					'user_id' => $this->sess_user_id,
+                    'account_uses' => $this->input->post('account_uses'),                    
                     'account_type' => $this->input->post('account_type'),                    
                     'bank_id' => $this->input->post('bank_id'), 
                     'bank_account_no' => $this->input->post('bank_account_no'),
@@ -1769,12 +1784,23 @@ class User extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		$id = $this->uri->segment(3);
-        $this->data['arr_banks'] = $this->user_model->get_bank_dropdown();
-        $this->data['bank_ac_type'] = array('SB'=>'Savings','CU'=>'Current');
+        $this->data['arr_banks'] = $this->user_model->get_bank_dropdown();        
+        $this->data['bank_details'] = $this->user_model->get_user_bank_account_details($id, $this->sess_user_id);
+        $this->data['user_national_identifiers'] = $this->user_model->get_user_national_identifiers($this->sess_user_id);
 
         if ($this->input->post('form_action') == 'edit') {
             if ($this->validate_user_bank_account_form_data('edit') == true) {
+                $postdata_user = array(					
+                    'user_pan_no' => $this->input->post('user_pan_no'),                    
+                    'user_aadhar_no' => $this->input->post('user_aadhar_no'),                    
+                    'user_passport_no' => $this->input->post('user_passport_no'), 
+                    'user_uan_no' => $this->input->post('user_uan_no')
+                );                
+                $where = array('id' => $this->sess_user_id);
+                $res = $this->user_model->update($postdata_user, $where);
+
                 $postdata = array(
+                    //'account_uses' => $this->input->post('account_uses'),                    
                     'account_type' => $this->input->post('account_type'),                    
                     'bank_id' => $this->input->post('bank_id'), 
                     'bank_account_no' => $this->input->post('bank_account_no'),
@@ -1794,11 +1820,19 @@ class User extends CI_Controller {
         $this->load->view('_layouts/layout_default', $this->data);
     }
 
-    function validate_user_bank_account_form_data($mode) {	        
+    function validate_user_bank_account_form_data($mode) {	 
+        if($mode == 'add'){
+            $this->form_validation->set_rules('account_uses', 'account for', 'required|callback_check_is_account_uses_exists'); 
+        }  
+        $this->form_validation->set_rules('user_pan_no', 'PAN no', 'required|regex_match[/^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/]'); 
+        $this->form_validation->set_rules('user_aadhar_no', 'Aadhar no', 'required'); 
+        $this->form_validation->set_rules('user_passport_no', 'passport', 'alpha_numeric'); 
+        $this->form_validation->set_rules('user_uan_no', 'UAN no', 'numeric'); 
+        
         $this->form_validation->set_rules('bank_id', 'bank selection', 'required'); 
         $this->form_validation->set_rules('bank_account_no', 'account no', 'required|numeric'); 
         $this->form_validation->set_rules('confirm_bank_account_no', 'confirm account no', 'required|numeric|matches[bank_account_no]'); 		
-        $this->form_validation->set_rules('ifsc_code', 'ifsc code', 'required'); 
+        $this->form_validation->set_rules('ifsc_code', 'ifsc code', 'required|regex_match[/^[A-Za-z]{4}\d{7}$/]'); 
         $this->form_validation->set_rules('account_type', 'account type', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
@@ -1806,6 +1840,16 @@ class User extends CI_Controller {
         } else {
             return false;
         }
+    }
+
+    function check_is_account_uses_exists($str) {      
+        //die($str);  
+        $result = $this->user_model->check_is_account_uses_exists($this->sess_user_id, $str);
+        if ($result) {
+            $this->form_validation->set_message('check_is_account_uses_exists', $this->data['account_uses'][$str].' is already added by you.');
+            return false;
+        }
+        return true;
     }
 
 }

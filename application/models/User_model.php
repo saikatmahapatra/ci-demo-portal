@@ -563,6 +563,43 @@ class User_model extends CI_Model {
         return $result;
     }
 
+    function get_user_bank_account_details($id = NULL, $user_id) {
+        $this->db->select('t1.*, t2.bank_name');    
+        if(isset($id)){
+            $this->db->where(array('t1.id' => $id));
+        }  
+        if(isset($user_id)){
+            $this->db->where(array('t1.user_id' => $user_id));
+        }
+		$this->db->join('banks t2', 't1.bank_id=t2.id', 'left');
+        $query = $this->db->get('user_bank_account as t1');
+        //echo $this->db->last_query();
+        $result = $query->result_array();        
+        return $result;
+    }
+
+    function check_is_account_uses_exists($user_id, $ac_type) {
+        $this->db->select('id');
+        $this->db->where(array('user_id' => $user_id, 'account_uses' => $ac_type));
+        $qury = $this->db->get('user_bank_account');
+        if ($qury->num_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function get_user_national_identifiers($user_id) {
+        $this->db->select('t1.user_pan_no, t1.user_aadhar_no, t1.user_passport_no, t1.user_uan_no');             
+        if(isset($user_id)){
+            $this->db->where(array('t1.id' => $user_id));
+        }		
+        $query = $this->db->get('users as t1');
+        //echo $this->db->last_query();
+        $result = $query->result_array();        
+        return $result;
+    }
+
 }
 
 ?>

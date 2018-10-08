@@ -90,11 +90,11 @@
 					<?php if($this->common_lib->is_auth(array('view-user-exp'),false) == true){ ?>		
 					<a class="nav-item nav-link" id="nav-exp-tab" data-toggle="tab" href="#nav-exp" role="tab" aria-controls="nav-exp" aria-selected="false">Work Experience</a>
 					<?php } ?>
-					<?php /* ?>
+					
 					<?php if($this->common_lib->is_auth(array('view-user-bank'),false) == true){ ?>		
-					<a class="nav-item nav-link" id="nav-bank-tab" data-toggle="tab" href="#nav-bank" role="tab" aria-controls="nav-bank" aria-selected="false">Bank Account</a>
+					<a class="nav-item nav-link" id="nav-bank-tab" data-toggle="tab" href="#nav-bank" role="tab" aria-controls="nav-bank" aria-selected="false">Bank Account & Others</a>
 					<?php } ?>
-					<?php */ ?>
+					
 					</div>
 				</nav>
 
@@ -321,7 +321,57 @@
 					<div class="tab-pane fade" id="nav-bank" role="tabpanel" aria-labelledby="nav-bank-tab">
 						<div class="row mt-3">
 							<div class="col-md-12">
+							<?php $uni = isset($user_national_identifiers) ? $user_national_identifiers[0] : ''; ?>
 								
+								<dl class="row">
+									<dt class="col-md-2">PAN No</dt>
+									<dd class="col-md-10">
+										<?php echo isset($uni['user_pan_no']) ? $uni['user_pan_no'] : '-';?>
+									</dd>
+									<dt class="col-md-2">Aadhar No</dt>
+									<dd class="col-md-10">
+										<?php echo isset($uni['user_aadhar_no']) ? $uni['user_aadhar_no'] : '-';?>
+									</dd>
+									<dt class="col-md-2">Passport No</dt>
+									<dd class="col-md-10">
+										<?php echo isset($uni['user_passport_no']) ? $uni['user_passport_no'] : '-';?>
+									</dd>
+									<dt class="col-md-2">UAN No (PF)</dt>
+									<dd class="col-md-10">
+										<?php echo isset($uni['user_uan_no']) ? $uni['user_uan_no'] : '-';?>
+									</dd>
+								</dl>
+
+								<div class="table-responsive-sm">
+									<table class="table">
+										<thead>
+											<tr>
+												<th scope="col">Account Uses</th>
+												<th scope="col">Account No</th>
+												<th scope="col">Account Type</th>
+												<th scope="col">IFSC</th>
+												<th scope="col">Bank</th>
+												<!-- <th scope="col"></th> -->
+											</tr>												
+										</thead>
+										<tbody>
+											<?php if(isset($bank_details)){
+												foreach($bank_details as $key=>$row){
+												?>
+													<tr>
+														<td><?php echo isset($row['account_uses'])? $account_uses[$row['account_uses']]: ' ';?></td>
+														<td><?php echo isset($row['bank_account_no'])? $row['bank_account_no']: ' ';?></td>
+														<td><?php echo isset($row['account_type']) ? $bank_ac_type[$row['account_type']] : '-'; ?></td>															
+														<td><?php echo isset($row['ifsc_code']) ? $row['ifsc_code'] : '-'; ?></td>
+														<td><?php echo isset($row['bank_name'])? $row['bank_name']: ' ';?></td>															
+														<!-- <td><a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a></td> -->
+													</tr>
+												<?php
+												}
+											}?>
+										</tbody>
+									</table>
+								</div><!--/.table-responsive-sm-->
 							</div>
 						</div>
 					</div><!--/#nav-bank-->
