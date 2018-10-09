@@ -35,14 +35,16 @@ $segment3 = $this->uri->segment(3);
 			<li class="d-none nav-item <?php echo ($segment1=='timesheet') ? 'active':''?>">
 				<a class="nav-link" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet</a>
 			</li>
-			<li class="d-none nav-item <?php echo ($segment1=='timesheet') ? 'active':''?>">
-				<a class="nav-link" href="#">My Documents</a>
+			<li class="nav-item <?php echo ($segment1=='holiday') ? 'active':''?>">
+				<a class="nav-link" href="<?php echo base_url($this->router->directory.'holiday/view'); ?>">Holidays</a>
+			</li>
+			<li class="d-none nav-item <?php echo ($segment1=='document') ? 'active':''?>">
+				<a class="nav-link" href="<?php echo base_url($this->router->directory.'document'); ?>">My Documents</a>
 			</li>
 			<li class="d-none nav-item dropdown <?php echo ($segment2=='user') ? 'active':''?>">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">Self Service</a>
-				<div class="dropdown-menu" aria-labelledby="dropdown01">
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'holiday/view'); ?>">Holiday Calendar</a>
+				<div class="dropdown-menu" aria-labelledby="dropdown01">					
 					<a class="dropdown-item" href="#">Apply Leave</a>
 					<a class="dropdown-item" href="#">Travel Request</a>
 					<a class="dropdown-item" href="#">My Request List</a>

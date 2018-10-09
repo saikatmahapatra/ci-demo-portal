@@ -35,10 +35,11 @@ $segment3 = $this->uri->segment(3);
 			
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown012" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false">CMS (News Notice)</a>
+					aria-expanded="false">CMS/Contents</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown012">
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'cms/add');?>">Add New Content</a>
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'cms'); ?>">Manage Contents</a>
+					<a class="dropdown-item" href="<?php echo base_url('holiday'); ?>">Manage Holidays</a>
 				</div>
 			</li>
 			

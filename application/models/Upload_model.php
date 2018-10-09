@@ -42,49 +42,25 @@ class Upload_model extends CI_Model {
         return $result;
     }
 
-    function get_rows($id = NULL, $limit = NULL, $offset = NULL) {
-        $result = array();
-        $this->db->select('t1.*,t2.user_email');
-        $this->db->join('users as t2', 't2.id = t1.pagecontent_user_id', 'left');
+    function get_uploads($upload_object_name = NULL, $upload_object_id = NULL, $id = NULL, $upload_file_document_type_name = NULL) {
+        $this->db->select('t1.*');
         if ($id) {
-            $this->db->where('t1.id', $id);
+            $this->db->where('id', $id);
         }
-        if ($limit) {
-            $this->db->limit($limit, $offset);
+        if ($upload_object_name) {
+            $this->db->where('upload_object_name', $upload_object_name);
         }
-        $query = $this->db->get('uploads as t1');
-        #print_r($this->db->last_query());
-        $num_rows = $query->num_rows();
+
+        if ($upload_object_id) {
+            $this->db->where('upload_object_id', $upload_object_id);
+        }
+        if ($upload_file_document_type_name) {
+            $this->db->where('upload_document_type_name', $upload_file_document_type_name);
+        }
+        $query = $this->db->get('uploads t1');
         $result = $query->result_array();
-        //$this->create_tree_array($result);
-        return array('num_rows' => $num_rows, 'data_rows' => $result);
+        return $result;
     }
-
-    function get_pagecontent_type() {
-        $data = array(
-            '' => 'Select',
-            'page' => 'Page',
-            'post' => 'Post',
-            'review' => 'Review',
-            'comment' => 'Comments'
-        );
-        return $data;
-    }
-
-    public function insert_file($filename, $title) {
-        $data = array(
-            'filename' => $filename,
-            'title' => $title
-        );
-        $this->db->insert('files', $data);
-        return $this->db->insert_id();
-    }
-
-    public function get_files() {
-        return $this->db->select()
-                        ->from('files')
-                        ->get()
-                        ->result();
-    }
+    
 
 }

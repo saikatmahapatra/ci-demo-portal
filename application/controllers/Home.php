@@ -116,6 +116,12 @@ class Home extends CI_Controller {
         $this->load->view('_layouts/layout_default', $this->data);
     }
 
+    function under_construction(){
+        $this->data['page_heading'] = 'Under Construction';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/under_construction', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
 }
 
 ?>
