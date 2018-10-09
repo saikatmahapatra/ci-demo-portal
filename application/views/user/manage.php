@@ -18,7 +18,7 @@
 		?>
 		<div class="card ">
 			<div class="card-header">
-				<span class="">Employees</span>
+				<span class="">Data Table</span>
 				<span class="float-right">
 					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="btn btn-sm btn-primary" title="Add"> Add New</a>
 				</span>
@@ -29,18 +29,18 @@
 					<table id="user-datatable" class="table table-sm">
 						<thead>
 							<tr>
-								<th>Name & Info</th>
-								<th>Corp Details</th>
-								<th>Contact Info</th>
+								<th>Employee Name</th>
+								<th>Registered Email (W)</th>
+								<th>Phone Number (P)</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody></tbody>
 						<tfoot>
 							<tr>
-							<th>Name & Info</th>
-							<th>Corp Details</th>
-							<th>Contact Info</th>
+							<th>Employee Name</th>
+							<th>Registered Email (W)</th>
+							<th>Phone Number (P)</th>
 							<th>Action</th>
 							</tr>
 						</tfoot>

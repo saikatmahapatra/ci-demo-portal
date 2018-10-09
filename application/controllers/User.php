@@ -75,7 +75,7 @@ class User extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		
-		$this->data['page_heading'] = 'Manage Employees';
+		$this->data['page_heading'] = 'Employees';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/manage', $this->data, true);
         $this->load->view('_layouts/layout_admin_default', $this->data);
     }
@@ -141,28 +141,38 @@ class User extends CI_Controller {
             $no++;
             $row = array();
             $html_name='';
-            $html_name.= '<div class="">'.$result['user_title'].'&nbsp;'.$result['user_firstname'] . '&nbsp;' . $result['user_lastname'].'</div>';
-            $html_name.= '<div> DOB : '.$this->common_lib->display_date($result['user_dob']).'</div>';
-            $html_name.= '<div> Gender : '.$result['user_gender'].'</div>';
-            $html_name.= '<div> Blood Gr : '.$result['user_blood_group'].'</div>';
-            $html_name.= '<div class="small"> Reg. On : '.$this->common_lib->display_date($result['user_registration_date'], true).'</div>';
-            $html_name.= '<div class="small"> Last Login : '.($result['user_login_date_time'] != NULL ? $this->common_lib->display_date($result['user_login_date_time'], true) : '').'</div>';
-            $html_name.= ($result['user_account_active'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active Account</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive Account</span>';
+            $account_status_indicator = 'text-secondary';
+            if($result['user_account_active'] == 'Y'){
+                $account_status_indicator = 'text-success';
+            }
+            if($result['user_account_active'] == 'N'){
+                $account_status_indicator = 'text-danger';
+            }
+            $html_name.= '<div class=""><i class="fa fa-circle-o '.$account_status_indicator.'" aria-hidden="true"></i> '.$result['user_title'].'&nbsp;'.$result['user_firstname'] . '&nbsp;' . $result['user_lastname'].' (#'.$result['user_emp_id'].')</div>';
+            //$html_name.= '<div> DOB : '.$this->common_lib->display_date($result['user_dob']).'</div>';
+            //$html_name.= '<div> Gender : '.$result['user_gender'].'</div>';
+            //$html_name.= '<div> Blood Gr : '.$result['user_blood_group'].'</div>';
+            //$html_name.= '<div class="small"> Reg. On : '.$this->common_lib->display_date($result['user_registration_date'], true).'</div>';
+            //$html_name.= '<div class="small"> Last Login : '.($result['user_login_date_time'] != NULL ? $this->common_lib->display_date($result['user_login_date_time'], true) : '').'</div>';
+            //$html_name.= ($result['user_account_active'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active Account</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive Account</span>';
             $row[] = $html_name;           
 
-            $html_corp=''; 
-            $html_corp.= '<div class=""> Emp # : '.$result['user_emp_id'].'</div>';
-            $html_corp.= '<div> DOJ : '.($result['user_doj'] != NULL ? $this->common_lib->display_date($result['user_doj']) : '').'</div>';
-            $html_corp.= '<div class=""> Designation : '.$result['designation_name'].'</div>';
-            $html_corp.= '<div class=""> RBAC Group : '.$result['role_name'].'</div>';
-            $row[] = $html_corp;
+            // $html_corp=''; 
+            // $html_corp.= '<div class=""> Emp # : '.$result['user_emp_id'].'</div>';
+            // $html_corp.= '<div> DOJ : '.($result['user_doj'] != NULL ? $this->common_lib->display_date($result['user_doj']) : '').'</div>';
+            // $html_corp.= '<div class=""> Designation : '.$result['designation_name'].'</div>';
+            // $html_corp.= '<div class=""> RBAC Group : '.$result['role_name'].'</div>';
+            // $row[] = $html_corp;
+            
+            $row[] = $result['user_email'];
 
-            $html_contact=''; 
-            $html_contact.= '<div class=""> Email (W) : '.$result['user_email'].'</div>';
-            $html_contact.= '<div> Mobile (P) : '.$result['user_phone1'].'</div>';
-            $html_contact.= '<div> Email (P) : '.$result['user_email_secondary'].'</div>';            
-            $html_contact.= '<div> Mobile (W) : '.$result['user_phone2'].'</div>';
-            $row[] = $html_contact;
+            // $html_contact=''; 
+            // $html_contact.= '<div class=""> Email (W) : '.$result['user_email'].'</div>';
+            // $html_contact.= '<div> Mobile (P) : '.$result['user_phone1'].'</div>';
+            // $html_contact.= '<div> Email (P) : '.$result['user_email_secondary'].'</div>';            
+            // $html_contact.= '<div> Mobile (W) : '.$result['user_phone2'].'</div>';
+            // $row[] = $html_contact;
+            $row[] = $result['user_phone1'];
 
             //$row[] = ($result['user_account_active'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive</span>';
             //add html for action
@@ -174,18 +184,20 @@ class User extends CI_Controller {
             $acc_status_class = ($result['user_account_active'] == 'Y') ? 'btn btn-sm btn-outline-danger' : 'btn btn-sm btn-outline-success';
             $acc_status_set = ($result['user_account_active'] == 'Y') ? 'N' : 'Y';
             
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-info-circle" aria-hidden="true"></i> Details', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-info" aria-hidden="true"></i> Details', array(
                 'class' => 'btn btn-sm btn-outline-secondary mr-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'View Profile',
-                'title' => 'View Profile'
+                'title' => 'View Profile',
+                'target'=>'_new'
             ));
 
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
                 'class' => 'btn btn-sm btn-outline-secondary mr-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit Profile',
-                'title' => 'Edit Profile'
+                'title' => 'Edit Profile',
+                'target'=>'_new'
             ));
 			/*$action_html.= anchor(base_url($this->router->directory.$this->router->class.'/manage'), $acc_status_text, array(
                 'class' => 'change_account_status ' . $acc_status_class,
