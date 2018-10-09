@@ -47,7 +47,12 @@ class User_model extends CI_Model {
     }
 
     function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
-        $this->db->select('t1.*,t2.role_name, t2.role_weight,t3.department_name, t4.designation_name');
+        if ($dataTable == TRUE){
+            $this->db->select('t1.id, t1.user_title, t1.user_emp_id, t1.user_firstname, t1.user_lastname, t1.user_email, t1.user_phone1,t1.user_account_active');
+        }else{
+            $this->db->select('t1.*,t2.role_name, t2.role_weight,t3.department_name, t4.designation_name');
+        }
+        
         if ($id) {
             $this->db->where('t1.id', $id);
         }
@@ -60,10 +65,9 @@ class User_model extends CI_Model {
         if ($dataTable == TRUE) {
             //set column field database for datatable orderable
             $column_order = array(
-                't1.user_firstname',
-                't1.user_emp_id',
+                't1.user_firstname',                
                 't1.user_email',
-                't1.user_account_active',
+                't1.user_phone1',
                 NULL,
             );
             //set column field database(table column name) for datatable searchable
