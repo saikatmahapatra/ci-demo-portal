@@ -19,14 +19,14 @@ $segment3 = $this->uri->segment(3);
 	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item <?php echo ($segment1=='home') ? 'active':''?>">
-				<a class="nav-link" href="<?php echo base_url('user/administrator'); ?>">Home
+				<a class="nav-link" href="<?php echo base_url('user/administrator'); ?>">Dashboard
 					<span class="sr-only">(current)</span>
 				</a>
 			</li>
 			
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown011" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false">Manage Employees</a>
+					aria-expanded="false">Employees</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown011">
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account');?>">Add New Employee</a>
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Manage Employee</a>

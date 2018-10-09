@@ -458,7 +458,7 @@ class User_model extends CI_Model {
     }
 
 	function get_users($id = NULL, $limit = NULL, $offset = NULL, $search_keywords=NULL) {
-        $this->db->select('t1.id, t1.user_emp_id, t1.user_firstname, t1.user_lastname, t1.user_email, t1.user_phone1');
+        $this->db->select('t1.id, t1.user_emp_id, t1.user_firstname, t1.user_lastname, t1.user_email, t1.user_phone1, t1.user_profile_pic');
         if ($id) {
             $this->db->where('t1.id', $id);
         }
