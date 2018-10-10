@@ -1774,7 +1774,7 @@ class User extends CI_Controller {
                     'account_type' => $this->input->post('account_type'),                    
                     'bank_id' => $this->input->post('bank_id'), 
                     'bank_account_no' => $this->input->post('bank_account_no'),
-                    'ifsc_code' => $this->input->post('ifsc_code')
+                    'ifsc_code' => strtoupper($this->input->post('ifsc_code'))
                 );                
                 $res = $this->user_model->insert($postdata,'user_bank_account');
                 if ($res) {
@@ -1818,7 +1818,7 @@ class User extends CI_Controller {
                     'account_type' => $this->input->post('account_type'),                    
                     'bank_id' => $this->input->post('bank_id'), 
                     'bank_account_no' => $this->input->post('bank_account_no'),
-                    'ifsc_code' => $this->input->post('ifsc_code')                   
+                    'ifsc_code' => strtoupper($this->input->post('ifsc_code'))
                 );
                 $where = array('id'=>$id, 'user_id' => $this->sess_user_id);
                 $res = $this->user_model->update($postdata, $where,'user_bank_account');
