@@ -273,7 +273,9 @@
 					<?php echo form_error('user_account_active'); ?>
 				</div>
 			</div>
-			<?php } ?>
+			<?php } else{
+				echo form_hidden('user_account_active', $row['user_account_active']);
+			} ?>
         <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
         <?php echo form_close(); ?>

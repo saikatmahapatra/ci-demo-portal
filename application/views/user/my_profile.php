@@ -1,5 +1,6 @@
 <?php
    $row = $row[0];
+   $user_row = $row;
    //print_r($address);
 ?>
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
@@ -67,7 +68,7 @@
 							<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
 							<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>        
 						</div>            
-						<div>
+						<div class="d-none">
 							<?php echo (isset($row['user_bio']) && strlen($row['user_bio'])>0) ? '<span class="text-muted">'.$row['user_bio'].'</span>' : ''; ?>							
 						</div>
 					</div>
@@ -76,11 +77,14 @@
 			<div class="card-body">
 				<nav>
 					<div class="nav nav-tabs ci-nav-tab" id="nav-tab" role="tablist">
-						<a class="nav-item nav-link active" id="nav-basic-tab" data-toggle="tab" href="#nav-basic" role="tab" aria-controls="nav-basic" aria-selected="true">Basic Information</a>			
+						<a class="nav-item nav-link active" id="nav-basic-tab" data-toggle="tab" href="#nav-basic" role="tab" aria-controls="nav-basic" aria-selected="true">Basic Info</a>			
 						<a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab" href="#nav-address" role="tab" aria-controls="nav-address" aria-selected="false">Address</a>									
-						<a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Academic Qualification</a>			
+						<a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Academic Records</a>			
 						<a class="nav-item nav-link" id="nav-exp-tab" data-toggle="tab" href="#nav-exp" role="tab" aria-controls="nav-exp" aria-selected="false">Work Experience</a>
-						<a class="nav-item nav-link" id="nav-bank-tab" data-toggle="tab" href="#nav-bank" role="tab" aria-controls="nav-bank" aria-selected="false">Bank Account & Others</a>
+						<a class="nav-item nav-link" id="nav-bank-tab" data-toggle="tab" href="#nav-bank" role="tab" aria-controls="nav-bank" aria-selected="false">Bank Account</a>
+						<?php if($this->common_lib->is_auth(array('view-user-account-stat'),false) == true){ ?>		
+						<a class="nav-item nav-link" id="nav-account-stat-tab" data-toggle="tab" href="#nav-account-stat" role="tab" aria-controls="nav-account-stat" aria-selected="false">Account Statistics</a>
+						<?php } ?>
 					</div>
 				</nav>
 
@@ -372,6 +376,27 @@
 							</div>
 						</div>
 					</div><!--/#nav-bank-->
+
+					<?php if($this->common_lib->is_auth(array('view-user-account-stat'),false) == true){ ?>		
+						<div class="tab-pane fade" id="nav-account-stat" role="tabpanel" aria-labelledby="nav-account-stat-tab">
+							<div class="row mt-3">
+								<div class="col-md-12">
+									<dl class="row">
+										<dt class="col-sm-2">Account/Login Status</dt>
+										<dd class="col-sm-10"><?php echo isset($user_row['user_account_active']) ? ($user_row['user_account_active']=='Y' ? 'Active' : ($user_row['user_account_active']=='N' ? 'Inactive' : '' )) : '-'; ?></dd>
+										<dt class="col-sm-2">Registered on</dt>
+										<dd class="col-sm-10"><?php echo isset($user_row['user_registration_date']) ? $this->common_lib->display_date($user_row['user_registration_date'],true) : '-'; ?></dd>									
+										<dt class="col-sm-2">Registered from IP</dt>
+										<dd class="col-sm-10"><?php echo isset($user_row['user_registration_ip']) ? $user_row['user_registration_ip'] : '-'; ?></dd>
+										<dt class="col-sm-2">Last Login Date Time</dt>
+										<dd class="col-sm-10"><?php echo isset($user_row['user_login_date_time']) ? $this->common_lib->display_date($user_row['user_login_date_time'],true) : '-'; ?></dd>
+										<dt class="col-sm-2">User Archived</dt>
+										<dd class="col-sm-10"><?php echo isset($user_row['user_archived']) ? ($user_row['user_archived']=='Y' ? 'Yes' : ($user_row['user_archived']=='N' ? 'No' : '' )) : '-'; ?></dd>
+									</dl>
+								</div>
+							</div>
+						</div><!--/#nav-account-stat-->
+					<?php } ?>
 					
 					</div><!--/.tab-content-->
 			</div><!--/.carrd-body-->

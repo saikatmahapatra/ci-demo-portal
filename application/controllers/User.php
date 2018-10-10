@@ -148,7 +148,7 @@ class User extends CI_Controller {
             if($result['user_account_active'] == 'N'){
                 $account_status_indicator = 'text-danger';
             }
-            $html_name.= '<div class=""><i class="fa fa-circle-o '.$account_status_indicator.'" aria-hidden="true"></i> '.$result['user_title'].'&nbsp;'.$result['user_firstname'] . '&nbsp;' . $result['user_lastname'].' (#'.$result['user_emp_id'].')</div>';
+            $html_name.= '<div class=""><i class="fa fa-circle-o '.$account_status_indicator.'" aria-hidden="true"></i> '.$result['user_title'].'&nbsp;'.$result['user_firstname'] . '&nbsp;' . $result['user_lastname'].'</div>';
             //$html_name.= '<div> DOB : '.$this->common_lib->display_date($result['user_dob']).'</div>';
             //$html_name.= '<div> Gender : '.$result['user_gender'].'</div>';
             //$html_name.= '<div> Blood Gr : '.$result['user_blood_group'].'</div>';
@@ -156,6 +156,8 @@ class User extends CI_Controller {
             //$html_name.= '<div class="small"> Last Login : '.($result['user_login_date_time'] != NULL ? $this->common_lib->display_date($result['user_login_date_time'], true) : '').'</div>';
             //$html_name.= ($result['user_account_active'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active Account</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive Account</span>';
             $row[] = $html_name;           
+            $row[] = $result['user_emp_id'];           
+            $row[] = $result['designation_name'];           
 
             // $html_corp=''; 
             // $html_corp.= '<div class=""> Emp # : '.$result['user_emp_id'].'</div>';
@@ -1177,7 +1179,7 @@ class User extends CI_Controller {
                 $postdata = array(
                     //'user_firstname' => $this->input->post('user_firstname'),
                     //'user_lastname' => $this->input->post('user_lastname'),
-                    'user_bio' => $this->input->post('user_bio'),
+                    //'user_bio' => $this->input->post('user_bio'),
                     //'user_gender' => $this->input->post('user_gender'),                   
                     //'user_dob' => $dob,
                     'user_phone1' => $this->input->post('user_phone1'),

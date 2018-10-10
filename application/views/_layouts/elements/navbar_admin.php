@@ -29,7 +29,7 @@ $segment3 = $this->uri->segment(3);
 					aria-expanded="false">Employees</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown011">
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account');?>">Add New Employee</a>
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Manage Employee</a>
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Manage Employees</a>
 				</div>
 			</li>
 			

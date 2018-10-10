@@ -30,18 +30,22 @@
 						<thead>
 							<tr>
 								<th>Employee Name</th>
-								<th>Registered Email (W)</th>
-								<th>Phone Number (P)</th>
+								<th>Emp ID</th>
+								<th>Designation</th>
+								<th>Registered Email</th>
+								<th>Phone Number</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody></tbody>
 						<tfoot>
 							<tr>
-							<th>Employee Name</th>
-							<th>Registered Email (W)</th>
-							<th>Phone Number (P)</th>
-							<th>Action</th>
+								<th>Employee Name</th>
+								<th>Emp ID</th>
+								<th>Designation</th>
+								<th>Registered Email</th>
+								<th>Phone Number</th>
+								<th>Action</th>
 							</tr>
 						</tfoot>
 					</table>

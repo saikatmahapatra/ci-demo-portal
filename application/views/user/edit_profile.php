@@ -54,7 +54,9 @@
                         <?php echo form_error('user_lastname'); ?>
                     </div>                
             </div><!--/.row-->
-			<?php */ ?>
+            <?php */ ?>
+            
+            <?php /* ?>
 			<div class="form-group">
 				<label for="user_bio" class="">About me</label>
 				<?php
@@ -68,7 +70,7 @@
 				?>
 				<?php echo form_error('user_bio'); ?>
 			</div>
-                
+            <?php */ ?>
 			<?php /*?>	
             <div class="form-control">
                     <label class="">Gender <span class="required">*</span></label>
