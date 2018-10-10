@@ -1760,9 +1760,9 @@ class User extends CI_Controller {
         if ($this->input->post('form_action') == 'add') {
             if ($this->validate_user_bank_account_form_data('add') == true) {
                 $postdata_user = array(					
-                    'user_pan_no' => $this->input->post('user_pan_no'),                    
+                    'user_pan_no' => strtoupper($this->input->post('user_pan_no')),
                     'user_aadhar_no' => $this->input->post('user_aadhar_no'),                    
-                    'user_passport_no' => $this->input->post('user_passport_no'), 
+                    'user_passport_no' => strtoupper($this->input->post('user_passport_no')), 
                     'user_uan_no' => $this->input->post('user_uan_no')
                 );                
                 $where = array('id' => $this->sess_user_id);
@@ -1805,9 +1805,9 @@ class User extends CI_Controller {
         if ($this->input->post('form_action') == 'edit') {
             if ($this->validate_user_bank_account_form_data('edit') == true) {
                 $postdata_user = array(					
-                    'user_pan_no' => $this->input->post('user_pan_no'),                    
+                    'user_pan_no' => strtoupper($this->input->post('user_pan_no')),
                     'user_aadhar_no' => $this->input->post('user_aadhar_no'),                    
-                    'user_passport_no' => $this->input->post('user_passport_no'), 
+                    'user_passport_no' => strtoupper($this->input->post('user_passport_no')), 
                     'user_uan_no' => $this->input->post('user_uan_no')
                 );                
                 $where = array('id' => $this->sess_user_id);
