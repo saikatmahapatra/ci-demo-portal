@@ -1,5 +1,4 @@
 <?php
-include 'site_down.php';
 /**
  * CodeIgniter
  *
