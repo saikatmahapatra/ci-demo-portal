@@ -141,15 +141,15 @@ class User extends CI_Controller {
             $no++;
             $row = array();
             $html_name='';
-            $account_status_indicator = 'text-secondary';            
+            $status_indicator = 'text-secondary';            
             if($result['user_archived'] == 'Y'){
-                $account_status_indicator = 'text-danger';
+                $status_indicator = 'text-danger';
             }else{
                 if($result['user_account_active'] == 'Y'){
-                    $account_status_indicator = 'text-success';
+                    $status_indicator = 'text-success';
                 }
                 if($result['user_account_active'] == 'N'){
-                    $account_status_indicator = 'text-warning';
+                    $status_indicator = 'text-warning';
                 }
             }
             $html_name.= $result['user_title'].'&nbsp;'.$result['user_firstname'] . '&nbsp;' . $result['user_lastname'];
@@ -179,7 +179,7 @@ class User extends CI_Controller {
             // $html_contact.= '<div> Mobile (W) : '.$result['user_phone2'].'</div>';
             // $row[] = $html_contact;
             $row[] = $result['user_phone1'];
-            $row[] = '<i class="fa fa-square '.$account_status_indicator.'" aria-hidden="true"></i>';
+            $row[] = '<span class=""><i class="fa fa-square '.$status_indicator.'" aria-hidden="true"></i></span>';
 
             //$row[] = ($result['user_account_active'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive</span>';
             //add html for action

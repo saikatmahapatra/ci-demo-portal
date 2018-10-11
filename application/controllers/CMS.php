@@ -135,7 +135,15 @@ class Cms extends CI_Controller {
             $row[] = $result['pagecontent_type'];
             $row[] = $result['pagecontent_title'];
             $row[] = $this->common_lib->display_date($result['pagecontent_created_on'], true);
-            $row[] = (strtolower($result['pagecontent_status']) == 'y') ? 'Published' : 'Unpublished';            
+            
+            $status_indicator = 'text-secondary';            
+            if($result['pagecontent_status'] == 'Y'){
+                $status_indicator = 'text-success';
+            }
+            if($result['pagecontent_status'] == 'N'){
+                $status_indicator = 'text-warning';
+            }
+            $row[] = '<i class="fa fa-square '.$status_indicator.'" aria-hidden="true"></i>';
             //add html for action
             $action_html = '';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' .$result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
