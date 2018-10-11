@@ -37,10 +37,10 @@
 						<thead>
 							<tr>
 								<th>Employee</th>
-								<th>Emp ID</th>
+								<th>Emp#</th>
 								<th>Designation</th>
 								<th>Registered Email</th>
-								<th>Mobile Number</th>
+								<th>Mobile</th>
 								<th>Status</th>
 								<th>Action</th>
 							</tr>
@@ -52,7 +52,7 @@
 								<th>Emp ID</th>
 								<th>Designation</th>
 								<th>Registered Email</th>
-								<th>Mobile Number</th>
+								<th>Mobile</th>
 								<th>Status</th>
 								<th>Action</th>
 							</tr>
