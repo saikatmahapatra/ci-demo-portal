@@ -82,7 +82,7 @@
 								$btn_class='disabled';	
 							}
 						?>
-						<a href="<?php echo $file_src;?>" title="<?php echo $upload['upload_document_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><i class="fa fa-download"></i> View</a>
+						<a target="_new" href="<?php echo $file_src;?>" title="<?php echo $upload['upload_document_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><i class="fa fa-download"></i> View</a>
 						<a href="#" class="btn btn-sm btn-outline-danger btn-delete-file ml-2" data-confirmation="1" data-confirmation-message="Are you sure, you want to delete this?" data-upload_id="<?php echo $upload['id'];?>" title="Delete <?php echo $upload['upload_document_type_name']; ?>" data-path="<?php echo $file_path;?>"><i class="fa fa-trash"></i> Delete</a>
 					</div>
 				</div>

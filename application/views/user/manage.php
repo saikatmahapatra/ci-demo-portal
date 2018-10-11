@@ -25,26 +25,35 @@
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body">
+				
+				<div class="pl-2 mb-2 small">					
+					<span class="mx-2"><i class="fa fa-square text-success" aria-hidden="true"></i> Active Account</span>
+					<span class="mx-2"><i class="fa fa-square text-warning" aria-hidden="true"></i> Inactive Account</span>
+					<span class="mx-2"><i class="fa fa-square text-danger" aria-hidden="true"></i> Archived Account</span>
+				</div>
+
 				<div class="table-responsive">
 					<table id="user-datatable" class="table table-sm">
 						<thead>
 							<tr>
-								<th>Employee Name</th>
+								<th>Employee</th>
 								<th>Emp ID</th>
 								<th>Designation</th>
 								<th>Registered Email</th>
-								<th>Phone Number</th>
+								<th>Mobile Number</th>
+								<th>Status</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody></tbody>
 						<tfoot>
 							<tr>
-								<th>Employee Name</th>
+								<th>Employee</th>
 								<th>Emp ID</th>
 								<th>Designation</th>
 								<th>Registered Email</th>
-								<th>Phone Number</th>
+								<th>Mobile Number</th>
+								<th>Status</th>
 								<th>Action</th>
 							</tr>
 						</tfoot>

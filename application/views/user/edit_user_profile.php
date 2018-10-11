@@ -48,17 +48,21 @@
 				?>
 			</div>
 			<?php 
-				if($row['user_account_active']=='Y'){
-					?>
-					<span class="badge badge-success">Active Account</span>                        
-					<?php
-				}
-				if($row['user_account_active']=='N'){
-					?>
-					<span class="badge badge-danger">Inactive Account</span>
-					<?php
-				}
-			?> 
+				$account_status_indicator = 'text-secondary';            
+				if($row['user_archived'] == 'Y'){
+					$account_status_indicator = 'text-danger';
+					echo '<span class="badge badge-danger">User Archived</span>';
+				}else{
+					if($row['user_account_active'] == 'Y'){
+						$account_status_indicator = 'text-success';
+						echo '<span class="badge badge-success">Active Account</span>';
+					}
+					if($row['user_account_active'] == 'N'){
+						$account_status_indicator = 'text-warning';
+						echo '<span class="badge badge-warning">Inactive Account</span>';
+					}
+				}				
+			?>
 			<!--<div class="small"><?php //echo isset($row['role_name']) ? $row['role_name'] : ''; ?></div>-->
 			<div class="small"><?php echo isset($row['user_emp_id']) ? 'Emp # '.$row['user_emp_id'] : ''; ?></div>
 			<div class="small"><?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>

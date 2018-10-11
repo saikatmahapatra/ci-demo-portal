@@ -48,7 +48,7 @@ class User_model extends CI_Model {
 
     function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
         if ($dataTable == TRUE){
-            $this->db->select('t1.id, t1.user_title, t1.user_emp_id, t1.user_firstname, t1.user_lastname, t1.user_email, t1.user_phone1,t1.user_account_active,t4.designation_name');
+            $this->db->select('t1.id, t1.user_title, t1.user_emp_id, t1.user_firstname, t1.user_lastname, t1.user_email, t1.user_phone1,t1.user_account_active,t4.designation_name,t1.user_archived');
         }else{
             $this->db->select('t1.*,t2.role_name, t2.role_weight,t3.department_name, t4.designation_name');
         }
@@ -70,6 +70,7 @@ class User_model extends CI_Model {
                 't4.designation_name',
                 't1.user_email',
                 't1.user_phone1',
+                't1.user_account_active',
                 NULL,
             );
             //set column field database(table column name) for datatable searchable
@@ -157,7 +158,7 @@ class User_model extends CI_Model {
                 return $auth_result;
             } else if (isset($row) && ($row['user_archived'] == 'Y')) {
                 $login_status = 'error';
-                $message = 'Your account has been deactivated.';
+                $message = 'Your account has been deleted permanently.' ;
                 $auth_result = array('status' => $login_status, 'message' => $message, 'data' => $loggedin_data);
                 return $auth_result;
             } else {

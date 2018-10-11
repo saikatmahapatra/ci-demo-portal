@@ -141,14 +141,18 @@ class User extends CI_Controller {
             $no++;
             $row = array();
             $html_name='';
-            $account_status_indicator = 'text-secondary';
-            if($result['user_account_active'] == 'Y'){
-                $account_status_indicator = 'text-success';
-            }
-            if($result['user_account_active'] == 'N'){
+            $account_status_indicator = 'text-secondary';            
+            if($result['user_archived'] == 'Y'){
                 $account_status_indicator = 'text-danger';
+            }else{
+                if($result['user_account_active'] == 'Y'){
+                    $account_status_indicator = 'text-success';
+                }
+                if($result['user_account_active'] == 'N'){
+                    $account_status_indicator = 'text-warning';
+                }
             }
-            $html_name.= '<div class=""><i class="fa fa-circle-o '.$account_status_indicator.'" aria-hidden="true"></i> '.$result['user_title'].'&nbsp;'.$result['user_firstname'] . '&nbsp;' . $result['user_lastname'].'</div>';
+            $html_name.= $result['user_title'].'&nbsp;'.$result['user_firstname'] . '&nbsp;' . $result['user_lastname'];
             //$html_name.= '<div> DOB : '.$this->common_lib->display_date($result['user_dob']).'</div>';
             //$html_name.= '<div> Gender : '.$result['user_gender'].'</div>';
             //$html_name.= '<div> Blood Gr : '.$result['user_blood_group'].'</div>';
@@ -166,7 +170,7 @@ class User extends CI_Controller {
             // $html_corp.= '<div class=""> RBAC Group : '.$result['role_name'].'</div>';
             // $row[] = $html_corp;
             
-            $row[] = $result['user_email'];
+            $row[] = '<span class="">'.$result['user_email'].'</span>';
 
             // $html_contact=''; 
             // $html_contact.= '<div class=""> Email (W) : '.$result['user_email'].'</div>';
@@ -175,6 +179,7 @@ class User extends CI_Controller {
             // $html_contact.= '<div> Mobile (W) : '.$result['user_phone2'].'</div>';
             // $row[] = $html_contact;
             $row[] = $result['user_phone1'];
+            $row[] = '<i class="fa fa-square '.$account_status_indicator.'" aria-hidden="true"></i>';
 
             //$row[] = ($result['user_account_active'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive</span>';
             //add html for action

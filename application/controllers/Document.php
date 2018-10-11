@@ -116,7 +116,7 @@ class Document extends CI_Controller {
             $upload_param = array(
                 'upload_path' => $upload_path, // original upload folder
                 'allowed_types' => $allowed_ext, // allowed file types,
-                'max_size' => '1048', // max 1MB size,
+                'max_size' => '1024', // max 1MB size,
                 'file_new_name' => $upload_object_id . '_' . $upload_document_type_name . '_' . time(),
             );
             $upload_result = $this->common_lib->upload_file('userfile', $upload_param);
