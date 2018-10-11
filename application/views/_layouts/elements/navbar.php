@@ -60,27 +60,21 @@
 				</li>
 			<?php } ?>
 
-			<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">My Profile</a>
-			</li>
-
-			<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url($this->router->directory.'holiday/view'); ?>">Calendar Holidays</a>
-			</li>
-
-			<li class="d-none nav-item>">
-				<a class="nav-link" href="<?php echo base_url($this->router->directory.'document'); ?>">My Documents</a>
-			</li>
-
-			<li class="d-none nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false">Self Service</a>
-				<div class="dropdown-menu" aria-labelledby="dropdown01">					
-					<a class="dropdown-item" href="#">Apply Leave</a>
-					<a class="dropdown-item" href="#">Travel Request</a>
-					<a class="dropdown-item" href="#">My Request List</a>
+			
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="dropdown01_ess" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">Employee Self Services</a>
+				<div class="dropdown-menu" aria-labelledby="dropdown01_ess">					
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">My Profile Details</a>
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'document'); ?>">My Documents</a>					
+					<a class="dropdown-item" href="#">Apply Leave</a>					
 				</div>
 			</li>
+
+			<li class="nav-item">
+					<a class="nav-link" href="<?php echo base_url($this->router->directory.'holiday/view'); ?>">Calendar Holidays</a>
+			</li>
+			
 		</ul>
 		
 		

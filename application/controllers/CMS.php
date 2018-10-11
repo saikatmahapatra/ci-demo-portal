@@ -190,7 +190,8 @@ class Cms extends CI_Controller {
                     'pagecontent_display_end_date' => $this->common_lib->convert_to_mysql($this->input->post('pagecontent_display_end_date')),
                     'pagecontent_meta_author' => $this->input->post('pagecontent_meta_author'),
                     'pagecontent_user_id' => $this->sess_user_id,
-					'pagecontent_status' => $this->input->post('pagecontent_status')
+					'pagecontent_status' => $this->input->post('pagecontent_status'),
+					'pagecontent_created_on' => date('Y-m-d H:i:s')
                 );
                 $insert_id = $this->cms_model->insert($postdata);
                 if ($insert_id) {
@@ -200,7 +201,7 @@ class Cms extends CI_Controller {
                 }
             }
         }
-		$this->data['page_heading'] = 'Add Contents';
+		$this->data['page_heading'] = 'Add Dynamic Contents';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/add', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -239,7 +240,7 @@ class Cms extends CI_Controller {
         }
         $result_array = $this->cms_model->get_rows($this->id);
         $this->data['rows'] = $result_array['data_rows'];
-		$this->data['page_heading'] = 'Edit Contents';
+		$this->data['page_heading'] = 'Edit Dynamic Contents';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

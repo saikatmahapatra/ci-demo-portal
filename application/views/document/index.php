@@ -9,7 +9,7 @@
 	<div class="col-md-12">
 		<div class="card card-legend">			
 			<div class="card-body">
-				<h6 class="card-title text-on-card">Upload New Documents</h6>
+				<h6 class="card-title text-on-card">Upload Documents</h6>
 				<?php
 				// Show server side flash messages
 				if (isset($alert_message)) {
@@ -54,14 +54,24 @@
 	<div class="col-md-12">
 		<div class="card card-legend">
 			<div class="card-body">
-				<h6 class="card-title text-on-card">Uploaded Documents</h6>
+				<h6 class="card-title text-on-card">Documents</h6>
 				<?php
 				if (isset($all_uploads) && sizeof($all_uploads) > 0) {
 					foreach ($all_uploads as $key => $upload) {
 				?>
-				<div class="file-container row my-3" id="upload_grid_<?php echo $upload['id']; ?>">
-					<div class="col-md-8"><?php echo $arr_upload_document_type_name[$upload['upload_document_type_name']]; ?></div>
+				<div class="file-container row my-2" id="upload_grid_<?php echo $upload['id']; ?>">
+					<div class="col-md-6"><?php echo $arr_upload_document_type_name[$upload['upload_document_type_name']]; ?></div>
 					<div class="col-md-4">
+						<div class="small">
+							<div class="text-muted">
+								<?php echo 'Uploaded on '.$this->common_lib->display_date($upload['upload_date'], true); ?>
+							</div>
+							<div class="text-muted">
+								<?php echo $char_doc_verification[$upload['upload_is_verified']]; ?>
+							</div>							
+						</div>
+					</div>
+					<div class="col-md-2">
 						<?php
 							$file_path = 'assets/uploads/'.$upload_object_name.'/docs/' . $id . '/' . $upload['upload_file_name'];
 							if (file_exists(FCPATH . $file_path)) {
@@ -72,8 +82,7 @@
 								$btn_class='disabled';	
 							}
 						?>
-						<a href="<?php echo $file_src;?>" title="<?php echo $upload['upload_document_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>" target="_new"><i class="fa fa-download"></i> View/Download</a>
-
+						<a href="<?php echo $file_src;?>" title="<?php echo $upload['upload_document_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><i class="fa fa-download"></i> View</a>
 						<a href="#" class="btn btn-sm btn-outline-danger btn-delete-file ml-2" data-confirmation="1" data-confirmation-message="Are you sure, you want to delete this?" data-upload_id="<?php echo $upload['id'];?>" title="Delete <?php echo $upload['upload_document_type_name']; ?>" data-path="<?php echo $file_path;?>"><i class="fa fa-trash"></i> Delete</a>
 					</div>
 				</div>

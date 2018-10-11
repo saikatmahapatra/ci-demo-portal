@@ -69,6 +69,13 @@ class Document extends CI_Controller {
             "current_addr_proof" => "Current Address Proof",
         );
         ksort($this->data['arr_upload_document_type_name']);
+
+        $this->data['char_doc_verification'] = array(
+            'P'=>'Verification Pending',
+            'N' => 'Not verified',
+            'Y' =>'Verified',
+            'R' => 'Document Rejected'
+        );
     }
 
     function index() {
@@ -103,6 +110,7 @@ class Document extends CI_Controller {
             $upload_path = 'assets/uploads/' . $upload_object_name . '/docs/' . $upload_object_id;
             if (!is_dir($upload_path)) {
                 mkdir($upload_path, 0777, TRUE);
+                copy('assets/index.html', $upload_path.'/index.html');
             }
             $allowed_ext = 'png|jpg|jpeg|doc|docx|pdf';
             $upload_param = array(
