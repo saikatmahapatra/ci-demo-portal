@@ -9,7 +9,7 @@ $(domReady);
 function domReady() {
     console.log("document.js");
     $('.btn-delete-file').on('click', deleteUploadedFiles);
-    //$('.view-download-btn').on('click', displayFile);
+    $('.view-download-btn').on('click', displayFile);
 }
 
 function deleteUploadedFiles(e) {

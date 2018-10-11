@@ -101,7 +101,12 @@
       <div class="modal-body">
 		<div class="row">
 			<div class="col-12" id="file-container">
-				<object id="file-container-object" width="100%" height="400px" data=""></object>
+				<object id="file-container-object" width="100%" height="400px" data="">
+				<p>
+					It appears your Web browser is not configured to display PDF/DOC files.
+					No worries, just <a href="your_file.pdf">click here to download the PDF file.</a>
+    		</p>
+				</object>
 			</div>
 		</div>
 	  	

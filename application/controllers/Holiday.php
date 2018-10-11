@@ -79,7 +79,7 @@ class Holiday extends CI_Controller {
 		
 		$this->data['page_heading'] = 'Holiday Calendar';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
-        $this->load->view('_layouts/layout_admin_default', $this->data);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 	
 	function render_datatable() {
@@ -169,7 +169,7 @@ class Holiday extends CI_Controller {
         }
 		$this->data['page_heading'] = 'Add a Holiday';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/add', $this->data, true);
-        $this->load->view('_layouts/layout_admin_default', $this->data);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 
     function edit() {
@@ -210,7 +210,7 @@ class Holiday extends CI_Controller {
         $this->data['rows'] = $result_array['data_rows'];
 		$this->data['page_heading'] = 'Edit Holiday';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit', $this->data, true);
-        $this->load->view('_layouts/layout_admin_default', $this->data);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 
     function delete() {

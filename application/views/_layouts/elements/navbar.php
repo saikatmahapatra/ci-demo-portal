@@ -1,11 +1,3 @@
-<?php
-// For making nav item active. Add class .active to .nav-item
-$segment1 = $this->uri->segment(1);
-$segment2 = $this->uri->segment(2);
-$segment3 = $this->uri->segment(3);
-//print_r($user_profile_image);
-?>
-
 <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">	
 	<a class="navbar-brand" href="<?php echo base_url($this->router->directory); ?>">
 		<img class="" style="width:80px;" src="<?php echo base_url('assets/src/img/logo.svg');?>">
@@ -18,30 +10,69 @@ $segment3 = $this->uri->segment(3);
 	
 	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item <?php echo ($segment1=='home') ? 'active':''?>">
+			<li class="nav-item">
 				<a class="nav-link" href="<?php echo base_url($this->router->directory.'home'); ?>">Home
 					<span class="sr-only">(current)</span>
 				</a>
 			</li>
 
-			<li class="nav-item <?php echo ($segment2 == 'people') ? 'active':''?>">
+			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="dropdown011" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">Manage Employees</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown011">						
+						<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Employees</a>
+						<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account');?>">Add New Employee</a>
+					</div>
+				</li>
+			<?php } else { ?>
+			<li class="nav-item">
 				<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/people'); ?>">People</a>
 			</li>
+			<?php } ?>
+
+			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
+				<li class="d-none nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="dropdown012" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">Track Timesheet</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown012">
+						<a class="dropdown-item" href="<?php echo base_url();?>">View Report</a>
+						<a class="dropdown-item" href="<?php echo base_url('project/add'); ?>">Add Project Work</a>
+						<a class="dropdown-item" href="<?php echo base_url('project'); ?>">Manage Projects</a>
+					</div>
+				</li>
+			<?php } else { ?>
+				<li class="d-none nav-item">
+					<a class="nav-link" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet</a>
+				</li>
+			<?php } ?>
+
+
+			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="dropdown012" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">Manage Contents</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown012">
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'cms'); ?>">Home Page Contents</a>
+						<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'cms/add');?>">Add New Content</a>						
+						<a class="dropdown-item" href="<?php echo base_url('holiday'); ?>">Manage Calendar Holidays</a>
+					</div>
+				</li>
+			<?php } ?>
 
 			<li class="nav-item">
 				<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">My Profile</a>
 			</li>
-						
-			<li class="d-none nav-item <?php echo ($segment1=='timesheet') ? 'active':''?>">
-				<a class="nav-link" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet</a>
+
+			<li class="nav-item">
+				<a class="nav-link" href="<?php echo base_url($this->router->directory.'holiday/view'); ?>">Calendar Holidays</a>
 			</li>
-			<li class="nav-item <?php echo ($segment1=='holiday') ? 'active':''?>">
-				<a class="nav-link" href="<?php echo base_url($this->router->directory.'holiday/view'); ?>">Holidays</a>
-			</li>
-			<li class="d-none nav-item <?php echo ($segment1=='document') ? 'active':''?>">
+
+			<li class="d-none nav-item>">
 				<a class="nav-link" href="<?php echo base_url($this->router->directory.'document'); ?>">My Documents</a>
 			</li>
-			<li class="d-none nav-item dropdown <?php echo ($segment2=='user') ? 'active':''?>">
+
+			<li class="d-none nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">Self Service</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01">					
@@ -66,18 +97,17 @@ $segment3 = $this->uri->segment(3);
 				<?php echo form_close(); ?>
 			</li>
 
-			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
+			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { /*?>			
 				<li class="nav-item">
 					<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/administrator'); ?>"><i class="fa fa-globe" aria-hidden="true"></i> Admin</a>
 				</li>
-				
-			<?php } ?>
+			<?php */ } ?>
 
 
 			<?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> My Account</a>
+					aria-expanded="false"><i class="fa fa-user d-none" aria-hidden="true"></i> My Account</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown03">					
 					<div class="dropdown-item welcome-user-container">					
 						<div class=""><?php echo isset($this->session->userdata['sess_user']['user_title'])? $this->session->userdata['sess_user']['user_title']:''; ?> <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></div>
