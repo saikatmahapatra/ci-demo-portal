@@ -65,7 +65,7 @@
 				</div>
 			</li>
 
-			<li class="nav-item">
+			<li class="d-none nav-item">
 				<a class="nav-link" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet</a>
 			</li>
 
