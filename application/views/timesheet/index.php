@@ -9,7 +9,7 @@
 
 
     <div class="col-md-3">		
-		<?php echo $cal; ?>				
+		<?php echo $cal; ?>
 		<?php echo form_error('selected_date'); ?>
 		<div class="mt-3 small">
 			<div class="d-inline-block"><span class="i-today pr-2 pl-2 m-1 text-white"></span>Today</div>
@@ -20,12 +20,11 @@
 		</div>
 		<div class="mt-2"><a id="clear_selected_days" class="btn btn-outline-secondary btn-sm" href="#">Clear all selected days</a></div>
 		<div class="mt-3">
-			<h6>Monthly timesheet entry summary</h6>
+			<h6>Timesheet Statistics</h6>
 			<div class="">Tasks logged for: <span id="total_days">0.0</span> days</div>
 			<div class="">Total hours logged: <span id="total_hrs">0.0</span> hrs</div>
 			<div class="">Avg. hours worked: <span class="" id="average_worked_hrs">0.0</span> hrs/day</div>
-		</div>
-		
+		</div>		
 		<a class="text-centre d-none" href="#"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download this month's timesheet</a>
 	</div>
 	
@@ -54,7 +53,16 @@
 			<div class="mt-3 tab-pane fade show active" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab">			
 			<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form form-timesheet','name' => '','id' => 'ci-form-timesheet',)); ?>
 			<?php echo form_hidden('form_action', 'add'); ?>		  
-			<?php echo form_hidden('selected_date',set_value('selected_date')); ?>		  
+			<?php echo form_hidden('selected_date',set_value('selected_date')); ?>	
+
+			<small id="timesheetHelp" class="form-text text-muted bg-light p-1">
+				<ul>
+					<li>To select a date or multimple dates click on the calendar days.</li>
+					<li>If you did't find a relevant project, please contact to your HR/Admin SPOC.</li>
+					<li>You can fill timesheet for current month only.</li>
+					<li>You can log multiple entries for any day of current month if you are working on multiple projects.</li>					
+				</ul>							 
+			</small>	  
 			
 			<div class="form-group d-none">
 				<label for="selected_days" class="">Select Day(s) <span class="required">*</span>
@@ -65,7 +73,7 @@
 				
 			<div class="form-row">
 				<div class="form-group col-md-4">
-				  <label for="project_id" class="bmd-label-floating">Projects <span class="required">*</span></label>
+				  <label for="project_id" class="bmd-label-floating">Project <span class="required">*</span></label>
 					<?php
 					echo form_dropdown('project_id', $project_arr, set_value('project_id'), array(
 						'class' => 'form-control',
@@ -85,12 +93,7 @@
 				</div>
 					
 				<div class="form-group col-md-4">
-					<label for="timesheet_hours" class="bmd-label-floating">Time Spent (time should be in hours)<span class="required">*</span></label>		
-					<?php					
-					/*echo form_dropdown('timesheet_hours', $timesheet_hours, set_value('timesheet_hours'), array(
-						'class' => 'form-control',
-					));*/
-					?>
+					<label for="timesheet_hours" class="bmd-label-floating">Time Spent (In Hours)<span class="required">*</span></label>							
 					<?php
 					echo form_input(array(
 						'name' => 'timesheet_hours',
@@ -107,7 +110,7 @@
 			 
 			
 			<div class="form-group">
-			<label for="timesheet_description" class="bmd-label-floating">Task Description <span class="required">*</span></label>
+			<label for="timesheet_description" class="bmd-label-floating">Task / Activity Description <span class="required">*</span></label>
 			<?php
 			echo form_textarea(array(
 				'name' => 'timesheet_description',
@@ -116,7 +119,8 @@
 				'class' => 'form-control',
 				'rows' => '2',
 				'cols' => '4',
-				'maxlength' => '200'
+				'maxlength' => '200',
+				'placeholder' => 'Briefly describe in 200 characters.'
 			));
 			?>
 			<?php echo form_error('timesheet_description'); ?>

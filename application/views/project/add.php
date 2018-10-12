@@ -26,10 +26,37 @@
 			</div>		
 		</div>
 		
-		<div class="form-group">									
-			<label for="project_desc" class="">Project Description </label>
-			<?php echo form_textarea(array('name' => 'project_desc','value' => set_value('project_desc'),'class' => 'form-control textarea','id' => 'project_desc','rows' => '2','cols' => '50','placeholder' => '')); ?>
-			<?php echo form_error('project_desc'); ?>
+		<div class="form-row">
+			<div class="form-group col-md-12">									
+				<label for="project_desc" class="">Project Description </label>
+				<?php echo form_textarea(array('name' => 'project_desc','value' => set_value('project_desc'),'class' => 'form-control textarea','id' => 'project_desc','rows' => '2','cols' => '50','placeholder' => '')); ?>
+				<?php echo form_error('project_desc'); ?>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-group col-md-12">									
+				<label for="project_status" class="">Display Status <span class="required">*</span></label>				
+				<div class="">
+					<div class="custom-control custom-radio custom-control-inline">
+						<?php
+							$radio_is_checked = $this->input->post('project_status') == 'Y';
+							echo form_radio(array('name' => 'project_status','value' => 'Y','id' => 'Y','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('project_status', 'Y'));
+						?>
+						<label class="custom-control-label" for="Y">Publish</span></label>
+					</div>
+					
+					<div class="custom-control custom-radio custom-control-inline">
+						<?php
+							$radio_is_checked = $this->input->post('project_status') == 'N';
+							echo form_radio(array('name' => 'project_status', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('project_status', 'N'));
+						?>
+						<label class="custom-control-label" for="N">Unpublish</span></label>
+					</div>								
+				</div>
+				<small class="form-text text-muted">Unpublished projects will not appear at timesheet project list dropdown.</small>
+				<?php echo form_error('project_status'); ?>
+			</div>		
 		</div>
 		
 		<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>

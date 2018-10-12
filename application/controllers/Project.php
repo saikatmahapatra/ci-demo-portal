@@ -92,8 +92,15 @@ class Project extends CI_Controller {
             $no++;
             $row = array();
             $row[] = $result['project_name'];
-            $row[] = $result['project_desc'];            
-            $row[] = (strtolower($result['project_status']) == 'y') ? 'Active' : 'Inactive';
+            //$row[] = $result['project_desc'];            
+            $status_indicator = 'text-secondary';            
+            if($result['project_status'] == 'Y'){
+                $status_indicator = 'text-success';
+            }
+            if($result['project_status'] == 'N'){
+                $status_indicator = 'text-warning';
+            }
+            $row[] = '<i class="fa fa-square '.$status_indicator.'" aria-hidden="true"></i>';
             //add html for action
             $action_html = '';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' .$result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
@@ -137,7 +144,8 @@ class Project extends CI_Controller {
 
                 $postdata = array(
                     'project_name' => $this->input->post('project_name'),
-                    'project_desc' => $this->input->post('project_desc')
+                    'project_desc' => $this->input->post('project_desc'),
+                    'project_status' => $this->input->post('project_status')
                 );
                 $insert_id = $this->project_model->insert($postdata);
                 if ($insert_id) {
@@ -196,14 +204,9 @@ class Project extends CI_Controller {
         }
     }
 
-    function validate_form_data($action = NULL) {
-		if($action == 'add'){
-			$this->form_validation->set_rules('project_name', 'project name', 'required');			
-		}
-		if($action == 'edit'){
-			$this->form_validation->set_rules('project_name', 'project name', 'required');			
-			$this->form_validation->set_rules('project_status', 'project status', 'required');			
-		}
+    function validate_form_data($action = NULL) {		
+        $this->form_validation->set_rules('project_name', 'project name', 'required');			
+        $this->form_validation->set_rules('project_status', 'project status', 'required');					
 		$this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;

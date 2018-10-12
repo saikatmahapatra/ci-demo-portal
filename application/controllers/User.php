@@ -152,7 +152,7 @@ class User extends CI_Controller {
                     $status_indicator = 'text-warning';
                 }
             }
-            $html_name.= $result['user_title'].'&nbsp;'.$result['user_firstname'] . '&nbsp;' . $result['user_lastname'];
+            $html_name.= $result['user_firstname'] . '&nbsp;' . $result['user_lastname'];
             //$html_name.= '<div> DOB : '.$this->common_lib->display_date($result['user_dob']).'</div>';
             //$html_name.= '<div> Gender : '.$result['user_gender'].'</div>';
             //$html_name.= '<div> Blood Gr : '.$result['user_blood_group'].'</div>';

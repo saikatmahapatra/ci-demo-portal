@@ -29,19 +29,40 @@ $row = $rows[0];
 				<?php echo form_error('project_name'); ?>
 			</div>		
 		</div>
-		
-		<div class="form-group">
-			<label for="project_desc" class="">Project Description</label>
-			<?php echo form_textarea(array('name' => 'project_desc','value' => (isset($_POST['project_desc']) ? set_value('project_desc') : $row['project_desc']),'class' => 'form-control textarea','id' => 'project_desc','rows' => '2','cols' => '50','placeholder' => '')); ?>
-			<?php echo form_error('project_desc'); ?>
+
+		<div class="form-row">
+			<div class="form-group col-md-12">
+				<label for="project_desc" class="">Project Description</label>
+				<?php echo form_textarea(array('name' => 'project_desc','value' => (isset($_POST['project_desc']) ? set_value('project_desc') : $row['project_desc']),'class' => 'form-control textarea','id' => 'project_desc','rows' => '2','cols' => '50','placeholder' => '')); ?>
+				<?php echo form_error('project_desc'); ?>
+			</div>
 		</div>
 		
-		<div class="form-row">		
-			<div class="form-group col-md-3">									
-				<label for="project_status" class="">Status</label>
-				<?php echo form_dropdown('project_status', array('Y'=>'Shown','N'=>'Hidden'), (isset($_POST['project_status']) ? set_value('project_status') : $row['project_status']), array('class' => 'form-control')); ?>
-				<?php echo form_error('project_status'); ?>
-			</div>		
+		<div class="form-row">
+			<div class="form-group col-md-12">									
+			<label for="project_status" class="">Display Status <span class="required">*</span></label>				
+				  	<div class="">
+						<div class="custom-control custom-radio custom-control-inline">
+							<?php
+								$radio_is_checked = isset($_POST['project_status']) ? $_POST['project_status'] == 'Y' : ($row['project_status'] == 'Y');
+
+								echo form_radio(array('name' => 'project_status','value' => 'Y','id' => 'Y','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('project_status', 'Y'));
+							?>
+							<label class="custom-control-label" for="Y">Publish</span></label>
+						</div>
+						
+						<div class="custom-control custom-radio custom-control-inline">
+							<?php
+								$radio_is_checked = isset($_POST['project_status']) ? $_POST['project_status'] == 'N' : ($row['project_status'] == 'N');
+
+								echo form_radio(array('name' => 'project_status', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('project_status', 'N'));
+							?>
+							<label class="custom-control-label" for="N">Unpublish</span></label>
+						</div>								
+					</div>
+					<small class="form-text text-muted">Unpublished projects will not appear at timesheet project list dropdown.</small>
+					<?php echo form_error('project_status'); ?>
+			</div>
 		</div>
 		
 		<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>

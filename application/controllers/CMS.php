@@ -131,9 +131,9 @@ class Cms extends CI_Controller {
         $no = $_REQUEST['start'];
         foreach ($data_rows as $result) {
             $no++;
-            $row = array();
-            $row[] = $result['pagecontent_type'];
+            $row = array();            
             $row[] = $result['pagecontent_title'];
+            $row[] = $result['pagecontent_type'];
             $row[] = $this->common_lib->display_date($result['pagecontent_created_on'], true);
             
             $status_indicator = 'text-secondary';            

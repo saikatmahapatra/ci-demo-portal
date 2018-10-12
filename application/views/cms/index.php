@@ -30,9 +30,9 @@
 				<div class="table-responsive">
 					<table id="cms-datatable" class="table table-sm">
 						<thead>
-							<tr>
-								<th scope="col">Type</th>								
+							<tr>								
 								<th scope="col">Title</th>
+								<th scope="col">Type</th>
 								<th scope="col">Created On</th>
 								<th scope="col">Status</th>								
 								<th scope="col">Action</th>
@@ -41,8 +41,8 @@
 						<tbody></tbody>
 						<tfoot>
 							<tr>
-								<th scope="col">Type</th>								
 								<th scope="col">Title</th>
+								<th scope="col">Type</th>
 								<th scope="col">Created On</th>
 								<th scope="col">Status</th>								
 								<th scope="col">Action</th>

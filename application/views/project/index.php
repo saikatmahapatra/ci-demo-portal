@@ -23,12 +23,18 @@
 				</span>
 			</div>
 			<div class="card-body">
+
+				<div class="pl-2 mb-2 small">					
+					<span class="mx-2"><i class="fa fa-square text-success" aria-hidden="true"></i> Published</span>
+					<span class="mx-2"><i class="fa fa-square text-warning" aria-hidden="true"></i> Unpublished</span>					
+				</div>
+
 				<div class="table-responsive">
 					<table id="project-datatable" class="table table-sm">
 						<thead>
 							<tr>
 								<th scope="col">Project Title</th>
-								<th scope="col">Desription</th>
+								<!-- <th scope="col">Desription</th> -->
 								<th scope="col">Status</th>
 								<th scope="col">Action</th>
 							</tr>
@@ -37,7 +43,7 @@
 						<tfoot>
 							<tr>
 								<th scope="col">Project Title</th>
-								<th scope="col">Desription</th>
+								<!-- <th scope="col">Desription</th> -->
 								<th scope="col">Status</th>
 								<th scope="col">Action</th>
 							</tr>

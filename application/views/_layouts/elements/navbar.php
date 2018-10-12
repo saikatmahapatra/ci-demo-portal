@@ -19,9 +19,9 @@
 			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown011" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">Manage Employees</a>
+						aria-expanded="false">Employees</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown011">						
-						<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Employees</a>
+						<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Manage Employees</a>
 						<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account');?>">Add New Employee</a>
 					</div>
 				</li>
@@ -32,18 +32,13 @@
 			<?php } ?>
 
 			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
-				<li class="d-none nav-item dropdown">
+				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown012" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">Track Timesheet</a>
+						aria-expanded="false">Timesheet Report</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown012">
-						<a class="dropdown-item" href="<?php echo base_url();?>">View Report</a>
-						<a class="dropdown-item" href="<?php echo base_url('project/add'); ?>">Add Project Work</a>
-						<a class="dropdown-item" href="<?php echo base_url('project'); ?>">Manage Projects</a>
+						<a class="dropdown-item" href="#">View Timesheet Report</a>						
+						<a class="dropdown-item" href="<?php echo base_url('project'); ?>">Projects</a>
 					</div>
-				</li>
-			<?php } else { ?>
-				<li class="d-none nav-item">
-					<a class="nav-link" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet</a>
 				</li>
 			<?php } ?>
 
@@ -51,9 +46,9 @@
 			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown012" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">Manage Contents</a>
+						aria-expanded="false">Contents</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown012">
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'cms'); ?>">Home Page Contents</a>
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'cms'); ?>">Manage Contents</a>
 						<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'cms/add');?>">Add New Content</a>						
 						<a class="dropdown-item" href="<?php echo base_url('holiday'); ?>">Manage Calendar Holidays</a>
 					</div>
@@ -71,7 +66,11 @@
 			</li>
 
 			<li class="nav-item">
-					<a class="nav-link" href="<?php echo base_url($this->router->directory.'holiday/view'); ?>">Calendar Holidays</a>
+				<a class="nav-link" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" href="<?php echo base_url($this->router->directory.'holiday/view'); ?>">Calendar Holidays</a>
 			</li>
 			
 		</ul>
@@ -89,13 +88,6 @@
 					</div>
 				<?php echo form_close(); ?>
 			</li>
-
-			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { /*?>			
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo base_url($this->router->directory.'user/administrator'); ?>"><i class="fa fa-globe" aria-hidden="true"></i> Admin</a>
-				</li>
-			<?php */ } ?>
-
 
 			<?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
 			<li class="nav-item dropdown">
