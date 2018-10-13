@@ -202,9 +202,15 @@ class Cms extends CI_Controller {
 					'pagecontent_created_on' => date('Y-m-d H:i:s')
                 );
                 $insert_id = $this->cms_model->insert($postdata);
+                
                 if ($insert_id) {
                     $this->session->set_flashdata('flash_message', 'Data Added Successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    
+                    if($this->input->post('send_email_notification') == 'Y'){
+                        $this->send_email_notification($postdata['pagecontent_type'], $postdata['pagecontent_title'], $postdata['pagecontent_text']);
+                    }
+
                     redirect($this->router->directory.$this->router->class.'/add');
                 }
             }
@@ -239,6 +245,11 @@ class Cms extends CI_Controller {
                 );
                 $where_array = array('id' => $this->input->post('id'));
                 $res = $this->cms_model->update($postdata, $where_array);
+                
+                if($this->input->post('send_email_notification') == 'Y'){
+                    $this->send_email_notification($postdata['pagecontent_type'], $postdata['pagecontent_title'], $postdata['pagecontent_text']);
+                }
+
                 if ($res) {
                     $this->session->set_flashdata('flash_message', 'Data Updated Successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
@@ -278,6 +289,36 @@ class Cms extends CI_Controller {
         } else {
             return false;
         }
+    }
+
+    function send_email_notification($content_type, $subject, $message){
+        $this->load->model('user_model');
+        $send_to_email_arr = $this->user_model->get_user_email();
+        //print_r($send_to_email_arr);
+        //die();
+        $message_html = '';
+        $message_html.='<div id="message_wrapper" style="font-family:Arial, Helvetica, sans-serif; border: 3px solid #5133AB; border-left:0px; border-right: 0px; font-size:13px;">';
+        $message_html.='<div id="message_header" style="display:none;background-color:#5133AB; padding: 10px;"></div>';
+        $message_html.='<div id="message_body" style="padding: 10px;">';
+        //$message_html.='<h4></h4>';
+        $message_html.=$message;        
+        $message_html.='</div><!--/#message_body-->';
+        $message_html.='<div id="message_footer" style="padding: 10px; font-size: 11px;">';
+        $message_html.='<p>* This is a system generated email and has been sent via employee portal. Please do not reply here.</p>';
+        $message_html.='</div><!--/#message_footer-->';
+        $message_html.='</div><!--/#message_wrapper-->';
+        //echo $message_html; die();
+        $config['mailtype'] = 'html';
+        $this->email->initialize($config);
+        $this->email->to($send_to_email_arr);
+        //$this->email->to($this->config->item('app_admin_email'));
+        //$this->email->bcc($send_to_email_arr);
+        $this->email->from($this->config->item('app_admin_email'), $this->config->item('app_admin_email_name'));
+        $this->email->subject($this->config->item('app_email_subject_prefix').' '.$content_type. ' : '.$subject);
+        $this->email->message($message_html);
+        $this->email->send();
+        //echo $this->email->print_debugger();
+        //die();
     }
 
 }

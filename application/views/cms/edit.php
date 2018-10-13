@@ -136,6 +136,19 @@ $row = $rows[0];
 
 		</div>
 
+		<div class="form-row">
+			<div class="form-group col-md-12">				
+				<div class="custom-control custom-checkbox my-1 mr-sm-2">
+					<?php
+						$cb_is_checked = $this->input->post('send_email_notification') === 'Y';
+						echo form_checkbox('send_email_notification', 'Y', $cb_is_checked, array('id' => 'send_email_notification','class' => 'custom-control-input'));
+					?>					
+					<label class="custom-control-label" for="send_email_notification">Send Email Notification to All Employees (Optional)</label>
+				</div>
+				<small id="" class="form-text text-muted">If you check this option,, all registered active employees will get an email notification/update about this article.</small>
+			</div>
+		</div>
+
 		<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 		
 		<a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>                             
