@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">	
 	<a class="navbar-brand" href="<?php echo base_url($this->router->directory); ?>">
-		<img class="" style="width:80px;" src="<?php echo base_url('assets/src/img/logo.svg');?>">
+		<img class="" style="width:180px;" src="<?php echo base_url('assets/src/img/logo.png');?>">
 		<?php //echo $this->config->item('app_logo_name_dashboard'); ?>
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"

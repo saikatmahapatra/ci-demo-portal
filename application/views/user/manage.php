@@ -27,9 +27,9 @@
 			<div class="card-body">
 				
 				<div class="pl-2 mb-2 small">					
-					<span class="mx-2"><i class="fa fa-square text-success" aria-hidden="true"></i> Active Account</span>
-					<span class="mx-2"><i class="fa fa-square text-warning" aria-hidden="true"></i> Inactive Account</span>
-					<span class="mx-2"><i class="fa fa-square text-danger" aria-hidden="true"></i> Archived Account</span>
+					<span class="mx-2"><i class="fa fa-square text-success" aria-hidden="true"></i> Active Employees</span>
+					<span class="mx-2"><i class="fa fa-square text-warning" aria-hidden="true"></i> Inactive Employees</span>
+					<span class="mx-2"><i class="fa fa-square text-danger" aria-hidden="true"></i> Ex-Employees</span>
 				</div>
 
 				<div class="table-responsive">
