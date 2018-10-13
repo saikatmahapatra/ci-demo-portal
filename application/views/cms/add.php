@@ -113,7 +113,7 @@
 					?>					
 					<label class="custom-control-label" for="send_email_notification">Send Email Notification to All Employees (Optional)</label>
 				</div>
-				<small id="" class="form-text text-muted">If you check this option,, all registered active employees will get an email notification/update about this article.</small>
+				<small id="" class="form-text text-muted">If you check this option, all registered active employees will get an email notification/update about this article.</small>
 			</div>
 		</div>
 
