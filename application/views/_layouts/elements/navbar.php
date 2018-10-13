@@ -65,12 +65,12 @@
 				</div>
 			</li>
 
-			<li class="d-none nav-item">
+			<li class="nav-item">
 				<a class="nav-link" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet</a>
 			</li>
 
 			<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url($this->router->directory.'holiday/view'); ?>">Calendar Holidays</a>
+				<a class="nav-link" href="<?php echo base_url($this->router->directory.'holiday/view'); ?>">Holidays</a>
 			</li>
 			
 		</ul>
