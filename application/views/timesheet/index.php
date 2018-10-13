@@ -60,7 +60,8 @@
 					<li>To select a date or multimple dates click on the calendar days.</li>
 					<li>If you did't find a relevant project, please contact to your HR/Admin SPOC.</li>
 					<li>You can fill timesheet for current month only.</li>
-					<li>You can log multiple entries for any day of current month if you are working on multiple projects.</li>					
+					<li>You can log multiple entries for any day of current month if you are working on multiple projects.</li>
+					<li>You can edit, delete timesheet entry for a particular day of current month only.</li>
 				</ul>							 
 			</small>	  
 			

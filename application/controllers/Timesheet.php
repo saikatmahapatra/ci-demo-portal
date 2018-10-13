@@ -190,7 +190,10 @@ class Timesheet extends CI_Controller {
 	
 	function render_datatable() {
 		$year = $this->input->get_post('year') ? $this->input->get_post('year') : date('Y');
-		$month = $this->input->get_post('month') ? $this->input->get_post('month') : date('m');	
+        $month = $this->input->get_post('month') ? $this->input->get_post('month') : date('m');
+        $current_year = date('Y');
+        $current_month = date('m');
+
         //Total rows - Refer to model method definition
         $result_array = $this->timesheet_model->get_rows(NULL, NULL, NULL, FALSE, FALSE, TRUE, $year, $month);
         $total_rows = $result_array['num_rows'];
@@ -217,23 +220,26 @@ class Timesheet extends CI_Controller {
 			$html.= '<div class="">'.$result['project_name'].'<span class="float-right">'.$result['task_activity_name'].'</span></div>';			
 			
             
-            //add html for action
-            $action_html = '<span class="float-right">';
-            /*$action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i>', array(
-                'class' => 'text-dark mr-2',
-                'data-toggle' => 'tooltip',
-                'data-original-title' => 'Edit',
-                'title' => 'Edit',
-            ));*/            
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-trash" aria-hidden="true"></i> Delete', array(
-                'class' => 'btn btn-sm btn-outline-danger btn-delete',
-				'data-confirmation'=>false,
-				'data-confirmation-message'=>'Are you sure, you want to delete this?',
-                'data-toggle' => 'tooltip',
-                'data-original-title' => 'Delete',
-                'title' => 'Delete',
-            ));
-			$action_html.='</span>';
+                //add html for action
+                $action_html = '<span class="float-right">';
+                if(($year == $current_year) && ($month == $current_month)){
+                $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
+                    'class' => 'btn btn-sm btn-outline-secondary mr-2',
+                    'data-toggle' => 'tooltip',
+                    'data-original-title' => 'Edit',
+                    'title' => 'Edit',
+                ));            
+                $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-trash" aria-hidden="true"></i> Delete', array(
+                    'class' => 'btn btn-sm btn-outline-danger btn-delete',
+                    'data-confirmation'=>false,
+                    'data-confirmation-message'=>'Are you sure, you want to delete this?',
+                    'data-toggle' => 'tooltip',
+                    'data-original-title' => 'Delete',
+                    'title' => 'Delete',
+                ));
+                }
+                $action_html.='</span>';           
+            
 			$html.= '<div>'.$result['timesheet_description'].' '.$action_html.'</div>';		
 			//$html.=$action_html;
 
@@ -252,7 +258,45 @@ class Timesheet extends CI_Controller {
         //output to json format
         echo json_encode($output);
     }
-	
+    
+    function edit() {        					
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        
+        $year = $this->input->get_post('year') ? $this->input->get_post('year') : date('Y');
+        $month = $this->input->get_post('month') ? $this->input->get_post('month') : date('m');
+        $current_year = date('Y');
+        $current_month = date('m');
+
+        if ($this->input->post('form_action') == 'update') {
+            if ($this->validate_form_data('edit') == true) {
+                $postdata = array(                    
+                    'project_id' => $this->input->post('project_id'),
+                    'activity_id' => $this->input->post('activity_id'),
+                    'timesheet_hours' => $this->input->post('timesheet_hours'),
+                    'timesheet_description' => $this->input->post('timesheet_description')
+                );
+                $where_array = array('id' => $this->input->post('id'));
+                $res = $this->timesheet_model->update($postdata, $where_array);
+
+                if ($res) {
+                    $this->session->set_flashdata('flash_message', 'Data Updated Successfully.');
+                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    redirect(current_url());
+                }
+            }
+        }
+        $result_array = $this->timesheet_model->get_rows($this->id, NULL, NULL, TRUE, TRUE, TRUE, $current_year, $current_month);
+        $this->data['rows'] = $result_array['data_rows'];
+        if(sizeof($this->data['rows'])<=0){
+            redirect($this->router->directory.$this->router->class);
+        }
+		$this->data['page_heading'] = 'Edit Timesheet Entry for ';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/edit', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+
 	function delete() {
 		$this->id= $this->uri->segment(3);
         $where_array = array('id' => $this->id);
