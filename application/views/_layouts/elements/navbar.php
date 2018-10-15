@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">	
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">	
 	<a class="navbar-brand" href="<?php echo base_url($this->router->directory); ?>">
 		<img class="" style="width:180px;" src="<?php echo base_url('assets/src/img/logo.png');?>">
 		<?php //echo $this->config->item('app_logo_name_dashboard'); ?>

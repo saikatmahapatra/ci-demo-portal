@@ -8452,6 +8452,13 @@ body.login {
     max-height: 340px;
     overflow-y: auto;
 }*/
+@media (max-width: 576px) {
+  .navbar-collapse {
+    max-height: 340px;
+    overflow-y: auto;
+  }
+}
+
 h1.page-header {
   font-size: 1.25rem;
 }
