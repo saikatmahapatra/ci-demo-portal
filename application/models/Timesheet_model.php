@@ -245,6 +245,33 @@ class Timesheet_model extends CI_Model {
 											'11.5'=>'11.5 hrs',
 											'12.0'=>'12.0 hrs',
 											);
-	}
+    }
+    
+    function get_report_data($id = NULL, $limit = NULL, $offset = NULL, $cond) {
+        $result = array();
+        $this->db->select('
+        t1.timesheet_date,
+        t1.timesheet_hours,
+        t1.timesheet_description,
+		t2.project_name,
+		t3.task_activity_name,
+		t4.user_firstname,
+		t4.user_lastname
+		');
+		$this->db->join('projects as t2', 't2.id = t1.project_id', 'left');        
+		$this->db->join('task_activities as t3', 't3.id = t1.activity_id', 'left');        
+		$this->db->join('users as t4', 't4.id = t1.timesheet_created_by', 'left');        
+        if ($id) {
+            $this->db->where('t1.id', $id);
+        }	
+        if ($limit) {
+            $this->db->limit($limit, $offset);
+        }    
+        $query = $this->db->get('timesheet as t1');
+        //print_r($this->db->last_query());
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return array('num_rows' => $num_rows, 'data_rows' => $result);
+    }
 
 }

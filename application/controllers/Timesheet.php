@@ -308,6 +308,48 @@ class Timesheet extends CI_Controller {
         }
     }
 
+    function report() {
+
+        // Check user permission by permission name mapped to db
+        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
+        $this->load->model('cms_model');			
+				
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+
+        // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
+        $filter_by_condition = array(
+            'q_emp' => $this->input->get_post('q_emp'),
+            'q_project' => $this->input->get_post('q_project'),
+            'from_date' => $this->input->get_post('from_date'),
+            'to_date' => $this->input->get_post('to_date')
+        );
+		$result_array = $this->timesheet_model->get_report_data(NULL, NULL, NULL, $filter_by_condition);
+		$total_num_rows = $result_array['num_rows'];
+		
+		//pagination config
+		$additional_segment = $this->router->directory.$this->router->class.'/'.$this->router->method;
+		$per_page = 30;
+		$config['uri_segment'] = 4;
+		$config['num_links'] = 1;
+		$config['use_page_numbers'] = TRUE;
+		//$this->pagination->initialize($config);
+		
+		$page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
+		$offset = ($page*$per_page);
+		$this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
+		//end of pagination config
+        
+
+        // Data Rows - Refer to model method definition
+        $result_array = $this->timesheet_model->get_report_data(NULL, NULL, NULL, $filter_by_condition);
+        $this->data['data_rows'] = $result_array['data_rows'];
+		
+		$this->data['page_heading'] = 'Timesheet Report';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/report', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
 }
 
 ?>

@@ -18,23 +18,25 @@
 		?>
 		<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => '')); ?>
 		<?php echo form_hidden('form_action', 'add'); ?>		  
-			<div class="form-group">
-				<label for="user_email" class="">Email <span class="required">*</span></label>			
-				<?php
-				echo form_input(array(
-					'name' => 'user_email',
-					'value' => set_value('user_email'),
-					'id' => 'user_email',
-					'class' => 'form-control field-help',
-					'placeholder' => '',
-					'minlength' => '',
-					'maxlength' => '',
-					'aria-describedby'=>'emailHelpBlock',
-					'data-help-text' => 'We will not share your email to any thirrd party websites.',
-					'data-help-text-class' => 'p-3 mt-1 mb-2 bg-info text-white'
-				));
-				?>
-				<?php echo form_error('user_email'); ?>
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label for="user_email" class="">Email <span class="required">*</span></label>			
+					<?php
+					echo form_input(array(
+						'name' => 'user_email',
+						'value' => set_value('user_email'),
+						'id' => 'user_email',
+						'class' => 'form-control field-help',
+						'placeholder' => '',
+						'minlength' => '',
+						'maxlength' => '',
+						'aria-describedby'=>'emailHelpBlock',
+						'data-help-text' => 'We will not share your email to any thirrd party websites.',
+						'data-help-text-class' => 'p-3 mt-1 mb-2 bg-info text-white'
+					));
+					?>
+					<?php echo form_error('user_email'); ?>
+				</div>
 			</div>
 			
 			<div class="form-row">
@@ -72,23 +74,24 @@
 				</div>
 		  </div>
 		  
-		  
-		  <div class="form-group">
-			<label for="address" class="">Address <span class="required">*</span></label>
-            <?php
-            echo form_textarea(array(
-                'name' => 'address',
-                'value' => set_value('address'),
-                'id' => 'address',
-                'class' => 'form-control',
-                'rows' => '1',
-                'cols' => '4',
-                'placeholder' => '',
-                'minlength' => '10',
-                'maxlength' => '200',
-            ));
-            ?>
-            <?php echo form_error('address'); ?>
+		  <div class="form-row">
+			<div class="form-group col-md-12">
+				<label for="address" class="">Address <span class="required">*</span></label>
+				<?php
+				echo form_textarea(array(
+					'name' => 'address',
+					'value' => set_value('address'),
+					'id' => 'address',
+					'class' => 'form-control',
+					'rows' => '1',
+					'cols' => '4',
+					'placeholder' => '',
+					'minlength' => '10',
+					'maxlength' => '200',
+				));
+				?>
+				<?php echo form_error('address'); ?>
+			</div>
 		  </div>
 		  
 		  <div class="form-row">
@@ -115,71 +118,75 @@
 			</div>
 		  </div>
 		  
-		  <div class="form-group">
-			  <label for="userfile" class="">Resume <span class="required">*</span></label>
-				
-				<div class="custom-file">
-					<?php
-					echo form_upload(array(
-						'name' => 'userfile',
-						'id' => 'userfile',
-						'class' => 'custom-file-input field-help',
-						'aria-describedby'=>'uploaderHelpBlock',
-						'data-help-text' => 'Please read the file upload instructions given below: <ul><li>doc, docx, pdf, jpg, png formats are supported.</li><li>File size should not exceed 2 MB</li></ul>',
-						'data-help-text-class' => 'p-3 mt-1 mb-2 bg-warning text-white'
-					));
-					?>
-					<label class="custom-file-label" for="userfile">Choose file</label>
-				</div>
-				                                
-				<?php echo form_error('userfile'); ?>
-			</div>
-		  
-		  
-		  <div class="form-group">
-			<label for="gender">Gender <span class="required">*</span></label>
-			
-			<div class="">
-				<div class="custom-control custom-radio custom-control-inline">
-					<?php
-						$radio_is_checked = $this->input->post('user_gender') === 'M';
-						echo form_radio(array('name' => 'user_gender','value' => 'M','id' => 'M','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('user_gender', 'M'));
-					?>
-					<label class="custom-control-label" for="M">Male</span></label>
-				</div>
-				
-				<div class="custom-control custom-radio custom-control-inline">
-					<?php
-						$radio_is_checked = $this->input->post('user_gender') === 'F';
-						echo form_radio(array('name' => 'user_gender', 'value' => 'F', 'id' => 'F', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_gender', 'F'));
-					?>
-					<label class="custom-control-label" for="F">Female</span></label>
-				</div>
-				
-				<div class="custom-control custom-radio custom-control-inline">
-					<?php
-					$radio_is_checked = $this->input->post('user_gender') === 'T';
-					echo form_radio(array('name' => 'user_gender', 'value' => 'T', 'id' => 'T', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_gender', 'T'));
-					?>
-					<label class="custom-control-label" for="T">Better, I would not say</span></label>
+		  <div class="form-row">
+			<div class="form-group col-md-12">
+				<label for="userfile" class="">Resume <span class="required">*</span></label>
+					
+					<div class="custom-file">
+						<?php
+						echo form_upload(array(
+							'name' => 'userfile',
+							'id' => 'userfile',
+							'class' => 'custom-file-input field-help',
+							'aria-describedby'=>'uploaderHelpBlock',
+							'data-help-text' => 'Please read the file upload instructions given below: <ul><li>doc, docx, pdf, jpg, png formats are supported.</li><li>File size should not exceed 2 MB</li></ul>',
+							'data-help-text-class' => 'p-3 mt-1 mb-2 bg-warning text-white'
+						));
+						?>
+						<label class="custom-file-label" for="userfile">Choose file</label>
+					</div>
+													
+					<?php echo form_error('userfile'); ?>
 				</div>
 			</div>
-			<?php echo form_error('user_gender'); ?>
+		  
+		  <div class="form-row">
+			<div class="form-group col-md-12">
+				<label for="gender">Gender <span class="required">*</span></label>
+				
+				<div class="">
+					<div class="custom-control custom-radio custom-control-inline">
+						<?php
+							$radio_is_checked = $this->input->post('user_gender') === 'M';
+							echo form_radio(array('name' => 'user_gender','value' => 'M','id' => 'M','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('user_gender', 'M'));
+						?>
+						<label class="custom-control-label" for="M">Male</span></label>
+					</div>
+					
+					<div class="custom-control custom-radio custom-control-inline">
+						<?php
+							$radio_is_checked = $this->input->post('user_gender') === 'F';
+							echo form_radio(array('name' => 'user_gender', 'value' => 'F', 'id' => 'F', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_gender', 'F'));
+						?>
+						<label class="custom-control-label" for="F">Female</span></label>
+					</div>
+					
+					<div class="custom-control custom-radio custom-control-inline">
+						<?php
+						$radio_is_checked = $this->input->post('user_gender') === 'T';
+						echo form_radio(array('name' => 'user_gender', 'value' => 'T', 'id' => 'T', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_gender', 'T'));
+						?>
+						<label class="custom-control-label" for="T">Better, I would not say</span></label>
+					</div>
+				</div>
+				<?php echo form_error('user_gender'); ?>
+			</div>
 		  </div>
 		  
-		  
-		  <div class="form-group">
-			<div class="form-check">
-				<?php
-					$cb_is_checked = $this->input->post('terms') === 'accept';
-					echo form_checkbox('terms', 'accept', $cb_is_checked, array('id' => 'trems','class' => 'form-check-input'));
-				?>				
-				<label class="form-check-label" for="trems">
-				<span class="required">*</span>I've read & accepting the <a href="#" data-toggle="modal" data-target="#tncModal">Terms of Uses Agreement</a>
-				</label>				
+		  <div class="form-row">
+			<div class="form-group col-md-12">
+				<div class="form-check">
+					<?php
+						$cb_is_checked = $this->input->post('terms') === 'accept';
+						echo form_checkbox('terms', 'accept', $cb_is_checked, array('id' => 'trems','class' => 'form-check-input'));
+					?>				
+					<label class="form-check-label" for="trems">
+					<span class="required">*</span>I've read & accepting the <a href="#" data-toggle="modal" data-target="#tncModal">Terms of Uses Agreement</a>
+					</label>				
+				</div>
+				<?php echo form_error('terms'); ?>
 			</div>
-			<?php echo form_error('terms'); ?>
-		  </div>
+		 </div>
 		  
 		  <?php echo form_submit(array('name' => 'submit', 'value' => 'Submit', 'id' => 'btn_submit', 'class' => 'btn btn-primary')); ?> 
 		<?php echo form_close(); ?>

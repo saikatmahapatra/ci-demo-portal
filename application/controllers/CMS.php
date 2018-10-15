@@ -93,8 +93,8 @@ class Cms extends CI_Controller {
 		$total_num_rows = $result_array['num_rows'];
 		
 		//pagination config
-		$additional_segment = 'admin/cms/index_ci_pagination';
-		$per_page = 10;
+		$additional_segment = $this->router->directory.$this->router->class.'/'.$this->router->method;
+		$per_page = 3;
 		$config['uri_segment'] = 4;
 		$config['num_links'] = 1;
 		$config['use_page_numbers'] = TRUE;
