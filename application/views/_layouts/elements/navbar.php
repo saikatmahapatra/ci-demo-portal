@@ -34,9 +34,9 @@
 			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown012" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">Timesheet Report</a>
+						aria-expanded="false">Report</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown012">
-						<a class="dropdown-item" href="#">View Timesheet Report</a>						
+						<a class="dropdown-item" href="<?php echo base_url('timesheet/report'); ?>">View Timesheet Report</a>						
 						<a class="dropdown-item" href="<?php echo base_url('project'); ?>">Projects</a>
 					</div>
 				</li>

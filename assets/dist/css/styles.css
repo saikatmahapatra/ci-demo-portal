@@ -8805,3 +8805,7 @@ a[data-link-type="user-profile-card"] {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(11, 19, 114, 0.25);
 }
+
+.ci-select2 .select2-container {
+  max-width: 100%;
+}

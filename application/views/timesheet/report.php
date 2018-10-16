@@ -29,16 +29,16 @@
 					<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'ci-form','name' => '','id' => '')); ?>
 					<?php echo form_hidden('form_action', 'search'); ?>		  
 						<div class="form-row">
-							<div class="form-group col-md-4">
+							<div class="form-group col-md-4 ci-select2">
 								<label for="q_emp" class="">Employee <span class="required">*</span></label>
-								<?php echo form_input(array('name' => 'q_emp','value' => $this->input->get_post('q_emp'), 'id' => 'q_emp','class' => 'form-control','placeholder' => ''));?> 
+								<?php echo form_dropdown('q_emp', $user_arr, $this->input->get_post('q_emp'),array('class' => 'form-control',)); ?> 
 								<?php echo form_error('q_emp'); ?>
 							</div>
 							
-							<div class="form-group col-md-4">
-								<label for="q_emp" class="">Project <span class="required">*</span></label>
-								<?php echo form_input(array('name' => 'q_emp','value' => $this->input->get_post('q_emp'), 'id' => 'q_emp','class' => 'form-control','placeholder' => ''));?> 
-								<?php echo form_error('q_emp'); ?>
+							<div class="form-group col-md-4 ci-select2">
+								<label for="q_project" class="">Project <span class="required">*</span></label>
+								<?php echo form_dropdown('q_project', $project_arr, $this->input->get_post('q_project'),array('class' => 'form-control',)); ?> 
+								<?php echo form_error('q_project'); ?>
 							</div>
 
 							<div class="form-group col-md-2">									

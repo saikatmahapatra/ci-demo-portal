@@ -40,12 +40,20 @@ $(function() {
     //Render Data Table
     renderDataTable();
 
-    //Display Start end date picker 
-    $('.report-datepicker').datepicker({
-        format: "dd-mm-yyyy",
-        weekStart: 1,
-        autoclose: true
-    });
+    if (ROUTER_METHOD == 'report') {
+        //Display Start end date picker 
+        $('.report-datepicker').datepicker({
+            format: "dd-mm-yyyy",
+            weekStart: 1,
+            autoclose: true
+        });
+
+        $(".multi_select_tag").select2({
+            allowClear: true,
+            width: '100%'
+        });
+    }
+
 });
 
 $(".allowed_m .day").on("click", function(e) {

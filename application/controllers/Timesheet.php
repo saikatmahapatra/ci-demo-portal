@@ -312,7 +312,8 @@ class Timesheet extends CI_Controller {
 
         // Check user permission by permission name mapped to db
         // $is_authorized = $this->common_lib->is_auth('cms-list-view');
-        $this->load->model('cms_model');			
+        $this->data['project_arr'] = $this->timesheet_model->get_project_dropdown();		
+        $this->data['user_arr'] = $this->timesheet_model->get_user_dropdown();		
 				
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
