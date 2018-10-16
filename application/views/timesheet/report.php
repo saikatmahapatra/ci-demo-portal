@@ -78,7 +78,7 @@
 						</thead>
 						<tbody>
 							<?php 
-							if(sizeof($data_rows)>0){
+							if(isset($data_rows) && sizeof($data_rows)>0){
 								foreach($data_rows as $row){
 									?>
 									<tr>
@@ -91,6 +91,12 @@
 									</tr>
 									<?php
 								}
+							}else{
+								?>
+									<tr>
+										<td colspan="6">No result found</td>
+									</tr>
+								<?php
 							}
 							?>
 						</tbody>
@@ -107,7 +113,7 @@
 					</table>
 					
 				</div>
-				<?php echo $pagination_link; ?>
+				<?php echo isset($pagination_link) ? $pagination_link : ''; ?>
 			</div>
 		</div>
 	</div>

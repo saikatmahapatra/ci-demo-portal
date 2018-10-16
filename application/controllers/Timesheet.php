@@ -158,7 +158,8 @@ class Timesheet extends CI_Controller {
 		
 	function timesheet_stats(){		
 		$year = $this->input->get_post('year') ? $this->input->get_post('year') : date('Y');
-		$month = $this->input->get_post('month') ? $this->input->get_post('month') : date('m');		
+        $month = $this->input->get_post('month') ? $this->input->get_post('month') : date('m');
+        $user_id =  $this->sess_user_id;		
 		$response = array(
             'status' => 'init',
             'message' => '',
@@ -166,7 +167,7 @@ class Timesheet extends CI_Controller {
             'data' => array(),
         );		
 		if($this->input->post('via')=='ajax'){			
-			$result_array = $this->timesheet_model->get_timesheet_stats($year,$month);			
+			$result_array = $this->timesheet_model->get_timesheet_stats($year, $month, $user_id);			
 			if($result_array['num_rows']>0){
 				$response = array(
 					'status' => 'ok',
@@ -193,17 +194,17 @@ class Timesheet extends CI_Controller {
         $month = $this->input->get_post('month') ? $this->input->get_post('month') : date('m');
         $current_year = date('Y');
         $current_month = date('m');
-
+        $user_id = $this->sess_user_id;
         //Total rows - Refer to model method definition
-        $result_array = $this->timesheet_model->get_rows(NULL, NULL, NULL, FALSE, FALSE, TRUE, $year, $month);
+        $result_array = $this->timesheet_model->get_rows(NULL, NULL, NULL, FALSE, FALSE, TRUE, $year, $month, $user_id);
         $total_rows = $result_array['num_rows'];
 
         // Total filtered rows - check without limit query. Refer to model method definition
-        $result_array = $this->timesheet_model->get_rows(NULL, NULL, NULL, TRUE, FALSE, TRUE, $year, $month);
+        $result_array = $this->timesheet_model->get_rows(NULL, NULL, NULL, TRUE, FALSE, TRUE, $year, $month, $user_id);
         $total_filtered = $result_array['num_rows'];
 
         // Data Rows - Refer to model method definition
-        $result_array = $this->timesheet_model->get_rows(NULL, NULL, NULL, TRUE, TRUE, TRUE, $year, $month);
+        $result_array = $this->timesheet_model->get_rows(NULL, NULL, NULL, TRUE, TRUE, TRUE, $year, $month, $user_id);
         $data_rows = $result_array['data_rows'];
         $data = array();
         $no = $_REQUEST['start'];
@@ -311,7 +312,9 @@ class Timesheet extends CI_Controller {
     function report() {
 
         // Check user permission by permission name mapped to db
-        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
+        $is_authorized = $this->common_lib->is_auth(array(
+            'view-employee-timesheet-report'
+        ));
         $this->data['project_arr'] = $this->timesheet_model->get_project_dropdown();		
         $this->data['user_arr'] = $this->timesheet_model->get_user_dropdown();		
 				
@@ -325,27 +328,30 @@ class Timesheet extends CI_Controller {
             'from_date' => $this->input->get_post('from_date'),
             'to_date' => $this->input->get_post('to_date')
         );
-		$result_array = $this->timesheet_model->get_report_data(NULL, NULL, NULL, $filter_by_condition);
-		$total_num_rows = $result_array['num_rows'];
-		
-		//pagination config
-		$additional_segment = $this->router->directory.$this->router->class.'/'.$this->router->method;
-		$per_page = 30;
-		$config['uri_segment'] = 4;
-		$config['num_links'] = 1;
-		$config['use_page_numbers'] = TRUE;
-		//$this->pagination->initialize($config);
-		
-		$page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
-		$offset = ($page*$per_page);
-		$this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
-		//end of pagination config
-        
 
-        // Data Rows - Refer to model method definition
-        $result_array = $this->timesheet_model->get_report_data(NULL, NULL, NULL, $filter_by_condition);
-        $this->data['data_rows'] = $result_array['data_rows'];
-		
+        if($this->input->get_post('form_action') == 'search'){
+            $result_array = $this->timesheet_model->get_report_data(NULL, NULL, NULL, $filter_by_condition);
+            $total_num_rows = $result_array['num_rows'];
+            
+            //pagination config
+            $additional_segment = $this->router->directory.$this->router->class.'/'.$this->router->method;
+            $per_page = 30;
+            $config['uri_segment'] = 4;
+            $config['num_links'] = 1;
+            $config['use_page_numbers'] = TRUE;
+            //$this->pagination->initialize($config);
+            
+            $page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
+            $offset = ($page*$per_page);
+            $this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
+            //end of pagination config
+            
+
+            // Data Rows - Refer to model method definition
+            $result_array = $this->timesheet_model->get_report_data(NULL, NULL, NULL, $filter_by_condition);
+            $this->data['data_rows'] = $result_array['data_rows'];
+        }
+
 		$this->data['page_heading'] = 'Timesheet Report';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/report', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);

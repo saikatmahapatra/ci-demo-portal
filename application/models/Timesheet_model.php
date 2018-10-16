@@ -53,7 +53,7 @@ class Timesheet_model extends CI_Model {
         return $result;
     }
 
-    function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE, $checkDate = FALSE, $year=NULL, $month=NULL) {
+    function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE, $checkDate = FALSE, $year=NULL, $month=NULL, $user_id=NULL) {
         $result = array();
         $this->db->select('
 		t1.*,
@@ -64,6 +64,9 @@ class Timesheet_model extends CI_Model {
 		$this->db->join('task_activities as t3', 't3.id = t1.activity_id', 'left');        
         if ($id) {
             $this->db->where('t1.id', $id);
+        }
+        if ($user_id) {
+            $this->db->where('t1.timesheet_created_by', $user_id);
         }
 		if($checkDate == TRUE){
 			$this->db->where(
@@ -139,7 +142,7 @@ class Timesheet_model extends CI_Model {
     }
 
     	
-	function get_timesheet_stats($year,$month){		
+	function get_timesheet_stats($year,$month, $user_id){		
 		$this->db->select('
 		t1.id, 
 		t1.timesheet_date, 
@@ -152,7 +155,8 @@ class Timesheet_model extends CI_Model {
         $this->db->where(
 			array(
 			'YEAR(`timesheet_date`)' => $year,
-			'MONTH(`timesheet_date`)' => $month,
+            'MONTH(`timesheet_date`)' => $month,
+            't1.timesheet_created_by' => $user_id
 			)
 		);
 		
@@ -210,7 +214,7 @@ class Timesheet_model extends CI_Model {
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
-                $result[$r->id] = $r->user_emp_id.' - '.$r->user_firstname.' '.$r->user_lastname;
+                $result[$r->id] = $r->user_firstname.' '.$r->user_lastname.' ('.$r->user_emp_id.')';
             }
         }
         return $result;
@@ -234,32 +238,7 @@ class Timesheet_model extends CI_Model {
     }
 	
 	function get_timesheet_hours_dropdown(){
-		return $timesheet_hours = array('' => 'Select',
-											'0.5'=>'0.5 hrs',
-											'1.0'=>'1.0 hrs',
-											'1.5'=>'1.5 hrs',
-											'2.0'=>'2.0 hrs',
-											'2.5'=>'2.5 hrs',
-											'3.0'=>'3.0 hrs',
-											'3.5'=>'3.5 hrs',
-											'4.0'=>'4.0 hrs',
-											'4.5'=>'4.5 hrs',
-											'5.0'=>'5.0 hrs',
-											'5.5'=>'5.5 hrs',
-											'6.0'=>'6.0 hrs',
-											'6.5'=>'6.5 hrs',
-											'7.0'=>'7.0 hrs',
-											'7.5'=>'7.5 hrs',
-											'8.0'=>'8.0 hrs',
-											'8.5'=>'8.5 hrs',
-											'9.0'=>'9.0 hrs',
-											'9.5'=>'9.5 hrs',
-											'10.0'=>'10.0 hrs',
-											'10.5'=>'10.5 hrs',
-											'11.0'=>'11.0 hrs',
-											'11.5'=>'11.5 hrs',
-											'12.0'=>'12.0 hrs',
-											);
+		return $timesheet_hours = array('' => 'Select','0.5'=>'0.5 hrs');
     }
     
     function get_report_data($id = NULL, $limit = NULL, $offset = NULL, $cond) {
@@ -278,6 +257,14 @@ class Timesheet_model extends CI_Model {
 		$this->db->join('users as t4', 't4.id = t1.timesheet_created_by', 'left');        
         if ($id) {
             $this->db->where('t1.id', $id);
+        }
+        if(isset($cond)){
+            if(isset($cond['q_emp'])){
+                $this->db->where('t1.timesheet_created_by', $cond['q_emp']);
+            }
+            if(isset($cond['q_project'])){
+                $this->db->where('t1.project_id', $cond['q_project']);
+            }
         }	
         if ($limit) {
             $this->db->limit($limit, $offset);
