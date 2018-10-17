@@ -207,7 +207,8 @@ class Timesheet_model extends CI_Model {
     function get_user_dropdown() {
         $result = array();
         $this->db->select('id,user_firstname,user_lastname, user_emp_id');		
-        $this->db->where('user_archived','N');		
+        $this->db->where('user_archived','N');
+        $this->db->order_by('user_firstname');		
         $query = $this->db->get('users');
         #echo $this->db->last_query();
         $result = array('' => 'Select');
