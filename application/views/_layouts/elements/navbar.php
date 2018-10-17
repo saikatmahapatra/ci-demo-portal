@@ -16,6 +16,15 @@
 				</a>
 			</li>
 
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="dropdown01_ess" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">Employee Self Services</a>
+				<div class="dropdown-menu" aria-labelledby="dropdown01_ess">					
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">My Profile Details</a>
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'document'); ?>">My Documents</a>					
+				</div>
+			</li>
+
 			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown011" data-toggle="dropdown" aria-haspopup="true"
@@ -34,10 +43,10 @@
 			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown012" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">Report</a>
+						aria-expanded="false">Timesheet & Projects</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown012">
-						<a class="dropdown-item" href="<?php echo base_url('timesheet/report'); ?>">View Timesheet Report</a>						
-						<a class="dropdown-item" href="<?php echo base_url('project'); ?>">Projects</a>
+						<a class="dropdown-item" href="<?php echo base_url('timesheet/report'); ?>">Timesheet Report</a>						
+						<a class="dropdown-item" href="<?php echo base_url('project'); ?>">Timesheet Projects</a>
 					</div>
 				</li>
 			<?php } ?>
@@ -56,14 +65,7 @@
 			<?php } ?>
 
 			
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="dropdown01_ess" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false">Employee Self Services</a>
-				<div class="dropdown-menu" aria-labelledby="dropdown01_ess">					
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">My Profile Details</a>
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'document'); ?>">My Documents</a>					
-				</div>
-			</li>
+			
 
 			<li class="nav-item">
 				<a class="nav-link" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet</a>
