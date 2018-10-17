@@ -46,13 +46,17 @@
 
 							<div class="form-group col-md-2">									
 								<label for="from_date" class="">From</label>
-								<?php echo form_input(array('name' => 'from_date','value' => $this->input->get_post('from_date'),'id' => 'from_date','class' => 'form-control report-datepicker', 'placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
+								<?php 
+									$first_day_this_month = date('01-m-Y');
+									$last_day_this_month  = date('t-m-Y');
+								?>
+								<?php echo form_input(array('name' => 'from_date','value' => (isset($_REQUEST['from_date']) ? $_REQUEST['from_date'] : $first_day_this_month),'id' => 'from_date','class' => 'form-control report-datepicker', 'placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
 								<?php echo form_error('from_date'); ?>
 							</div>
 						
 							<div class="form-group col-md-2">									
 								<label for="to_date" class="">To</label>
-								<?php echo form_input(array('name' => 'to_date','value' => $this->input->get_post('to_date'),'class' => 'form-control report-datepicker','id' => 'to_date','placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
+								<?php echo form_input(array('name' => 'to_date','value' => (isset($_REQUEST['to_date']) ? $_REQUEST['to_date'] : $last_day_this_month),'class' => 'form-control report-datepicker','id' => 'to_date','placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
 								<?php echo form_error('to_date'); ?>
 							</div>
 
