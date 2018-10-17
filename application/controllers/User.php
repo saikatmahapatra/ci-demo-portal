@@ -69,7 +69,13 @@ class User extends CI_Controller {
         $this->common_lib->is_auth(array(
             'default-super-admin-access',
             'default-admin-access',
-        ));        
+        ));     
+        
+        //Download Data 
+        if($this->input->post('form_action') == 'download'){
+            $this->download_to_excel();
+        }
+        
 		$this->breadcrumbs->push('View', '/');		
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
@@ -1869,6 +1875,173 @@ class User extends CI_Controller {
             return false;
         }
         return true;
+    }
+
+    function download_to_excel(){        
+        $excel_heading = array(
+            'A' => 'Sr No.',
+            'B' => 'Employee ID',
+            'C' => 'Name',
+            'D' => 'Email (Work)',
+            'E' => 'Email (Personal)',
+            'F' => 'Mobile (Work)',
+            'G' => 'Mobile (Personal)',
+            'H' => 'DOB',
+            'I' => 'Gender',
+            'J' => 'Blood Group',
+            'K' => 'Department',
+            'L' => 'Designation',
+            'M' => 'Date of Joining',
+            'N' => 'Date of Release',            
+            'O' => 'Account Status'
+        );
+        $this->data['xls_col'] = $excel_heading;
+        //load our new PHPExcel library
+        $this->load->library('excel');
+        //activate worksheet number 1
+        $this->excel->setActiveSheetIndex(0);
+        $sheet = $this->excel->getActiveSheet();
+        //name the worksheet
+        $sheet->setTitle('Users');
+
+        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, FALSE);
+        $data_rows = $result_array['data_rows'];
+
+        // echo '<pre>';
+        // print_r($data_rows);
+        // die();
+        // read data to active sheet
+        //$sheet->fromArray($data_rows);
+        
+        // Static Fields
+        $sheet->setCellValue('A1', 'Active Account');
+        $sheet->getStyle('A1')->applyFromArray(array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb' => 'a8ef81'))));
+        
+        $sheet->setCellValue('A2', 'Inactive Account');
+        $sheet->getStyle('A2')->applyFromArray(array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb' => 'f9eb7f'))));
+        //End Static Fields
+
+        $range = range('A', 'Z');
+        $heading_row = 5;
+        $index = 0;
+        foreach ($excel_heading as $column => $heading_display) {
+            $sheet->setCellValue($range[$index] . $heading_row, $heading_display);
+            $index++;
+        }
+
+
+        $excel_row = 6;
+        $serial_no = 1;
+        foreach ($data_rows as $index => $row) {
+            $sheet->setCellValue('A' . $excel_row, $serial_no);
+            $sheet->setCellValue('B' . $excel_row, '# '.str_pad($row['user_emp_id'], 4, '0', STR_PAD_LEFT));
+            $sheet->setCellValue('C' . $excel_row, $row['user_firstname'].' '.$row['user_lastname']);
+            $sheet->setCellValue('D' . $excel_row, $row['user_email']);
+            $sheet->setCellValue('E' . $excel_row, $row['user_email_secondary']);
+            $sheet->setCellValue('F' . $excel_row, $row['user_phone1']);
+            $sheet->setCellValue('G' . $excel_row, $row['user_phone2']);
+
+            $sheet->setCellValue('H' . $excel_row, $this->common_lib->display_date($row['user_dob']));
+            $sheet->setCellValue('I' . $excel_row, ($row['user_gender']=='M') ? 'Male' : ($row['user_gender']=='F') ? 'Female' : '');
+            $sheet->setCellValue('J' . $excel_row, $row['user_blood_group']);
+            $sheet->setCellValue('K' . $excel_row, $row['department_name']);
+            $sheet->setCellValue('L' . $excel_row, $row['designation_name']);
+            $sheet->setCellValue('M' . $excel_row, $this->common_lib->display_date($row['user_doj']));
+            $sheet->setCellValue('N' . $excel_row, $this->common_lib->display_date($row['user_dor']));
+            
+            $sheet->setCellValue('O' . $excel_row, $row['user_account_active']);
+            if($row['user_account_active'] == 'N'){
+        $sheet->getStyle('A2')->applyFromArray(array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb' => 'f9eb7f'))));
+                $color = 'f9eb7f'; //warning
+            }  
+            if($row['user_account_active'] == 'Y'){
+                $color = 'a8ef81'; //success
+            }        
+            
+            if ($color) {
+                $sheet->getStyle('O' . $excel_row)->applyFromArray(array(
+                    'borders' => array(
+                        'allborders' => array(
+                            'style' => PHPExcel_Style_Border::BORDER_THIN,
+                            'color' => array('rgb' => '4d4d4d')
+                        )
+                    ),
+                    'fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb' => $color))));
+            }                     
+            $excel_row++;
+            $serial_no++;
+        }
+
+
+        // Color Config
+        $default_border = array(
+            'style' => PHPExcel_Style_Border::BORDER_THIN,
+            'color' => array('rgb' => '0')
+        );
+        $style_header = array(
+            'borders' => array(
+                'bottom' => $default_border,
+                'left' => $default_border,
+                'top' => $default_border,
+                'right' => $default_border,
+            ),
+            'fill' => array(
+                'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                'color' => array('rgb' => '80bfff'),
+            ),
+            'font' => array(
+                'bold' => true
+            )
+        );
+        $styleArray = array(
+            'borders' => array(
+                'allborders' => array(
+                    'style' => PHPExcel_Style_Border::BORDER_THIN,
+                    'color' => array('rgb' => '4d4d4d')
+                )
+            )
+        );
+        $sheet->getDefaultStyle()->applyFromArray($styleArray);
+        $sheet->getStyle('A5:R5')->applyFromArray($style_header);
+        $sheet->getStyle('A5:R5')->getFont()->setSize(9);
+        $sheet->getDefaultStyle()->getFont()->setSize(10);
+        $sheet->getDefaultColumnDimension()->setWidth('17');
+
+        // // Check box
+        // $required_cols = array();
+        // if (isset($_POST['columns'])) {
+        //     foreach ($_POST['columns'] as $key => $xls_column) {
+        //         $required_cols[] = $xls_column;
+        //     }
+        // }
+
+        // $all_cols = array();
+        // if (isset($_POST['all_cols'])) {
+        //     foreach ($_POST['all_cols'] as $key => $xls_column) {
+        //         $all_cols[] = $xls_column;
+        //     }
+        // }
+
+        // $removable_cols = array_diff($all_cols, $required_cols);
+        // //print_r($removable_cols);
+
+        // if (isset($removable_cols)) {
+        //     foreach ($removable_cols as $key => $col) {
+        //         $sheet->removeColumn($col);
+        //     }
+        // }
+        // //die();
+
+
+        $filename = 'Employees_' . date('dmY') . '.xls'; //save our workbook as this file name
+        header('Content-Type: application/vnd.ms-excel'); //mime type
+        header('Content-Disposition: attachment;filename="' . $filename . '"'); //tell browser what's the file name
+        header('Cache-Control: max-age=0'); //no cache
+        //save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension, also the header mime type)
+        //if you want to save it as .XLSX Excel 2007 format
+        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
+        //force user to download the Excel file without writing it to server's HD
+        $objWriter->save('php://output');
     }
 
 }

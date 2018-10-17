@@ -398,24 +398,28 @@ class Common_lib {
 	
 	/*Convert date to display format date*/
 	function display_date($date, $time=null, $birthday=null,$format=null){
-		if($time == true){
-            $output_format = 'd-m-Y h:i:s a';
-            if($format){
-                $output_format = $format;
+        if($date != NULL){
+            if($time == true){
+                $output_format = 'd-m-Y h:i:s a';
+                if($format){
+                    $output_format = $format;
+                }
+                return date($output_format, strtotime($date));
             }
-			return date($output_format, strtotime($date));
-        }
-        if($birthday == true){
-            $dob = explode('-',$date);            
-			return $this->display_ordinal_suffix($dob[2]).' '.date('F',strtotime($date));
-        }
-        else{
-            $output_format = 'd-m-Y';
-            if($format){
-                $output_format = $format;
+            if($birthday == true){
+                $dob = explode('-',$date);            
+                return $this->display_ordinal_suffix($dob[2]).' '.date('F',strtotime($date));
             }
-			return date($output_format, strtotime($date));
-		}		
+            else{
+                $output_format = 'd-m-Y';
+                if($format){
+                    $output_format = $format;
+                }
+                return date($output_format, strtotime($date));
+            }
+        }else{
+            return '';
+        }				
     }
     
     /*Display ordinal_suffix st, th, rd*/    
