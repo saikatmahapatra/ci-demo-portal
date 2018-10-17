@@ -21,12 +21,15 @@
 		<div class="card">
 			<div class="card-header">
 				<span class="">Report</span>
+				<span class="float-right d-none">
+					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/export');?>" class="btn btn-sm btn-primary" title="Add"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+				</span>
 			</div>
 			<div class="card-body">
 				
 				<div class="row mb-3">
 					<div class="col-md-12">
-					<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'ci-form','name' => '','id' => '')); ?>
+					<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'ci-form','name' => '','id' => 'timesheet-search-form')); ?>
 					<?php echo form_hidden('form_action', 'search'); ?>		  
 						<div class="form-row">
 							<div class="form-group col-md-4 ci-select2">
@@ -36,7 +39,7 @@
 							</div>
 							
 							<div class="form-group col-md-4 ci-select2">
-								<label for="q_project" class="">Project <span class="required">*</span></label>
+								<label for="q_project" class="">Project</label>
 								<?php echo form_dropdown('q_project', $project_arr, $this->input->get_post('q_project'),array('class' => 'form-control',)); ?> 
 								<?php echo form_error('q_project'); ?>
 							</div>
@@ -56,13 +59,13 @@
 
 						</div>					
 						<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-search"></i> Search','class' => 'btn btn-primary'));?>
-						<?php echo form_button(array('name' => 'reset_btn','type' => 'reset','content' => 'Reset','class' => 'btn btn-secondary'));?>
+						<?php echo form_button(array('name' => 'reset_btn','type' => 'reset','content' => 'Reset','class' => 'btn btn-secondary','id'=>'reset_timesheet_form'));?>
 						 
 						<?php echo form_close(); ?>
 					</div>
 				</div>
 				
-
+				<?php if(isset($data_rows) && sizeof($data_rows)>0){ ?>
 				<div class="table-responsive">
 					<table class="table table-sm">
 						<thead>
@@ -70,17 +73,14 @@
 								<th scope="col" style="width:10%;">Date</th>
 								<th scope="col" style="width:15%;">Employee</th>
 								<th scope="col" style="width:20%;">Project</th>
-								<th scope="col" style="width:10%;">Activity</th>
+								<th scope="col" style="width:20%;">Activity</th>
 								<th scope="col" style="width:5%;">Hours</th>
-								<th scope="col" style="width:40%;">Description</th>
+								<th scope="col" style="width:30%;">Description</th>
 								
 							</tr>
 						</thead>
 						<tbody>
-							<?php 
-							if(isset($data_rows) && sizeof($data_rows)>0){
-								foreach($data_rows as $row){
-									?>
+								<?php foreach($data_rows as $row){ ?>
 									<tr>
 										<td><?php echo $this->common_lib->display_date($row['timesheet_date']);?></td>
 										<td><?php echo $row['user_firstname'].' '.$row['user_lastname'];?></td>
@@ -89,16 +89,8 @@
 										<td><?php echo $row['timesheet_hours'];?></td>
 										<td><?php echo $row['timesheet_description'];?></td>
 									</tr>
-									<?php
-								}
-							}else{
-								?>
-									<tr>
-										<td colspan="6">No result found</td>
-									</tr>
-								<?php
-							}
-							?>
+								<?php } ?>
+					
 						</tbody>
 						<tfoot>
 							<tr>
@@ -110,9 +102,11 @@
 								<th scope="col">Description</th>								
 							</tr>
 						</tfoot>
-					</table>
-					
+					</table>					
 				</div>
+				<?php } else {?>
+					<div class="alert alert-warning">No result found</div>
+				<?php }?>
 				<?php echo isset($pagination_link) ? $pagination_link : ''; ?>
 			</div>
 		</div>

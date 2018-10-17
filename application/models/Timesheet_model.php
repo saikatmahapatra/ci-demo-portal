@@ -259,13 +259,20 @@ class Timesheet_model extends CI_Model {
             $this->db->where('t1.id', $id);
         }
         if(isset($cond)){
-            if(isset($cond['q_emp'])){
+            if($cond['q_emp']){
                 $this->db->where('t1.timesheet_created_by', $cond['q_emp']);
             }
-            if(isset($cond['q_project'])){
+            if($cond['q_project']){
                 $this->db->where('t1.project_id', $cond['q_project']);
             }
-        }	
+            if($cond['from_date']){
+                $this->db->where('t1.timesheet_date >=', $this->common_lib->convert_to_mysql($cond['from_date']));
+            }
+            if($cond['to_date']){
+                $this->db->where('t1.timesheet_date <=', $this->common_lib->convert_to_mysql($cond['to_date']));
+            }
+        }
+        $this->db->order_by('t1.timesheet_date','desc');	
         if ($limit) {
             $this->db->limit($limit, $offset);
         }    

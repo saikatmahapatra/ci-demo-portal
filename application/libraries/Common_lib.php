@@ -95,35 +95,31 @@ class Common_lib {
         if (count($_GET) > 0) {
             $config['suffix'] = '?' . http_build_query($_GET, '', "&");
         }
-        //$config['base_url'] = base_url() . $directory . $controller . '/' . $method . $additional_segment . '/page/';
-        $config['base_url'] = base_url() . $additional_segment . '/page/';
+
+        $config['base_url'] = base_url().$directory.$controller.'/'.$method.'/page/';
+        if($additional_segment !=NULL){
+            $config['base_url'] = base_url() . $additional_segment . '/page/';
+        }
+
         $config['total_rows'] = $total_rows;
-        $config['per_page'] = ($limit_per_page == NULL) ? '20' : $limit_per_page;
+        $config['per_page'] = ($limit_per_page == NULL) ? '30' : $limit_per_page;
         $config['uri_segment'] = $this->CI->uri->total_segments(); #print_r(end($this->CI->uri->segment_array()));
         $config['num_links'] = 2;
+        
         $config['full_tag_open'] = '<nav aria-label="Page navigation"><ul class="pagination">';
         $config['full_tag_close'] = '</ul></nav>';
-
         $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
         $config['cur_tag_close'] = '</a></li>';
-
-
         $config['prev_link'] = '&lt;&lt;';
         $config['prev_tag_open'] = '<li class="page-item prev">';
         $config['prev_tag_close'] = '</li>';
-
-
         $config['next_link'] = '&gt;&gt;';
         $config['next_tag_open'] = '<li class="page-item">';
         $config['next_tag_close'] = '</li>';
-
-
         $config['first_link'] = 'First';
         $config['first_tag_open'] = '<li class="page-item">';
         $config['first_tag_close'] = '</li>';
         $config['first_url'] = ''; //An alternative URL to use for the “first page” link.
-
-
         $config['last_link'] = 'Last';
         $config['last_tag_open'] = '<li class="page-item">';
         $config['last_tag_close'] = '</li>';
@@ -135,7 +131,7 @@ class Common_lib {
         $config['display_pages'] = TRUE; // TRUE = Show number | FALSE = Hide Nos, Show Next, Prev Link
         $config['use_page_numbers'] = TRUE;
         $config['page_query_string'] = FALSE;
-        $config['reuse_query_string'] = FALSE;
+        $config['reuse_query_string'] = TRUE;
         $this->CI->pagination->initialize($config);
         return $this->CI->pagination->create_links();
     }
@@ -401,16 +397,24 @@ class Common_lib {
 	}
 	
 	/*Convert date to display format date*/
-	function display_date($date, $time=null, $birthday=null){
+	function display_date($date, $time=null, $birthday=null,$format=null){
 		if($time == true){
-			return date('d-m-Y h:i:s a',strtotime($date));
+            $output_format = 'd-m-Y h:i:s a';
+            if($format){
+                $output_format = $format;
+            }
+			return date($output_format, strtotime($date));
         }
         if($birthday == true){
             $dob = explode('-',$date);            
 			return $this->display_ordinal_suffix($dob[2]).' '.date('F',strtotime($date));
         }
         else{
-			return date('d-m-Y',strtotime($date));
+            $output_format = 'd-m-Y';
+            if($format){
+                $output_format = $format;
+            }
+			return date($output_format, strtotime($date));
 		}		
     }
     

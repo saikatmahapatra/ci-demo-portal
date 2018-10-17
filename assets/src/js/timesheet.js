@@ -5,40 +5,43 @@ var month = '';
 var year = '';
 
 $(function() {
-    var selected_date = $('input[name="selected_date"]').val();
-    if (selected_date) {
-        var selected_date_array = selected_date.split(',');
-        selectedDate = selected_date_array;
-        $('#display_selected_date').html(selectedDate.join());
-        //console.log(selected_date_array,selected_date_array.length);
-        if (selected_date_array.length > 0) {
-            //$("#clear_selected_days").removeClass('invisible').addClass('visible');
-            $.each(selected_date_array, function(index, clickedSelectedDay) {
-                $(".day").each(function() {
-                    var calDay = $(this).text();
-                    //console.log(calDay);
-                    if (calDay == clickedSelectedDay) {
-                        $(this).addClass("selected");
-                    }
+    if (ROUTER_METHOD == 'index') {
+        var selected_date = $('input[name="selected_date"]').val();
+        if (selected_date) {
+            var selected_date_array = selected_date.split(',');
+            selectedDate = selected_date_array;
+            $('#display_selected_date').html(selectedDate.join());
+            //console.log(selected_date_array,selected_date_array.length);
+            if (selected_date_array.length > 0) {
+                //$("#clear_selected_days").removeClass('invisible').addClass('visible');
+                $.each(selected_date_array, function(index, clickedSelectedDay) {
+                    $(".day").each(function() {
+                        var calDay = $(this).text();
+                        //console.log(calDay);
+                        if (calDay == clickedSelectedDay) {
+                            $(this).addClass("selected");
+                        }
+                    });
                 });
-            });
+            }
         }
+
+        splitted_uri = window.location.href.split('timesheet/index/');
+        if (splitted_uri[1] != undefined) {
+            var arr_month_year = splitted_uri[1].split('/');
+            if (arr_month_year) {
+                month = arr_month_year[1];
+                year = arr_month_year[0];
+            }
+        }
+        console.log(month, year);
+        //Load Timesheet Data On Page Load
+        get_timesheet_stat();
+
+        //Render Data Table
+        renderDataTable();
     }
 
-    splitted_uri = window.location.href.split('timesheet/index/');
-    if (splitted_uri[1] != undefined) {
-        var arr_month_year = splitted_uri[1].split('/');
-        if (arr_month_year) {
-            month = arr_month_year[1];
-            year = arr_month_year[0];
-        }
-    }
-    console.log(month, year);
-    //Load Timesheet Data On Page Load
-    get_timesheet_stat();
-
-    //Render Data Table
-    renderDataTable();
 
     if (ROUTER_METHOD == 'report') {
         //Display Start end date picker 
@@ -51,6 +54,11 @@ $(function() {
         $(".multi_select_tag").select2({
             allowClear: true,
             width: '100%'
+        });
+
+        $('#reset_timesheet_form').on('click', function(e) {
+            e.preventDefault();
+            $('#timesheet-search-form .form-control').val('');
         });
     }
 

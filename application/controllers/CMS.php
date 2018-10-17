@@ -92,18 +92,14 @@ class Cms extends CI_Controller {
 		$result_array = $this->cms_model->get_rows(NULL, NULL, NULL, FALSE, FALSE);
 		$total_num_rows = $result_array['num_rows'];
 		
-		//pagination config
-		$additional_segment = $this->router->directory.$this->router->class.'/'.$this->router->method;
-		$per_page = 3;
-		$config['uri_segment'] = 4;
-		$config['num_links'] = 1;
-		$config['use_page_numbers'] = TRUE;
-		//$this->pagination->initialize($config);
-		
-		$page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
-		$offset = ($page*$per_page);
-		$this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
-		//end of pagination config
+		//Pagination config starts here		
+        $per_page = 3;
+        $config['uri_segment'] = 4; //which segment of your URI contains the page number
+        $config['num_links'] = 2;
+        $page = ($this->uri->segment($config['uri_segment'])) ? ($this->uri->segment($config['uri_segment'])-1) : 0;
+        $offset = ($page*$per_page);
+        $this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page);
+        //Pagination config ends here
         
 
         // Data Rows - Refer to model method definition

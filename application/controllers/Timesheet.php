@@ -321,40 +321,51 @@ class Timesheet extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 
-        // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
-        $filter_by_condition = array(
-            'q_emp' => $this->input->get_post('q_emp'),
-            'q_project' => $this->input->get_post('q_project'),
-            'from_date' => $this->input->get_post('from_date'),
-            'to_date' => $this->input->get_post('to_date')
-        );
+        
 
         if($this->input->get_post('form_action') == 'search'){
-            $result_array = $this->timesheet_model->get_report_data(NULL, NULL, NULL, $filter_by_condition);
-            $total_num_rows = $result_array['num_rows'];
-            
-            //pagination config
-            $additional_segment = $this->router->directory.$this->router->class.'/'.$this->router->method;
-            $per_page = 30;
-            $config['uri_segment'] = 4;
-            $config['num_links'] = 1;
-            $config['use_page_numbers'] = TRUE;
-            //$this->pagination->initialize($config);
-            
-            $page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
-            $offset = ($page*$per_page);
-            $this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
-            //end of pagination config
-            
+            //print_r($_REQUEST); die();
+            // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
+            $filter_by_condition = array(
+                'q_emp' => $this->input->get_post('q_emp'),
+                'q_project' => $this->input->get_post('q_project'),
+                'from_date' => $this->input->get_post('from_date'),
+                'to_date' => $this->input->get_post('to_date')
+            );
+            if ($this->validate_search_form_data($filter_by_condition) == true) {
+                $result_array = $this->timesheet_model->get_report_data(NULL, NULL, NULL, $filter_by_condition);
+                $total_num_rows = $result_array['num_rows'];
+                
+                //Pagination config starts here		
+                $per_page = 30;
+                $config['uri_segment'] = 4; //which segment of your URI contains the page number
+                $config['num_links'] = 2;
+                $page = ($this->uri->segment($config['uri_segment'])) ? ($this->uri->segment($config['uri_segment'])-1) : 0;
+                $offset = ($page*$per_page);
+                $this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page);
+                //Pagination config ends here
+                
 
-            // Data Rows - Refer to model method definition
-            $result_array = $this->timesheet_model->get_report_data(NULL, NULL, NULL, $filter_by_condition);
-            $this->data['data_rows'] = $result_array['data_rows'];
+                // Data Rows - Refer to model method definition
+                $result_array = $this->timesheet_model->get_report_data(NULL, $per_page, $offset, $filter_by_condition);
+                $this->data['data_rows'] = $result_array['data_rows'];
+            }
         }
 
 		$this->data['page_heading'] = 'Timesheet Report';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/report', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function validate_search_form_data($data) {        
+        $this->form_validation->set_data($data);
+        $this->form_validation->set_rules('q_emp', 'employee', 'required');
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
