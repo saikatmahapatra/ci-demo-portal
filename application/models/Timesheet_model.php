@@ -150,7 +150,7 @@ class Timesheet_model extends CI_Model {
 		DATE_FORMAT(t1.`timesheet_date`,"%m") as timesheet_month,
 		DATE_FORMAT(t1.`timesheet_date`,"%d") as timesheet_day,
 		t1.timesheet_hours,
-		t1.timesheet_review_status		
+		t1.timesheet_review_status	
 		');        
         $this->db->where(
 			array(
@@ -175,17 +175,15 @@ class Timesheet_model extends CI_Model {
         $this->db->where(
 			array(
 			'YEAR(`timesheet_date`)' => $year,
-			'MONTH(`timesheet_date`)' => $month,
+            'MONTH(`timesheet_date`)' => $month,
+            't1.timesheet_created_by' => $user_id
 			)
 		);
 		
         $query = $this->db->get('timesheet as t1');
 		//echo $this->db->last_query(); //die();        
         $stat_data = $query->result_array();
-		
-		
-        return array('num_rows' => $num_rows, 'data_rows' => $result, 'stat_data'=>$stat_data[0]);
-        return $result;
+        return array('num_rows' => $num_rows, 'data_rows' => $result, 'stat_data'=>$stat_data[0]);       
 	}
 	
 	function get_project_dropdown() {
