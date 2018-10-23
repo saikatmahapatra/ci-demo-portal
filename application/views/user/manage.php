@@ -32,11 +32,11 @@
 					<span class="mx-2"><i class="fa fa-square text-danger" aria-hidden="true"></i> Ex-Employees</span>
 				</div>
 
-				<div class="table-responsive">
-					<form class="form-inline my-3 mx-3" name="download" method="post" action="<?php echo current_url();?>">
+				<div class="table-responsive">					
+					<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'form-inline my-3 mx-3 d-none', 'name' => 'download_data')); ?>
 						<input type="hidden" name="form_action" value="download">
-						<button class="btn btn-sm btn-outline-success" title="Download"> <i class="fa fa-download" aria-hidden="true"></i> Download Employee Data</button>
-					</form>
+						<button type="submit" class="btn btn-sm btn-outline-success" title="Download"> <i class="fa fa-download" aria-hidden="true"></i> Download Employee Data</button>
+					<?php echo form_close(); ?>
 					<table id="user-datatable" class="table table-sm">					
 						<thead>
 							<tr>
