@@ -22,8 +22,8 @@
 		<div class="mt-3">
 			<h6>Timesheet Statistics</h6>
 			<div class="">Tasks logged for: <span id="total_days">0.0</span> days</div>
-			<div class="">Total hours logged: <span id="total_hrs">0.0</span> hrs</div>
-			<div class="">Avg. hours worked: <span class="" id="average_worked_hrs">0.0</span> hrs/day</div>
+			<div class="d-none">Total hours logged: <span id="total_hrs">0.0</span> hrs</div>
+			<div class="d-none">Avg. hours worked: <span class="" id="average_worked_hrs">0.0</span> hrs/day</div>
 		</div>		
 		<a class="text-centre d-none" href="#"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download this month's timesheet</a>
 	</div>
