@@ -53,6 +53,7 @@ class User extends CI_Controller {
         $this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-');
         $this->data['bank_ac_type'] = array('SB'=>'Savings','CU'=>'Current');
         $this->data['account_uses'] = array('SAL'=>'Salary Credit','REI'=>'Reimbursement');
+        $this->data['arr_gender'] = array('M'=>'Male','F'=>'Female');
     }
 
     function index() {
@@ -1942,7 +1943,7 @@ class User extends CI_Controller {
             $sheet->setCellValue('G' . $excel_row, $row['user_phone2']);
 
             $sheet->setCellValue('H' . $excel_row, $this->common_lib->display_date($row['user_dob']));
-            $sheet->setCellValue('I' . $excel_row, ($row['user_gender']=='M') ? 'Male' : ($row['user_gender']=='F') ? 'Female' : '');
+            $sheet->setCellValue('I' . $excel_row, $this->data['arr_gender'][$row['user_gender']]);
             $sheet->setCellValue('J' . $excel_row, $row['user_blood_group']);
             $sheet->setCellValue('K' . $excel_row, $row['department_name']);
             $sheet->setCellValue('L' . $excel_row, $row['designation_name']);
