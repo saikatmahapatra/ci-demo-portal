@@ -34,13 +34,13 @@
 						<div class="form-row">
 							<div class="form-group col-md-4 ci-select2">
 								<label for="q_emp" class="">Employee <span class="required">*</span></label>
-								<?php echo form_dropdown('q_emp', $user_arr, $this->input->get_post('q_emp'),array('class' => 'form-control',)); ?> 
+								<?php echo form_dropdown('q_emp', $user_arr, $this->input->get_post('q_emp'),array('class' => 'form-control select2-control', 'id'=>'q_emp')); ?> 
 								<?php echo form_error('q_emp'); ?>
 							</div>
 							
 							<div class="form-group col-md-4 ci-select2">
 								<label for="q_project" class="">Project</label>
-								<?php echo form_dropdown('q_project', $project_arr, $this->input->get_post('q_project'),array('class' => 'form-control',)); ?> 
+								<?php echo form_dropdown('q_project', $project_arr, $this->input->get_post('q_project'),array('class' => 'form-control select2-control','id'=>'q_project')); ?> 
 								<?php echo form_error('q_project'); ?>
 							</div>
 
@@ -71,6 +71,16 @@
 				
 				<?php if(isset($data_rows) && sizeof($data_rows)>0){ ?>
 				<div class="table-responsive">
+					<?php echo form_open(current_url(), array('method' => 'GET', 'class' => 'form-inline my-3', 'name' => 'download_data')); ?>
+						<input type="hidden" name="form_action" value="search">
+						<input type="hidden" name="form_action_primary" value="download">
+						<input type="hidden" name="q_emp" value="<?php echo $this->input->get('q_emp');?>">
+						<input type="hidden" name="q_project" value="<?php echo $this->input->get('q_project');?>">
+						<input type="hidden" name="from_date" value="<?php echo $this->input->get('from_date');?>">
+						<input type="hidden" name="to_date" value="<?php echo $this->input->get('to_date');?>">
+						<button type="submit" class="btn btn-sm btn-outline-success" title="Download"> <i class="fa fa-download" aria-hidden="true"></i> Download Data</button>
+					<?php echo form_close(); ?>
+
 					<table class="table table-sm">
 						<thead>
 							<tr>

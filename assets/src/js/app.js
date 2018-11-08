@@ -351,7 +351,7 @@ function initPage() {
     setActiveTarget();
 
     //Select 2
-    $('.ci-js-select-2').select2();
+    $('.select2-control').select2();
 
     //Bootstrap tooltip
     $('[data-toggle="tooltip"]').tooltip();
