@@ -248,6 +248,14 @@
 
 			<?php */ ?>
 			<?php //echo form_hidden('user_role', 3); ?>
+
+			<div class="form-row">
+				<div class="form-group col-md-6 ci-select2">
+					<label for="q_emp" class="">Supervisor</label>
+					<?php echo form_dropdown('user_supervisor_id', $user_arr, isset($row['user_supervisor_id'])?$row['user_supervisor_id']:set_value('user_supervisor_id') ,array('class' => 'form-control select2-control', 'id'=>'user_supervisor_id')); ?> 
+					<?php echo form_error('user_supervisor_id'); ?>
+				</div>
+			</div>
 			
 			<?php if($row['id'] != $this->common_lib->get_sess_user('id')){?>
 

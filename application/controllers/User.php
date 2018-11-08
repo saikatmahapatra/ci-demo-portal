@@ -1234,7 +1234,8 @@ class User extends CI_Controller {
         $rows = $this->user_model->get_rows($user_id);
         $this->data['row'] = $rows['data_rows'];
         $res_pic = $this->user_model->get_user_profile_pic($user_id);
-		$this->data['profile_pic'] = $res_pic[0]['user_profile_pic'];
+        $this->data['profile_pic'] = $res_pic[0]['user_profile_pic'];
+        $this->data['user_arr'] = $this->user_model->get_user_dropdown();
 
         if ($this->input->post('form_action') == 'update_profile') {
             if ($this->validate_edit_user_profile_form() == true) {
@@ -1249,7 +1250,8 @@ class User extends CI_Controller {
                     //'user_role' => $this->input->post('user_role'),
                     'user_department' => $this->input->post('user_department'),
                     'user_designation' => $this->input->post('user_designation'),
-                    'user_account_active' => $this->input->post('user_account_active')                
+                    'user_account_active' => $this->input->post('user_account_active'),              
+                    'user_supervisor_id' => $this->input->post('user_supervisor_id')                
                 );
                 $where = array('id' => $user_id);
                 $res = $this->user_model->update($postdata, $where);

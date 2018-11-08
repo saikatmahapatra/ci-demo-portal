@@ -625,6 +625,24 @@ class User_model extends CI_Model {
         return $email;
     }
 
+    function get_user_dropdown() {
+        $result = array();
+        $this->db->select('id,user_firstname,user_lastname, user_emp_id');		
+        $this->db->where('user_archived','N');
+        $this->db->where('user_account_active','Y');
+        $this->db->order_by('user_firstname');		
+        $query = $this->db->get('users');
+        #echo $this->db->last_query();
+        $result = array('' => 'Select');
+        if ($query->num_rows()) {
+            $res = $query->result();
+            foreach ($res as $r) {
+                $result[$r->id] = $r->user_firstname.' '.$r->user_lastname.' ('.$r->user_emp_id.')';
+            }
+        }
+        return $result;
+    }
+
 }
 
 ?>
