@@ -27,8 +27,8 @@
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-sm">
-						<thead>
+					<table class="table table-striped">
+						<thead class="thead-dark">
 							<tr>
 								<th scope="col">Title</th>
 								<th scope="col">Content Type</th>

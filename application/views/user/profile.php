@@ -200,8 +200,8 @@
 								}
 							}*/?>
 								<div class="table-responsive-sm">
-									<table class="table">
-										<thead>
+									<table class="table table-striped">
+										<thead class="thead-dark">
 											<tr>
 											<th scope="col">Degree & Specialization</th>												
 											<th scope="col">University/Board/Council</th>
@@ -283,8 +283,8 @@
 									}?>
 									<?php */?>
 									<div class="table-responsive-sm">
-										<table class="table">
-											<thead>
+										<table class="table table-striped">
+											<thead class="thead-dark">
 												<tr>
 													<th scope="col">Employer</th>												
 													<th scope="col">Designation/Role</th>
@@ -348,8 +348,8 @@
 								</dl>
 
 								<div class="table-responsive-sm">
-									<table class="table">
-										<thead>
+									<table class="table  table-striped">
+										<thead class="thead-dark">
 											<tr>
 												<th scope="col">Account Uses</th>
 												<th scope="col">Account No</th>

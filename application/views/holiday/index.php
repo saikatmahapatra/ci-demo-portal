@@ -24,8 +24,8 @@
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table id="holiday-datatable" class="table table-sm">
-						<thead>
+					<table id="holiday-datatable" class="table ci-table table-striped">
+						<thead class="thead-dark">
 							<tr>
 								<th scope="col">Date</th>
 								<th scope="col">Description</th>

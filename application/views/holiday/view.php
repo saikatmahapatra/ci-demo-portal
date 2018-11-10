@@ -7,8 +7,8 @@
 
 <div class="row">
 	<div class="col-md-8">
-		<table class="table table-bordered">
-		  <thead class="">
+		<table class="table ci-table table-striped table-bordered">
+		  <thead class="thead-dark">
 			<tr>
 			  <th scope="col">#</th>
 			  <th scope="col">Date</th>

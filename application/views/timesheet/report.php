@@ -18,15 +18,9 @@
 			echo $html_alert_ui;
 		}
 		?>
-		<div class="card">
-			<div class="card-header">
-				<span class="">Report</span>
-				<span class="float-right d-none">
-					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/export');?>" class="btn btn-sm btn-primary" title="Add"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>
-				</span>
-			</div>
+		<div class="card card-legend my-3">			
 			<div class="card-body">
-				
+				<h6 class="card-title text-on-card">Search</h6>				
 				<div class="row mb-3">
 					<div class="col-md-12">
 					<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'ci-form','name' => '','id' => 'timesheet-search-form')); ?>
@@ -81,8 +75,8 @@
 						<button type="submit" class="btn btn-sm btn-outline-success" title="Download"> <i class="fa fa-download" aria-hidden="true"></i> Download Data</button>
 					<?php echo form_close(); ?>
 
-					<table class="table table-sm">
-						<thead>
+					<table class="table table-striped">
+						<thead class="thead-dark">
 							<tr>
 								<th scope="col" style="width:10%;">Date</th>
 								<th scope="col" style="width:15%;">Employee</th>

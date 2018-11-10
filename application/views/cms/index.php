@@ -28,8 +28,8 @@
 					<span class="mx-2"><i class="fa fa-square text-warning" aria-hidden="true"></i> Unpublished Content</span>					
 				</div>
 				<div class="table-responsive">
-					<table id="cms-datatable" class="table table-sm">
-						<thead>
+					<table id="cms-datatable" class="table ci-table table-striped">
+						<thead class="thead-dark">
 							<tr>								
 								<th scope="col">Title</th>
 								<th scope="col">Type</th>

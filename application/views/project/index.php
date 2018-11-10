@@ -30,8 +30,8 @@
 				</div>
 
 				<div class="table-responsive">
-					<table id="project-datatable" class="table table-sm">
-						<thead>
+					<table id="project-datatable" class="table ci-table table-striped">
+						<thead class="thead-dark">
 							<tr>
 								<th scope="col">Project Title</th>
 								<!-- <th scope="col">Desription</th> -->

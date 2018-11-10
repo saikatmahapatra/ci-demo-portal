@@ -404,3 +404,12 @@ a[data-link-type="user-profile-card"] {
         max-width: 100%;
     }
 }
+
+//DataTable Style Override
+table.ci-table.dataTable {
+    clear: both;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    max-width: none !important;
+    border-collapse: collapse !important;
+}

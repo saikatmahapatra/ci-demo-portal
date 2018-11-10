@@ -37,8 +37,8 @@
 						<input type="hidden" name="form_action" value="download">
 						<button type="submit" class="btn btn-sm btn-outline-success" title="Download"> <i class="fa fa-download" aria-hidden="true"></i> Download Employee Data</button>
 					<?php echo form_close(); ?>
-					<table id="user-datatable" class="table table-sm">					
-						<thead>
+					<table id="user-datatable" class="table ci-table table-striped">					
+						<thead class="thead-dark">
 							<tr>
 								<th>Employee</th>
 								<th>Emp#</th>
