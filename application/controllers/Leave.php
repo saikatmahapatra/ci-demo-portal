@@ -44,9 +44,8 @@ class Leave extends CI_Controller {
 		$this->id = $this->uri->segment(3);
 		
 		//Dropdown
-		$this->data['project_arr'] = $this->leave_model->get_project_dropdown();
-		$this->data['task_task_activity_type_array'] = $this->leave_model->get_activity_dropdown();
-		$this->data['timesheet_hours'] = $this->leave_model->get_timesheet_hours_dropdown();
+		$this->data['leave_type_arr'] = array(''=>'-Select-','CL'=>'Casual Leave','SL'=>'Sick Leave','EL'=>'Earned Leave');
+		
 		
 		//View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
@@ -54,87 +53,52 @@ class Leave extends CI_Controller {
         
     }
 	
-	function index() {
-		$year = $this->uri->segment(3) ? $this->uri->segment(3) : date('Y');
-		$month = $this->uri->segment(4) ? $this->uri->segment(4) : date('m');
-		$day = date('d');
-		
-		$template='';
-		$template.='{table_open}<table class="table ci-calendar table-sm" border="0" cellpadding="" cellspacing="">{/table_open}';
-		$template.='{heading_row_start}<tr class="mn">{/heading_row_start}';
-		$template.='{heading_previous_cell}<th class="prevcell"><a href="{previous_url}">&lt;&lt;</a></th>{/heading_previous_cell}';
-		$template.='{heading_title_cell}<th colspan="{colspan}">{heading}</th>{/heading_title_cell}';
-		$template.='{heading_next_cell}<th class="nextcell"><a href="{next_url}" >&gt;&gt;</a></th>{/heading_next_cell}';
-		$template.='{heading_row_end}</tr>{/heading_row_end}';
-		$template.='{week_row_start}<tr class="wk_nm">{/week_row_start}';
-		$template.='{week_day_cell}<td>{week_day}</td>{/week_day_cell}';
-		$template.='{week_row_end}</tr>{/week_row_end}';
-		
-		$css_days_rows = ($month != date('m'))? 'disabled_m': 'allowed_m';
-		$template.='{cal_row_start}<tr class="'.$css_days_rows.'">{/cal_row_start}';
-		
-		$template.='{cal_cell_start}<td class="day">{/cal_cell_start}';
-		$template.='{cal_cell_content}<a href="{content}">{day}</a>{/cal_cell_content}';
-		$template.='{cal_cell_content_today}<div class="highlight"><a href="{content}">{day}</a></div>{/cal_cell_content_today}';
-		$template.='{cal_cell_no_content}{day}{/cal_cell_no_content}';
-		$template.='{cal_cell_no_content_today}<div class="highlight">{day}</div>{/cal_cell_no_content_today}';
-		$template.='{cal_cell_blank}&nbsp;{/cal_cell_blank}';
-		$template.='{cal_cell_end}</td>{/cal_cell_end}';		
-		$template.='{cal_row_end}</tr>{/cal_row_end}';	
-		
-		$template.='{table_close}</table>{/table_close}';
-		
-		$prefs = array (
-               'start_day'    => 'monday',
-               'month_type'   => 'short',
-               'day_type'     => 'short',
-			   'show_next_prev'=>TRUE,			   
-			   'template'	  =>  $template
-             );
-		$this->load->library('calendar',$prefs);
-		
-		$this->data['entry_for'] = date('Y/m/d');
-		
-		
-		
-		$data = array();
-		$this->data['cal'] = $this->calendar->generate($year,$month,$data);
-		$month_name = date('M', mktime(0, 0, 0, $month, 10));		
-		$this->data['page_heading'] = 'Timesheet : '.$month_name.' '.$year;
-		
-		$this->add();
-		
+	function index() {				
+		$this->data['page_heading'] = 'Apply Leave';		
+        $this->add();
+        $this->index_ci_pagination();
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
-	
-	function add() {
-        //Check user permission by permission name mapped to db
-        //$is_authorized = $this->common_lib->is_auth('timesheet-add');
+
+    function index_ci_pagination() {
+        // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
+		$result_array = $this->leave_model->get_rows(NULL, NULL, NULL, FALSE, FALSE);
+		$total_num_rows = $result_array['num_rows'];
+		
+		//Pagination config starts here		
+        $per_page = 30;
+        $config['uri_segment'] = 4; //which segment of your URI contains the page number
+        $config['num_links'] = 2;
+        $page = ($this->uri->segment($config['uri_segment'])) ? ($this->uri->segment($config['uri_segment'])-1) : 0;
+        $offset = ($page*$per_page);
+        $this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page);
+        //Pagination config ends here
         
+
+        // Data Rows - Refer to model method definition
+        $result_array = $this->leave_model->get_rows(NULL, $per_page, $offset, FALSE, TRUE);
+        $this->data['data_rows'] = $result_array['data_rows'];
+    }
+	
+	function add() {        
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         if ($this->input->post('form_action') == 'add') {
-            if ($this->validate_form_data('add') == true) {
-                
-				$selected_date_arr = explode(',', $this->input->post('selected_date'));
-				//print_r($selected_date_arr); die();
-				$batch_post_data = array();
-				foreach($selected_date_arr as $key=>$day){
-					$year = $this->uri->segment(3) ? $this->uri->segment(3) : date('Y');
-					$month = $this->uri->segment(4) ? $this->uri->segment(4) : date('m');
-					$batch_post_data[$key] = array(
-						'timesheet_date' => $year.'-'.$month.'-'.$day,
-						'project_id' => $this->input->post('project_id'),
-						'activity_id' => $this->input->post('activity_id'),
-						'timesheet_hours' => $this->input->post('timesheet_hours'),
-						'timesheet_description' => $this->input->post('timesheet_description'),
-						'timesheet_created_by' => $this->sess_user_id					
-					);
-				}
-                $insert_id = $this->leave_model->insert_batch($batch_post_data);
+            if ($this->validate_form_data('add') == true) {  
+                $leave_request_id = 'LR-'.time();              
+				$postdata = array(                    
+                    'leave_req_id' => $leave_request_id,
+                    'leave_type' => $this->input->post('leave_type'),
+                    'leave_reason' => $this->input->post('leave_reason'),
+                    'leave_from_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_from_date')),
+                    'leave_to_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_to_date')),
+                    'user_id' => $this->sess_user_id,					
+                    'leave_created_on' => date('Y-m-d H:i:s')
+                );
+                $insert_id = $this->leave_model->insert($postdata);
                 if ($insert_id) {
-                    $this->session->set_flashdata('flash_message', 'Timesheet Entry Added Successfully.');
+                    $this->session->set_flashdata('flash_message', 'Your Leave Request <strong>#'.$leave_request_id.'</strong> has been generated successfully. Supervisor and HR will get leave notification and work on it.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     redirect(current_url());
                 }
@@ -143,11 +107,10 @@ class Leave extends CI_Controller {
     }
 	
 	function validate_form_data($action = NULL) {
-        $this->form_validation->set_rules('selected_date', 'calendar date selection', 'required');
-        $this->form_validation->set_rules('project_id', 'project selection', 'required');
-        $this->form_validation->set_rules('activity_id', 'activity selection', 'required');
-        $this->form_validation->set_rules('timesheet_hours', 'hours spent', 'required');
-        $this->form_validation->set_rules('timesheet_description', 'description', 'required|max_length[200]');
+        $this->form_validation->set_rules('leave_type', 'leave type', 'required');
+        $this->form_validation->set_rules('leave_reason', 'leave reason', 'required|max_length[100]');
+        $this->form_validation->set_rules('leave_from_date', 'from date', 'required');
+        $this->form_validation->set_rules('leave_to_date', 'to date', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -155,38 +118,6 @@ class Leave extends CI_Controller {
             return false;
         }
     }
-		
-	function timesheet_stats(){		
-		$year = $this->input->get_post('year') ? $this->input->get_post('year') : date('Y');
-		$month = $this->input->get_post('month') ? $this->input->get_post('month') : date('m');		
-		$response = array(
-            'status' => 'init',
-            'message' => '',
-            'message_css' => '',
-            'data' => array(),
-        );		
-		if($this->input->post('via')=='ajax'){			
-			$result_array = $this->leave_model->get_timesheet_stats($year,$month);			
-			if($result_array['num_rows']>0){
-				$response = array(
-					'status' => 'ok',
-					'message' => 'Records fetched',
-					'message_css' => 'alert alert-success',
-					'data' => $result_array,
-				);
-			}else{
-				$response = array(
-					'status' => 'ok',
-					'message' => 'No records found',
-					'message_css' => 'alert alert-danger',
-					'data' => $result_array,
-				);
-			}
-			echo json_encode($response);die();
-		}else{
-			die("404: Not Found");
-		}
-	}
 	
 	function render_datatable() {
 		$year = $this->input->get_post('year') ? $this->input->get_post('year') : date('Y');
@@ -258,7 +189,7 @@ class Leave extends CI_Controller {
         $where_array = array('id' => $this->id);
         $res = $this->leave_model->delete($where_array);
         if ($res) {
-            $this->session->set_flashdata('flash_message', 'Timesheet Entry Deleted Successfully');
+            $this->session->set_flashdata('flash_message', 'Leave Entry Deleted Successfully');
             $this->session->set_flashdata('flash_message_css', 'alert-success');
             redirect($this->router->directory.$this->router->class.'');
         }

@@ -22,6 +22,7 @@
 				<div class="dropdown-menu" aria-labelledby="dropdown01_ess">					
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">My Profile Details</a>
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'document'); ?>">My Documents</a>					
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave'); ?>">Apply Leave</a>					
 				</div>
 			</li>
 
