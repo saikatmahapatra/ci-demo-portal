@@ -43,8 +43,14 @@ class Leave extends CI_Controller {
 		$this->load->model('leave_model');
 		$this->id = $this->uri->segment(3);
 		
-		//Dropdown
+		
 		$this->data['leave_type_arr'] = array(''=>'-Select-','CL'=>'Casual Leave','SL'=>'Sick Leave','EL'=>'Earned Leave');
+		$this->data['leave_status_arr'] = array(
+            'P'=>array('text'=>'Pending', 'css'=>'text-secondary'),
+            'C'=>array('text'=>'Cancelled', 'css'=>'text-warning'),
+            'R'=>array('text'=>'Rejected', 'css'=>'text-danger'),
+            'A'=>array('text'=>'Approved', 'css'=>'text-success')
+        );
 		
 		
 		//View Page Config
@@ -54,7 +60,7 @@ class Leave extends CI_Controller {
     }
 	
 	function index() {				
-		$this->data['page_heading'] = 'Apply Leave';		
+		$this->data['page_heading'] = 'Leave';		
         $this->add();
         $this->index_ci_pagination();
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
@@ -67,7 +73,7 @@ class Leave extends CI_Controller {
 		$total_num_rows = $result_array['num_rows'];
 		
 		//Pagination config starts here		
-        $per_page = 30;
+        $per_page = 10;
         $config['uri_segment'] = 4; //which segment of your URI contains the page number
         $config['num_links'] = 2;
         $page = ($this->uri->segment($config['uri_segment'])) ? ($this->uri->segment($config['uri_segment'])-1) : 0;
@@ -86,6 +92,11 @@ class Leave extends CI_Controller {
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         if ($this->input->post('form_action') == 'add') {
             if ($this->validate_form_data('add') == true) {  
+                $from_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('leave_from_date'))); // or your date as well
+                $to_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('leave_to_date')));
+                $datediff = ($to_date - $from_date);
+                $no_day = round($datediff / (60 * 60 * 24));
+                //die();
                 $leave_request_id = 'LR-'.time();              
 				$postdata = array(                    
                     'leave_req_id' => $leave_request_id,
@@ -94,7 +105,7 @@ class Leave extends CI_Controller {
                     'leave_from_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_from_date')),
                     'leave_to_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_to_date')),
                     'user_id' => $this->sess_user_id,					
-                    'leave_created_on' => date('Y-m-d H:i:s')
+                    'leave_created_on' => date('Y-m-d H:i:s')                    
                 );
                 $insert_id = $this->leave_model->insert($postdata);
                 if ($insert_id) {
@@ -107,15 +118,44 @@ class Leave extends CI_Controller {
     }
 	
 	function validate_form_data($action = NULL) {
-        $this->form_validation->set_rules('leave_type', 'leave type', 'required');
-        $this->form_validation->set_rules('leave_reason', 'leave reason', 'required|max_length[100]');
-        $this->form_validation->set_rules('leave_from_date', 'from date', 'required');
-        $this->form_validation->set_rules('leave_to_date', 'to date', 'required');
+        $this->form_validation->set_rules('leave_type', ' ', 'required');
+        $this->form_validation->set_rules('leave_reason', ' ', 'required|max_length[100]');
+        $this->form_validation->set_rules('leave_from_date', ' ', 'required');
+        $this->form_validation->set_rules('leave_to_date', ' ', 'required|callback_validate_days_diff|callback_is_leave_exists_in_date_range');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
         } else {
             return false;
+        }
+    }
+
+    function validate_days_diff(){
+        $from_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('leave_from_date'))); // or your date as well
+        $to_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('leave_to_date')));
+        $datediff = ($to_date - $from_date);
+        $no_day = round($datediff / (60 * 60 * 24));
+        if($no_day >= 0 ){
+            return true;
+        }else{
+            $this->form_validation->set_message('validate_days_diff', 'Invalid date range.');
+            return false;
+        }
+    }
+
+    function is_leave_exists_in_date_range(){       
+        $cond = array(
+            'from_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_from_date')),
+            'to_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_to_date')),
+            'user_id' => $this->sess_user_id
+        );
+        $res = $this->leave_model->check_leave_date_range($cond);
+        if($res > 0){
+            $this->form_validation->set_message('is_leave_exists_in_date_range', 'Leave date exists.');
+            return false;
+        }
+        else{            
+            return true;
         }
     }
 	
