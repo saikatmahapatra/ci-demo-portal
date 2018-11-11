@@ -105,7 +105,9 @@ class Leave extends CI_Controller {
                     'leave_from_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_from_date')),
                     'leave_to_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_to_date')),
                     'user_id' => $this->sess_user_id,					
-                    'leave_created_on' => date('Y-m-d H:i:s')                    
+                    'leave_created_on' => date('Y-m-d H:i:s'),
+                    'leave_status' => 'P',
+
                 );
                 $insert_id = $this->leave_model->insert($postdata);
                 if ($insert_id) {
@@ -224,8 +226,7 @@ class Leave extends CI_Controller {
         echo json_encode($output);
     }
 	
-	function delete() {
-		$this->id= $this->uri->segment(3);
+	function delete() {		
         $where_array = array('id' => $this->id);
         $res = $this->leave_model->delete($where_array);
         if ($res) {
@@ -233,6 +234,14 @@ class Leave extends CI_Controller {
             $this->session->set_flashdata('flash_message_css', 'alert-success');
             redirect($this->router->directory.$this->router->class.'');
         }
+    }
+
+    function details() {				
+        $this->data['page_heading'] = 'Leave Details';      
+        $result_array = $this->leave_model->get_rows($this->id, NULL, NULL, FALSE, TRUE);
+        $this->data['data_rows'] = $result_array['data_rows'];
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/details', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 
 }

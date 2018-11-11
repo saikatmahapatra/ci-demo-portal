@@ -55,7 +55,7 @@ class Leave_model extends CI_Model {
 
     function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
         $result = array();
-        $this->db->select('t1.*');        
+        $this->db->select('t1.*, (DATEDIFF(t1.leave_to_date, t1.leave_from_date)+1) leave_days');        
         if ($id) {
             $this->db->where('t1.id', $id);
         }

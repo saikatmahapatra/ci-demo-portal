@@ -114,8 +114,9 @@
 								<th scope="col">Leave Type</th>
 								<th scope="col">From Date</th>
 								<th scope="col">To Date</th>
+								<th scope="col">Days</th>
 								<th scope="col">Leave Status</th>
-								<th scope="col">Reason</th>						
+								<!-- <th scope="col">Reason</th>-->
 								<th scope="col"></th>
 							</tr>
 						</thead>
@@ -129,12 +130,15 @@
 									<td><?php echo $row['leave_type'];?></td>
 									<td><?php echo $this->common_lib->display_date($row['leave_from_date']);?></td>
 									<td><?php echo $this->common_lib->display_date($row['leave_to_date']);?></td>
+									<td><?php echo $row['leave_days'].' day(s)';?></td>
 									<td>
 										<!-- <span class="small"><i class="fa fa-square <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>  -->
 										<span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>"> <?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
 									</td>
-									<td><?php echo isset($row['leave_reason']) ? word_limiter($row['leave_reason'], 5) : '';?></td>
-									<td><a href="#" class="btn btn-outline-info">Details</a></td>
+									<!-- <td><?php echo isset($row['leave_reason']) ? word_limiter($row['leave_reason'], 5) : '';?></td> -->
+									<td>
+									<a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id']);?>" class="btn btn-outline-info btn-sm">Details</a>
+									</td>
 								</tr>
 								<?php
 							}
