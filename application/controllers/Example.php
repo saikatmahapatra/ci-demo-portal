@@ -326,12 +326,12 @@ class Example extends CI_Controller {
 
         $from_name = 'Web Tester';
         $from_email = 'tester@gmail.com';
-        $html = 'Hello, Im testing croj job. Ok Google';
+        $html = 'Hello, Im testing croj job. Ok Google.';
         $config['mailtype'] = 'html';
         $this->email->initialize($config);
         $this->email->to('webuidevs@gmail.com');
         $this->email->from($from_email, $from_name);
-        $this->email->subject('Cron Job Test -'.time());
+        $this->email->subject('Cron Job Test');
         $this->email->message($html);
         $result = $this->email->send();
         if($result === true){
