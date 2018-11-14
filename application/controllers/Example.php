@@ -318,6 +318,29 @@ class Example extends CI_Controller {
         }
     }
 
+    function test_cron_job(){
+        /**
+         * Command in cPanel
+         * /usr/local/bin/php /home/unitedeipl/public_html/portal/index.php example test_cron_job
+         */
+
+        $from_name = 'Web Tester';
+        $from_email = 'tester@gmail.com';
+        $html = 'Hello, Im testing croj job. Ok Google';
+        $config['mailtype'] = 'html';
+        $this->email->initialize($config);
+        $this->email->to('webuidevs@gmail.com');
+        $this->email->from($from_email, $from_name);
+        $this->email->subject('Cron Job Test -'.time());
+        $this->email->message($html);
+        $result = $this->email->send();
+        if($result === true){
+            echo "message sent";
+        }else{
+            echo "unable to send message";
+        }
+    }
+
 }
 
 ?>
