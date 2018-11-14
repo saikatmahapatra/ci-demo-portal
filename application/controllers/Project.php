@@ -91,6 +91,7 @@ class Project extends CI_Controller {
         foreach ($data_rows as $result) {
             $no++;
             $row = array();
+            $row[] = $result['project_number'];
             $row[] = $result['project_name'];
             //$row[] = $result['project_desc'];            
             $status_indicator = 'text-secondary';            
@@ -109,7 +110,7 @@ class Project extends CI_Controller {
                 'data-original-title' => 'Edit',
                 'title' => 'Edit',
             ));
-            $action_html.='&nbsp;';
+            /*$action_html.='&nbsp;';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-trash" aria-hidden="true"></i> Delete', array(
                 'class' => 'btn btn-sm btn-outline-danger btn-delete ml-1',
 				'data-confirmation'=>true,
@@ -117,7 +118,7 @@ class Project extends CI_Controller {
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Delete',
                 'title' => 'Delete',
-            ));
+            ));*/
 
             $row[] = $action_html;
             $data[] = $row;
@@ -143,6 +144,7 @@ class Project extends CI_Controller {
             if ($this->validate_form_data('add') == true) {
 
                 $postdata = array(
+                    'project_number' => $this->input->post('project_number'),
                     'project_name' => $this->input->post('project_name'),
                     'project_desc' => $this->input->post('project_desc'),
                     'project_status' => $this->input->post('project_status')
@@ -171,6 +173,7 @@ class Project extends CI_Controller {
         if ($this->input->post('form_action') == 'update') {
             if ($this->validate_form_data('edit') == true) {
                 $postdata = array(
+                    'project_number' => $this->input->post('project_number'),
                     'project_name' => $this->input->post('project_name'),
                     'project_desc' => $this->input->post('project_desc'),
                     'project_status' => $this->input->post('project_status')
@@ -205,6 +208,7 @@ class Project extends CI_Controller {
     }
 
     function validate_form_data($action = NULL) {		
+        $this->form_validation->set_rules('project_number', 'project code', 'required');			
         $this->form_validation->set_rules('project_name', 'project name', 'required');			
         $this->form_validation->set_rules('project_status', 'project status', 'required');					
 		$this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');

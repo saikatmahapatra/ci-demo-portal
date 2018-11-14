@@ -19,7 +19,12 @@
 		<?php echo form_hidden('form_action', 'insert'); ?>
 		
 		<div class="form-row">		
-			<div class="form-group col-md-12">									
+			<div class="form-group col-md-4">									
+				<label for="project_number" class="">Project Number/Code <span class="required">*</span></label>
+				<?php echo form_input(array('name' => 'project_number', 'value' => set_value('project_number'), 'id' => 'project_number', 'class' => 'form-control', 'placeholder' => '', 'maxlength'=>'15'));?>
+				<?php echo form_error('project_number'); ?>
+			</div>		
+			<div class="form-group col-md-8">									
 				<label for="project_name" class="">Project Name <span class="required">*</span></label>
 				<?php echo form_input(array('name' => 'project_name', 'value' => set_value('project_name'), 'id' => 'project_name', 'class' => 'form-control', 'placeholder' => ''));?>
 				<?php echo form_error('project_name'); ?>
@@ -28,7 +33,7 @@
 		
 		<div class="form-row">
 			<div class="form-group col-md-12">									
-				<label for="project_desc" class="">Project Description </label>
+				<label for="project_desc" class="">Project Description (Optional)</label>
 				<?php echo form_textarea(array('name' => 'project_desc','value' => set_value('project_desc'),'class' => 'form-control textarea','id' => 'project_desc','rows' => '2','cols' => '50','placeholder' => '')); ?>
 				<?php echo form_error('project_desc'); ?>
 			</div>
