@@ -28,7 +28,8 @@
 						<thead class="thead-dark">
 							<tr>
 								<th scope="col">Date</th>
-								<th scope="col">Description</th>
+								<th scope="col">Holiday Type</th>
+								<th scope="col">Occasion</th>
 								<th scope="col">Action</th>
 							</tr>
 						</thead>
@@ -36,7 +37,8 @@
 						<tfoot>
 							<tr>
 								<th scope="col">Date</th>
-								<th scope="col">Description</th>
+								<th scope="col">Holiday Type</th>
+								<th scope="col">Occasion</th>
 								<th scope="col">Action</th>
 							</tr>
 						</tfoot>

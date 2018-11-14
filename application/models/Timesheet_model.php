@@ -57,7 +57,8 @@ class Timesheet_model extends CI_Model {
         $result = array();
         $this->db->select('
 		t1.*,
-		t2.project_name,
+        t2.project_name,
+        t2.project_number,
 		t3.task_activity_name
 		');
 		$this->db->join('projects as t2', 't2.id = t1.project_id', 'left');        
@@ -247,6 +248,7 @@ class Timesheet_model extends CI_Model {
         t1.timesheet_hours,
         t1.timesheet_description,
         t1.timesheet_created_on,
+		t2.project_number,
 		t2.project_name,
 		t3.task_activity_name,
 		t4.user_firstname,

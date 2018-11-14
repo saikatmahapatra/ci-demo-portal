@@ -49,7 +49,9 @@ class Holiday extends CI_Controller {
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		
 		//Pagination
-		 $this->load->library('pagination');
+         $this->load->library('pagination');
+         
+         $this->data['arr_holiday_type'] = array(''=>'Select','C'=>'Calendar Holiday','O'=>'Optional Holiday');
 		
     }
 
@@ -100,6 +102,7 @@ class Holiday extends CI_Controller {
             $no++;
             $row = array();
             $row[] = $this->common_lib->display_date($result['holiday_date']);
+            $row[] = $this->data['arr_holiday_type'][$result['holiday_type']];
             $row[] = $result['holiday_description'];
             //add html for action
             $action_html = '';
@@ -157,7 +160,8 @@ class Holiday extends CI_Controller {
             if ($this->validate_form_data('add') == true) {
                 $postdata = array(
                     'holiday_date' => $this->common_lib->convert_to_mysql($this->input->post('holiday_date')),
-                    'holiday_description' => $this->input->post('holiday_description')
+                    'holiday_description' => $this->input->post('holiday_description'),
+                    'holiday_type' => $this->input->post('holiday_type')
                 );
                 $insert_id = $this->holiday_model->insert($postdata);
                 if ($insert_id) {
@@ -195,7 +199,8 @@ class Holiday extends CI_Controller {
             if ($this->validate_form_data('edit') == true) {
                 $postdata = array(
                     'holiday_date' => $this->common_lib->convert_to_mysql($this->input->post('holiday_date')),
-                    'holiday_description' => $this->input->post('holiday_description')
+                    'holiday_description' => $this->input->post('holiday_description'),
+                    'holiday_type' => $this->input->post('holiday_type')
                 );
                 $where_array = array('id' => $this->input->post('id'));
                 $res = $this->holiday_model->update($postdata, $where_array);
@@ -247,6 +252,7 @@ class Holiday extends CI_Controller {
 			$this->form_validation->set_rules('holiday_date', 'holiday date', 'required');
 		}
         $this->form_validation->set_rules('holiday_description', 'holiday description', 'required');
+        $this->form_validation->set_rules('holiday_type', 'holiday type', 'required');
 
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {

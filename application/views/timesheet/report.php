@@ -65,7 +65,7 @@
 				
 				<?php if(isset($data_rows) && sizeof($data_rows)>0){ ?>
 				<div class="table-responsive">
-					<?php echo form_open(current_url(), array('method' => 'GET', 'class' => 'form-inline my-3', 'name' => 'download_data')); ?>
+					<?php echo form_open(current_url(), array('method' => 'GET', 'class' => 'form-inline my-3 ml-2', 'name' => 'download_data')); ?>
 						<input type="hidden" name="form_action" value="search">
 						<input type="hidden" name="form_action_primary" value="download">
 						<input type="hidden" name="q_emp" value="<?php echo $this->input->get('q_emp');?>">
@@ -92,7 +92,7 @@
 									<tr>
 										<td><?php echo $this->common_lib->display_date($row['timesheet_date']);?></td>
 										<td><?php echo $row['user_firstname'].' '.$row['user_lastname'];?></td>
-										<td><?php echo $row['project_name'];?></td>
+										<td><?php echo $row['project_number'].'-'.$row['project_name'];?></td>
 										<td><?php echo $row['task_activity_name'];?></td>
 										<td><?php echo $row['timesheet_hours'];?></td>
 										<td><?php echo $row['timesheet_description'];?></td>

@@ -219,7 +219,7 @@ class Timesheet extends CI_Controller {
             //$row[] = $result['timesheet_review_status'];
 			
 			$html = '<div class="font-weight-bold">'.$this->common_lib->display_date($result['timesheet_date']).' <span class="float-right"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$result['timesheet_hours'].' hrs</span></div>';			
-			$html.= '<div class="">'.$result['project_name'].'<span class="float-right">'.$result['task_activity_name'].'</span></div>';			
+			$html.= '<div class="">'.$result['project_number'].' '.$result['project_name'].'<span class="float-right">'.$result['task_activity_name'].'</span></div>';			
 			
             
                 //add html for action
@@ -431,7 +431,7 @@ class Timesheet extends CI_Controller {
             $sheet->setCellValue('A' . $excel_row, $serial_no);
             $sheet->setCellValue('B' . $excel_row, $this->common_lib->display_date($row['timesheet_date']));
             $sheet->setCellValue('C' . $excel_row, $row['user_firstname'].' '.$row['user_lastname']);
-            $sheet->setCellValue('D' . $excel_row, $row['project_name']);
+            $sheet->setCellValue('D' . $excel_row, $row['project_number'].'-'.$row['project_name']);
             $sheet->setCellValue('E' . $excel_row, $row['task_activity_name']);
             $sheet->setCellValue('F' . $excel_row, $row['timesheet_hours']);
             $sheet->setCellValue('G' . $excel_row, $row['timesheet_description']);            
