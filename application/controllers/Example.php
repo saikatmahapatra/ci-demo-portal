@@ -325,7 +325,7 @@ class Example extends CI_Controller {
          */
 
         $from_name = 'Web Tester';
-        $from_email = 'tester@gmail.com';
+        $from_email = 'webuidevs@gmail.com';
         $html = 'Hello, Im testing croj job. Ok Google.';
         $config['mailtype'] = 'html';
         $this->email->initialize($config);
