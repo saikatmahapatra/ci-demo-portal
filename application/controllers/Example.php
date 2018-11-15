@@ -326,7 +326,7 @@ class Example extends CI_Controller {
 
         $from_name = 'Web Tester';
         $from_email = 'webuidevs@gmail.com';
-        $html = 'Hello, Im testing croj job. Ok Google.';
+        $html = 'Hello, Im testing croj job. Ok Google. <img alt="Birthday Greetings" src="'.base_url('assets/src/img/img_email/hbd.jpg').'">';
         $config['mailtype'] = 'html';
         $this->email->initialize($config);
         $this->email->to('webuidevs@gmail.com');

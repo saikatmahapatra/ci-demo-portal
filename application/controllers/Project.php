@@ -73,7 +73,7 @@ class Project extends CI_Controller {
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
-	
+
     function render_datatable() {
         //Total rows - Refer to model method definition
         $result_array = $this->project_model->get_rows();
@@ -133,7 +133,7 @@ class Project extends CI_Controller {
         );
         //output to json format
         echo json_encode($output);
-    }
+    }    
 
     function add() {        
 		$this->breadcrumbs->push('Add','/');				
@@ -192,7 +192,7 @@ class Project extends CI_Controller {
 		$this->data['page_heading'] = 'Edit Project';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
-    }
+    }   
 
     function delete() {
         //Check user permission by permission name mapped to db
@@ -217,6 +217,147 @@ class Project extends CI_Controller {
         } else {
             return false;
         }
+    }
+
+    function activity() {
+        // Check user permission by permission name mapped to db
+        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
+			
+		$this->breadcrumbs->push('View','/');				
+		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
+		
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+		
+		$this->data['page_heading'] = 'Timesheet Activities';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/activity', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function render_activity_datatable() {
+        //Total rows - Refer to model method definition
+        $result_array = $this->project_model->get_activity_rows();
+        $total_rows = $result_array['num_rows'];
+
+        // Total filtered rows - check without limit query. Refer to model method definition
+        $result_array = $this->project_model->get_activity_rows(NULL, NULL, NULL, TRUE, FALSE);
+        $total_filtered = $result_array['num_rows'];
+
+        // Data Rows - Refer to model method definition
+        $result_array = $this->project_model->get_activity_rows(NULL, NULL, NULL, TRUE);
+        $data_rows = $result_array['data_rows'];
+        $data = array();
+        $no = $_REQUEST['start'];
+        foreach ($data_rows as $result) {
+            $no++;
+            $row = array();
+            $row[] = $result['task_activity_name'];
+            //$row[] = $result['project_desc'];            
+            $status_indicator = 'text-secondary';            
+            if($result['task_activity_status'] == 'Y'){
+                $status_indicator = 'text-success';
+            }
+            if($result['task_activity_status'] == 'N'){
+                $status_indicator = 'text-warning';
+            }
+            $row[] = '<i class="fa fa-square '.$status_indicator.'" aria-hidden="true"></i>';
+            //add html for action
+            $action_html = '';
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_activity/' .$result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
+                'class' => 'btn btn-sm btn-outline-secondary mr-1',
+                'data-toggle' => 'tooltip',
+                'data-original-title' => 'Edit',
+                'title' => 'Edit',
+            ));
+            /*$action_html.='&nbsp;';
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-trash" aria-hidden="true"></i> Delete', array(
+                'class' => 'btn btn-sm btn-outline-danger btn-delete ml-1',
+				'data-confirmation'=>true,
+				'data-confirmation-message'=>'Are you sure, you want to delete this?',
+                'data-toggle' => 'tooltip',
+                'data-original-title' => 'Delete',
+                'title' => 'Delete',
+            ));*/
+
+            $row[] = $action_html;
+            $data[] = $row;
+        }
+
+        /* jQuery Data Table JSON format */
+        $output = array(
+            'draw' => isset($_REQUEST['draw']) ? $_REQUEST['draw'] : '',
+            'recordsTotal' => $total_rows,
+            'recordsFiltered' => $total_filtered,
+            'data' => $data,
+        );
+        //output to json format
+        echo json_encode($output);
+    }
+
+    function validate_activity_form_data($action = NULL) {		
+        $this->form_validation->set_rules('task_activity_name', ' ', 'required');			
+        $this->form_validation->set_rules('task_activity_status', ' ', 'required');
+		$this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function add_activity() {        
+		$this->breadcrumbs->push('Add','/');				
+		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        if ($this->input->post('form_action') == 'insert') {
+            if ($this->validate_activity_form_data('add') == true) {
+
+                $postdata = array(
+                    'task_activity_name' => $this->input->post('task_activity_name'),
+                    'task_activity_status' => $this->input->post('task_activity_status')
+                );
+                $insert_id = $this->project_model->insert($postdata,'task_activities');
+                if ($insert_id) {
+                    $this->session->set_flashdata('flash_message', 'Data Added Successfully.');
+                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    redirect($this->router->directory.$this->router->class.'/add_activity');
+                }
+            }
+        }
+		$this->data['page_heading'] = 'Add Activity';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/add_activity', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function edit_activity() {
+        //Check user permission by permission name mapped to db
+        //$is_authorized = $this->common_lib->is_auth('cms-edit');
+		//$this->data['page_heading'] = "Edit Page Content";
+		$this->breadcrumbs->push('Edit','/');				
+		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        if ($this->input->post('form_action') == 'update') {
+            if ($this->validate_activity_form_data('edit') == true) {
+                $postdata = array(
+                    'task_activity_name' => $this->input->post('task_activity_name'),
+                    'task_activity_status' => $this->input->post('task_activity_status')
+                );
+                $where_array = array('id' => $this->input->post('id'));
+                $res = $this->project_model->update($postdata, $where_array, 'task_activities');
+                if ($res) {
+                    $this->session->set_flashdata('flash_message', 'Data Updated Successfully.');
+                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    redirect(current_url());
+                }
+            }
+        }
+        $result_array = $this->project_model->get_activity_rows($this->id);
+        $this->data['rows'] = $result_array['data_rows'];
+		$this->data['page_heading'] = 'Edit Activity';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_activity', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 
 }

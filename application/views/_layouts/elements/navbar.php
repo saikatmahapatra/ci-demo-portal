@@ -50,6 +50,7 @@
 						<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
 						<a class="dropdown-item" href="<?php echo base_url('timesheet/report'); ?>">Timesheet Report</a>						
 						<a class="dropdown-item" href="<?php echo base_url('project'); ?>">Add/Manage Projects</a>
+						<a class="dropdown-item" href="<?php echo base_url('project/activity'); ?>">Add/Manage Timesheet Activity</a>
 						<?php } ?>
 					</div>
 				</li>

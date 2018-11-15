@@ -126,4 +126,70 @@ class Project_model extends CI_Model {
         return $result;
     }
 
+    function get_activity_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
+        $result = array();
+        $this->db->select('t1.*');        
+        if ($id) {
+            $this->db->where('t1.id', $id);
+        }
+
+        ####################################################################
+        ##################### Display using Data Table #####################
+        ####################################################################
+        if ($dataTable == TRUE) {
+            //set column field database for datatable orderable
+            $column_order = array(
+                't1.task_activity_name',
+                't1.task_activity_status',
+                NULL,
+            );            
+            //set column field database(table column name) for datatable searchable
+            $column_search = array(
+                't1.task_activity_name',
+                't1.task_activity_status'
+                );
+             // default order
+            $order = array(
+                't1.id' => 'desc'
+                );
+            $i = 0;
+            foreach ($column_search as $item) { // loop column
+                if (isset($_REQUEST['search']['value'])) { // if datatable send POST for search
+                    if ($i === 0) { // first loop
+                        $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
+                        $this->db->like($item, $_REQUEST['search']['value']);
+                    } else {
+                        $this->db->or_like($item, $_REQUEST['search']['value']);
+                    }
+                    if (count($column_search) - 1 == $i) { //last loop
+                        $this->db->group_end(); //close bracket
+                    }
+                }
+                $i++;
+            }
+            if (isset($_REQUEST['order'])) { // here order processing
+                $this->db->order_by($column_order[$_REQUEST['order']['0']['column']], $_REQUEST['order']['0']['dir']);
+            } else if (isset($order)) {
+                $this->db->order_by(key($order), $order[key($order)]);
+            }
+            //Paging, checkPaging flag added for counting filtered rows without limit offset
+            if (($checkPaging == TRUE) && (isset($_REQUEST['length']) && $_REQUEST['length'] != -1)) {
+                $this->db->limit($_REQUEST['length'], $_REQUEST['start']);
+            }//End of paging
+        }//if $dataTable
+        ####################################################################
+        ##################### Display using Data Table Ends ################
+        ####################################################################
+        else {
+            if ($limit) {
+                $this->db->limit($limit, $offset);
+            }
+        }
+        $query = $this->db->get('task_activities as t1');
+        //print_r($this->db->last_query());
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return array('num_rows' => $num_rows, 'data_rows' => $result);
+    }
+
 }
