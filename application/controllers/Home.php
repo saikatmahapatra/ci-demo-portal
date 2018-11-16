@@ -88,7 +88,11 @@ class Home extends CI_Controller {
         $result_array = $this->cms_model->get_contents(NULL, $per_page, $offset, FALSE, TRUE);
         $this->data['data_rows'] = $result_array['data_rows'];
 		
-
+        // Dashboard Stats
+        $this->data['user_count'] = $this->home_model->get_user_count();
+        $this->data['projects_count'] = $this->home_model->get_user_projects();
+        $this->data['timesheet_user'] = $this->home_model->get_user_of_timesheet();
+        // Dashboard Stats
         
 		$this->data['page_heading'] = 'Welcome to '.$this->config->item('app_company_product');
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);

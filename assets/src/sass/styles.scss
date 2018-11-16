@@ -304,23 +304,29 @@ a[data-link-type="user-profile-card"] {
 
 //CMS Feed Style
 .card-news {
-    border-left: 1px solid $primary-color;
+    border-top: 2px solid $primary-color;
+    min-height: 230px;
+    max-height: 230px;
+    overflow: hidden;
 }
 
 [data-cms-type="notice"] {
-    border-left: 1px solid $color_blue;
+    border-top: 2px solid $blue;
+    background-color: lighten($blue, 40%);
 }
 
 [data-cms-type="news"] {
-    border-left: 1px solid $color_green;
+    border-top: 2px solid $green;
+    background-color: lighten($green, 50%);
 }
 
 [data-cms-type="policy"] {
-    border-left: 1px solid $color_red;
+    border-top: 2px solid $red;
+    background-color: lighten($red, 40%);
 }
 
 .bg-maroon {
-    background-color: $color_red;
+    background-color: $red;
 }
 
 .bg-blue {
@@ -418,3 +424,34 @@ table.ci-table.dataTable {
 /*.dataTables_wrapper .dataTables_processing {
     background-color: rgba(0, 0, 0, .5);
 }*/
+
+//Create light color
+.bg-primary-light {
+    background-color: lighten($primary-color, 15%);
+    ;
+}
+
+.bg-success-light {
+    background-color: lighten($green, 15%);
+    ;
+}
+
+.bg-danger-light {
+    background-color: lighten($red, 15%);
+    ;
+}
+
+.bg-warning-light {
+    background-color: lighten($orange, 15%);
+    ;
+}
+
+.bg-teal-light {
+    background-color: lighten($teal, 15%);
+    ;
+}
+
+.bg-teal {
+    background-color: $teal;
+    ;
+}
