@@ -312,17 +312,17 @@ a[data-link-type="user-profile-card"] {
 
 [data-cms-type="notice"] {
     border-top: 2px solid $blue;
-    background-color: lighten($blue, 40%);
+    background-color: lighten($blue, 50%);
 }
 
 [data-cms-type="news"] {
     border-top: 2px solid $green;
-    background-color: lighten($green, 50%);
+    background-color: lighten($green, 55%);
 }
 
 [data-cms-type="policy"] {
     border-top: 2px solid $red;
-    background-color: lighten($red, 40%);
+    background-color: lighten($red, 44%);
 }
 
 .bg-maroon {
@@ -454,4 +454,17 @@ table.ci-table.dataTable {
 .bg-teal {
     background-color: $teal;
     ;
+}
+
+.ci-accordion-card {
+    border: none;
+    .card-header {
+        padding: 0.5rem 0.25rem;
+        margin-bottom: 0;
+        border-bottom: 1px solid $primary-color;
+        background-color: transparent;
+    }
+    .card-body {
+        padding-left: 0px;
+    }
 }

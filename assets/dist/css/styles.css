@@ -8719,17 +8719,17 @@ a[data-link-type="user-profile-card"] {
 
 [data-cms-type="notice"] {
   border-top: 2px solid #337ab7;
-  background-color: #c7ddef;
+  background-color: #eff5fa;
 }
 
 [data-cms-type="news"] {
   border-top: 2px solid #28a745;
-  background-color: #d8f6df;
+  background-color: #edfbf0;
 }
 
 [data-cms-type="policy"] {
   border-top: 2px solid #dc3545;
-  background-color: #fae3e5;
+  background-color: #fdf4f5;
 }
 
 .bg-maroon {
@@ -8849,4 +8849,19 @@ table.ci-table.dataTable {
 
 .bg-teal {
   background-color: #20c997;
+}
+
+.ci-accordion-card {
+  border: none;
+}
+
+.ci-accordion-card .card-header {
+  padding: 0.5rem 0.25rem;
+  margin-bottom: 0;
+  border-bottom: 1px solid #0b1372;
+  background-color: transparent;
+}
+
+.ci-accordion-card .card-body {
+  padding-left: 0px;
 }

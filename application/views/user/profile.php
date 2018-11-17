@@ -48,17 +48,17 @@
 						<!--<div class=""><a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><i class="fa fa-pencil"></i> Change/Remove</a></div>-->
 					</div>
 					<div class="col-md-10">
-						<div class="h6 mt-2">
+						<div class="h5">
 							<?php
-								echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
+								//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 								echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
 								echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
 								echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
 							?>
 						</div>
 						<!--<div class="small"><?php //echo isset($row['role_name']) ? $row['role_name'] : ''; ?></div>-->
-						<div class=""><?php echo isset($row['user_emp_id']) ? 'Emp # '.$row['user_emp_id'] : ''; ?></div>
-						<div class=""><?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
+						<div class="">Employee ID : <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
+						<div class="">Designation : <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
 						<div class="">
 							<i class="fa fa-envelope-o" aria-hidden="true"></i> 
 							<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
@@ -76,35 +76,34 @@
 				</div>
 			</div><!--/.card-header-->
 			<div class="card-body">
-				<nav>
-					
+				<nav>					
 					<div class="nav nav-tabs ci-nav-tab" id="nav-tab" role="tablist">
-					<a class="nav-item nav-link active" id="nav-basic-tab" data-toggle="tab" href="#nav-basic" role="tab" aria-controls="nav-basic" aria-selected="true">Basic Info</a>
+					<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><i class="fa fa-info-circle" aria-hidden="true"></i> Basic Info</a>
 					<?php if($this->common_lib->is_auth(array('view-user-address'),false) == true){ ?>		
-					<a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab" href="#nav-address" role="tab" aria-controls="nav-address" aria-selected="false">Address</a>								
+					<a class="nav-item nav-link" id="nav-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><i class="fa fa-map-marker" aria-hidden="true"></i> Address</a>								
 					<?php } ?>
 					
 					<?php  if($this->common_lib->is_auth(array('view-user-education'),false) == true){ ?>		
-					<a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Academic Records</a>			
+					<a class="nav-item nav-link" id="nav-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><i class="fa fa-certificate" aria-hidden="true"></i> Education</a>			
 					<?php } ?>
 					
 					<?php if($this->common_lib->is_auth(array('view-user-exp'),false) == true){ ?>		
-					<a class="nav-item nav-link" id="nav-exp-tab" data-toggle="tab" href="#nav-exp" role="tab" aria-controls="nav-exp" aria-selected="false">Work Experience</a>
+					<a class="nav-item nav-link" id="nav-4" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false"><i class="fa fa-briefcase" aria-hidden="true"></i> Experiences</a>
 					<?php } ?>
 					
 					<?php if($this->common_lib->is_auth(array('view-user-bank'),false) == true){ ?>		
-					<a class="nav-item nav-link" id="nav-bank-tab" data-toggle="tab" href="#nav-bank" role="tab" aria-controls="nav-bank" aria-selected="false">Bank Account</a>
+					<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="false"><i class="fa fa-credit-card" aria-hidden="true"></i> Salary A/C</a>
 					<?php } ?>
 
 					<?php if($this->common_lib->is_auth(array('view-user-account-stat'),false) == true){ ?>		
-					<a class="nav-item nav-link" id="nav-account-stat-tab" data-toggle="tab" href="#nav-account-stat" role="tab" aria-controls="nav-account-stat" aria-selected="false">Account Statistics</a>
+					<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false"><i class="fa fa-pie-chart" aria-hidden="true"></i> Others</a>
 					<?php } ?>
 					
 					</div>
 				</nav>
 
 				<div class="tab-content" id="nav-tabContent">
-					<div class="tab-pane fade show active" id="nav-basic" role="tabpanel" aria-labelledby="nav-basic-tab">
+					<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="nav-1">
 						<div class="row mt-3">
 							<div class="col-md-12">
 							<!--<a class="btn btn-primary btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"> Edit</a>-->
@@ -113,6 +112,7 @@
 								<dt class="col-sm-2">Name</dt>
 								<dd class="col-sm-10">
 									<?php
+									echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 									echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
 									echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
 									echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
@@ -145,10 +145,10 @@
 							
 							</div>
 						</div>
-					</div> <!--/#nav-basic-->
+					</div> <!--/#tab-1-->
 					
 					<?php if($this->common_lib->is_auth(array('view-user-address'),false) == true){ ?>	
-					<div class="tab-pane fade" id="nav-address" role="tabpanel" aria-labelledby="nav-address-tab">
+					<div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="nav-2">
 						<div class="row mt-3">
 							<div class="col-md-12">
 							<?php if(isset($address)){
@@ -174,11 +174,11 @@
 									}?>
 							</div>
 						</div>
-					</div> <!--/#nav-address-->
+					</div> <!--/#tab-2-->
 					<?php } ?>
 					
 					<?php if($this->common_lib->is_auth(array('view-user-education'),false) == true){ ?>	
-					<div class="tab-pane fade" id="nav-education" role="tabpanel" aria-labelledby="nav-education-tab">
+					<div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="nav-3">
 						<div class="row mt-3">
 							<div class="col-md-12">
 							<?php /*if(isset($education)){
@@ -233,55 +233,14 @@
 								</div><!--/.table-responsive-sm-->
 							</div>
 						</div>
-					</div> <!--/#nav-education-->
+					</div> <!--/#tab-3-->
 					<?php } ?>
 					
 					<?php if($this->common_lib->is_auth(array('view-user-exp'),false) == true){ ?>	
-					<div class="tab-pane fade" id="nav-exp" role="tabpanel" aria-labelledby="nav-exp-tab">
+					<div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="nav-4">
 						<div class="row mt-3">
 							<div class="col-md-12">
-								<?php /* ?>
-								<dl class="row">
-									<dt class="col-md-12">United Exploration India Pvt Ltd</dt>
-									<dd class="col-md-12">
-										<div class="row">
-											<div class="col-md-9">
-												<div class=""><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></div>													
-												</div>
-											<div class="col-md-3">
-												<?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']).' to Present' : '-'; ?>
-											</div>
-										</div>
-									</dd>												
-								</dl><!--/dl.row-->
-								<?php if(isset($job_exp)){
-										foreach($job_exp as $key=>$row){
-										?>
-											<dl class="row">
-												<dt class="col-md-12">																										
-													<?php echo isset($row['company_name'])? $row['company_name']: ' ';?><br>												
-												</dt>
-												<dd class="col-md-12">
-													<div class="row">
-														<div class="col-md-9">
-															<div class=""><?php echo isset($row['designation_name']) ? $row['designation_name'] : '';?></div>																
-																<div class="mt-1">
-																	Key Roles  : 
-																	<?php echo isset($row['job_description']) ? $row['job_description'] : '';?>
-																</div>
-															</div>
-														<div class="col-md-3"><?php echo isset($row['from_date']) ? $this->common_lib->display_date($row['from_date']).' to '.$this->common_lib->display_date($row['to_date']):'';?></div>
-													</div>
-													
-													<!--<div class="mt-2 mb-2">
-													<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>													
-													</div>-->
-												</dd>												
-											</dl><!--/dl.row-->
-										<?php
-										}
-									}?>
-									<?php */?>
+								
 									<div class="table-responsive-sm">
 										<table class="table table-striped">
 											<thead class="thead-dark">
@@ -319,30 +278,32 @@
 									</div><!--/.table-responsive-sm-->
 							</div>
 						</div>
-					</div><!--/#nav-exp-->
+					</div><!--/#tab-4-->
 					<?php } ?>
 
 					<?php if($this->common_lib->is_auth(array('view-user-bank'),false) == true){ ?>	
-					<div class="tab-pane fade" id="nav-bank" role="tabpanel" aria-labelledby="nav-bank-tab">
+					<div class="tab-pane fade" id="tab-5" role="tabpanel" aria-labelledby="nav-5">
 						<div class="row mt-3">
 							<div class="col-md-12">
 							<?php $uni = isset($user_national_identifiers) ? $user_national_identifiers[0] : ''; ?>
 								
-								<dl class="row">
+							<dl class="row">
 									<dt class="col-md-2">PAN No</dt>
-									<dd class="col-md-10">
+									<dd class="col-md-4">
 										<?php echo isset($uni['user_pan_no']) ? $uni['user_pan_no'] : '-';?>
 									</dd>
 									<dt class="col-md-2">Aadhar No</dt>
-									<dd class="col-md-10">
+									<dd class="col-md-4">
 										<?php echo isset($uni['user_aadhar_no']) ? $uni['user_aadhar_no'] : '-';?>
 									</dd>
+								</dl>
+								<dl class="row">
 									<dt class="col-md-2">Passport No</dt>
-									<dd class="col-md-10">
+									<dd class="col-md-4">
 										<?php echo isset($uni['user_passport_no']) ? $uni['user_passport_no'] : '-';?>
 									</dd>
 									<dt class="col-md-2">UAN No (PF)</dt>
-									<dd class="col-md-10">
+									<dd class="col-md-4">
 										<?php echo isset($uni['user_uan_no']) ? $uni['user_uan_no'] : '-';?>
 									</dd>
 								</dl>
@@ -379,28 +340,32 @@
 								</div><!--/.table-responsive-sm-->
 							</div>
 						</div>
-					</div><!--/#nav-bank-->
+					</div><!--/#tab-5-->
 					<?php } ?>
 
 					<?php if($this->common_lib->is_auth(array('view-user-account-stat'),false) == true){ ?>		
-						<div class="tab-pane fade" id="nav-account-stat" role="tabpanel" aria-labelledby="nav-account-stat-tab">
+						<div class="tab-pane fade" id="tab-6" role="tabpanel" aria-labelledby="nav-6">
 							<div class="row mt-3">
 								<div class="col-md-12">
 									<dl class="row">
 										<dt class="col-sm-2">Account/Login Status</dt>
-										<dd class="col-sm-10"><?php echo isset($user_row['user_account_active']) ? ($user_row['user_account_active']=='Y' ? 'Active' : ($user_row['user_account_active']=='N' ? 'Inactive' : '' )) : '-'; ?></dd>
+										<dd class="col-sm-4"><?php echo isset($user_row['user_account_active']) ? ($user_row['user_account_active']=='Y' ? 'Active' : ($user_row['user_account_active']=='N' ? 'Inactive' : '' )) : '-'; ?></dd>
 										<dt class="col-sm-2">Registered on</dt>
-										<dd class="col-sm-10"><?php echo isset($user_row['user_registration_date']) ? $this->common_lib->display_date($user_row['user_registration_date'],true) : '-'; ?></dd>									
+										<dd class="col-sm-4"><?php echo isset($user_row['user_registration_date']) ? $this->common_lib->display_date($user_row['user_registration_date'],true) : '-'; ?></dd>									
+									</dl>
+									<dl class="row">
 										<dt class="col-sm-2">Registered from IP</dt>
-										<dd class="col-sm-10"><?php echo isset($user_row['user_registration_ip']) ? $user_row['user_registration_ip'] : '-'; ?></dd>
+										<dd class="col-sm-4"><?php echo isset($user_row['user_registration_ip']) ? $user_row['user_registration_ip'] : '-'; ?></dd>
 										<dt class="col-sm-2">Last Login Date Time</dt>
-										<dd class="col-sm-10"><?php echo isset($user_row['user_login_date_time']) ? $this->common_lib->display_date($user_row['user_login_date_time'],true) : '-'; ?></dd>
+										<dd class="col-sm-4"><?php echo isset($user_row['user_login_date_time']) ? $this->common_lib->display_date($user_row['user_login_date_time'],true) : '-'; ?></dd>
+									</dl>
+									<dl class="row">
 										<dt class="col-sm-2">User Archived</dt>
-										<dd class="col-sm-10"><?php echo isset($user_row['user_archived']) ? ($user_row['user_archived']=='Y' ? 'Yes' : ($user_row['user_archived']=='N' ? 'No' : '' )) : '-'; ?></dd>
+										<dd class="col-sm-4"><?php echo isset($user_row['user_archived']) ? ($user_row['user_archived']=='Y' ? 'Yes' : ($user_row['user_archived']=='N' ? 'No' : '' )) : '-'; ?></dd>
 									</dl>
 								</div>
 							</div>
-						</div><!--/#nav-account-stat-->
+						</div><!--/#tab-6-->
 					<?php } ?>
 
 					
