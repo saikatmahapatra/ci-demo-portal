@@ -643,6 +643,30 @@ class User_model extends CI_Model {
         return $result;
     }
 
+    function find_birthday(){
+        $day = date('d');
+        $month = date('m');
+        $result = array();
+        $this->db->select('
+        t1.user_firstname,
+        t1.user_lastname,
+        t1.user_email,
+        t1.user_email_secondary
+		');
+        $this->db->where(
+			array(
+			'DAY(`user_dob`)' => $day,
+            'MONTH(`user_dob`)' => $month,
+            'user_archived' => 'N'
+			)
+		);
+        $query = $this->db->get('users as t1');
+        //print_r($this->db->last_query());
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return array('num_rows' => $num_rows, 'data_rows' => $result);
+    }
+
 }
 
 ?>
