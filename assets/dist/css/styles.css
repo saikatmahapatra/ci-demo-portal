@@ -3651,8 +3651,8 @@ input[type="button"].btn-block {
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #0b1372;
-  background-color: transparent;
+  color: #fff;
+  background-color: #0b1372;
   border-color: #0b1372;
 }
 
@@ -8661,8 +8661,7 @@ a[data-link-type="user-profile-card"] {
 
 .nav-link.active {
   border: 0;
-  border-bottom: 3px solid #0b1372;
-  font-weight: 700;
+  border-bottom: 1px solid #0b1372;
 }
 
 .navbar-nav .show > .nav-link,

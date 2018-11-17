@@ -54,6 +54,33 @@ class User extends CI_Controller {
         $this->data['bank_ac_type'] = array('SB'=>'Savings','CU'=>'Current');
         $this->data['account_uses'] = array('SAL'=>'Salary Credit','REI'=>'Reimbursement');
         $this->data['arr_gender'] = array('M'=>'Male','F'=>'Female');
+
+        $this->data['arr_upload_document_type_name'] = array(
+            "" => "Select",
+            "aadhar_card" => "Aadhar Card",
+            "pan_card" => "PAN Card",
+            "driving_license" => "Driving License",
+            "voter_card" => "Voter Card",
+            "medical_fit_certificate" => "Medical Fit Certificate",
+            "school_certificate" => "School Certificate",
+            "10_marksheet" => "10th Equivallent Mark Sheet",
+            "10_certificate" => "10th Certificate",
+            "12_marksheet" => "12th Equivallent Mark Sheet",
+            "12_certificate" => "12th Certificate",
+            "graduation_marksheet" => "Graduation Mark Sheet (Final Semistar)",
+            "pg_marksheet" => "Post Graduation Marksheet (Final Semistar)",
+            "work_exp_letter" => "Work Experience Letter",
+            "permanent_addr_proof" => "Premanent Address Proof",
+            "current_addr_proof" => "Current Address Proof",
+        );
+        ksort($this->data['arr_upload_document_type_name']);
+
+        $this->data['char_doc_verification'] = array(
+            'P'=>'Verification Pending',
+            'N' => 'Not verified',
+            'Y' =>'Verified',
+            'R' => 'Document Rejected'
+        );
     }
 
     function index() {
@@ -812,6 +839,16 @@ class User extends CI_Controller {
         $this->data['job_exp'] = $this->user_model->get_user_work_experience(NULL, $user_id);
         $this->data['user_national_identifiers'] = $this->user_model->get_user_national_identifiers($user_id);        
         $this->data['bank_details'] = $this->user_model->get_user_bank_account_details(NULL, $user_id);
+        
+        if($this->common_lib->is_auth(array('view-user-uploads'),false) == true){
+            $this->load->model('upload_model');
+            $upload_object_name = 'user';
+            $this->data['upload_object_name'] = $upload_object_name;
+            $this->data['upload_object_user_id'] = $user_id;
+            $this->data['all_uploads'] = $this->upload_model->get_uploads($upload_object_name, $user_id, NULL, NULL);
+        }
+        
+
 		$this->data['page_heading'] = 'Profile';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/profile', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);

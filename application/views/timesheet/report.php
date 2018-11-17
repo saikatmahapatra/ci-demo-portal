@@ -27,7 +27,7 @@
 					<?php echo form_hidden('form_action', 'search'); ?>		  
 						<div class="form-row">
 							<div class="form-group col-md-4 ci-select2">
-								<label for="q_emp" class="">Employee <span class="required">*</span></label>
+								<label for="q_emp" class="">Employee</label>
 								<?php echo form_dropdown('q_emp', $user_arr, $this->input->get_post('q_emp'),array('class' => 'form-control select2-control', 'id'=>'q_emp')); ?> 
 								<?php echo form_error('q_emp'); ?>
 							</div>
@@ -39,7 +39,7 @@
 							</div>
 
 							<div class="form-group col-md-2">									
-								<label for="from_date" class="">From</label>
+								<label for="from_date" class="">From <span class="required">*</span></label>
 								<?php 
 									$first_day_this_month = date('01-m-Y');
 									$last_day_this_month  = date('t-m-Y');
@@ -49,7 +49,7 @@
 							</div>
 						
 							<div class="form-group col-md-2">									
-								<label for="to_date" class="">To</label>
+								<label for="to_date" class="">To <span class="required">*</span></label>
 								<?php echo form_input(array('name' => 'to_date','value' => (isset($_REQUEST['to_date']) ? $_REQUEST['to_date'] : $last_day_this_month),'class' => 'form-control report-datepicker','id' => 'to_date','placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
 								<?php echo form_error('to_date'); ?>
 							</div>

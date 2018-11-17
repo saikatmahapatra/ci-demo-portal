@@ -364,11 +364,26 @@ class Timesheet extends CI_Controller {
 
     function validate_search_form_data($data) {        
         $this->form_validation->set_data($data);
-        $this->form_validation->set_rules('q_emp', 'employee', 'required');
+        //$this->form_validation->set_rules('q_emp', 'employee', 'required');
+        $this->form_validation->set_rules('from_date', ' ', 'required');
+        $this->form_validation->set_rules('to_date', ' ', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
         } else {
+            return false;
+        }
+    }
+
+    function validate_days_diff(){
+        $from_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('from_date'))); // or your date as well
+        $to_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('to_date')));
+        $datediff = ($to_date - $from_date);
+        $no_day = round($datediff / (60 * 60 * 24));
+        if($no_day >= 0 ){
+            return true;
+        }else{
+            $this->form_validation->set_message('validate_days_diff', 'Invalid date range.');
             return false;
         }
     }

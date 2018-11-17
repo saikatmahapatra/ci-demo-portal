@@ -98,6 +98,10 @@
 					<?php if($this->common_lib->is_auth(array('view-user-account-stat'),false) == true){ ?>		
 					<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false"><i class="fa fa-pie-chart" aria-hidden="true"></i> Others</a>
 					<?php } ?>
+
+					<?php if($this->common_lib->is_auth(array('view-user-uploads'),false) == true){ ?>		
+					<a class="nav-item nav-link" id="nav-7" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fa fa-cloud-download" aria-hidden="true"></i> Documents</a>
+					<?php } ?>
 					
 					</div>
 				</nav>
@@ -110,7 +114,7 @@
 							<!--<h6>Basic Info</h6><hr>-->		
 							<dl class="row">
 								<dt class="col-sm-2">Name</dt>
-								<dd class="col-sm-10">
+								<dd class="col-sm-4">
 									<?php
 									echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 									echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
@@ -119,27 +123,35 @@
 									?>
 								</dd>
 								<dt class="col-sm-2">Employee ID</dt>
-								<dd class="col-sm-10"><?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : '-'; ?></dd>
+								<dd class="col-sm-4"><?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : '-'; ?></dd>
+							</dl>
+							<dl class="row">
 								<!--<dt class="col-sm-2">Date of Joining</dt>
 								<dd class="col-sm-10"><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></dd>-->
 								<dt class="col-sm-2">Designation</dt>
-								<dd class="col-sm-10"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
+								<dd class="col-sm-4"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
 								<dt class="col-sm-2">Email (Work)</dt>
-								<dd class="col-sm-10"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?></a></dd>
+								<dd class="col-sm-4"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?></a></dd>
+							</dl>
+							<dl class="row">
 								<dt class="col-sm-2">Mobile (Work)</dt>
-								<dd class="col-sm-10"><?php echo isset($row['user_phone2']) ? $row['user_phone2'] : '-'; ?></dd>
+								<dd class="col-sm-4"><?php echo isset($row['user_phone2']) ? $row['user_phone2'] : '-'; ?></dd>
 								<dt class="col-sm-2">Email (Personal)</dt>
-								<dd class="col-sm-10"><a href="mailto:<?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?>"><?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?></a></dd>			
+								<dd class="col-sm-4"><a href="mailto:<?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?>"><?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?></a></dd>			
+							</dl>
+							<dl class="row">
 								<dt class="col-sm-2">Mobile (Personal)</dt>
-								<dd class="col-sm-10"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : '-'; ?></dd>						
+								<dd class="col-sm-4"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : '-'; ?></dd>						
 								<dt class="col-sm-2">Birth Day</dt>
-								<dd class="col-sm-10">
+								<dd class="col-sm-4">
 								<?php echo isset($row['user_dob']) ? $this->common_lib->display_date($row['user_dob'],NULL, TRUE) : '-'; ?>
 								</dd>
+							</dl>
+							<dl class="row">
 								<dt class="col-sm-2">Gender</dt>
-								<dd class="col-sm-10"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : ''; ?></dd>
+								<dd class="col-sm-4"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : ''; ?></dd>
 								<dt class="col-sm-2">Blood Group</dt>
-								<dd class="col-sm-10"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : ''; ?></dd>
+								<dd class="col-sm-4"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : ''; ?></dd>
 								
 							</dl><!--/dl.row-->
 							
@@ -363,6 +375,52 @@
 										<dt class="col-sm-2">User Archived</dt>
 										<dd class="col-sm-4"><?php echo isset($user_row['user_archived']) ? ($user_row['user_archived']=='Y' ? 'Yes' : ($user_row['user_archived']=='N' ? 'No' : '' )) : '-'; ?></dd>
 									</dl>
+								</div>
+							</div>
+						</div><!--/#tab-6-->
+					<?php } ?>
+
+
+					<?php if($this->common_lib->is_auth(array('view-user-uploads'),false) == true){ ?>		
+						<div class="tab-pane fade" id="tab-7" role="tabpanel" aria-labelledby="nav-7">
+							<div class="row mt-3">
+								<div class="col-md-12">
+									<?php
+										if (isset($all_uploads) && sizeof($all_uploads) > 0) {
+											foreach ($all_uploads as $key => $upload) {
+										?>
+										<div class="file-container row my-2" id="upload_grid_<?php echo $upload['id']; ?>">
+											<div class="col-md-6"><?php echo $arr_upload_document_type_name[$upload['upload_document_type_name']]; ?></div>
+											<div class="col-md-4">
+												<div class="small">
+													<div class="text-muted">
+														<?php echo 'Uploaded on '.$this->common_lib->display_date($upload['upload_date'], true); ?>
+													</div>
+													<div class="text-muted">
+														<?php echo $char_doc_verification[$upload['upload_is_verified']]; ?>
+													</div>							
+												</div>
+											</div>
+											<div class="col-md-2">
+												<?php
+													$file_path = 'assets/uploads/'.$upload_object_name.'/docs/' . $upload_object_user_id . '/' . $upload['upload_file_name'];
+													if (file_exists(FCPATH . $file_path)) {
+														$file_src = base_url($file_path);
+														$btn_class='';
+													} else {
+														$file_src = '#';
+														$btn_class='disabled';	
+													}
+												?>
+												<a target="_new" href="<?php echo $file_src;?>" title="<?php echo $upload['upload_document_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><i class="fa fa-download"></i> View</a>												
+											</div>
+										</div>
+										<?php } //foreach ?>
+										<?php }else {?>
+										<div class="row">
+											<div class="col-md-12">No documents uploaded...</div>
+										</div>
+										<?php }?>
 								</div>
 							</div>
 						</div><!--/#tab-6-->
