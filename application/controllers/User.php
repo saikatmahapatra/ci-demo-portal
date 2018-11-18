@@ -803,6 +803,9 @@ class User extends CI_Controller {
         $this->data['job_exp'] = $this->user_model->get_user_work_experience(NULL, $user_id);
         $this->data['user_national_identifiers'] = $this->user_model->get_user_national_identifiers($this->sess_user_id);
         $this->data['bank_details'] = $this->user_model->get_user_bank_account_details(NULL, $user_id);
+        
+        $this->data['approvers'] = $this->user_model->get_user_approvers($this->sess_user_id);
+        //print_r($this->data['approvers']); 
 		$this->data['page_heading'] = 'My Profile';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/my_profile', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
@@ -1288,7 +1291,10 @@ class User extends CI_Controller {
                     'user_department' => $this->input->post('user_department'),
                     'user_designation' => $this->input->post('user_designation'),
                     'user_account_active' => $this->input->post('user_account_active'),              
-                    'user_supervisor_id' => $this->input->post('user_supervisor_id')                
+                    'user_supervisor_id' => $this->input->post('user_supervisor_id'),                
+                    'user_hr_approver_id' => $this->input->post('user_hr_approver_id'),                
+                    'user_director_approver_id' => $this->input->post('user_director_approver_id'),                
+                    'user_finance_approver_id' => $this->input->post('user_finance_approver_id')                
                 );
                 $where = array('id' => $user_id);
                 $res = $this->user_model->update($postdata, $where);

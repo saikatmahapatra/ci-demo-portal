@@ -667,6 +667,39 @@ class User_model extends CI_Model {
         return array('num_rows' => $num_rows, 'data_rows' => $result);
     }
 
+    function get_user_approvers($user_id = NULL) {
+        $this->db->select('
+        t1.id, 
+        t2.user_firstname as supervisor_firstname,
+        t2.user_lastname as supervisor_lastname,
+        t2.user_emp_id as supervisor_emp_id,
+
+        t3.user_firstname as hr_firstname,
+        t3.user_lastname as hr_lastname,
+        t3.user_emp_id as hr_emp_id,
+
+        t4.user_firstname as director_firstname,
+        t4.user_lastname as director_lastname,
+        t4.user_emp_id as director_emp_id,
+
+        t5.user_firstname as finance_firstname,
+        t5.user_lastname as finance_lastname,
+        t5.user_emp_id as finance_emp_id,
+        ');
+        if ($user_id) {
+            $this->db->where('t1.id', $user_id);
+        }        	
+        $this->db->join('users t2', 't1.user_supervisor_id = t2.id');       
+        $this->db->join('users t3', 't1.user_hr_approver_id = t3.id');       
+        $this->db->join('users t4', 't1.user_director_approver_id = t4.id');       
+        $this->db->join('users t5', 't1.user_finance_approver_id = t5.id');       
+        $query = $this->db->get('users t1');
+        //echo $this->db->last_query();
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return $result;
+    }
+
 }
 
 ?>

@@ -7,7 +7,7 @@
 </div><!--/.heading-container-->
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-10">
 		<?php
 			// Show server side flash messages
 			if (isset($alert_message)) {
@@ -178,7 +178,7 @@
 		</div>
 		
 		<div class="form-row">
-				<div class="form-group col-md-6">                            
+				<div class="form-group col-md-4">                            
 					<label for="user_dob" class="">Date of Birth <span class="required">*</span></label>				
 					<?php
 					/*echo form_input(array(
@@ -206,7 +206,7 @@
 					<?php echo form_error('dob_month'); ?>
 					<?php echo form_error('dob_year'); ?>
 				</div>
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-4">
 					<label for="gender">Gender <span class="required">*</span></label>
 					<div class="">
 						<div class="custom-control custom-radio custom-control-inline">
@@ -229,7 +229,34 @@
 						</div>								
 					</div>
 					<?php echo form_error('user_gender'); ?>
-			  </div>
+			  	</div>
+				<?php if($row['id'] != $this->common_lib->get_sess_user('id')){?>
+				<div class="form-group col-md-4">
+					<label for="user_account_active" class="">Portal Account Status <span class="required">*</span></label>
+					<div class="">
+						<div class="custom-control custom-radio custom-control-inline">
+							<?php
+								$radio_is_checked = isset($_POST['user_account_active']) ? $_POST['user_account_active'] == 'Y' : ($row['user_account_active'] == 'Y');
+								echo form_radio(array('name' => 'user_account_active','value' => 'Y','id' => 'Y','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('user_account_active', 'Y'));
+							?>
+							<label class="custom-control-label" for="Y">Active</span></label>
+						</div>
+						
+						<div class="custom-control custom-radio custom-control-inline">
+							<?php
+								$radio_is_checked = isset($_POST['user_account_active']) ? $_POST['user_account_active'] == 'N' : ($row['user_account_active'] == 'N');
+								echo form_radio(array('name' => 'user_account_active', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_account_active', 'N'));
+							?>
+							<label class="custom-control-label" for="N">Inactive</span></label>
+						</div>								
+					</div>
+					<small id="emailHelp" class="form-text text-muted">Inactive users will not be able to login.</small>
+					<?php echo form_error('user_account_active'); ?>
+				</div>
+				<?php } else{
+					echo form_hidden('user_account_active', $row['user_account_active']);
+				} ?>
+
 			</div>
 			
 			<?php /* ?>
@@ -248,46 +275,31 @@
 
 			<?php */ ?>
 			<?php //echo form_hidden('user_role', 3); ?>
-
+			
+			
 			<div class="form-row">
-				<div class="form-group col-md-6 ci-select2">
-					<label for="q_emp" class="">Supervisor</label>
+				<div class="form-group col-md-3 ci-select2">
+					<label for="" class="">Supervisor / Approver</label>
 					<?php echo form_dropdown('user_supervisor_id', $user_arr, isset($row['user_supervisor_id'])?$row['user_supervisor_id']:set_value('user_supervisor_id') ,array('class' => 'form-control select2-control', 'id'=>'user_supervisor_id')); ?> 
 					<?php echo form_error('user_supervisor_id'); ?>
 				</div>
-			</div>
-			
-			<?php if($row['id'] != $this->common_lib->get_sess_user('id')){?>
-
-            <div class="form-row">				
-				<div class="form-group col-md-12">
-				  <label for="user_account_active" class="">Account Active ? <span class="required">*</span></label>
-				  	<div class="">
-						<div class="custom-control custom-radio custom-control-inline">
-							<?php
-								$radio_is_checked = isset($_POST['user_account_active']) ? $_POST['user_account_active'] == 'Y' : ($row['user_account_active'] == 'Y');
-
-								echo form_radio(array('name' => 'user_account_active','value' => 'Y','id' => 'Y','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('user_account_active', 'Y'));
-							?>
-							<label class="custom-control-label" for="Y">Yes</span></label>
-						</div>
-						
-						<div class="custom-control custom-radio custom-control-inline">
-							<?php
-								$radio_is_checked = isset($_POST['user_account_active']) ? $_POST['user_account_active'] == 'N' : ($row['user_account_active'] == 'N');
-
-								echo form_radio(array('name' => 'user_account_active', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_account_active', 'N'));
-							?>
-							<label class="custom-control-label" for="N">No</span></label>
-						</div>								
-					</div>
-					<small id="emailHelp" class="form-text text-muted">If you deactivate this user account, user will  not be able to login.</small>
-					<?php echo form_error('user_account_active'); ?>
+				<div class="form-group col-md-3 ci-select2">
+					<label for="" class="">HR Approver</label>
+					<?php echo form_dropdown('user_hr_approver_id', $user_arr, isset($row['user_hr_approver_id'])?$row['user_hr_approver_id']:set_value('user_hr_approver_id') ,array('class' => 'form-control select2-control', 'id'=>'user_hr_approver_id')); ?> 
+					<?php echo form_error('user_hr_approver_id'); ?>
+				</div>
+				<div class="form-group col-md-3 ci-select2">
+					<label for="" class="">Director Approver</label>
+					<?php echo form_dropdown('user_director_approver_id', $user_arr, isset($row['user_director_approver_id'])?$row['user_director_approver_id']:set_value('user_supervisor_id') ,array('class' => 'form-control select2-control', 'id'=>'user_director_approver_id')); ?> 
+					<?php echo form_error('user_director_approver_id'); ?>
+				</div>
+				<div class="form-group col-md-3 ci-select2">
+					<label for="" class="">Finance Approver</label>
+					<?php echo form_dropdown('user_finance_approver_id', $user_arr, isset($row['user_finance_approver_id'])?$row['user_finance_approver_id']:set_value('user_supervisor_id') ,array('class' => 'form-control select2-control', 'id'=>'user_finance_approver_id')); ?> 
+					<?php echo form_error('user_finance_approver_id'); ?>
 				</div>
 			</div>
-			<?php } else{
-				echo form_hidden('user_account_active', $row['user_account_active']);
-			} ?>
+
         <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
         <?php echo form_close(); ?>

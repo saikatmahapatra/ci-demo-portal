@@ -3437,3 +3437,8 @@ INSERT INTO `permissions` (`id`, `permission_name`, `permission_description`, `p
 ALTER TABLE `users` CHANGE `user_uan_no` `user_uan_no` VARCHAR(16) NULL DEFAULT NULL;
 
 ALTER TABLE `uploads` ADD `upload_is_verified` CHAR(1) NULL DEFAULT 'N' AFTER `upload_date`, ADD `upload_verified_by` INT(11) NULL AFTER `upload_is_verified`, ADD `upload_verified_on` DATETIME NULL AFTER `upload_verified_by`
+
+
+
+---19/11/2018
+ALTER TABLE `users`  ADD `user_hr_approver_id` INT(11) NULL DEFAULT NULL  AFTER `user_supervisor_id`,  ADD `user_director_approver_id` INT(11) NULL DEFAULT NULL  AFTER `user_hr_approver_id`,  ADD `user_finance_approver_id` INT(11) NULL DEFAULT NULL  AFTER `user_director_approver_id`;
