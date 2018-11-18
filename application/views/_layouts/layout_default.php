@@ -63,7 +63,9 @@
 	<script src="<?php echo base_url('assets/vendors/pace-js/pace.min.js'); ?>"></script>
 	
 	<!-- CKEditor -->
-	<script src="<?php echo base_url('assets/vendors/ckeditor5-build-classic/build/ckeditor.js'); ?>"></script>
+	<!-- <script src="<?php echo base_url('assets/vendors/ckeditor5-build-classic/build/ckeditor.js'); ?>"></script> -->
+    <!-- <script src="//cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script> -->
+    <script src="<?php echo base_url('assets/vendors/ckeditor/ckeditor.js'); ?>"></script>
 	
 	<!--Application Specific JS Loading Through Controllers-->
     <?php echo isset($app_js) ? $app_js : ''; ?>
