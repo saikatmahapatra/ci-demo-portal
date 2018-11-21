@@ -24,7 +24,7 @@
 			<div class="card-body">
 				<h6 class="card-title text-on-card">Apply Leave</h6>
 
-					<table class="table table-sm table-bordered">
+					<!-- <table class="table table-sm table-bordered">
 						<thead class="thead-light text-center">
 							<tr>
 								<th class="bg-dark text-white" scope="col" colspan="3">Leave Balance 2017-2018 FY</th>								
@@ -42,7 +42,7 @@
 								<td>0.25 / 7.0</td>
 							</tr>
 						</tbody>
-					</table>
+					</table> -->
 
 				<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => 'ci-form-leave',)); ?>
 				<?php echo form_hidden('form_action', 'add'); ?>

@@ -358,6 +358,7 @@ function initPage() {
     panelGroupToggle();
     renderFieldHelp();
     setActiveTarget();
+    openInWindow();
 
     //Select 2
     $('.select2-control').select2();
@@ -408,4 +409,17 @@ function showAjaxLoader() {
 
 function hideAjaxLoader() {
     $("#ajax-loader").css("display", "none");
+}
+
+function openInWindow() {
+    $('a[data-target="window"]').on('click', function(e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+        var width = window.innerWidth * 0.66;
+        // define the height in
+        var height = width * window.innerHeight / window.innerWidth;
+        // Ratio the hight to the width as the user screen ratio
+        window.open(url, 'newwindow', 'width=' + width + ', height=' + height + ', top=' + ((window.innerHeight - height) / 2) + ', left=' + ((window.innerWidth - width) / 2));
+        //window.open(url, 'newwindow', 'width=300,height=250');
+    })
 }

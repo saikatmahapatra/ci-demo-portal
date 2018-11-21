@@ -669,7 +669,7 @@ class User_model extends CI_Model {
 
     function get_user_approvers($user_id = NULL) {
         $this->db->select('
-        t1.id, 
+        t1.*, 
         t2.user_firstname as supervisor_firstname,
         t2.user_lastname as supervisor_lastname,
         t2.user_emp_id as supervisor_emp_id,
@@ -687,13 +687,26 @@ class User_model extends CI_Model {
         t5.user_emp_id as finance_emp_id,
         ');
         if ($user_id) {
-            $this->db->where('t1.id', $user_id);
+            $this->db->where('t1.user_id', $user_id);
         }        	
         $this->db->join('users t2', 't1.user_supervisor_id = t2.id' , 'left');       
         $this->db->join('users t3', 't1.user_hr_approver_id = t3.id', 'left');       
         $this->db->join('users t4', 't1.user_director_approver_id = t4.id', 'left');       
         $this->db->join('users t5', 't1.user_finance_approver_id = t5.id', 'left');       
-        $query = $this->db->get('users t1');
+        //$this->db->join('users t6', 't1.user_finance_approver_id = t5.id', 'left');       
+        $query = $this->db->get('user_approvers t1');
+        //echo $this->db->last_query();
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return $result;
+    }
+
+    function has_user_approvers($user_id = NULL) {
+        $this->db->select('t1.id');
+        if ($user_id) {
+            $this->db->where('t1.user_id', $user_id);
+        }     
+        $query = $this->db->get('user_approvers t1');
         //echo $this->db->last_query();
         $num_rows = $query->num_rows();
         $result = $query->result_array();

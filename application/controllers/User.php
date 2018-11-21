@@ -1276,6 +1276,8 @@ class User extends CI_Controller {
         $res_pic = $this->user_model->get_user_profile_pic($user_id);
         $this->data['profile_pic'] = $res_pic[0]['user_profile_pic'];
         $this->data['user_arr'] = $this->user_model->get_user_dropdown();
+        $this->data['approvers'] = $this->user_model->get_user_approvers($user_id);
+        //print_r($this->data['approvers'][0]); die();
 
         if ($this->input->post('form_action') == 'update_profile') {
             if ($this->validate_edit_user_profile_form() == true) {
@@ -1290,14 +1292,11 @@ class User extends CI_Controller {
                     //'user_role' => $this->input->post('user_role'),
                     'user_department' => $this->input->post('user_department'),
                     'user_designation' => $this->input->post('user_designation'),
-                    'user_account_active' => $this->input->post('user_account_active'),              
-                    'user_supervisor_id' => $this->input->post('user_supervisor_id'),                
-                    'user_hr_approver_id' => $this->input->post('user_hr_approver_id'),                
-                    'user_director_approver_id' => $this->input->post('user_director_approver_id'),                
-                    'user_finance_approver_id' => $this->input->post('user_finance_approver_id')                
+                    'user_account_active' => $this->input->post('user_account_active')
                 );
                 $where = array('id' => $user_id);
                 $res = $this->user_model->update($postdata, $where);
+                $this->update_user_approvers();
                 if ($res) {
                     $this->session->set_flashdata('flash_message', 'Employee information has been updated successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
@@ -1309,6 +1308,26 @@ class User extends CI_Controller {
 		$this->data['page_heading'] = 'Edit Employee Profile';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_user_profile', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function update_user_approvers(){
+        $user_id = $this->uri->segment(3);
+        $postdata = array(                          
+            'user_supervisor_id' => $this->input->post('user_supervisor_id'),                
+            'user_hr_approver_id' => $this->input->post('user_hr_approver_id'),                
+            'user_director_approver_id' => $this->input->post('user_director_approver_id'),                
+            'user_finance_approver_id' => $this->input->post('user_finance_approver_id')                
+        );
+
+        $has_approver = $this->user_model->has_user_approvers($user_id);
+        //print_r($has_approver);die();
+        if(isset($has_approver) && sizeof($has_approver) > 0){
+            $where = array('id'=> $has_approver[0]['id'], 'user_id' => $user_id);
+            $res = $this->user_model->update($postdata, $where, 'user_approvers');
+        }else{
+            $postdata['user_id'] = $user_id;
+            $res = $this->user_model->insert($postdata, 'user_approvers');
+        }
     }
 
     function validate_edit_user_profile_form() {
