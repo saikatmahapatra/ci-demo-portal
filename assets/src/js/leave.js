@@ -5,14 +5,14 @@ $(function() {
         format: "dd-mm-yyyy",
         weekStart: 1,
         autoclose: true,
-        startDate: '-3d'
+        startDate: '0d'
     });
 
     $('#leave_to_date').datepicker({
         format: "dd-mm-yyyy",
         weekStart: 1,
         autoclose: true,
-        startDate: '-3d'
+        startDate: '0d'
     });
 });
 

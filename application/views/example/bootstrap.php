@@ -380,6 +380,37 @@
 		<button class="btn btn-secondary">Cancel</button>
 	</form><!--/form-->
 
+	<h2 class="page-header mt-4">Steps Indicator</h2>
+	<div class="row ci-wizard">                
+		<div class="col-sm-3 ci-wizard-step complete">
+			<div class="text-center ci-wizard-stepnum">Step 1</div>
+			<div class="progress"><div class="progress-bar"></div></div>
+			<a href="#" class="ci-wizard-dot"></a>
+			<div class="ci-wizard-info text-center">Lorem ipsum dolor sit amet.</div>
+		</div>
+		
+		<div class="col-sm-3 ci-wizard-step complete"><!-- complete -->
+			<div class="text-center ci-wizard-stepnum">Step 2</div>
+			<div class="progress"><div class="progress-bar"></div></div>
+			<a href="#" class="ci-wizard-dot"></a>
+			<div class="ci-wizard-info text-center">Nam mollis tristique erat vel tristique. Aliquam erat volutpat. Mauris et vestibulum nisi. Duis molestie nisl sed scelerisque vestibulum. Nam placerat tristique placerat</div>
+		</div>
+		
+		<div class="col-sm-3 ci-wizard-step active"><!-- complete -->
+			<div class="text-center ci-wizard-stepnum">Step 3</div>
+			<div class="progress"><div class="progress-bar"></div></div>
+			<a href="#" class="ci-wizard-dot"></a>
+			<div class="ci-wizard-info text-center">Integer semper dolor ac auctor rutrum. Duis porta ipsum vitae mi bibendum bibendum</div>
+		</div>
+		
+		<div class="col-sm-3 ci-wizard-step disabled"><!-- active -->
+			<div class="text-center ci-wizard-stepnum">Step 4</div>
+			<div class="progress"><div class="progress-bar"></div></div>
+			<a href="#" class="ci-wizard-dot"></a>
+			<div class="ci-wizard-info text-center"> Curabitur mollis magna at blandit vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae</div>
+		</div>			
+	</div><!--/.row .ci-wizard-->
+
 
 
 	<h2 class="page-header mt-4">Modal</h2>

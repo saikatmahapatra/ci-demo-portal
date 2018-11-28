@@ -229,16 +229,15 @@ class User extends CI_Controller {
                 'class' => 'btn btn-sm btn-outline-secondary mr-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'View Profile',
-                'title' => 'View Profile',
-                'target'=>'_new'
+                'title' => 'View Profile'
+                
             ));
 
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
                 'class' => 'btn btn-sm btn-outline-secondary mr-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit Profile',
-                'title' => 'Edit Profile',
-                'target'=>'_new'
+                'title' => 'Edit Profile'                
             ));
 			/*$action_html.= anchor(base_url($this->router->directory.$this->router->class.'/manage'), $acc_status_text, array(
                 'class' => 'change_account_status ' . $acc_status_class,

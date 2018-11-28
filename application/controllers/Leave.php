@@ -44,7 +44,7 @@ class Leave extends CI_Controller {
 		$this->id = $this->uri->segment(3);
 		
 		
-		$this->data['leave_type_arr'] = array(''=>'-Select-','CL'=>'Casual Leave','SL'=>'Sick Leave','EL'=>'Earned Leave');
+		$this->data['leave_type_arr'] = array(''=>'-Select-','CL'=>'Casual Leave','PL'=>'Privileged Leave','OL'=>'Optional Leave');
 		$this->data['leave_status_arr'] = array(
             'P'=>array('text'=>'Pending', 'css'=>'text-secondary'),
             'C'=>array('text'=>'Cancelled', 'css'=>'text-warning'),
@@ -58,36 +58,13 @@ class Leave extends CI_Controller {
 		$this->data['page_heading'] = $this->router->class.' : '.$this->router->method;
         
     }
-	
-	function index() {				
-		$this->data['page_heading'] = 'Leave';		
-        $this->add();
-        $this->index_ci_pagination();
-        $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
-        $this->load->view('_layouts/layout_default', $this->data);
-    }
 
-    function index_ci_pagination() {
-        // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
-		$result_array = $this->leave_model->get_rows(NULL, NULL, NULL, FALSE, FALSE);
-		$total_num_rows = $result_array['num_rows'];
-		
-		//Pagination config starts here		
-        $per_page = 10;
-        $config['uri_segment'] = 4; //which segment of your URI contains the page number
-        $config['num_links'] = 2;
-        $page = ($this->uri->segment($config['uri_segment'])) ? ($this->uri->segment($config['uri_segment'])-1) : 0;
-        $offset = ($page*$per_page);
-        $this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page);
-        //Pagination config ends here
-        
-
-        // Data Rows - Refer to model method definition
-        $result_array = $this->leave_model->get_rows(NULL, $per_page, $offset, FALSE, TRUE);
-        $this->data['data_rows'] = $result_array['data_rows'];
+    function index(){
+        $this->apply();
     }
 	
-	function add() {        
+	function apply() {				
+		$this->data['page_heading'] = 'Apply Leave';		
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         if ($this->input->post('form_action') == 'add') {
@@ -116,7 +93,35 @@ class Leave extends CI_Controller {
                     redirect(current_url());
                 }
             }
-        }
+        }        
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/apply', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function history() {
+        $this->data['page_heading'] = 'Leave History';
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');		
+        // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
+		$result_array = $this->leave_model->get_rows(NULL, NULL, NULL, FALSE, FALSE);
+		$total_num_rows = $result_array['num_rows'];
+		
+		//Pagination config starts here		
+        $per_page = 10;
+        $config['uri_segment'] = 4; //which segment of your URI contains the page number
+        $config['num_links'] = 2;
+        $page = ($this->uri->segment($config['uri_segment'])) ? ($this->uri->segment($config['uri_segment'])-1) : 0;
+        $offset = ($page*$per_page);
+        $this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page);
+        //Pagination config ends here
+        
+
+        // Data Rows - Refer to model method definition
+        $result_array = $this->leave_model->get_rows(NULL, $per_page, $offset, FALSE, TRUE);
+        $this->data['data_rows'] = $result_array['data_rows'];
+
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/history', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 	
 	function validate_form_data($action = NULL) {
@@ -241,6 +246,32 @@ class Leave extends CI_Controller {
         $result_array = $this->leave_model->get_rows($this->id, NULL, NULL, FALSE, TRUE);
         $this->data['data_rows'] = $result_array['data_rows'];
         $this->data['maincontent'] = $this->load->view($this->router->class.'/details', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function leave_balance() {        
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        if ($this->input->post('form_action') == 'update') {
+            if ($this->validate_form_data() == true) {                                
+				$postdata = array(                    
+                    'leave_req_id' => $leave_request_id,
+                    'leave_type' => $this->input->post('leave_type'),
+                    'leave_reason' => $this->input->post('leave_reason'),
+                    'leave_from_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_from_date')),
+                    'leave_to_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_to_date')),
+                    'user_id' => $this->sess_user_id,					
+                    'leave_created_on' => date('Y-m-d H:i:s')
+                );
+                $insert_id = $this->leave_model->insert($postdata);
+                if ($insert_id) {
+                    $this->session->set_flashdata('flash_message', 'Your Leave Request <strong>#'.$leave_request_id.'</strong> has been generated successfully. Supervisor and HR will get leave notification and work on it.');
+                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    redirect(current_url());
+                }
+            }
+        }
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/leave_balance', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
 
