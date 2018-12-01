@@ -8876,14 +8876,11 @@ table.ci-table.dataTable {
 }
 
 .ci-wizard > .ci-wizard-step .ci-wizard-stepnum {
-  color: #595959;
-  font-size: 16px;
-  margin-bottom: 5px;
+  color: #495057;
 }
 
 .ci-wizard > .ci-wizard-step .ci-wizard-info {
-  color: #999;
-  font-size: 14px;
+  color: #495057;
 }
 
 .ci-wizard > .ci-wizard-step > .ci-wizard-dot {
@@ -8891,7 +8888,7 @@ table.ci-table.dataTable {
   width: 30px;
   height: 30px;
   display: block;
-  background: #fbe8aa;
+  background: #ffe7a0;
   top: 45px;
   left: 50%;
   margin-top: -15px;
@@ -8903,11 +8900,27 @@ table.ci-table.dataTable {
   content: ' ';
   width: 14px;
   height: 14px;
-  background: #fbbd19;
+  background: #ffc107;
   border-radius: 50px;
   position: absolute;
   top: 8px;
   left: 8px;
+}
+
+.ci-wizard > .ci-wizard-step > .ci-wizard-dot.A {
+  background: #86e29b;
+}
+
+.ci-wizard > .ci-wizard-step > .ci-wizard-dot.A:after {
+  background: #28a745;
+}
+
+.ci-wizard > .ci-wizard-step > .ci-wizard-dot.R {
+  background: #f3b7bd;
+}
+
+.ci-wizard > .ci-wizard-step > .ci-wizard-dot.R:after {
+  background: #dc3545;
 }
 
 .ci-wizard > .ci-wizard-step > .progress {
@@ -8921,7 +8934,7 @@ table.ci-table.dataTable {
 .ci-wizard > .ci-wizard-step > .progress > .progress-bar {
   width: 0px;
   box-shadow: none;
-  background: #fbe8aa;
+  background: #ffe7a0;
 }
 
 .ci-wizard > .ci-wizard-step.complete > .progress > .progress-bar {
@@ -8941,7 +8954,7 @@ table.ci-table.dataTable {
 }
 
 .ci-wizard > .ci-wizard-step.disabled > .ci-wizard-dot {
-  background-color: #f5f5f5;
+  background-color: #dee2e6;
 }
 
 .ci-wizard > .ci-wizard-step.disabled > .ci-wizard-dot:after {

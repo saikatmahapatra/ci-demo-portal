@@ -478,13 +478,10 @@ table.ci-table.dataTable {
         position: relative;
         +.ci-wizard-step {}
         .ci-wizard-stepnum {
-            color: #595959;
-            font-size: 16px;
-            margin-bottom: 5px;
+            color: $gray-700;
         }
         .ci-wizard-info {
-            color: #999;
-            font-size: 14px;
+            color: $gray-700;
         }
         > {
             .ci-wizard-dot {
@@ -492,7 +489,7 @@ table.ci-table.dataTable {
                 width: 30px;
                 height: 30px;
                 display: block;
-                background: #fbe8aa;
+                background: lighten($yellow, 30%);
                 top: 45px;
                 left: 50%;
                 margin-top: -15px;
@@ -502,11 +499,23 @@ table.ci-table.dataTable {
                     content: ' ';
                     width: 14px;
                     height: 14px;
-                    background: #fbbd19;
+                    background: $yellow;
                     border-radius: 50px;
                     position: absolute;
                     top: 8px;
                     left: 8px;
+                }
+            }
+            .ci-wizard-dot.A {
+                background: lighten($green, 30%);
+                &:after {
+                    background: $green;
+                }
+            }
+            .ci-wizard-dot.R {
+                background: lighten($red, 30%);
+                &:after {
+                    background: $red;
                 }
             }
             .progress {
@@ -518,7 +527,7 @@ table.ci-table.dataTable {
                 >.progress-bar {
                     width: 0px;
                     box-shadow: none;
-                    background: #fbe8aa;
+                    background: lighten($yellow, 30%);
                 }
             }
         }
@@ -535,7 +544,7 @@ table.ci-table.dataTable {
             width: 100%;
         }
         &.disabled>.ci-wizard-dot {
-            background-color: #f5f5f5;
+            background-color: $gray-300;
             &:after {
                 opacity: 0;
             }

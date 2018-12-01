@@ -53,11 +53,29 @@ class Leave_model extends CI_Model {
         return $result;
     }
 
-    function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
+    function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE, $applied_by_user_id=NULL) {
         $result = array();
-        $this->db->select('t1.*, (DATEDIFF(t1.leave_to_date, t1.leave_from_date)+1) leave_days');        
+        $this->db->select('t1.*, 
+        (DATEDIFF(t1.leave_to_date, t1.leave_from_date)+1) leave_days,
+        t2.user_firstname as supervisor_approver_firstname,
+        t2.user_lastname as supervisor_approver_lastname,
+        t3.user_firstname as director_approver_firstname,
+        t3.user_lastname as director_approver_lastname,
+        t4.user_firstname as hr_approver_firstname,
+        t4.user_lastname as hr_approver_lastname,
+        t5.user_firstname,
+        t5.user_lastname,
+        t5.user_emp_id,
+        t5.user_email,
+        t5.user_email_secondary,
+        t5.user_phone1,
+        t5.user_phone2
+        ');        
         if ($id) {
             $this->db->where('t1.id', $id);
+        }
+        if($applied_by_user_id){
+            $this->db->where('t1.user_id', $applied_by_user_id);
         }
 
         ####################################################################
@@ -113,6 +131,10 @@ class Leave_model extends CI_Model {
             }
         }
         $this->db->order_by('t1.id','desc');
+        $this->db->join('users t2', 't2.id = t1.supervisor_approver_id', 'left');
+        $this->db->join('users t3', 't3.id = t1.director_approver_id', 'left');
+        $this->db->join('users t4', 't4.id = t1.hr_approver_id', 'left');
+        $this->db->join('users t5', 't5.id = t1.user_id', 'left');
         $query = $this->db->get('user_leaves as t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();

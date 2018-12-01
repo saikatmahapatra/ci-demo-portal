@@ -8,11 +8,13 @@ class Leave extends CI_Controller {
     var $data;
 	var $id;
     var $sess_user_id;
+    var $sess_user_emp_id;
 
     function __construct() {
         parent::__construct();
         //Loggedin user details
-        $this->sess_user_id = $this->common_lib->get_sess_user('id');        
+        $this->sess_user_id = $this->common_lib->get_sess_user('id');
+        $this->sess_user_emp_id = $this->common_lib->get_sess_user('user_emp_id'); 
         
         //Render header, footer, navbar, sidebar etc common elements of templates
         $this->common_lib->init_template_elements();
@@ -40,7 +42,8 @@ class Leave extends CI_Controller {
             'default-user-access'			
         ));
 		
-		$this->load->model('leave_model');
+        $this->load->model('leave_model');
+        $this->load->model('user_model');
 		$this->id = $this->uri->segment(3);
 		
 		
@@ -49,7 +52,8 @@ class Leave extends CI_Controller {
             'P'=>array('text'=>'Pending', 'css'=>'text-secondary'),
             'C'=>array('text'=>'Cancelled', 'css'=>'text-warning'),
             'R'=>array('text'=>'Rejected', 'css'=>'text-danger'),
-            'A'=>array('text'=>'Approved', 'css'=>'text-success')
+            'A'=>array('text'=>'Approved', 'css'=>'text-success'),
+            'O'=>array('text'=>'Processing', 'css'=>'text-info')
         );
 		
 		
@@ -66,7 +70,12 @@ class Leave extends CI_Controller {
 	function apply() {				
 		$this->data['page_heading'] = 'Apply Leave';		
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');        
+        $this->data['approvers'] = $this->user_model->get_user_approvers($this->sess_user_id);
+        //print_r($this->data['approvers']);
+        $supervisor_approver_id = isset($this->data['approvers'][0]['user_supervisor_id']) ? $this->data['approvers'][0]['user_supervisor_id'] : '';
+        $director_approver_id = isset($this->data['approvers'][0]['user_director_approver_id']) ? $this->data['approvers'][0]['user_director_approver_id'] : '';
+        $hr_approver_id = isset($this->data['approvers'][0]['user_hr_approver_id']) ? $this->data['approvers'][0]['user_hr_approver_id'] : '';
         if ($this->input->post('form_action') == 'add') {
             if ($this->validate_form_data('add') == true) {  
                 $from_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('leave_from_date'))); // or your date as well
@@ -74,7 +83,7 @@ class Leave extends CI_Controller {
                 $datediff = ($to_date - $from_date);
                 $no_day = round($datediff / (60 * 60 * 24));
                 //die();
-                $leave_request_id = 'LR-'.time();              
+                $leave_request_id = 'LR-'.(isset($this->sess_user_emp_id)?$this->sess_user_emp_id:'').time();              
 				$postdata = array(                    
                     'leave_req_id' => $leave_request_id,
                     'leave_type' => $this->input->post('leave_type'),
@@ -84,13 +93,18 @@ class Leave extends CI_Controller {
                     'user_id' => $this->sess_user_id,					
                     'leave_created_on' => date('Y-m-d H:i:s'),
                     'leave_status' => 'P',
-
+                    'supervisor_approver_id'=> $supervisor_approver_id,
+                    'supervisor_approver_status'=>'P',
+                    'director_approver_id'=>$director_approver_id,
+                    'director_approver_status'=>'P',
+                    'hr_approver_id'=>$hr_approver_id,
+                    'hr_approver_status'=>'P'
                 );
                 $insert_id = $this->leave_model->insert($postdata);
                 if ($insert_id) {
-                    $this->session->set_flashdata('flash_message', 'Your Leave Request <strong>#'.$leave_request_id.'</strong> has been generated successfully. Supervisor and HR will get leave notification and work on it.');
+                    $this->session->set_flashdata('flash_message', 'Your Leave Request <strong>#'.$leave_request_id.'</strong> has been generated successfully. Here is the details of your leave request.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
-                    redirect(current_url());
+                    redirect($this->router->directory.$this->router->class.'/details/'.$insert_id.'/'.$leave_request_id);
                 }
             }
         }        
@@ -103,7 +117,7 @@ class Leave extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');		
         // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
-		$result_array = $this->leave_model->get_rows(NULL, NULL, NULL, FALSE, FALSE);
+		$result_array = $this->leave_model->get_rows(NULL, NULL, NULL, FALSE, FALSE, $this->sess_user_id);
 		$total_num_rows = $result_array['num_rows'];
 		
 		//Pagination config starts here		
@@ -117,7 +131,7 @@ class Leave extends CI_Controller {
         
 
         // Data Rows - Refer to model method definition
-        $result_array = $this->leave_model->get_rows(NULL, $per_page, $offset, FALSE, TRUE);
+        $result_array = $this->leave_model->get_rows(NULL, $per_page, $offset, FALSE, TRUE, $this->sess_user_id);
         $this->data['data_rows'] = $result_array['data_rows'];
 
         $this->data['maincontent'] = $this->load->view($this->router->class.'/history', $this->data, true);
@@ -242,7 +256,9 @@ class Leave extends CI_Controller {
     }
 
     function details() {				
-        $this->data['page_heading'] = 'Leave Details';      
+        $this->data['page_heading'] = 'Leave Details';   
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');   
         $result_array = $this->leave_model->get_rows($this->id, NULL, NULL, FALSE, TRUE);
         $this->data['data_rows'] = $result_array['data_rows'];
         $this->data['maincontent'] = $this->load->view($this->router->class.'/details', $this->data, true);
@@ -273,6 +289,87 @@ class Leave extends CI_Controller {
         }
         $this->data['maincontent'] = $this->load->view($this->router->class.'/leave_balance', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function update_leave_status(){
+        $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>'');
+        if(($this->input->post('action')=='update')){
+            $leave_id = $this->input->post('leave_id');
+            $leave_req_id = $this->input->post('leave_req_id');
+            $action_by_approver = $this->input->post('action_by_approver');
+            $action_by_approver_id = $this->input->post('action_by_approver_id');
+            $leave_staus = $this->input->post('leave_staus');
+            $leave_comments = $this->input->post('leave_comments');
+
+            //print_r($_POST);die();
+
+            if ($this->validate_update_leave_status_form_data() == true) {
+                
+                if($action_by_approver == 'applicant'){                    
+                    $postdata = array(					
+                        'leave_status' => $leave_staus,
+                        'cancelled_by' => $action_by_approver_id,
+                        'cancellation_reason'=>$leave_comments,
+                        'cancellation_datetime' => date('Y-m-d H:i:s')
+                    );
+                    $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
+                    $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
+
+                }
+                if($action_by_approver == 'supervisor'){
+                    if($leave_staus == 'R'){
+                        $final_leave_status = 'R'; // rejected
+                    }
+                    if($leave_staus == 'A'){
+                        $final_leave_status = 'O'; // processing
+                    }
+                    $postdata = array(					
+                        'leave_status' => $final_leave_status,
+                        'supervisor_approver_status' => $leave_staus,
+                        'supervisor_approver_id' => $action_by_approver_id,
+                        'supervisor_approver_comment'=>$leave_comments,
+                        'supervisor_approver_datetime' => date('Y-m-d H:i:s')
+                    );
+                    $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
+                    $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
+                }
+                if($action_by_approver == 'director'){
+                    if($leave_staus == 'R'){
+                        $final_leave_status = 'R'; // rejected
+                    }
+                    if($leave_staus == 'A'){
+                        $final_leave_status = 'A'; // approved
+                    }
+                    $postdata = array(
+                        'leave_status' => $final_leave_status,					
+                        'director_approver_status' => $leave_staus,
+                        'director_approver_id' => $action_by_approver_id,
+                        'director_approver_comment'=>$leave_comments,
+                        'director_approver_datetime' => date('Y-m-d H:i:s')
+                    );
+                    $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
+                    $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
+                }
+                
+                if ($is_update) {
+                    $message = array('is_valid'=>true, 'updated'=>true, 'insert_id'=>'','msg'=>'<div class="alert alert-success">leave has been updated succesfully.</div>'); 
+                }
+            }else{
+                $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>validation_errors()); 
+            }
+        }
+        echo json_encode($message); die();
+    }
+
+    function validate_update_leave_status_form_data($action = NULL) {
+        $this->form_validation->set_rules('leave_staus', 'status', 'required');
+        $this->form_validation->set_rules('leave_comments', 'comment', 'required|max_length[100]');
+        $this->form_validation->set_error_delimiters('<li class="validation-error">', '</li>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
