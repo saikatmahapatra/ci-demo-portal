@@ -8883,6 +8883,10 @@ table.ci-table.dataTable {
   color: #495057;
 }
 
+.ci-wizard > .ci-wizard-step .ci-wizard-info label {
+  cursor: pointer;
+}
+
 .ci-wizard > .ci-wizard-step > .ci-wizard-dot {
   position: absolute;
   width: 30px;

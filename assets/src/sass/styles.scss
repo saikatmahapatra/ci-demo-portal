@@ -482,6 +482,9 @@ table.ci-table.dataTable {
         }
         .ci-wizard-info {
             color: $gray-700;
+            label {
+                cursor: pointer;
+            }
         }
         > {
             .ci-wizard-dot {

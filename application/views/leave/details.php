@@ -65,9 +65,18 @@ $row = $data_rows[0];
 							</div>
 						</div>
 						<div class="progress"><div class="progress-bar"></div></div>
-						<a data-action-by="applicant" data-action-by-userid="<?php echo isset($row['user_id']) ? $row['user_id']: ''; ?>" href="#" class="ci-wizard-dot"></a>
+						<?php
+							$set_attributes ='';	
+							$edit_icon = '';						
+							if($this->common_lib->get_sess_user('id') == $row['user_id']){
+								$set_attributes = 'data-action-by="applicant" data-action-by-userid="'.$row['user_id'].'"';
+								$edit_icon = '<i class="fa fa-edit" aria-hidden="true"></i>';
+							}
+							
+						?>
+						<a <?php echo $set_attributes; ?> href="#" class="ci-wizard-dot"></a>
 						<div class="ci-wizard-info text-center">	
-							<div class="">Applied</div>						
+							<label <?php echo $set_attributes; ?>> Applied</label>		
 							<div class=""><?php echo $this->common_lib->display_date($row['leave_created_on'], true);?></div>
 							<div class=""><?php echo isset($row['leave_reason']) ? $row['leave_reason'] : '';?></div>
 						</div>
@@ -88,9 +97,22 @@ $row = $data_rows[0];
 							<?php echo isset($row['supervisor_approver_lastname']) ? $row['supervisor_approver_lastname']: ''; ?>
 						</div>
 						<div class="progress"><div class="progress-bar"></div></div>
-						<a data-action-by="supervisor" data-action-by-userid="<?php echo isset($row['supervisor_approver_id']) ? $row['supervisor_approver_id']: ''; ?>" href="#" class="ci-wizard-dot <?php echo $row['supervisor_approver_status'];?>"></a>
+						<?php
+							$set_attributes = '';
+							$edit_icon = '';
+							if($this->common_lib->get_sess_user('id') == $row['supervisor_approver_id']){							
+								$set_attributes = 'data-action-by="supervisor" data-action-by-userid="'.$row['supervisor_approver_id'].'"';
+								$edit_icon = '<i class="fa fa-edit" aria-hidden="true"></i>';
+							}
+						?>
+						<a <?php echo $set_attributes; ?> href="#" class="ci-wizard-dot <?php echo $row['supervisor_approver_status'];?>"></a>
 						<div class="ci-wizard-info text-center">
-							<div class=""><?php echo isset($row['supervisor_approver_status']) ? '<span class="'.$leave_status_arr[$row['supervisor_approver_status']]['css'].'">'.$leave_status_arr[$row['supervisor_approver_status']]['text'].'</span>' : ''; ?></div>
+							
+							<label <?php echo $set_attributes; ?> class="">
+							<?php echo $edit_icon;?>
+							<?php echo isset($row['supervisor_approver_status']) ? '<span class="'.$leave_status_arr[$row['supervisor_approver_status']]['css'].'">'.$leave_status_arr[$row['supervisor_approver_status']]['text'].'</span>' : ''; ?>
+							</label>
+
 							<div class=""><?php echo isset($row['supervisor_approver_datetime']) ? $this->common_lib->display_date($row['supervisor_approver_datetime'], true): ''; ?></div>
 							<div class=""><?php echo isset($row['supervisor_approver_comment']) ? $row['supervisor_approver_comment']: ''; ?></div>
 						</div>
@@ -115,11 +137,23 @@ $row = $data_rows[0];
 							<?php echo isset($row['director_approver_lastname']) ? $row['director_approver_lastname']: ''; ?>
 						</div>
 						<div class="progress"><div class="progress-bar"></div></div>
-						<a data-action-by="director" data-action-by-userid="<?php echo isset($row['director_approver_id']) ? $row['director_approver_id']: ''; ?>" href="#" class="ci-wizard-dot <?php echo $row['director_approver_status'];?>" href="#" class="ci-wizard-dot <?php echo $row['director_approver_status'];?>"></a>
+						<?php
+							$set_attributes ='';
+							$edit_icon = '';
+							if($this->common_lib->get_sess_user('id') == $row['director_approver_id']) {							
+								$edit_icon = '<i class="fa fa-edit" aria-hidden="true"></i>';
+								$set_attributes = 'data-action-by="director" data-action-by-userid="'.$row['director_approver_id'].'"';
+							}
+						?>
+						<a <?php echo $set_attributes; ?> href="#" class="ci-wizard-dot <?php echo $row['director_approver_status'];?>" href="#" class="ci-wizard-dot <?php echo $row['director_approver_status'];?>"></a>
 						<div class="ci-wizard-info text-center">
-						<div class=""><?php echo isset($row['director_approver_status']) ? '<span class="'.$leave_status_arr[$row['director_approver_status']]['css'].'">'.$leave_status_arr[$row['director_approver_status']]['text'].'</span>': ''; ?></div>
-						<div class=""><?php echo isset($row['director_approver_datetime']) ? $this->common_lib->display_date($row['director_approver_datetime'], true): ''; ?></div>
-						<div class=""><?php echo isset($row['director_approver_comment']) ? $row['director_approver_comment']: ''; ?></div>
+							
+							<label <?php echo $set_attributes; ?> class="">
+							 <?php echo $edit_icon;?> <?php echo isset($row['director_approver_status']) ? '<span class="'.$leave_status_arr[$row['director_approver_status']]['css'].'">'.$leave_status_arr[$row['director_approver_status']]['text'].'</span>': ''; ?>
+							</label>
+
+							<div class=""><?php echo isset($row['director_approver_datetime']) ? $this->common_lib->display_date($row['director_approver_datetime'], true): ''; ?></div>
+							<div class=""><?php echo isset($row['director_approver_comment']) ? $row['director_approver_comment']: ''; ?></div>
 						</div>
 					</div>			
             	</div><!--/.row .ci-wizard-->

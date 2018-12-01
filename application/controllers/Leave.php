@@ -137,6 +137,32 @@ class Leave extends CI_Controller {
         $this->data['maincontent'] = $this->load->view($this->router->class.'/history', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
+
+    function manage() {
+        $this->data['page_heading'] = 'Leave Management';
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');		
+        // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
+		$result_array = $this->leave_model->get_rows(NULL, NULL, NULL, FALSE, FALSE, NULL);
+		$total_num_rows = $result_array['num_rows'];
+		
+		//Pagination config starts here		
+        $per_page = 10;
+        $config['uri_segment'] = 4; //which segment of your URI contains the page number
+        $config['num_links'] = 2;
+        $page = ($this->uri->segment($config['uri_segment'])) ? ($this->uri->segment($config['uri_segment'])-1) : 0;
+        $offset = ($page*$per_page);
+        $this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page);
+        //Pagination config ends here
+        
+
+        // Data Rows - Refer to model method definition
+        $result_array = $this->leave_model->get_rows(NULL, $per_page, $offset, FALSE, TRUE, NULL);
+        $this->data['data_rows'] = $result_array['data_rows'];
+
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/manage', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
 	
 	function validate_form_data($action = NULL) {
         $this->form_validation->set_rules('leave_type', ' ', 'required');
@@ -262,6 +288,16 @@ class Leave extends CI_Controller {
         $result_array = $this->leave_model->get_rows($this->id, NULL, NULL, FALSE, TRUE);
         $this->data['data_rows'] = $result_array['data_rows'];
         $this->data['maincontent'] = $this->load->view($this->router->class.'/details', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function details_process() {				
+        $this->data['page_heading'] = 'Manage Leave Request';   
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');   
+        $result_array = $this->leave_model->get_rows($this->id, NULL, NULL, FALSE, TRUE);
+        $this->data['data_rows'] = $result_array['data_rows'];
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/details_process', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
 
