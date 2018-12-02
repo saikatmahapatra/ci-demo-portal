@@ -398,6 +398,7 @@ class Leave extends CI_Controller {
     }
 
     function validate_update_leave_status_form_data($action = NULL) {
+        $this->form_validation->set_rules('action_by_approver_id', '', 'required|callback_validate_approver_authorization');
         $this->form_validation->set_rules('leave_staus', 'status', 'required');
         $this->form_validation->set_rules('leave_comments', 'comment', 'required|max_length[100]');
         $this->form_validation->set_error_delimiters('<li class="validation-error">', '</li>');
@@ -406,6 +407,17 @@ class Leave extends CI_Controller {
         } else {
             return false;
         }
+    }
+
+    function validate_approver_authorization(){
+        $action_by_approver_id = $this->input->post('action_by_approver_id');
+        if ($this->sess_user_id != $action_by_approver_id) {
+            $this->form_validation->set_message('validate_approver_authorization', 'You are not authorized to do this action.');
+            return false;
+        }
+
+        // do logic for status update by supervisor or director
+        return true;
     }
 
 }

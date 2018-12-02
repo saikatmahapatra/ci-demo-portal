@@ -25,8 +25,8 @@
 			<div class="card-body">
 
 				<div class="pl-2 mb-2 small">					
-					<span class="mx-2"><i class="fa fa-square text-success" aria-hidden="true"></i> Published</span>
-					<span class="mx-2"><i class="fa fa-square text-warning" aria-hidden="true"></i> Unpublished</span>					
+					<span class="mx-2"><i class="fa fa-circle text-success" aria-hidden="true"></i> Published</span>
+					<span class="mx-2"><i class="fa fa-circle text-warning" aria-hidden="true"></i> Unpublished</span>					
 				</div>
 
 				<div class="table-responsive">

@@ -24,8 +24,8 @@
 			</div>
 			<div class="card-body">
 				<div class="pl-2 mb-2 small">					
-					<span class="mx-2"><i class="fa fa-square text-success" aria-hidden="true"></i> Published Content</span>
-					<span class="mx-2"><i class="fa fa-square text-warning" aria-hidden="true"></i> Unpublished Content</span>					
+					<span class="mx-2"><i class="fa fa-circle text-success" aria-hidden="true"></i> Published Content</span>
+					<span class="mx-2"><i class="fa fa-circle text-warning" aria-hidden="true"></i> Unpublished Content</span>					
 				</div>
 				<div class="table-responsive">
 					<table id="cms-datatable" class="table ci-table table-striped">

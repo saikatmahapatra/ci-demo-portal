@@ -30,7 +30,7 @@ $row = $data_rows[0];
 					<dd class="col-md-2"><?php echo $row['leave_req_id'];?></dd>					
 					<dt class="col-md-2">Leave Status</dt>
 					<dd class="col-md-2 font-weight-bold">
-					<span class=""><i class="fa fa-square <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>
+					<span class=""><i class="fa fa-circle <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>
 					<span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>"> <?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
 					</dd>					
 					<dt class="col-md-2">Leave Type</dt>
@@ -50,7 +50,7 @@ $row = $data_rows[0];
 						<div><?php echo isset($row['user_email']) ? $row['user_email'] : '';?></div>
 						<div>
 							<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : '';?>
-							<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : '';?>
+							<?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : '';?>
 						</div>
 					</dd>
 				</dl>
@@ -72,13 +72,33 @@ $row = $data_rows[0];
 								$set_attributes = 'data-action-by="applicant" data-action-by-userid="'.$row['user_id'].'"';
 								$edit_icon = '<i class="fa fa-edit" aria-hidden="true"></i>';
 							}
+							if($row['leave_status'] == 'R' || $row['leave_status'] == 'C'){
+								$set_attributes ='';	
+								$edit_icon = '';
+							}
 							
 						?>
 						<a <?php echo $set_attributes; ?> href="#" class="ci-wizard-dot"></a>
 						<div class="ci-wizard-info text-center">	
-							<label <?php echo $set_attributes; ?>> Applied</label>		
-							<div class=""><?php echo $this->common_lib->display_date($row['leave_created_on'], true);?></div>
+							<label <?php echo $set_attributes; ?>><?php echo $edit_icon;?> Applied</label>		
+							<div class="small"><?php echo $this->common_lib->display_date($row['leave_created_on'], true);?></div>
 							<div class=""><?php echo isset($row['leave_reason']) ? $row['leave_reason'] : '';?></div>
+							
+							<?php
+							if($row['user_id'] == $row['cancelled_by']){
+								$set_attributes ='';	
+								$edit_icon = '';
+								?>
+								<label <?php echo $set_attributes; ?> class="">
+								<?php echo $edit_icon;?>
+								<?php echo isset($row['leave_status']) ? '<span class="'.$leave_status_arr[$row['leave_status']]['css'].'">'.$leave_status_arr[$row['leave_status']]['text'].'</span>' : ''; ?>
+								</label>
+								<div class="small"><?php echo $this->common_lib->display_date($row['cancellation_datetime'], true);?></div>
+								<div class=""><?php echo isset($row['cancellation_reason']) ? $row['cancellation_reason'] : '';?></div>
+								<?php
+							}
+							?>
+
 						</div>
 					</div>
 					
@@ -89,6 +109,9 @@ $row = $data_rows[0];
 						}
 						if($row['supervisor_approver_status']=='A'){
 							$wizard_class = 'complete';
+						}
+						if(($row['leave_status']=='C') && ($row['user_id'] == $row['cancelled_by'])){
+							//$wizard_class = 'disabled';
 						}
 					?>
 					<div class="col-sm-4 ci-wizard-step <?php echo $wizard_class; ?>">
@@ -104,6 +127,10 @@ $row = $data_rows[0];
 								$set_attributes = 'data-action-by="supervisor" data-action-by-userid="'.$row['supervisor_approver_id'].'"';
 								$edit_icon = '<i class="fa fa-edit" aria-hidden="true"></i>';
 							}
+							if($row['leave_status'] == 'R' || $row['leave_status'] == 'C' || $row['director_approver_status']=='A'){
+								$set_attributes ='';	
+								$edit_icon = '';
+							}
 						?>
 						<a <?php echo $set_attributes; ?> href="#" class="ci-wizard-dot <?php echo $row['supervisor_approver_status'];?>"></a>
 						<div class="ci-wizard-info text-center">
@@ -113,7 +140,7 @@ $row = $data_rows[0];
 							<?php echo isset($row['supervisor_approver_status']) ? '<span class="'.$leave_status_arr[$row['supervisor_approver_status']]['css'].'">'.$leave_status_arr[$row['supervisor_approver_status']]['text'].'</span>' : ''; ?>
 							</label>
 
-							<div class=""><?php echo isset($row['supervisor_approver_datetime']) ? $this->common_lib->display_date($row['supervisor_approver_datetime'], true): ''; ?></div>
+							<div class="small"><?php echo isset($row['supervisor_approver_datetime']) ? $this->common_lib->display_date($row['supervisor_approver_datetime'], true): ''; ?></div>
 							<div class=""><?php echo isset($row['supervisor_approver_comment']) ? $row['supervisor_approver_comment']: ''; ?></div>
 						</div>
 					</div>
@@ -128,6 +155,9 @@ $row = $data_rows[0];
 						}
 						if($row['director_approver_status']=='A'){
 							$wizard_class = 'complete';
+						}
+						if(($row['leave_status']=='C') && ($row['user_id'] == $row['cancelled_by'])){
+							//$wizard_class = 'disabled';
 						}
 					?>
 
@@ -152,7 +182,7 @@ $row = $data_rows[0];
 							 <?php echo $edit_icon;?> <?php echo isset($row['director_approver_status']) ? '<span class="'.$leave_status_arr[$row['director_approver_status']]['css'].'">'.$leave_status_arr[$row['director_approver_status']]['text'].'</span>': ''; ?>
 							</label>
 
-							<div class=""><?php echo isset($row['director_approver_datetime']) ? $this->common_lib->display_date($row['director_approver_datetime'], true): ''; ?></div>
+							<div class="small"><?php echo isset($row['director_approver_datetime']) ? $this->common_lib->display_date($row['director_approver_datetime'], true): ''; ?></div>
 							<div class=""><?php echo isset($row['director_approver_comment']) ? $row['director_approver_comment']: ''; ?></div>
 						</div>
 					</div>			
