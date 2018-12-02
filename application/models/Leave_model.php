@@ -53,16 +53,22 @@ class Leave_model extends CI_Model {
         return $result;
     }
 
-    function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE, $applied_by_user_id=NULL) {
+    function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE, $cond=NULL) {
         $result = array();
         $this->db->select('t1.*, 
         (DATEDIFF(t1.leave_to_date, t1.leave_from_date)+1) leave_days,
         t2.user_firstname as supervisor_approver_firstname,
         t2.user_lastname as supervisor_approver_lastname,
+        t2.user_emp_id as supervisor_approver_emp_id,
+
         t3.user_firstname as director_approver_firstname,
         t3.user_lastname as director_approver_lastname,
+        t2.user_emp_id as director_approver_emp_id,
+
         t4.user_firstname as hr_approver_firstname,
         t4.user_lastname as hr_approver_lastname,
+        t2.user_emp_id as hr_approver_emp_id,
+
         t5.user_firstname,
         t5.user_lastname,
         t5.user_emp_id,
@@ -74,9 +80,7 @@ class Leave_model extends CI_Model {
         if ($id) {
             $this->db->where('t1.id', $id);
         }
-        if($applied_by_user_id){
-            $this->db->where('t1.user_id', $applied_by_user_id);
-        }
+        
 
         ####################################################################
         ##################### Display using Data Table #####################
@@ -135,6 +139,18 @@ class Leave_model extends CI_Model {
         $this->db->join('users t3', 't3.id = t1.director_approver_id', 'left');
         $this->db->join('users t4', 't4.id = t1.hr_approver_id', 'left');
         $this->db->join('users t5', 't5.id = t1.user_id', 'left');
+        if(isset($cond['applicant_user_id'])){
+            $this->db->where('t1.user_id', $cond['applicant_user_id']);
+        }
+
+        if(isset($cond['assigned_to_user_id'])){
+            //$this->db->where('t1.supervisor_approver_id', $cond['assigned_to_user_id']);
+            //$this->db->where('t1.director_approver_id'= $cond['assigned_to_user_id']);
+            $this->db->where('(t1.director_approver_id = "'.$cond['assigned_to_user_id'].'" OR t1.supervisor_approver_id = "'.$cond['assigned_to_user_id'].'")');
+            $this->db->where_in('t1.leave_status', array('P', 'O'));
+            //$this->db->where('t1.supervisor_approver_status', 'P');
+            //$this->db->or_where('t1.director_approver_status', 'P');
+        }
         $query = $this->db->get('user_leaves as t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();

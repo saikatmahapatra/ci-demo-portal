@@ -46,8 +46,8 @@
 				foreach($data_rows as $row){
 					?>
 					<tr>
-						<td><a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id']);?>"><?php echo $row['leave_req_id'];?></a></td>
-						<td><?php echo $row['leave_type'];?></td>
+						<td><a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/history');?>"><?php echo $row['leave_req_id'];?></a></td>
+						<td><?php echo $leave_type_arr[$row['leave_type']];?></td>
 						<td><?php echo $this->common_lib->display_date($row['leave_from_date']);?></td>
 						<td><?php echo $this->common_lib->display_date($row['leave_to_date']);?></td>
 						<td><?php echo $row['leave_days'].' day(s)';?></td>
@@ -57,8 +57,8 @@
 						</td>
 						<!-- <td><?php echo isset($row['leave_reason']) ? word_limiter($row['leave_reason'], 5) : '';?></td> -->
 						<td>
-						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id']);?>" class="btn btn-outline-info btn-sm">Details</a>
-						<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id']);?>" class="btn btn-outline-danger btn-sm">Cancel Request</a> -->
+						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/history');?>" class="btn btn-outline-info btn-sm">Details</a>
+						<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/history');?>" class="btn btn-outline-danger btn-sm">Cancel Request</a> -->
 						</td>
 					</tr>
 					<?php

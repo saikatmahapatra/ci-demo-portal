@@ -116,12 +116,15 @@ class Leave extends CI_Controller {
         $this->data['page_heading'] = 'Leave History';
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');		
-        // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
-		$result_array = $this->leave_model->get_rows(NULL, NULL, NULL, FALSE, FALSE, $this->sess_user_id);
+        // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition
+        $cond = array(
+            'applicant_user_id' =>  $this->sess_user_id
+        );
+		$result_array = $this->leave_model->get_rows(NULL, NULL, NULL, FALSE, FALSE, $cond);
 		$total_num_rows = $result_array['num_rows'];
 		
 		//Pagination config starts here		
-        $per_page = 10;
+        $per_page = 30;
         $config['uri_segment'] = 4; //which segment of your URI contains the page number
         $config['num_links'] = 2;
         $page = ($this->uri->segment($config['uri_segment'])) ? ($this->uri->segment($config['uri_segment'])-1) : 0;
@@ -131,7 +134,7 @@ class Leave extends CI_Controller {
         
 
         // Data Rows - Refer to model method definition
-        $result_array = $this->leave_model->get_rows(NULL, $per_page, $offset, FALSE, TRUE, $this->sess_user_id);
+        $result_array = $this->leave_model->get_rows(NULL, $per_page, $offset, FALSE, TRUE, $cond);
         $this->data['data_rows'] = $result_array['data_rows'];
 
         $this->data['maincontent'] = $this->load->view($this->router->class.'/history', $this->data, true);
@@ -139,15 +142,18 @@ class Leave extends CI_Controller {
     }
 
     function manage() {
-        $this->data['page_heading'] = 'Leave Management';
+        $this->data['page_heading'] = 'Manage Pending Leaves';
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');		
-        // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
-		$result_array = $this->leave_model->get_rows(NULL, NULL, NULL, FALSE, FALSE, NULL);
+        // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition
+        $cond = array(
+            'assigned_to_user_id' =>  $this->sess_user_id
+        );		
+		$result_array = $this->leave_model->get_rows(NULL, NULL, NULL, FALSE, FALSE, $cond);
 		$total_num_rows = $result_array['num_rows'];
 		
 		//Pagination config starts here		
-        $per_page = 10;
+        $per_page = 30;
         $config['uri_segment'] = 4; //which segment of your URI contains the page number
         $config['num_links'] = 2;
         $page = ($this->uri->segment($config['uri_segment'])) ? ($this->uri->segment($config['uri_segment'])-1) : 0;
@@ -157,7 +163,7 @@ class Leave extends CI_Controller {
         
 
         // Data Rows - Refer to model method definition
-        $result_array = $this->leave_model->get_rows(NULL, $per_page, $offset, FALSE, TRUE, NULL);
+        $result_array = $this->leave_model->get_rows(NULL, $per_page, $offset, FALSE, TRUE, $cond);
         $this->data['data_rows'] = $result_array['data_rows'];
 
         $this->data['maincontent'] = $this->load->view($this->router->class.'/manage', $this->data, true);

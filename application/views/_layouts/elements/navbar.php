@@ -22,9 +22,9 @@
 				<div class="dropdown-menu" aria-labelledby="dropdown01_ess">					
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">My Profile Details</a>
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'document'); ?>">My Documents</a>					
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/apply'); ?>">Apply Leave</a>					
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/history'); ?>">My Leave History</a>					
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/manage'); ?>">Leave Management</a>					
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/apply'); ?>">Apply Leave Online</a>					
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/history'); ?>">My Leave Requests</a>					
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/manage'); ?>">Manage Leaves</a>					
 				</div>
 			</li>
 

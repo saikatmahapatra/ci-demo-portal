@@ -34,7 +34,7 @@ $row = $data_rows[0];
 					<span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>"> <?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
 					</dd>					
 					<dt class="col-md-2">Leave Type</dt>
-					<dd class="col-md-2"><?php echo $row['leave_type'];?></dd>
+					<dd class="col-md-2"><?php echo $leave_type_arr[$row['leave_type']];?></dd>
 					<dt class="col-md-2">From</dt>
 					<dd class="col-md-2"><?php echo $this->common_lib->display_date($row['leave_from_date']);?></dd>
 					<dt class="col-md-2">To</dt>
@@ -170,7 +170,7 @@ $row = $data_rows[0];
 						<?php
 							$set_attributes ='';
 							$edit_icon = '';
-							if($this->common_lib->get_sess_user('id') == $row['director_approver_id']) {							
+							if(($this->common_lib->get_sess_user('id') == $row['director_approver_id']) && ($row['supervisor_approver_status']=='A')) {							
 								$edit_icon = '<i class="fa fa-edit" aria-hidden="true"></i>';
 								$set_attributes = 'data-action-by="director" data-action-by-userid="'.$row['director_approver_id'].'"';
 							}
@@ -190,7 +190,7 @@ $row = $data_rows[0];
 
 				
 
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="ml-2 btn btn-outline-secondary"><i class="fa fa-chevron-left"></i> Back</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->uri->segment(5));?>" class="ml-2 btn btn-outline-secondary"><i class="fa fa-chevron-left"></i> Back</a>
 
 			
 	</div>

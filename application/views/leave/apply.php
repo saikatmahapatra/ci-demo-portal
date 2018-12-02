@@ -31,7 +31,7 @@
 		$msg_css = 'alert-warning';
 		if(isset($myapprover) ){
 			$has_approvers = true;
-			$msg = 'Your approvers. To update your approvers please contact to system administrator / HR';
+			$msg = 'Please review your leave process approvers here. You can not update approvers for any applied leave. To update your approvers please contact to system administrator / HR';
 			$msg_css = 'alert-info';
 			if($myapprover['user_supervisor_id'] == 0 || $myapprover['user_director_approver_id'] == 0){
 				$has_approvers = false;
@@ -40,7 +40,7 @@
 			}	
 		}else{
 			$has_approvers = false;
-			$msg = 'You are not tagged with any approvers';
+			$msg = 'You are not tagged with any approvers. Please contact to hr/admin for tagging approvers. Once you are tagged with approvers, you will be able to proceed with this application.';
 			$msg_css = 'alert-danger';
 		}
 		?>
