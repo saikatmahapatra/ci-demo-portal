@@ -117,34 +117,29 @@
 								</dd>
 								<dt class="col-md-2">Employee ID</dt>
 								<dd class="col-md-4"><?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : '-'; ?></dd>
-							</dl>
-							<dl class="row">
+							
 								<dt class="col-md-2">Date of Joining</dt>
 								<dd class="col-md-4"><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></dd>
 								<dt class="col-md-2">Designation</dt>
 								<dd class="col-md-4"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
-							</dl>
-							<dl class="row">
+							
 								<dt class="col-md-2">Email (Work)</dt>
 								<dd class="col-md-4"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?></a></dd>
 								<dt class="col-md-2">Mobile (Work)</dt>
 								<dd class="col-md-4"><?php echo isset($row['user_phone2']) ? $row['user_phone2'] : '-'; ?></dd>
-							</dl>
-							<dl class="row">
+							
 								<dt class="col-md-2">Email (Personal)</dt>
 								<dd class="col-md-4"><a href="mailto:<?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?>"><?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?></a></dd>			
 								<dt class="col-md-2">Mobile (Personal)</dt>
 								<dd class="col-md-4"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : '-'; ?></dd>						
-							</dl>
-							<dl class="row">
+							
 								<dt class="col-md-2">Date of Birth</dt>
 								<dd class="col-md-4">
 								<?php echo isset($row['user_dob']) ? $this->common_lib->display_date($row['user_dob']) : '-'; ?>
 								</dd>
 								<dt class="col-md-2">Gender</dt>
 								<dd class="col-md-4"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : ''; ?></dd>
-							</dl>
-							<dl class="row">
+							
 								<dt class="col-md-2">Blood Group</dt>
 								<dd class="col-md-4"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : ''; ?></dd>								
 							</dl><!--/dl.row-->
@@ -308,8 +303,7 @@
 									<dd class="col-md-4">
 										<?php echo isset($uni['user_aadhar_no']) ? $uni['user_aadhar_no'] : '-';?>
 									</dd>
-								</dl>
-								<dl class="row">
+								
 									<dt class="col-md-2">Passport No</dt>
 									<dd class="col-md-4">
 										<?php echo isset($uni['user_passport_no']) ? $uni['user_passport_no'] : '-';?>
