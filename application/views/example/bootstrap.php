@@ -60,7 +60,7 @@
 		</div><!--/.col-->
 	</div><!--/.row-->
 	<p>Primary color is the main color of the application which is used for navbar, active links and primary button.</p>		
-	<h2 class="page-header mt-4">Button</h2>       
+	<h2 class="h3 mb-3 font-weight-normal mt-4">Button</h2>       
 	<button type="button" class="btn btn-primary">.btn-primary</button>
 	<button type="button" class="btn btn-secondary">.btn-secondary</button>
 	<button type="button" class="btn btn-success">.btn-success</button>
@@ -71,11 +71,11 @@
 	<button type="button" class="btn btn-dark">.btn-dark</button>
 	<button type="button" class="btn btn-link">.btn-link</button>
 
-	<h2 class="page-header mt-4">Button Outline</h1>
+	<h2 class="h3 mb-3 font-weight-normal mt-4">Button Outline</h1>
 	<button type="button" class="btn btn-outline-primary">.btn .btn-outline-primary</button>
 	<button type="button" class="btn btn-outline-secondary">btn-outline-secondary</button>
 
-	<h2 class="page-header mt-4">Progress Bar</h1>        
+	<h2 class="h3 mb-3 font-weight-normal mt-4">Progress Bar</h1>        
 	<div class="progress">
 		<div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 32%" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100">32%</div>
 	</div>
@@ -83,7 +83,7 @@
 		<div class="progress-bar progress-bar-striped bg-secondary" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
 	</div>
 
-	<h2 class="page-header mt-4">Alerts</h2>
+	<h2 class="h3 mb-3 font-weight-normal mt-4">Alerts</h2>
 	<div class="alert alert-primary" role="alert">
 		This is a primary alert—check it out!
 	</div>
@@ -92,7 +92,7 @@
 	</div>
 
 
-	<h2 class="page-header mt-4">Tooltip</h2>
+	<h2 class="h3 mb-3 font-weight-normal mt-4">Tooltip</h2>
 	<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
 	Tooltip on top
 	</button>
@@ -109,7 +109,7 @@
 	Tooltip with HTML
 	</button>
 
-	<h2 class="page-header mt-4">News Feed</h2>
+	<h2 class="h3 mb-3 font-weight-normal mt-4">News Feed</h2>
 
 	<div class="row">
 		
@@ -135,7 +135,7 @@
 		
 	</div>
 
-	<h2 class="page-header mt-4">Card</h2>
+	<h2 class="h3 mb-3 font-weight-normal mt-4">Card</h2>
 	<div class="row">
 		<div class="col-md-3">
 			<div class="card">
@@ -182,7 +182,7 @@
 		
 	</div>
 
-	<h2 class="page-header mt-4">Accordion</h2>
+	<h2 class="h3 mb-3 font-weight-normal mt-4">Accordion</h2>
 	<div id="accordion">
 		<div class="card">
 			<div class="card-header" id="heading_1">
@@ -223,7 +223,7 @@
 		</div>
 	</div> <!--/#accordion-->
 
-	<h2 class="page-header mt-4">Form Control</h2>
+	<h2 class="h3 mb-3 font-weight-normal mt-4">Form Control</h2>
 	<form>
 		<div class="form-row">
 			<div class="form-group col-md-4">
@@ -380,7 +380,7 @@
 		<button class="btn btn-secondary">Cancel</button>
 	</form><!--/form-->
 
-	<h2 class="page-header mt-4">Steps Indicator</h2>
+	<h2 class="h3 mb-3 font-weight-normal mt-4">Steps Indicator</h2>
 	<div class="row ci-wizard">                
 		<div class="col-sm-3 ci-wizard-step complete">
 			<div class="text-center ci-wizard-stepnum">Step 1</div>
@@ -413,7 +413,7 @@
 
 
 
-	<h2 class="page-header mt-4">Modal</h2>
+	<h2 class="h3 mb-3 font-weight-normal mt-4">Modal</h2>
 	<!-- Button trigger modal -->
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Launch demo modal</button>
 
