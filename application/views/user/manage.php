@@ -16,54 +16,47 @@
 			echo $html_alert_ui;
 		}
 		?>
-		<div class="card ">
-			<div class="card-header">
-				<span class="">Data Table</span>
-				<span class="float-right">
-					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="btn btn-sm btn-primary" title="Add"> Add New</a>					
-				</span>
+		<div class="grid-action-holder row my-2 px-3">
+			<div class="col-md-8">
+			<span class="mx-2"><i class="fa fa-circle text-success" aria-hidden="true"></i> Active Employees</span>
+			<span class="mx-2"><i class="fa fa-circle text-warning" aria-hidden="true"></i> Inactive Employees</span>
+			<span class="mx-2"><i class="fa fa-circle text-danger" aria-hidden="true"></i> Ex-Employees</span>
 			</div>
-			<!-- /.card-header -->
-			<div class="card-body">
-				
-				<div class="pl-2 mb-2 small">					
-					<span class="mx-2"><i class="fa fa-circle text-success" aria-hidden="true"></i> Active Employees</span>
-					<span class="mx-2"><i class="fa fa-circle text-warning" aria-hidden="true"></i> Inactive Employees</span>
-					<span class="mx-2"><i class="fa fa-circle text-danger" aria-hidden="true"></i> Ex-Employees</span>
-				</div>
-
-				<div class="table-responsive">					
-					<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'form-inline my-3 mx-3', 'name' => 'download_data')); ?>
-						<input type="hidden" name="form_action" value="download">
-						<button type="submit" class="btn btn-sm btn-outline-success" title="Download"> <i class="fa fa-download" aria-hidden="true"></i> Download Employee Data</button>
-					<?php echo form_close(); ?>
-					<table id="user-datatable" class="table ci-table table-striped">					
-						<thead class="thead-dark">
-							<tr>
-								<th>Employee</th>
-								<th>Emp#</th>
-								<th>Designation</th>
-								<th>Registered Email</th>
-								<th>Mobile</th>
-								<th>Status</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody></tbody>
-						<tfoot>
-							<tr>
-								<th>Employee</th>
-								<th>Emp ID</th>
-								<th>Designation</th>
-								<th>Registered Email</th>
-								<th>Mobile</th>
-								<th>Status</th>
-								<th>Action</th>
-							</tr>
-						</tfoot>
-					</table>
-				</div>
-			</div><!-- /.card-body -->
-		</div><!-- /.card -->
+			<div class="col-md-4 text-right">
+			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-plus"></i> Add New</a>
+			</div>		
+		</div><!--/.grid-action-holder-->
+		<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'form-inline my-1 mx-3', 'name' => 'download_data')); ?>
+				<input type="hidden" name="form_action" value="download">
+				<button type="submit" class="btn btn-sm btn-outline-secondary" title="Download"> <i class="fa fa-download" aria-hidden="true"></i> Download as Excel</button>
+			<?php echo form_close(); ?>
+		<div class="table-responsive">					
+			
+			<table id="user-datatable" class="table ci-table table-striped">					
+				<thead class="thead-dark">
+					<tr>
+						<th>Employee</th>
+						<th>Emp#</th>
+						<th>Designation</th>
+						<th>Registered Email</th>
+						<th>Mobile</th>
+						<th>Status</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+				<tfoot>
+					<tr>
+						<th>Employee</th>
+						<th>Emp ID</th>
+						<th>Designation</th>
+						<th>Registered Email</th>
+						<th>Mobile</th>
+						<th>Status</th>
+						<th>Action</th>
+					</tr>
+				</tfoot>
+			</table>
+		</div><!--/.table-responsive-->
     </div>
 </div>

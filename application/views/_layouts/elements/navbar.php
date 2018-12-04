@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top nav-colorgraph">	
 	<a class="navbar-brand" href="<?php echo base_url($this->router->directory); ?>">
-		<img class="" style="width:160px;" src="<?php echo base_url('assets/src/img/logo.png');?>">
+		<img class="logo" src="<?php echo base_url('assets/src/img/logo.png');?>">
 		<?php //echo $this->config->item('app_logo_name_dashboard'); ?>
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
@@ -21,11 +21,11 @@
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown01_ess" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">Employee Self Services</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01_ess">					
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">My Profile Details</a>
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">Update Profile Information</a>
 					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'document'); ?>">My Documents</a>					
-					<a class="dropdown-item" href="<?php //echo base_url($this->router->directory.'leave/apply'); ?>">Apply Leave Online</a>					
-					<a class="dropdown-item" href="<?php //echo base_url($this->router->directory.'leave/history'); ?>">My Leave Requests</a>					
-					<a class="dropdown-item" href="<?php //echo base_url($this->router->directory.'leave/manage'); ?>">Manage Leaves</a>					
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/apply'); ?>">Apply Leave Online</a>					
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/history'); ?>">My Leave History</a>					
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/manage'); ?>">Manage Leaves</a>					
 				</div>
 			</li>
 
@@ -81,13 +81,13 @@
 		
 		
 		<ul class="navbar-nav my-2 my-lg-0">
-			<li class="nav-item">
+			<li class="nav-item mt-1">
 				<?php echo form_open(base_url('search/index'), array( 'method' => 'get','class'=>'form-inline','name' => '','id' => 'ci-form-helper',)); ?>
 				<?php echo form_hidden('form_action', 'search'); ?>
 				<div class="input-group">
-						<input type="text" name="q" class="form-control" placeholder="Search Employee..." aria-label="Search" aria-describedby="basic-addon2">
+						<input type="text" name="q" class="form-control form-control-sm" placeholder="Search Employee..." aria-label="Search" aria-describedby="basic-addon2">
 						<div class="input-group-append">
-							<button class="btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+							<button class="btn btn-sm" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
 						</div>
 					</div>
 				<?php echo form_close(); ?>

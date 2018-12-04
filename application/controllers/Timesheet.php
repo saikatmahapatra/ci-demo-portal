@@ -357,7 +357,7 @@ class Timesheet extends CI_Controller {
             }
         }
 
-		$this->data['page_heading'] = 'Timesheet Report';
+		$this->data['page_heading'] = 'Search Timesheet Report';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/report', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

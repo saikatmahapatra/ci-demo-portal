@@ -15,44 +15,41 @@
 			echo $html_alert_ui;
 		}
 		?>
-		<div class="card">
-			<div class="card-header">
-				<span class="">Data Table</span>
-				<span class="float-right">
-					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="btn btn-sm btn-primary" title="Add"> Add New</a>
-				</span>
-			</div>
-			<div class="card-body">
 
-				<div class="pl-2 mb-2 small">					
-					<span class="mx-2"><i class="fa fa-circle text-success" aria-hidden="true"></i> Published</span>
-					<span class="mx-2"><i class="fa fa-circle text-warning" aria-hidden="true"></i> Unpublished</span>					
-				</div>
-
-				<div class="table-responsive">
-					<table id="project-datatable" class="table ci-table table-striped">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">Project Code</th>
-								<th scope="col">Project Title</th>
-								<!-- <th scope="col">Desription</th> -->
-								<th scope="col">Status</th>
-								<th scope="col">Action</th>
-							</tr>
-						</thead>
-						<tbody></tbody>
-						<tfoot>
-							<tr>
-								<th scope="col">Project Code</th>
-								<th scope="col">Project Title</th>
-								<!-- <th scope="col">Desription</th> -->
-								<th scope="col">Status</th>
-								<th scope="col">Action</th>
-							</tr>
-						</tfoot>
-					</table>
-				</div>
+		<div class="grid-action-holder row my-2 px-3">
+			<div class="col-md-8">
+			<span class="mx-2"><i class="fa fa-circle text-success" aria-hidden="true"></i> Published</span>
+			<span class="mx-2"><i class="fa fa-circle text-warning" aria-hidden="true"></i> Unpublished</span>
 			</div>
+			<div class="col-md-4 text-right">
+			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-plus"></i> Add New</a>
+			</div>		
+		</div><!--/.grid-action-holder-->
+
+		<div class="table-responsive">
+			<table id="project-datatable" class="table ci-table table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Project Code</th>
+						<th scope="col">Project Title</th>
+						<!-- <th scope="col">Desription</th> -->
+						<th scope="col">Status</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+				<tfoot>
+					<tr>
+						<th scope="col">Project Code</th>
+						<th scope="col">Project Title</th>
+						<!-- <th scope="col">Desription</th> -->
+						<th scope="col">Status</th>
+						<th scope="col">Action</th>
+					</tr>
+				</tfoot>
+			</table>
+		</div><!--/.table-responsive-->
+			
 		</div>
 	</div>
 </div><!--/.row-->

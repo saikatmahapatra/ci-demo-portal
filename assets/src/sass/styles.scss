@@ -33,6 +33,14 @@ body.login {
     font-size: 16px;
 }
 
+.logo-2x {
+    width: 200px;
+}
+
+.logo {
+    width: 160px;
+}
+
 
 /*.navbar{
 	min-height: 4rem;
@@ -326,7 +334,7 @@ a[data-link-type="user-profile-card"] {
 
 [data-cms-type="notice"] {
     border-top: 2px solid $blue;
-    background-color: lighten($blue, 50%);
+    background-color: lighten($blue, 47%);
 }
 
 [data-cms-type="news"] {
@@ -594,7 +602,7 @@ table.ci-table.dataTable {
 }
 
 .nav-colorgraph {
-    border-bottom: 2px solid $primary-color;
+    border-bottom: 2px solid lighten($primary-color, 10%);
     .nav-link {
         font-weight: bold;
         color: $black;

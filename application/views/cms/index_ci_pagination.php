@@ -18,57 +18,60 @@
 			echo $html_alert_ui;
 		}
 		?>
-		<div class="card">
-			<div class="card-header">
-				<span class="">Data Table</span>
-				<span class="float-right">
-					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="btn btn-sm btn-primary" title="Add"> Add New</a>
-				</span>
+		
+		<div class="grid-action-holder row my-2 px-3">
+			<div class="col-md-8">
+			<span class="mx-2"><i class="fa fa-circle text-success" aria-hidden="true"></i> Published Content</span>
+			<span class="mx-2"><i class="fa fa-circle text-warning" aria-hidden="true"></i> Unpublished Content</span>
 			</div>
-			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table table-striped">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">Title</th>
-								<th scope="col">Content Type</th>
-								<th scope="col">Text/Content</th>
-								<th scope="col">Status</th>
-								<th scope="col">Action</th>
-							</tr>
-						</thead>
-						<tbody>
-						<?php 
-						if(sizeof($data_rows)>0){
-							foreach($data_rows as $row){
-								?>
-								<tr>
-									<td><?php echo $row['id'].' - '.$row['pagecontent_title'];?></td>
-									<td><?php echo $row['pagecontent_type'];?></td>
-									<td><?php echo $row['pagecontent_type'];?></td>
-									<td><?php echo $row['pagecontent_status'];?></td>
-									<td><a href="#">edit</a></td>
-									
-								</tr>
-								<?php
-							}
-						}
+			<div class="col-md-4 text-right">
+			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-plus"></i> Add New</a>
+			</div>		
+		</div><!--/.grid-action-holder-->	
+			
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Title</th>
+						<th scope="col">Content Type</th>
+						<th scope="col">Text/Content</th>
+						<th scope="col">Status</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php 
+				if(sizeof($data_rows)>0){
+					foreach($data_rows as $row){
 						?>
-						</tbody>
-						<tfoot>
-							<tr>
-								<th scope="col">Title</th>
-								<th scope="col">Content Type</th>
-								<th scope="col">Text/Content</th>
-								<th scope="col">Status</th>
-								<th scope="col">Action</th>
-							</tr>
-						</tfoot>
-					</table>
-					
-				</div>
-				<?php echo $pagination_link; ?>
-			</div>
-		</div>
+						<tr>
+							<td><?php echo $row['id'].' - '.$row['pagecontent_title'];?></td>
+							<td><?php echo $row['pagecontent_type'];?></td>
+							<td><?php echo $row['pagecontent_type'];?></td>
+							<td><?php echo $row['pagecontent_status'];?></td>
+							<td><a href="#">edit</a></td>
+							
+						</tr>
+						<?php
+					}
+				}
+				?>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th scope="col">Title</th>
+						<th scope="col">Content Type</th>
+						<th scope="col">Text/Content</th>
+						<th scope="col">Status</th>
+						<th scope="col">Action</th>
+					</tr>
+				</tfoot>
+			</table>
+			
+		</div><!--/.table-responsive-->
+		<?php echo $pagination_link; ?>
+			
+		
 	</div>
 </div><!--/.row-->

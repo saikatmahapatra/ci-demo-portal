@@ -2,7 +2,7 @@
 	<div class="col-sm-12">		
 		
 		<div class="text-center">
-			<img class="pb-3" style="width:180px;" src="<?php echo base_url('assets/src/img/logo.png');?>">
+			<img class="logo-2x pb-3" src="<?php echo base_url('assets/src/img/logo.png');?>">
 			<!-- <h6><?php echo $this->config->item('app_company_product');?></h6> -->
 			<h1 class="h3 mb-3 font-weight-normal"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h1>
 		</div>
