@@ -5,14 +5,16 @@ $(function() {
         format: "dd-mm-yyyy",
         weekStart: 1,
         autoclose: true,
-        startDate: '0d'
+        startDate: '0d',
+        container: $('#leave_from_date').parent()
     });
 
     $('#leave_to_date').datepicker({
         format: "dd-mm-yyyy",
         weekStart: 1,
         autoclose: true,
-        startDate: '0d'
+        startDate: '0d',
+        container: $('#leave_to_date').parent()
     });
 
     //Show modal on clicking action link
