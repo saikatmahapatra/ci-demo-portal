@@ -385,11 +385,11 @@
 											foreach ($all_uploads as $key => $upload) {
 										?>
 										<div class="file-container row my-2" id="upload_grid_<?php echo $upload['id']; ?>">
-											<div class="col-md-6"><?php echo $arr_upload_document_type_name[$upload['upload_document_type_name']]; ?></div>
+											<div class="col-md-6"><?php echo $arr_upload_file_type_name[$upload['upload_file_type_name']]; ?></div>
 											<div class="col-md-4">
 												<div class="small">
 													<div class="text-muted">
-														<?php echo 'Uploaded on '.$this->common_lib->display_date($upload['upload_date'], true); ?>
+														<?php echo 'Uploaded on '.$this->common_lib->display_date($upload['upload_datetime'], true); ?>
 													</div>
 													<div class="text-muted">
 														<?php echo $char_doc_verification[$upload['upload_is_verified']]; ?>
@@ -398,7 +398,7 @@
 											</div>
 											<div class="col-md-2">
 												<?php
-													$file_path = 'assets/uploads/'.$upload_object_name.'/docs/' . $upload_object_user_id . '/' . $upload['upload_file_name'];
+													$file_path = 'assets/uploads/'.$upload_related_to.'/docs/' . $upload_object_user_id . '/' . $upload['upload_file_name'];
 													if (file_exists(FCPATH . $file_path)) {
 														$file_src = base_url($file_path);
 														$btn_class='';
@@ -408,7 +408,7 @@
 													}
 												?>
 												
-												<a data-target="window" target="_new" href="<?php echo $file_src;?>" title="<?php echo $upload['upload_document_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><i class="fa fa-download"></i> View</a>												
+												<a data-target="window" target="_new" href="<?php echo $file_src;?>" title="<?php echo $upload['upload_file_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><i class="fa fa-download"></i> View</a>												
 											</div>
 										</div>
 										<?php } //foreach ?>

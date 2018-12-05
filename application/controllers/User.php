@@ -55,7 +55,7 @@ class User extends CI_Controller {
         $this->data['account_uses'] = array('SAL'=>'Salary Credit','REI'=>'Reimbursement');
         $this->data['arr_gender'] = array('M'=>'Male','F'=>'Female');
 
-        $this->data['arr_upload_document_type_name'] = array(
+        $this->data['arr_upload_file_type_name'] = array(
             "" => "Select",
             "aadhar_card" => "Aadhar Card",
             "pan_card" => "PAN Card",
@@ -73,7 +73,7 @@ class User extends CI_Controller {
             "permanent_addr_proof" => "Premanent Address Proof",
             "current_addr_proof" => "Current Address Proof",
         );
-        ksort($this->data['arr_upload_document_type_name']);
+        ksort($this->data['arr_upload_file_type_name']);
 
         $this->data['char_doc_verification'] = array(
             'P'=>'Verification Pending',
@@ -844,10 +844,10 @@ class User extends CI_Controller {
         
         if($this->common_lib->is_auth(array('view-user-uploads'),false) == true){
             $this->load->model('upload_model');
-            $upload_object_name = 'user';
-            $this->data['upload_object_name'] = $upload_object_name;
+            $upload_related_to = 'user';
+            $this->data['upload_related_to'] = $upload_related_to;
             $this->data['upload_object_user_id'] = $user_id;
-            $this->data['all_uploads'] = $this->upload_model->get_uploads($upload_object_name, $user_id, NULL, NULL);
+            $this->data['all_uploads'] = $this->upload_model->get_uploads($upload_related_to, $user_id, NULL, NULL);
         }
         
 
@@ -1393,9 +1393,9 @@ class User extends CI_Controller {
 	
 	function upload_file() {
         if ($this->validate_uplaod_form_data() == true) {
-            $upload_object_name = 'user';
-            $upload_object_id = $this->sess_user_id;
-            $upload_document_type_name = 'profile_pic';
+            $upload_related_to = 'user';
+            $upload_related_to_id = $this->sess_user_id;
+            $upload_file_type_name = 'profile_pic';
 
             //Create directory for object specific
             $upload_path = 'assets/uploads/user/profile_pic';
@@ -1403,14 +1403,14 @@ class User extends CI_Controller {
                 mkdir($upload_path, 0777, TRUE);
             }
             $allowed_ext = 'png|jpg|jpeg|doc|docx|pdf';
-            if ($upload_document_type_name == 'profile_pic') {
+            if ($upload_file_type_name == 'profile_pic') {
                 $allowed_ext = 'jpg|jpeg';
             }
             $upload_param = array(
                 'upload_path' => $upload_path, // original upload folder
                 'allowed_types' => $allowed_ext, // allowed file types,
                 'max_size' => '2048', // max 1MB size,
-                'file_new_name' => $upload_object_id . '_' . md5($upload_document_type_name . '_' . time()),
+                'file_new_name' => $upload_related_to_id . '_' . md5($upload_file_type_name . '_' . time()),
 				'thumb_img_require' => TRUE,
 				'thumb_img_path'=>$upload_path,
 				'thumb_img_width'=>'250',
@@ -1420,9 +1420,9 @@ class User extends CI_Controller {
             if (isset($upload_result['file_name']) && empty($upload_result['upload_error'])) {
                 $uploaded_file_name = $upload_result['file_name'];
                 /*$postdata = array(
-                    'upload_object_name' => $upload_object_name,
-                    'upload_object_id' => $upload_object_id,
-                    'upload_document_type_name' => $upload_document_type_name,
+                    'upload_related_to' => $upload_related_to,
+                    'upload_related_to_id' => $upload_related_to_id,
+                    'upload_file_type_name' => $upload_file_type_name,
                     'upload_file_name' => $uploaded_file_name,
                     'upload_mime_type' => $upload_result['file_type'],
                     'upload_by_user_id' => $this->sess_user_id
@@ -1434,13 +1434,13 @@ class User extends CI_Controller {
 				$where_array = array('id'=>$this->sess_user_id);
 				
 
-                //Check if already 1 file of same upload_document_type_name is uploaded, over ride it.
+                //Check if already 1 file of same upload_file_type_name is uploaded, over ride it.
 				//If you do not want to override, want to keep multiple uploaded copy, 
-				//add those upload_document_type_name in skip_checking_existing_doc_type_name array
-                $skip_checking_existing_doc_type_name = array();
+				//add those upload_file_type_name in multiple_allowed_upload_file_type array
+                $multiple_allowed_upload_file_type = array();
 
-                if (!in_array($upload_document_type_name, $skip_checking_existing_doc_type_name)) {
-                    $uploads = $this->user_model->get_uploads($upload_object_name, $upload_object_id, NULL, $upload_document_type_name);
+                if (!in_array($upload_file_type_name, $multiple_allowed_upload_file_type)) {
+                    $uploads = $this->user_model->get_uploads($upload_related_to, $upload_related_to_id, NULL, $upload_file_type_name);
                 }
                 if (isset($uploads[0]) && ($uploads[0]['id'] != '')) {
                     //Unlink previously uploaded file                    

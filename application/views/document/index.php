@@ -6,7 +6,7 @@
 </div><!--/.heading-container-->
 
 <div class="row">
-	<div class="col-md-12">		
+	<div class="col-md-5">		
 		<?php
 		// Show server side flash messages
 		if (isset($alert_message)) {
@@ -19,13 +19,14 @@
 		<?php echo form_hidden('form_action', 'file_upload'); ?>
 		<?php echo isset($upload_error_message) ? $upload_error_message : ''; ?>
 		<div class="form-row">
-			<div class="form-group col-md-4">
-				<label for="upload_document_type_name" class="">Document <span class="required">*</span></label>
-				<?php echo form_dropdown('upload_document_type_name', $arr_upload_document_type_name, set_value('upload_document_type_name'), array('class' => 'form-control','id' => 'upload_document_type_name',));?>
-				<?php echo form_error('upload_document_type_name'); ?>
+			<div class="form-group col-md-12">
+				<label for="upload_file_type_name" class="">Document <span class="required">*</span></label>
+				<?php echo form_dropdown('upload_file_type_name', $arr_upload_file_type_name, set_value('upload_file_type_name'), array('class' => 'form-control','id' => 'upload_file_type_name',));?>
+				<?php echo form_error('upload_file_type_name'); ?>
 			</div>
-
-			<div class="form-group col-md-4">
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-12">
 				<label for="userfile" class="">Select File <span class="required">*</span></label>
 				<?php echo form_upload(array('name' => 'userfile', 'id' => 'userfile','class' => 'form-control','aria-describedby'=>'docHelp'));?>
 				<small id="docHelp" class="form-text text-muted bg-light p-1">
@@ -38,56 +39,52 @@
 			</div>		
 		</div>
 		<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Upload','class' => 'btn btn-primary'));?>
-		<?php echo form_close(); ?>				
-			
-
-
-
-
-<div class="row my-2">
-	<div class="col-md-12">
-	<div class="row font-weight-bold">
-		<div class="col-md-6">Document Name</div>
-		<div class="col-md-4">Uploaded On</div>
-		<div class="col-md-2">Action</div>
-	</div>
-	<?php
-	if (isset($all_uploads) && sizeof($all_uploads) > 0) {
-		foreach ($all_uploads as $key => $upload) {
-	?>
-	<div class="file-container row my-2" id="upload_grid_<?php echo $upload['id']; ?>">
-		<div class="col-md-6"><?php echo $arr_upload_document_type_name[$upload['upload_document_type_name']]; ?></div>
-		<div class="col-md-4">
-			<div class="small">
-				<div class="text-muted">
-					<?php echo 'Uploaded on '.$this->common_lib->display_date($upload['upload_date'], true); ?>
-				</div>
-				<div class="text-muted">
-					<?php echo $char_doc_verification[$upload['upload_is_verified']]; ?>
-				</div>							
-			</div>
-		</div>
-		<div class="col-md-2">
-			<?php
-				$file_path = 'assets/uploads/'.$upload_object_name.'/docs/' . $id . '/' . $upload['upload_file_name'];
-				if (file_exists(FCPATH . $file_path)) {
-					$file_src = base_url($file_path);
-					$btn_class='';
-				} else {
-					$file_src = '#';
-					$btn_class='disabled';	
-				}
-			?>
-			<a target="_new" href="<?php echo $file_src;?>" title="<?php echo $upload['upload_document_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><i class="fa fa-download"></i> View</a>
-			<a href="#" class="btn btn-sm btn-outline-danger btn-delete-file ml-2" data-confirmation="1" data-confirmation-message="Are you sure, you want to delete this?" data-upload_id="<?php echo $upload['id'];?>" title="Delete <?php echo $upload['upload_document_type_name']; ?>" data-path="<?php echo $file_path;?>"><i class="fa fa-trash"></i> Delete</a>
-		</div>
-	</div>
-	<?php } //foreach ?>
-	<?php }else {?>
-	<div class="row">
-		<div class="col-md-12">No documents uploaded...</div>
-	</div>
-	<?php }?>
+		<?php echo form_close(); ?>	
+	</div>	
+	<div class="col-md-7">	
+		
+		<div class="table-responsive">
+			<table class="table ci-table table-bordered table-sm">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Document</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php
+				if (isset($all_uploads) && sizeof($all_uploads) > 0) {
+					foreach ($all_uploads as $key => $upload) {
+				?>
+				<tr class="file-container" id="upload_grid_<?php echo $upload['id']; ?>">
+						<?php
+							$file_path = 'assets/uploads/'.$upload_related_to.'/docs/' . $id . '/' . $upload['upload_file_name'];
+							if (file_exists(FCPATH . $file_path)) {
+								$file_src = base_url($file_path);
+								$btn_class='';
+							} else {
+								$file_src = '#';
+								$btn_class='disabled';	
+							}
+						?>
+						<td>
+							<a href="<?php echo $file_src;?>" title="<?php echo $upload['upload_file_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="<?php echo $btn_class;?>" target="_new"><?php echo $arr_upload_file_type_name[$upload['upload_file_type_name']]; ?></a>
+						</td>
+												
+						<td>
+							<a href="#" class="btn btn-outline-danger btn-sm btn-delete-file" data-confirmation="1" data-confirmation-message="Are you sure, you want to delete this?" data-upload_id="<?php echo $upload['id'];?>" title="Delete <?php echo $upload['upload_file_type_name']; ?>" data-path="<?php echo $file_path;?>"><i class="fa fa-close"></i> Delete</a>
+						</td>
+					
+				</tr>
+				<?php } //foreach ?>
+				<?php }else {?>
+				<tr>
+					<td colspan="2">No documents found.</td>
+				</tr>
+				<?php }?>
+				</tbody>
+			</table>			
+		</div><!--/.table-responsive-->
 	</div>
 </div>
 

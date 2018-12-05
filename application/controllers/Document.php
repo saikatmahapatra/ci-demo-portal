@@ -50,7 +50,7 @@ class Document extends CI_Controller {
 		// $this->breadcrumbs->push('Product', '/admin/product');		
 		// $this->data['breadcrumbs'] = $this->breadcrumbs->show();
         
-        $this->data['arr_upload_document_type_name'] = array(
+        $this->data['arr_upload_file_type_name'] = array(
             "" => "Select",
             "aadhar_card" => "Aadhar Card",
             "pan_card" => "PAN Card",
@@ -68,7 +68,7 @@ class Document extends CI_Controller {
             "permanent_addr_proof" => "Premanent Address Proof",
             "current_addr_proof" => "Current Address Proof",
         );
-        ksort($this->data['arr_upload_document_type_name']);
+        ksort($this->data['arr_upload_file_type_name']);
 
         $this->data['char_doc_verification'] = array(
             'P'=>'Verification Pending',
@@ -89,9 +89,9 @@ class Document extends CI_Controller {
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 
         //Uploads
-        $upload_object_name = 'user';
-        $this->data['upload_object_name'] = $upload_object_name;
-        $this->data['all_uploads'] = $this->upload_model->get_uploads($upload_object_name, $this->data['id'], NULL, NULL);
+        $upload_related_to = 'user';
+        $this->data['upload_related_to'] = $upload_related_to;
+        $this->data['all_uploads'] = $this->upload_model->get_uploads($upload_related_to, $this->data['id'], NULL, NULL);
         if ($this->input->post('form_action') == 'file_upload') {
             $this->upload_file();
         }
@@ -102,12 +102,12 @@ class Document extends CI_Controller {
 
     function upload_file() {
         if ($this->validate_uplaod_form_data() == true) {
-            $upload_object_name = 'user';
-            $upload_object_id = $this->data['id'];
-            $upload_document_type_name = $this->input->post('upload_document_type_name');
+            $upload_related_to = 'user';
+            $upload_related_to_id = $this->data['id'];
+            $upload_file_type_name = $this->input->post('upload_file_type_name');
             
             //Create directory for object specific
-            $upload_path = 'assets/uploads/' . $upload_object_name . '/docs/' . $upload_object_id;
+            $upload_path = 'assets/uploads/' . $upload_related_to . '/docs/' . $upload_related_to_id;
             if (!is_dir($upload_path)) {
                 mkdir($upload_path, 0777, TRUE);
                 copy('assets/index.html', $upload_path.'/index.html');
@@ -117,26 +117,26 @@ class Document extends CI_Controller {
                 'upload_path' => $upload_path, // original upload folder
                 'allowed_types' => $allowed_ext, // allowed file types,
                 'max_size' => '1024', // max 1MB size,
-                'file_new_name' => $upload_object_id . '_' . $upload_document_type_name . '_' . time(),
+                'file_new_name' => $upload_related_to_id . '_' . $upload_file_type_name . '_' . time(),
             );
             $upload_result = $this->common_lib->upload_file('userfile', $upload_param);
             if (isset($upload_result['file_name']) && empty($upload_result['upload_error'])) {
                 $uploaded_file_name = $upload_result['file_name'];
                 $postdata = array(
-                    'upload_object_name' => $upload_object_name,
-                    'upload_object_id' => $upload_object_id,
-                    'upload_document_type_name' => $upload_document_type_name,
+                    'upload_related_to' => $upload_related_to,
+                    'upload_related_to_id' => $upload_related_to_id,
+                    'upload_file_type_name' => $upload_file_type_name,
                     'upload_file_name' => $uploaded_file_name,
                     'upload_mime_type' => $upload_result['file_type'],
                     'upload_by_user_id' => $this->sess_user_id,
-                    'upload_date' => date('Y-m-d H:i:s')
+                    'upload_datetime' => date('Y-m-d H:i:s')
                 );
 
                 // Check if already files uploaded or not to allow multiple file upload for that category
-                $skip_checking_existing_doc_type_name = array('work_exp_letter');
+                $multiple_allowed_upload_file_type = array('work_exp_letter');
 
-                if (!in_array($upload_document_type_name, $skip_checking_existing_doc_type_name)) {
-                    $uploads = $this->upload_model->get_uploads($upload_object_name, $upload_object_id, NULL, $upload_document_type_name);
+                if (!in_array($upload_file_type_name, $multiple_allowed_upload_file_type)) {
+                    $uploads = $this->upload_model->get_uploads($upload_related_to, $upload_related_to_id, NULL, $upload_file_type_name);
                 }
                 if (isset($uploads[0]) && ($uploads[0]['id'] != '')) {
                     //Unlink previously uploaded file
@@ -165,7 +165,7 @@ class Document extends CI_Controller {
     }
 
     function validate_uplaod_form_data() {
-        $this->form_validation->set_rules('upload_document_type_name', 'document', 'required');
+        $this->form_validation->set_rules('upload_file_type_name', 'document', 'required');
         //$this->form_validation->set_rules('userfile', 'file selection', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
@@ -197,11 +197,11 @@ class Document extends CI_Controller {
         }
     }
     
-    function delete_uploads($upload_object_name, $upload_object_id) {
-        $where_array = array('upload_object_name' => $upload_object_name, 'upload_object_id' => $upload_object_id);
+    function delete_uploads($upload_related_to, $upload_related_to_id) {
+        $where_array = array('upload_related_to' => $upload_related_to, 'upload_related_to_id' => $upload_related_to_id);
         $res = $this->upload_model->delete($where_array, 'uploads');
         if ($res) {
-            $upload_path = 'assets/uploads/'.$upload_object_name.'/' . $upload_object_id;
+            $upload_path = 'assets/uploads/'.$upload_related_to.'/' . $upload_related_to_id;
             $this->common_lib->recursive_remove_directory(FCPATH . $upload_path);
         }
     }
