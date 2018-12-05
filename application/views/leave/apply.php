@@ -53,6 +53,13 @@
 				<li>HR L3 : <?php echo $myapprover['hr_firstname'].' '.$myapprover['hr_lastname'].' '.$myapprover['hr_emp_id'].'';?></li>
 			</ul>
 		</div>
+		
+		<h6>Leave Balance</h6>
+		<div class="row mb-3">						
+			<div class="col-md-3">Casual Leave (CL) : <?php echo isset($leave_balance[0]['cl']) ? $leave_balance[0]['cl'] : '0.0'; ?></div>
+			<div class="col-md-3">Privileged Leave (PL) : <?php echo isset($leave_balance[0]['pl']) ? $leave_balance[0]['pl'] : '0.0'; ?></div>
+			<div class="col-md-3">Optional Leave (OL) : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></div>			
+		</div>
 
 		<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => 'ci-form-leave',)); ?>
 		<?php echo form_hidden('form_action', 'add'); ?>

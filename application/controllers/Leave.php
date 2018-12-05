@@ -72,7 +72,9 @@ class Leave extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');        
         $this->data['approvers'] = $this->user_model->get_user_approvers($this->sess_user_id);
-        //print_r($this->data['approvers']);
+        $this->data['leave_balance'] = $this->leave_model->get_leave_balance(NULL, NULL, NULL, FALSE, FALSE, $this->sess_user_emp_id);
+        
+        //print_r($this->data['leave_balance']);
         $supervisor_approver_id = isset($this->data['approvers'][0]['user_supervisor_id']) ? $this->data['approvers'][0]['user_supervisor_id'] : '';
         $director_approver_id = isset($this->data['approvers'][0]['user_director_approver_id']) ? $this->data['approvers'][0]['user_director_approver_id'] : '';
         $hr_approver_id = isset($this->data['approvers'][0]['user_hr_approver_id']) ? $this->data['approvers'][0]['user_hr_approver_id'] : '';
@@ -344,6 +346,7 @@ class Leave extends CI_Controller {
             $leave_comments = $this->input->post('leave_comments');
 
             //print_r($_POST);die();
+                        
 
             if ($this->validate_update_leave_status_form_data() == true) {
                 
@@ -391,6 +394,16 @@ class Leave extends CI_Controller {
                     );
                     $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
                     $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
+                }
+
+                //Update leave balance if finally leave approved
+                if($final_leave_status == 'A'){
+                    $result_array = $this->leave_model->get_rows($leave_id, NULL, NULL, FALSE, TRUE);
+                    $leave_data = $result_array['data_rows'];
+                    $applicant_user_id = $leave_data[0]['user_id'];
+                    echo $leave_type = $leave_data[0]['leave_type'];;
+                    $leave_balance = $this->leave_model->get_leave_balance(NULL, NULL, NULL, FALSE, FALSE, $applicant_user_id);
+                    print_r($leave_balance);die();
                 }
                 
                 if ($is_update) {
