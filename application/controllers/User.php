@@ -1393,9 +1393,9 @@ class User extends CI_Controller {
 	
 	function upload_file() {
         if ($this->validate_uplaod_form_data() == true) {
-            $upload_related_to = 'user';
-            $upload_related_to_id = $this->sess_user_id;
-            $upload_file_type_name = 'profile_pic';
+            $upload_related_to = 'user'; // related to user, product, album, contents etc
+            $upload_related_to_id = $this->sess_user_id; // related to id user id, product id, album id etc
+            $upload_file_type_name = 'profile_pic'; // file type name
 
             //Create directory for object specific
             $upload_path = 'assets/uploads/user/profile_pic';
@@ -1434,11 +1434,8 @@ class User extends CI_Controller {
 				$where_array = array('id'=>$this->sess_user_id);
 				
 
-                //Check if already 1 file of same upload_file_type_name is uploaded, over ride it.
-				//If you do not want to override, want to keep multiple uploaded copy, 
-				//add those upload_file_type_name in multiple_allowed_upload_file_type array
+                // Allow mutiple file upload for a file type.
                 $multiple_allowed_upload_file_type = array();
-
                 if (!in_array($upload_file_type_name, $multiple_allowed_upload_file_type)) {
                     $uploads = $this->user_model->get_uploads($upload_related_to, $upload_related_to_id, NULL, $upload_file_type_name);
                 }

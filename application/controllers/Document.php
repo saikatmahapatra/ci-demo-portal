@@ -102,9 +102,9 @@ class Document extends CI_Controller {
 
     function upload_file() {
         if ($this->validate_uplaod_form_data() == true) {
-            $upload_related_to = 'user';
-            $upload_related_to_id = $this->data['id'];
-            $upload_file_type_name = $this->input->post('upload_file_type_name');
+            $upload_related_to = 'user'; // related to user, product, album, contents etc
+            $upload_related_to_id = $this->data['id']; // related to id user id, product id, album id etc
+            $upload_file_type_name = $this->input->post('upload_file_type_name'); // file type name
             
             //Create directory for object specific
             $upload_path = 'assets/uploads/' . $upload_related_to . '/docs/' . $upload_related_to_id;
@@ -132,9 +132,8 @@ class Document extends CI_Controller {
                     'upload_datetime' => date('Y-m-d H:i:s')
                 );
 
-                // Check if already files uploaded or not to allow multiple file upload for that category
+                // Allow mutiple file upload for a file type.
                 $multiple_allowed_upload_file_type = array('work_exp_letter');
-
                 if (!in_array($upload_file_type_name, $multiple_allowed_upload_file_type)) {
                     $uploads = $this->upload_model->get_uploads($upload_related_to, $upload_related_to_id, NULL, $upload_file_type_name);
                 }
