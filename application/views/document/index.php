@@ -29,13 +29,14 @@
 			<div class="form-group col-md-12">
 				<label for="userfile" class="">Select File <span class="required">*</span></label>
 				<?php echo form_upload(array('name' => 'userfile', 'id' => 'userfile','class' => 'form-control','aria-describedby'=>'docHelp'));?>
+				<?php echo form_error('userfile'); ?>
 				<small id="docHelp" class="form-text text-muted bg-light p-1">
 					<ul>
 						<li>Only png, jpg, jpeg, doc, docx, pdf files are allowed.</li>
 						<li>File size should not larger than 1 MB(1024 KB).</li>
 					</ul>							 
 				</small>
-				<?php echo form_error('userfile'); ?>
+				
 			</div>		
 		</div>
 		<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Upload','class' => 'btn btn-primary'));?>

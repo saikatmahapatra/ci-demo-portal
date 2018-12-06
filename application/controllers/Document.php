@@ -164,8 +164,10 @@ class Document extends CI_Controller {
     }
 
     function validate_uplaod_form_data() {
-        $this->form_validation->set_rules('upload_file_type_name', 'document', 'required');
-        //$this->form_validation->set_rules('userfile', 'file selection', 'required');
+        $this->form_validation->set_rules('upload_file_type_name', ' ', 'required');
+        if (empty($_FILES['userfile']['name'])){
+			$this->form_validation->set_rules('userfile', ' ', 'required');
+		}
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
