@@ -46,7 +46,7 @@
 		
 		<div class="table-responsive">
 			<table class="table ci-table table-bordered table-sm">
-				<thead class="thead-dark">
+				<thead class="thead-light">
 					<tr>
 						<th scope="col">Document</th>
 						<th scope="col">Action</th>
