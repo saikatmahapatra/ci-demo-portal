@@ -190,14 +190,15 @@ class Timesheet_model extends CI_Model {
 	function get_project_dropdown() {
         $result = array();
         $this->db->select('id,project_name,project_number');		
-        $this->db->where('project_status','Y');		
+        $this->db->where('project_status','Y');
+        $this->db->order_by('project_name');		
         $query = $this->db->get('projects');
         #echo $this->db->last_query();
         $result = array('' => 'Select');
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
-                $result[$r->id] = $r->project_number.' '.$r->project_name;
+                $result[$r->id] = $r->project_name.' - '.$r->project_number;
             }
         }
         return $result;

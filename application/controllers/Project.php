@@ -91,8 +91,9 @@ class Project extends CI_Controller {
         foreach ($data_rows as $result) {
             $no++;
             $row = array();
-            $row[] = $result['project_number'];
+            
             $row[] = $result['project_name'];
+            $row[] = $result['project_number'];
             //$row[] = $result['project_desc'];            
             $status_indicator = 'text-secondary';            
             if($result['project_status'] == 'Y'){

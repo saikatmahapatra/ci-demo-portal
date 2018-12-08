@@ -6,7 +6,7 @@
 </div><!--/.heading-container-->
 
 <div class="row">
-	<div class="col-md-5">		
+	<div class="col-md-5 mb-4">		
 		<?php
 		// Show server side flash messages
 		if (isset($alert_message)) {
@@ -42,8 +42,8 @@
 		<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Upload','class' => 'btn btn-primary'));?>
 		<?php echo form_close(); ?>	
 	</div>	
-	<div class="col-md-7">	
-		
+
+	<div class="col-md-7">		
 		<div class="table-responsive">
 			<table class="table ci-table table-bordered table-sm">
 				<thead class="thead-light">
