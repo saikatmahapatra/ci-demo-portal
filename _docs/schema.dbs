@@ -3444,3 +3444,6 @@ ALTER TABLE `uploads` ADD `upload_is_verified` CHAR(1) NULL DEFAULT 'N' AFTER `u
 ALTER TABLE `users`  ADD `user_hr_approver_id` INT(11) NULL DEFAULT NULL  AFTER `user_supervisor_id`,  ADD `user_director_approver_id` INT(11) NULL DEFAULT NULL  AFTER `user_hr_approver_id`,  ADD `user_finance_approver_id` INT(11) NULL DEFAULT NULL  AFTER `user_director_approver_id`;
 ---20/11/2018
 ALTER TABLE `users` DROP `user_supervisor_id`, DROP `user_hr_approver_id`, DROP `user_director_approver_id`, DROP `user_finance_approver_id`;
+
+-- 08/12/2018
+ALTER TABLE `user_leaves`  ADD `applied_for_days_count` FLOAT(10,2) NULL  AFTER `leave_to_date`,  ADD `approved_for_days_count` FLOAT(10,2) NULL  AFTER `applied_for_days_count`,  ADD `excluded_days` TEXT NULL  AFTER `approved_for_days_count`;

@@ -25,6 +25,44 @@ $(function() {
         $('#leaveActionModal').modal('show');
     });
     $('#btnManageLeave').on('click', manage_leave_req);
+
+    //On user drop down change get leave balance
+    $('#user_dropdown').on('change', function() {
+        var user_id = $(this).val();
+        var xhr = new Ajax();
+        xhr.type = 'POST';
+        xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/get_user_leave_balance';
+        xhr.data = {
+            user_id: user_id,
+            action: 'ajax',
+        };
+        xhr.beforeSend = function() {
+            showAjaxLoader();
+        }
+        var promise = xhr.init();
+        promise.done(function(response) {
+            console.log(response);
+            var form_id = '#ci-form-leavebalance';
+            if (response.data != null) {
+                $(form_id + ' input[name="id"]').val(response.data.id);
+                $(form_id + ' input[name="cl"]').val(response.data.cl);
+                $(form_id + ' input[name="pl"]').val(response.data.pl);
+                $(form_id + ' input[name="ol"]').val(response.data.ol);
+            } else {
+                $(form_id + ' input[name="id"]').val('');
+                $(form_id + ' input[name="cl"]').val('');
+                $(form_id + ' input[name="pl"]').val('');
+                $(form_id + ' input[name="ol"]').val('');
+            }
+            hideAjaxLoader();
+        });
+        promise.fail(function() {
+            alert("Sorry, Can not process your request.");
+        });
+        promise.always(function() {
+
+        });
+    });
 });
 
 function renderDataTable() {

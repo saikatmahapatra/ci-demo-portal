@@ -21,44 +21,38 @@
 
 <div class="row my-3">
 	<div class="col-md-12">
-		<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => 'ci-form-leave',)); ?>
-			<?php echo form_hidden('form_action', 'add'); ?>
+		<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => 'ci-form-leavebalance',)); ?>
+			<?php echo form_hidden('form_action', 'leave_balance_update'); ?>
+			<?php echo form_hidden('id', ''); ?>
 			<div class="form-row">
-				<div class="form-group col-md-2">
-					<label for="leave_type" class="bmd-label-floating">Leave Type <span class="required">*</span></label>
+				<div class="form-group col-md-3">
+					<label for="user_id" class="bmd-label-floating">Employee <span class="required">*</span></label>
 					<?php
-					echo form_dropdown('leave_type', $leave_type_arr, set_value('leave_type'), array(
+					echo form_dropdown('user_id', $user_dropdwon, set_value('user_id'), array(
 						'class' => 'form-control',
+						'id' => 'user_dropdown'
 					));
 					?> 
-					<?php echo form_error('leave_type'); ?>
+					<?php echo form_error('user_id'); ?>
 				</div>
 									
 				<div class="form-group col-md-2">
-					<label for="leave_from_date" class="bmd-label-floating">From Date <span class="required">*</span></label>
-					<?php echo form_input(array('name' => 'leave_from_date','value' => set_value('leave_from_date'),'id' => 'leave_from_date','class' => 'form-control', 'placeholder'=>'dd-mm-yyyy', 'readonly'=>'readonly')); ?>
-					<?php echo form_error('leave_from_date'); ?>
+					<label for="cl" class="bmd-label-floating">Casual Leave <span class="required">*</span></label>
+					<?php echo form_input(array('name' => 'cl','value' => set_value('cl'),'id' => 'cl','class' => 'form-control', 'placeholder'=>'', 'maxlength'=>'6')); ?>
+					<?php echo form_error('cl'); ?>
 				</div>
 					
 				<div class="form-group col-md-2">
-					<label for="leave_to_date" class="bmd-label-floating">To Date <span class="required">*</span></label>		
-					<?php echo form_input(array('name' => 'leave_to_date','value' => set_value('leave_to_date'),'id' => 'leave_to_date','class' => 'form-control', 'placeholder'=>'dd-mm-yyyy', 'readonly'=>'readonly')); ?>
-					<?php echo form_error('leave_to_date'); ?>
+					<label for="pl" class="bmd-label-floating">Priviledge Leave <span class="required">*</span></label>		
+					<?php echo form_input(array('name' => 'pl','value' => set_value('pl'),'id' => 'pl','class' => 'form-control', 'placeholder'=>'', 'maxlength'=>'6')); ?>
+					<?php echo form_error('pl'); ?>
 				</div>
 			
-				<div class="form-group col-md-4">
-					<label for="leave_reason" class="bmd-label-floating">Reason <span class="required">*</span></label>
-					<?php
-					echo form_input(array(
-						'name' => 'leave_reason',
-						'value' => set_value('leave_reason'),
-						'id' => 'leave_reason',
-						'class' => 'form-control',
-						'placeholder'=>'Briefly describe leave reason',
-						'maxlength' => '100'
-					));
+				<div class="form-group col-md-2">
+					<label for="ol" class="bmd-label-floating">Optional Leave <span class="required">*</span></label>
+					<?php echo form_input(array('name' => 'ol','value' => set_value('ol'),'id' => 'ol', 'class' => 'form-control','placeholder'=>'','maxlength' => '6'));
 					?>
-					<?php echo form_error('leave_reason'); ?>				
+					<?php echo form_error('ol'); ?>				
 				</div>
 
 				<div class="col-md-2 mt-4">

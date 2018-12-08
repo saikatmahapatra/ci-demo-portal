@@ -55,8 +55,8 @@ class Leave_model extends CI_Model {
 
     function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE, $cond=NULL) {
         $result = array();
-        $this->db->select('t1.*, 
-        (DATEDIFF(t1.leave_to_date, t1.leave_from_date)+1) leave_days,
+        //(DATEDIFF(t1.leave_to_date, t1.leave_from_date)+1) leave_days
+        $this->db->select('t1.*,
         t2.user_firstname as supervisor_approver_firstname,
         t2.user_lastname as supervisor_approver_lastname,
         t2.user_emp_id as supervisor_approver_emp_id,

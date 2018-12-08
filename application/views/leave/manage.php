@@ -96,7 +96,7 @@
 							<?php echo $row['leave_type'];?>
 							<?php echo $this->common_lib->display_date($row['leave_from_date']);?>
 							<?php echo ' to '.$this->common_lib->display_date($row['leave_to_date']);?>
-							<?php echo ', '.$row['leave_days'].' day(s)';?></td>
+							<?php echo ', '.$row['applied_for_days_count'].' day(s)';?></td>
 							<td>
 							<a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/manage');?>" class="btn btn-outline-info btn-sm">Details</a>
 							

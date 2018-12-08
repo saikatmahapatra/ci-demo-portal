@@ -92,6 +92,7 @@ class Leave extends CI_Controller {
                     'leave_reason' => $this->input->post('leave_reason'),
                     'leave_from_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_from_date')),
                     'leave_to_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_to_date')),
+                    'applied_for_days_count' => ($no_day+1),
                     'user_id' => $this->sess_user_id,					
                     'leave_created_on' => date('Y-m-d H:i:s'),
                     'leave_status' => 'P',
@@ -309,30 +310,82 @@ class Leave extends CI_Controller {
         $this->load->view('_layouts/layout_default', $this->data);
     }
 
-    function leave_balance() {        
+    function leave_balance() {
+        // Check user permission by permission name mapped to db
+        $is_authorized = $this->common_lib->is_auth(array(
+            'crud-leave-balance'
+        ));  
+        $this->data['page_heading'] = 'Leave Balance Sheet';      
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-        if ($this->input->post('form_action') == 'update') {
-            if ($this->validate_form_data() == true) {                                
-				$postdata = array(                    
-                    'leave_req_id' => $leave_request_id,
-                    'leave_type' => $this->input->post('leave_type'),
-                    'leave_reason' => $this->input->post('leave_reason'),
-                    'leave_from_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_from_date')),
-                    'leave_to_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_to_date')),
-                    'user_id' => $this->sess_user_id,					
-                    'leave_created_on' => date('Y-m-d H:i:s')
-                );
-                $insert_id = $this->leave_model->insert($postdata);
-                if ($insert_id) {
-                    $this->session->set_flashdata('flash_message', 'Your Leave Request <strong>#'.$leave_request_id.'</strong> has been generated successfully. Supervisor and HR will get leave notification and work on it.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
-                    redirect(current_url());
+        if ($this->input->post('form_action') == 'leave_balance_update') {
+            if ($this->validate_leave_balance_form_data() == true) {
+                if($this->input->post('id') != ''){
+                    $postdata = array(                    
+                        'user_id' => $this->input->post('user_id'),
+                        'cl' => $this->input->post('cl'),
+                        'pl' => $this->input->post('pl'),
+                        'ol' => $this->input->post('ol'),
+                        'updated_by' => $this->sess_user_id,					
+                        'updated_on' => date('Y-m-d H:i:s')
+                    );
+                    $where = array('id' => $this->input->post('id'));
+                    $insert_id = $this->leave_model->update($postdata, $where, 'user_leave_balance');
+                    if ($insert_id) {
+                        $this->session->set_flashdata('flash_message', 'Leave Balance Record Updated.');
+                        $this->session->set_flashdata('flash_message_css', 'alert-success');
+                        redirect(current_url());
+                    }
+                }else{
+                    $postdata = array(                    
+                        'user_id' => $this->input->post('user_id'),
+                        'cl' => $this->input->post('cl'),
+                        'pl' => $this->input->post('pl'),
+                        'ol' => $this->input->post('ol'),
+                        'created_by' => $this->sess_user_id,					
+                        'created_on' => date('Y-m-d H:i:s')
+                    );
+                    $insert_id = $this->leave_model->insert($postdata, 'user_leave_balance');
+                    if ($insert_id) {
+                        $this->session->set_flashdata('flash_message', 'Leave Balance Record Created.');
+                        $this->session->set_flashdata('flash_message_css', 'alert-success');
+                        redirect(current_url());
+                    }
                 }
             }
         }
+        $this->load->model('user_model');
+        $this->data['user_dropdwon'] = $this->user_model->get_user_dropdown();
         $this->data['maincontent'] = $this->load->view($this->router->class.'/leave_balance', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function validate_leave_balance_form_data($action = NULL) {
+        $this->form_validation->set_rules('user_id', ' ', 'required');
+        $this->form_validation->set_rules('cl', ' ', 'required|max_length[6]|numeric|less_than_equal_to[10]
+        ');
+        $this->form_validation->set_rules('pl', ' ', 'required|max_length[6]|numeric|less_than_equal_to[100]');
+        $this->form_validation->set_rules('ol', ' ', 'required|max_length[6]|numeric|less_than_equal_to[5]');
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function get_user_leave_balance(){
+        $message = array('data'=>NULL, 'is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>'');
+        if($this->input->post('action') == 'ajax'){
+            $applicant_user_id = $this->input->post('user_id');
+            $leave_balance = $this->leave_model->get_leave_balance(NULL, NULL, NULL, FALSE, FALSE, $applicant_user_id);
+            //echo json_encode($leave_balance[0]);
+            if(sizeof($leave_balance)>0){
+                $message = array('data'=>$leave_balance[0], 'is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>'');
+            }
+            
+        }
+        echo json_encode($message); die();
     }
 
     function update_leave_status(){
@@ -349,7 +402,7 @@ class Leave extends CI_Controller {
                         
 
             if ($this->validate_update_leave_status_form_data() == true) {
-                
+                $messageTxt = '';
                 if($action_by_approver == 'applicant'){                    
                     $postdata = array(					
                         'leave_status' => $leave_staus,
@@ -359,6 +412,9 @@ class Leave extends CI_Controller {
                     );
                     $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
                     $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
+                    if($is_update){
+                        $messageTxt = 'Leave request has been updated successfully.';
+                    }
 
                 }
                 if($action_by_approver == 'supervisor'){
@@ -377,6 +433,9 @@ class Leave extends CI_Controller {
                     );
                     $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
                     $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
+                    if($is_update){
+                        $messageTxt = 'Leave request has been updated successfully.';
+                    }
                 }
                 if($action_by_approver == 'director'){
                     if($leave_staus == 'R'){
@@ -394,6 +453,9 @@ class Leave extends CI_Controller {
                     );
                     $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
                     $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
+                    if($is_update){
+                        $messageTxt = 'Leave request has been updated successfully.';
+                    }
                 }
 
                 //Update leave balance if finally leave approved
@@ -401,14 +463,37 @@ class Leave extends CI_Controller {
                     $result_array = $this->leave_model->get_rows($leave_id, NULL, NULL, FALSE, TRUE);
                     $leave_data = $result_array['data_rows'];
                     $applicant_user_id = $leave_data[0]['user_id'];
-                    echo $leave_type = $leave_data[0]['leave_type'];;
+                    $applied_for_days_count = $leave_data[0]['applied_for_days_count'];
+                    $leave_type = $leave_data[0]['leave_type'];;
                     $leave_balance = $this->leave_model->get_leave_balance(NULL, NULL, NULL, FALSE, FALSE, $applicant_user_id);
-                    print_r($leave_balance);die();
+                    $leave_balance_id = $leave_balance[0]['id'];
+                    $available_leave_balance = $leave_balance[0][strtolower($leave_type)];
+                    //print_r($leave_balance);die();
+                    $updated_leave_balance = ($available_leave_balance-$applied_for_days_count);
+
+                    //Update Leave Table with Number of approved days 
+                    $postdata = array(                        
+                        'approved_for_days_count' => $applied_for_days_count
+                    );
+                    $where = array('id'=>$leave_id);
+
+                    // Update Leave Balance Table
+                    $postdata = array(
+                         strtolower($leave_type) => $updated_leave_balance,
+                        'updated_on' => date('Y-m-d H:i:s'),
+                        'updated_by' => $this->sess_user_id
+                    );
+                    $where = array('id'=>$leave_balance_id, 'user_id'=>$applicant_user_id);
+                    $is_update = $this->leave_model->update($postdata, $where, 'user_leave_balance');
+                    if($is_update){
+                        $messageTxt.= 'Leave balance has been updated.';
+                    }
+
                 }
                 
-                if ($is_update) {
-                    $message = array('is_valid'=>true, 'updated'=>true, 'insert_id'=>'','msg'=>'<div class="alert alert-success">leave has been updated succesfully.</div>'); 
-                }
+                //if ($is_update) {
+                $message = array('is_valid'=>true, 'updated'=>true, 'insert_id'=>'','msg'=>'<div class="alert alert-success">'.$messageTxt.'</div>'); 
+                //}
             }else{
                 $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>validation_errors()); 
             }
