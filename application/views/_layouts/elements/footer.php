@@ -3,6 +3,6 @@
         <?php echo $this->config->item('app_admin_copy_right');?>
     </div>
     <div class="small text-muted text-center">
-        App Ver. <?php echo $this->config->item('app_admin_ui_version');?>
+        <?php echo $this->config->item('app_version');?>
     </div>
 </div>

@@ -18,41 +18,20 @@
 	</div>	
 </div>
 
-<div class="row my-3">
+<div class="row">
 	<div class="col-md-12">
-		<?php 
-		//print_r($approvers); //echo sizeof($approvers); 
-		$myapprover = isset($approvers) && sizeof($approvers) > 0 ? $approvers[0] : null;
-		?>
-
-		<?php 
-		$has_approvers = false;
-		$msg = '';
-		$msg_css = 'alert-warning';
-		if(isset($myapprover) ){
-			$has_approvers = true;
-			$msg = 'Please review your leave process approvers here. You can not update approvers for any applied leave. To update your approvers please contact to system administrator / HR';
-			$msg_css = 'alert-info';
-			if($myapprover['user_supervisor_id'] == 0 || $myapprover['user_director_approver_id'] == 0){
-				$has_approvers = false;
-				//$msg = 'You are not tagged with any approvers';
-				//$msg_css = 'alert-danger';
-			}	
-		}else{
-			$has_approvers = false;
-			$msg = 'You are not tagged with any approvers. Please contact to hr/admin for tagging approvers. Once you are tagged with approvers, you will be able to proceed with this application.';
-			$msg_css = 'alert-danger';
-		}
-		?>
-
-		<div class="alert <?php echo isset($msg_css) ? $msg_css : '';?>">
-			<?php echo isset($msg) ? $msg : '';?>
-			<ul>
-				<li>Supervisor L1 : <?php echo $myapprover['supervisor_firstname'].' '.$myapprover['supervisor_lastname'].' '.$myapprover['supervisor_emp_id'].'';?></li>
-				<li>Director L2 : <?php echo $myapprover['director_firstname'].' '.$myapprover['director_lastname'].' '.$myapprover['director_emp_id'].'';?></li>
-				<li>HR L3 : <?php echo $myapprover['hr_firstname'].' '.$myapprover['hr_lastname'].' '.$myapprover['hr_emp_id'].'';?></li>
+		<div class="alert <?php //echo ($system_msg_error_counter>0) ? 'alert-warning' : 'alert-info'; ?>">
+			<ul class="">
+			<?php
+				foreach($system_msg as $key=>$val){
+					?>
+					<li class="<?php echo $val['css'];?>"><?php echo $val['txt'];?></li>
+					<?php
+				}
+			?>
 			</ul>
 		</div>
+		
 		
 		<h6>Leave Balance</h6>
 		<div class="row mb-3">						
@@ -102,7 +81,7 @@
 			</div>
 		</div>
 		
-		<button type="submit" <?php echo ($has_approvers == false) ? 'disabled="disabled"' : '';  ?> class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Submit</button>
+		<button type="submit" <?php echo ($system_msg_error_counter >0 ) ? 'disabled="disabled"' : '';  ?> class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Submit</button>
 		<?php echo form_close(); ?>
 	</div>
 </div>

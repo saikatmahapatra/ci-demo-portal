@@ -17,7 +17,7 @@
             </div>
             <div class="col-8 py-3 bg-success-light rounded-right">
                 <div class="h2 mt-0"><?php echo $user_count['data_rows'][0]['total']; ?></div>
-                <div class="text-uppercase">Active Employees</div>
+                <div class="">Active Employees</div>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
             <div class="col-8 py-3 bg-danger-light rounded-right">
                 <div class="h2 mt-0"><?php echo $projects_count['data_rows'][0]['total']; ?>                    
                 </div>
-                <div class="text-uppercase">Projects</div>
+                <div class="">Projects</div>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
             </div>
             <div class="col-8 py-3 bg-primary-light rounded-right">
                 <div class="h2 mt-0"><?php echo $timesheet_user['data_rows'][0]['total']; ?></div>
-                <div class="text-uppercase"><?php echo date('M-y').' Timesheet'?></div>
+                <div class="">Emp Logged Task</div>
             </div>
         </div>
     </div>
@@ -57,7 +57,7 @@
             </div>
             <div class="col-8 py-3 bg-warning-light rounded-right">
                 <div class="h2 mt-0">{some value}</div>
-                <div class="text-uppercase">{some text}</div>
+                <div class="">{some text}</div>
             </div>
         </div>
     </div>    

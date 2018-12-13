@@ -309,7 +309,11 @@ class Cms extends CI_Controller {
         $this->email->to($send_to_email_arr);
         //$this->email->to($this->config->item('app_admin_email'));
         //$this->email->bcc($send_to_email_arr);
-        $this->email->from($this->config->item('app_admin_email'), $this->config->item('app_admin_email_name'));
+        $sess_user_firstname = $this->common_lib->get_sess_user('user_firstname');
+        $sess_user_lastname = $this->common_lib->get_sess_user('user_lastname');
+        $sess_user_email = $this->common_lib->get_sess_user('user_email');
+
+        $this->email->from($sess_user_email, $sess_user_firstname.' '.$sess_user_lastname);
         $this->email->subject($this->config->item('app_email_subject_prefix').' '.$content_type. ' : '.$subject);
         $this->email->message($message_html);
         $this->email->send();

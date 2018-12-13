@@ -20,7 +20,7 @@ $config['admin_view_dir'] = 'admin/'; //application/views/admin/
 $config['app_admin_email'] = 'admin@unitedexploration.co.in';
 $config['app_admin_email_cc'] = '';
 $config['app_admin_email_bcc'] = '';
-$config['app_admin_email_name'] = 'UEIPL Portal Admin';
+$config['app_admin_email_name'] = 'UEIPL Portal';
 $config['app_email_subject_prefix'] = 'UEIPL Portal - ';
 
 
@@ -43,5 +43,4 @@ $config['app_meta_author'] = 'WebUIDevs';
 
 $config['app_copy_right'] = 'Copyright '.date('Y').' &copy; United Exploration India Pvt. Ltd.';
 $config['app_admin_copy_right'] = 'Copyright &copy; '.date('Y').' <a href="http://unitedexploration.co.in/">United Exploration India Pvt. Ltd.</a>. All rights reserved.';
-$config['app_ui_version'] = 'v1.0.1';
-$config['app_admin_ui_version'] = '2.6 , CI '.CI_VERSION;
+$config['app_version'] = 'App Version '.CI_VERSION.'.03';

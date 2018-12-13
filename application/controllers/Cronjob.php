@@ -42,7 +42,7 @@ class Cronjob extends CI_Controller {
         //print_r($result_array['data_rows']); die();
 
         foreach($result_array['data_rows'] as $key => $val){            
-            $html = '<p>Dear '.$val['user_firstname'].' '.$val['user_lastname'].', <br> Wishing you a very happy birthday.</p>';
+            $html = '<p>Hi '.$val['user_firstname'].' '.$val['user_lastname'].', <br> Wishing you a very Happy Birthday.</p>';
             $html.= '<p style="font-size:10px;">This is a system generated email. Please do not reply.</p>';
             //echo $html;
             $config['mailtype'] = 'html';
@@ -54,7 +54,7 @@ class Cronjob extends CI_Controller {
             }
             
             $this->email->from($this->config->item('app_admin_email'), $this->config->item('app_admin_email_name'));
-            $this->email->subject('Birthday Wishes');
+            $this->email->subject('Happy Birthday!!!');
             $this->email->message($html);
             $result = $this->email->send();
             //echo $this->email->print_debugger();

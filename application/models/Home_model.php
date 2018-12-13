@@ -12,6 +12,7 @@ class Home_model extends CI_Model {
     function get_user_count() {
         $result = array();
         $this->db->select('count(*) as total');     
+		$this->db->where('t1.user_type', 'U');
 		$this->db->where('t1.user_archived', 'N');
         $query = $this->db->get('users t1');
         //print_r($this->db->last_query());
@@ -37,7 +38,8 @@ class Home_model extends CI_Model {
         $this->db->where(
 			array(
 			'YEAR(`timesheet_date`)' => date('Y'),
-            'MONTH(`timesheet_date`)' => date('m')
+            'MONTH(`timesheet_date`)' => date('m'),
+            'DAY(`timesheet_date`)' => date('d')
 			)
 		);     
 		//$this->db->where('t1.project_status', 'N');

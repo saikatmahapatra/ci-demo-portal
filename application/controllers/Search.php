@@ -67,7 +67,7 @@ class Search extends CI_Controller {
             $search_keywords = $this->input->get_post('q');
                         
             // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
-            $result_array = $this->user_model->get_users(NULL, NULL, NULL, $search_keywords);
+            $result_array = $this->user_model->get_users(NULL, NULL, NULL, $search_keywords, 'U');
             $total_num_rows = $result_array['num_rows'];
             
             //pagination config
@@ -84,7 +84,7 @@ class Search extends CI_Controller {
             //end of pagination config
 
             // Data Rows - Refer to model method definition
-            $result_array = $this->user_model->get_users(NULL, $per_page, $offset, $search_keywords);
+            $result_array = $this->user_model->get_users(NULL, $per_page, $offset, $search_keywords, 'U');
             $this->data['data_rows'] = $result_array['data_rows'];
         }
         //die($search_keywords);

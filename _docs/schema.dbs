@@ -3447,3 +3447,6 @@ ALTER TABLE `users` DROP `user_supervisor_id`, DROP `user_hr_approver_id`, DROP 
 
 -- 08/12/2018
 ALTER TABLE `user_leaves`  ADD `applied_for_days_count` FLOAT(10,2) NULL  AFTER `leave_to_date`,  ADD `approved_for_days_count` FLOAT(10,2) NULL  AFTER `applied_for_days_count`,  ADD `excluded_days` TEXT NULL  AFTER `approved_for_days_count`;
+
+
+ALTER TABLE `users`  ADD `user_type` ENUM('S','U') NULL DEFAULT 'U' COMMENT 'S=System Defined, U=User Defined Real User'  AFTER `user_role`;

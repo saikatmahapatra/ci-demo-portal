@@ -46,7 +46,7 @@ class User_model extends CI_Model {
         return $result;
     }
 
-    function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
+    function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE, $userType = NULL) {
         if ($dataTable == TRUE){
             $this->db->select('t1.id, t1.user_title, t1.user_emp_id, t1.user_firstname, t1.user_lastname, t1.user_email, t1.user_phone1,t1.user_account_active,t4.designation_name,t1.user_archived');
         }else{
@@ -55,6 +55,9 @@ class User_model extends CI_Model {
         
         if ($id) {
             $this->db->where('t1.id', $id);
+        }
+        if ($userType) {
+            $this->db->where('t1.user_type', $userType);
         }
         $this->db->join('roles t2', 't1.user_role=t2.id', 'left');
         $this->db->join('departments t3', 't1.user_department=t3.id', 'left');
@@ -461,10 +464,13 @@ class User_model extends CI_Model {
         return $result;
     }
 
-	function get_users($id = NULL, $limit = NULL, $offset = NULL, $search_keywords=NULL) {
+	function get_users($id = NULL, $limit = NULL, $offset = NULL, $search_keywords=NULL, $user_type = NULL) {
         $this->db->select('t1.id, t1.user_emp_id, t1.user_firstname, t1.user_lastname, t1.user_email, t1.user_phone1, t1.user_profile_pic');
         if ($id) {
             $this->db->where('t1.id', $id);
+        }
+        if($user_type){
+            $this->db->where('t1.user_type', $user_type);
         }
         if($search_keywords){
             $this->db->like('t1.user_firstname', $search_keywords);
@@ -475,7 +481,8 @@ class User_model extends CI_Model {
             $this->db->or_like('t1.user_phone1', $search_keywords);
             $this->db->or_like('t1.user_phone2', $search_keywords);
             $this->db->or_like('t4.designation_name', $search_keywords);
-        }		
+        }	
+        
         $this->db->join('roles t2', 't1.user_role=t2.id', 'left');
 		$this->db->join('departments t3', 't1.user_department=t3.id', 'left');
         $this->db->join('designations t4', 't1.user_designation=t4.id', 'left');
@@ -631,6 +638,7 @@ class User_model extends CI_Model {
         $this->db->select('id,user_firstname,user_lastname, user_emp_id');		
         $this->db->where('user_archived','N');
         $this->db->where('user_account_active','Y');
+        $this->db->where('user_type','U');
         $this->db->order_by('user_firstname');		
         $query = $this->db->get('users');
         #echo $this->db->last_query();
@@ -674,18 +682,22 @@ class User_model extends CI_Model {
         t2.user_firstname as supervisor_firstname,
         t2.user_lastname as supervisor_lastname,
         t2.user_emp_id as supervisor_emp_id,
+        t2.user_email as supervisor_email,
 
         t3.user_firstname as hr_firstname,
         t3.user_lastname as hr_lastname,
         t3.user_emp_id as hr_emp_id,
+        t3.user_email as hr_email,
 
         t4.user_firstname as director_firstname,
         t4.user_lastname as director_lastname,
         t4.user_emp_id as director_emp_id,
+        t4.user_email as director_email,
 
         t5.user_firstname as finance_firstname,
         t5.user_lastname as finance_lastname,
         t5.user_emp_id as finance_emp_id,
+        t5.user_email as finance_email
         ');
         if ($user_id) {
             $this->db->where('t1.user_id', $user_id);

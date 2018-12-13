@@ -72,14 +72,57 @@ class Leave extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');        
         $this->data['approvers'] = $this->user_model->get_user_approvers($this->sess_user_id);
-        $this->data['leave_balance'] = $this->leave_model->get_leave_balance(NULL, NULL, NULL, FALSE, FALSE, $this->sess_user_emp_id);
-        
+        //print_r($this->data['approvers']);
+        $this->data['leave_balance'] = $this->leave_model->get_leave_balance(NULL, NULL, NULL, FALSE, FALSE, $this->sess_user_id);
+
+        //pre apply system requirement check validation
+        $system_msg = array();
         //print_r($this->data['leave_balance']);
-        $supervisor_approver_id = isset($this->data['approvers'][0]['user_supervisor_id']) ? $this->data['approvers'][0]['user_supervisor_id'] : '';
-        $director_approver_id = isset($this->data['approvers'][0]['user_director_approver_id']) ? $this->data['approvers'][0]['user_director_approver_id'] : '';
-        $hr_approver_id = isset($this->data['approvers'][0]['user_hr_approver_id']) ? $this->data['approvers'][0]['user_hr_approver_id'] : '';
+        $supervisor_approver_id = isset($this->data['approvers'][0]['user_supervisor_id']) ? $this->data['approvers'][0]['user_supervisor_id'] : NULL;
+        $supervisor_approver_name = isset($this->data['approvers'][0]['user_supervisor_id']) ? $this->data['approvers'][0]['supervisor_firstname'].' '.$this->data['approvers'][0]['supervisor_lastname'] : NULL;
+
+        $director_approver_id = isset($this->data['approvers'][0]['user_director_approver_id']) ? $this->data['approvers'][0]['user_director_approver_id'] : NULL;
+        $director_approver_name = isset($this->data['approvers'][0]['user_director_approver_id']) ? $this->data['approvers'][0]['director_firstname'].' '.$this->data['approvers'][0]['director_lastname']: NULL;
+
+        $hr_approver_id = isset($this->data['approvers'][0]['user_hr_approver_id']) ? $this->data['approvers'][0]['user_hr_approver_id'] : NULL;
+        $hr_approver_name = isset($this->data['approvers'][0]['user_hr_approver_id']) ? $this->data['approvers'][0]['hr_firstname'].' '.$this->data['approvers'][0]['hr_lastname'] : NULL;
+
+        
+        if($supervisor_approver_id == NULL || $supervisor_approver_id == 0){            
+            $system_msg['supervisor'] = array('txt'=>'No supervisor (L1 approver) is tagged. Please contact to your system admin to proceed.', 'css'=>'text-danger', 'has_error'=> true);
+        }else{
+            $system_msg['supervisor'] = array('txt'=>'Your Supervisor/L1 Approver is '.$supervisor_approver_name.' ('.$this->data['approvers'][0]['supervisor_emp_id'].')', 'css'=>'text-info', 'has_error'=> false);
+        }
+
+        if($director_approver_id == NULL || $director_approver_id == 0){
+            $system_msg['director'] = array('txt'=>'No director (L2 approver) is tagged. Please contact to your system admin to proceed.', 'css'=>'text-danger', 'has_error'=> true);
+        }else{
+            $system_msg['director'] = array('txt'=>'Your Director/L2 Approver is '.$director_approver_name.' ('.$this->data['approvers'][0]['director_emp_id'].')', 'css'=>'text-info', 'has_error'=> false);
+        }
+
+        if($hr_approver_id == NULL || $hr_approver_id == 0){
+            $system_msg['hr'] = array('txt'=>'No HR is tagged. Please contact to your system admin to proceed.', 'css'=>'text-danger', 'has_error'=> true);
+        }else{
+            $system_msg['hr'] = array('txt'=>'Your HR Approver is '.$hr_approver_name.' ('.$this->data['approvers'][0]['hr_emp_id'].')', 'css'=>'text-info', 'has_error'=> false);
+        }
+
+        if(sizeof($this->data['leave_balance'])<=0){
+            $system_msg['leave']= array('txt'=>'Your Leave balance is not yet updated in portal database.', 'css'=>'text-danger', 'has_error'=> true);   
+        }
+
+        $this->data['system_msg'] = $system_msg;
+
+        $system_msg_error_counter = 0;
+        foreach($system_msg as $key=>$val){
+            if($val['has_error'] == true){
+                $system_msg_error_counter++;
+            }
+        }
+        $this->data['system_msg_error_counter'] = $system_msg_error_counter;
+        //pre apply system requirement check validation
+
         if ($this->input->post('form_action') == 'add') {
-            if ($this->validate_form_data('add') == true) {  
+            if ($this->validate_form_data('add') == true && $system_msg_error_counter == 0) {  
                 $from_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('leave_from_date'))); // or your date as well
                 $to_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('leave_to_date')));
                 $datediff = ($to_date - $from_date);
@@ -107,6 +150,76 @@ class Leave extends CI_Controller {
                 if ($insert_id) {
                     $this->session->set_flashdata('flash_message', 'Your Leave Request <strong>#'.$leave_request_id.'</strong> has been generated successfully. Here is the details of your leave request.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
+
+                    ######## Send Email to Applicant ###########
+                    $result_array = $this->leave_model->get_rows($insert_id, NULL, NULL, FALSE, TRUE);
+                    $data = $result_array['data_rows'][0];
+                    //print_r($data);
+                    //die();
+                    $to = $this->common_lib->get_sess_user('user_email');
+                    $from = $this->config->item('app_admin_email');
+                    $from_name = $this->config->item('app_admin_email_name');
+                    $applicant_name = $data['user_firstname'].' '.$data['user_lastname'];
+                    $leave_status = $this->data['leave_status_arr'][$data['leave_status']]['text'];
+                    $leave_type = $this->data['leave_type_arr'][$data['leave_type']];
+                    $leave_from_to = $this->common_lib->display_date($data['leave_from_date']).' to '.$this->common_lib->display_date($data['leave_to_date']);
+                    $leave_reason = $data['leave_reason'];
+                    $applied_for_days_count = $data['applied_for_days_count'];
+                    
+                    $subject= 'Your Leave Request '.$leave_request_id.' is '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
+                    $message = 'You have successfully applied leave. You can track your leave history from '.anchor(base_url('leave/details/'.$data['id'].'/'.$data['leave_req_id'].'/history'));
+                    $message_table ='<table border="1">';
+                    $message_table.='<tbody>';
+                    $message_table.='<tr>';
+                    $message_table.='<td>Applicant</td>';
+                    $message_table.='<td>:</td>';
+                    $message_table.='<td>'.$applicant_name.'</td>';
+                    $message_table.='</tr>';
+                    $message_table.='<tr>';
+                    $message_table.='<td>Leave Status</td>';
+                    $message_table.='<td>:</td>';
+                    $message_table.='<td>'.$leave_status.'</td>';
+                    $message_table.='</tr>';
+                    $message_table.='<tr>';
+                    $message_table.='<td>Leave Type</td>';
+                    $message_table.='<td>:</td>';
+                    $message_table.='<td>'.$leave_type.'</td>';
+                    $message_table.='</tr>';
+                    $message_table.='<tr>';
+                    $message_table.='<td>From - To</td>';
+                    $message_table.='<td>:</td>';
+                    $message_table.='<td>'.$leave_from_to.'</td>';
+                    $message_table.='</tr>';
+                    $message_table.='<tr>';
+                    $message_table.='<td>Leave Days</td>';
+                    $message_table.='<td>:</td>';
+                    $message_table.='<td>'.$applied_for_days_count.' Day(s)</td>';
+                    $message_table.='</tr>';
+                    $message_table.='<tr>';
+                    $message_table.='<td>Reason/Occasion</td>';
+                    $message_table.='<td>:</td>';
+                    $message_table.='<td>'.$leave_reason.'</td>';
+                    $message_table.='</tr>';
+                    $message_table.='</tbody>';
+                    $message_table.='</table>';
+                    
+                    $this->send_notification($to, $from, $from_name, $subject, $message.$message_table);
+
+                    ######## Send Email to L1 Approver #########
+                    $to = $data['supervisor_email'];
+                    $from = $this->config->item('app_admin_email');
+                    $from_name = $this->config->item('app_admin_email_name');
+                    $leave_status = $this->data['leave_status_arr'][$data['leave_status']]['text'];
+                    $leave_type = $this->data['leave_type_arr'][$data['leave_type']];
+                    $applicant_name = $data['user_firstname'].' '.$data['user_lastname'];
+                    $leave_from_to = $this->common_lib->display_date($data['leave_from_date']).' to '.$this->common_lib->display_date($data['leave_to_date']);
+                    $leave_reason = $data['leave_reason'];
+                    $applied_for_days_count = $data['applied_for_days_count'];
+
+                    $subject= 'Leave Notification : By '.$applicant_name.' '.$leave_request_id.' is '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
+                    $message = 'You can manage leave request from '.anchor(base_url('leave/manage'));                    
+                    $this->send_notification($to, $from, $from_name, $subject, $message.$message_table);
+
                     redirect($this->router->directory.$this->router->class.'/details/'.$insert_id.'/'.$leave_request_id);
                 }
             }
@@ -488,7 +601,61 @@ class Leave extends CI_Controller {
                     if($is_update){
                         $messageTxt.= 'Leave balance has been updated.';
                     }
+                }
 
+                ######## Send Email to Applicant ###########
+                if($final_leave_status == 'A' || $final_leave_status == 'R' || $final_leave_status == 'C'){                    
+                    $result_array = $this->leave_model->get_rows($leave_id, NULL, NULL, FALSE, TRUE);
+                    $data = $result_array['data_rows'][0];
+                    //print_r($data);
+                    //die();
+                    $to = $this->common_lib->get_sess_user('user_email');
+                    $from = $this->config->item('app_admin_email');
+                    $from_name = $this->config->item('app_admin_email_name');
+                    $applicant_name = $data['user_firstname'].' '.$data['user_lastname'];
+                    $leave_status = $this->data['leave_status_arr'][$data['leave_status']]['text'];
+                    $leave_type = $this->data['leave_type_arr'][$data['leave_type']];
+                    $leave_from_to = $this->common_lib->display_date($data['leave_from_date']).' to '.$this->common_lib->display_date($data['leave_to_date']);
+                    $leave_reason = $data['leave_reason'];
+                    $applied_for_days_count = $data['applied_for_days_count'];
+                    
+                    $subject= 'Your Leave Request '.$leave_request_id.' is '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
+                    $message = 'You can track your leave history from '.anchor(base_url('leave/details/'.$data['id'].'/'.$data['leave_req_id'].'/history'));
+                    $message_table ='<table border="1">';
+                    $message_table.='<tbody>';
+                    $message_table.='<tr>';
+                    $message_table.='<td>Applicant</td>';
+                    $message_table.='<td>:</td>';
+                    $message_table.='<td>'.$applicant_name.'</td>';
+                    $message_table.='</tr>';
+                    $message_table.='<tr>';
+                    $message_table.='<td>Leave Status</td>';
+                    $message_table.='<td>:</td>';
+                    $message_table.='<td>'.$leave_status.'</td>';
+                    $message_table.='</tr>';
+                    $message_table.='<tr>';
+                    $message_table.='<td>Leave Type</td>';
+                    $message_table.='<td>:</td>';
+                    $message_table.='<td>'.$leave_type.'</td>';
+                    $message_table.='</tr>';
+                    $message_table.='<tr>';
+                    $message_table.='<td>From - To</td>';
+                    $message_table.='<td>:</td>';
+                    $message_table.='<td>'.$leave_from_to.'</td>';
+                    $message_table.='</tr>';
+                    $message_table.='<tr>';
+                    $message_table.='<td>Leave Days</td>';
+                    $message_table.='<td>:</td>';
+                    $message_table.='<td>'.$applied_for_days_count.' Day(s)</td>';
+                    $message_table.='</tr>';
+                    $message_table.='<tr>';
+                    $message_table.='<td>Reason/Occasion</td>';
+                    $message_table.='<td>:</td>';
+                    $message_table.='<td>'.$leave_reason.'</td>';
+                    $message_table.='</tr>';
+                    $message_table.='</tbody>';
+                    $message_table.='</table>';                    
+                    $this->send_notification($to, $from, $from_name, $subject, $message.$message_table);
                 }
                 
                 //if ($is_update) {
@@ -522,6 +689,30 @@ class Leave extends CI_Controller {
 
         // do logic for status update by supervisor or director
         return true;
+    }
+
+    function send_notification($to, $from, $from_name, $subject, $message){  
+        $message_html = '';
+        $message_html.='<div id="message_wrapper" style="font-family:Arial, Helvetica, sans-serif; border: 3px solid #5133AB; border-left:0px; border-right: 0px; font-size:13px;">';
+        $message_html.='<div id="message_header" style="display:none;background-color:#5133AB; padding: 10px;"></div>';
+        $message_html.='<div id="message_body" style="padding: 10px;">';
+        //$message_html.='<h4></h4>';
+        $message_html.=$message;        
+        $message_html.='</div><!--/#message_body-->';
+        $message_html.='<div id="message_footer" style="padding: 10px; font-size: 11px;">';
+        $message_html.='<p>* This is a system generated email and has been sent via employee portal. Please do not reply here.</p>';
+        $message_html.='</div><!--/#message_footer-->';
+        $message_html.='</div><!--/#message_wrapper-->';
+        //echo $message_html;
+        $config['mailtype'] = 'html';
+        $this->email->initialize($config);
+        $this->email->to($to);
+        $this->email->from($from, $from_name);
+        $this->email->subject($subject);
+        $this->email->message($message_html);
+        $this->email->send();
+        //echo $this->email->print_debugger();
+        //die();
     }
 
 }

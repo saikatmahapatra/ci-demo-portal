@@ -131,7 +131,7 @@ class User extends CI_Controller {
         //die($search_keywords);
 
 		// Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
-		$result_array = $this->user_model->get_users(NULL, NULL, NULL, $search_keywords);
+		$result_array = $this->user_model->get_users(NULL, NULL, NULL, $search_keywords, 'U');
 		$total_num_rows = $result_array['num_rows'];
 		
 		//pagination config
@@ -149,7 +149,7 @@ class User extends CI_Controller {
         
 
         // Data Rows - Refer to model method definition
-        $result_array = $this->user_model->get_users(NULL, $per_page, $offset, $search_keywords);
+        $result_array = $this->user_model->get_users(NULL, $per_page, $offset, $search_keywords, 'U');
         $this->data['data_rows'] = $result_array['data_rows'];
 		
 		$this->data['page_heading'] = 'People';
@@ -159,15 +159,15 @@ class User extends CI_Controller {
 
     function render_datatable() {
         //Total rows - Refer to model method definition
-        $result_array = $this->user_model->get_rows();
+        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, FALSE, TRUE, 'U');
         $total_rows = $result_array['num_rows'];
 
         // Total filtered rows - check without limit query. Refer to model method definition
-        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, TRUE, FALSE);
+        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, TRUE, FALSE, 'U');
         $total_filtered = $result_array['num_rows'];
 
         // Data Rows - Refer to model method definition
-        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, TRUE);
+        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, TRUE, TRUE, 'U');
         $data_rows = $result_array['data_rows'];
         $data = array();
         $no = $_REQUEST['start'];
@@ -1965,7 +1965,7 @@ class User extends CI_Controller {
         //name the worksheet
         $sheet->setTitle('Users');
 
-        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, FALSE);
+        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, FALSE, TRUE, 'U');
         $data_rows = $result_array['data_rows'];
 
         // echo '<pre>';

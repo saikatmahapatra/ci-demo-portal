@@ -60,14 +60,17 @@ class Leave_model extends CI_Model {
         t2.user_firstname as supervisor_approver_firstname,
         t2.user_lastname as supervisor_approver_lastname,
         t2.user_emp_id as supervisor_approver_emp_id,
+        t2.user_email as supervisor_email,
 
         t3.user_firstname as director_approver_firstname,
         t3.user_lastname as director_approver_lastname,
-        t2.user_emp_id as director_approver_emp_id,
+        t3.user_emp_id as director_approver_emp_id,
+        t3.user_email as director_email,
 
         t4.user_firstname as hr_approver_firstname,
         t4.user_lastname as hr_approver_lastname,
-        t2.user_emp_id as hr_approver_emp_id,
+        t4.user_emp_id as hr_approver_emp_id,
+        t4.user_email as hr_email,
 
         t5.user_firstname,
         t5.user_lastname,
