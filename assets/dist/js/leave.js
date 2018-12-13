@@ -101,7 +101,7 @@ function manage_leave_req(e) {
         leave_req_id: $('#leave_req_id').val(),
         action_by_approver: $('#action_by_approver').val(),
         action_by_approver_id: $('#action_by_approver_id').val(),
-        leave_staus: $('#leave_action_status').val(),
+        leave_status: $('#leave_action_status').val(),
         leave_comments: $('#leave_action_comment').val(),
         action: 'update',
     };

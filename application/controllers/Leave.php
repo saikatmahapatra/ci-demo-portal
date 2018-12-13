@@ -508,7 +508,7 @@ class Leave extends CI_Controller {
             $leave_req_id = $this->input->post('leave_req_id');
             $action_by_approver = $this->input->post('action_by_approver');
             $action_by_approver_id = $this->input->post('action_by_approver_id');
-            $leave_staus = $this->input->post('leave_staus');
+            $leave_status = $this->input->post('leave_status');
             $leave_comments = $this->input->post('leave_comments');
 
             //print_r($_POST);die();
@@ -516,30 +516,37 @@ class Leave extends CI_Controller {
 
             if ($this->validate_update_leave_status_form_data() == true) {
                 $messageTxt = '';
-                if($action_by_approver == 'applicant'){                    
-                    $postdata = array(					
-                        'leave_status' => $leave_staus,
-                        'cancelled_by' => $action_by_approver_id,
-                        'cancellation_reason'=>$leave_comments,
-                        'cancellation_datetime' => date('Y-m-d H:i:s')
-                    );
-                    $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
-                    $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
-                    if($is_update){
-                        $messageTxt = 'Leave request has been updated successfully.';
+                $final_leave_status = '';
+                if($action_by_approver == 'applicant'){
+                    if($leave_status == 'C'){
+                        $postdata = array(					
+                            'leave_status' => $leave_status,
+                            'cancelled_by' => $action_by_approver_id,
+                            'cancellation_reason'=>$leave_comments,
+                            'cancellation_datetime' => date('Y-m-d H:i:s')
+                        );
+                        $final_leave_status = 'C';
+                        $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
+                        $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
+                        if($is_update){
+                            $messageTxt = 'Leave request has been updated successfully.';
+                        }
+                    }else{
+                        $messageTxt = 'You can only cancel leave.';
                     }
+                    
 
                 }
                 if($action_by_approver == 'supervisor'){
-                    if($leave_staus == 'R'){
+                    if($leave_status == 'R'){
                         $final_leave_status = 'R'; // rejected
                     }
-                    if($leave_staus == 'A'){
+                    if($leave_status == 'A'){
                         $final_leave_status = 'O'; // processing
                     }
                     $postdata = array(					
                         'leave_status' => $final_leave_status,
-                        'supervisor_approver_status' => $leave_staus,
+                        'supervisor_approver_status' => $leave_status,
                         'supervisor_approver_id' => $action_by_approver_id,
                         'supervisor_approver_comment'=>$leave_comments,
                         'supervisor_approver_datetime' => date('Y-m-d H:i:s')
@@ -551,15 +558,15 @@ class Leave extends CI_Controller {
                     }
                 }
                 if($action_by_approver == 'director'){
-                    if($leave_staus == 'R'){
+                    if($leave_status == 'R'){
                         $final_leave_status = 'R'; // rejected
                     }
-                    if($leave_staus == 'A'){
+                    if($leave_status == 'A'){
                         $final_leave_status = 'A'; // approved
                     }
                     $postdata = array(
                         'leave_status' => $final_leave_status,					
-                        'director_approver_status' => $leave_staus,
+                        'director_approver_status' => $leave_status,
                         'director_approver_id' => $action_by_approver_id,
                         'director_approver_comment'=>$leave_comments,
                         'director_approver_datetime' => date('Y-m-d H:i:s')
@@ -617,6 +624,7 @@ class Leave extends CI_Controller {
                     $leave_type = $this->data['leave_type_arr'][$data['leave_type']];
                     $leave_from_to = $this->common_lib->display_date($data['leave_from_date']).' to '.$this->common_lib->display_date($data['leave_to_date']);
                     $leave_reason = $data['leave_reason'];
+                    $leave_request_id = $data['leave_req_id'];
                     $applied_for_days_count = $data['applied_for_days_count'];
                     
                     $subject= 'Your Leave Request '.$leave_request_id.' is '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
@@ -670,7 +678,7 @@ class Leave extends CI_Controller {
 
     function validate_update_leave_status_form_data($action = NULL) {
         $this->form_validation->set_rules('action_by_approver_id', '', 'required|callback_validate_approver_authorization');
-        $this->form_validation->set_rules('leave_staus', 'status', 'required');
+        $this->form_validation->set_rules('leave_status', 'status', 'required');
         $this->form_validation->set_rules('leave_comments', 'comment', 'required|max_length[100]');
         $this->form_validation->set_error_delimiters('<li class="validation-error">', '</li>');
         if ($this->form_validation->run() == true) {
