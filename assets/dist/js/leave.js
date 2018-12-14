@@ -113,12 +113,13 @@ function manage_leave_req(e) {
         // console.log(response);
         hideAjaxLoader();
         if (response.msg) {
+            $('#responseMessage_leaveActionModal').addClass(response.css);
             $('#responseMessage_leaveActionModal').html(response.msg);
         }
-        if (response.updated == true) {
+        /*if (response.updated == true) {
             $('#leaveActionModal').modal('hide');
             window.location.reload(true);
-        }
+        }*/
     });
     promise.fail(function() {
         alert("Sorry, Can not process your request.");
