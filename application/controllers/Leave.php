@@ -573,16 +573,18 @@ class Leave extends CI_Controller {
 
                     if($leave_status != 'C'){
                         $postdata = array(
-                            'leave_status' => $final_leave_status,					
+                            'leave_status' => $final_leave_status,
                             'director_approver_status' => $leave_status,
                             'director_approver_id' => $action_by_approver_id,
                             'director_approver_comment'=>$leave_comments,
                             'director_approver_datetime' => date('Y-m-d H:i:s')
                         );
-                        $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
+                        $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id, 'leave_status' => 'P');
                         $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
                         if($is_update){
                             $messageTxt = 'Leave request has been updated successfully.';
+                        }else{
+                            $message = array('is_valid'=>true, 'updated'=>false, 'insert_id'=>'','msg'=>'Sorry! You have already updated leave status', 'css'=>'alert alert-success');
                         }
                         //Update leave balance if finally leave approved
                         if($final_leave_status == 'A'){

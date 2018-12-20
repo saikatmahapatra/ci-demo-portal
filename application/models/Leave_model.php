@@ -39,7 +39,7 @@ class Leave_model extends CI_Model {
             $result = $this->db->update($table, $postdata);
         }
         //echo $this->db->last_query(); die();
-        return $result;
+        return ($this->db->affected_rows() > 0);
     }
 
     function delete($where_array = NULL, $table = NULL) {
