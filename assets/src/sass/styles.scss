@@ -190,8 +190,14 @@ a[data-link-type="user-profile-card"] {
         border: 1px solid $calendar-grid-border;
         vertical-align: center !important;
     }
-    .allowed_m td.day {
+    .allowed_m td.day, .allowed_d td.day {
         cursor: pointer;
+		a{
+			color: inherit;
+			&:hover{
+			text-decoration: none;
+			}
+		}
     }
     .highlight {
         background: $today-highlight;
@@ -242,7 +248,9 @@ a[data-link-type="user-profile-card"] {
     background-color: $has-data;
 }
 
-.disabled_m {
+.disabled_m,
+.disabled_d,
+ {
     opacity: 0.5;
     cursor: default !important;
     background: $gray-lightest;

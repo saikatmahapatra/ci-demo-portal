@@ -100,7 +100,7 @@ class Timesheet extends CI_Controller {
 		$data = array();
 		$this->data['cal'] = $this->calendar->generate($year,$month,$data);
 		$month_name = date('M', mktime(0, 0, 0, $month, 10));		
-		$this->data['page_heading'] = 'My Timesheet : '.$month_name.' '.$year;
+		$this->data['page_heading'] = 'My Timesheet : Upto '.date('d/m/Y');
 		
 		$this->add();
 		
@@ -144,7 +144,7 @@ class Timesheet extends CI_Controller {
     }
 	
 	function validate_form_data($action = NULL) {
-        $this->form_validation->set_rules('selected_date', 'calendar date selection', 'required');
+        $this->form_validation->set_rules('selected_date', 'calendar date selection', 'required|callback_check_selected_days');
         $this->form_validation->set_rules('project_id', 'project selection', 'required');
         $this->form_validation->set_rules('activity_id', 'activity selection', 'required');
         $this->form_validation->set_rules('timesheet_hours', 'time spent', 'required|numeric|less_than[18]|greater_than[0]');
@@ -153,6 +153,24 @@ class Timesheet extends CI_Controller {
         if ($this->form_validation->run() == true) {
             return true;
         } else {
+            return false;
+        }
+    }
+	
+	function check_selected_days(){
+		$not_allowed_days = array();
+        $selected_days_array = explode(',',$this->input->post('selected_date'));
+		$today = date('d');
+		foreach($selected_days_array as $key=>$selected_day){
+			if($selected_day > $today){
+				$not_allowed_days[] = $this->common_lib->display_ordinal_suffix($selected_day);
+			}
+		}
+        if(sizeof($not_allowed_days) <= 0 ){
+            return true;
+        }else{
+			$not_allowed_days_str = implode($not_allowed_days, ', ');
+            $this->form_validation->set_message('check_selected_days', 'You can not fill time sheet for '.$not_allowed_days_str.' '.date('M').'. Please unselect the date(s).');
             return false;
         }
     }

@@ -8602,8 +8602,16 @@ a[data-link-type="user-profile-card"] {
   vertical-align: center !important;
 }
 
-.ci-calendar .allowed_m td.day {
+.ci-calendar .allowed_m td.day, .ci-calendar .allowed_d td.day {
   cursor: pointer;
+}
+
+.ci-calendar .allowed_m td.day a, .ci-calendar .allowed_d td.day a {
+  color: inherit;
+}
+
+.ci-calendar .allowed_m td.day a:hover, .ci-calendar .allowed_d td.day a:hover {
+  text-decoration: none;
 }
 
 .ci-calendar .highlight {
@@ -8655,7 +8663,8 @@ a[data-link-type="user-profile-card"] {
   background-color: #a6ffa6;
 }
 
-.disabled_m {
+.disabled_m,
+.disabled_d {
   opacity: 0.5;
   cursor: default !important;
   background: #f8f8f8;
