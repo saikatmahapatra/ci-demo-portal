@@ -169,6 +169,7 @@ class Timesheet extends CI_Controller {
         if(sizeof($not_allowed_days) <= 0 ){
             return true;
         }else{
+			sort($not_allowed_days);
 			$not_allowed_days_str = implode($not_allowed_days, ', ');
             $this->form_validation->set_message('check_selected_days', 'You can not fill time sheet for '.$not_allowed_days_str.' '.date('M').'. Please unselect the date(s).');
             return false;
