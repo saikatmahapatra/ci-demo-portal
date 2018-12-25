@@ -13,14 +13,14 @@
     <!-- Bootstrap core CSS -->
     <link href="assets/dist/css/styles.css" rel="stylesheet">
     <link href="assets/vendors/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="assets/vendors/select2/dist/css/select2.css" rel="stylesheet">
-    <link href="assets/vendors/select2-bootstrap4-theme/dist/select2-bootstrap4.css" rel="stylesheet">
+    <link href="assets/vendors/select2/assets/dist/css/select2.css" rel="stylesheet">
+    <link href="assets/vendors/select2-bootstrap4-theme/assets/dist/select2-bootstrap4.css" rel="stylesheet">
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
-        <a class="navbar-brand" href="#">SM UX</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <a class="navbar-brand" href="#">Brand Logo</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,28 +28,22 @@
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i> Home
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><!--<i class="fa fa-home" aria-hidden="true"></i>-->Home
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Active Link</a>
                 </li>
 				<li class="nav-item">
-                    <a class="nav-link" href="#">Another Link</a>
+                    <a class="nav-link" href="#">Link 3</a>
                 </li>
 				<li class="nav-item">
-                    <a class="nav-link" href="#">Other Link</a>
-                </li>
-				<li class="nav-item">
-                    <a class="nav-link" href="#">Other Link</a>
-                </li>
-				<li class="nav-item">
-                    <a class="nav-link" href="#">Other Link</a>
+                    <a class="nav-link" href="#">Link 4</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
+                    <a class="nav-link disabled" href="#">Disabled Link</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
@@ -59,6 +53,9 @@
                         <a class="dropdown-item" href="#">Another action</a>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
+                </li>
+				<li class="nav-item">
+                    <a class="nav-link" href="#">Link 6</a>
                 </li>
             </ul>
 			
@@ -93,10 +90,11 @@
     </nav>
 
     <main role="main" class="container">
-        <h1 class="mb-3 mt-3">Bootstrap SASS Customized Theme Components : UX Guide</h1>
+		<h1 class="h1 mb-3 mt-3 font-weight-normal">Bootstrap SASS Customized Theme Components : UX Guide</h1>
+        <h1 class="h3 mb-3 mt-3 font-weight-normal">Text</h1> 
+		<p><a href="https://getbootstrap.com/">Bootstrap</a> is an open source toolkit for developing with <span class="font-weight-bold">HTML, CSS, and JS</span>. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.</p>
 		
-		<p>Primary color is the main color of the application which is used for navbar, active links and primary button.</p>		
-        <h2 class="page-header mt-4">Button</h2>       
+        <h1 class="h3 mb-3 font-weight-normal">Button</h1>      
         <button type="button" class="btn btn-primary">.btn-primary</button>
         <button type="button" class="btn btn-secondary">.btn-secondary</button>
         <button type="button" class="btn btn-success">.btn-success</button>
@@ -107,28 +105,57 @@
         <button type="button" class="btn btn-dark">.btn-dark</button>
         <button type="button" class="btn btn-link">.btn-link</button>
 		
-		<h2 class="page-header mt-4">Button Outline</h1>
-        <button type="button" class="btn btn-outline-primary">.btn .btn-outline-primary</button>
-        <button type="button" class="btn btn-outline-secondary">btn-outline-secondary</button>
+		<h1 class="h3 mb-3 mt-3 font-weight-normal">Button-Outline</h1>
+        <button type="button" class="btn btn-outline-primary">.btn-outline-primary</button>
+		<button type="button" class="btn btn-outline-secondary">.btn-outline-secondary</button>
+		<button type="button" class="btn btn-outline-success">.btn-outline-success</button>
+		<button type="button" class="btn btn-outline-danger">.btn-outline-danger</button>
+		<button type="button" class="btn btn-outline-warning">.btn-outline-warning</button>
+		<button type="button" class="btn btn-outline-info">.btn-outline-info</button>
+		<button type="button" class="btn btn-outline-light">.btn-outline-light</button>
 
-        <h2 class="page-header mt-4">Progress Bar</h1>        
-        <div class="progress">
+        <h1 class="h3 mb-3 mt-3 font-weight-normal">Progress Bar</h1>
+        <div class="progress mt-3">
             <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 32%" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100">32%</div>
         </div>
-		<div class="progress mt-1">
+		<div class="progress mt-3">
             <div class="progress-bar progress-bar-striped bg-secondary" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
         </div>
+		<div class="progress mt-3">
+            <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+        </div>
+		<div class="progress mt-3">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+        </div>
+		<div class="progress mt-3">
+            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 32%" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100">32%</div>
+        </div>
 
-        <h2 class="page-header mt-4">Alerts</h2>
+        <h1 class="h3 mb-3 mt-3 font-weight-normal">Alerts</h1>
         <div class="alert alert-primary" role="alert">
             This is a primary alert—check it out!
         </div>
         <div class="alert alert-secondary" role="alert">
             This is a secondary alert—check it out!
+        </div>		
+		<div class="alert alert-success" role="alert">
+            This is a success alert—check it out!
+        </div>
+		<div class="alert alert-warning" role="alert">
+            This is a warning alert—check it out!
+        </div>
+		<div class="alert alert-danger" role="alert">
+            This is a danger alert—check it out!
+        </div>		
+		<div class="alert alert-dark" role="alert">
+            This is a dark alert—check it out!
+        </div>
+		<div class="alert alert-light" role="alert">
+            This is a light alert—check it out!
         </div>
 
 
-        <h2 class="page-header mt-4">Tooltip</h2>
+        <h1 class="h3 mb-3 mt-3 font-weight-normal">Tooltip</h1>
         <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
         Tooltip on top
         </button>
@@ -145,33 +172,35 @@
         Tooltip with HTML
         </button>
 		
-		<h2 class="page-header mt-4">News Feed</h2>
+		
+		<h1 class="h3 mb-3 mt-3 font-weight-normal">Card (Customized for News Feed)</h1>
 		
 		<div class="row">
 			
 			<div class="col-md-12 mb-3">				
 				<div class="card-news pl-2 border-4 border-left border-success">					
-						<div class="card-news-header h5">Redmi Launched Mi Band in India @ 1699/-</div>
+						<div class="card-news-header h5">The standard Lorem Ipsum passage, used since the 1500s</div>
 						<div class="card-news-time-auther">
 							<span class="text-muted small">Administrator, 20/09/2018 10.34am</span>
 						</div>
-						<div class="card-news-body">All the three Xiaomi phones come with face unlock support and run MIUI 9.6 on top of Android Oreo, but Xiaomi promises to upgrade all the Redmi 6 series phones to MIUI 10 very soon <a class="btn btn-sm btn-primary" href="#">View details</a></div>						
+						<div class="card-news-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a class="btn btn-sm btn-primary" href="#">View details</a></div>						
 				</div><!--/.card-news-->				
 			</div>
 			
 			<div class="col-md-12 mb-3">				
 				<div class="card-news pl-2 border-4 border-left border-danger">					
-						<div class="card-news-header h5">Redmi Launched Mi Band in India @ 1699/-</div>
+						<div class="card-news-header h5">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
 						<div class="card-news-time-auther">
 							<span class="text-muted small">Administrator, 20/09/2018 10.34am</span>
 						</div>
-						<div class="card-news-body">All the three Xiaomi phones come with face unlock support and run MIUI 9.6 on top of Android Oreo, but Xiaomi promises to upgrade all the Redmi 6 series phones to MIUI 10 very soon <a class="btn btn-sm btn-primary" href="#">View details</a></div>						
+						<div class="card-news-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a class="btn btn-sm btn-primary" href="#">View details</a></div>						
 				</div><!--/.card-news-->				
 			</div>
 			
 		</div>
 
-        <h2 class="page-header mt-4">Card</h2>
+        <h1 class="h3 mb-3 mt-3 font-weight-normal">Card</h1>
+		
         <div class="row">
             <div class="col-md-3">
                 <div class="card">
@@ -217,8 +246,8 @@
 			
             
         </div>
-       
-	   <h2 class="page-header mt-4">Accordion</h2>
+		
+	   <h1 class="h3 mb-3 mt-3 font-weight-normal">Accordion</h1>
         <div id="accordion">
             <div class="card">
                 <div class="card-header" id="heading_1">
@@ -229,7 +258,7 @@
 
                 <div id="collapse_1" class="collapse show" aria-labelledby="heading_1" data-parent="#accordion">
                     <div class="card-body">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Click here for <a href="#" class="">more details</a>
+                        1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#" class="">more details</a>
                     </div>
                 </div>
             </div>
@@ -241,7 +270,7 @@
                 </div>
                 <div id="collapse_2" class="collapse" aria-labelledby="heading_2" data-parent="#accordion">
                     <div class="card-body">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Click here for <a href="#" class="">more details</a>
+                        2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#" class="">more details</a>
                     </div>
                 </div>
             </div>
@@ -253,13 +282,14 @@
                 </div>
                 <div id="collapse_3" class="collapse" aria-labelledby="heading_3" data-parent="#accordion">
                     <div class="card-body">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Click here for <a href="#" class="">more details</a>
+                        3 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#" class="">more details</a>
                     </div>
                 </div>
             </div>
         </div> <!--/#accordion-->
 
-        <h2 class="page-header mt-4">Form Control</h2>
+        
+		<h1 class="h3 mb-3 mt-3 font-weight-normal">Form</h1>		
         <form>
             <div class="form-row">
                 <div class="form-group col-md-4">
@@ -437,7 +467,59 @@
 		
 		
 
-        <h2 class="page-header mt-4">Modal</h2>
+		<h1 class="h3 mb-3 mt-3 font-weight-normal">Floating Label Example</h1>
+		<form class="form-signin">
+			<div class="text-center mb-4">
+				<img class="mb-4" src="assets/dist/img/logo.png" alt="" class="logo">
+				<h1 class="h3 mb-3 font-weight-normal">Please sign in to continue</h1>
+			</div>
+
+			<div class="form-label-group">
+				<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="">
+				<label for="inputEmail">Email address</label>
+			</div>
+
+			<div class="form-label-group">
+				<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+				<label for="inputPassword">Password</label>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		</form>
+		
+		
+		<h1 class="h3 mb-3 mt-3 font-weight-normal">Table</h1>
+		<p>Available table classes are .table .table-sm .table-bordered .table-striped</p>
+		<table class="table table-sm table-bordered table-striped">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">First</th>
+			  <th scope="col">Last</th>
+			  <th scope="col">Handle</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row">1</th>
+			  <td>Mark</td>
+			  <td>Otto</td>
+			  <td>@mdo</td>
+			</tr>
+			<tr>
+			  <th scope="row">2</th>
+			  <td>Jacob</td>
+			  <td>Thornton</td>
+			  <td>@fat</td>
+			</tr>
+			<tr>
+			  <th scope="row">3</th>
+			  <td>Larry</td>
+			  <td>the Bird</td>
+			  <td>@twitter</td>
+			</tr>
+		  </tbody>
+		</table>
+		<h1 class="h3 mb-3 mt-3 font-weight-normal">Modal</h1>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Launch demo modal</button>
 
@@ -468,10 +550,10 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->    
-    <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
-    <script src="assets/vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="assets/vendors/select2/dist/js/select2.js"></script>
+    <script src="assets/vendors/jquery/assets/dist/jquery.min.js"></script>
+    <script src="assets/vendors/popper.js/assets/dist/umd/popper.min.js"></script>
+    <script src="assets/vendors/bootstrap/assets/dist/js/bootstrap.min.js"></script>
+    <script src="assets/vendors/select2/assets/dist/js/select2.js"></script>
     <script>
         //Document Ready
         $(initDOM);

@@ -35,6 +35,7 @@
 			<div class="mt-3 tab-pane fade show active" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab">			
 			<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form form-timesheet','name' => '','id' => 'ci-form-timesheet',)); ?>
 			<?php echo form_hidden('form_action', 'add'); ?>		  
+			<?php echo form_hidden('today_date', date('d')); ?>		  
 			<?php echo form_hidden('selected_date',set_value('selected_date')); ?>	
 
 			<small id="timesheetHelp" class="form-text text-muted bg-light p-1">
@@ -129,6 +130,7 @@
 					));
 					?>
 					<?php echo form_error('timesheet_description'); ?>
+					<div class="small text-right"><span class="" id="remaining_description_length"><?php echo isset($remaining_description_length) ? $remaining_description_length : '200'; ?></span> characters remaining.</div>
 					</div>
 					
 					<button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Submit</button>

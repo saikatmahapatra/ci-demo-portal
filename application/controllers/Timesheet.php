@@ -115,11 +115,12 @@ class Timesheet extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         if ($this->input->post('form_action') == 'add') {
-            if ($this->validate_form_data('add') == true) {
-                
+			$this->data['remaining_description_length'] = (200 - strlen($this->input->post('timesheet_description')));
+            if ($this->validate_form_data('add') == true) {                
 				$selected_date_arr = explode(',', $this->input->post('selected_date'));
 				//print_r($selected_date_arr); die();
 				$batch_post_data = array();
+				
 				foreach($selected_date_arr as $key=>$day){
 					$year = $this->uri->segment(3) ? $this->uri->segment(3) : date('Y');
 					$month = $this->uri->segment(4) ? $this->uri->segment(4) : date('m');

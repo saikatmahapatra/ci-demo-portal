@@ -40,6 +40,13 @@ $(function() {
 
         //Render Data Table
         renderDataTable();
+		
+		// Display remaining characterSet
+		$('#timesheet_description').on('keyup',function(e){
+			var remaining_description_length = (200 - $(this).val().length);
+			$('#remaining_description_length').html(remaining_description_length);
+		});
+		
     }
 
 
@@ -107,7 +114,7 @@ function get_timesheet_stat() {
     xhr.data = { via: 'ajax', month: month, year: year };
     var promise = xhr.init();
     promise.done(function(response) {
-        console.log(r = response.data.stat_data);
+        //console.log(r = response.data.stat_data);
         hideAjaxLoader();
         if (response.data.stat_data.total_days != 'undefined') {
             $('#total_days').html(response.data.stat_data.total_days);
@@ -118,10 +125,18 @@ function get_timesheet_stat() {
         if (response.data.stat_data.avg_hrs != 'undefined') {
             $('#average_worked_hrs').html(response.data.stat_data.avg_hrs);
         }
-
+		
+		var today_d = $('input[name="today_date"]').val();
         $.each(response.data.data_rows, function(i, obj) {
             $(".day").each(function() {
                 var calDay = $(this).text();
+				//console.log(calDay);
+				if(calDay.trim().length > 0){
+					if(parseInt(calDay) > parseInt(today_d)){
+						$(this).addClass("disabled_d");
+					}
+					
+				}
                 //console.log(calDay);
                 obj.timesheet_day = Number(obj.timesheet_day).toString();
                 if (calDay == obj.timesheet_day) {
