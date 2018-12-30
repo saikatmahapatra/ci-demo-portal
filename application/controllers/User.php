@@ -232,13 +232,15 @@ class User extends CI_Controller {
                 'title' => 'View Profile'
                 
             ));
-
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
-                'class' => 'btn btn-sm btn-outline-secondary mr-1',
-                'data-toggle' => 'tooltip',
-                'data-original-title' => 'Edit Profile',
-                'title' => 'Edit Profile'                
-            ));
+            if($result['user_archived'] != 'Y'){
+                $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
+                    'class' => 'btn btn-sm btn-outline-secondary mr-1',
+                    'data-toggle' => 'tooltip',
+                    'data-original-title' => 'Edit Profile',
+                    'title' => 'Edit Profile'
+                ));
+            }
+            
 			/*$action_html.= anchor(base_url($this->router->directory.$this->router->class.'/manage'), $acc_status_text, array(
                 'class' => 'change_account_status ' . $acc_status_class,
                 'data-toggle' => 'tooltip',
@@ -2103,6 +2105,61 @@ class User extends CI_Controller {
         $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
         //force user to download the Excel file without writing it to server's HD
         $objWriter->save('php://output');
+    }
+
+    function close_account() {
+		########### Validate User Auth #############
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
+            redirect($this->router->directory.$this->router->class.'/login');
+        }
+        //Has logged in user permission to access this page or method?        
+        $this->common_lib->is_auth(array(
+            'default-super-admin-access',
+            'default-admin-access',
+        ));
+        ########### Validate User Auth End #############
+
+        $user_id = $this->encrypt->decode($this->uri->segment(3));
+        $rows = $this->user_model->get_rows($user_id);
+        $this->data['row'] = $rows['data_rows'];
+        
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        if ($this->input->post('form_action') == 'close_account') {
+            if ($this->validate_close_account_form_data() == true) {
+                $postdata = array(
+                    'user_archived' => 'Y',
+                    'user_dor'=> $this->common_lib->convert_to_mysql($this->input->post('user_dor')),
+                    'account_closed_by' => $this->sess_user_id,
+                    'account_closed_datetime' => date('Y-m-d H:i:s'),
+                    'account_close_comments' => $this->input->post('account_close_comments')
+                );
+                //print_r($postdata);die();
+                $where = array('id' => $this->input->post('user_id'));
+                $res = $this->user_model->update($postdata, $where);
+                if ($res) {
+                    $this->session->set_flashdata('flash_message', 'Portal account has been closed successfully.');
+                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    redirect($this->router->directory.$this->router->class.'/manage');
+                }
+            }
+        }
+		$this->data['page_heading'] = "Close Employee Portal Account";
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/close_account', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function validate_close_account_form_data() {
+        $this->form_validation->set_rules('user_dor', 'date of release', 'required');
+        $this->form_validation->set_rules('account_close_comments', ' ', 'required');
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

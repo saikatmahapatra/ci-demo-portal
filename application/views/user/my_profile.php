@@ -260,7 +260,7 @@
 													<td>United Exploration India Pvt. Ltd.</td>
 													<td><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></td>
 													<td><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></td>
-													<td>Present</td>
+													<td><?php echo isset($row['user_dor']) ? $this->common_lib->display_date($row['user_dor']) : '-'; ?></td>
 													<td>-</td>
 												</tr>
 											</thead>
