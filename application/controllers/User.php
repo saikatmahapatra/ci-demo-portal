@@ -1274,6 +1274,11 @@ class User extends CI_Controller {
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         $rows = $this->user_model->get_rows($user_id);
         $this->data['row'] = $rows['data_rows'];
+        if(isset($this->data['row'][0]) && $this->data['row'][0]['user_archived']=='Y'){
+            $this->session->set_flashdata('flash_message', 'Unable to process your request.');
+            $this->session->set_flashdata('flash_message_css', 'alert-danger');
+            redirect($this->router->directory.$this->router->class.'/manage');
+        }
         $res_pic = $this->user_model->get_user_profile_pic($user_id);
         $this->data['profile_pic'] = $res_pic[0]['user_profile_pic'];
         $this->data['user_arr'] = $this->user_model->get_user_dropdown();
@@ -2124,6 +2129,12 @@ class User extends CI_Controller {
         $user_id = $this->encrypt->decode($this->uri->segment(3));
         $rows = $this->user_model->get_rows($user_id);
         $this->data['row'] = $rows['data_rows'];
+
+        if(isset($this->data['row'][0]) && $this->data['row'][0]['user_archived']=='Y'){
+            $this->session->set_flashdata('flash_message', 'Unable to process your request.');
+            $this->session->set_flashdata('flash_message_css', 'alert-danger');
+            redirect($this->router->directory.$this->router->class.'/manage');
+        }
         
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
@@ -2154,6 +2165,7 @@ class User extends CI_Controller {
     function validate_close_account_form_data() {
         $this->form_validation->set_rules('user_dor', 'date of release', 'required');
         $this->form_validation->set_rules('account_close_comments', ' ', 'required');
+        $this->form_validation->set_rules('terms', ' ', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;

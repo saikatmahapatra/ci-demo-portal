@@ -69,6 +69,19 @@
 			</div>
 		</div>
 
+		<div class="form-row">
+			<div class="form-group col-md-8">
+				<div class="custom-control custom-checkbox my-1 mr-sm-2">					
+					<?php
+						$cb_is_checked = $this->input->post('terms') === 'accept';
+						echo form_checkbox('terms', 'accept', $cb_is_checked, array('id' => 'terms','class' => 'custom-control-input'));
+					?>
+					<label class="custom-control-label" for="terms">I understand that, this action can not be undo. Portal account will be archived forever and this user will not be able to login permanently.</label>
+				</div>
+				<?php echo form_error('terms'); ?>
+			</div>
+		</div>
+
         <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
         <?php echo form_close(); ?>
