@@ -128,7 +128,7 @@ class Leave extends CI_Controller {
                 $datediff = ($to_date - $from_date);
                 $no_day = round($datediff / (60 * 60 * 24));
                 //die();
-                $leave_request_id = 'LR-'.(isset($this->sess_user_emp_id)?$this->sess_user_emp_id:'').time();              
+                $leave_request_id = (isset($this->sess_user_id) ? $this->sess_user_id:'').time();
 				$postdata = array(                    
                     'leave_req_id' => $leave_request_id,
                     'leave_type' => $this->input->post('leave_type'),
@@ -680,7 +680,7 @@ class Leave extends CI_Controller {
                     $this->send_notification($to, $from, $from_name, $subject, $message.$message_table);
                 }
             }else{
-                $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>validation_errors(),'css'=>'allert alert-danger'); 
+                $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>validation_errors(),'css'=>'alert alert-danger'); 
             }
         }
         echo json_encode($message); die();
