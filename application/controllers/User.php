@@ -355,8 +355,8 @@ class User extends CI_Controller {
 				$user_emp_id = $this->user_model->get_new_emp_id();
 				$password = $this->generate_password();				
                 $postdata = array(
-                    'user_title' => $this->input->post('user_title'),                    
-                    'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),                   
+                    'user_title' => $this->input->post('user_title'),
+                    'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),
                     'user_lastname' => ucwords(strtolower($this->input->post('user_lastname'))),
                     'user_gender' => $this->input->post('user_gender'),
                     'user_email' => strtolower($this->input->post('user_email')),
@@ -371,7 +371,7 @@ class User extends CI_Controller {
                     'user_password' => md5($password),
                     'user_activation_key' => $activation_token,
                     'user_registration_ip' => $_SERVER['REMOTE_ADDR'],
-                    'user_account_active' => 'Y',
+                    'user_account_active' => 'N',
                     'user_registration_date' => date('Y-m-d H:i:s'),
                     'user_emp_id' => $user_emp_id
                 );
@@ -401,7 +401,7 @@ class User extends CI_Controller {
                     $this->email->message($message_html);
                     $this->email->send();
                     //echo $this->email->print_debugger();
-                    $this->session->set_flashdata('flash_message', 'Employee account has been created successfully. <br>System generated Employee ID <span class="font-weight-bold h5">'.$user_emp_id.'</span>. <br>Account activation link will be sent to the registered email address.');
+                    $this->session->set_flashdata('flash_message', 'Employee account has been created successfully. System generated Emp ID <span class="font-weight-bold h5">'.$user_emp_id.'</span>.<br> Account activation link has been sent to <span class="font-weight-bold">'.$postdata['user_email'].'</span><br> Employee need to click on that link to activate employee portal account before first time login.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     redirect(current_url());
                 }

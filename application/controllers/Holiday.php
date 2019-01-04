@@ -51,7 +51,7 @@ class Holiday extends CI_Controller {
 		//Pagination
          $this->load->library('pagination');
          
-         $this->data['arr_holiday_type'] = array(''=>'Select','C'=>'Calendar Holiday','O'=>'Optional Holiday');
+         $this->data['arr_holiday_type'] = array(''=>'Select','C'=>'Calendar','O'=>'Optional');
 		
     }
 

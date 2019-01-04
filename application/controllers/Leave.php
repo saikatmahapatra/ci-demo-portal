@@ -39,7 +39,7 @@ class Leave extends CI_Controller {
         $this->common_lib->is_auth(array(
             'default-super-admin-access',
             'default-admin-access',
-            'default-user-access'			
+            'default-user-access'
         ));
 		
         $this->load->model('leave_model');
