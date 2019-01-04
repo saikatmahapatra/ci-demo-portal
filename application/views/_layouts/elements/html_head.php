@@ -2,14 +2,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<title><?php echo $el_html_tag_title; ?></title>
 <meta name="description" content="<?php echo $el_html_tag_meta_description; ?>">
 <meta name="keywords" content="<?php echo $el_html_tag_meta_keywords; ?>">
 <meta name="author" content="<?php echo $el_html_tag_meta_author; ?>">
+<meta name="robots" content="index, follow" />
 
 <link rel="icon" href="<?php echo base_url('assets/dist/img/favicon.ico'); ?>">
 
-<title><?php echo $el_html_tag_title; ?></title>
 <noscript>
 JavaScript must be enabled in order to use this Application in standard view. 
 However, it seems JavaScript is either disabled or not supported by your browser. 

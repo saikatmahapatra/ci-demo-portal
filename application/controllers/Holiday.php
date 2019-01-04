@@ -101,9 +101,10 @@ class Holiday extends CI_Controller {
         foreach ($data_rows as $result) {
             $no++;
             $row = array();
-            $row[] = $this->common_lib->display_date($result['holiday_date']);
-            $row[] = $this->data['arr_holiday_type'][$result['holiday_type']];
+            $row[] = $this->common_lib->display_date($result['holiday_date'], null, null, 'd-M-Y');
+            $row[] = $this->common_lib->display_date($result['holiday_date'], null, null, 'l');
             $row[] = $result['holiday_description'];
+            $row[] = $this->data['arr_holiday_type'][$result['holiday_type']];
             //add html for action
             $action_html = '';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
@@ -167,7 +168,7 @@ class Holiday extends CI_Controller {
                 if ($insert_id) {
                     $this->session->set_flashdata('flash_message', 'Data Added Successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
-                    redirect($this->router->directory.$this->router->class.'/add');
+                    redirect($this->router->directory.$this->router->class);
                 }
             }
         }
@@ -207,7 +208,7 @@ class Holiday extends CI_Controller {
                 if ($res) {
                     $this->session->set_flashdata('flash_message', 'Data Updated Successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
-                    redirect(current_url());
+                    redirect($this->router->directory.$this->router->class);
                 }
             }
         }
@@ -268,7 +269,7 @@ class Holiday extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		$result_array = $this->holiday_model->get_holidays(NULL, NULL, NULL, FALSE, FALSE);
-        $this->data['data_rows'] = $result_array['data_rows'];        
+        $this->data['data_rows'] = $result_array['data_rows'];
 		$this->data['page_heading'] = 'Holidays - '.date('Y');
         $this->data['maincontent'] = $this->load->view($this->router->class.'/view', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);

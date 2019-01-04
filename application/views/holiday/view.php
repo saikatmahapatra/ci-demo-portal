@@ -12,6 +12,7 @@
 			<tr>
 			  <th scope="col">#</th>
 			  <th scope="col">Date</th>
+				<th scope="col">Day</th>
 				<th scope="col">Holiday Type</th>
 			  <th scope="col">Occasion</th>
 			</tr>
@@ -23,9 +24,10 @@
 					?>
 					<tr>
 					  <th scope="row"><?php echo $count;?></th>
-					  <td><?php echo $this->common_lib->display_date($row['holiday_date']); ?></td>
-					  <td><?php echo $arr_holiday_type[$row['holiday_type']]; ?></td>					  
-					  <td><?php echo $row['holiday_description']; ?></td>					  
+					  <td><?php echo $this->common_lib->display_date($row['holiday_date'], null, null, 'd-M-Y'); ?></td>
+						<td><?php echo $this->common_lib->display_date($row['holiday_date'], null, null, 'l'); ?></td>
+					  <td><?php echo $arr_holiday_type[$row['holiday_type']]; ?></td>
+					  <td><?php echo $row['holiday_description']; ?></td>
 					</tr>
 					<?php
 					$count++;

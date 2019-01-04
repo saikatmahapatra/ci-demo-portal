@@ -389,7 +389,7 @@ class User extends CI_Controller {
                     $message_html.='<p>Portal URL : '.anchor(base_url()).' <br> Username/Email : '.strtolower($this->input->post('user_email')).'<br> Password : '. $password .'</p>';
                     $message_html.='</div><!--/#message_body-->';
                     $message_html.='<div id="message_footer" style="padding: 10px; font-size: 11px;">';
-                    $message_html.='<p>* This is a system generated email message. Please do not reply.</p>';
+                    $message_html.='<p>* Please do not reply.</p>';
                     $message_html.='</div><!--/#message_footer-->';
                     $message_html.='</div><!--/#message_wrapper-->';
                     //echo $message_html; die();
@@ -478,7 +478,7 @@ class User extends CI_Controller {
                     $message_html.='<p>Portal URL : '.anchor(base_url()).' <br> Username/Email : '.strtolower($this->input->post('user_email')).'<br> Password : '.$this->input->post('user_password').'</p>';
                     $message_html.='</div><!--/#message_body-->';
                     $message_html.='<div id="message_footer" style="padding: 10px; font-size: 11px;">';
-                    $message_html.='<p>* This is a system generated email message. Please do not reply.</p>';
+                    $message_html.='<p>* Please do not reply.</p>';
                     $message_html.='</div><!--/#message_footer-->';
                     $message_html.='</div><!--/#message_wrapper-->';
                     //echo $message_html; die();
@@ -596,7 +596,7 @@ class User extends CI_Controller {
                     $message_html.='<p>'.anchor(base_url($this->router->directory.$this->router->class.'/reset_password/' . md5($password_reset_key)), NULL).'</p>';                    
                     $message_html.='</div><!--/#message_body-->';
                     $message_html.='<div id="message_footer" style="padding: 10px; font-size: 11px;">';
-                    $message_html.='<p>* This is a system generated email message. Please do not reply.</p>';
+                    $message_html.='<p>* Please do not reply.</p>';
                     $message_html.='</div><!--/#message_footer-->';
                     $message_html.='</div><!--/#message_wrapper-->';
 

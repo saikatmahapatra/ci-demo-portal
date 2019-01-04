@@ -111,7 +111,7 @@ foreach($data_rows as $key=>$row){
 	<?php if ($count%3 == 1){ echo '<div class="row my-3">'; } ?>
 		<div class="col-md-4 mb-2" data-id="<?php echo $row['id'];?>">
 			<div data-cms-type="<?php echo $row['pagecontent_type'];?>" class="card-news pl-2">
-				<div class="card-news-header h4">
+				<div class="card-news-header h4 font-weight-normal">
 					<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a>
 				</div>
 				<div class="card-news-sig text-muted small">

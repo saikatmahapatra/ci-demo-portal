@@ -502,7 +502,10 @@ class Leave extends CI_Controller {
     }
 
     function update_leave_status(){
+        $messageTxt = '';
+        $final_leave_status = '';
         $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>'', 'css'=>'alert alert-warning');
+        
         if(($this->input->post('action')=='update')){
             $leave_id = $this->input->post('leave_id');
             $leave_req_id = $this->input->post('leave_req_id');
@@ -512,11 +515,11 @@ class Leave extends CI_Controller {
             $leave_comments = $this->input->post('leave_comments');
             //print_r($_POST);die();
             if ($this->validate_update_leave_status_form_data() == true) {
-                $messageTxt = '';
-                $final_leave_status = '';
+                
+                ### By Applicant
                 if($action_by_approver == 'applicant'){
                     if($leave_status == 'C'){
-                        $postdata = array(					
+                        $postdata = array(
                             'leave_status' => $leave_status,
                             'cancelled_by' => $action_by_approver_id,
                             'cancellation_reason'=>$leave_comments,
@@ -526,12 +529,14 @@ class Leave extends CI_Controller {
                         $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
                         $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
                         if($is_update){
-                            $message = array('is_valid'=>true, 'updated'=>true, 'insert_id'=>'','msg'=>'Leave Status has been updated', 'css'=>'alert alert-success');
+                            $message = array('is_valid'=>true, 'updated'=>true, 'insert_id'=>'','msg'=>'This leave request has been cancelled', 'css'=>'alert alert-success');
                         }
                     }else{
-                        $message = array('is_valid'=>true, 'updated'=>false, 'insert_id'=>'','msg'=>'You can only Cancel Leave', 'css'=>'alert alert-danger');
+                        $message = array('is_valid'=>true, 'updated'=>false, 'insert_id'=>'','msg'=>'You can only Cancel Leave request.', 'css'=>'alert alert-danger');
                     }
                 }
+
+                ### By L1 Approver
                 if($action_by_approver == 'supervisor'){
                     if($leave_status == 'R'){
                         $final_leave_status = 'R'; // rejected
@@ -560,6 +565,8 @@ class Leave extends CI_Controller {
                     }
                     
                 }
+
+                ### By L2 Approver
                 if($action_by_approver == 'director'){
                     if($leave_status == 'R'){
                         $final_leave_status = 'R'; // rejected
@@ -624,7 +631,8 @@ class Leave extends CI_Controller {
                         $message = array('is_valid'=>true, 'updated'=>false, 'insert_id'=>'','msg'=>'You can only Approve / Reject', 'css'=>'alert alert-danger');
                     }
                 }
-                ######## Send Email to Applicant ###########
+
+                ### Send Email to Applicant
                 if($final_leave_status == 'A' || $final_leave_status == 'R' || $final_leave_status == 'C'){ 
                     $result_array = $this->leave_model->get_rows($leave_id, NULL, NULL, FALSE, TRUE);
                     $data = $result_array['data_rows'][0];
@@ -677,10 +685,10 @@ class Leave extends CI_Controller {
                     $message_table.='</tr>';
                     $message_table.='</tbody>';
                     $message_table.='</table>';                    
-                    $this->send_notification($to, $from, $from_name, $subject, $message.$message_table);
+                    //$this->send_notification($to, $from, $from_name, $subject, $message.$message_table);
                 }
             }else{
-                $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>validation_errors(),'css'=>'alert alert-danger'); 
+                $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>validation_errors(),'css'=>''); 
             }
         }
         echo json_encode($message); die();
@@ -718,7 +726,7 @@ class Leave extends CI_Controller {
         $message_html.=$message;        
         $message_html.='</div><!--/#message_body-->';
         $message_html.='<div id="message_footer" style="padding: 10px; font-size: 11px;">';
-        $message_html.='<p>* This is a system generated email and has been sent via employee portal. Please do not reply here.</p>';
+        $message_html.='<p>* Please do not reply.</p>';
         $message_html.='</div><!--/#message_footer-->';
         $message_html.='</div><!--/#message_wrapper-->';
         //echo $message_html;

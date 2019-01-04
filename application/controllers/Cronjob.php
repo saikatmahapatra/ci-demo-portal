@@ -43,7 +43,7 @@ class Cronjob extends CI_Controller {
 
         foreach($result_array['data_rows'] as $key => $val){            
             $html = '<p>Hi '.$val['user_firstname'].' '.$val['user_lastname'].', <br> Wishing you a very Happy Birthday.</p>';
-            $html.= '<p style="font-size:10px;">This is a system generated email. Please do not reply.</p>';
+            $html.= '<p style="font-size:10px;">Please do not reply.</p>';
             //echo $html;
             $config['mailtype'] = 'html';
             $this->email->initialize($config);

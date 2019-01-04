@@ -300,7 +300,7 @@ class Cms extends CI_Controller {
         $message_html.=$message;        
         $message_html.='</div><!--/#message_body-->';
         $message_html.='<div id="message_footer" style="padding: 10px; font-size: 11px;">';
-        $message_html.='<p>* This is a system generated email and has been sent via employee portal. Please do not reply here.</p>';
+        $message_html.='<p>* Please do not reply.</p>';
         $message_html.='</div><!--/#message_footer-->';
         $message_html.='</div><!--/#message_wrapper-->';
         //echo $message_html; die();

@@ -8602,15 +8602,18 @@ a[data-link-type="user-profile-card"] {
   vertical-align: center !important;
 }
 
-.ci-calendar .allowed_m td.day, .ci-calendar .allowed_d td.day {
+.ci-calendar .allowed_m td.day,
+.ci-calendar .allowed_d td.day {
   cursor: pointer;
 }
 
-.ci-calendar .allowed_m td.day a, .ci-calendar .allowed_d td.day a {
+.ci-calendar .allowed_m td.day a,
+.ci-calendar .allowed_d td.day a {
   color: inherit;
 }
 
-.ci-calendar .allowed_m td.day a:hover, .ci-calendar .allowed_d td.day a:hover {
+.ci-calendar .allowed_m td.day a:hover,
+.ci-calendar .allowed_d td.day a:hover {
   text-decoration: none;
 }
 

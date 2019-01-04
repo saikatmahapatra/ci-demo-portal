@@ -33,12 +33,12 @@ $config['app_logo_name_admin_dashboard'] = 'Portal Admin';
 $config['app_logo_name_dashboard'] = 'Employee Portal';
 $config['app_logo_name_dashboard_xs'] = '<b>U</b>Aadmin';
 
-$config['app_html_title'] = 'Employee Portal - United Exploration India Pvt. Ltd.';
+$config['app_html_title'] = 'United Exploration India Private Limited';
 $config['app_admin_html_title'] = 'United Exploration India Pvt. Ltd.';
 
-$config['app_meta_keywords'] = 'UEIPL, United Exploration Kolkata, GIS Company, Coal Mining Consultancy, Web GIS company Kolkata, Mining Company';
-$config['app_meta_description'] = 'Employee Portal of United Exploration India Pvt Ltd unitedexploration.co.in';
-$config['app_meta_author'] = 'WebUIDevs';
+$config['app_meta_keywords'] = 'UEIPL, United Exploration Kolkata, GIS Company Kolkata, Coal Mining Consultancy Kolkata, Web GIS company Kolkata, Mining Company';
+$config['app_meta_description'] = 'United Exploration India Pvt Ltd is a Kolkata based Mining and Geological consultation company';
+$config['app_meta_author'] = '';
 
 
 $config['app_copy_right'] = 'Copyright '.date('Y').' &copy; United Exploration India Pvt. Ltd.';
