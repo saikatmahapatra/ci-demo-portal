@@ -49,7 +49,13 @@ class Home extends CI_Controller {
 		$this->load->library('breadcrumbs');
 		// add breadcrumbs. push() - Append crumb to stack
 		$this->breadcrumbs->push('Home', '/');		
-		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
+        $this->data['breadcrumbs'] = $this->breadcrumbs->show();
+        
+        $this->data['content_type'] = array(
+            'news'=>array('text'=>'News', 'css'=>'text-warning'),
+            'policy'=>array('text'=>'Policy', 'css'=>'text-success'),
+            'notice'=>array('text'=>'Notice', 'css'=>'text-primary')
+        );
 
     }
 
@@ -72,7 +78,7 @@ class Home extends CI_Controller {
 		
 		//pagination config
 		$additional_segment = $this->router->directory.$this->router->class.'/index';
-		$per_page = 15;
+		$per_page = 3;
 		$config['uri_segment'] = 4;
 		$config['num_links'] = 1;
 		$config['use_page_numbers'] = TRUE;

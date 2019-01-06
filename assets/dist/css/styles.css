@@ -9034,6 +9034,20 @@ table.ci-table.dataTable {
 }
 
 .nav-colorgraph .nav-link {
-  font-weight: bold;
   color: #000;
+}
+
+.recent-updates .media-body {
+  max-height: 130px;
+  overflow: hidden;
+}
+
+.recent-updates .media-body img {
+  width: 64px;
+  height: 64px;
+}
+
+.card-news-details img {
+  width: 100% !important;
+  height: auto;
 }

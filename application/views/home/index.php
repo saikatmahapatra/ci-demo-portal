@@ -64,47 +64,8 @@
 </div>
 <?php } ?>
 
-
-
-<div id="demo" class="carousel slide d-none" data-ride="carousel">
-  <ul class="carousel-indicators">
-    <li data-target="#demo" data-slide-to="0" class="active"></li>
-    <li data-target="#demo" data-slide-to="1"></li>
-    <li data-target="#demo" data-slide-to="2"></li>
-  </ul>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="<?php echo base_url('assets/src/img/la.jpg');?>" alt="Los Angeles" width="1100" height="500">
-      <div class="carousel-caption">
-        <h3>Los Angeles</h3>
-        <p>We had such a great time in LA!</p>
-      </div>   
-    </div>
-    <div class="carousel-item">
-      <img src="<?php echo base_url('assets/src/img/chicago.jpg');?>" alt="Chicago" width="1100" height="500">
-      <div class="carousel-caption">
-        <h3>Chicago</h3>
-        <p>Thank you, Chicago!</p>
-      </div>   
-    </div>
-    <div class="carousel-item">
-      <img src="<?php echo base_url('assets/src/img/ny.jpg');?>" alt="New York" width="1100" height="500">
-      <div class="carousel-caption">
-        <h3>New York</h3>
-        <p>We love the Big Apple!</p>
-      </div>   
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-  <a class="carousel-control-next" href="#demo" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
-</div>
-
-
 <?php
+/*
 $count = 1;
 foreach($data_rows as $key=>$row){
 	?>
@@ -132,9 +93,35 @@ foreach($data_rows as $key=>$row){
 	<?php
 	$count++;
 }
-//if ($count%3 != 1) echo "</div>"; 
+echo $pagination_link;
+*/
 ?>
 
-<div class="row">
-<div class="col-md-12"><?php echo $pagination_link; ?></div>
+
+<div class="col-12 p-3 bg-white rounded shadow-sm recent-updates">
+   <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+   <?php $array_color = array('#007bff', '#AC193D', '#6f42c1','#DC572E'); ?>
+   <?php foreach($data_rows as $key=>$row) { ?>
+   <div class="media text-muted pt-3">
+      <div class="mr-2 <?php echo $content_type[$row['pagecontent_type']]['css']; ?>"><i class="fa fa-tags" aria-hidden="true"></i></div>
+      <svg class="bd-placeholder-img mr-2 d-none rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
+         <title>Placeholder</title>
+         <rect fill="<?php echo $array_color[array_rand($array_color, 1)]; ?>" width="100%" height="100%"></rect>
+         <text fill="<?php echo $array_color[array_rand($array_color, 1)]; ?>" dy=".3em" x="50%" y="50%"></text>
+      </svg>
+      <div class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
+        <div class="d-block text-gray-dark h5"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a></div>
+        <strong class="d-block text-gray-dark small">
+            <?php echo $content_type[$row['pagecontent_type']]['text']; ?>
+            <?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
+            <?php echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>
+            <?php echo $this->common_lib->display_date($row['pagecontent_created_on'],true,null,'d-M-Y h:i:sa'); ?>
+        </strong>
+        <?php echo isset($row['pagecontent_text']) ? word_limiter($this->common_lib->remove_empty_p($row['pagecontent_text']),30) : '';?>
+      </div>
+   </div>
+   <?php } ?>
+   <small class="d-block text-right mt-3">
+    <?php echo $pagination_link;?>
+   </small>
 </div>

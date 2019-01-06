@@ -32,9 +32,9 @@
 			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown011" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">Employees</a>
+						aria-expanded="false">Manage Employees</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown011">						
-						<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Manage Employees</a>
+						<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">All Employees</a>
 						<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account');?>">Add New Employee</a>
 					</div>
 				</li>
@@ -63,9 +63,9 @@
 			<?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown012" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false">Contents</a>
+						aria-expanded="false">Manage Contents</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown012">
-					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'cms'); ?>">Manage Contents</a>
+					<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'cms'); ?>">Manage Contents - Recent Updates</a>
 						<a class="dropdown-item" href="<?php echo base_url($this->router->directory.'cms/add');?>">Add New Content</a>						
 						<a class="dropdown-item" href="<?php echo base_url('holiday'); ?>">Manage Holidays</a>
 					</div>

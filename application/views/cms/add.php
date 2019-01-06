@@ -20,61 +20,23 @@
 
 		
 		<div class="form-row">
-			<div class="form-group col-md-12">									
+			<div class="form-group col-md-4">									
+				<label for="pagecontent_type" class="">Content Type <span class="required">*</span></label>
+				<?php echo form_dropdown('pagecontent_type', $arr_content_type, set_value('pagecontent_type'), array('class' => 'form-control',));?>
+				<?php echo form_error('pagecontent_type'); ?>
+			</div>
+			<div class="form-group col-md-8">									
 				<label for="pagecontent_title" class="">Content Title <span class="required">*</span></label>
 				<?php echo form_input(array('name' => 'pagecontent_title', 'value' => set_value('pagecontent_title'), 'id' => 'pagecontent_title', 'class' => 'form-control', 'placeholder' => ''));?>
 				<?php echo form_error('pagecontent_title'); ?>
 			</div>		
 		</div>
 		
-		<div class="form-group">									
+		<div class="form-group">
 			<label for="pagecontent_text" class="">Content (HTML) <span class="required">*</span></label>
 			<?php echo form_textarea(array('name' => 'pagecontent_text','value' => set_value('pagecontent_text'),'class' => 'form-control textarea','id' => 'pagecontent_text','rows' => '2','cols' => '50','placeholder' => '')); ?>
 			<?php echo form_error('pagecontent_text'); ?>
 		</div>
-
-		<div class="form-row">			
-			<div class="form-group col-md-4">									
-				<label for="pagecontent_type" class="">Content Type <span class="required">*</span></label>
-				<?php echo form_dropdown('pagecontent_type', $arr_content_type, set_value('pagecontent_type'), array('class' => 'form-control',));?>
-				<?php echo form_error('pagecontent_type'); ?>
-			</div>
-			
-			<?php /*?>
-			<div class="form-group col-md-4 d-none">									
-				<label for="pagecontent_display_start_date" class="">Display from Date</label>
-				<?php echo form_input(array('name' => 'pagecontent_display_start_date','value' => set_value('pagecontent_display_start_date'),'id' => 'pagecontent_display_start_date','class' => 'form-control cms-datepicker', 'placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
-				<?php echo form_error('pagecontent_display_start_date'); ?>
-			</div>
-		
-			<div class="form-group col-md-4 d-none">									
-				<label for="pagecontent_display_end_date" class="">Display to Date</label>
-				<?php echo form_input(array('name' => 'pagecontent_display_end_date','value' => set_value('pagecontent_display_end_date'),'class' => 'form-control cms-datepicker','id' => 'pagecontent_display_end_date','placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
-				<?php echo form_error('pagecontent_display_end_date'); ?>
-			</div>	
-			<?php */ ?>
-		</div>
-		<?php /* ?>
-		<div class="form-row d-none">			
-			<div class="form-group col-md-4">									
-				<label for="pagecontent_meta_keywords" class="">Meta Keywords</label>
-				<?php echo form_input(array('name' => 'pagecontent_meta_keywords','value' => set_value('pagecontent_meta_keywords'),'id' => 'pagecontent_meta_keywords','class' => 'form-control', 'placeholder' => '')); ?>
-				<?php echo form_error('pagecontent_meta_keywords'); ?>
-			</div>
-		
-			<div class="form-group col-md-4">									
-				<label for="pagecontent_meta_description" class="">Meta Description</label>
-				<?php echo form_input(array('name' => 'pagecontent_meta_description','value' => set_value('pagecontent_meta_description'),'id' => 'pagecontent_meta_description','class' => 'form-control', 'placeholder' => ''));?>
-				<?php echo form_error('pagecontent_meta_description'); ?>
-			</div>
-		
-			<div class="form-group col-md-4">									
-				<label for="pagecontent_meta_author" class="">Meta Author</label>
-				<?php echo form_input(array('name' => 'pagecontent_meta_author','value' => set_value('pagecontent_meta_author'),'class' => 'form-control','id' => 'pagecontent_meta_author','placeholder' => ''));?>
-				<?php echo form_error('pagecontent_meta_author'); ?>
-			</div>			
-		</div>
-		<?php */ ?>
 
 		<div class="form-row">
 			<div class="form-group col-md-12">									

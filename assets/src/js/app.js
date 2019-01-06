@@ -362,7 +362,6 @@ function initPage() {
     $(".tagcloud a").each(function() {
         $(this).addClass(classes[~~(Math.random() * classes.length)]);
     });*/
-
 }
 // End of initPage() i.e. document ready
 

@@ -618,7 +618,24 @@ table.ci-table.dataTable {
 .nav-colorgraph {
     border-bottom: 2px solid lighten($primary-color, 10%);
     .nav-link {
-        font-weight: bold;
         color: $black;
+    }
+}
+
+.recent-updates {
+    .media-body {
+        max-height: 130px;
+        overflow: hidden;
+        img {
+            width: 64px;
+            height: 64px;
+        }
+    }
+}
+
+.card-news-details {
+    img {
+        width: 100% !important;
+        height: auto;
     }
 }

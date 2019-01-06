@@ -73,7 +73,7 @@ class Cms extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		
-		$this->data['page_heading'] = 'Website CMS - Contents';
+		$this->data['page_heading'] = 'Manage Contents - Recent Updates';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -211,7 +211,7 @@ class Cms extends CI_Controller {
                 }
             }
         }
-		$this->data['page_heading'] = 'Add Dynamic Contents';
+		$this->data['page_heading'] = 'Add New Content - Recent Updates';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/add', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -236,8 +236,8 @@ class Cms extends CI_Controller {
                     'pagecontent_status' => $this->input->post('pagecontent_status'),
 					'pagecontent_display_start_date' => $this->common_lib->convert_to_mysql($this->input->post('pagecontent_display_start_date')),
                     'pagecontent_display_end_date' => $this->common_lib->convert_to_mysql($this->input->post('pagecontent_display_end_date')),
-                    'pagecontent_archived' => $this->input->post('pagecontent_archived'),
-					'pagecontent_user_id' => $this->sess_user_id
+                    'pagecontent_archived' => $this->input->post('pagecontent_archived')
+					//'pagecontent_user_id' => $this->sess_user_id
                 );
                 $where_array = array('id' => $this->input->post('id'));
                 $res = $this->cms_model->update($postdata, $where_array);
@@ -255,7 +255,7 @@ class Cms extends CI_Controller {
         }
         $result_array = $this->cms_model->get_rows($this->id);
         $this->data['rows'] = $result_array['data_rows'];
-		$this->data['page_heading'] = 'Edit Dynamic Contents';
+		$this->data['page_heading'] = 'Edit Content - Recent Updates';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
