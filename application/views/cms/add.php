@@ -97,20 +97,20 @@
 							echo form_radio(array('name' => 'pagecontent_status', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('pagecontent_status', 'N'));
 						?>
 						<label class="custom-control-label" for="N">Unpublish</span></label>
-					</div>								
+					</div>
 				<!-- </div> -->
 				<small id="emailHelp" class="form-text text-muted">If you unpublish this, it will not displayed for public user(employees)</small>
 				<?php echo form_error('pagecontent_status'); ?>
-			</div>		
+			</div>
 		</div>
 
 		<div class="form-row">
-			<div class="form-group col-md-12">				
+			<div class="form-group col-md-12">
 				<div class="custom-control custom-checkbox my-1 mr-sm-2">
 					<?php
 						$cb_is_checked = $this->input->post('send_email_notification') === 'Y';
 						echo form_checkbox('send_email_notification', 'Y', $cb_is_checked, array('id' => 'send_email_notification','class' => 'custom-control-input'));
-					?>					
+					?>
 					<label class="custom-control-label" for="send_email_notification">Send Email Notification to All Employees (Optional)</label>
 				</div>
 				<small id="" class="form-text text-muted">If you check this option, all registered active employees will get an email notification/update about this article.</small>

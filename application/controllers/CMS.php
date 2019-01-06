@@ -289,19 +289,16 @@ class Cms extends CI_Controller {
 
     function send_email_notification($content_type, $subject, $message){
         $this->load->model('user_model');
-        $send_to_email_arr = $this->user_model->get_user_email();
+        $send_to_email_arr = $this->user_model->get_user_email(NULL, 'U');
         //print_r($send_to_email_arr);
         //die();
         $message_html = '';
-        $message_html.='<div id="message_wrapper" style="font-family:Arial, Helvetica, sans-serif; border: 3px solid #5133AB; border-left:0px; border-right: 0px; font-size:13px;">';
-        $message_html.='<div id="message_header" style="display:none;background-color:#5133AB; padding: 10px;"></div>';
-        $message_html.='<div id="message_body" style="padding: 10px;">';
-        //$message_html.='<h4></h4>';
-        $message_html.=$message;        
+        $message_html.='<div id="message_wrapper" style="border-top: 2px solid #5133AB;">';
+        $message_html.= $this->config->item('app_email_header');
+        $message_html.='<div id="message_body" style="padding-top: 5px; padding-bottom:5px;">';
+        $message_html.= $message;
         $message_html.='</div><!--/#message_body-->';
-        $message_html.='<div id="message_footer" style="padding: 10px; font-size: 11px;">';
-        $message_html.='<p>* Please do not reply.</p>';
-        $message_html.='</div><!--/#message_footer-->';
+        $message_html.= $this->config->item('app_email_footer');
         $message_html.='</div><!--/#message_wrapper-->';
         //echo $message_html; die();
         $config['mailtype'] = 'html';
@@ -314,7 +311,7 @@ class Cms extends CI_Controller {
         $sess_user_email = $this->common_lib->get_sess_user('user_email');
 
         $this->email->from($sess_user_email, $sess_user_firstname.' '.$sess_user_lastname);
-        $this->email->subject($this->config->item('app_email_subject_prefix').' '.$content_type. ' : '.$subject);
+        $this->email->subject($this->config->item('app_email_subject_prefix').' '.$subject);
         $this->email->message($message_html);
         $this->email->send();
         //echo $this->email->print_debugger();

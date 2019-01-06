@@ -719,15 +719,12 @@ class Leave extends CI_Controller {
 
     function send_notification($to, $from, $from_name, $subject, $message){  
         $message_html = '';
-        $message_html.='<div id="message_wrapper" style="font-family:Arial, Helvetica, sans-serif; border: 3px solid #5133AB; border-left:0px; border-right: 0px; font-size:13px;">';
-        $message_html.='<div id="message_header" style="display:none;background-color:#5133AB; padding: 10px;"></div>';
-        $message_html.='<div id="message_body" style="padding: 10px;">';
-        //$message_html.='<h4></h4>';
-        $message_html.=$message;        
+        $message_html.='<div id="message_wrapper" style="border-top: 2px solid #5133AB;">';
+        $message_html.= $this->config->item('app_email_header');
+        $message_html.='<div id="message_body" style="padding-top: 5px; padding-bottom:5px;">';
+        $message_html.=$message;
         $message_html.='</div><!--/#message_body-->';
-        $message_html.='<div id="message_footer" style="padding: 10px; font-size: 11px;">';
-        $message_html.='<p>* Please do not reply.</p>';
-        $message_html.='</div><!--/#message_footer-->';
+        $message_html.= $this->config->item('app_email_footer');
         $message_html.='</div><!--/#message_wrapper-->';
         //echo $message_html;
         $config['mailtype'] = 'html';

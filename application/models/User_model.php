@@ -615,10 +615,13 @@ class User_model extends CI_Model {
         return $result;
     }
 
-    function get_user_email($user_id=NULL) {
-        $this->db->select('t1.user_email');             
+    function get_user_email($user_id=NULL, $user_type=NULL) {
+        $this->db->select('t1.user_email');
         if(isset($user_id)){
             $this->db->where(array('t1.id' => $user_id));
+        }
+        if(isset($user_type)){
+            $this->db->where(array('t1.user_type' => $user_type));
         }	
         $this->db->where(array('t1.user_archived' => 'N'));	
         $query = $this->db->get('users as t1');

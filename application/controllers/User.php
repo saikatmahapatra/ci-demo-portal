@@ -136,7 +136,7 @@ class User extends CI_Controller {
 		
 		//pagination config
 		$additional_segment = $this->router->class.'/'.$this->router->method;
-		$per_page = 12;
+		$per_page = 30;
 		$config['uri_segment'] = 4;
 		$config['num_links'] = 1;
 		$config['use_page_numbers'] = TRUE;
@@ -306,7 +306,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_heading'] = 'Please sign in';
+		$this->data['page_heading'] = 'Employee Login';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/login', $this->data, true);
         $this->load->view('_layouts/layout_login', $this->data);
     }
@@ -379,25 +379,23 @@ class User extends CI_Controller {
                 $insert_id = $this->user_model->insert($postdata);
                 if ($insert_id) {
                     $message_html = '';
-                    $message_html.='<div id="message_wrapper" style="font-family:Arial, Helvetica, sans-serif; border: 3px solid #5133AB; border-left:0px; border-right: 0px; font-size:13px;">';
-                    $message_html.='<div id="message_header" style="display:none;background-color:#5133AB; padding: 10px;"></div>';
-                    $message_html.='<div id="message_body" style="padding: 10px;">';
+                    $message_html.='<div id="message_wrapper" style="border-top: 2px solid #5133AB;">';
+                    $message_html.= $this->config->item('app_email_header');
+                    $message_html.='<div id="message_body" style="padding-top: 5px; padding-bottom:5px;">';
                     $message_html.='<h4>Hi '. ucwords(strtolower($this->input->post('user_firstname'))).' '.ucwords(strtolower($this->input->post('user_lasttname'))) .' ,</h4>';
                     $message_html.='<p>Welcome to United Exploration India Pvt Ltd Employee Portal. Your have been successfully registered. Please click on the below link to activate your account. Once your account is activated you will be able to login.</p>';
-                    $message_html.='<p>'.anchor(base_url($this->router->class.'/activate_account/'.$insert_id.'/'.$activation_token),NULL).'</p>';
-                    $message_html.='<p>Here is your details -</p>';
-                    $message_html.='<p>Portal URL : '.anchor(base_url()).' <br> Username/Email : '.strtolower($this->input->post('user_email')).'<br> Password : '. $password .'</p>';
+                    $message_html.='<p>'.anchor(base_url($this->router->class.'/activate_account/'.$insert_id.'/'.$activation_token)).'</p>';
+                    $message_html.='<p>Employee Portal Details:</p>';
+                    $message_html.='<p>Employee Portal URL : '.anchor(base_url()).' <br> Username/Email : '.strtolower($this->input->post('user_email')).'<br> Password : '. $password .'</p>';
                     $message_html.='</div><!--/#message_body-->';
-                    $message_html.='<div id="message_footer" style="padding: 10px; font-size: 11px;">';
-                    $message_html.='<p>* Please do not reply.</p>';
-                    $message_html.='</div><!--/#message_footer-->';
+                    $message_html.= $this->config->item('app_email_footer');
                     $message_html.='</div><!--/#message_wrapper-->';
                     //echo $message_html; die();
                     $config['mailtype'] = 'html';
                     $this->email->initialize($config);
                     $this->email->to($this->input->post('user_email'));
                     $this->email->from($this->config->item('app_admin_email'), $this->config->item('app_admin_email_name'));
-                    $this->email->subject('Welcome to '.$this->config->item('app_email_subject_prefix') . 'Your Account Details');
+                    $this->email->subject('Welcome to United Exploration India Pvt Ltd - Your Employee Portal Account Details');
                     $this->email->message($message_html);
                     $this->email->send();
                     //echo $this->email->print_debugger();
@@ -586,18 +584,16 @@ class User extends CI_Controller {
 
                 $result = $this->user_model->update($postdata, $where);
                 if ($result) {
-                    $to_email = $email;                    
+                    $to_email = $email;
                     $message_html = '';
-                    $message_html.='<div id="message_wrapper" style="font-family:Arial, Helvetica, sans-serif; border: 3px solid #5133AB; border-left:0px; border-right: 0px; font-size:13px;">';
-                    $message_html.='<div id="message_header" style="display:none;background-color:#5133AB; padding: 10px;"></div>';
-                    $message_html.='<div id="message_body" style="padding: 10px;">';
-                    $message_html.='<h4>Hi ,</h4>';
-                    $message_html.='<p>Please click on the below link to create new password.</p>';
-                    $message_html.='<p>'.anchor(base_url($this->router->directory.$this->router->class.'/reset_password/' . md5($password_reset_key)), NULL).'</p>';                    
+                    $message_html.='<div id="message_wrapper" style="border-top: 2px solid #5133AB;">';
+                    $message_html.= $this->config->item('app_email_header');
+                    $message_html.='<div id="message_body" style="padding-top: 5px; padding-bottom:5px;">';
+                    $message_html.='<p>Dear User,</p>';
+                    $message_html.='<p>Please click on the below link to set a new password.</p>';
+                    $message_html.='<p>'.anchor(base_url($this->router->directory.$this->router->class.'/reset_password/' . md5($password_reset_key))).'</p>';
                     $message_html.='</div><!--/#message_body-->';
-                    $message_html.='<div id="message_footer" style="padding: 10px; font-size: 11px;">';
-                    $message_html.='<p>* Please do not reply.</p>';
-                    $message_html.='</div><!--/#message_footer-->';
+                    $message_html.= $this->config->item('app_email_footer');
                     $message_html.='</div><!--/#message_wrapper-->';
 
                     // load email lib and email results
@@ -1960,7 +1956,7 @@ class User extends CI_Controller {
             'K' => 'Department',
             'L' => 'Designation',
             'M' => 'Date of Joining',
-            'N' => 'Date of Release',            
+            'N' => 'Date of Release',
             'O' => 'Account Status'
         );
         $this->data['xls_col'] = $excel_heading;
@@ -2017,9 +2013,9 @@ class User extends CI_Controller {
             $sheet->setCellValue('M' . $excel_row, $this->common_lib->display_date($row['user_doj']));
             $sheet->setCellValue('N' . $excel_row, $this->common_lib->display_date($row['user_dor']));
             
-            $sheet->setCellValue('O' . $excel_row, $row['user_account_active']);
+            $sheet->setCellValue('O' . $excel_row, ($row['user_account_active']=='Y' ? 'Active Account' : 'Inactive Account'));
             if($row['user_account_active'] == 'N'){
-        $sheet->getStyle('A2')->applyFromArray(array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb' => 'f9eb7f'))));
+                $sheet->getStyle('A2')->applyFromArray(array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb' => 'f9eb7f'))));
                 $color = 'f9eb7f'; //warning
             }  
             if($row['user_account_active'] == 'Y'){

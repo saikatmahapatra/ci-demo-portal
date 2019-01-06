@@ -41,10 +41,16 @@ class Cronjob extends CI_Controller {
         $result_array = $this->user_model->find_birthday();
         //print_r($result_array['data_rows']); die();
 
-        foreach($result_array['data_rows'] as $key => $val){            
-            $html = '<p>Hi '.$val['user_firstname'].' '.$val['user_lastname'].', <br> Wishing you a very Happy Birthday.</p>';
-            $html.= '<p style="font-size:10px;">Please do not reply.</p>';
-            //echo $html;
+        foreach($result_array['data_rows'] as $key => $val){
+            $message_html = '';
+            $message_html.='<div id="message_wrapper" style="border-top: 2px solid #5133AB;">';
+            $message_html.= $this->config->item('app_email_header');
+            $message_html.='<div id="message_body" style="padding-top: 5px; padding-bottom:5px;">';
+            $message_html.= '<p>Dear '.$val['user_firstname'].' '.$val['user_lastname'].', <br> Wishing you a very Happy Birthday.</p>';
+            $message_html.='</div><!--/#message_body-->';
+            $message_html.= $this->config->item('app_email_footer');
+            $message_html.='</div><!--/#message_wrapper-->';
+            
             $config['mailtype'] = 'html';
             $this->email->initialize($config);
             $this->email->to($val['user_email']);
@@ -54,8 +60,8 @@ class Cronjob extends CI_Controller {
             }
             
             $this->email->from($this->config->item('app_admin_email'), $this->config->item('app_admin_email_name'));
-            $this->email->subject('Happy Birthday!!!');
-            $this->email->message($html);
+            $this->email->subject('Happy Birthday !');
+            $this->email->message($message_html);
             $result = $this->email->send();
             //echo $this->email->print_debugger();
         }
