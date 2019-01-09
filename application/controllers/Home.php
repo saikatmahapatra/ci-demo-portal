@@ -78,7 +78,7 @@ class Home extends CI_Controller {
 		
 		//pagination config
 		$additional_segment = $this->router->directory.$this->router->class.'/index';
-		$per_page = 3;
+		$per_page = 4;
 		$config['uri_segment'] = 4;
 		$config['num_links'] = 1;
 		$config['use_page_numbers'] = TRUE;

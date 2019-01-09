@@ -21,8 +21,8 @@
 		
 			<div class="form-group">                    
 				<label for="user_email" class="">Registered Email <span class="required">*</span></label>				
-				<div class="input-group">
-					<div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div></div>
+				<!-- <div class="input-group">
+					<div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div></div> -->
 					<?php
 					echo form_input(array(
 						'name' => 'user_email',
@@ -34,15 +34,15 @@
 						'autofocus' => '',
 					));
 					?>
-				</div> 
+				<!-- </div>  -->
 				<?php echo form_error('user_email'); ?>
 			</div>
 
 
 			<div class="form-group">            
 				<label for="user_new_password" class="">New Password <span class="required">*</span></label>
-				<div class="input-group">
-					<div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-lock" aria-hidden="true"></i></div></div>
+				<!-- <div class="input-group">
+					<div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-lock" aria-hidden="true"></i></div></div> -->
 					<?php
 					echo form_password(array(
 						'name' => 'user_new_password',
@@ -53,14 +53,14 @@
 						'maxlength' => '16',
 					));
 					?>
-				</div> 
+				<!-- </div>  -->
 				<?php echo form_error('user_new_password'); ?>
 			</div>
 
 			<div class="form-group">            
 				<label for="confirm_user_new_password" class="">Confirm New Password <span class="required">*</span></label>
-				<div class="input-group">
-					<div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-lock" aria-hidden="true"></i></div></div>
+				<!-- <div class="input-group">
+					<div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-lock" aria-hidden="true"></i></div></div> -->
 					<?php
 					echo form_password(array(
 						'name' => 'confirm_user_new_password',
@@ -71,7 +71,7 @@
 						'maxlength' => '16',
 					));
 					?>
-				</div>       
+				<!-- </div>        -->
 				<?php echo form_error('confirm_user_new_password'); ?>
 			</div>
 			<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-lg btn-primary btn-block'));?>	

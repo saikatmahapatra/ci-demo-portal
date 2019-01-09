@@ -53,6 +53,6 @@ $config['app_faq'] = array(
 
 $config['app_copy_right'] = 'Copyright '.date('Y').' &copy; United Exploration India Pvt. Ltd.';
 $config['app_admin_copy_right'] = 'Copyright &copy; '.date('Y').' <a href="http://unitedexploration.co.in/">United Exploration India Pvt. Ltd.</a>. All rights reserved.';
-$config['app_version'] = 'Version '.CI_VERSION.'.07';
+$config['app_version'] = 'Version '.CI_VERSION.'.09';
 
 
