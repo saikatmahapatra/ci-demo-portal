@@ -139,8 +139,9 @@ class User_model extends CI_Model {
         $loggedin_data = array();
         $auth_result = array('status' => $login_status, 'message' => $message, 'data' => $loggedin_data);
 
-        $this->db->select('t1.id,t1.user_email,t1.user_title, t1.user_firstname,t1.user_lastname,t1.user_role,t1.user_profile_pic,t1.user_account_active,t1.user_archived,t2.role_name,t2.role_weight,t1.user_login_date_time, t1.user_emp_id');
+        $this->db->select('t1.id,t1.user_email,t1.user_title, t1.user_firstname,t1.user_lastname,t1.user_role,t1.user_profile_pic,t1.user_account_active,t1.user_archived,t2.role_name,t2.role_weight,t1.user_login_date_time, t1.user_emp_id, t3.designation_name');
 		$this->db->join('roles t2', 't1.user_role=t2.id');
+		$this->db->join('designations t3', 't1.user_designation=t3.id');
         $this->db->where(array(
             't1.user_email' => $user_email,
             't1.user_password' => $user_password
@@ -178,6 +179,7 @@ class User_model extends CI_Model {
                     'user_profile_pic' => $row['user_profile_pic'],
                     'user_login_date_time' => $row['user_login_date_time'],
                     'user_emp_id' => $row['user_emp_id'],
+                    'designation_name' => $row['designation_name'],
                 );
                 $auth_result = array('status' => $login_status, 'message' => $message, 'data' => $loggedin_data);
 				// update login date time

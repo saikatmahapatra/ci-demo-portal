@@ -283,25 +283,25 @@
 			
 			<div class="form-row">
 				<div class="form-group col-md-3 ci-select2">
-					<label for="" class="">Supervisor / Approver</label>
-					<?php echo form_dropdown('user_supervisor_id', $user_arr, isset($approver['user_supervisor_id'])?$approver['user_supervisor_id']:set_value('user_supervisor_id') ,array('class' => 'form-control select2-control', 'id'=>'user_supervisor_id')); ?> 
-					<?php echo form_error('user_supervisor_id'); ?>
-				</div>
-				<div class="form-group col-md-3 ci-select2">
-					<label for="" class="">HR Approver</label>
-					<?php echo form_dropdown('user_hr_approver_id', $user_arr, isset($approver['user_hr_approver_id'])?$approver['user_hr_approver_id']:set_value('user_hr_approver_id') ,array('class' => 'form-control select2-control', 'id'=>'user_hr_approver_id')); ?> 
-					<?php echo form_error('user_hr_approver_id'); ?>
-				</div>
-				<div class="form-group col-md-3 ci-select2">
-					<label for="" class="">Director Approver</label>
-					<?php echo form_dropdown('user_director_approver_id', $user_arr, isset($approver['user_director_approver_id'])?$approver['user_director_approver_id']:set_value('user_supervisor_id') ,array('class' => 'form-control select2-control', 'id'=>'user_director_approver_id')); ?> 
-					<?php echo form_error('user_director_approver_id'); ?>
-				</div>
-				<div class="form-group col-md-3 ci-select2">
-					<label for="" class="">Finance Approver</label>
-					<?php echo form_dropdown('user_finance_approver_id', $user_arr, isset($approver['user_finance_approver_id'])?$approver['user_finance_approver_id']:set_value('user_supervisor_id') ,array('class' => 'form-control select2-control', 'id'=>'user_finance_approver_id')); ?> 
-					<?php echo form_error('user_finance_approver_id'); ?>
-				</div>
+                    <label for="" class="">Supervisor / Level 1 Approver</label>
+                    <?php echo form_dropdown('user_supervisor_id', $user_arr, isset($approver['user_supervisor_id']) ? $approver['user_supervisor_id'] : set_value('user_supervisor_id') ,array('class' => 'form-control select2-control', 'id'=>'user_supervisor_id')); ?> 
+                    <?php echo form_error('user_supervisor_id'); ?>
+                </div>
+                <div class="form-group col-md-3 ci-select2">
+                    <label for="" class="">Director / Level 2 Approver</label>
+                    <?php echo form_dropdown('user_director_approver_id', $user_arr, isset($approver['user_director_approver_id']) ? $approver['user_director_approver_id'] : set_value('user_supervisor_id') ,array('class' => 'form-control select2-control', 'id'=>'user_director_approver_id')); ?> 
+                    <?php echo form_error('user_director_approver_id'); ?>
+                </div>
+                <div class="form-group col-md-3 ci-select2">
+                    <label for="" class="">HR Approver</label>
+                    <?php echo form_dropdown('user_hr_approver_id', $user_arr, isset($approver['user_hr_approver_id']) ? $approver['user_hr_approver_id'] : set_value('user_hr_approver_id') ,array('class' => 'form-control select2-control', 'id'=>'user_hr_approver_id')); ?> 
+                    <?php echo form_error('user_hr_approver_id'); ?>
+                </div>
+                <div class="form-group col-md-3 ci-select2">
+                    <label for="" class="">Finance Approver</label>
+                    <?php echo form_dropdown('user_finance_approver_id', $user_arr, isset($approver['user_finance_approver_id']) ? $approver['user_finance_approver_id'] : set_value('user_supervisor_id') ,array('class' => 'form-control select2-control', 'id'=>'user_finance_approver_id')); ?> 
+                    <?php echo form_error('user_finance_approver_id'); ?>
+                </div>
 			</div>
 
         <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>

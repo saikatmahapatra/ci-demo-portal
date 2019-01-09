@@ -1298,7 +1298,7 @@ class User extends CI_Controller {
                 );
                 $where = array('id' => $user_id);
                 $res = $this->user_model->update($postdata, $where);
-                $this->update_user_approvers();
+                $this->update_user_approvers($user_id);
                 if ($res) {
                     $this->session->set_flashdata('flash_message', 'Employee information has been updated successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
@@ -1312,13 +1312,12 @@ class User extends CI_Controller {
         $this->load->view('_layouts/layout_default', $this->data);
     }
 
-    function update_user_approvers(){
-        $user_id = $this->uri->segment(3);
-        $postdata = array(                          
-            'user_supervisor_id' => $this->input->post('user_supervisor_id'),                
-            'user_hr_approver_id' => $this->input->post('user_hr_approver_id'),                
-            'user_director_approver_id' => $this->input->post('user_director_approver_id'),                
-            'user_finance_approver_id' => $this->input->post('user_finance_approver_id')                
+    function update_user_approvers($user_id = NULL){
+        $postdata = array(
+            'user_supervisor_id' => $this->input->post('user_supervisor_id'),
+            'user_hr_approver_id' => $this->input->post('user_hr_approver_id'),
+            'user_director_approver_id' => $this->input->post('user_director_approver_id'),
+            'user_finance_approver_id' => $this->input->post('user_finance_approver_id')
         );
 
         $has_approver = $this->user_model->has_user_approvers($user_id);
@@ -1329,6 +1328,49 @@ class User extends CI_Controller {
         }else{
             $postdata['user_id'] = $user_id;
             $res = $this->user_model->insert($postdata, 'user_approvers');
+        }
+        return $res;
+    }
+
+    function edit_approvers(){
+        ########### Validate User Auth #############
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
+            redirect($this->router->directory.$this->router->class.'/login');
+        }
+        $user_id = $this->sess_user_id;
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        
+        $this->data['user_arr'] = $this->user_model->get_user_dropdown();
+        $this->data['approvers'] = $this->user_model->get_user_approvers($user_id);
+        if ($this->input->post('form_action') == 'update_approvers') {
+            //print_r($_POST); die();
+            if ($this->validate_edit_approver_form() == true) {
+                $res = $this->update_user_approvers($user_id);
+                if ($res) {
+                    $this->session->set_flashdata('flash_message', 'Information has been updated successfully.');
+                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    redirect(current_url());
+                }
+            }
+        }
+		$this->data['page_heading'] = 'Update Leave Approvers';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_approvers', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function validate_edit_approver_form() {
+        $this->form_validation->set_rules('user_supervisor_id', ' ', 'required');
+        $this->form_validation->set_rules('user_hr_approver_id', ' ', 'required');
+        $this->form_validation->set_rules('user_director_approver_id', ' ', 'required');
+        //$this->form_validation->set_rules('user_finance_approver_id', ' ', 'required'); 
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
         }
     }
 

@@ -3,6 +3,9 @@
 @import 'vars';
 @import 'customize-bootstrap';
 @import 'assets/vendors/bootstrap/scss/bootstrap';
+@import 'app';
+@import 'header';
+@import 'sidebar';
 body {
     margin-top: 5rem;
     margin-bottom: 3rem;
@@ -39,6 +42,9 @@ body.login {
 
 .logo {
     width: 160px;
+    @media(max-width: 575px) {
+        width: 120px;
+    }
 }
 
 
@@ -67,10 +73,10 @@ body.login {
 }*/
 
 @media (max-width: 576px) {
-    .navbar-collapse {
-        max-height: 340px;
-        overflow-y: auto;
-    }
+    // .navbar-collapse {
+    //     max-height: 340px;
+    //     overflow-y: auto;
+    // }
 }
 
 .scrollup {

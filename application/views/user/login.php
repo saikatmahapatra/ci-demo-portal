@@ -2,7 +2,7 @@
 	<div class="col-sm-12">		
 		
 		<div class="text-center">
-			<img class="logo-2x pb-3" src="<?php echo base_url('assets/src/img/logo.png');?>">
+			<img class="logo-2x pb-3" src="<?php echo base_url('assets/src/img/logo-dark.png');?>">
 			<!-- <h6><?php echo $this->config->item('app_company_product');?></h6> -->
 			<h1 class="h3 mb-3 font-weight-normal"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h1>
 		</div>
@@ -40,8 +40,8 @@
 			<!--<div class="form-group">
 				<input id="remember" name="remember" type="checkbox" value="1">
 				<label class="form-check-label" for="remember">Remember Password</label>
-			</div>	-->											
-			<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Sign In','class' => 'btn btn-lg btn-primary btn-block'));?>
+			</div>	-->
+			<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-sign-in"></i> Sign In','class' => 'btn btn-lg btn-primary btn-block'));?>
 			
 			<?php form_close(); ?>
 

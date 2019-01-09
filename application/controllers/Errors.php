@@ -32,7 +32,7 @@ class Errors extends CI_Controller {
         $data = array();
 		$this->data['page_heading'] = "Oops! 404 Not Found";
         $this->data['maincontent'] = $this->load->view('errors/error_404', $this->data, true);
-        $this->load->view('_layouts/layout_login', $this->data);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 	
 	function auth() {

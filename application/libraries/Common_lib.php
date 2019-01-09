@@ -45,6 +45,8 @@ class Common_lib {
         $this->CI->data['el_html_head'] = $this->CI->load->view('_layouts/elements/html_head', $this->CI->data, true);
         $this->CI->data['el_navbar'] = $this->CI->load->view('_layouts/elements/navbar', $this->CI->data, true);        
         $this->CI->data['el_footer'] = $this->CI->load->view('_layouts/elements/footer', $this->CI->data, true);
+        $this->CI->data['el_header'] = $this->CI->load->view('_layouts/elements/header', $this->CI->data, true);
+        $this->CI->data['el_sidebar'] = $this->CI->load->view('_layouts/elements/sidebar', $this->CI->data, true);
 
         //Admin Template
         $this->CI->data['el_navbar_admin'] = $this->CI->load->view('_layouts/elements/navbar_admin', $this->CI->data, true);
