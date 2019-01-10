@@ -150,7 +150,7 @@ class Leave_model extends CI_Model {
             //$this->db->where('t1.supervisor_approver_id', $cond['assigned_to_user_id']);
             //$this->db->where('t1.director_approver_id'= $cond['assigned_to_user_id']);
             $this->db->where('(t1.director_approver_id = "'.$cond['assigned_to_user_id'].'" OR t1.supervisor_approver_id = "'.$cond['assigned_to_user_id'].'")');
-            $this->db->where_in('t1.leave_status', array('P', 'O'));
+            $this->db->where_in('t1.leave_status', array('P', 'O', 'X'));
             //$this->db->where('t1.supervisor_approver_status', 'P');
             //$this->db->or_where('t1.director_approver_status', 'P');
         }

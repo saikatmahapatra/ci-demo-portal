@@ -63,9 +63,9 @@
             <ul class="treeview-menu">
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">Update Profile Information</a></li>
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'document'); ?>">My Documents</a></li>
-                <!-- <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/apply'); ?>">Apply Leave</a></li>
+                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/apply'); ?>">Apply Leave</a></li>
 				<li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/history'); ?>">My Leave History</a></li>
-				<li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/manage'); ?>">Manage Leaves</a></li>	 -->
+				<li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/manage'); ?>">Manage Leaves</a></li>
             </ul>
         </li>
 
@@ -75,6 +75,7 @@
                 <ul class="treeview-menu">
                     <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">All Employees</a></li>
                     <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/create_account'); ?>">Add New Employee</a></li>
+                    <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/leave_balance'); ?>">Leave Balance</a></li>
                 </ul>
             </li>
         <?php } else { ?>

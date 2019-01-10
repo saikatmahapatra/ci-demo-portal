@@ -220,11 +220,11 @@ $row = $data_rows[0];
 				<option value="">Select Status</option>
 				<option value="A">Approve</option>
 				<option value="R">Reject</option>
-				<option value="C">Cancel Request</option>
+				<option value="C">Cancel</option>
 			</select>
 		</div>
 		<div class="form-group col-md-12">
-			<label class="bmd-label-floating">Comments/Remarks <span class="required">*</span></label>
+			<label class="bmd-label-floating">Comments/Remarks (Optional)</label>
 			<textarea class="form-control" id="leave_action_comment" name="leave_action_comment" placeholder="Please enter your comments here"></textarea>				
 		</div>
 		

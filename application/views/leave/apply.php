@@ -5,7 +5,7 @@
     </div>
 </div><!--/.heading-container-->
 
-<div class="row my-2">
+<div class="row">
 	<div class="col-md-12">
 	<?php
 	// Show server side flash messages
@@ -34,10 +34,10 @@
 		
 		
 		<h6>Leave Balance</h6>
-		<div class="row mb-3">						
+		<div class="row mb-3">
 			<div class="col-md-3">Casual Leave (CL) : <?php echo isset($leave_balance[0]['cl']) ? $leave_balance[0]['cl'] : '0.0'; ?></div>
 			<div class="col-md-3">Privileged Leave (PL) : <?php echo isset($leave_balance[0]['pl']) ? $leave_balance[0]['pl'] : '0.0'; ?></div>
-			<div class="col-md-3">Optional Leave (OL) : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></div>			
+			<div class="col-md-3 d-none">Optional Leave (OL) : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></div>			
 		</div>
 
 		<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => 'ci-form-leave',)); ?>
