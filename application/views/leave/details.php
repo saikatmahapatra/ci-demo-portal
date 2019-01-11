@@ -211,6 +211,15 @@ $row = $data_rows[0];
       <div class="modal-body">
 		<div class="form-group col-md-12" id="responseMessage_leaveActionModal"></div>
 		<div class="form-group col-md-12">
+		<?php 
+		if($row['leave_status'] == 'X'){
+			?>
+			<div class="alert alert-warning"><b>Note: </b> Applicant has reqested cancellation for this leave. To cancel this select "Cancel" from the status drop down.</div>
+			<?php
+		}
+		?>
+		
+
 		<input type="hidden" id="leave_id" name="leave_id" value="<?php echo $row['id'];?>">
 		<input type="hidden" id="leave_req_id" name="leave_req_id" value="<?php echo $row['leave_req_id'];?>">
 		<input type="hidden" id="action_by_approver" name="action_by_approver" value="">

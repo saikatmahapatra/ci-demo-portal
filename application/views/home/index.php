@@ -8,7 +8,7 @@
 
 
 <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
-<div class="row my-3">
+<div class="row my-3 d-none">
     <div class="col-xl-3 col-md-6 text-white">
         <!-- START card-->
         <div class="card flex-row align-items-center align-items-stretch border-0">
@@ -62,7 +62,45 @@
         </div>
     </div>    
 </div>
+
+<div class="row">
+    <div class="col-md-6 col-lg-3">
+        <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+        <div class="info">
+            <h4>Employees</h4>
+            <p><b><?php echo $user_count['data_rows'][0]['total']; ?></b></p>
+        </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="widget-small info coloured-icon"><i class="icon fa fa-cubes fa-3x"></i>
+        <div class="info">
+            <h4>Projects</h4>
+            <p><b><?php echo $projects_count['data_rows'][0]['total']; ?></b></p>
+        </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="widget-small warning coloured-icon"><i class="icon fa fa-calendar fa-3x"></i>
+        <div class="info">
+            <h4>Timeshet</h4>
+            <p><b><?php echo $timesheet_user['data_rows'][0]['total']; ?></b></p>
+        </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="widget-small danger coloured-icon"><i class="icon fa fa-star fa-3x"></i>
+        <div class="info">
+            <h4>{{key}}</h4>
+            <p><b>{{count}}</b></p>
+        </div>
+        </div>
+    </div>
+</div>
 <?php } ?>
+
+
+
 
 <?php
 /*
