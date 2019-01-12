@@ -264,13 +264,25 @@ class Leave extends CI_Controller {
     }
 
     function manage() {
-        $this->data['page_heading'] = 'Manage Pending Leaves';
+        $this->data['page_heading'] = 'Leave Requests Management';
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');		
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition
-        $cond = array(
-            'assigned_to_user_id' =>  $this->sess_user_id
-        );		
+        $cond = array();
+        $cond['assigned_to_user_id'] = $this->sess_user_id;
+        if($this->uri->segment(3) == 'pending'){
+            $this->data['page_heading'] = 'Leave Requests Management - Pending Leave';
+            $cond['leave_status'] = array('P');
+        }
+        if($this->uri->segment(3) == 'approved'){
+            $cond['leave_status'] = array('A');
+        }
+        if($this->uri->segment(3) == 'cancelled'){
+            $cond['leave_status'] = array('C');
+        }
+        if($this->uri->segment(3) == 'rejected'){
+            $cond['leave_status'] = array('R');
+        }
 		$result_array = $this->leave_model->get_rows(NULL, NULL, NULL, FALSE, FALSE, $cond);
 		$total_num_rows = $result_array['num_rows'];
 		
@@ -508,9 +520,13 @@ class Leave extends CI_Controller {
     }
 
     function update_leave_status(){
+        $leave_data = array();
         $messageTxt = '';
         $final_leave_status = '';
         $current_leave_status = '';
+        $current_supervisor_approver_status = '';
+        $current_director_approver_status = '';
+        $is_cancel_requested = 'N';
         $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>'', 'css'=>'alert alert-warning');
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
@@ -524,15 +540,22 @@ class Leave extends CI_Controller {
             $leave_comments = $this->input->post('leave_comments');
             //print_r($_POST);die();
 
-            $result_array = $this->leave_model->get_rows($leave_id, NULL, NULL, FALSE, TRUE);
-            $this->data['data_rows'] = $result_array['data_rows'];
-            $current_leave_status = isset($this->data['data_rows'][0]['leave_status']) ? $this->data['data_rows'][0]['leave_status']: $current_leave_status;
+            
+
             if ($this->validate_update_leave_status_form_data() == true) {
+                ### Get Current Status
+                $result_array = $this->leave_model->get_rows($leave_id, NULL, NULL, FALSE, TRUE);
+                $leave_data = $result_array['data_rows'][0];
+                $current_leave_status = isset($leave_data['leave_status']) ? $leave_data['leave_status']: $current_leave_status;
+                $current_supervisor_approver_status = isset($leave_data['supervisor_approver_status']) ? $leave_data['supervisor_approver_status']: $current_supervisor_approver_status;
+                $current_director_approver_status = isset($leave_data['director_approver_status']) ? $leave_data['director_approver_status']: $current_director_approver_status;
+                $is_cancel_requested = isset($leave_data['cancel_requested']) ? $leave_data['cancel_requested']: $is_cancel_requested;
+
                 ### By Applicant
                 if($action_by_approver == 'applicant'){
-                    if($leave_status == 'C' && $current_leave_status != 'X'){
+                    if($leave_status == 'C' && $current_leave_status != 'A'){
                         $postdata = array(
-                            'leave_status' => 'X', // X => Cancel Requested
+                            'leave_status' => 'C',// If not approved
                             'cancelled_by' => $action_by_approver_id,
                             'cancellation_reason'=>$leave_comments,
                             'cancellation_datetime' => date('Y-m-d H:i:s')
@@ -541,10 +564,23 @@ class Leave extends CI_Controller {
                         $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
                         $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
                         if($is_update>=1){
+                            $message = array('is_valid'=>true, 'updated'=>true, 'insert_id'=>'','msg'=>'request has been cancelled.', 'css'=>'alert alert-success');
+                        }
+                    }
+                    else if($leave_status == 'C' && $current_leave_status == 'A'){
+                        $postdata = array(
+                            'cancel_requested' => 'Y',// If not approved
+                            'cancel_requested_by' => $action_by_approver_id,
+                            'cancel_request_reason'=>$leave_comments,
+                            'cancel_request_datetime' => date('Y-m-d H:i:s')
+                        );
+                        $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
+                        $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
+                        if($is_update>=1){
                             $message = array('is_valid'=>true, 'updated'=>true, 'insert_id'=>'','msg'=>'Your leave cancellation request has been taken.', 'css'=>'alert alert-success');
                         }
                     }
-                    else if($leave_status == 'C' && $current_leave_status == 'X'){
+                    else if($leave_status == 'C' && $is_cancel_requested == 'Y'){
                         $message = array('is_valid'=>true, 'updated'=>false, 'insert_id'=>'','msg'=>'You have already requested cancellation', 'css'=>'alert alert-danger');
                     }
                     else{
@@ -554,20 +590,20 @@ class Leave extends CI_Controller {
 
                 ### By L1 Approver
                 if($action_by_approver == 'supervisor'){
-                    $supervisor_approver_status = isset($this->data['data_rows'][0]['supervisor_approver_status']) ? $this->data['data_rows'][0]['supervisor_approver_status']: $supervisor_approver_status;
+                    
                     if($leave_status == 'R'){
                         $final_leave_status = 'R'; // rejected
                     }
                     if($leave_status == 'A'){
                         $final_leave_status = 'O'; // processing
                     }
-                    if($leave_status == 'C' && $current_leave_status == 'X'){
+                    if($leave_status == 'C' && $is_cancel_requested == 'Y'){
                         $final_leave_status = 'C'; // Cancel the leave
                     }
-                    if($leave_status == 'C' && $current_leave_status != 'X'){
+                    if($leave_status == 'C' && $is_cancel_requested != 'Y'){
                         $final_leave_status = ''; // Cancel the leave
                     }
-                    if($final_leave_status != '' && $supervisor_approver_status == 'P'){
+                    if($final_leave_status != '' && $current_supervisor_approver_status != 'C'){
                         $postdata = array(					
                             'leave_status' => $final_leave_status,
                             'supervisor_approver_status' => $leave_status,
@@ -581,29 +617,33 @@ class Leave extends CI_Controller {
                         if($is_update){
                             $message = array('is_valid'=>true, 'updated'=>true, 'insert_id'=>'','msg'=>'Leave request has been updated successfully.', 'css'=>'alert alert-success');
                         }
-                    }else{
-                        $message = array('is_valid'=>true, 'updated'=>false, 'insert_id'=>'','msg'=>'You can only Approve / Reject. You would be able to cancel this request once applicant request for cancellation.', 'css'=>'alert alert-danger');
+                    }
+                    /*else if($final_leave_status != '' && ($current_director_approver_status != 'P')){
+                        $message = array('is_valid'=>true, 'updated'=>false, 'insert_id'=>'','msg'=>'You can not modify this request. Status has already been updated to <strong>'.$current_director_approver_status.' </strong>by L2 approver', 'css'=>'alert alert-danger');
+                    }*/
+                    else{
+                        $message = array('is_valid'=>true, 'updated'=>false, 'insert_id'=>'','msg'=>'You can only Approve / Reject. You would be able to cancel this once applicant request for cancellation.', 'css'=>'alert alert-danger');
                     }
                     
                 }
 
                 ### By L2 Approver
                 if($action_by_approver == 'director'){
-                    $director_approver_status = isset($this->data['data_rows'][0]['director_approver_status']) ? $this->data['data_rows'][0]['director_approver_status']: $director_approver_status;
+                   
                     if($leave_status == 'R'){
                         $final_leave_status = 'R'; // rejected
                     }
                     if($leave_status == 'A'){
                         $final_leave_status = 'A'; // approved
                     }
-                    if($leave_status == 'C' && $current_leave_status == 'X'){
+                    if($leave_status == 'C' && $is_cancel_requested == 'Y'){
                         $final_leave_status = 'C'; // Cancel the leave
                     }
-                    if($leave_status == 'C' && $current_leave_status != 'X'){
+                    if($leave_status == 'C' && $is_cancel_requested != 'Y'){
                         $final_leave_status = ''; // Cancel the leave
                     }
 
-                    if($final_leave_status != '' && $director_approver_status == 'P'){
+                    if($final_leave_status != '' && $current_director_approver_status != 'C'){
                         $postdata = array(
                             'leave_status' => $final_leave_status,
                             'director_approver_status' => $leave_status,
@@ -625,7 +665,7 @@ class Leave extends CI_Controller {
                             }
                             $message = array('is_valid'=>true, 'updated'=>true, 'insert_id'=>'','msg'=> $messageTxt, 'css'=>'alert alert-success');
                         }else{
-                            $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>'Sorry! You have already updated leave status', 'css'=>'alert alert-success'); 
+                            $message = array('is_valid'=>true, 'updated'=>false, 'insert_id'=>'','msg'=>'You can only Approve / Reject. You would be able to cancel this once applicant request for cancellation.', 'css'=>'alert alert-danger');
                         }
                     }else{
                         $message = array('is_valid'=>true, 'updated'=>false, 'insert_id'=>'','msg'=>'You can only Approve / Reject. You would be able to cancel this request once applicant request for cancellation.', 'css'=>'alert alert-danger');
@@ -722,10 +762,10 @@ class Leave extends CI_Controller {
 
     function update_user_leave_balance($leave_id){
         $result_array = $this->leave_model->get_rows($leave_id, NULL, NULL, FALSE, TRUE);
-        $leave_data = $result_array['data_rows'];
-        $applicant_user_id = $leave_data[0]['user_id'];
-        $applied_for_days_count = $leave_data[0]['applied_for_days_count'];
-        $leave_type = $leave_data[0]['leave_type'];;
+        $leave_data = $result_array['data_rows'][0];
+        $applicant_user_id = $leave_data['user_id'];
+        $applied_for_days_count = $leave_data['applied_for_days_count'];
+        $leave_type = $leave_data['leave_type'];;
         $leave_balance = $this->leave_model->get_leave_balance(NULL, NULL, NULL, FALSE, FALSE, $applicant_user_id);
         $leave_balance_id = $leave_balance[0]['id'];
         $available_leave_balance = $leave_balance[0][strtolower($leave_type)];

@@ -108,7 +108,7 @@
 				else{
 					?>
 					<tr>
-						<td colspan="7"> No Pending leaves found which are assigned to you for approval or rejection</td>
+						<td colspan="7">No result found</td>
 					</tr>
 					<?php
 				}

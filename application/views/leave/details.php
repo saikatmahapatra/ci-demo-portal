@@ -1,7 +1,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <?php 
 $row = $data_rows[0];
-//print_r($row);
+print_r($row);
 ?>
 <div class="row heading-container">
     <div class="col-12">
@@ -85,6 +85,16 @@ $row = $data_rows[0];
 							<div class=""><?php echo isset($row['leave_reason']) ? $row['leave_reason'] : '';?></div>
 							
 							<?php
+							if($row['cancel_requested'] == 'Y'){
+								$set_attributes ='';	
+								$edit_icon = '';
+								?>
+								<label><span class="text text-warning">Calcel Requested</span></label>
+								<div class="small"><?php echo $this->common_lib->display_date($row['cancel_request_datetime'], true);?></div>
+								<div class=""><?php echo isset($row['cancel_request_reason']) ? $row['cancel_request_reason'] : '';?></div>
+								<?php
+							}
+							// Self Cancellation
 							if($row['user_id'] == $row['cancelled_by']){
 								$set_attributes ='';	
 								$edit_icon = '';
@@ -173,6 +183,10 @@ $row = $data_rows[0];
 							if(($this->common_lib->get_sess_user('id') == $row['director_approver_id']) && ($row['supervisor_approver_status']=='A')) {							
 								$edit_icon = '<i class="fa fa-edit" aria-hidden="true"></i>';
 								$set_attributes = 'data-action-by="director" data-action-by-userid="'.$row['director_approver_id'].'"';
+							}
+							if($row['leave_status'] == 'R' || $row['leave_status'] == 'C' || $row['director_approver_status'] != 'A'){
+								$set_attributes ='';	
+								$edit_icon = '';
 							}
 						?>
 						<a <?php echo $set_attributes; ?> href="#" class="ci-wizard-dot <?php echo $row['director_approver_status'];?>" href="#" class="ci-wizard-dot <?php echo $row['director_approver_status'];?>"></a>
