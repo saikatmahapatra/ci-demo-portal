@@ -63,7 +63,7 @@
 							</td>
 							<td>
 								<?php 
-								$fa_icon = 'fa-circle';
+								$fa_icon = '';
 								if($row['supervisor_approver_status'] == 'A'){
 									$fa_icon = 'fa-check';
 								}
@@ -78,7 +78,7 @@
 							</td>
 							<td>
 								<?php 
-								$fa_icon = 'fa-circle';
+								$fa_icon = '';
 								if($row['director_approver_status'] == 'A'){
 									$fa_icon = 'fa-check';
 								}

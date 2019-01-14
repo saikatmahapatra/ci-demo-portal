@@ -1,7 +1,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <?php 
 $row = $data_rows[0];
-print_r($row);
+//print_r($row);
 ?>
 <div class="row heading-container">
     <div class="col-12">
@@ -184,7 +184,7 @@ print_r($row);
 								$edit_icon = '<i class="fa fa-edit" aria-hidden="true"></i>';
 								$set_attributes = 'data-action-by="director" data-action-by-userid="'.$row['director_approver_id'].'"';
 							}
-							if($row['leave_status'] == 'R' || $row['leave_status'] == 'C' || $row['director_approver_status'] != 'A'){
+							if($row['leave_status'] == 'R' || $row['leave_status'] == 'C' || $row['director_approver_status'] != 'P'){
 								$set_attributes ='';	
 								$edit_icon = '';
 							}

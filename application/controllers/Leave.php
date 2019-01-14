@@ -334,11 +334,13 @@ class Leave extends CI_Controller {
         $cond = array(
             'from_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_from_date')),
             'to_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_to_date')),
-            'user_id' => $this->sess_user_id
+            'user_id' => $this->sess_user_id,
+            'leave_status' => array('O', 'A')
         );
         $res = $this->leave_model->check_leave_date_range($cond);
-        if($res > 0){
-            $this->form_validation->set_message('is_leave_exists_in_date_range', 'Leave date exists.');
+
+        if($res['num_rows'] > 0){
+            $this->form_validation->set_message('is_leave_exists_in_date_range', 'Leave req # '.$res['data_rows'][0]['leave_req_id'].' already exists in the selected date range.');
             return false;
         }
         else{            
@@ -527,6 +529,7 @@ class Leave extends CI_Controller {
         $current_supervisor_approver_status = '';
         $current_director_approver_status = '';
         $is_cancel_requested = 'N';
+        $send_email = false;
         $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>'', 'css'=>'alert alert-warning');
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
@@ -616,6 +619,7 @@ class Leave extends CI_Controller {
                         $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
                         if($is_update){
                             $message = array('is_valid'=>true, 'updated'=>true, 'insert_id'=>'','msg'=>'Leave request has been updated successfully.', 'css'=>'alert alert-success');
+                            $send_email = true;
                         }
                     }
                     /*else if($final_leave_status != '' && ($current_director_approver_status != 'P')){
@@ -643,7 +647,7 @@ class Leave extends CI_Controller {
                         $final_leave_status = ''; // Cancel the leave
                     }
 
-                    if($final_leave_status != '' && $current_director_approver_status != 'C'){
+                    if($final_leave_status != '' && ($current_director_approver_status != 'C' || $current_leave_status != 'A')){
                         $postdata = array(
                             'leave_status' => $final_leave_status,
                             'director_approver_status' => $leave_status,
@@ -664,7 +668,12 @@ class Leave extends CI_Controller {
                                 }
                             }
                             $message = array('is_valid'=>true, 'updated'=>true, 'insert_id'=>'','msg'=> $messageTxt, 'css'=>'alert alert-success');
-                        }else{
+                            $send_email = true;
+                        }
+                        // if($final_leave_status != '' && $current_leave_status == 'A'){
+                        //     $message = array('is_valid'=>true, 'updated'=>false, 'insert_id'=>'','msg'=>'You cann\'t modify a Approved leave.', 'css'=>'alert alert-danger');
+                        // }
+                        else{
                             $message = array('is_valid'=>true, 'updated'=>false, 'insert_id'=>'','msg'=>'You can only Approve / Reject. You would be able to cancel this once applicant request for cancellation.', 'css'=>'alert alert-danger');
                         }
                     }else{
@@ -673,8 +682,8 @@ class Leave extends CI_Controller {
                 }
 
                 ### Send Email to Applicant
-                /*
-                if($final_leave_status == 'A' || $final_leave_status == 'R' || $final_leave_status == 'C'){ 
+                
+                if($send_email == true && ($final_leave_status == 'A' || $final_leave_status == 'R' || $final_leave_status == 'C')){ 
                     $result_array = $this->leave_model->get_rows($leave_id, NULL, NULL, FALSE, TRUE);
                     $data = $result_array['data_rows'][0];
                     //print_r($data);
@@ -725,9 +734,9 @@ class Leave extends CI_Controller {
                     $message_table.='<td>'.$leave_reason.'</td>';
                     $message_table.='</tr>';
                     $message_table.='</tbody>';
-                    $message_table.='</table>';                    
+                    $message_table.='</table>';
                     $this->send_notification($to, $from, $from_name, $subject, $message.$message_table);
-                }*/
+                }
             }else{
                 $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>validation_errors(),'css'=>''); 
             }

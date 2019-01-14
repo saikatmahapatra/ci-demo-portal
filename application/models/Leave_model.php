@@ -165,7 +165,7 @@ class Leave_model extends CI_Model {
     }
 
     function check_leave_date_range($cond){
-        $this->db->select('t1.id');                
+        $this->db->select('t1.id, t1.leave_req_id');
         if($cond['from_date']){
             $this->db->where('t1.leave_from_date >=', $cond['from_date']);
         }
@@ -175,9 +175,13 @@ class Leave_model extends CI_Model {
         if($cond['user_id']){
             $this->db->where('t1.user_id', $cond['user_id']);
         }
+        if(isset($cond['leave_status'])){
+            $this->db->where_in('t1.leave_status', $cond['leave_status']);
+        }
         $query = $this->db->get('user_leaves as t1');
-        //print_r($this->db->last_query()); die();
-        return $num_rows = $query->num_rows();
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return array('num_rows' => $num_rows, 'data_rows' => $result);
     }
 
 
