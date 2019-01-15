@@ -58,9 +58,6 @@
             <ul class="treeview-menu">
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/manage/pending'); ?>">Manage Pending Leave Request</a></li>
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/manage'); ?>">All Leave Request</a></li>
-                <!-- <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/manage/approved'); ?>">Approved Leave Requests</a></li>
-                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/manage/rejected'); ?>">Rejected Leave Requests</a></li>
-                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/manage/cancelled'); ?>">Cancelled Leave Requests</a></li> -->
             </ul>
         </li>
         <li class="treeview">
@@ -70,7 +67,7 @@
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'document'); ?>">Upload Documents</a></li>
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/edit_approvers'); ?>">Change Approvers</a></li>
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/apply'); ?>">Apply Leave</a></li>
-				<li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/history'); ?>">My Leave History</a></li>				
+				<li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/history'); ?>">My Leave History</a></li>
             </ul>
         </li>
 

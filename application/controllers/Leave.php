@@ -700,7 +700,7 @@ class Leave extends CI_Controller {
                     $applied_for_days_count = $data['applied_for_days_count'];
                     
                     $subject= 'Your Leave Request '.$leave_request_id.' is '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
-                    $message = 'You can track your leave history from '.anchor(base_url('leave/details/'.$data['id'].'/'.$data['leave_req_id'].'/history'));
+                    $message_body = 'You can track your leave history from '.anchor(base_url('leave/details/'.$data['id'].'/'.$data['leave_req_id'].'/history'));
                     $message_table ='<table border="1">';
                     $message_table.='<tbody>';
                     $message_table.='<tr>';
@@ -735,7 +735,7 @@ class Leave extends CI_Controller {
                     $message_table.='</tr>';
                     $message_table.='</tbody>';
                     $message_table.='</table>';
-                    $this->send_notification($to, $from, $from_name, $subject, $message.$message_table);
+                    $this->send_notification($to, $from, $from_name, $subject, $message_body.$message_table);
                 }
             }else{
                 $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>validation_errors(),'css'=>''); 
