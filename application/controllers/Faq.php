@@ -17,6 +17,10 @@ class Faq extends CI_Controller {
 
         //Render header, footer, navbar, sidebar etc common elements of templates
         $this->common_lib->init_template_elements();
+
+        // Load required js files for this controller
+        $javascript_files = array();
+        $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
     }
 
     function index() {

@@ -19,11 +19,11 @@ class User extends CI_Controller {
         //Render header, footer, navbar, sidebar etc common elements of templates
         $this->common_lib->init_template_elements();
 
-        //add required js files for this controller
-        $app_js_src = array(
-            'assets/dist/js/'.$this->router->class.'.js', //create js file name same as controller name
+        // Load required js files for this controller
+        $javascript_files = array(
+            $this->router->class
         );
-        $this->data['app_js'] = $this->common_lib->add_javascript($app_js_src);
+        $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
 
         //View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view

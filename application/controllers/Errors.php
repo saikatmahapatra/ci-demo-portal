@@ -16,9 +16,9 @@ class Errors extends CI_Controller {
         //Render header, footer, navbar, sidebar etc common elements of templates
         $this->common_lib->init_template_elements();
         
-        //add required js files for this controller
-        $app_js_src = array();
-        $this->data['app_js'] = $this->common_lib->add_javascript($app_js_src);
+        // Load required js files for this controller
+        $javascript_files = array();
+        $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
 		
 		//View Page Config
 		$this->data['page_heading'] = $this->router->class.' : '.$this->router->method;

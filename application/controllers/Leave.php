@@ -19,11 +19,11 @@ class Leave extends CI_Controller {
         //Render header, footer, navbar, sidebar etc common elements of templates
         $this->common_lib->init_template_elements();
         
-        //add required js files for this controller
-        $app_js_src = array(
-			'assets/dist/js/'.$this->router->class.'.js', //create js file name same as controller name
-		);         
-        $this->data['app_js'] = $this->common_lib->add_javascript($app_js_src);
+        // Load required js files for this controller
+        $javascript_files = array(
+            $this->router->class
+        );
+        $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
 		        
         $this->data['alert_message'] = NULL;
         $this->data['alert_message_css'] = NULL;
@@ -681,16 +681,18 @@ class Leave extends CI_Controller {
                     }
                 }
 
-                ### Send Email to Applicant
+                ### Send Email to Applicant & L1, L2 Approver
                 
                 if($send_email == true && ($final_leave_status == 'A' || $final_leave_status == 'R' || $final_leave_status == 'C')){ 
                     $result_array = $this->leave_model->get_rows($leave_id, NULL, NULL, FALSE, TRUE);
                     $data = $result_array['data_rows'][0];
                     //print_r($data);
                     //die();
-                    $to = $this->common_lib->get_sess_user('user_email');
+                    $to_applicant = $this->common_lib->get_sess_user('user_email');
                     $from = $this->config->item('app_admin_email');
                     $from_name = $this->config->item('app_admin_email_name');
+                    
+
                     $applicant_name = $data['user_firstname'].' '.$data['user_lastname'];
                     $leave_status = $this->data['leave_status_arr'][$data['leave_status']]['text'];
                     $leave_type = $this->data['leave_type_arr'][$data['leave_type']];
@@ -698,9 +700,9 @@ class Leave extends CI_Controller {
                     $leave_reason = $data['leave_reason'];
                     $leave_request_id = $data['leave_req_id'];
                     $applied_for_days_count = $data['applied_for_days_count'];
+
+                    $subject_for_applicant= 'Your Leave Request '.$leave_request_id.' is '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
                     
-                    $subject= 'Your Leave Request '.$leave_request_id.' is '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
-                    $message_body = 'You can track your leave history from '.anchor(base_url('leave/details/'.$data['id'].'/'.$data['leave_req_id'].'/history'));
                     $message_table ='<table border="1">';
                     $message_table.='<tbody>';
                     $message_table.='<tr>';
@@ -733,9 +735,32 @@ class Leave extends CI_Controller {
                     $message_table.='<td>:</td>';
                     $message_table.='<td>'.$leave_reason.'</td>';
                     $message_table.='</tr>';
+                    $message_table.='<tr>';
+
+                    $message_table.='<td>Action By L1 Approver </td>';
+                    $message_table.='<td>:</td>';
+                    $message_table.='<td>'.$leave_reason.'</td>';
+                    $message_table.='</tr>';
+                    $message_table.='<tr>';
+
+                    $message_table.='<td>Action By L2 Approver </td>';
+                    $message_table.='<td>:</td>';
+                    $message_table.='<td>'.$data['supervisor_approver_firstname'].'<br>'.$data[''].'</td>';
+                    $message_table.='</tr>';
+
+                    $message_table.='<td>Cancel Requested </td>';
+                    $message_table.='<td>:</td>';
+                    $message_table.='<td>'.$leave_reason.'</td>';
+                    $message_table.='</tr>';
+
                     $message_table.='</tbody>';
                     $message_table.='</table>';
-                    $this->send_notification($to, $from, $from_name, $subject, $message_body.$message_table);
+                    $message_body_applicant = 'You can track your leave history from '.anchor(base_url('leave/details/'.$data['id'].'/'.$data['leave_req_id'].'/history'));
+
+                    echo $message_to_applicant = $message_body_applicant.$message_table;
+                    die();
+
+                    $this->send_notification($to_applicant, $from, $from_name, $subject_for_applicant, $message_to_applicant);
                 }
             }else{
                 $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>validation_errors(),'css'=>''); 
