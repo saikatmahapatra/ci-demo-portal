@@ -737,28 +737,29 @@ class Leave extends CI_Controller {
                     $message_table.='</tr>';
                     $message_table.='<tr>';
 
-                    $message_table.='<td>Action By L1 Approver </td>';
+                   
+                    $message_table.='<td>L1 Approver </td>';
                     $message_table.='<td>:</td>';
-                    $message_table.='<td>'.$leave_reason.'</td>';
+                    $message_table.='<td>'.$this->data['leave_status_arr'][$data['supervisor_approver_status']]['text'].'<br>'.$data['supervisor_approver_firstname'].' '.$data['supervisor_approver_lastname'].'<br>'.$data['supervisor_approver_comment'].'<br>'.$data['supervisor_approver_datetime'].'</td>';
+                    $message_table.='</tr>';
+
+                    $message_table.='<td>L2 Approver </td>';
+                    $message_table.='<td>:</td>';
+                    $message_table.='<td>'.$this->data['leave_status_arr'][$data['director_approver_status']]['text'].'<br>'.$data['director_approver_firstname'].' '.$data['director_approver_lastname'].'<br>'.$data['director_approver_comment'].'<br>'.$data['director_approver_datetime'].'</td>';
                     $message_table.='</tr>';
                     $message_table.='<tr>';
 
-                    $message_table.='<td>Action By L2 Approver </td>';
+                    /*$message_table.='<td>Cancel Requested </td>';
                     $message_table.='<td>:</td>';
-                    $message_table.='<td>'.$data['supervisor_approver_firstname'].'<br>'.$data[''].'</td>';
-                    $message_table.='</tr>';
-
-                    $message_table.='<td>Cancel Requested </td>';
-                    $message_table.='<td>:</td>';
-                    $message_table.='<td>'.$leave_reason.'</td>';
-                    $message_table.='</tr>';
+                    $message_table.='<td>'.$data['cancel_requested'].'</td>';
+                    $message_table.='</tr>';*/
 
                     $message_table.='</tbody>';
                     $message_table.='</table>';
                     $message_body_applicant = 'You can track your leave history from '.anchor(base_url('leave/details/'.$data['id'].'/'.$data['leave_req_id'].'/history'));
 
-                    echo $message_to_applicant = $message_body_applicant.$message_table;
-                    die();
+                    $message_to_applicant = $message_body_applicant.$message_table;
+                    //die();
 
                     $this->send_notification($to_applicant, $from, $from_name, $subject_for_applicant, $message_to_applicant);
                 }

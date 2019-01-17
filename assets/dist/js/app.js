@@ -1,10 +1,11 @@
 /*! 
-* @Author  Saikat Mahapatra
-* @Support 
-* @Email   <mahapatra.saikat29@gmail.com>
+* ================
+* Main JS file of the application having common functions
+*
+* @Author Saikat Mahapatra
 * @version 3.1.4
 * @repository https://github.com/saikatmahapatra/ci-demo-portal.git
-* @license MIT <http://opensource.org/licenses/MIT>
+* @license [object Object]
 */
 
 /**
