@@ -56,7 +56,7 @@ $row = $data_rows[0];
 				</dl>
 
 				
-				<div class="row ci-wizard">                
+				<div class="row ci-wizard">
 					<div class="col-sm-4 ci-wizard-step complete">
 						<div class="text-center ci-wizard-stepnum">
 							<div>
@@ -133,11 +133,12 @@ $row = $data_rows[0];
 						<?php
 							$set_attributes = '';
 							$edit_icon = '';
-							if($this->common_lib->get_sess_user('id') == $row['supervisor_approver_id']){							
+							if($this->common_lib->get_sess_user('id') == $row['supervisor_approver_id']){
 								$set_attributes = 'data-action-by="supervisor" data-action-by-userid="'.$row['supervisor_approver_id'].'"';
 								$edit_icon = '<i class="fa fa-edit" aria-hidden="true"></i>';
 							}
-							if($row['leave_status'] == 'R' || $row['leave_status'] == 'C' || $row['director_approver_status']=='A'){
+							if(($row['leave_status'] == 'R' || $row['leave_status'] == 'C' || $row['director_approver_status']=='A')){
+								//&&  $row['cancel_requested']!='Y'
 								$set_attributes ='';	
 								$edit_icon = '';
 							}

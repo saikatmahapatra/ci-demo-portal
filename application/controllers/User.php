@@ -1956,7 +1956,7 @@ class User extends CI_Controller {
             $this->form_validation->set_rules('account_uses', 'account for', 'required|callback_check_is_account_uses_exists'); 
         }  
         $this->form_validation->set_rules('user_pan_no', 'PAN no', 'required|regex_match[/^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/]'); 
-        $this->form_validation->set_rules('user_aadhar_no', 'Aadhar no', 'required'); 
+        //$this->form_validation->set_rules('user_aadhar_no', 'Aadhar no', 'required'); 
         $this->form_validation->set_rules('user_passport_no', 'passport', 'alpha_numeric'); 
         $this->form_validation->set_rules('user_uan_no', 'UAN no', 'numeric'); 
         

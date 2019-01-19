@@ -731,6 +731,20 @@ class User_model extends CI_Model {
         return $result;
     }
 
+    function get_relationship_dropdown() {
+        $result = array();
+        $this->db->select('*');
+        $query = $this->db->get('family_relationships');
+        $result = array('' => 'Select');
+        if ($query->num_rows()) {
+            $res = $query->result();
+            foreach ($res as $r) {
+                $result[$r->id] = $r->relationship;
+            }
+        }
+        return $result;
+    }
+
 }
 
 ?>

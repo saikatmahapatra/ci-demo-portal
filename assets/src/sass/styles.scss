@@ -570,6 +570,9 @@ table.ci-table.dataTable {
                 height: 8px;
                 box-shadow: none;
                 margin: 20px 0;
+                @media(max-width: 575px) {
+                    visibility: hidden;
+                }
                 >.progress-bar {
                     width: 0px;
                     box-shadow: none;
