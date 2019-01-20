@@ -9034,10 +9034,6 @@ select.form-control.dob-inline {
   width: 100px;
 }
 
-.dp:hover {
-  /*-webkit-font-smoothing:antialiased;*/
-}
-
 .dp-sm {
   height: 70px;
   width: 70px;
@@ -9070,6 +9066,16 @@ a[data-link-type="user-profile-card"] {
 
 .user-profile-card a {
   text-decoration: none;
+}
+
+.user-profile-card .profile-header {
+  background-color: #e9ecef;
+  border-top: 2px solid #5133AB;
+}
+
+.user-profile-card dt {
+  /*font-weight: normal;*/
+  color: #495057;
 }
 
 .heading-container .breadcrumb {

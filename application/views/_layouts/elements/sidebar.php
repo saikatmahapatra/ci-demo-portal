@@ -49,6 +49,7 @@
 				<li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/add_education'); ?>">Add Education</a></li>
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/add_work_experience'); ?>">Add Work Experience</a></li>
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/add_bank_account'); ?>">Add Salary Account</a></li>	
+                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/add_emergency_contact'); ?>">Add Emergency Contact</a></li>	
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'document'); ?>">Upload Documents</a></li>
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/change_password'); ?>">Change Password</a></li>
             </ul>

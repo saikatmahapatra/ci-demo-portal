@@ -796,6 +796,7 @@ class User extends CI_Controller {
 		$this->data['profile_pic'] = $res_pic[0]['user_profile_pic'];
         $this->data['row'] = $rows['data_rows'];
 		$this->data['address'] = $this->user_model->get_user_address(NULL,$user_id,NULL);
+		$this->data['econtact'] = $this->user_model->get_user_emergency_contacts(NULL,$user_id);
         $this->data['education'] = $this->user_model->get_user_education(NULL, $user_id);
         $this->data['job_exp'] = $this->user_model->get_user_work_experience(NULL, $user_id);
         $this->data['user_national_identifiers'] = $this->user_model->get_user_national_identifiers($this->sess_user_id);
@@ -834,7 +835,8 @@ class User extends CI_Controller {
 		$res_pic = $this->user_model->get_user_profile_pic($user_id);
 		$this->data['profile_pic'] = $res_pic[0]['user_profile_pic'];
         $this->data['row'] = $rows['data_rows'];
-		$this->data['address'] = $this->user_model->get_user_address(NULL,$user_id,NULL);
+        $this->data['address'] = $this->user_model->get_user_address(NULL,$user_id,NULL);
+        $this->data['econtact'] = $this->user_model->get_user_emergency_contacts(NULL,$user_id);
         $this->data['education'] = $this->user_model->get_user_education(NULL, $user_id);
         $this->data['job_exp'] = $this->user_model->get_user_work_experience(NULL, $user_id);
         $this->data['user_national_identifiers'] = $this->user_model->get_user_national_identifiers($user_id);        
@@ -2204,6 +2206,111 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_dor', 'date of release', 'required');
         $this->form_validation->set_rules('account_close_comments', ' ', 'required');
         $this->form_validation->set_rules('terms', ' ', 'required');
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function add_emergency_contact() {
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
+            redirect($this->router->directory.$this->router->class.'/login');
+        }
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        $this->data['arr_relationship'] = $this->user_model->get_relationship_dropdown();		
+        $this->data['has_add_limit'] = $this->user_model->get_user_emergency_contacts_count($this->sess_user_id, 3);		
+        if ($this->input->post('form_action') == 'add') {
+            if ($this->validate_emergency_contact_form('add') == true) {
+                $postdata = array(
+					'user_id' => $this->sess_user_id,
+                    'contact_person_name' => $this->input->post('contact_person_name'),
+                    'contact_person_address' => $this->input->post('contact_person_address'),
+                    'relationship_with_contact' => $this->input->post('relationship_with_contact'),
+                    'contact_person_phone1' => $this->input->post('contact_person_phone1'),
+                    'contact_person_phone2' => $this->input->post('contact_person_phone2'),
+                );                
+                $res = $this->user_model->insert($postdata,'user_emergency_contacts');
+                if ($res) {
+                    $this->session->set_flashdata('flash_message', 'Emergency Contact has been added successfully.');
+                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    redirect($this->router->directory.$this->router->class.'/my_profile');
+                }
+            }
+        }
+		$this->data['page_heading'] = 'Add Emergency Contact';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/add_emergency_contact', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+	
+	function edit_emergency_contact() {
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
+            redirect($this->router->directory.$this->router->class.'/login');
+        }
+        $this->data['arr_relationship'] = $this->user_model->get_relationship_dropdown();
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+		$ec_id = $this->uri->segment(3);
+        $this->data['econtact'] = $this->user_model->get_user_emergency_contacts($ec_id, $this->sess_user_id);
+        //print_r($this->data['contacts']);die();
+        if ($this->input->post('form_action') == 'update') {
+            if ($this->validate_emergency_contact_form('edit') == true) {
+                $postdata = array(
+                    'user_id' => $this->sess_user_id,
+                    'contact_person_name' => $this->input->post('contact_person_name'),
+                    'contact_person_address' => $this->input->post('contact_person_address'),
+                    'relationship_with_contact' => $this->input->post('relationship_with_contact'),
+                    'contact_person_phone1' => $this->input->post('contact_person_phone1'),
+                    'contact_person_phone2' => $this->input->post('contact_person_phone2'),
+                );
+                $where = array('id'=>$ec_id, 'user_id' => $this->sess_user_id);
+                $res = $this->user_model->update($postdata, $where,'user_emergency_contacts');
+                if ($res) {
+                    $this->session->set_flashdata('flash_message', 'Emergency Contact has been updated successfully.');
+                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    redirect($this->router->directory.$this->router->class.'/my_profile');
+                }
+            }
+        }
+		
+		$this->data['page_heading'] = 'Edit Emergency Contact';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_emergency_contact', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function delete_emergency_contact() {
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+            redirect($this->router->directory.$this->router->class.'/login');
+        }
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+		$id = $this->uri->segment(3);
+		$where = array('id'=>$id);
+		$res = $this->user_model->delete($where,'user_emergency_contacts');
+		if ($res) {
+			$this->session->set_flashdata('flash_message', 'Emergency Contact has been deleted successfully.');
+			$this->session->set_flashdata('flash_message_css', 'alert-success');
+			redirect($this->router->directory.$this->router->class.'/my_profile');
+		}else{
+			$this->session->set_flashdata('flash_message', 'We\'re unable to process your request.');
+			$this->session->set_flashdata('flash_message_css', 'alert-danger');
+			redirect($this->router->directory.$this->router->class.'/my_profile');
+		}
+    }
+	
+    function validate_emergency_contact_form($mode) {
+        $this->form_validation->set_rules('contact_person_name', ' ', 'required|min_length[3]|alpha_numeric_spaces');
+        $this->form_validation->set_rules('relationship_with_contact', ' ', 'required');
+        $this->form_validation->set_rules('contact_person_address', ' ', 'min_length[10]|max_length[200]'); 
+        $this->form_validation->set_rules('contact_person_phone1', ' ', 'required|trim|min_length[10]|max_length[10]|numeric');
+        $this->form_validation->set_rules('contact_person_phone2', ' ', 'min_length[10]|max_length[15]|numeric');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;

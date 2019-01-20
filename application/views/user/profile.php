@@ -95,12 +95,16 @@
 					<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="false"><i class="fa fa-credit-card" aria-hidden="true"></i> Salary A/C</a>
 					<?php } ?>
 
-					<?php if($this->common_lib->is_auth(array('view-user-account-stat'),false) == true){ ?>		
-					<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false"><i class="fa fa-pie-chart" aria-hidden="true"></i> Others</a>
-					<?php } ?>
-
 					<?php if($this->common_lib->is_auth(array('view-user-uploads'),false) == true){ ?>		
 					<a class="nav-item nav-link" id="nav-7" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fa fa-cloud-download" aria-hidden="true"></i> Documents</a>
+					<?php } ?>
+
+					<?php if($this->common_lib->is_auth(array('view-emergency-contacts'),false) == true){ ?>		
+					<a class="nav-item nav-link" id="nav-8" data-toggle="tab" href="#tab-8" role="tab" aria-controls="tab-8" aria-selected="false"><i class="fa fa-medkit" aria-hidden="true"></i> Emergenncy Contacts</a>
+					<?php } ?>
+
+					<?php if($this->common_lib->is_auth(array('view-user-account-stat'),false) == true){ ?>		
+					<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false"><i class="fa fa-pie-chart" aria-hidden="true"></i> Others</a>
 					<?php } ?>
 					
 					</div>
@@ -420,6 +424,59 @@
 								</div>
 							</div>
 						</div><!--/#tab-6-->
+					<?php } ?>
+
+					<?php if($this->common_lib->is_auth(array('view-emergency-contacts'),false) == true){ ?>	
+						<div class="tab-pane fade" id="tab-8" role="tabpanel" aria-labelledby="nav-8">
+							<div class="row mt-3">
+								<div class="col-md-12">
+									<!-- <a class="btn btn-primary btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"> Add</a> -->
+										<div class="table-responsive-sm">
+											<table class="table table-striped">
+												<thead class="thead-dark">
+													<tr>
+													<th scope="col">Contact Person</th>
+													<th scope="col">Relationship</th>
+													<th scope="col">Contact Number(s)</th>
+													<th scope="col">Communication Address</th>
+													</tr>
+												</thead>
+												<tbody>
+												<?php 
+													if(isset($econtact) && sizeof($econtact)>0){
+														foreach($econtact as $key=>$con){
+														?>
+														<tr>
+															<td>
+																<?php echo isset($con['contact_person_name'])?$con['contact_person_name']: ' ';?>
+															</td>
+															<td><?php echo isset($con['relationship']) ? $con['relationship']: '';?></td>
+															
+															<td>
+																<?php echo isset($con['contact_person_phone1'])?$con['contact_person_phone1'] : '';?>
+
+																<?php echo isset($con['contact_person_phone2']) && strlen($con['contact_person_phone2'])>0 ? ' / '.$con['contact_person_phone2'] : '';?>
+															</td>
+															<td><?php echo isset($con['contact_person_address']) ? $con['contact_person_address'] : '';?></td>
+															
+														</tr>
+														<?php
+														}
+													}else{
+														?>
+														<tr>
+															<td colspan="4">No records found</td>
+														</tr>
+														<?php
+													}
+												?>
+													
+												</tbody>
+											</table>
+										</div><!--/.table-responsive-sm-->
+								</div>
+							</div>
+						</div> <!--/#tab-8-->
 					<?php } ?>
 
 					

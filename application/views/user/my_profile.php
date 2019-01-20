@@ -24,10 +24,10 @@
 </div>
 
 
-<div class="row">
-	<div class="col-md-12">
-		<div class="card user-profile-card">
-			<div class="card-header">
+<div class="row user-profile-card">
+	<div class="col-md-12 py-3 profile-header">
+		<div class="row">
+			<div class="col-md-2">
 				<?php   
 				$img_src = "";
 				$default_path = "assets/dist/img/default_user.jpg";
@@ -42,50 +42,51 @@
 					$img_src = $default_path;
 				}
 				?>
-				<div class="row">
-					<div class="col-md-2">
-						<img class="align-self-center mr-3 rounded dp" src="<?php echo base_url($img_src);?>">
-						<div class="mt-2"><a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><i class="fa fa-pencil"></i> Change</a></div>
-					</div>
-					<div class="col-md-5">
-						<div class="h5">
-							<?php
-								//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
-								echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
-								echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
-								echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
-							?>
-						</div>
-						<!--<div class="small"><?php //echo isset($row['role_name']) ? $row['role_name'] : ''; ?></div>-->
-						<div class="">Employee ID : <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
-						<div class="">Designation : <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
-						<div class="">
-							<i class="fa fa-envelope-o" aria-hidden="true"></i> 
-							<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
-						</div>
-						<div class="">
-							<i class="fa fa-phone" aria-hidden="true"></i>
-							<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
-							<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>        
-						</div>            
-						<div class="d-none">
-							<?php echo (isset($row['user_bio']) && strlen($row['user_bio'])>0) ? '<span class="text-muted">'.$row['user_bio'].'</span>' : ''; ?>							
-						</div>
-					</div>
-					<div class="col-md-5 mt-2">
-						<?php 
-						$approver = isset($approvers[0]) ? $approvers[0] : null;
-						?>
-						<label class=""><i class="fa fa-user-o" aria-hidden="true"></i> My Approvers</label>
-						<div class="">Director : <?php echo isset($approver) ? $approver['director_firstname'].' '.$approver['director_lastname'].' ('.$approver['director_emp_id'].')' : ''; ?></div>
-						<div class="">HR : <?php echo isset($approver) ? $approver['hr_firstname'].' '.$approver['hr_lastname'].' ('.$approver['hr_emp_id'].')' : ''; ?></div>
-						<div class="">Supervisor : <?php echo isset($approver) ? $approver['supervisor_firstname'].' '.$approver['supervisor_lastname'].' ('.$approver['supervisor_emp_id'].')':''; ?>
-						</div>
-						<div class="">Finance : <?php echo isset($approver) ? $approver['finance_firstname'].' '.$approver['finance_lastname'].' ('.$approver['finance_emp_id'].')' : ''; ?></div>
-					</div>
+				<img class="align-self-center mr-1 dp img-thumbnail" src="<?php echo base_url($img_src);?>">
+				<div class="mt-2"><a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><i class="fa fa-pencil"></i> Change</a></div>
+			</div>
+			<div class="col-md-5">
+				<div class="h5">
+					<?php
+						//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
+						echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
+						echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
+						echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
+					?>
 				</div>
-			</div><!--/.card-header-->
-			<div class="card-body">
+				<!--<div class="small"><?php //echo isset($row['role_name']) ? $row['role_name'] : ''; ?></div>-->
+				<div class="">Employee ID : <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
+				<div class="">Designation : <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
+				<div class="">
+					<i class="fa fa-envelope-o" aria-hidden="true"></i> 
+					<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
+				</div>
+				<div class="">
+					<i class="fa fa-phone" aria-hidden="true"></i>
+					<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
+					<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>        
+				</div>            
+				<div class="d-none">
+					<?php echo (isset($row['user_bio']) && strlen($row['user_bio'])>0) ? '<span class="text-muted">'.$row['user_bio'].'</span>' : ''; ?>							
+				</div>
+			</div>
+			<div class="col-md-5">
+				<?php 
+				$approver = isset($approvers[0]) ? $approvers[0] : null;
+				?>
+				<label class=""><i class="fa fa-user-o" aria-hidden="true"></i> My Approvers</label>
+				<div class="">Director : <?php echo isset($approver) ? $approver['director_firstname'].' '.$approver['director_lastname'].' ('.$approver['director_emp_id'].')' : ''; ?></div>
+				<div class="">HR : <?php echo isset($approver) ? $approver['hr_firstname'].' '.$approver['hr_lastname'].' ('.$approver['hr_emp_id'].')' : ''; ?></div>
+				<div class="">Supervisor : <?php echo isset($approver) ? $approver['supervisor_firstname'].' '.$approver['supervisor_lastname'].' ('.$approver['supervisor_emp_id'].')':''; ?>
+				</div>
+				<div class="">Finance : <?php echo isset($approver) ? $approver['finance_firstname'].' '.$approver['finance_lastname'].' ('.$approver['finance_emp_id'].')' : ''; ?></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-12 my-3">
+		<div class="row">
+			<div class="col-md-12">
 				<nav>
 					<div class="nav nav-tabs ci-nav-tab" id="nav-tab" role="tablist">
 						<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><i class="fa fa-info-circle" aria-hidden="true"></i> Basic Info</a>			
@@ -93,6 +94,7 @@
 						<a class="nav-item nav-link" id="nav-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><i class="fa fa-certificate" aria-hidden="true"></i> Education</a>			
 						<a class="nav-item nav-link" id="nav-4" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false"><i class="fa fa-briefcase" aria-hidden="true"></i> Experiences</a>
 						<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="false"><i class="fa fa-credit-card" aria-hidden="true"></i> Salary A/C</a>
+						<a class="nav-item nav-link" id="nav-7" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fa fa-medkit" aria-hidden="true"></i> Emergency Contacts</a>
 						<?php if($this->common_lib->is_auth(array('view-user-account-stat'),false) == true){ ?>		
 						<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false"><i class="fa fa-pie-chart" aria-hidden="true"></i> Others</a>
 						<?php } ?>
@@ -370,9 +372,64 @@
 							</div>
 						</div><!--/#tab-6-->
 					<?php } ?>
+
+					<div class="tab-pane fade" id="tab-7" role="tabpanel" aria-labelledby="nav-7">
+						<div class="row mt-3">
+							<div class="col-md-12">
+								<a class="btn btn-primary btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"> Add</a>
+									<div class="table-responsive-sm">
+										<table class="table table-striped">
+											<thead class="thead-dark">
+												<tr>
+												<th scope="col">Contact Person</th>
+												<th scope="col">Relationship</th>
+												<th scope="col">Contact Number(s)</th>
+												<th scope="col">Communication Address</th>
+												<th scope="col"></th>
+												</tr>
+											</thead>
+											<tbody>
+											<?php 
+												if(isset($econtact) && sizeof($econtact)>0){
+													foreach($econtact as $key=>$con){
+													?>
+													<tr>
+														<td>
+															<?php echo isset($con['contact_person_name'])?$con['contact_person_name']: ' ';?>
+														</td>
+														<td><?php echo isset($con['relationship']) ? $con['relationship']: '';?></td>
+														
+														<td>
+															<?php echo isset($con['contact_person_phone1'])?$con['contact_person_phone1'] : '';?>
+
+															<?php echo isset($con['contact_person_phone2']) && strlen($con['contact_person_phone2'])>0 ? ' / '.$con['contact_person_phone2'] : '';?>
+														</td>
+														<td><?php echo isset($con['contact_person_address']) ? $con['contact_person_address'] : '';?></td>
+														<td>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_emergency_contact/'.$con["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_emergency_contact/'.$con["id"]);?>" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+													</td>
+													</tr>
+													<?php
+													}
+												}else{
+													?>
+													<tr>
+														<td colspan="5">No records found</td>
+													</tr>
+													<?php
+												}
+											?>
+												
+											</tbody>
+										</table>
+									</div><!--/.table-responsive-sm-->
+							</div>
+						</div>
+					</div> <!--/#tab-7-->
 					
 				</div><!--/.tab-content-->
-			</div><!--/.carrd-body-->
-		</div><!--/.card-->
+			</div>
+		</div>
 	</div>
 </div><!--/.row-->

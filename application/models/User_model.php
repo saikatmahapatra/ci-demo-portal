@@ -745,6 +745,37 @@ class User_model extends CI_Model {
         return $result;
     }
 
+    function get_user_emergency_contacts($id = NULL, $user_id) {
+        $this->db->select('t1.*,t2.relationship');    
+        if(isset($id)){
+            $this->db->where(array('t1.id' => $id));
+        }  
+        if(isset($user_id)){
+            $this->db->where(array('t1.user_id' => $user_id));
+        }  
+        $this->db->join('family_relationships as t2', 't1.relationship_with_contact=t2.id', 'left');  
+        $query = $this->db->get('user_emergency_contacts as t1');
+        //echo $this->db->last_query();
+        $result = $query->result_array();        
+        return $result;
+    }
+
+    function get_user_emergency_contacts_count($user_id, $max_allowed_limit = NULL){
+        $this->db->select('count(*) as count');
+        if ($user_id) {
+            $this->db->where('user_id', $user_id);
+        }     
+        $query = $this->db->get('user_emergency_contacts');
+        //echo $this->db->last_query();
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        //print_r($result[0]['count']);
+        if($max_allowed_limit != NULL){
+            return ($result[0]['count'] >= $max_allowed_limit) ? false : true;
+        }
+        return $result; 
+    }
+
 }
 
 ?>

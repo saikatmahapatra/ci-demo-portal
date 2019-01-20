@@ -125,11 +125,13 @@ select.form-control.dob-inline {
     height: 100px;
     width: 100px;
     &:hover {
-        //border:2px solid #eee;
-        //transform:rotate(360deg);
-        //-ms-transform:rotate(360deg);  
-        //-webkit-transform:rotate(360deg);  
-        /*-webkit-font-smoothing:antialiased;*/
+        // border: 2px solid #eee;
+        // transform: rotate(360deg);
+        // -ms-transform: rotate(360deg);
+        // -webkit-transform: rotate(360deg);
+        // -webkit-font-smoothing: antialiased;
+        // height: 180px;
+        // width: 180px;
     }
 }
 
@@ -167,6 +169,17 @@ a[data-link-type="user-profile-card"] {
 
 .user-profile-card a {
     text-decoration: none;
+}
+
+.user-profile-card {
+    .profile-header {
+        background-color: $gray-200;
+        border-top: 2px solid $primary-color;
+    }
+    dt {
+        /*font-weight: normal;*/
+        color: $gray-700;
+    }
 }
 
 .heading-container {
