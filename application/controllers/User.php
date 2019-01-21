@@ -2166,7 +2166,7 @@ class User extends CI_Controller {
         ));
         ########### Validate User Auth End #############
 
-        $user_id = $this->encrypt->decode($this->uri->segment(3));
+        $user_id = @$this->encrypt->decode($this->uri->segment(3));
         $rows = $this->user_model->get_rows($user_id);
         $this->data['row'] = $rows['data_rows'];
 

@@ -15,20 +15,20 @@
       <?php
 		// Show server side flash messages
 		if (isset($alert_message)) {
-			$html_alert_ui = '';                
+			$html_alert_ui = '';
 			$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
 			echo $html_alert_ui;
 		}
-		?>             
+		?>
    </div>
 </div>
 
 
-<div class="row">
+<div class="row user-profile-card">
 	<div class="col-md-12">
-		<div class="card user-profile-card">
-			<div class="card-header">
-				<?php   
+		<div class="row profile-header mx-auto py-3">
+			<div class="col-md-2">
+				<?php
 				$img_src = "";
 				$default_path = "assets/dist/img/default_user.jpg";
 				if(isset($profile_pic)){					
@@ -42,41 +42,42 @@
 					$img_src = $default_path;
 				}
 				?>
-				<div class="row">
-					<div class="col-md-2">
-						<img class="align-self-center mr-3 rounded dp" src="<?php echo base_url($img_src);?>">
-						<!--<div class=""><a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><i class="fa fa-pencil"></i> Change/Remove</a></div>-->
-					</div>
-					<div class="col-md-10">
-						<div class="h5">
-							<?php
-								//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
-								echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
-								echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
-								echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
-							?>
-						</div>
-						<!--<div class="small"><?php //echo isset($row['role_name']) ? $row['role_name'] : ''; ?></div>-->
-						<div class="">Employee ID : <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
-						<div class="">Designation : <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
-						<div class="">
-							<i class="fa fa-envelope-o" aria-hidden="true"></i> 
-							<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
-						</div>
-						<div class="">
-							<i class="fa fa-phone" aria-hidden="true"></i>
-							<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
-							<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>        
-						</div>            
-						<div class="d-none">
-							<?php echo (isset($row['user_bio']) && strlen($row['user_bio'])>0) ? '<span class="text-muted">'.$row['user_bio'].'</span>' : ''; ?>
-							<!--<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>">Edit</a>-->
-						</div>
-					</div>
+				<img class="align-self-center mr-1 dp img-thumbnail" src="<?php echo base_url($img_src);?>">
+			</div>
+			<div class="col-md-10">
+				<div class="h5">
+					<?php
+						//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
+						echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
+						echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
+						echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
+					?>
 				</div>
-			</div><!--/.card-header-->
-			<div class="card-body">
-				<nav>					
+				<!--<div class="small"><?php //echo isset($row['role_name']) ? $row['role_name'] : ''; ?></div>-->
+				<div class="">Employee ID : <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
+				<div class="">Designation : <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
+				<div class="">
+					<i class="fa fa-envelope-o" aria-hidden="true"></i> 
+					<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
+				</div>
+				<div class="">
+					<i class="fa fa-phone" aria-hidden="true"></i>
+					<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
+					<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>        
+				</div>            
+				<div class="d-none">
+					<?php echo (isset($row['user_bio']) && strlen($row['user_bio'])>0) ? '<span class="text-muted">'.$row['user_bio'].'</span>' : ''; ?>
+					<!--<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>">Edit</a>-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col-md-12 my-3">
+		<div class="row">
+			<div class="col-md-12">
+				<nav>
 					<div class="nav nav-tabs ci-nav-tab" id="nav-tab" role="tablist">
 					<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><i class="fa fa-info-circle" aria-hidden="true"></i> Basic Info</a>
 					<?php if($this->common_lib->is_auth(array('view-user-address'),false) == true){ ?>		
@@ -109,7 +110,6 @@
 					
 					</div>
 				</nav>
-
 				<div class="tab-content" id="nav-tabContent">
 					<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="nav-1">
 						<div class="row mt-3">
@@ -363,14 +363,12 @@
 										<dd class="col-sm-4"><?php echo isset($user_row['user_account_active']) ? ($user_row['user_account_active']=='Y' ? 'Active' : ($user_row['user_account_active']=='N' ? 'Inactive' : '' )) : '-'; ?></dd>
 										<dt class="col-sm-2">Registered on</dt>
 										<dd class="col-sm-4"><?php echo isset($user_row['user_registration_date']) ? $this->common_lib->display_date($user_row['user_registration_date'],true) : '-'; ?></dd>									
-									</dl>
-									<dl class="row">
+									
 										<dt class="col-sm-2">Registered from IP</dt>
 										<dd class="col-sm-4"><?php echo isset($user_row['user_registration_ip']) ? $user_row['user_registration_ip'] : '-'; ?></dd>
 										<dt class="col-sm-2">Last Login Date Time</dt>
 										<dd class="col-sm-4"><?php echo isset($user_row['user_login_date_time']) ? $this->common_lib->display_date($user_row['user_login_date_time'],true) : '-'; ?></dd>
-									</dl>
-									<dl class="row">
+									
 										<dt class="col-sm-2">User Archived</dt>
 										<dd class="col-sm-4"><?php echo isset($user_row['user_archived']) ? ($user_row['user_archived']=='Y' ? 'Yes' : ($user_row['user_archived']=='N' ? 'No' : '' )) : '-'; ?></dd>
 									</dl>
@@ -481,7 +479,7 @@
 
 					
 					</div><!--/.tab-content-->
-			</div><!--/.carrd-body-->
-		</div><!--/.card-->
+			</div>
+		</div>
 	</div>
 </div><!--/.row-->

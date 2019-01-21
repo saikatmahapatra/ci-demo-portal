@@ -25,8 +25,8 @@
 
 
 <div class="row user-profile-card">
-	<div class="col-md-12 py-3 profile-header">
-		<div class="row">
+	<div class="col-md-12">
+		<div class="row profile-header mx-auto py-3">
 			<div class="col-md-2">
 				<?php   
 				$img_src = "";
@@ -43,7 +43,7 @@
 				}
 				?>
 				<img class="align-self-center mr-1 dp img-thumbnail" src="<?php echo base_url($img_src);?>">
-				<div class="mt-2"><a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><i class="fa fa-pencil"></i> Change</a></div>
+				<div class="mt-2"><a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><i class="fa fa-camera"></i> Change</a></div>
 			</div>
 			<div class="col-md-5">
 				<div class="h5">

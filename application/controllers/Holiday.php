@@ -26,7 +26,9 @@ class Holiday extends CI_Controller {
         $this->common_lib->init_template_elements();
 
         // Load required js files for this controller
-        $javascript_files = array();
+        $javascript_files = array(
+            $this->router->class
+        );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
 
         
