@@ -776,6 +776,40 @@ class User_model extends CI_Model {
         return $result; 
     }
 
+    function get_employee_anniversary(){
+        $day = date('d');
+        $month = date('m');
+
+        $result = array();
+        $this->db->select('
+        t1.user_firstname,
+        t1.user_lastname,
+        t1.user_email,
+        t1.user_email_secondary,
+        t1.user_doj
+		');
+        $this->db->where(
+			array(
+			'DAY(`user_doj`)' => $day,
+            'MONTH(`user_doj`)' => $month,
+            'user_archived' => 'N'
+			)
+		);
+        $query = $this->db->get('users as t1');
+        //print_r($this->db->last_query());
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        $anniversary_years = '';
+        if(isset($result[0]['user_doj'])){
+            $date1 = $result[0]['user_doj'];
+            $date2 = date('Y-m-d');
+            $diff = abs(strtotime($date2) - strtotime($date1));
+            $anniversary_years = floor($diff / (365*60*60*24));
+        }
+
+        return array('num_rows' => $num_rows, 'data_rows' => $result, 'anniversary' => $anniversary_years);
+    }
+
 }
 
 ?>

@@ -104,7 +104,7 @@ class Home_model extends CI_Model {
         $query = $this->db->get('user_work_exp');
         $num_rows = $query->num_rows();
         if($num_rows <= 0 ){
-            $message['work'] = 'Add your previous work experiences.';
+            $message['work'] = 'Add your previous work experiences (if any).';
         }
 
         return $message;

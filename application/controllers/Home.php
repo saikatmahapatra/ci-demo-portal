@@ -138,6 +138,12 @@ class Home extends CI_Controller {
         $this->load->view('_layouts/layout_default', $this->data);
     }
 
+    function feedback(){
+        $this->data['page_heading'] = 'Feedback';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/feedback', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
 }
 
 ?>
