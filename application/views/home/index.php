@@ -100,42 +100,6 @@
 <?php } ?>
 
 
-
-
-<?php
-/*
-$count = 1;
-foreach($data_rows as $key=>$row){
-	?>
-	<?php if ($count%3 == 1){ echo '<div class="row my-3">'; } ?>
-		<div class="col-md-4 mb-2" data-id="<?php echo $row['id'];?>">
-			<div data-cms-type="<?php echo $row['pagecontent_type'];?>" class="card-news pl-2">
-				<div class="card-news-header h4 font-weight-normal">
-					<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a>
-				</div>
-				<div class="card-news-sig text-muted small">
-					<div><?php echo ucwords($row['pagecontent_type']);?></div>
-					<div>
-						<?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
-						<?php echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>
-						<?php echo $this->common_lib->display_date($row['pagecontent_created_on'],true); ?>
-					</div>
-				</div>
-				<div class="card-news-body">
-					<?php echo isset($row['pagecontent_text']) ? word_limiter($row['pagecontent_text'],30) : '';?>
-					<a class="d-none" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>">Read more</a>				
-				</div>
-			</div>
-		<?php if ($count%3 == 0){ echo '</div>'; } ?>
-	</div>
-	<?php
-	$count++;
-}
-echo $pagination_link;
-*/
-?>
-
-
 <div class="col-12 p-3 bg-white rounded shadow-sm recent-updates">
    <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
    <?php $array_color = array('#007bff', '#AC193D', '#6f42c1','#DC572E'); ?>
@@ -162,4 +126,36 @@ echo $pagination_link;
    <small class="d-block text-right mt-3">
     <?php echo $pagination_link;?>
    </small>
+</div>
+
+<!-- Modal -->
+<div data-display="<?php echo $display_reminder_modal; ?>" class="modal fade" id="userReminderModal" tabindex="-1" role="dialog" aria-labelledby="userReminderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userReminderModalLabel">Hi <?php echo $this->session->userdata['sess_user']['user_firstname'];?>,  <?php echo $this->common_lib->get_greetings(); ?> !</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Here are few tips to make your profile better.
+                <ul>
+                    <?php 
+                    if(isset($profile_completion_status)){
+                        foreach($profile_completion_status as $key => $msg){
+                            ?>
+                            <li><?php echo $msg; ?></li>
+                            <?php
+                        }
+                    }
+                    ?>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn_remind_later">Remind Me Later</button>
+                <a href="<?php echo base_url('user/my_profile');?>" class="btn btn-primary">Update Now</a>
+            </div>
+        </div>
+    </div>
 </div>

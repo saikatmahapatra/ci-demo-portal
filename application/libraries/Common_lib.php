@@ -580,6 +580,18 @@ class Common_lib {
         return $content;
     }
 
+    function get_greetings(){
+        // 24-hour format of an hour without leading zeros (0 through 23)
+        $h = date('G');
+        if ( $h >= 5 && $h <= 11 ) {
+            return "Good Morning";
+        } else if ( $h >= 12 && $h <= 18 ) {
+            return "Good Afternoon";
+        } else if ( $h >= 19 || $h <= 4 ) {
+            return "Good Evening";
+        }
+    }
+
 }
 
 ?>

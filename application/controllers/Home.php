@@ -100,6 +100,12 @@ class Home extends CI_Controller {
         $this->data['timesheet_user'] = $this->home_model->get_user_of_timesheet();
         // Dashboard Stats
         
+        //User Profile Completion Status Check
+        $profile_completion = $this->home_model->get_user_profile_completion_status($this->sess_user_id);
+        $this->data['profile_completion_status'] = $profile_completion;
+        $this->data['display_reminder_modal'] = sizeof($profile_completion) > 0 ? 'true' : 'false';
+        
+
 		$this->data['page_heading'] = 'Welcome to '.$this->config->item('app_company_product');
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);

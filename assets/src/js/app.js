@@ -383,6 +383,10 @@ function initPage() {
 
     // Set initial active toggle
     $("[data-toggle='treeview.'].is-expanded").parent().toggleClass('is-expanded');
+
+    // User Reminder Modal
+    reminderModal();
+
 }
 // End of initPage() i.e. document ready
 
@@ -433,4 +437,17 @@ function openInWindow() {
         window.open(url, 'newwindow', 'width=' + width + ', height=' + height + ', top=' + ((window.innerHeight - height) / 2) + ', left=' + ((window.innerWidth - width) / 2));
         //window.open(url, 'newwindow', 'width=300,height=250');
     })
+}
+
+function reminderModal() {
+    var userReminderModal = '#userReminderModal';
+    var showUserReminder = sessionStorage.getItem('showUserReminder');
+    if ($(userReminderModal).attr('data-display') == 'true' && (showUserReminder == 'true' || showUserReminder == null)) {
+        $(userReminderModal).modal('show');
+    }
+    $(userReminderModal + ' .btn_remind_later').on('click', function(e) {
+        e.preventDefault();
+        sessionStorage.setItem('showUserReminder', 'false');
+        $(userReminderModal).modal('hide');
+    });
 }

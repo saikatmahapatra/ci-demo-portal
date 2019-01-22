@@ -6,24 +6,18 @@
 </div><!--/.heading-container-->
 
 
-<div class="row mb-2 d-none">
-	<div class="col-md-6">
+<div class="row d-sm-none">
+	<div class="col-md-8">
 	<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'form-inline','name' => '','id' => 'search-user-form',)); ?>
 	<?php echo form_hidden('form_action', 'search'); ?>
-				
-			<?php
-			echo form_input(array(
-				'name' => 'user_search_keywords',				
+			<?php echo form_input(array(
+				'name' => 'user_search_keywords',
 				'id' => 'user_search_keywords',
 				'class' => 'form-control',
-				'placeholder' => 'Search Employee...',			
-			));
-			?>
+				'placeholder' => 'Search Employee',
+			)); ?>
 			<?php echo form_error('user_search_keywords'); ?>
-		
-		<?php echo form_button(array('type' => 'submit', 'content' => '<i class="fa fa-search" aria-hidden="true"></i> Search', 'class' => 'btn btn-primary')); ?>&nbsp;
-		
-		
+		<?php echo form_button(array('type' => 'submit', 'content' => '<i class="fa fa-search" aria-hidden="true"></i> Search', 'class' => 'my-1 btn btn-primary')); ?>
 	<?php echo form_close(); ?>
 	</div>
 </div>
@@ -33,11 +27,13 @@
 	<?php
 	// Show server side flash messages
 	if (isset($alert_message)) {
-		$html_alert_ui = '';                
+		$html_alert_ui = '';
 		$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
 		echo $html_alert_ui;
 	}
 	?>
+	
+
 		
 	<?php //print_r($data_rows); ?>
 				<?php
