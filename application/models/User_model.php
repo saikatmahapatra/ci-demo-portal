@@ -810,6 +810,26 @@ class User_model extends CI_Model {
         return array('num_rows' => $num_rows, 'data_rows' => $result, 'anniversary' => $anniversary_years);
     }
 
+    function search_users($search_string) {
+        $this->db->select('
+        t1.id,
+        t1.user_firstname,
+        t1.user_lastname,
+        t1.user_emp_id,
+        t2.designation_name
+        ');
+        $this->db->like('t1.user_firstname', $search_string);
+        $this->db->or_like('t1.user_lastname', $search_string);
+        $this->db->or_like('t1.user_emp_id', $search_string);
+        $this->db->where('t1.user_archived','N');
+        $this->db->where('t1.user_account_active','Y');
+        $this->db->where('t1.user_type','U');
+        $this->db->join('designations t2', 't1.user_designation=t2.id', 'left');
+        $query = $this->db->get('users t1');
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return $result;
+    }
 }
 
 ?>

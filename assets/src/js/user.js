@@ -54,6 +54,10 @@ function domReady() {
         add_new_item5('prev_designation', $(this));
     });
 
+    if (ROUTER_METHOD == 'edit_approvers') {
+        //get_user_suggestion();
+    }
+
 } //domready
 
 $('body').on('click', '.change_account_status', changeAccountStatus);
@@ -89,9 +93,6 @@ function renderDataTable() {
         }, ],
     });
 }
-
-
-
 
 function changeAccountStatus(e) {
     e.preventDefault();
@@ -287,9 +288,6 @@ function add_new_item3(item, el) {
     }
 }
 
-
-
-
 function add_new_item4(item, el) {
     if (el.val() == "-1") {
         var modal = $('#addCompany');
@@ -340,9 +338,6 @@ function add_new_item4(item, el) {
     }
 }
 
-
-
-
 function add_new_item5(item, el) {
     if (el.val() == "-1") {
         var modal = $('#addDesignation');
@@ -391,4 +386,40 @@ function add_new_item5(item, el) {
             });
         });
     }
+}
+
+function get_user_suggestion() {
+    //alert('get_user_suggestion');
+    $('.user-serach-dropdown-ajax').select2({
+        placeholder: 'Employee Name or ID',
+        ajax: {
+            url: SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/get_user_suggestion',
+            dataType: 'json',
+            delay: 250,
+            processResults: function(data) {
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        }
+    });
+    // var xhr = new Ajax();
+    // xhr.type = 'POST';
+    // xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/get_user_suggestion';
+    // xhr.data = {};
+    // xhr.beforeSend = function() {
+    //     showAjaxLoader();
+    // }
+    // var promise = xhr.init();
+    // promise.done(function(response) {
+    //     console.log(response);
+    //     hideAjaxLoader();
+    // });
+    // promise.fail(function() {
+    //     alert("Sorry, Can not process your request.");
+    // });
+    // promise.always(function() {
+
+    // });
 }

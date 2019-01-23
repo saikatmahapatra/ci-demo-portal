@@ -2319,6 +2319,22 @@ class User extends CI_Controller {
         }
     }
 
+    function get_user_suggestion(){
+        $term = $this->input->get_post('term');
+        $type = $this->input->get_post('_type');
+        $q = $this->input->get_post('q');
+        $json = [];
+        if($type == 'query' && strlen($q)>0){
+            $result = $this->user_model->search_users($q);
+        }
+        if(isset($result) && sizeof($result)>0){
+            foreach($result as $key => $row){
+                $json[] = ['id' => $row['id'], 'text' => $row['user_firstname'].' '.$row['user_lastname'].' - '.$row['designation_name'].' (Emp ID: '.$row['user_emp_id'].')'];
+            }
+        }
+        echo json_encode($json); die();
+    }
+
 }
 
 ?>
