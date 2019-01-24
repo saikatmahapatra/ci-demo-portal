@@ -8,95 +8,57 @@
 
 
 <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
-<div class="row my-3 d-none">
-    <div class="col-xl-3 col-md-6 text-white">
-        <!-- START card-->
-        <div class="card flex-row align-items-center align-items-stretch border-0">
-            <div class="col-4 d-flex align-items-center bg-success justify-content-center rounded-left">
-                <i class="fa fa-user fa-3x"></i>
+<div class="row text-center home-card">
+    <div class="col-sm-6 col-md-3">
+        <div class="card my-1 border border-success">
+            <div class="card-header text-success">
+                <i class="icon fa fa-lg fa-3x fa-users"></i>
             </div>
-            <div class="col-8 py-3 bg-success-light rounded-right">
-                <div class="h2 mt-0"><?php echo $user_count['data_rows'][0]['total']; ?></div>
-                <div class="">Active Employees</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-3 col-md-6 text-white">
-        <!-- START card-->
-        <div class="card flex-row align-items-center align-items-stretch border-0">
-            <div class="col-4 d-flex align-items-center bg-danger justify-content-center rounded-left">
-                <i class="fa fa-cubes fa-3x"></i>
-            </div>
-            <div class="col-8 py-3 bg-danger-light rounded-right">
-                <div class="h2 mt-0"><?php echo $projects_count['data_rows'][0]['total']; ?>                    
-                </div>
-                <div class="">Projects</div>
+            <div class="card-body p-2">
+                <h6 class="card-title text-uppercase">Employees</h6>
+                <p class="card-text"><?php echo $user_count['data_rows'][0]['total']; ?></p>
             </div>
         </div>
     </div>
 
-    <div class="col-xl-3 col-lg-6 col-md-12 text-white">
-        <!-- START card-->
-        <div class="card flex-row align-items-center align-items-stretch border-0">
-            <div class="col-4 d-flex align-items-center bg-primary justify-content-center rounded-left">
-                <i class="fa fa-calendar fa-3x"></i>
+    <div class="col-sm-6 col-md-3">
+        <div class="card my-1 border border-info">
+            <div class="card-header text-info">
+                <i class="icon fa fa-lg fa-3x fa-cubes"></i>
             </div>
-            <div class="col-8 py-3 bg-primary-light rounded-right">
-                <div class="h2 mt-0"><?php echo $timesheet_user['data_rows'][0]['total']; ?></div>
-                <div class="">Emp Logged Task</div>
+            <div class="card-body p-2">
+                <h6 class="card-title text-uppercase">Projects</h6>
+                <p class="card-text"><?php echo $projects_count['data_rows'][0]['total']; ?></p>
             </div>
         </div>
     </div>
 
-    <div class="col-xl-3 col-lg-6 col-md-12 text-white">
-        <!-- START card-->
-        <div class="card flex-row align-items-center align-items-stretch border-0">
-            <div class="col-4 d-flex align-items-center bg-warning justify-content-center rounded-left">
-                <i class="fa fa-user fa-3x"></i>
+    <div class="col-sm-6 col-md-3">
+        <div class="card my-1 border border-warning">
+            <div class="card-header text-warning">
+                <i class="icon fa fa-lg fa-3x fa-calendar"></i>
             </div>
-            <div class="col-8 py-3 bg-warning-light rounded-right">
-                <div class="h2 mt-0">{some value}</div>
-                <div class="">{some text}</div>
+            <div class="card-body p-2">
+                <h6 class="card-title text-uppercase">Task logged by</h6>
+                <p class="card-text"><?php echo $timesheet_user['data_rows'][0]['total']; ?></p>
             </div>
         </div>
-    </div>    
+    </div>
+
+    <div class="col-sm-6 col-md-3">
+        <div class="card my-1 border border-danger">
+            <div class="card-header text-danger">
+                <i class="icon fa fa-lg fa-3x fa-star"></i>
+            </div>
+            <div class="card-body p-2">
+                <h6 class="card-title text-uppercase">{{key}}</h6>
+                <p class="card-text">{{value}}</p>
+            </div>
+        </div>
+    </div>
+
 </div>
 
-<div class="row">
-    <div class="col-md-6 col-lg-3">
-        <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
-        <div class="info">
-            <h4>Employees</h4>
-            <p><b><?php echo $user_count['data_rows'][0]['total']; ?></b></p>
-        </div>
-        </div>
-    </div>
-    <div class="col-md-6 col-lg-3">
-        <div class="widget-small info coloured-icon"><i class="icon fa fa-cubes fa-3x"></i>
-        <div class="info">
-            <h4>Projects</h4>
-            <p><b><?php echo $projects_count['data_rows'][0]['total']; ?></b></p>
-        </div>
-        </div>
-    </div>
-    <div class="col-md-6 col-lg-3">
-        <div class="widget-small warning coloured-icon"><i class="icon fa fa-calendar fa-3x"></i>
-        <div class="info">
-            <h4>Timeshet</h4>
-            <p><b><?php echo $timesheet_user['data_rows'][0]['total']; ?></b></p>
-        </div>
-        </div>
-    </div>
-    <div class="col-md-6 col-lg-3">
-        <div class="widget-small danger coloured-icon"><i class="icon fa fa-star fa-3x"></i>
-        <div class="info">
-            <h4>{{key}}</h4>
-            <p><b>{{count}}</b></p>
-        </div>
-        </div>
-    </div>
-</div>
 <?php } ?>
 
 

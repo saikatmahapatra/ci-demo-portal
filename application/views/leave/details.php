@@ -181,11 +181,11 @@ $row = $data_rows[0];
 						<?php
 							$set_attributes ='';
 							$edit_icon = '';
-							if(($this->common_lib->get_sess_user('id') == $row['director_approver_id']) && ($row['supervisor_approver_status']=='A' && $row['cancel_requested'] == 'Y')) {
+							if(($this->common_lib->get_sess_user('id') == $row['director_approver_id']) && ($row['supervisor_approver_status']=='A' || ( $row['leave_status'] == 'A' && $row['cancel_requested'] == 'Y' ))) {
 								$edit_icon = '<i class="fa fa-edit" aria-hidden="true"></i>';
 								$set_attributes = 'data-action-by="director" data-action-by-userid="'.$row['director_approver_id'].'"';
 							}
-							if($row['leave_status'] == 'R' || $row['leave_status'] == 'C'){
+							if($row['leave_status'] == 'R' || $row['leave_status'] == 'C' || ( $row['leave_status'] == 'A' && $row['cancel_requested'] == 'N' )){
 								$set_attributes ='';	
 								$edit_icon = '';
 							}

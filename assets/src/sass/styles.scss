@@ -475,42 +475,6 @@ table.ci-table.dataTable {
     border-collapse: collapse !important;
 }
 
-
-/*.dataTables_wrapper .dataTables_processing {
-    background-color: rgba(0, 0, 0, .5);
-}*/
-
-//Create light color
-.bg-primary-light {
-    background-color: lighten($primary-color, 15%);
-    ;
-}
-
-.bg-success-light {
-    background-color: lighten($green, 15%);
-    ;
-}
-
-.bg-danger-light {
-    background-color: lighten($red, 15%);
-    ;
-}
-
-.bg-warning-light {
-    background-color: lighten($orange, 15%);
-    ;
-}
-
-.bg-teal-light {
-    background-color: lighten($teal, 15%);
-    ;
-}
-
-.bg-teal {
-    background-color: $teal;
-    ;
-}
-
 .ci-accordion-card {
     border: none;
     .card-header {
@@ -662,81 +626,16 @@ table.ci-table.dataTable {
     }
 }
 
-// Componant: Widget
-.widget-small {
-    display: flex;
-    border-radius: 4px;
-    color: $white;
-    margin-bottom: 20px;
-    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.1);
-    .icon {
-        display: flex;
-        min-width: 85px;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.2);
-        border-radius: 4px 0 0 4px;
-        font-size: 2.5rem;
+.home-card {
+    .card-text {
+        font-size: 1.5rem;
+        font-weight: 200;
     }
-    .info {
-        flex: 1;
-        padding: 0 20px;
-        align-self: center;
-        h4 {
-            text-transform: uppercase;
-            margin: 0;
-            margin-bottom: 5px;
-            font-weight: 400;
-            font-size: 1.1rem;
-        }
-        p {
-            margin: 0;
-            font-size: 16px;
-        }
-    }
-    &.primary {
-        background-color: $primary-color;
-        &.coloured-icon {
-            background-color: $white;
-            color: $gray-800;
-            .icon {
-                background-color: $primary-color;
-                color: $white;
-            }
-        }
-    }
-    &.info {
-        background-color: theme-color("info");
-        &.coloured-icon {
-            background-color: $white;
-            color: $gray-800;
-            .icon {
-                background-color: theme-color("info");
-                color: $white;
-            }
-        }
-    }
-    &.warning {
-        background-color: theme-color("warning");
-        &.coloured-icon {
-            background-color: $white;
-            color: $gray-800;
-            .icon {
-                background-color: theme-color("warning");
-                color: $white;
-            }
-        }
-    }
-    &.danger {
-        background-color: theme-color("danger");
-        &.coloured-icon {
-            background-color: $white;
-            color: $gray-800;
-            .icon {
-                background-color: theme-color("danger");
-                color: $white;
-            }
-        }
-    }
+}
+
+// Generate Lighter Background
+@each $color,
+$value in $theme-colors {
+    @include bg-variant(".bg-light-#{$color}",
+    lighten($value, 30%));
 }

@@ -95,7 +95,7 @@ class Home_model extends CI_Model {
         $query = $this->db->get('user_bank_account');
         $num_rows = $query->num_rows();
         if($num_rows <= 0 ){
-            $message['bank'] = 'Salary Account, PAN etc details.';
+            //$message['bank'] = 'Salary Account, PAN etc details.';
         }
 
         // user_work_exp

@@ -73,7 +73,7 @@
 
         <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
 			<li class="treeview">
-                <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-users"></i><span class="menu-label">Manage Employees</span><i class="treeview-indicator fa fa-angle-right" aria-hidden="true"></i></a>
+                <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-user-plus"></i><span class="menu-label">Manage Employees</span><i class="treeview-indicator fa fa-angle-right" aria-hidden="true"></i></a>
                 <ul class="treeview-menu">
                     <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">All Employees</a></li>
                     <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/create_account'); ?>">Add New Employee</a></li>
@@ -82,7 +82,7 @@
             </li>
         <?php } else { ?>
         <li>
-            <a class="menu-item" href="<?php echo base_url('user/people');?>"><i class="menu-icon fa fa-users"></i><span class="menu-label">People Network</span></a>
+            <a class="menu-item" href="<?php echo base_url('user/people');?>"><i class="menu-icon fa fa-globe"></i><span class="menu-label">Employees</span></a>
         </li>
         <?php } ?>
 
