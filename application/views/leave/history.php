@@ -36,7 +36,7 @@
 			<table class="table table-striped">
 				<thead class="thead-dark">
 					<tr>
-						<th scope="col">Leave Req #</th>
+						<th scope="col">Request No</th>
 						<th scope="col">Leave Type</th>
 						<th scope="col">From Date</th>
 						<th scope="col">To Date</th>

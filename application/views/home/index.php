@@ -14,8 +14,8 @@
             <div class="card-header text-success">
                 <i class="icon fa fa-lg fa-3x fa-users"></i>
             </div>
-            <div class="card-body p-2">
-                <h6 class="card-title text-uppercase">Employees</h6>
+            <div class="card-body p-0 pt-2">
+                <h6 class="card-title text-uppercase mb-0">Employees</h6>
                 <p class="card-text"><?php echo $user_count['data_rows'][0]['total']; ?></p>
             </div>
         </div>
@@ -26,8 +26,8 @@
             <div class="card-header text-info">
                 <i class="icon fa fa-lg fa-3x fa-cubes"></i>
             </div>
-            <div class="card-body p-2">
-                <h6 class="card-title text-uppercase">Projects</h6>
+            <div class="card-body p-0 pt-2">
+                <h6 class="card-title text-uppercase mb-0">Projects</h6>
                 <p class="card-text"><?php echo $projects_count['data_rows'][0]['total']; ?></p>
             </div>
         </div>
@@ -38,8 +38,8 @@
             <div class="card-header text-warning">
                 <i class="icon fa fa-lg fa-3x fa-calendar"></i>
             </div>
-            <div class="card-body p-2">
-                <h6 class="card-title text-uppercase">Task logged by</h6>
+            <div class="card-body p-0 pt-2">
+                <h6 class="card-title text-uppercase mb-0">Task logged by</h6>
                 <p class="card-text"><?php echo $timesheet_user['data_rows'][0]['total']; ?></p>
             </div>
         </div>
@@ -50,15 +50,14 @@
             <div class="card-header text-danger">
                 <i class="icon fa fa-lg fa-3x fa-star"></i>
             </div>
-            <div class="card-body p-2">
-                <h6 class="card-title text-uppercase">{{key}}</h6>
+            <div class="card-body p-0 pt-2">
+                <h6 class="card-title text-uppercase mb-0">{{key}}</h6>
                 <p class="card-text">{{value}}</p>
             </div>
         </div>
     </div>
 
 </div>
-
 <?php } ?>
 
 

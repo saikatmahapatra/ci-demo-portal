@@ -9,7 +9,7 @@ $row = $data_rows[0];
     </div>
 </div><!--/.heading-container-->
 
-<div class="row my-2">
+<div class="row">
 	<div class="col-md-12">
 	<?php
 	// Show server side flash messages
@@ -23,35 +23,32 @@ $row = $data_rows[0];
 </div>
 
 
-<div class="row my-3">
+<div class="row">
 	<div class="col-md-12">		
 				<dl class="row">
-					<dt class="col-md-2">Request #</dt>
-					<dd class="col-md-2"><?php echo $row['leave_req_id'];?></dd>					
 					<dt class="col-md-2">Leave Status</dt>
-					<dd class="col-md-2 font-weight-bold">
+					<dd class="col-md-10 font-weight-bold">
 					<span class=""><i class="fa fa-circle <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>
 					<span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>"> <?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
-					</dd>					
+					</dd>
+					<dt class="col-md-2">Leave Request No</dt>
+					<dd class="col-md-10"><?php echo $row['leave_req_id'];?></dd>
 					<dt class="col-md-2">Leave Type</dt>
-					<dd class="col-md-2"><?php echo $leave_type_arr[$row['leave_type']];?></dd>
-					<dt class="col-md-2">From</dt>
-					<dd class="col-md-2"><?php echo $this->common_lib->display_date($row['leave_from_date']);?></dd>
-					<dt class="col-md-2">To</dt>
-					<dd class="col-md-2"><?php echo $this->common_lib->display_date($row['leave_to_date']);?></dd>
+					<dd class="col-md-10"><?php echo $leave_type_arr[$row['leave_type']];?></dd>
+					<dt class="col-md-2">From - To</dt>
+					<dd class="col-md-10"><?php echo $this->common_lib->display_date($row['leave_from_date']);?> to <?php echo $this->common_lib->display_date($row['leave_to_date']);?></dd>
 					<dt class="col-md-2">Days Count</dt>
-					<dd class="col-md-2"><?php echo $row['applied_for_days_count'].' day(s)';?></dd>
-					<dt class="col-md-2">Reason/Occasion</dt>
+					<dd class="col-md-10"><?php echo $row['applied_for_days_count'].' day(s)';?></dd>
+					<dt class="col-md-2">Leave Reason</dt>
 					<dd class="col-md-10"><?php echo isset($row['leave_reason']) ? word_limiter($row['leave_reason'], 5) : '';?></dd>
 					<dt class="col-md-2">Applicant Details</dt>
 					<dd class="col-md-10">
 						<?php echo isset($row['user_firstname']) ? $row['user_firstname'] : '';?>
 						<?php echo isset($row['user_lastname']) ? $row['user_lastname'] : '';?>
-						<div><?php echo isset($row['user_email']) ? $row['user_email'] : '';?></div>
-						<div>
-							<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : '';?>
-							<?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : '';?>
-						</div>
+						<?php echo isset($row['user_emp_id']) ? '('.$row['user_emp_id'].')' : '';?>
+						<?php echo isset($row['user_email']) ? '; '.$row['user_email'] : '';?>
+						<?php echo isset($row['user_phone1']) ? '; '.$row['user_phone1'] : '';?>
+						<?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : '';?>
 					</dd>
 				</dl>
 
@@ -62,6 +59,7 @@ $row = $data_rows[0];
 							<div>
 								<?php echo isset($row['user_firstname']) ? $row['user_firstname'] : '';?>
 								<?php echo isset($row['user_lastname']) ? $row['user_lastname'] : '';?>
+								<?php echo isset($row['user_emp_id']) ? '('.$row['user_emp_id'].')' : '';?>
 							</div>
 						</div>
 						<div class="progress"><div class="progress-bar"></div></div>
@@ -128,6 +126,7 @@ $row = $data_rows[0];
 						<div class="text-center ci-wizard-stepnum">
 							<?php echo isset($row['supervisor_approver_firstname']) ? $row['supervisor_approver_firstname']: ''; ?>
 							<?php echo isset($row['supervisor_approver_lastname']) ? $row['supervisor_approver_lastname']: ''; ?>
+							<?php echo isset($row['supervisor_approver_emp_id']) ? '('.$row['supervisor_approver_emp_id'].')': ''; ?>
 						</div>
 						<div class="progress"><div class="progress-bar"></div></div>
 						<?php
@@ -176,6 +175,7 @@ $row = $data_rows[0];
 						<div class="text-center ci-wizard-stepnum">
 							<?php echo isset($row['director_approver_firstname']) ? $row['director_approver_firstname']: ''; ?>
 							<?php echo isset($row['director_approver_lastname']) ? $row['director_approver_lastname']: ''; ?>
+							<?php echo isset($row['director_approver_emp_id']) ? '('.$row['director_approver_emp_id'].')': ''; ?>
 						</div>
 						<div class="progress"><div class="progress-bar"></div></div>
 						<?php

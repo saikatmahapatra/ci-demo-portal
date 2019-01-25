@@ -20,15 +20,18 @@
 
 <div class="row my-3">
 	<div class="col-md-12">
+		<!-- <p>Please click on "Request No" to view more details and action.</p> -->
 		<div class="grid-action-holder row my-2">
+			
 			<div class="col-md-12">
+				<!-- <span class="mx-2"><i class="fa fa-circle text-primary" aria-hidden="true"></i> Applied</span>
 				<span class="mx-2"><i class="fa fa-circle text-secondary" aria-hidden="true"></i> Pending</span>
 				<span class="mx-2"><i class="fa fa-circle text-info" aria-hidden="true"></i> Processing</span>
 				<span class="mx-2"><i class="fa fa-circle text-warning" aria-hidden="true"></i> Cancelled</span>
 				<span class="mx-2"><i class="fa fa-circle text-success" aria-hidden="true"></i> Approved</span>
-				<span class="mx-2"><i class="fa fa-circle text-danger" aria-hidden="true"></i> Rejected</span>
-				<span class="mx-2"><i class="fa fa-check text-success" aria-hidden="true"></i> Leave Request Approved</span>
-				<span class="mx-2"><i class="fa fa-close text-danger" aria-hidden="true"></i> Leave Request Rejected</span>
+				<span class="mx-2"><i class="fa fa-circle text-danger" aria-hidden="true"></i> Rejected</span> -->
+				<span class="mx-2"><i class="fa fa-check text-success" aria-hidden="true"></i> Approved</span>
+				<span class="mx-2"><i class="fa fa-close text-danger" aria-hidden="true"></i> Rejected</span>
 			</div>	
 		</div><!--/.grid-action-holder-->
 
@@ -36,11 +39,12 @@
 			<table class="table table-striped">
 				<thead class="thead-dark">
 					<tr>
-						<th scope="col">Leave Req #</th>
+						<th scope="col">Request No</th>
 						<th scope="col">Applicant</th>
 						<th scope="col">Supervisor</th>
 						<th scope="col">Director</th>
-						<th scope="col">Days</th>
+						<th scope="col">Leave Summary</th>
+						<th scope="col">Status</th>
 						<th scope="col"></th>
 					</tr>
 				</thead>
@@ -52,9 +56,7 @@
 						?>
 						<tr>
 							<td>
-								<a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/manage');?>"><span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>"><i class="fa fa-circle" aria-hidden="true"></i></span>
-								<?php echo $row['leave_req_id'];?>
-								</a>
+								<a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/manage');?>" title="Click here to view details"><?php echo $row['leave_req_id'];?></a>
 							</td>
 							<td>
 								<?php echo isset($row['user_firstname']) ? $row['user_firstname'] : ''?>
@@ -96,7 +98,8 @@
 							<?php echo $row['leave_type'];?>
 							<?php echo $this->common_lib->display_date($row['leave_from_date']);?>
 							<?php echo ' to '.$this->common_lib->display_date($row['leave_to_date']);?>
-							<?php echo ', '.$row['applied_for_days_count'].' day(s)';?></td>
+							<?php //echo ', '.$row['applied_for_days_count'].' day(s)';?></td>
+							<td><span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>"><?php echo $leave_status_arr[$row['leave_status']]['text'];?></span></td>
 							<td>
 							<a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/manage');?>" class="btn btn-outline-info btn-sm">Details</a>
 							

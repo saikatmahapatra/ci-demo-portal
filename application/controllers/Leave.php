@@ -54,6 +54,7 @@ class Leave extends CI_Controller {
         //'SP'=>'Special Leave'
     );
 		$this->data['leave_status_arr'] = array(
+            'B'=>array('text'=>'Applied', 'css'=>'text-primary'),
             'P'=>array('text'=>'Pending', 'css'=>'text-secondary'),
             'C'=>array('text'=>'Cancelled', 'css'=>'text-warning'),
             'R'=>array('text'=>'Rejected', 'css'=>'text-danger'),
@@ -144,7 +145,7 @@ class Leave extends CI_Controller {
                     'applied_for_days_count' => ($no_day+1),
                     'user_id' => $this->sess_user_id,
                     'leave_created_on' => date('Y-m-d H:i:s'),
-                    'leave_status' => 'P',
+                    'leave_status' => 'B',
                     'supervisor_approver_id'=> $supervisor_approver_id,
                     'supervisor_approver_status'=>'P',
                     'director_approver_id'=>$director_approver_id,
@@ -276,16 +277,24 @@ class Leave extends CI_Controller {
         $cond['assigned_to_user_id'] = $this->sess_user_id;
         if($this->uri->segment(3) == 'pending'){
             $this->data['page_heading'] = 'Leave Requests Management - Pending Leave';
-            $cond['leave_status'] = array('P');
+            $cond['leave_status'] = array('B');
+            $cond['assigned_to_user_id'] = $this->sess_user_id;
         }
         if($this->uri->segment(3) == 'approved'){
             $cond['leave_status'] = array('A');
+            $cond['assigned_to_user_id'] = $this->sess_user_id;
         }
         if($this->uri->segment(3) == 'cancelled'){
             $cond['leave_status'] = array('C');
+            $cond['assigned_to_user_id'] = $this->sess_user_id;
         }
         if($this->uri->segment(3) == 'rejected'){
             $cond['leave_status'] = array('R');
+            $cond['assigned_to_user_id'] = $this->sess_user_id;
+        }
+        if($this->uri->segment(3) == 'all'){
+            $cond['leave_status'] = NULL;
+            $cond['assigned_to_user_id'] = NULL;
         }
 		$result_array = $this->leave_model->get_rows(NULL, NULL, NULL, FALSE, FALSE, $cond);
 		$total_num_rows = $result_array['num_rows'];
