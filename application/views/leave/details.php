@@ -50,6 +50,29 @@ $row = $data_rows[0];
 						<?php echo isset($row['user_phone1']) ? '; '.$row['user_phone1'] : '';?>
 						<?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : '';?>
 					</dd>
+					<dt class="col-md-2">Leave Balance</dt>
+					<dd class="col-md-10">
+						<span class="">On Apply 
+						<?php echo isset($row['on_apply_cl_bal']) ? ' CL '.$row['on_apply_cl_bal'] : '' ;?>
+						<?php echo isset($row['on_apply_pl_bal']) ? ' PL '.$row['on_apply_pl_bal'] : '' ;?>
+						</span>
+
+						<?php if( isset($row['debited_cl']) || isset($row['debited_pl']) ) {?>
+						<span class="font-weight-bold"> | </span>
+						<span class="text-danger">Debited 
+						<?php echo isset($row['debited_cl']) ? ' CL '.$row['debited_cl'] : '' ;?>
+						<?php echo isset($row['debited_pl']) ? ' PL '.$row['debited_pl'] : '' ;?>
+						</span>
+						<?php } ?>
+						
+						<?php if( isset($row['credited_cl']) || isset($row['credited_pl']) ) {?>
+						<span class="font-weight-bold"> | </span>
+						<span class="text-info">Adjusted 
+						<?php echo isset($row['credited_cl']) ? ' CL '.$row['credited_cl'] : '' ;?>
+						<?php echo isset($row['credited_pl']) ? ' PL '.$row['credited_pl'] : '' ;?>
+						</span>
+						<?php } ?>
+					</dd>
 				</dl>
 
 				

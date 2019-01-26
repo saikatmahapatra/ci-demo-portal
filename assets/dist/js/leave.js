@@ -49,11 +49,23 @@ $(function() {
                 $(form_id + ' input[name="cl"]').val(response.data.cl);
                 $(form_id + ' input[name="pl"]').val(response.data.pl);
                 $(form_id + ' input[name="ol"]').val(response.data.ol);
+
+                $('#created_on').html(response.data.created_on);
+                $('#updated_on').html(response.data.updated_on);
+                $('#pl_updated_by_cron_on').html(response.data.pl_updated_by_cron_on);
+                $('#cl_updated_by_cron_on').html(response.data.cl_updated_by_cron_on);
+                $('#ol_updated_by_cron_on').html(response.data.ol_updated_by_cron_on);
+
             } else {
                 $(form_id + ' input[name="id"]').val('');
                 $(form_id + ' input[name="cl"]').val('');
                 $(form_id + ' input[name="pl"]').val('');
                 $(form_id + ' input[name="ol"]').val('');
+                $('#created_on').html('');
+                $('#updated_on').html('');
+                $('#pl_updated_by_cron_on').html('');
+                $('#cl_updated_by_cron_on').html('');
+                $('#ol_updated_by_cron_on').html('');
             }
             hideAjaxLoader();
         });

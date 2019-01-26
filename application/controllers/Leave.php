@@ -48,11 +48,11 @@ class Leave extends CI_Controller {
 		
 		
         $this->data['leave_type_arr'] = array(''=>'-Select-',
-        'CL'=>'Casual Leave',
-        'PL'=>'Privileged Leave',
-        //'OL'=>'Optional Leave',
-        //'SP'=>'Special Leave'
-    );
+            'CL'=>'Casual Leave',
+            'PL'=>'Privileged Leave',
+            //'OL'=>'Optional Leave',
+            //'SP'=>'Special Leave'
+        );
 		$this->data['leave_status_arr'] = array(
             'B'=>array('text'=>'Applied', 'css'=>'text-primary'),
             'P'=>array('text'=>'Pending', 'css'=>'text-secondary'),
