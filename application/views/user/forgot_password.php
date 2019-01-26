@@ -1,8 +1,8 @@
 
 <div class="row justify-content-center">
-	<div class="col-12 col-sm-8 col-md-4">	
+	<div class="col-sm-12 col-md-4 form-signin">	
 		<div class="text-center">
-			<img class="pb-3 logo-2x" src="<?php echo base_url('assets/src/img/logo-dark.png');?>">
+			<img class="logo-2x py-2" src="<?php echo base_url('assets/src/img/logo-dark.png');?>">
 			<!-- <h6><?php echo $this->config->item('app_company_product');?></h6> -->
 			<h1 class="h3 mb-3 font-weight-normal"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h1>
 		</div>	
@@ -10,7 +10,7 @@
 				<p>Enter your registered email address to get reset password link.</p>
 			</div>
 			
-			<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'form-signin')) ?>
+			<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'')) ?>
 			<?php
 				// Show server side flash messages
 				if (isset($alert_message)) {
@@ -33,7 +33,7 @@
 				
 				<?php form_close(); ?>
 				<div class="mt-3">
-					<a class="d-block" href="<?php echo base_url($this->router->directory.$this->router->class.'/login');?>">Back to login</a>
+					<a class="d-block" href="<?php echo base_url($this->router->directory.$this->router->class.'/login');?>">Back to Login</a>
 				</div>
 				
 		</div>
