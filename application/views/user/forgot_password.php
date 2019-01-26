@@ -22,10 +22,10 @@
 			<?php echo form_hidden('form_action', 'forgot_password'); ?>
 			
 				<div class="form-group">
-					<label for="user_email">Registered Email <span class="required">*</span></label>
+					<label for="user_email">Email <span class="required">*</span></label>
 					<!-- <div class="input-group">
 					<div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div></div> -->
-					<?php echo form_input(array('name' => 'user_email','value' => set_value('user_email'),'id' => 'name','class'=> 'form-control','placeholder' => '','maxlength' => '100','autofocus' => true,));?>
+					<?php echo form_input(array('name' => 'user_email','value' => set_value('user_email'),'id' => 'name','class'=> 'form-control','placeholder' => 'Please enter your registered email','maxlength' => '100','autofocus' => true,));?>
 					<!-- </div> -->
 					<?php echo form_error('user_email'); ?>
 				</div>

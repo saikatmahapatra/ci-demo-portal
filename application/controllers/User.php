@@ -577,12 +577,12 @@ class User extends CI_Controller {
     function forgot_password() {		
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-
+        $this->session->unset_userdata('sess_forgot_password_username');
         if ($this->input->post('form_action') == 'forgot_password') {
             if ($this->validate_forgot_password_form() == true) {
 				//print_r($_POST);die();
                 $email = $this->input->post('user_email');
-                $password_reset_key = $this->generate_password();
+                $password_reset_key = $this->generate_password(6, false);
 
                 $postdata = array('user_reset_password_key' => md5($password_reset_key));
                 $where = array('user_email' => $email);
@@ -595,8 +595,9 @@ class User extends CI_Controller {
                     $message_html.= $this->config->item('app_email_header');
                     $message_html.='<div id="message_body" style="padding-top: 5px; padding-bottom:5px;">';
                     $message_html.='<p>Dear User,</p>';
-                    $message_html.='<p>Please click on the below link to set a new password.</p>';
-                    $message_html.='<p>'.anchor(base_url($this->router->directory.$this->router->class.'/reset_password/' . md5($password_reset_key))).'</p>';
+                    $message_html.='<p>Your password reset OTP is '.$password_reset_key.'</p>';
+                    //$message_html.='<p>Please click on the below link to set a new password.</p>';
+                    //$message_html.='<p>'.anchor(base_url($this->router->directory.$this->router->class.'/reset_password/' . md5($password_reset_key))).'</p>';
                     $message_html.='</div><!--/#message_body-->';
                     $message_html.= $this->config->item('app_email_footer');
                     $message_html.='</div><!--/#message_wrapper-->';
@@ -607,14 +608,15 @@ class User extends CI_Controller {
                     $this->email->initialize($config);
                     $this->email->to($email);
                     $this->email->from($this->config->item('app_admin_email'), $this->config->item('app_admin_email_name'));
-                    $this->email->subject($this->config->item('app_email_subject_prefix') . ' Password Reset Link');
+                    $this->email->subject($this->config->item('app_email_subject_prefix') . ' Password Reset OTP is '.$password_reset_key);
                     $this->email->message($message_html);
                     $this->email->send();
                     //echo $this->email->print_debugger();
 
-                    $this->session->set_flashdata('flash_message', 'Password reset link will be sent to ' . $email);
+                    $this->session->set_flashdata('flash_message', 'OTP will be sent to ' . $email);
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
-                    redirect(current_url());
+                    $this->session->set_userdata('sess_forgot_password_username', $email);
+                    redirect($this->router->directory.$this->router->class.'/reset_password/'.$password_reset_key);
                 }
             }
         }
@@ -636,17 +638,10 @@ class User extends CI_Controller {
     function reset_password() {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-        $this->data['password_reset_key'] = $this->uri->segment(3);
-
-        if (!isset($this->data['password_reset_key'])) {
-            $this->data['alert_message'] = 'The password reset token not found.';
-            $this->data['alert_message_css'] = 'alert-danger';
-        }
-
         if ($this->input->post('form_action') == 'reset_password') {
             if ($this->validate_reset_password_form() == true) {
                 $email = $this->input->post('user_email');
-                $password_reset_key = $this->input->post('password_reset_key');
+                $password_reset_key = md5($this->input->post('password_reset_key'));
                 $new_password = $this->input->post('user_new_password');
                 $is_valid_password_key = $this->user_model->check_user_password_reset_key($email, $password_reset_key);
                 if ($is_valid_password_key == TRUE) {
@@ -655,17 +650,18 @@ class User extends CI_Controller {
                     $result = $this->user_model->update($postdata, $where);
                     if ($result) {
                         // Set user_reset_password_key to NULL on password update
-                        $postdata = array('user_reset_password_key' => NULL,);
+                        $postdata = array('user_reset_password_key' => NULL);
                         $where = array('user_email' => $email,);
                         $result2 = $this->user_model->update($postdata, $where);
-                        // End Set user_reset_password_key to NULL on password update    
-
-                        $this->session->set_flashdata('flash_message', 'Password changed successfully.');
+                        // End Set user_reset_password_key to NULL on password update
+                        
+                        $this->session->set_flashdata('flash_message', 'Password has been changed successfully.');
                         $this->session->set_flashdata('flash_message_css', 'alert-success');
+                        $this->session->unset_userdata('sess_forgot_password_username');
                         redirect(current_url());
                     }
                 } else {
-                    $this->session->set_flashdata('flash_message', 'Invalid email or password reset link.');
+                    $this->session->set_flashdata('flash_message', 'The OTP is either invalid or expired.');
                     $this->session->set_flashdata('flash_message_css', 'alert-danger');
                     redirect(current_url());
                 }
@@ -679,6 +675,7 @@ class User extends CI_Controller {
     function validate_reset_password_form() {
         $this->form_validation->set_rules('user_email', 'email address', 'trim|required|valid_email');
         $this->form_validation->set_rules('user_new_password', 'new password', 'required|trim|min_length[6]');
+        $this->form_validation->set_rules('password_reset_key', 'OTP', 'required');
         $this->form_validation->set_rules('confirm_user_new_password', 'confirm password', 'required|matches[user_new_password]');
 
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
@@ -689,9 +686,14 @@ class User extends CI_Controller {
         }
     }
 
-    function generate_password($length = 6) {
+    function generate_password($length = 6, $alpha_numeric = TRUE) {
         $str = "";
-        $chars = "2346789ABCDEFGHJKLMNPQRTUVWX@$%!";    // Remove confuing digits, alphabets
+        if($alpha_numeric == true){
+            $chars = "2346789ABCDEFGHJKLMNPQRTUVWX@$%!";    // Remove confuing digits, alphabets
+        }else{
+            $chars = "0123456789";
+        }
+        
         $size = strlen($chars);
         for ($i = 0; $i < $length; $i++) {
             $str .= $chars[rand(0, $size - 1)];
