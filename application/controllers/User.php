@@ -616,7 +616,7 @@ class User extends CI_Controller {
                     $this->session->set_flashdata('flash_message', 'OTP will be sent to ' . $email);
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     $this->session->set_userdata('sess_forgot_password_username', $email);
-                    redirect($this->router->directory.$this->router->class.'/reset_password/'.$password_reset_key);
+                    redirect($this->router->directory.$this->router->class.'/reset_password');
                 }
             }
         }
