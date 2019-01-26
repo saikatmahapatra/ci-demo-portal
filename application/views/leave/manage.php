@@ -32,6 +32,7 @@
 				<span class="mx-2"><i class="fa fa-circle text-danger" aria-hidden="true"></i> Rejected</span> -->
 				<span class="mx-2"><i class="fa fa-check text-success" aria-hidden="true"></i> Approved</span>
 				<span class="mx-2"><i class="fa fa-close text-danger" aria-hidden="true"></i> Rejected</span>
+				<span class="mx-2"><i class="fa fa-close text-warning" aria-hidden="true"></i> Cancelled</span>
 			</div>	
 		</div><!--/.grid-action-holder-->
 
@@ -72,6 +73,9 @@
 								if($row['supervisor_approver_status'] == 'R'){
 									$fa_icon = 'fa-close';
 								}
+								if($row['supervisor_approver_status'] == 'C'){
+									$fa_icon = 'fa-close';
+								}
 								?>
 								<?php echo isset($row['supervisor_approver_status']) ? '<span class="'.$leave_status_arr[$row['supervisor_approver_status']]['css'].'"><i class="fa '.$fa_icon.'" aria-hidden="true"></i></span>' : ''; ?>
 								<?php echo isset($row['supervisor_approver_firstname']) ? $row['supervisor_approver_firstname'] : ''?>
@@ -85,6 +89,9 @@
 									$fa_icon = 'fa-check';
 								}
 								if($row['director_approver_status'] == 'R'){
+									$fa_icon = 'fa-close';
+								}
+								if($row['director_approver_status'] == 'C'){
 									$fa_icon = 'fa-close';
 								}
 								?>
