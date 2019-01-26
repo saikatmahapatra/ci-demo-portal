@@ -280,4 +280,21 @@ class Leave_model extends CI_Model {
         //echo $this->db->last_query(); die();
         return ($this->db->affected_rows() > 0);
     }
+
+    function adjust_leave_balance($postdata, $where_array){
+        if(isset($postdata['credited_cl'])){
+            $this->db->set('cl', 'cl+'.$postdata['credited_cl'], FALSE);
+        }
+        if(isset($postdata['credited_pl'])){
+            $this->db->set('pl', 'pl+'.$postdata['credited_pl'], FALSE);
+        }
+        if(isset($postdata['credited_ol'])){
+            $this->db->set('ol', 'ol+'.$postdata['credited_ol'], FALSE);
+        }
+        
+        $this->db->where($where_array);
+        $this->db->update('user_leave_balance');
+        //echo $this->db->last_query(); die();
+        return ($this->db->affected_rows() > 0);
+    }
 }

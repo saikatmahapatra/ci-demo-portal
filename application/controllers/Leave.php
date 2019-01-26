@@ -680,6 +680,14 @@ class Leave extends CI_Controller {
                                     $messageTxt.= ' Leave balance deducted.';
                                 }
                             }
+
+                            if($final_leave_status == 'C'){
+                                $balance_updated = $this->adjust_user_leave_balance($leave_id);
+                                if($balance_updated>=1){
+                                    $messageTxt.= ' Leave balance adjusted.';
+                                }
+                            }
+
                             $message = array('is_valid'=>true, 'updated'=>true, 'insert_id'=>'','msg'=> $messageTxt, 'css'=>'alert alert-success');
                             $send_email = true;
                         }
@@ -736,7 +744,7 @@ class Leave extends CI_Controller {
         $leave_data = $result_array['data_rows'][0];
         $applicant_user_id = $leave_data['user_id'];
         $applied_for_days_count = $leave_data['applied_for_days_count'];
-        $leave_type = $leave_data['leave_type'];;
+        $leave_type = $leave_data['leave_type'];
         $leave_balance = $this->leave_model->get_leave_balance(NULL, NULL, NULL, FALSE, FALSE, $applicant_user_id);
         $leave_balance_id = $leave_balance[0]['id'];
         $available_leave_balance = $leave_balance[0][strtolower($leave_type)];
@@ -766,6 +774,33 @@ class Leave extends CI_Controller {
         );
         $where = array('id'=>$leave_balance_id, 'user_id'=>$applicant_user_id);
         $is_update_balance = $this->leave_model->update($postdata, $where, 'user_leave_balance');
+        return $is_update_balance;
+    }
+
+    function adjust_user_leave_balance($leave_id){
+        $result_array = $this->leave_model->get_rows($leave_id, NULL, NULL, FALSE, TRUE);
+        $leave_data = $result_array['data_rows'][0];
+        $applicant_user_id = $leave_data['user_id'];
+        $leave_balance = $this->leave_model->get_leave_balance(NULL, NULL, NULL, FALSE, FALSE, $applicant_user_id);
+        $leave_balance_id = $leave_balance[0]['id'];
+        // Update Leave Balance Table
+        $postdata = array();
+        if(isset($leave_data['debited_cl'])){
+            $postdata['credited_cl'] = $leave_data['debited_cl'];
+        }
+        if(isset($leave_data['debited_pl'])){
+            $postdata['credited_pl'] = $leave_data['debited_pl'];
+        }
+        if(isset($leave_data['debited_ol'])){
+            $postdata['credited_ol'] = $leave_data['debited_ol'];
+        }
+        $where = array('id' => $leave_balance_id, 'user_id' => $applicant_user_id);
+        $is_update_balance = $this->leave_model->adjust_leave_balance($postdata, $where);
+
+        // Also update user leave table
+        $where = array('id' => $leave_id);
+        $is_user_leave_updated = $this->leave_model->update($postdata, $where, 'user_leaves');
+
         return $is_update_balance;
     }
 
