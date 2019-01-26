@@ -58,7 +58,7 @@
             <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-check"></i><span class="menu-label">Work List</span><i class="treeview-indicator fa fa-angle-right"></i></a>
             <ul class="treeview-menu">
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/manage'); ?>">Leave Assigned to Me</a></li>
-                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/manage/all'); ?>">All Leave Request</a></li>
+                
             </ul>
         </li>
         <li class="treeview">
@@ -77,7 +77,8 @@
                 <ul class="treeview-menu">
                     <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">All Employees</a></li>
                     <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/create_account'); ?>">Add New Employee</a></li>
-                    <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/leave_balance'); ?>">Leave Balance</a></li>
+                    <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/leave_balance'); ?>">Leave Balance Sheet</a></li>
+                    <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/manage/all'); ?>">All Leave Requests</a></li>
                 </ul>
             </li>
         <?php } else { ?>

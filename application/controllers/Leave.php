@@ -293,6 +293,9 @@ class Leave extends CI_Controller {
             $cond['assigned_to_user_id'] = $this->sess_user_id;
         }
         if($this->uri->segment(3) == 'all'){
+            $is_authorized = $this->common_lib->is_auth(array(
+                'crud-leave-balance'
+            ));
             $cond['leave_status'] = NULL;
             $cond['assigned_to_user_id'] = NULL;
         }
