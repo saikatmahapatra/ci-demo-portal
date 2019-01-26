@@ -12,21 +12,15 @@ body {
 }
 
 body.login {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 0rem;
+    background-color: #f3f3f3;
 }
 
 .form-signin {
+    padding: 15px;
     width: 100%;
     max-width: 350px;
-    padding: 15px;
-    margin: 0 auto;
     /*margin:10vh auto;*/
-    background-color: #f3f3f3;
-    -webkit-box-shadow: 1px 1px 2px 0px $gray-500;
-    -moz-box-shadow: 1px 1px 2px 0px $gray-500;
-    box-shadow: 1px 1px 2px 0px $gray-500;
-    border-radius: 4px;
     .logo-2x {
         width: 150px;
     }
@@ -337,7 +331,7 @@ a[data-link-type="user-profile-card"] {
     pointer-events: none;
     user-select: none;
     .pace-progress {
-        background: $complementry-color;
+        background: #a9289a;
         position: fixed;
         z-index: 2000;
         top: 0;
@@ -351,7 +345,7 @@ a[data-link-type="user-profile-card"] {
         right: 0;
         width: 100px;
         height: 100%;
-        box-shadow: 0 0 10px $complementry-color, 0 0 5px $complementry-color;
+        box-shadow: 0 0 10px #a9289a, 0 0 5px #a9289a;
         opacity: 1;
         transform: rotate(3deg) translate(0px, -4px)
     }
