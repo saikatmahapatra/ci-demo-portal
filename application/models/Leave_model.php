@@ -256,4 +256,28 @@ class Leave_model extends CI_Model {
         return $result = $query->result_array();
         
     }
+
+    function update_pl_balance(){
+        $this->db->set('pl', 'pl+1.5', FALSE);
+        $this->db->set('pl_updated_by_cron_on', date('Y-m-d H:i:s'));
+        $this->db->update('user_leave_balance');
+        //echo $this->db->last_query(); die();
+        return ($this->db->affected_rows() > 0);
+    }
+
+    function update_cl_balance(){
+        $this->db->set('cl', 10, FALSE);
+        $this->db->set('cl_updated_by_cron_on', date('Y-m-d H:i:s'));
+        $this->db->update('user_leave_balance');
+        //echo $this->db->last_query(); die();
+        return ($this->db->affected_rows() > 0);
+    }
+
+    function update_ol_balance(){
+        $this->db->set('ol', 2, FALSE);
+        $this->db->set('ol_updated_by_cron_on', date('Y-m-d H:i:s'));
+        $this->db->update('user_leave_balance');
+        //echo $this->db->last_query(); die();
+        return ($this->db->affected_rows() > 0);
+    }
 }

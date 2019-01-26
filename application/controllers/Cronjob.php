@@ -101,8 +101,6 @@ class Cronjob extends CI_Controller {
             $result = $this->email->send();
             //echo $this->email->print_debugger();
         }
-
-        
     }
 
     function get_ordinal_suffix($num){
@@ -117,6 +115,39 @@ class Cronjob extends CI_Controller {
         return $num.'th';
     }
 
+    function update_pl_balance(){
+        /**
+         * Run per month start of day
+         * Command in cPanel
+         * /usr/local/bin/php /home/unitedeipl/public_html/portal/index.php cronjob credit_pl_balance
+         */
+        $this->load->model('leave_model');
+        $result_array = $this->leave_model->update_pl_balance();
+        //echo $result_array;
+    }
+
+
+    function update_cl_balance(){
+        /**
+         * Run 1st Jan every year
+         * Command in cPanel
+         * /usr/local/bin/php /home/unitedeipl/public_html/portal/index.php cronjob update_cl_balance
+         */
+        $this->load->model('leave_model');
+        $result_array = $this->leave_model->update_cl_balance();
+        //echo $result_array;
+    }
+
+    function update_ol_balance(){
+        /**
+         * Run 1st Jan every year
+         * Command in cPanel
+         * /usr/local/bin/php /home/unitedeipl/public_html/portal/index.php cronjob update_ol_balance
+         */
+        $this->load->model('leave_model');
+        $result_array = $this->leave_model->update_ol_balance();
+        //echo $result_array;
+    }
 }
 
 ?>
