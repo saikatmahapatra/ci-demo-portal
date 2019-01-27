@@ -27,21 +27,22 @@ $row = $data_rows[0];
 	<div class="col-md-12">		
 				<dl class="row">
 					<dt class="col-md-2">Leave Status</dt>
-					<dd class="col-md-10 font-weight-bold">
+					<dd class="col-md-4 font-weight-bold">
 					<span class=""><i class="fa fa-circle <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>
 					<span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>"> <?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
 					</dd>
 					<dt class="col-md-2">Leave Request No</dt>
-					<dd class="col-md-10"><?php echo $row['leave_req_id'];?></dd>
+					<dd class="col-md-4"><?php echo $row['leave_req_id'];?></dd>
+					<dt class="col-md-2">Applied On</dt>
+					<dd class="col-md-4"><?php echo $this->common_lib->display_date($row['leave_created_on'], TRUE);?></dd>
 					<dt class="col-md-2">Leave Type</dt>
-					<dd class="col-md-10"><?php echo $leave_type_arr[$row['leave_type']];?></dd>
+					<dd class="col-md-4"><?php echo $leave_type_arr[$row['leave_type']];?></dd>
 					<dt class="col-md-2">From - To</dt>
-					<dd class="col-md-10"><?php echo $this->common_lib->display_date($row['leave_from_date']);?> to <?php echo $this->common_lib->display_date($row['leave_to_date']);?></dd>
+					<dd class="col-md-4"><?php echo $this->common_lib->display_date($row['leave_from_date']);?> to <?php echo $this->common_lib->display_date($row['leave_to_date']);?></dd>
 					<dt class="col-md-2">Days Count</dt>
-					<dd class="col-md-10"><?php echo $row['applied_for_days_count'].' day(s)';?></dd>
-					<dt class="col-md-2">Leave Reason</dt>
-					<dd class="col-md-10"><?php echo isset($row['leave_reason']) ? word_limiter($row['leave_reason'], 5) : '';?></dd>
-					<dt class="col-md-2">Applicant Details</dt>
+					<dd class="col-md-4"><?php echo $row['applied_for_days_count'].' day(s)';?></dd>
+					
+					<dt class="col-md-2">Applicant / Employee</dt>
 					<dd class="col-md-10">
 						<?php echo isset($row['user_firstname']) ? $row['user_firstname'] : '';?>
 						<?php echo isset($row['user_lastname']) ? $row['user_lastname'] : '';?>
@@ -50,9 +51,12 @@ $row = $data_rows[0];
 						<?php echo isset($row['user_phone1']) ? '; '.$row['user_phone1'] : '';?>
 						<?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : '';?>
 					</dd>
+					
+					<dt class="col-md-2">Leave Reason</dt>
+					<dd class="col-md-10"><?php echo isset($row['leave_reason']) ? word_limiter($row['leave_reason'], 5) : '';?></dd>
 					<dt class="col-md-2">Leave Balance</dt>
 					<dd class="col-md-10">
-						<span class="">On Apply 
+						<span class="">Before apply 
 						<?php echo isset($row['on_apply_cl_bal']) ? ' CL '.$row['on_apply_cl_bal'] : '' ;?>
 						<?php echo isset($row['on_apply_pl_bal']) ? ' PL '.$row['on_apply_pl_bal'] : '' ;?>
 						</span>

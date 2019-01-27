@@ -135,7 +135,7 @@ class Leave extends CI_Controller {
                 $datediff = ($to_date - $from_date);
                 $no_day = round($datediff / (60 * 60 * 24));
                 //die();
-                $leave_request_id = (isset($this->sess_user_id) ? $this->sess_user_id:'').time();
+                $leave_request_id = date('mdy').$this->common_lib->generate_rand_id(4, FALSE);
 				$postdata = array(
                     'leave_req_id' => $leave_request_id,
                     'leave_type' => $this->input->post('leave_type'),
@@ -159,7 +159,7 @@ class Leave extends CI_Controller {
                 );
                 $insert_id = $this->leave_model->insert($postdata);
                 if ($insert_id) {
-                    $this->session->set_flashdata('flash_message', 'Your Leave Request <strong>#'.$leave_request_id.'</strong> has been generated successfully. Here is the details of your leave request.');
+                    $this->session->set_flashdata('flash_message', 'You have successfully applied leave. Please note your Leave Request No <strong>'.$leave_request_id.'</strong> for future references.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
 
                     ######## Send Email to Applicant ###########

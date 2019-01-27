@@ -248,26 +248,14 @@ class Common_lib {
         }
     }
 
-    function generate_rand_number($length = 4, $append_date = true) {
-        // We are removine confusing characters
-        // Small case    :    i, o,s 
-        // Upper case    :    I, O, S
-        // Digits        :    1(One), 0(zero), 5(Five)
+    function generate_rand_id($length = 6, $alpha_numeric = TRUE) {
         $str = "";
-        $chars = "2346789";
-        $size = strlen($chars);
-        for ($i = 0; $i < $length; $i++) {
-            $str .= $chars[rand(0, $size - 1)];
+        if($alpha_numeric == TRUE){
+            $chars = "2346789ABCDEFGHJKLMNPQRTUVWX@$%!"; // Remove confuing digits, alphabets
+        }else{
+            $chars = "1234567890";
         }
-        if ($append_date == true) {
-            $str = date('mdy') . $str;
-        }
-        return $str;
-    }
-
-    function generate_password($length = 6) {
-        $str = "";
-        $chars = "2346789ABCDEFGHJKLMNPQRTUVWX@$%!";    // Remove confuing digits, alphabets
+        
         $size = strlen($chars);
         for ($i = 0; $i < $length; $i++) {
             $str .= $chars[rand(0, $size - 1)];

@@ -358,7 +358,7 @@ class User extends CI_Controller {
                 $activation_token = md5(time('Y-m-d h:i:s'));
                 $dob = $this->input->post('dob_year') . '-' . $this->input->post('dob_month') . '-' . $this->input->post('dob_day');
 				$user_emp_id = $this->user_model->get_new_emp_id();
-				$password = $this->generate_password();				
+				$password = $this->common_lib->generate_rand_id();
                 $postdata = array(
                     'user_title' => $this->input->post('user_title'),
                     'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),
@@ -582,7 +582,8 @@ class User extends CI_Controller {
             if ($this->validate_forgot_password_form() == true) {
 				//print_r($_POST);die();
                 $email = $this->input->post('user_email');
-                $password_reset_key = $this->generate_password(6, false);
+                $password_reset_key = $this->common_lib->generate_rand_id(6, FALSE);
+                //echo $password_reset_key; die();
 
                 $postdata = array('user_reset_password_key' => md5($password_reset_key));
                 $where = array('user_email' => $email);
@@ -690,22 +691,7 @@ class User extends CI_Controller {
             return false;
         }
     }
-
-    function generate_password($length = 6, $alpha_numeric = TRUE) {
-        $str = "";
-        if($alpha_numeric == true){
-            $chars = "2346789ABCDEFGHJKLMNPQRTUVWX@$%!";    // Remove confuing digits, alphabets
-        }else{
-            $chars = "0123456789";
-        }
-        
-        $size = strlen($chars);
-        for ($i = 0; $i < $length; $i++) {
-            $str .= $chars[rand(0, $size - 1)];
-        }
-        return $str;
-    }
-
+    
     function is_email_valid($user_email) {		
         if($user_email){
             $result = $this->user_model->check_is_email_registered($user_email);			
