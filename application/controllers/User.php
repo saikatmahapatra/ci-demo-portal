@@ -613,7 +613,7 @@ class User extends CI_Controller {
                     $this->email->send();
                     //echo $this->email->print_debugger();
 
-                    $this->session->set_flashdata('flash_message', 'OTP will be sent to ' . $email);
+                    $this->session->set_flashdata('flash_message', 'OTP has been sent to ' . $email);
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     $this->session->set_userdata('sess_forgot_password_username', $email);
                     redirect($this->router->directory.$this->router->class.'/reset_password');
@@ -638,6 +638,11 @@ class User extends CI_Controller {
     function reset_password() {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        if(!$this->session->userdata('sess_forgot_password_username')){
+            $this->session->set_flashdata('flash_message', 'Please enter your email.');
+            $this->session->set_flashdata('flash_message_css', 'alert-danger');
+            redirect($this->router->directory.$this->router->class.'/forgot_password');
+        }
         if ($this->input->post('form_action') == 'reset_password') {
             if ($this->validate_reset_password_form() == true) {
                 $email = $this->input->post('user_email');
@@ -658,7 +663,7 @@ class User extends CI_Controller {
                         $this->session->set_flashdata('flash_message', 'Password has been changed successfully.');
                         $this->session->set_flashdata('flash_message_css', 'alert-success');
                         $this->session->unset_userdata('sess_forgot_password_username');
-                        redirect(current_url());
+                        redirect($this->router->directory.$this->router->class.'/login');
                     }
                 } else {
                     $this->session->set_flashdata('flash_message', 'The OTP is either invalid or expired.');
@@ -667,7 +672,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_heading'] = 'Create New Password';
+		$this->data['page_heading'] = 'Reset Password';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/reset_password', $this->data, true);
         $this->load->view('_layouts/layout_login', $this->data);
     }

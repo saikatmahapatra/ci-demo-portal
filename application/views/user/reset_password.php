@@ -16,29 +16,12 @@
 				echo $html_alert_ui;
 			}
 		?>
-		<?php echo form_hidden('form_action', 'reset_password'); ?>
-		<?php //echo form_hidden('password_reset_key', $password_reset_key); ?>
+			<?php echo form_hidden('form_action', 'reset_password'); ?>
+			<?php echo form_hidden('user_email', isset($_POST['user_email']) ? set_value('user_email') : $this->session->userdata('sess_forgot_password_username')); ?>
+			<?php echo form_error('user_email'); ?>
 		
 			<div class="form-group">
-				<label for="user_email" class="">Email <span class="required">*</span></label>				
-				<!-- <div class="input-group">
-					<div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div></div> -->
-					<?php
-					echo form_input(array(
-						'name' => 'user_email',
-						'value' => isset($_POST['user_email']) ? set_value('user_email') : $this->session->userdata('sess_forgot_password_username'),
-						'id' => 'user_email',
-						'class' => 'form-control',
-						'placeholder' => 'Please enter your registered email',
-						'maxlength' => '255'
-					));
-					?>
-				<!-- </div>  -->
-				<?php echo form_error('user_email'); ?>
-			</div>
-			
-			<div class="form-group">
-				<label for="password_reset_key" class="">OTP received by Email <span class="required">*</span></label>
+				<label for="password_reset_key" class="">OTP (Received by email) <span class="required">*</span></label>
 				<!-- <div class="input-group">
 					<div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-lock" aria-hidden="true"></i></div></div> -->
 					<?php
@@ -95,8 +78,8 @@
 			<?php form_close(); ?>
 				
 			<div class="mt-3">
-				<a class="d-block" href="<?php echo base_url($this->router->directory.$this->router->class.'/login');?>">Back to Login</a>
 				<a class="d-block" href="<?php echo base_url($this->router->directory.$this->router->class.'/forgot_password');?>" class="">Resend Email OTP</a>
+				<a class="d-block" href="<?php echo base_url($this->router->directory.$this->router->class.'/login');?>">Back to Login</a>
 			</div>
 		</div>
 	</div>

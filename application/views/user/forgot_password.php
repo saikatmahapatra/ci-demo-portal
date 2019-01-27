@@ -5,23 +5,19 @@
 			<img class="logo-2x py-2" src="<?php echo base_url('assets/src/img/logo-dark.png');?>">
 			<!-- <h6><?php echo $this->config->item('app_company_product');?></h6> -->
 			<h1 class="h3 mb-3 font-weight-normal"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h1>
+			<p>Password reset OTP will be sent to your registered email.</p>
 		</div>	
-			<div class="text-center">					
-				<p>Enter your registered email address to get reset password link.</p>
-			</div>
-			
-			<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'')) ?>
 			<?php
 				// Show server side flash messages
 				if (isset($alert_message)) {
-					$html_alert_ui = '';                
+					$html_alert_ui = '';
 					$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
 					echo $html_alert_ui;
 				}
 			?>
+			<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'')) ?>			
 			<?php echo form_hidden('form_action', 'forgot_password'); ?>
-			
-				<div class="form-group">
+			<div class="form-group">
 					<label for="user_email">Email <span class="required">*</span></label>
 					<!-- <div class="input-group">
 					<div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div></div> -->
