@@ -100,7 +100,7 @@ class Timesheet extends CI_Controller {
 		$data = array();
 		$this->data['cal'] = $this->calendar->generate($year,$month,$data);
 		$month_name = date('M', mktime(0, 0, 0, $month, 10));		
-		$this->data['page_heading'] = 'My Timesheet : Up to '.date('d/m/Y');
+		$this->data['page_heading'] = 'Timesheet';
 		
 		$this->add();
 		
