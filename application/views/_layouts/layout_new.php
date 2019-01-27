@@ -33,7 +33,7 @@
     
     <main class="main-content" role="main">
         <h1 class="h1 mb-3 font-weight-normal">Bootstrap SASS Customized Theme Components : UX Guide</h1>
-        <h1 class="h3 mb-3 mt-3 font-weight-normal">Text</h1> 
+        <h1 class="h4 mb-3 mt-3 font-weight-normal">Text</h1> 
 		<p><a href="https://getbootstrap.com/">Bootstrap</a> is an open source toolkit for developing with <span class="font-weight-bold">HTML, CSS, and JS</span>. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.</p>
         <?php echo $maincontent; ?>
     </main>

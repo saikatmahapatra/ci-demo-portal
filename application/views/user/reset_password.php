@@ -3,7 +3,7 @@
 		<div class="text-center">
 			<img class="logo-2x py-2" src="<?php echo base_url('assets/src/img/logo-dark.png');?>">
 			<!-- <h6><?php echo $this->config->item('app_company_product');?></h6> -->
-			<h1 class="h3 mb-3 font-weight-normal"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h1>
+			<h1 class="h4 mb-3 font-weight-normal"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h1>
 		</div>	
 		
 		

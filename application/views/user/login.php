@@ -2,7 +2,7 @@
 	<div class="col-sm-12 col-md-4 form-signin">
 		<div class="text-center">
 			<img class="logo-2x py-2" src="<?php echo base_url('assets/src/img/logo-dark.png');?>">
-			<h1 class="h3 mb-3 font-weight-normal"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h1>
+			<h1 class="h4 mb-3 font-weight-normal"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h1>
 		</div>
 		<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'')) ?>
 		<?php echo form_hidden('form_action', 'login'); ?>
