@@ -107,7 +107,7 @@
             <div class="modal-body">
 				<div class="table-responsive">
 					<table class="table table-sm ci-table table-bordered text-center">
-						<thead class="thead-dark">
+						<thead class="thead-light">
 						<tr>
 							<th scope="col">Casual Leave (CL)</th>
 							<th scope="col">Privileged Leave (PL)</th>
