@@ -74,7 +74,7 @@ class Leave extends CI_Controller {
         $this->apply();
     }
 	
-	function apply() {				
+	function apply() {
 		$this->data['page_heading'] = 'Apply Leave';		
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');        
@@ -159,7 +159,7 @@ class Leave extends CI_Controller {
                 );
                 $insert_id = $this->leave_model->insert($postdata);
                 if ($insert_id) {
-                    $this->session->set_flashdata('flash_message', 'You have successfully applied leave. Please note your Leave Request No <strong>'.$leave_request_id.'</strong> for future references.');
+                    $this->session->set_flashdata('flash_message', 'You have applied leave successfully. Please note your leave request no <strong>'.$leave_request_id.'</strong> for future references. You will get email update informing leave status. For more details go to '.anchor(base_url('leave/history'),'My Leave History'));
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
 
                     ######## Send Email to Applicant ###########
@@ -177,7 +177,7 @@ class Leave extends CI_Controller {
                     $leave_reason = $data['leave_reason'];
                     $applied_for_days_count = $data['applied_for_days_count'];
                     
-                    $subject= $this->config->item('app_email_subject_prefix').' Your Leave Request '.$leave_request_id.' is '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
+                    $subject= $this->config->item('app_email_subject_prefix').' Leave Request '.$leave_request_id.' - '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
                     $message = 'You have successfully applied leave. You can track your leave history from '.anchor(base_url('leave/details/'.$data['id'].'/'.$data['leave_req_id'].'/history'));
                     $message_table ='<table border="1">';
                     $message_table.='<tbody>';
@@ -227,7 +227,7 @@ class Leave extends CI_Controller {
                     $leave_reason = $data['leave_reason'];
                     $applied_for_days_count = $data['applied_for_days_count'];
 
-                    $subject= $this->config->item('app_email_subject_prefix').' Leave Notification : By '.$applicant_name.' '.$leave_request_id.' is '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
+                    $subject= $this->config->item('app_email_subject_prefix').' Leave Notification : By '.$applicant_name.' '.$leave_request_id.' - '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
                     $message = 'You can manage leave request from '.anchor(base_url('leave/manage'));                    
                     $this->send_notification($to, $from, $from_name, $subject, $message.$message_table);
 
@@ -907,7 +907,7 @@ class Leave extends CI_Controller {
 
         // Send to Applicant
         if($data['leave_status'] == 'A' || $data['leave_status'] == 'R' || $data['leave_status'] == 'C'){
-            $subject= $this->config->item('app_email_subject_prefix').' Leave Request '.$leave_request_id.' is '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
+            $subject= $this->config->item('app_email_subject_prefix').' Leave Request '.$leave_request_id.' - '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
             $message_body_applicant = 'You can track your leave history from '.anchor(base_url('leave/details/'.$data['id'].'/'.$data['leave_req_id'].'/history'));
             $email_message_body = $message_body_applicant.$message_table;
             //die();
@@ -924,7 +924,7 @@ class Leave extends CI_Controller {
         
         // Send to L2 approver, if L1 approve i.e Status = Processing
         if($data['leave_status'] == 'O'){
-            $subject= $this->config->item('app_email_subject_prefix').' Need Approval | Leave Request '.$leave_request_id.' is '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
+            $subject= $this->config->item('app_email_subject_prefix').' Need Approval | Leave Request '.$leave_request_id.' - '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
             $message_body_approver = 'Track all leave requests pending for approval from your end '.anchor(base_url('leave/details/'.$data['id'].'/'.$data['leave_req_id'].'/manage'));
             $email_message_body = $message_body_approver.$message_table;
             //die();
@@ -933,7 +933,7 @@ class Leave extends CI_Controller {
 
         // Send to L2 approver, if L1 approve i.e Status = Processing
         if($data['cancel_requested'] == 'Y'){
-            $subject= $this->config->item('app_email_subject_prefix').' Cancel Requested for Leave Request '.$leave_request_id.' is '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
+            $subject= $this->config->item('app_email_subject_prefix').' Cancel Requested for Leave Request '.$leave_request_id.' - '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
             $message_body_approver = 'You can cancel the leave request '.anchor(base_url('leave/details/'.$data['id'].'/'.$data['leave_req_id'].'/manage').'. Leave balance should be adjusted.');
             $email_message_body = $message_body_approver.$message_table;
             //die();
@@ -941,11 +941,6 @@ class Leave extends CI_Controller {
         }
         
     }
-
-    function test_mail(){
-        $this->send_leave_status_update_email(1,'SSS');
-    }
-
 }
 
 ?>

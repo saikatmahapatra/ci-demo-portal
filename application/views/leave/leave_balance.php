@@ -64,18 +64,18 @@
 </div>
 
 <div class="row">
-	<div class="col-md-3 text-right">Balance Added on : </div>
-	<div class="col-md-9"><div id="created_on"></div></div>
+	<div class="col-md-3">Leave balance added on : </div>
+	<div class="col-md-9 text-left"><div id="created_on"></div></div>
 	
-	<div class="col-md-3 text-right">Manually Updated on : </div>
-	<div class="col-md-9"><div id="updated_on"></div></div>
+	<div class="col-md-3">Leave balance updated on : </div>
+	<div class="col-md-9 text-left"><div id="updated_on"></div></div>
 	
-	<div class="col-md-3 text-right">PL Updated by System on : </div>
-	<div class="col-md-9"><div id="pl_updated_by_cron_on"></div></div>
+	<div class="col-md-3">PL auto updated on : </div>
+	<div class="col-md-9 text-left"><div id="pl_updated_by_cron_on"></div></div>
 	
-	<div class="col-md-3 text-right">CL Updated by System on : </div>
-	<div class="col-md-9"><div id="cl_updated_by_cron_on"></div></div>
+	<div class="col-md-3">CL auto updated on : </div>
+	<div class="col-md-9 text-left"><div id="cl_updated_by_cron_on"></div></div>
 
-	<div class="col-md-3 text-right">OL updated by System on : </div>
-	<div class="col-md-9"><div id="ol_updated_by_cron_on"></div></div>
+	<div class="col-md-3">OL auto updated on : </div>
+	<div class="col-md-9 text-left"><div id="ol_updated_by_cron_on"></div></div>
 </div>
