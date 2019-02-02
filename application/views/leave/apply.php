@@ -32,14 +32,14 @@
 			</ul>
 		</div>
 		
-		
-		<h6>Leave Balance</h6>
 		<a class="" href="#" id="view_leave_balance_update_details" data-toggle="modal" data-target="#leaveBalanceModal">Click here to view balance details</a>
-		<div class="row my-2">
-			<div class="col-md-3">Casual Leave (CL) : <?php echo isset($leave_balance[0]['cl']) ? $leave_balance[0]['cl'] : '0.0'; ?></div>
-			<div class="col-md-3">Privileged Leave (PL) : <?php echo isset($leave_balance[0]['pl']) ? $leave_balance[0]['pl'] : '0.0'; ?></div>
-			<div class="col-md-3 d-none">Optional Leave (OL) : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></div>
+		<div class="row mb-3">
+			<div class="col-md-3 font-weight-bold">Leave Balance</div>
+			<div class="col-md-4">Casual Leave (CL) : <?php echo isset($leave_balance[0]['cl']) ? $leave_balance[0]['cl'] : '0.0'; ?></div>
+			<div class="col-md-4">Privileged Leave (PL) : <?php echo isset($leave_balance[0]['pl']) ? $leave_balance[0]['pl'] : '0.0'; ?></div>
+			<!-- <div class="col-md-3">Optional Leave (OL) : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></div> -->
 		</div>
+		
 		
 
 		<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => 'ci-form-leave',)); ?>
@@ -99,12 +99,30 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="leaveBalanceModalLabel">Leave Balance Summary</h5>
+                <h5 class="modal-title" id="leaveBalanceModalLabel">Leave Balance Details</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
+				<div class="table-responsive">
+					<table class="table table-sm ci-table table-bordered text-center">
+						<thead class="thead-dark">
+						<tr>
+							<th scope="col">Casual Leave (CL)</th>
+							<th scope="col">Privileged Leave (PL)</th>
+							<!-- <th scope="col">Optional Leave (OL)</th> -->
+						</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><?php echo isset($leave_balance[0]['cl']) ? $leave_balance[0]['cl'] : '0.0'; ?></td>
+								<td><?php echo isset($leave_balance[0]['pl']) ? $leave_balance[0]['pl'] : '0.0'; ?></td>
+								<!-- <td><?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></td> -->
+							</tr>
+						</tbody>
+					</table>
+				</div>
 				<div class="">
 					Balance added on : <?php echo isset($leave_balance[0]['created_on']) ? $this->common_lib->display_date($leave_balance[0]['created_on'],true) : '-'; ?>
 				</div>
