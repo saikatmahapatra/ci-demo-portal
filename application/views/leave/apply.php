@@ -130,15 +130,15 @@
 					Balance updated on : <?php echo isset($leave_balance[0]['updated_on']) ? $this->common_lib->display_date($leave_balance[0]['updated_on'],true) : '-'; ?>
 				</div>
 				<div>
-					CL auto credited/updated on : 
+					CL auto credited on : 
 					<?php echo isset($leave_balance[0]['cl_updated_by_cron_on']) ? $this->common_lib->display_date($leave_balance[0]['cl_updated_by_cron_on'],true) : '-'; ?>
 				</div>
 				<div>
-					PL auto credited/updated on : 
+					PL auto credited on : 
 					<?php echo isset($leave_balance[0]['pl_updated_by_cron_on']) ? $this->common_lib->display_date($leave_balance[0]['pl_updated_by_cron_on'],true) : '-'; ?>
 				</div>
 				<!-- <div>
-					OL auto credited/updated on : 
+					OL auto credited on : 
 					<?php echo isset($leave_balance[0]['ol_updated_by_cron_on']) ? $this->common_lib->display_date($leave_balance[0]['ol_updated_by_cron_on'],true) : '-'; ?>
 				</div> -->
             </div>
