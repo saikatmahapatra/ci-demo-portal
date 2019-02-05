@@ -57,7 +57,7 @@
         <li class="treeview">
             <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-check"></i><span class="menu-label">Work List</span><i class="treeview-indicator fa fa-angle-right"></i></a>
             <ul class="treeview-menu">
-                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/manage'); ?>">Leave Assigned to Me</a></li>
+                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/manage/assigned_to_me'); ?>">Leave Assigned to Me</a></li>
                 
             </ul>
         </li>

@@ -232,7 +232,7 @@ $row = $data_rows[0];
 
 				
 
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->uri->segment(5));?>" class="ml-2 btn btn-outline-secondary"><i class="fa fa-chevron-left"></i> Back</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->uri->segment(5).'/'.$this->uri->segment(6));?>" class="ml-2 btn btn-outline-secondary"><i class="fa fa-chevron-left"></i> Back</a>
 
 			
 	</div>

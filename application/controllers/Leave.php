@@ -299,16 +299,20 @@ class Leave extends CI_Controller {
             $cond['leave_status'] = NULL;
             $cond['assigned_to_user_id'] = NULL;
         }
+        if($this->uri->segment(3)== ''){
+            redirect($this->router->directory.$this->router->class.'/'.$this->router->method.'/assigned_to_me');
+        }
 		$result_array = $this->leave_model->get_rows(NULL, NULL, NULL, FALSE, FALSE, $cond);
 		$total_num_rows = $result_array['num_rows'];
 		
 		//Pagination config starts here		
         $per_page = 30;
-        $config['uri_segment'] = 4; //which segment of your URI contains the page number
+        $config['uri_segment'] = 5; //which segment of your URI contains the page number
         $config['num_links'] = 2;
         $page = ($this->uri->segment($config['uri_segment'])) ? ($this->uri->segment($config['uri_segment'])-1) : 0;
         $offset = ($page*$per_page);
-        $this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page);
+        $additional_segment = $this->router->directory.$this->router->class.'/'.$this->router->method.'/'.$this->uri->segment(3);
+        $this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
         //Pagination config ends here
         
 
