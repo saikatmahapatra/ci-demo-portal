@@ -112,9 +112,9 @@
         <li>
             <a class="menu-item" href="<?php echo base_url('holiday/view');?>"><i class="menu-icon fa fa-calendar-check-o" aria-hidden="true"></i><span class="menu-label">Holiday List</span></a>
         </li>
-        <li>
+        <!-- <li>
             <a class="menu-item" href="<?php echo base_url('faq');?>"><i class="menu-icon fa fa-question-circle-o" aria-hidden="true"></i><span class="menu-label">FAQ</span></a>
-        </li>
+        </li> -->
 
     </ul>
 
