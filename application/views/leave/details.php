@@ -53,7 +53,7 @@ $row = $data_rows[0];
 					</dd>
 					
 					<dt class="col-md-2">Leave Reason</dt>
-					<dd class="col-md-10"><?php echo isset($row['leave_reason']) ? word_limiter($row['leave_reason'], 5) : '';?></dd>
+					<dd class="col-md-10"><?php echo isset($row['leave_reason']) ? $row['leave_reason'] : '';?></dd>
 					<dt class="col-md-2">Leave Balance</dt>
 					<dd class="col-md-10">
 						<span class="">Before apply 
