@@ -9393,6 +9393,14 @@ table.ci-table.dataTable {
   position: relative;
 }
 
+@media (max-width: 575px) {
+  .ci-wizard > .ci-wizard-step {
+    margin-top: 15px;
+    margin-bottom: 30px;
+    padding-top: 15px;
+  }
+}
+
 .ci-wizard > .ci-wizard-step .ci-wizard-stepnum {
   color: #495057;
 }
@@ -9416,6 +9424,12 @@ table.ci-table.dataTable {
   margin-top: -15px;
   margin-left: -15px;
   border-radius: 50%;
+}
+
+@media (max-width: 575px) {
+  .ci-wizard > .ci-wizard-step > .ci-wizard-dot {
+    top: 0px;
+  }
 }
 
 .ci-wizard > .ci-wizard-step > .ci-wizard-dot:after {
@@ -9455,7 +9469,7 @@ table.ci-table.dataTable {
 
 @media (max-width: 575px) {
   .ci-wizard > .ci-wizard-step > .progress {
-    visibility: hidden;
+    display: none;
   }
 }
 

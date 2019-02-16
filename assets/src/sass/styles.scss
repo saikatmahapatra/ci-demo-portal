@@ -494,6 +494,11 @@ table.ci-table.dataTable {
     >.ci-wizard-step {
         padding: 0;
         position: relative;
+        @media(max-width: 575px) {
+            margin-top: 15px;
+            margin-bottom: 30px;
+            padding-top: 15px;
+        }
         +.ci-wizard-step {}
         .ci-wizard-stepnum {
             color: $gray-700;
@@ -516,6 +521,9 @@ table.ci-table.dataTable {
                 margin-top: -15px;
                 margin-left: -15px;
                 border-radius: 50%;
+                @media(max-width: 575px) {
+                    top: 0px;
+                }
                 &:after {
                     content: ' ';
                     width: 14px;
@@ -546,7 +554,7 @@ table.ci-table.dataTable {
                 box-shadow: none;
                 margin: 20px 0;
                 @media(max-width: 575px) {
-                    visibility: hidden;
+                    display: none;
                 }
                 >.progress-bar {
                     width: 0px;
