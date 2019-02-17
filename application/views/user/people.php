@@ -76,28 +76,15 @@
 								<img class="align-self-center mr-3 rounded dp-sm" src="<?php echo base_url($img_src);?>">
 								<div class="media-body">
 									<div class="h6"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></div>
-									<div class="small"><?php echo 'Emp # '.$row['user_emp_id']; ?></div>									
-									<div class=""><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
-									<div class=""><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
-									                           
+									<div class="small"><?php echo 'Emp ID : '.$row['user_emp_id']; ?></div>
+									<?php
+									$email_id = explode('@',$row['user_email']);
+									?>
+									<div class=""><i class="fa fa-envelope-open-o" aria-hidden="true"></i> <a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>" title="<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $email_id[0] : ''; ?></a></div>
+									<div class=""><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
 								</div>
 							</div>
 							</a>
-						</div>
-						
-						<div class="col-sm-4 my-2 d-none">
-							<div class="card text-center">
-								<div class="card-body py-2">
-									<img class="align-self-center my-2 rounded dp" src="<?php echo base_url($img_src);?>">
-									<h5 class="card-title"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></h5>
-									<p class="card-text">
-										<div class="small"><?php echo 'Emp # '.$row['user_emp_id']; ?></div>
-										<div class=""><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
-										<div class=""><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
-									</p>
-									<!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-								</div>
-							</div>
 						</div>
 
 						<?php if ($count%3 == 0){ echo '</div>'; } ?>

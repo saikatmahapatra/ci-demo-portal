@@ -48,7 +48,7 @@ if(isset($data_rows)){
                         <img class="align-self-center mr-3 rounded dp-sm" data-src="holder.js/64x64" alt="64x64" src="<?php echo base_url($img_src);?>">
                         <div class="media-body">
                         <div class="h6"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></div>                            
-                        <div class="small"><?php echo 'Emp # '.$row['user_emp_id']; ?></div>									
+                        <div class="small"><?php echo 'Emp ID : '.$row['user_emp_id']; ?></div>									
                         <div class=""><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
                         <div class=""><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
                         </div>

@@ -238,7 +238,7 @@ class Timesheet extends CI_Controller {
             //$row[] = $result['timesheet_hours'];
             //$row[] = $result['timesheet_review_status'];
 			
-			$html = '<div class="font-weight-bold">'.$this->common_lib->display_date($result['timesheet_date']).' <span class="float-right"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$result['timesheet_hours'].' hrs</span></div>';			
+			$html = '<div class="font-weight-bold">'.$this->common_lib->display_date($result['timesheet_date']).' <span class="float-right">'.$result['timesheet_hours'].' hrs</span></div>';			
 			$html.= '<div class="">'.$result['project_number'].' '.$result['project_name'].'<span class="float-right">'.$result['task_activity_name'].'</span></div>';			
 			
             
