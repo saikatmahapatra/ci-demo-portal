@@ -57,7 +57,7 @@
 						?>
 						<tr>
 							<td>
-								<a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/manage');?>" title="Click here to view details"><?php echo $row['leave_req_id'];?></a>
+								<a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));?>" title="Click here to view details"><?php echo $row['leave_req_id'];?></a>
 							</td>
 							<td>
 								<?php echo isset($row['user_firstname']) ? $row['user_firstname'] : ''?>
