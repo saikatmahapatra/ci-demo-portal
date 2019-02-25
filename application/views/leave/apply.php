@@ -20,8 +20,10 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<div class="alert <?php //echo ($system_msg_error_counter>0) ? 'alert-warning' : 'alert-info'; ?>">
-			<ul class="">
+		
+		<small class="form-text text-muted bg-light py-1 mb-3">
+			<ul>
+				<div class="font-weight-bold mb-2">Instructions:</div>
 			<?php
 				foreach($system_msg as $key=>$val){
 					?>
@@ -29,16 +31,27 @@
 					<?php
 				}
 			?>
+				<li>PL, CL balance will be credited automatically as per credit cycle.</li>
+				<li>Self cancellation is allowed once leave request is in applied/processing status. For approved leave you can request leave cancellation.</li>
+				<li>Once leave cancellaion approved by approver, debited leave balance will be credit back to the leave balance.</li>
+				<li>For leave balance debit, credit related issues or information please contact to your HR.</li>
+				<li class="text-info font-weight-bold">
+					<span class="">Your Leave Balance: </span>
+					<span class="mx-3">Casual Leave (CL) : <?php echo isset($leave_balance[0]['cl']) ? $leave_balance[0]['cl'] : '0.0'; ?></span>
+					<span class="ml-3">Privileged Leave (PL) : <?php echo isset($leave_balance[0]['pl']) ? $leave_balance[0]['pl'] : '0.0'; ?></span>
+					<span class="ml-3">Optional Leave (OL) : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></span>
+					<span class="ml-3"><a class="" href="#" id="view_leave_balance_update_details" data-toggle="modal" data-target="#leaveBalanceModal">Click here to view balance details</a></span>
+				</li>
 			</ul>
-		</div>
+		</small>
 		
-		<a class="" href="#" id="view_leave_balance_update_details" data-toggle="modal" data-target="#leaveBalanceModal">Click here to view balance details</a>
+		<!-- <a class="" href="#" id="view_leave_balance_update_details" data-toggle="modal" data-target="#leaveBalanceModal">Click here to view balance details</a>
 		<div class="row mb-3">
 			<div class="col-md-3 font-weight-bold">Leave Balance</div>
 			<div class="col-md-4">Casual Leave (CL) : <?php echo isset($leave_balance[0]['cl']) ? $leave_balance[0]['cl'] : '0.0'; ?></div>
 			<div class="col-md-4">Privileged Leave (PL) : <?php echo isset($leave_balance[0]['pl']) ? $leave_balance[0]['pl'] : '0.0'; ?></div>
-			<!-- <div class="col-md-3">Optional Leave (OL) : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></div> -->
-		</div>
+			<div class="col-md-3">Optional Leave (OL) : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></div>
+		</div> -->
 		
 		
 

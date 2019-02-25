@@ -98,19 +98,19 @@ class Leave extends CI_Controller {
         if($supervisor_approver_id == NULL || $supervisor_approver_id == 0){            
             $system_msg['supervisor'] = array('txt'=>'No supervisor (L1 approver) is tagged. Click '.anchor(base_url('user/edit_approvers'),' here').' to update.', 'css'=>'text-danger', 'has_error'=> true);
         }else{
-            $system_msg['supervisor'] = array('txt'=>'Your Supervisor/L1 Approver is '.$supervisor_approver_name.' ('.$this->data['approvers'][0]['supervisor_emp_id'].') . Click '.anchor(base_url('user/edit_approvers'),' here').' to change.', 'css'=>'text-info', 'has_error'=> false);
+            $system_msg['supervisor'] = array('txt'=>'Your Supervisor/L1 Approver is '.$supervisor_approver_name.' ('.$this->data['approvers'][0]['supervisor_emp_id'].') . Click '.anchor(base_url('user/edit_approvers'),' here').' to change.', 'css'=>'', 'has_error'=> false);
         }
 
         if($director_approver_id == NULL || $director_approver_id == 0){
             $system_msg['director'] = array('txt'=>'No director (L2 approver) is tagged. Click '.anchor(base_url('user/edit_approvers'),' here').' to update.', 'css'=>'text-danger', 'has_error'=> true);
         }else{
-            $system_msg['director'] = array('txt'=>'Your Director/L2 Approver is '.$director_approver_name.' ('.$this->data['approvers'][0]['director_emp_id'].') . Click '.anchor(base_url('user/edit_approvers'),' here').' to change.', 'css'=>'text-info', 'has_error'=> false);
+            $system_msg['director'] = array('txt'=>'Your Director/L2 Approver is '.$director_approver_name.' ('.$this->data['approvers'][0]['director_emp_id'].') . Click '.anchor(base_url('user/edit_approvers'),' here').' to change.', 'css'=>'', 'has_error'=> false);
         }
 
         if($hr_approver_id == NULL || $hr_approver_id == 0){
             $system_msg['hr'] = array('txt'=>'No HR is tagged. Click '.anchor(base_url('user/edit_approvers'),' here').' to update.', 'css'=>'text-danger', 'has_error'=> true);
         }else{
-            $system_msg['hr'] = array('txt'=>'Your HR Approver is '.$hr_approver_name.' ('.$this->data['approvers'][0]['hr_emp_id'].') . Click '.anchor(base_url('user/edit_approvers'),' here').' to change.', 'css'=>'text-info', 'has_error'=> false);
+            $system_msg['hr'] = array('txt'=>'Your HR Approver is '.$hr_approver_name.' ('.$this->data['approvers'][0]['hr_emp_id'].') . Click '.anchor(base_url('user/edit_approvers'),' here').' to change.', 'css'=>'', 'has_error'=> false);
         }
 
         if(sizeof($this->data['leave_balance'])<=0){
