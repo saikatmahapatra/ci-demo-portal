@@ -60,7 +60,7 @@ class Timesheet extends CI_Controller {
 		$day = date('d');
 		
 		$template='';
-		$template.='{table_open}<table class="table ci-calendar table-sm" border="0" cellpadding="" cellspacing="">{/table_open}';
+		$template.='{table_open}<table id="timesheet_calendar" class="table ci-calendar table-sm" border="0" cellpadding="" cellspacing="">{/table_open}';
 		$template.='{heading_row_start}<tr class="mn">{/heading_row_start}';
 		$template.='{heading_previous_cell}<th class="prevcell"><a href="{previous_url}">&lt;&lt;</a></th>{/heading_previous_cell}';
 		$template.='{heading_title_cell}<th colspan="{colspan}">{heading}</th>{/heading_title_cell}';
@@ -69,11 +69,18 @@ class Timesheet extends CI_Controller {
 		$template.='{week_row_start}<tr class="wk_nm">{/week_row_start}';
 		$template.='{week_day_cell}<td>{week_day}</td>{/week_day_cell}';
 		$template.='{week_row_end}</tr>{/week_row_end}';
-		
-		$css_days_rows = ($month != date('m'))? 'disabled_m': 'allowed_m';
+        
+        $css_days_rows = '';
+        //$css_days_rows = ($month != date('m'))? 'disabled_m': 'allowed_m';
+        
+        $day_css = 'disabled_day';
+        $prev_month = date('m', strtotime("last month"));
+        if( ($month == date('m') && $year == date('Y')) || ($day <= '03' && $month == $prev_month) ){
+            $day_css = 'allowed_day';
+        }
+        
 		$template.='{cal_row_start}<tr class="'.$css_days_rows.'">{/cal_row_start}';
-		
-		$template.='{cal_cell_start}<td class="day">{/cal_cell_start}';
+        $template.='{cal_cell_start}<td data-calday="'.$day_css.'" class="day">{/cal_cell_start}';
 		$template.='{cal_cell_content}<a href="{content}">{day}</a>{/cal_cell_content}';
 		$template.='{cal_cell_content_today}<div class="highlight"><a href="{content}">{day}</a></div>{/cal_cell_content_today}';
 		$template.='{cal_cell_no_content}{day}{/cal_cell_no_content}';
@@ -88,7 +95,7 @@ class Timesheet extends CI_Controller {
                'start_day'    => 'monday',
                'month_type'   => 'short',
                'day_type'     => 'short',
-			   'show_next_prev'=>TRUE,			   
+			   'show_next_prev'=>TRUE,
 			   'template'	  =>  $template
              );
 		$this->load->library('calendar',$prefs);
@@ -115,7 +122,7 @@ class Timesheet extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         if ($this->input->post('form_action') == 'add') {
-			$this->data['remaining_description_length'] = (200 - strlen($this->input->post('timesheet_description')));
+			//$this->data['remaining_description_length'] = (200 - strlen($this->input->post('timesheet_description')));
             if ($this->validate_form_data('add') == true) {                
 				$selected_date_arr = explode(',', $this->input->post('selected_date'));
 				//print_r($selected_date_arr); die();

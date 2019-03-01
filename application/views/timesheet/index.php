@@ -26,7 +26,7 @@
 			<?php
 			// Show server side flash messages
 			if (isset($alert_message)) {
-				$html_alert_ui = '';                
+				$html_alert_ui = '';
 				$html_alert_ui.='<div class="mt-2 mb-2 auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
 				echo $html_alert_ui;
 			}
@@ -36,20 +36,13 @@
 			<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form form-timesheet','name' => '','id' => 'ci-form-timesheet',)); ?>
 			<?php echo form_hidden('form_action', 'add'); ?>		  
 			<?php echo form_hidden('today_date', date('d')); ?>		  
-			<?php echo form_hidden('selected_date',set_value('selected_date')); ?>	
-
-			<small id="timesheetHelp" class="form-text text-muted bg-light p-1">
-				<ul>
-					<li>You can fill/edit/delete timesheet up to current date only.</li>
-					<li>To select/unselect multimple dates by clicking the calendar.</li>
-					<li>You can log multiple entries for any day of current month if you are working on multiple projects.</li>					
-					<li>If you did't find a relevant project, activity please contact to your HR/Admin.</li>
-				</ul>							 
-			</small>
-			
+			<?php echo form_hidden('current_month', date('m')); ?>		  
+			<?php echo form_hidden('month_url', $this->uri->segment(4) ? $this->uri->segment(4) : date('m')); ?>		  
+			<?php echo form_hidden('selected_date',set_value('selected_date')); ?>
 			<div class="form-row">
 				<div class="col-md-3">	
-					<label>Select Days <span class="required">*</span></label>	
+					<label>Select Date(s) <span class="required">*</span> </label>	
+					<a class="small" href="#" data-toggle="modal" data-target="#timesheetCalModal">Need help?</a>
 					<?php echo $cal; ?>					
 					<div class="small">
 						<div class="d-inline-block"><span class="i-today pr-2 pl-2 m-1 text-white"></span>Today</div>
@@ -60,23 +53,16 @@
 					</div>
 					<?php echo form_error('selected_date'); ?>
 					<div class="mt-2"><a id="clear_selected_days" class="btn btn-outline-secondary btn-sm" href="#">Clear all selected days</a></div>
-					<div class="mt-3 d-none">
+					<!-- <div class="mt-3 d-none">
 						<h6>Timesheet Statistics</h6>
 						<div class="">Tasks logged for: <span id="total_days">0.0</span> days</div>
-						<div class="d-none">Total hours logged: <span id="total_hrs">0.0</span> hrs</div>
-						<div class="d-none">Avg. hours worked: <span class="" id="average_worked_hrs">0.0</span> hrs/day</div>
-					</div>		
+						<div class="">Total hours logged: <span id="total_hrs">0.0</span> hrs</div>
+						<div class="">Avg. hours worked: <span class="" id="average_worked_hrs">0.0</span> hrs/day</div>
+					</div>		 -->
 					<a class="text-centre d-none" href="#"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download this month's timesheet</a>
 				</div><!--/.col-md-3-->
 
 				<div class="col-md-8 offset-md-1">
-					<div class="form-group d-none">
-						<label for="selected_days" class="">Select Day(s) <span class="required">*</span>
-						<span class="text-muted font-weight-normal"> You can select multiple dates from the calendar</span></label>				
-						<div id="display_selected_date">You have not selected any day</div>
-						<?php echo form_error('selected_date'); ?>
-					</div>
-						
 					<div class="form-row">
 						<div class="form-group col-md-4">
 						<label for="project_id" class="bmd-label-floating">Project <span class="required">*</span></label>
@@ -130,7 +116,7 @@
 					));
 					?>
 					<?php echo form_error('timesheet_description'); ?>
-					<div class="small text-right"><span class="" id="remaining_description_length"><?php echo isset($remaining_description_length) ? $remaining_description_length : '200'; ?></span> characters remaining.</div>
+					<!-- <div class="small text-right"><span class="" id="remaining_description_length"><?php echo isset($remaining_description_length) ? $remaining_description_length : '200'; ?></span> characters remaining.</div> -->
 					</div>
 					
 					<button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Submit</button>
@@ -165,4 +151,31 @@
 		
 		</div><!--/.tab-content #nav-tabContent-->
 	</div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="timesheetCalModal" tabindex="-1" role="dialog" aria-labelledby="timesheetCalModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="timesheetCalModalLabel">Instructions for Timesheet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+				<ul>
+					<li>You need to log timesheet of current month on daily basis.</li>
+					<li>Provision for logging timesheet of current month will be disabled by 3rd day of next month.</li>
+					<li>To select/unselect multimple dates click on the the calendar days.</li>
+					<li>You can add multiple tasks for a particular day, if you are working on multiple projects.</li>
+					<li>If you did't find a relevant project, activity please contact to your HR/Admin.</li>
+				</ul>
+            </div>
+            <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>

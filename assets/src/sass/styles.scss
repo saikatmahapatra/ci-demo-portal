@@ -207,8 +207,7 @@ a[data-link-type="user-profile-card"] {
         border: 1px solid $calendar-grid-border;
         vertical-align: center !important;
     }
-    .allowed_m td.day,
-    .allowed_d td.day {
+    td[data-calday='allowed_day'].day {
         cursor: pointer;
         a {
             color: inherit;
@@ -216,6 +215,11 @@ a[data-link-type="user-profile-card"] {
                 text-decoration: none;
             }
         }
+    }
+    td[data-calday='disabled_day'] {
+        opacity: 0.5;
+        cursor: default !important;
+        background: $gray-lightest;
     }
     .highlight {
         background: $today-highlight;
@@ -226,16 +230,16 @@ a[data-link-type="user-profile-card"] {
         color: $white !important;
         text-decoration: none !important;
     }
-    .selected {
+    .day.selected {
         background: $day_selected !important;
     }
-    .holiday {
+    .day.holiday {
         background: $holiday;
     }
-    .leave {
+    .day.leave {
         background: $leave;
     }
-    .filled {
+    .day.filled {
         background: $has-data;
     }
 }
@@ -264,14 +268,6 @@ a[data-link-type="user-profile-card"] {
 
 .i-has-data {
     background-color: $has-data;
-}
-
-.disabled_m,
-.disabled_d,
-{
-    opacity: 0.5;
-    cursor: default !important;
-    background: $gray-lightest;
 }
 
 .ajax-loader-ui {

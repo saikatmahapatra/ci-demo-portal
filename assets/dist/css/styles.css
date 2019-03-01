@@ -9107,19 +9107,22 @@ a[data-link-type="user-profile-card"] {
   vertical-align: center !important;
 }
 
-.ci-calendar .allowed_m td.day,
-.ci-calendar .allowed_d td.day {
+.ci-calendar td[data-calday='allowed_day'].day {
   cursor: pointer;
 }
 
-.ci-calendar .allowed_m td.day a,
-.ci-calendar .allowed_d td.day a {
+.ci-calendar td[data-calday='allowed_day'].day a {
   color: inherit;
 }
 
-.ci-calendar .allowed_m td.day a:hover,
-.ci-calendar .allowed_d td.day a:hover {
+.ci-calendar td[data-calday='allowed_day'].day a:hover {
   text-decoration: none;
+}
+
+.ci-calendar td[data-calday='disabled_day'] {
+  opacity: 0.5;
+  cursor: default !important;
+  background: #f8f8f8;
 }
 
 .ci-calendar .highlight {
@@ -9133,19 +9136,19 @@ a[data-link-type="user-profile-card"] {
   text-decoration: none !important;
 }
 
-.ci-calendar .selected {
+.ci-calendar .day.selected {
   background: #b3cdf8 !important;
 }
 
-.ci-calendar .holiday {
+.ci-calendar .day.holiday {
   background: #f1a0b4;
 }
 
-.ci-calendar .leave {
+.ci-calendar .day.leave {
   background: #feb679;
 }
 
-.ci-calendar .filled {
+.ci-calendar .day.filled {
   background: #a6ffa6;
 }
 
@@ -9169,13 +9172,6 @@ a[data-link-type="user-profile-card"] {
 
 .i-has-data {
   background-color: #a6ffa6;
-}
-
-.disabled_m,
-.disabled_d {
-  opacity: 0.5;
-  cursor: default !important;
-  background: #f8f8f8;
 }
 
 .ajax-loader-ui {

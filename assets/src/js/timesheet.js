@@ -1,4 +1,4 @@
-console.log("Timesheet Loaded...");
+//console.log("Timesheet Loaded...");
 var selectedDate = [];
 var splitted_uri;
 var month = '';
@@ -34,19 +34,32 @@ $(function() {
                 year = arr_month_year[0];
             }
         }
-        console.log(month, year);
+        //console.log(month, year);
         //Load Timesheet Data On Page Load
         get_timesheet_stat();
 
         //Render Data Table
         renderDataTable();
-		
-		// Display remaining characterSet
-		$('#timesheet_description').on('keyup',function(e){
-			var remaining_description_length = (200 - $(this).val().length);
-			$('#remaining_description_length').html(remaining_description_length);
-		});
-		
+
+        // Display remaining characterSet
+        // $('#timesheet_description').on('keyup', function(e) {
+        //     var remaining_description_length = (200 - $(this).val().length);
+        //     $('#remaining_description_length').html(remaining_description_length);
+        // });
+
+        //On cal dom load disable future dates
+        var today_d = $('input[name="today_date"]').val();
+        var current_month = $('input[name="current_month"]').val();
+        var month_url = $('input[name="month_url"]').val();
+        $("#timesheet_calendar td.day").each(function() {
+            var calDay = $(this).text();
+            if (calDay.trim().length > 0) {
+                if ((current_month == month_url) && (parseInt(calDay) > parseInt(today_d))) {
+                    $(this).attr("data-calday", "disabled_day");
+                }
+            }
+        });
+
     }
 
 
@@ -71,8 +84,9 @@ $(function() {
 
 });
 
-$(".allowed_m .day").on("click", function(e) {
-    console.log(e);
+//$(".allowed_m .day").on("click", function(e) {
+$("body").on("click", "td[data-calday='allowed_day']", function(e) {
+    //console.log(e);
     var day = $(this).text();
     if (day.trim().length > 0) {
         if ($(this).hasClass("selected")) {
@@ -125,19 +139,11 @@ function get_timesheet_stat() {
         if (response.data.stat_data.avg_hrs != 'undefined') {
             $('#average_worked_hrs').html(response.data.stat_data.avg_hrs);
         }
-		
-		var today_d = $('input[name="today_date"]').val();
+
+
         $.each(response.data.data_rows, function(i, obj) {
             $(".day").each(function() {
                 var calDay = $(this).text();
-				//console.log(calDay);
-				if(calDay.trim().length > 0){
-					if(parseInt(calDay) > parseInt(today_d)){
-						$(this).addClass("disabled_d");
-					}
-					
-				}
-                //console.log(calDay);
                 obj.timesheet_day = Number(obj.timesheet_day).toString();
                 if (calDay == obj.timesheet_day) {
                     $(this).addClass("filled");
