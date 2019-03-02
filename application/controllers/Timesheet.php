@@ -75,7 +75,8 @@ class Timesheet extends CI_Controller {
         
         $day_css = 'disabled_day';
         $prev_month = date('m', strtotime("last month"));
-        if( ($month == date('m') && $year == date('Y')) || ($day <= '03' && $month == $prev_month) ){
+        //if( ($month == date('m') && $year == date('Y')) || ($day <= '03' && $month == $prev_month) ){
+        if( ($month == date('m') && $year == date('Y')) ){
             $day_css = 'allowed_day';
         }
         
@@ -155,7 +156,7 @@ class Timesheet extends CI_Controller {
         $this->form_validation->set_rules('selected_date', 'calendar date selection', 'required|callback_check_selected_days');
         $this->form_validation->set_rules('project_id', 'project selection', 'required');
         $this->form_validation->set_rules('activity_id', 'activity selection', 'required');
-        $this->form_validation->set_rules('timesheet_hours', 'time spent', 'required|numeric|less_than[18]|greater_than[0]');
+        $this->form_validation->set_rules('timesheet_hours', 'efforts', 'required|numeric|less_than[18]|greater_than[0]');
         $this->form_validation->set_rules('timesheet_description', 'description', 'required|max_length[200]');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
@@ -168,9 +169,11 @@ class Timesheet extends CI_Controller {
 	function check_selected_days(){
 		$not_allowed_days = array();
         $selected_days_array = explode(',',$this->input->post('selected_date'));
-		$today = date('d');
+        $today = date('d');
+        $current_month = $this->input->post('current_month');
+        $month_url = $this->input->post('month_url');
 		foreach($selected_days_array as $key=>$selected_day){
-			if($selected_day > $today){
+			if(($current_month == $month_url) && ($selected_day > $today)){
 				$not_allowed_days[] = $this->common_lib->display_ordinal_suffix($selected_day);
 			}
 		}
