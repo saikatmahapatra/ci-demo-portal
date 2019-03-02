@@ -51,7 +51,7 @@ class Home_model extends CI_Model {
     }
 
     function get_user_profile_completion_status($user_id){
-        $message = array();
+        return $message = array();
         $strength = 0;
 
         // address
