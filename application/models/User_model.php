@@ -215,7 +215,7 @@ class User_model extends CI_Model {
 
     function check_user_activation_key($user_id, $activation_key) {
         $this->db->select('id');
-        $this->db->where(array('id' => $user_id, 'user_activation_key' => $activation_key));
+        $this->db->where(array('user_email' => $user_id, 'user_account_active' => 'N', 'user_activation_key' => $activation_key));
         $qury = $this->db->get('users');
         if ($qury->num_rows() > 0) {
             return true;

@@ -355,7 +355,8 @@ class User extends CI_Controller {
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         if ($this->input->post('form_action') == 'create_account') {
             if ($this->validate_create_account_form_data() == true) {
-                $activation_token = md5(time('Y-m-d h:i:s'));
+                //$activation_token = md5(time('Y-m-d h:i:s'));
+                $activation_token = $this->common_lib->generate_rand_id(6, FALSE);
                 $dob = $this->input->post('dob_year') . '-' . $this->input->post('dob_month') . '-' . $this->input->post('dob_day');
 				$user_emp_id = $this->user_model->get_new_emp_id();
 				$password = $this->common_lib->generate_rand_id();
@@ -374,7 +375,7 @@ class User extends CI_Controller {
                     'user_phone1' => $this->input->post('user_phone1'),
                     'user_phone2' => $this->input->post('user_phone2'),
                     'user_password' => md5($password),
-                    'user_activation_key' => $activation_token,
+                    'user_activation_key' => md5($activation_token),
                     'user_registration_ip' => $_SERVER['REMOTE_ADDR'],
                     'user_account_active' => 'N',
                     'user_registration_date' => date('Y-m-d H:i:s'),
@@ -388,10 +389,10 @@ class User extends CI_Controller {
                     $message_html.= $this->config->item('app_email_header');
                     $message_html.='<div id="message_body" style="padding-top: 5px; padding-bottom:5px;">';
                     $message_html.='<h4>Hi '. ucwords(strtolower($this->input->post('user_firstname'))).' '.ucwords(strtolower($this->input->post('user_lasttname'))) .' ,</h4>';
-                    $message_html.='<p>Welcome to United Exploration India Pvt Ltd Employee Portal. Your have been successfully registered. Please click on the below link to activate your account. Once your account is activated you will be able to login.</p>';
-                    $message_html.='<p>'.anchor(base_url($this->router->class.'/activate_account/'.$insert_id.'/'.$activation_token)).'</p>';
+                    $message_html.='<p>Welcome to United Exploration India Pvt. Ltd. employee portal. Please activate your account to login.</p>';
+                    //$message_html.='<p>'.anchor(base_url($this->router->class.'/activate_account/'.$insert_id.'/'.$activation_token)).'</p>';
                     $message_html.='<p>Employee Portal Details:</p>';
-                    $message_html.='<p>Employee Portal URL : '.anchor(base_url()).' <br> Username/Email : '.strtolower($this->input->post('user_email')).'<br> Password : '. $password .'</p>';
+                    $message_html.='<p>Employee Portal URL : '.anchor(base_url()).' <br> Username/Email : '.strtolower($this->input->post('user_email')).'<br> Login Password : '. $password .' <br> Activation OTP: '.$activation_token.'</p>';
                     $message_html.='</div><!--/#message_body-->';
                     $message_html.= $this->config->item('app_email_footer');
                     $message_html.='</div><!--/#message_wrapper-->';
@@ -404,7 +405,7 @@ class User extends CI_Controller {
                     $this->email->message($message_html);
                     $this->email->send();
                     //echo $this->email->print_debugger();
-                    $this->session->set_flashdata('flash_message', 'Employee account has been created successfully. System generated Emp ID <span class="font-weight-bold h5">'.$user_emp_id.'</span>.<br> Account activation link has been sent to <span class="font-weight-bold">'.$postdata['user_email'].'</span><br> Employee need to click on that link to activate employee portal account before first time login.');
+                    $this->session->set_flashdata('flash_message', 'You have added employee successfully. System generated Emp ID <span class="font-weight-bold h5">'.$user_emp_id.'</span>.<br> Account activation OTP has been sent to <span class="font-weight-bold">'.$postdata['user_email'].'</span><br> Employee need to  activate employee portal account before first time login.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     redirect(current_url());
                 }
@@ -551,30 +552,54 @@ class User extends CI_Controller {
     }
 
     function activate_account() {
-		$user_id = $this->uri->segment(3);
-		$activation_key = $this->uri->segment(4);
-        $res = $this->user_model->check_user_activation_key($user_id, $activation_key);
-        if ($res) {
-            $postdata = array('user_account_active' => 'Y');
-            $where = array('id' => $user_id, 'user_activation_key' => $activation_key);
-            $act_res = $this->user_model->update($postdata, $where);
-            if ($act_res) {
-                $this->session->set_flashdata('flash_message', 'Your account has been activated successfully');
-				$this->session->set_flashdata('flash_message_css', 'alert-success');
-                redirect($this->router->directory.$this->router->class.'/login');
-            } else {
-                $this->session->set_flashdata('flash_message', 'Sorry ! Unable to activate your account');
-				$this->session->set_flashdata('flash_message_css', 'alert-danger');
-                redirect($this->router->directory.$this->router->class.'/login');
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+
+        if ($this->input->post('form_action') == 'activate_account') {
+            if ($this->validate_activate_account_form() == true) {
+                $user_id = $this->input->post('user_email');
+                $activation_key = $this->input->post('activation_otp');
+                $found = $this->user_model->check_user_activation_key($user_id, $activation_key);
+                if ($found) {
+                    $postdata = array(
+                        'user_account_active' => 'Y',
+                        'user_activation_key' => NULL
+                    );
+                    $where = array('user_email' => $user_id, 'user_activation_key' => $activation_key);
+                    $act_res = $this->user_model->update($postdata, $where);
+                    if ($act_res) {
+                        $this->session->set_flashdata('flash_message', 'Account has been activated successfully.');
+                        $this->session->set_flashdata('flash_message_css', 'alert-success');
+                        redirect($this->router->directory.$this->router->class.'/login');
+                    } else {
+                        $this->session->set_flashdata('flash_message', 'Sorry! We\'re unable to process your request. Please try again.');
+                        $this->session->set_flashdata('flash_message_css', 'alert-danger');
+                        redirect(current_url());
+                    }
+                }else{
+                    $this->session->set_flashdata('flash_message', 'Sorry! We\'re unable validate & process your request.');
+                    $this->session->set_flashdata('flash_message_css', 'alert-danger');
+                    redirect(current_url());
+                }
             }
+        }
+        $this->data['page_heading'] = 'Activate Account';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/activate_account', $this->data, true);
+        $this->load->view('_layouts/layout_login', $this->data);
+    }
+
+    function validate_activate_account_form() {
+        $this->form_validation->set_rules('user_email', 'email address', 'required|valid_email|callback_is_email_valid');
+        $this->form_validation->set_rules('activation_otp', 'activation otp', 'required');
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
         } else {
-            $this->session->set_flashdata('flash_message', 'No activation token match found for you');
-			$this->session->set_flashdata('flash_message_css', 'alert-danger');
-            redirect($this->router->directory.$this->router->class.'/login');
+            return false;
         }
     }
 
-    function forgot_password() {		
+    function forgot_password() {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         $this->session->unset_userdata('sess_forgot_password_username');
@@ -700,7 +725,7 @@ class User extends CI_Controller {
             }else{
 				$this->form_validation->set_message('is_email_valid', $user_email . ' is not a registered email address.');
 				return false;
-			}            
+			}
         }
     }
 
