@@ -164,7 +164,7 @@
             <div class="modal-body">
 				<ul>
 					<li>All employees need to log timesheet for current month on daily basis with proper working efforts and information.</li>
-					<li>Employees will not be able to log time shhet for previous or next months.</li>
+					<li>Employees will not be able to log time sheet for previous or next months.</li>
 					<li>To select/unselect multimple dates click on the the calendar days.</li>
 					<li>Employees can add multiple tasks for a particular day, if you are working on multiple projects.</li>
 					<li>If you did't find a relevant project, activity please contact to your HR/Admin.</li>
