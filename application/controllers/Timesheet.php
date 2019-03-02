@@ -124,7 +124,7 @@ class Timesheet extends CI_Controller {
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         if ($this->input->post('form_action') == 'add') {
 			//$this->data['remaining_description_length'] = (200 - strlen($this->input->post('timesheet_description')));
-            if ($this->validate_form_data('add') == true) {                
+            if ($this->validate_form_data('add') == true) {
 				$selected_date_arr = explode(',', $this->input->post('selected_date'));
 				//print_r($selected_date_arr); die();
 				$batch_post_data = array();
@@ -153,7 +153,9 @@ class Timesheet extends CI_Controller {
     }
 	
 	function validate_form_data($action = NULL) {
-        $this->form_validation->set_rules('selected_date', 'calendar date selection', 'required|callback_check_selected_days');
+        if($action != 'edit'){
+            $this->form_validation->set_rules('selected_date', 'calendar date selection', 'required|callback_check_selected_days');
+        }
         $this->form_validation->set_rules('project_id', 'project selection', 'required');
         $this->form_validation->set_rules('activity_id', 'activity selection', 'required');
         $this->form_validation->set_rules('timesheet_hours', 'efforts', 'required|numeric|less_than[18]|greater_than[0]');
@@ -291,7 +293,7 @@ class Timesheet extends CI_Controller {
         echo json_encode($output);
     }
     
-    function edit() {        					
+    function edit() {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         
@@ -302,11 +304,12 @@ class Timesheet extends CI_Controller {
 
         if ($this->input->post('form_action') == 'update') {
             if ($this->validate_form_data('edit') == true) {
-                $postdata = array(                    
+                $postdata = array(
                     'project_id' => $this->input->post('project_id'),
                     'activity_id' => $this->input->post('activity_id'),
                     'timesheet_hours' => $this->input->post('timesheet_hours'),
-                    'timesheet_description' => $this->input->post('timesheet_description')
+                    'timesheet_description' => $this->input->post('timesheet_description'),
+                    'timesheet_updated_on' => date('Y-m-d H:i:s')
                 );
                 $where_array = array('id' => $this->input->post('id'));
                 $res = $this->timesheet_model->update($postdata, $where_array);
@@ -435,9 +438,10 @@ class Timesheet extends CI_Controller {
             'C' => 'Employee',
             'D' => 'Project',
             'E' => 'Activity',
-            'F' => 'Hours',
-            'G' => 'Description',
-            'H' => 'Created On'
+            'F' => 'Efforts(Hours)',
+            'G' => 'Task Description',
+            'H' => 'Added On',
+            'I' => 'Updated On',
         );
         $this->data['xls_col'] = $excel_heading;
         //load our new PHPExcel library
@@ -479,8 +483,9 @@ class Timesheet extends CI_Controller {
             $sheet->setCellValue('D' . $excel_row, $row['project_number'].'-'.$row['project_name']);
             $sheet->setCellValue('E' . $excel_row, $row['task_activity_name']);
             $sheet->setCellValue('F' . $excel_row, $row['timesheet_hours']);
-            $sheet->setCellValue('G' . $excel_row, $row['timesheet_description']);            
-            $sheet->setCellValue('H' . $excel_row, $row['timesheet_created_on']);            
+            $sheet->setCellValue('G' . $excel_row, $row['timesheet_description']);
+            $sheet->setCellValue('H' . $excel_row, $row['timesheet_created_on']);
+            $sheet->setCellValue('I' . $excel_row, $row['timesheet_updated_on']);
             $excel_row++;
             $serial_no++;
         }

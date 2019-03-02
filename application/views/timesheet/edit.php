@@ -46,7 +46,7 @@ $row = $rows[0];
 			</div>
 				
 			<div class="form-group col-md-4">
-				<label for="timesheet_hours" class="bmd-label-floating">Time Spent (In Hours)<span class="required">*</span></label>							
+				<label for="timesheet_hours" class="bmd-label-floating">Working Efforts (In Hours)<span class="required">*</span></label>							
 				<?php
 				echo form_input(array(
 					'name' => 'timesheet_hours',
@@ -54,7 +54,7 @@ $row = $rows[0];
 					'id' => 'timesheet_hours',
 					'class' => 'form-control',
 					'maxlength' => '5',
-					'placeholder' => '',
+					'placeholder' => 'Example: 2.5',
 				));
 				?>
 				<?php echo form_error('timesheet_hours'); ?>
@@ -63,7 +63,7 @@ $row = $rows[0];
 			
 		
 		<div class="form-group">
-		<label for="timesheet_description" class="bmd-label-floating">Task / Activity Description <span class="required">*</span></label>
+		<label for="timesheet_description" class="bmd-label-floating">Task Description <span class="required">*</span></label>
 		<?php
 		echo form_textarea(array(
 			'name' => 'timesheet_description',
