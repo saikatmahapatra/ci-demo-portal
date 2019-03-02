@@ -2,6 +2,7 @@
 <div class="row heading-container">
     <div class="col-12">
         <h1 class="h4 mb-3 font-weight-normal"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h1>
+		<p><i class="fa fa-question-circle-o" aria-hidden="true"></i> Looking for help or information? Click <a class="" href="#" data-toggle="modal" id="view_leave_balance_update_details" data-target="#leaveBalanceModal">here to read.</a></p>
     </div>
 </div><!--/.heading-container-->
 
@@ -10,7 +11,7 @@
 	<?php
 	// Show server side flash messages
 	if (isset($alert_message)) {
-		$html_alert_ui = '';                
+		$html_alert_ui = '';
 		$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
 		echo $html_alert_ui;
 	}
@@ -21,9 +22,8 @@
 <div class="row">
 	<div class="col-md-12">
 		
-		<small class="form-text text-muted bg-light py-1 mb-3">
+		<div class="form-text text-muted bg-light py-1 mb-3">
 			<ul>
-				<div class="font-weight-bold mb-2">Instructions:</div>
 			<?php
 				foreach($system_msg as $key=>$val){
 					?>
@@ -31,19 +31,16 @@
 					<?php
 				}
 			?>
-				<li>PL, CL balance will be credited automatically as per credit cycle.</li>
-				<li>Self cancellation is allowed once leave request is in applied/processing status. For approved leave you can request leave cancellation.</li>
-				<li>Once leave cancellaion approved by approver, debited leave balance will be credit back to the leave balance.</li>
-				<li>For leave balance debit, credit related issues or information please contact to your HR.</li>
+				
 				<li class="text-info font-weight-bold">
 					<span class="">Your Leave Balance : </span>
 					<span class="mx-3">Casual Leave (CL) : <?php echo isset($leave_balance[0]['cl']) ? $leave_balance[0]['cl'] : '0.0'; ?></span>
 					<span class="ml-3">Privileged Leave (PL) : <?php echo isset($leave_balance[0]['pl']) ? $leave_balance[0]['pl'] : '0.0'; ?></span>
 					<!-- <span class="ml-3">Optional Leave (OL) : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></span> -->
-					<span class="ml-3"><a class="" href="#" id="view_leave_balance_update_details" data-toggle="modal" data-target="#leaveBalanceModal">Click here to view balance details</a></span>
+					<!-- <span class="ml-3"><a class="" href="#" id="view_leave_balance_update_details" data-toggle="modal" data-target="#leaveBalanceModal">Click here to view balance details</a></span> -->
 				</li>
 			</ul>
-		</small>
+		</div>
 		
 		<!-- <a class="" href="#" id="view_leave_balance_update_details" data-toggle="modal" data-target="#leaveBalanceModal">Click here to view balance details</a>
 		<div class="row mb-3">
@@ -107,18 +104,24 @@
 
 
 
-	<!-- Modal -->
+<!-- Modal -->
 <div class="modal fade" id="leaveBalanceModal" tabindex="-1" role="dialog" aria-labelledby="leaveBalanceModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="leaveBalanceModalLabel">Leave Balance Details</h5>
+                <h5 class="modal-title" id="leaveBalanceModalLabel">Apply Leave - Help & Information</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
 				<div class="table-responsive">
+					<ul>
+					<li>PL, CL balance will be credited automatically as per credit cycle.</li>
+					<li>Self cancellation is allowed once leave request is in applied/processing status. For approved leave you can request leave cancellation.</li>
+					<li>Once leave cancellaion approved by approver, debited leave balance will be credit back to the leave balance.</li>
+					<li>For leave balance debit, credit related issues or information please contact to your HR.</li>
+					</ul>
 					<table class="table table-sm ci-table table-bordered text-center">
 						<thead class="thead-light">
 						<tr>
