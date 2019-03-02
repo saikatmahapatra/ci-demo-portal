@@ -250,6 +250,7 @@ class Timesheet_model extends CI_Model {
         t1.timesheet_hours,
         t1.timesheet_description,
         t1.timesheet_created_on,
+        t1.timesheet_updated_on,
 		t2.project_number,
 		t2.project_name,
 		t3.task_activity_name,

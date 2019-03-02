@@ -520,8 +520,8 @@ class Timesheet extends CI_Controller {
             )
         );
         $sheet->getDefaultStyle()->applyFromArray($styleArray);
-        $sheet->getStyle('A1:H1')->applyFromArray($style_header);
-        $sheet->getStyle('A1:H1')->getFont()->setSize(9);
+        $sheet->getStyle('A1:I1')->applyFromArray($style_header);
+        $sheet->getStyle('A1:I1')->getFont()->setSize(9);
         $sheet->getDefaultStyle()->getFont()->setSize(10);
         $sheet->getDefaultColumnDimension()->setWidth('17');
 
