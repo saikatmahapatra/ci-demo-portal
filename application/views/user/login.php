@@ -43,7 +43,7 @@
 			<div class="mt-3">
 				<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/forgot_password');?>">Forgot Password?</a>
 				<br>
-				<a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/activate_account');?>">Activate Registered Account</a>
+				<!-- <a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/activate_account');?>">Activate Registered Account</a> -->
 			</div>
 				
 	</div>

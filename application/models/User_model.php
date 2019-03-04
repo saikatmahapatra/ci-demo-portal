@@ -213,9 +213,18 @@ class User_model extends CI_Model {
         }
     }
 
-    function check_user_activation_key($user_id, $activation_key) {
+    function check_user_activation_key($user_email = NULL, $user_id = NULL, $activation_key) {
         $this->db->select('id');
-        $this->db->where(array('user_email' => $user_id, 'user_status' => 'N', 'user_activation_key' => $activation_key));
+        if(isset($user_email)){
+            $this->db->where('user_email', $user_email);
+        }
+        if(isset($user_id)){
+            $this->db->where('id', $user_id);
+        }
+        if(isset($activation_key)){
+            $this->db->where('user_activation_key', $activation_key);
+        }
+        $this->db->where('user_status','N');
         $qury = $this->db->get('users');
         if ($qury->num_rows() > 0) {
             return true;
