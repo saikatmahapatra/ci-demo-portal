@@ -3450,3 +3450,6 @@ ALTER TABLE `user_leaves`  ADD `applied_for_days_count` FLOAT(10,2) NULL  AFTER 
 
 
 ALTER TABLE `users`  ADD `user_type` ENUM('S','U') NULL DEFAULT 'U' COMMENT 'S=System Defined, U=User Defined Real User'  AFTER `user_role`;
+
+---3/3/2019
+ALTER TABLE `users` CHANGE `user_account_active` `user_status` ENUM('Y','N','A') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT 'N' COMMENT 'Y=Active, N=Inactive, A=Archived';
