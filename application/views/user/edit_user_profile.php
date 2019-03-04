@@ -51,22 +51,8 @@
 					echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
 				?>
 			</div>
-			<?php 
-				$account_status_indicator = 'text-secondary';            
-				if($row['user_archived'] == 'Y'){
-					$account_status_indicator = 'text-danger';
-					echo '<span class="badge badge-danger">User Archived</span>';
-				}else{
-					if($row['user_account_active'] == 'Y'){
-						$account_status_indicator = 'text-success';
-						echo '<span class="badge badge-success">Active Account</span>';
-					}
-					if($row['user_account_active'] == 'N'){
-						$account_status_indicator = 'text-warning';
-						echo '<span class="badge badge-warning">Inactive Account</span>';
-					}
-				}				
-			?>
+			<span class="h6 <?php echo $user_status_arr[$row['user_status']]['css']; ?>"><?php echo $user_status_arr[$row['user_status']]['text']; ?></span>
+
 			<!--<div class="small"><?php //echo isset($row['role_name']) ? $row['role_name'] : ''; ?></div>-->
 			<div class="small"><?php echo isset($row['user_emp_id']) ? 'Emp # '.$row['user_emp_id'] : ''; ?></div>
 			<div class="small"><?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
@@ -236,29 +222,29 @@
 			  	</div>
 				<?php if($row['id'] != $this->common_lib->get_sess_user('id')){?>
 				<div class="form-group col-md-4">
-					<label for="user_account_active" class="">Portal Account Status <span class="required">*</span></label>
+					<label for="user_status" class="">Portal Account Status <span class="required">*</span></label>
 					<div class="">
 						<div class="custom-control custom-radio custom-control-inline">
 							<?php
-								$radio_is_checked = isset($_POST['user_account_active']) ? $_POST['user_account_active'] == 'Y' : ($row['user_account_active'] == 'Y');
-								echo form_radio(array('name' => 'user_account_active','value' => 'Y','id' => 'Y','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('user_account_active', 'Y'));
+								$radio_is_checked = isset($_POST['user_status']) ? $_POST['user_status'] == 'Y' : ($row['user_status'] == 'Y');
+								echo form_radio(array('name' => 'user_status','value' => 'Y','id' => 'Y','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('user_status', 'Y'));
 							?>
 							<label class="custom-control-label" for="Y">Active</span></label>
 						</div>
 						
 						<div class="custom-control custom-radio custom-control-inline">
 							<?php
-								$radio_is_checked = isset($_POST['user_account_active']) ? $_POST['user_account_active'] == 'N' : ($row['user_account_active'] == 'N');
-								echo form_radio(array('name' => 'user_account_active', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_account_active', 'N'));
+								$radio_is_checked = isset($_POST['user_status']) ? $_POST['user_status'] == 'N' : ($row['user_status'] == 'N');
+								echo form_radio(array('name' => 'user_status', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_status', 'N'));
 							?>
 							<label class="custom-control-label" for="N">Inactive</span></label>
 						</div>								
 					</div>
 					<small id="emailHelp" class="form-text text-muted">Inactive users will not be able to login.</small>
-					<?php echo form_error('user_account_active'); ?>
+					<?php echo form_error('user_status'); ?>
 				</div>
 				<?php } else{
-					echo form_hidden('user_account_active', $row['user_account_active']);
+					echo form_hidden('user_status', $row['user_status']);
 				} ?>
 
 			</div>

@@ -62,7 +62,7 @@
 						?>
 						<?php 
 						$disabled_css = '';
-						if( (isset($row['user_account_active']) && $row['user_account_active'] == 'N') || (isset($row['user_archived']) && $row['user_archived'] == 'Y') ){
+						if( isset($row['user_status']) && ($row['user_status'] == 'A' || $row['user_status'] == 'N') ){
 							$disabled_css = 'disabled disabled-user';
 						}
 						?>

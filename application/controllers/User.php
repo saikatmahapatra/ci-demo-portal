@@ -81,6 +81,12 @@ class User extends CI_Controller {
             'Y' =>'Verified',
             'R' => 'Document Rejected'
         );
+
+        $this->data['user_status_arr'] = array(
+            'N'=>array('text'=>'Inactive', 'css'=>'text-warning'),
+            'A'=>array('text'=>'Archived', 'css'=>'text-danger'),
+            'Y'=>array('text'=>'Active', 'css'=>'text-success')
+        );
     }
 
     function index() {
@@ -175,16 +181,15 @@ class User extends CI_Controller {
             $no++;
             $row = array();
             $html_name='';
-            $status_indicator = 'text-secondary';            
-            if($result['user_archived'] == 'Y'){
+            $status_indicator = 'text-secondary';
+            if($result['user_status'] == 'A'){
                 $status_indicator = 'text-danger';
-            }else{
-                if($result['user_account_active'] == 'Y'){
-                    $status_indicator = 'text-success';
-                }
-                if($result['user_account_active'] == 'N'){
-                    $status_indicator = 'text-warning';
-                }
+            }
+            if($result['user_status'] == 'Y'){
+                $status_indicator = 'text-success';
+            }
+            if($result['user_status'] == 'N'){
+                $status_indicator = 'text-warning';
             }
             $html_name.= $result['user_firstname'] . '&nbsp;' . $result['user_lastname'];
             //$html_name.= '<div> DOB : '.$this->common_lib->display_date($result['user_dob']).'</div>';
@@ -192,7 +197,7 @@ class User extends CI_Controller {
             //$html_name.= '<div> Blood Gr : '.$result['user_blood_group'].'</div>';
             //$html_name.= '<div class="small"> Reg. On : '.$this->common_lib->display_date($result['user_registration_date'], true).'</div>';
             //$html_name.= '<div class="small"> Last Login : '.($result['user_login_date_time'] != NULL ? $this->common_lib->display_date($result['user_login_date_time'], true) : '').'</div>';
-            //$html_name.= ($result['user_account_active'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active Account</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive Account</span>';
+            //$html_name.= ($result['user_status'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active Account</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive Account</span>';
             $row[] = $html_name;           
             $row[] = $result['user_emp_id'];           
             $row[] = $result['designation_name'];           
@@ -215,16 +220,10 @@ class User extends CI_Controller {
             $row[] = $result['user_phone1'];
             $row[] = '<span class=""><i class="fa fa-circle '.$status_indicator.'" aria-hidden="true"></i></span>';
 
-            //$row[] = ($result['user_account_active'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive</span>';
+            //$row[] = ($result['user_status'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive</span>';
             //add html for action
             $action_html = '';
 
-
-            $acc_status_icon = ($result['user_account_active'] == 'Y') ? '' : '';
-            $acc_status_text = ($result['user_account_active'] == 'Y') ? 'Deactivate' : 'Activate';
-            $acc_status_class = ($result['user_account_active'] == 'Y') ? 'btn btn-sm btn-outline-danger' : 'btn btn-sm btn-outline-success';
-            $acc_status_set = ($result['user_account_active'] == 'Y') ? 'N' : 'Y';
-            
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-info" aria-hidden="true"></i> Details', array(
                 'class' => 'btn btn-sm btn-outline-secondary mr-1',
                 'data-toggle' => 'tooltip',
@@ -232,7 +231,8 @@ class User extends CI_Controller {
                 'title' => 'View Profile'
                 
             ));
-            if($result['user_archived'] != 'Y'){
+            
+            if($result['user_status'] != 'A'){
                 $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
                     'class' => 'btn btn-sm btn-outline-secondary mr-1',
                     'data-toggle' => 'tooltip',
@@ -240,25 +240,6 @@ class User extends CI_Controller {
                     'title' => 'Edit Profile'
                 ));
             }
-            
-			/*$action_html.= anchor(base_url($this->router->directory.$this->router->class.'/manage'), $acc_status_text, array(
-                'class' => 'change_account_status ' . $acc_status_class,
-                'data-toggle' => 'tooltip',
-                'data-original-title' => $acc_status_text,
-                'title' => $acc_status_text,
-                'data-status' => $acc_status_set,
-                'data-id' => $result['id'],
-            ));
-            /* $action_html.='&nbsp;';
-              $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), 'Delete', array(
-              'class' => 'btn btn-sm btn-danger btn-delete',
-			  'data-confirmation'=>true,
-			  'data-confirmation-message'=>'Are you sure, you want to delete this?',
-              'data-toggle' => 'tooltip',
-              'data-original-title' => 'Delete',
-              'title' => 'Delete',
-              )); */
-
             $row[] = $action_html;
             $data[] = $row;
         }
@@ -377,7 +358,7 @@ class User extends CI_Controller {
                     'user_password' => md5($password),
                     'user_activation_key' => md5($activation_token),
                     'user_registration_ip' => $_SERVER['REMOTE_ADDR'],
-                    'user_account_active' => 'N',
+                    'user_status' => 'N',
                     'user_registration_date' => date('Y-m-d H:i:s'),
                     'user_emp_id' => $user_emp_id
                 );
@@ -464,7 +445,7 @@ class User extends CI_Controller {
                     'user_password' => md5($this->input->post('user_password')),
                     'user_activation_key' => $activation_token,
                     'user_registration_ip' => $_SERVER['REMOTE_ADDR'],
-                    'user_account_active' => 'N',
+                    'user_status' => 'N',
                     'user_registration_date' => date('Y-m-d H:i:s'),
                     'user_emp_id' => $user_emp_id
                 );
@@ -562,7 +543,7 @@ class User extends CI_Controller {
                 $found = $this->user_model->check_user_activation_key($user_id, $activation_key);
                 if ($found) {
                     $postdata = array(
-                        'user_account_active' => 'Y',
+                        'user_status' => 'Y',
                         'user_activation_key' => NULL
                     );
                     $where = array('user_email' => $user_id, 'user_activation_key' => $activation_key);
@@ -910,7 +891,7 @@ class User extends CI_Controller {
             'data' => array(),
         );
         $is_active = $this->input->post('active');
-        $postdata = array('user_account_active' => $is_active);
+        $postdata = array('user_status' => $is_active);
         $where = array('id' => $this->input->post('user_id'));
         $res = $this->user_model->update($postdata, $where);
         if ($res == true) {
@@ -1296,7 +1277,7 @@ class User extends CI_Controller {
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         $rows = $this->user_model->get_rows($user_id);
         $this->data['row'] = $rows['data_rows'];
-        if(isset($this->data['row'][0]) && $this->data['row'][0]['user_archived']=='Y'){
+        if(isset($this->data['row'][0]) && $this->data['row'][0]['user_status']=='A'){
             $this->session->set_flashdata('flash_message', 'Unable to process your request.');
             $this->session->set_flashdata('flash_message_css', 'alert-danger');
             redirect($this->router->directory.$this->router->class.'/manage');
@@ -1320,7 +1301,7 @@ class User extends CI_Controller {
                     //'user_role' => $this->input->post('user_role'),
                     'user_department' => $this->input->post('user_department'),
                     'user_designation' => $this->input->post('user_designation'),
-                    'user_account_active' => $this->input->post('user_account_active')
+                    'user_status' => $this->input->post('user_status')
                 );
                 $where = array('id' => $user_id);
                 $res = $this->user_model->update($postdata, $where);
@@ -1413,7 +1394,7 @@ class User extends CI_Controller {
         //$this->form_validation->set_rules('user_role', 'access group', 'required');
         //$this->form_validation->set_rules('user_designation', 'designation', 'required');
         //$this->form_validation->set_rules('user_department', 'department', 'required');
-        //$this->form_validation->set_rules('user_account_active', 'account status', 'required');
+        //$this->form_validation->set_rules('user_status', 'account status', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -2046,11 +2027,14 @@ class User extends CI_Controller {
         //$sheet->fromArray($data_rows);
         
         // Static Fields
-        $sheet->setCellValue('A1', 'Active Account');
+        $sheet->setCellValue('A1', 'Active');
         $sheet->getStyle('A1')->applyFromArray(array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb' => 'a8ef81'))));
         
-        $sheet->setCellValue('A2', 'Inactive Account');
+        $sheet->setCellValue('A2', 'Inactive');
         $sheet->getStyle('A2')->applyFromArray(array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb' => 'f9eb7f'))));
+
+        $sheet->setCellValue('A3', 'Archived');
+        $sheet->getStyle('A3')->applyFromArray(array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb' => 'f42338'))));
         //End Static Fields
 
         $range = range('A', 'Z');
@@ -2081,14 +2065,18 @@ class User extends CI_Controller {
             $sheet->setCellValue('M' . $excel_row, $this->common_lib->display_date($row['user_doj']));
             $sheet->setCellValue('N' . $excel_row, $this->common_lib->display_date($row['user_dor']));
             
-            $sheet->setCellValue('O' . $excel_row, ($row['user_account_active']=='Y' ? 'Active Account' : 'Inactive Account'));
-            if($row['user_account_active'] == 'N'){
-                $sheet->getStyle('A2')->applyFromArray(array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb' => 'f9eb7f'))));
+            $sheet->setCellValue('O' . $excel_row, $this->data['user_status_arr'][$row['user_status']]['text']);
+            $color = '';
+            if($row['user_status'] == 'N'){
+                //$sheet->getStyle('A2')->applyFromArray(array('fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb' => 'f9eb7f'))));
                 $color = 'f9eb7f'; //warning
             }  
-            if($row['user_account_active'] == 'Y'){
+            if($row['user_status'] == 'Y'){
                 $color = 'a8ef81'; //success
-            }        
+            }
+            if($row['user_status'] == 'A'){
+                $color = 'f42338'; //danger
+            }
             
             if ($color) {
                 $sheet->getStyle('O' . $excel_row)->applyFromArray(array(
@@ -2099,7 +2087,7 @@ class User extends CI_Controller {
                         )
                     ),
                     'fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'color' => array('rgb' => $color))));
-            }                     
+            }
             $excel_row++;
             $serial_no++;
         }
@@ -2194,7 +2182,7 @@ class User extends CI_Controller {
         $rows = $this->user_model->get_rows($user_id);
         $this->data['row'] = $rows['data_rows'];
 
-        if(isset($this->data['row'][0]) && $this->data['row'][0]['user_archived']=='Y'){
+        if(isset($this->data['row'][0]) && $this->data['row'][0]['user_status'] == 'A'){
             $this->session->set_flashdata('flash_message', 'Unable to process your request.');
             $this->session->set_flashdata('flash_message_css', 'alert-danger');
             redirect($this->router->directory.$this->router->class.'/manage');
@@ -2205,7 +2193,7 @@ class User extends CI_Controller {
         if ($this->input->post('form_action') == 'close_account') {
             if ($this->validate_close_account_form_data() == true) {
                 $postdata = array(
-                    'user_archived' => 'Y',
+                    'user_status' => 'A',
                     'user_dor'=> $this->common_lib->convert_to_mysql($this->input->post('user_dor')),
                     'account_closed_by' => $this->sess_user_id,
                     'account_closed_datetime' => date('Y-m-d H:i:s'),

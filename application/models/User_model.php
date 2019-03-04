@@ -48,7 +48,7 @@ class User_model extends CI_Model {
 
     function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE, $userType = NULL) {
         if ($dataTable == TRUE){
-            $this->db->select('t1.id, t1.user_title, t1.user_emp_id, t1.user_firstname, t1.user_lastname, t1.user_email, t1.user_phone1,t1.user_account_active,t4.designation_name,t1.user_archived');
+            $this->db->select('t1.id, t1.user_title, t1.user_emp_id, t1.user_firstname, t1.user_lastname, t1.user_email, t1.user_phone1,t1.user_status,t4.designation_name,t1.user_status');
         }else{
             $this->db->select('t1.*,t2.role_name, t2.role_weight,t3.department_name, t4.designation_name');
         }
@@ -73,7 +73,7 @@ class User_model extends CI_Model {
                 't4.designation_name',
                 't1.user_email',
                 't1.user_phone1',
-                't1.user_account_active',
+                't1.user_status',
                 NULL,
             );
             //set column field database(table column name) for datatable searchable
@@ -139,7 +139,7 @@ class User_model extends CI_Model {
         $loggedin_data = array();
         $auth_result = array('status' => $login_status, 'message' => $message, 'data' => $loggedin_data);
 
-        $this->db->select('t1.id,t1.user_email,t1.user_title, t1.user_firstname,t1.user_lastname,t1.user_role,t1.user_profile_pic,t1.user_account_active,t1.user_archived,t2.role_name,t2.role_weight,t1.user_login_date_time, t1.user_emp_id, t3.designation_name');
+        $this->db->select('t1.id,t1.user_email,t1.user_title, t1.user_firstname,t1.user_lastname,t1.user_role,t1.user_profile_pic,t1.user_status,t1.user_status,t2.role_name,t2.role_weight,t1.user_login_date_time, t1.user_emp_id, t3.designation_name');
 		$this->db->join('roles t2', 't1.user_role=t2.id');
 		$this->db->join('designations t3', 't1.user_designation=t3.id');
         $this->db->where(array(
@@ -155,12 +155,12 @@ class User_model extends CI_Model {
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
             $row = $result[0];            
-            if (isset($row) && ($row['user_account_active'] == 'N')) {
+            if (isset($row) && ($row['user_status'] == 'N')) {
                 $login_status = 'error';
-                $message = 'Your account is not activated yet. Please activate your account to login.';
+                $message = 'Please activate your account to login.';
                 $auth_result = array('status' => $login_status,'message' => $message, 'data' => $loggedin_data);
                 return $auth_result;
-            } else if (isset($row) && ($row['user_archived'] == 'Y')) {
+            } else if (isset($row) && ($row['user_status'] == 'A')) {
                 $login_status = 'error';
                 $message = 'Your account has been deleted permanently.' ;
                 $auth_result = array('status' => $login_status, 'message' => $message, 'data' => $loggedin_data);
@@ -215,7 +215,7 @@ class User_model extends CI_Model {
 
     function check_user_activation_key($user_id, $activation_key) {
         $this->db->select('id');
-        $this->db->where(array('user_email' => $user_id, 'user_account_active' => 'N', 'user_activation_key' => $activation_key));
+        $this->db->where(array('user_email' => $user_id, 'user_status' => 'N', 'user_activation_key' => $activation_key));
         $qury = $this->db->get('users');
         if ($qury->num_rows() > 0) {
             return true;
@@ -474,7 +474,10 @@ class User_model extends CI_Model {
         if($user_type){
             $this->db->where('t1.user_type', $user_type);
         }
+        $this->db->where('t1.user_status !=', 'A');
+
         if($search_keywords){
+            $this->db->group_start();
             $this->db->like('t1.user_firstname', $search_keywords);
             $this->db->or_like('t1.user_lastname', $search_keywords);
             $this->db->or_like('t1.user_emp_id', $search_keywords);
@@ -483,11 +486,12 @@ class User_model extends CI_Model {
             $this->db->or_like('t1.user_phone1', $search_keywords);
             $this->db->or_like('t1.user_phone2', $search_keywords);
             $this->db->or_like('t4.designation_name', $search_keywords);
-        }	
-        
+            $this->db->group_end();
+        }
         $this->db->join('roles t2', 't1.user_role=t2.id', 'left');
 		$this->db->join('departments t3', 't1.user_department=t3.id', 'left');
         $this->db->join('designations t4', 't1.user_designation=t4.id', 'left');
+        
         if ($limit) {
             $this->db->limit($limit, $offset);
         }
@@ -625,7 +629,7 @@ class User_model extends CI_Model {
         if(isset($user_type)){
             $this->db->where(array('t1.user_type' => $user_type));
         }	
-        $this->db->where(array('t1.user_archived' => 'N'));	
+        $this->db->where('t1.user_status !=', 'A');
         $query = $this->db->get('users as t1');
         //echo $this->db->last_query();
         $result = $query->result_array();
@@ -641,8 +645,7 @@ class User_model extends CI_Model {
     function get_user_dropdown() {
         $result = array();
         $this->db->select('id,user_firstname,user_lastname, user_emp_id');		
-        $this->db->where('user_archived','N');
-        $this->db->where('user_account_active','Y');
+        $this->db->where('user_status !=','A');
         $this->db->where('user_type','U');
         $this->db->order_by('user_firstname');		
         $query = $this->db->get('users');
@@ -670,10 +673,10 @@ class User_model extends CI_Model {
         $this->db->where(
 			array(
 			'DAY(`user_dob`)' => $day,
-            'MONTH(`user_dob`)' => $month,
-            'user_archived' => 'N'
+            'MONTH(`user_dob`)' => $month
 			)
-		);
+        );
+        $this->db->where('user_status !=', 'A');
         $query = $this->db->get('users as t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();
@@ -791,12 +794,12 @@ class User_model extends CI_Model {
         $this->db->where(
 			array(
 			'DAY(`user_doj`)' => $day,
-            'MONTH(`user_doj`)' => $month,
-            'user_archived' => 'N'
+            'MONTH(`user_doj`)' => $month
 			)
-		);
+        );
+        $this->db->where('user_status !=', 'A');
         $query = $this->db->get('users as t1');
-        //print_r($this->db->last_query());
+        //print_r($this->db->last_query()); die();
         $num_rows = $query->num_rows();
         $result = $query->result_array();
         $anniversary_years = '';
@@ -821,8 +824,7 @@ class User_model extends CI_Model {
         $this->db->like('t1.user_firstname', $search_string);
         $this->db->or_like('t1.user_lastname', $search_string);
         $this->db->or_like('t1.user_emp_id', $search_string);
-        $this->db->where('t1.user_archived','N');
-        $this->db->where('t1.user_account_active','Y');
+        $this->db->where('t1.user_status !=','A');
         $this->db->where('t1.user_type','U');
         $this->db->join('designations t2', 't1.user_designation=t2.id', 'left');
         $query = $this->db->get('users t1');
