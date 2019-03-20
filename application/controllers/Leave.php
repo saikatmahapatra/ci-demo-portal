@@ -53,6 +53,11 @@ class Leave extends CI_Controller {
             //'OL'=>'Optional Leave',
             //'SP'=>'Special Leave'
         );
+        // Leave Terms
+        $this->data['leave_term_arr'] = array(
+            'F'=>'Full day',
+            'H'=>'Half day'
+        );
 		$this->data['leave_status_arr'] = array(
             'B'=>array('text'=>'Applied', 'css'=>'text-primary'),
             'P'=>array('text'=>'Pending', 'css'=>'text-secondary'),
@@ -146,6 +151,7 @@ class Leave extends CI_Controller {
                     'user_id' => $this->sess_user_id,
                     'leave_created_on' => date('Y-m-d H:i:s'),
                     'leave_status' => 'B',
+                    'leave_term' => $this->input->post('leave_term'),
                     'supervisor_approver_id'=> $supervisor_approver_id,
                     'supervisor_approver_status'=>'P',
                     'director_approver_id'=>$director_approver_id,
@@ -173,6 +179,7 @@ class Leave extends CI_Controller {
                     $applicant_name = $data['user_firstname'].' '.$data['user_lastname'];
                     $leave_status = $this->data['leave_status_arr'][$data['leave_status']]['text'];
                     $leave_type = $this->data['leave_type_arr'][$data['leave_type']];
+                    $leave_term = $this->data['leave_term_arr'][$data['leave_term']];
                     $leave_from_to = $this->common_lib->display_date($data['leave_from_date']).' to '.$this->common_lib->display_date($data['leave_to_date']);
                     $leave_reason = $data['leave_reason'];
                     $applied_for_days_count = $data['applied_for_days_count'];
@@ -194,7 +201,7 @@ class Leave extends CI_Controller {
                     $message_table.='<tr>';
                     $message_table.='<td>Leave Type</td>';
                     $message_table.='<td>:</td>';
-                    $message_table.='<td>'.$leave_type.'</td>';
+                    $message_table.='<td>'.$leave_type.' '.$leave_term.'</td>';
                     $message_table.='</tr>';
                     $message_table.='<tr>';
                     $message_table.='<td>From - To</td>';
@@ -222,13 +229,14 @@ class Leave extends CI_Controller {
                     $from_name = $this->config->item('app_admin_email_name');
                     $leave_status = $this->data['leave_status_arr'][$data['leave_status']]['text'];
                     $leave_type = $this->data['leave_type_arr'][$data['leave_type']];
+                    $leave_term = $this->data['leave_term_arr'][$data['leave_term']];
                     $applicant_name = $data['user_firstname'].' '.$data['user_lastname'];
                     $leave_from_to = $this->common_lib->display_date($data['leave_from_date']).' to '.$this->common_lib->display_date($data['leave_to_date']);
                     $leave_reason = $data['leave_reason'];
                     $applied_for_days_count = $data['applied_for_days_count'];
 
                     $subject= $this->config->item('app_email_subject_prefix').' Leave Notification : By '.$applicant_name.' '.$leave_request_id.' - '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
-                    $message = 'You can manage leave request from '.anchor(base_url('leave/manage'));                    
+                    $message = 'You can manage leave request from '.anchor(base_url('leave/manage'));
                     $this->send_notification($to, $from, $from_name, $subject, $message.$message_table);
 
                     redirect($this->router->directory.$this->router->class.'/details/'.$insert_id.'/'.$leave_request_id);
@@ -752,6 +760,8 @@ class Leave extends CI_Controller {
         $applicant_user_id = $leave_data['user_id'];
         $applied_for_days_count = $leave_data['applied_for_days_count'];
         $leave_type = $leave_data['leave_type'];
+        $leave_term = $leave_data['leave_term'];
+        $leave_term_multiplier = ($leave_term == 'F') ? 1 : 0.5;
         $leave_balance = $this->leave_model->get_leave_balance(NULL, NULL, NULL, FALSE, FALSE, $applicant_user_id);
         $leave_balance_id = $leave_balance[0]['id'];
         $available_leave_balance = $leave_balance[0][strtolower($leave_type)];
@@ -762,13 +772,13 @@ class Leave extends CI_Controller {
         $postdata = array();
         $postdata['approved_for_days_count'] = $applied_for_days_count ;
         if(strtolower($leave_type) == 'cl'){
-            $postdata['debited_cl'] = $applied_for_days_count ;
+            $postdata['debited_cl'] = $applied_for_days_count * $leave_term_multiplier;
         }
         if(strtolower($leave_type) == 'pl'){
-            $postdata['debited_pl'] = $applied_for_days_count ;
+            $postdata['debited_pl'] = $applied_for_days_count * $leave_term_multiplier;
         }
         if(strtolower($leave_type) == 'ol'){
-            $postdata['debited_ol'] = $applied_for_days_count ;
+            $postdata['debited_ol'] = $applied_for_days_count * $leave_term_multiplier;
         }
         $where = array('id'=>$leave_id);
         $this->leave_model->update($postdata, $where, 'user_leaves');
@@ -846,6 +856,7 @@ class Leave extends CI_Controller {
         $applicant_name = $data['user_firstname'].' '.$data['user_lastname'];
         $leave_status = $this->data['leave_status_arr'][$data['leave_status']]['text'];
         $leave_type = $this->data['leave_type_arr'][$data['leave_type']];
+        $leave_term = $this->data['leave_term_arr'][$data['leave_term']];
         $leave_from_to = $this->common_lib->display_date($data['leave_from_date']).' to '.$this->common_lib->display_date($data['leave_to_date']);
         $leave_reason = $data['leave_reason'];
         $leave_request_id = $data['leave_req_id'];
@@ -871,6 +882,11 @@ class Leave extends CI_Controller {
         $message_table.='<td>Leave Type</td>';
         $message_table.='<td>:</td>';
         $message_table.='<td>'.$leave_type.'</td>';
+        $message_table.='</tr>';
+        $message_table.='<tr>';
+        $message_table.='<td>Leave Term</td>';
+        $message_table.='<td>:</td>';
+        $message_table.='<td>'.$leave_term.'</td>';
         $message_table.='</tr>';
         $message_table.='<tr>';
         $message_table.='<td>From - To</td>';
