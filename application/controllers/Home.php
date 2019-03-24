@@ -106,7 +106,8 @@ class Home extends CI_Controller {
         $this->data['display_reminder_modal'] = sizeof($profile_completion) > 0 ? 'true' : 'false';
         
 
-		$this->data['page_heading'] = 'Welcome to '.$this->config->item('app_company_product');
+		//$this->data['page_heading'] = 'Welcome to '.$this->config->item('app_company_product');
+		$this->data['page_heading'] = 'Dashboard';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
