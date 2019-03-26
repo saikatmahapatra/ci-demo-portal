@@ -61,26 +61,28 @@
 <?php } ?>
 
 
-<div class="col-12 p-3 bg-white rounded shadow-sm recent-updates">
-   <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+<div class="col-md-12 p-3 bg-white rounded shadow-sm recent-updates">
+   <h6 class="border-bottom border-gray pb-2 mb-0">Recent Updates</h6>
    <?php $array_color = array('#007bff', '#AC193D', '#6f42c1','#DC572E'); ?>
    <?php foreach($data_rows as $key=>$row) { ?>
    <div class="media text-muted pt-3">
-      <div class="mr-2 text-primary <?php //echo $content_type[$row['pagecontent_type']]['css']; ?>"><i class="fa fa-bell-o" aria-hidden="true"></i></div>
+      <!-- <div class="mr-2 text-primary <?php //echo $content_type[$row['pagecontent_type']]['css']; ?>"></div> -->
       <svg class="bd-placeholder-img mr-2 d-none rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
          <title>Placeholder</title>
          <rect fill="<?php echo $array_color[array_rand($array_color, 1)]; ?>" width="100%" height="100%"></rect>
          <text fill="<?php echo $array_color[array_rand($array_color, 1)]; ?>" dy=".3em" x="50%" y="50%"></text>
       </svg>
-      <div class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-        <div class="d-block text-gray-dark h5"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a></div>
-        <strong class="d-block text-gray-dark small">
-            <?php echo $content_type[$row['pagecontent_type']]['text']; ?>
-            <?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
-            <?php echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>
-            <?php echo $this->common_lib->display_date($row['pagecontent_created_on'],true,null,'d-M-Y h:i:sa'); ?>
-        </strong>
-        <?php echo isset($row['pagecontent_text']) ? word_limiter($this->common_lib->remove_empty_p($row['pagecontent_text']),30) : '';?>
+      <div class="media-body mb-0 lh-125 border-bottom border-gray">
+        <!-- <div class="pb-3"> -->
+            <div class="d-block text-gray-dark h5"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a></div>
+            <strong class="d-block text-gray-dark small">
+                <?php echo $content_type[$row['pagecontent_type']]['text']; ?>
+                <?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
+                <?php echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>
+                <?php echo $this->common_lib->display_date($row['pagecontent_created_on'],true,null,'d-M-Y h:i:sa'); ?>
+            </strong>
+            <?php echo isset($row['pagecontent_text']) ? $this->common_lib->remove_empty_p($row['pagecontent_text']) : '';?>
+        <!-- </div> -->
       </div>
    </div>
    <?php } ?>
