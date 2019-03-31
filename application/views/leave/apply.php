@@ -55,7 +55,7 @@
 		<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => 'ci-form-leave',)); ?>
 		<?php echo form_hidden('form_action', 'add'); ?>
 		<div class="form-row">
-			<div class="form-group col-md-2">
+			<div class="form-group col-md-3">
 				<label for="leave_type" class="bmd-label-floating">Leave Type <span class="required">*</span></label>
 				<?php
 				echo form_dropdown('leave_type', $leave_type_arr, set_value('leave_type'), array(
@@ -75,16 +75,8 @@
 				<?php echo form_input(array('name' => 'leave_to_date','value' => set_value('leave_to_date'),'id' => 'leave_to_date','class' => 'form-control', 'placeholder'=>'dd-mm-yyyy', 'readonly'=>'readonly')); ?>
 				<?php echo form_error('leave_to_date'); ?>
 			</div>
-			<div class="form-group col-md-2">
-				<label for="leave_term" class="bmd-label-floating">Full Day / Half Day <span class="required">*</span></label>
-				<?php
-				echo form_dropdown('leave_term', $leave_term_arr, set_value('leave_term'), array(
-					'class' => 'form-control',
-				));
-				?> 
-				<?php echo form_error('leave_term'); ?>
-			</div>
-			<div class="form-group col-md-4">
+			
+			<div class="form-group col-md-5">
 				<label for="leave_reason" class="bmd-label-floating">Reason <span class="required">*</span></label>
 				<?php
 				echo form_input(array(
@@ -99,6 +91,18 @@
 				<?php echo form_error('leave_reason'); ?>				
 			</div>
 		</div>
+		<div class="form-row">
+			<div class="form-group col-md-12">
+				<div class="form-check">
+					<?php
+						$cb_is_checked = $this->input->post('leave_term') === 'H';
+						echo form_checkbox('leave_term', 'H', $cb_is_checked, array('id' => 'trems','class' => 'form-check-input'));
+					?>				
+					<label class="form-check-label" for="trems">Apply <span class="font-weight-bold">half day</span> leave for the selected date range.</label>
+				</div>
+				<?php echo form_error('leave_term'); ?>
+			</div>
+		 </div>
 		
 		<button type="submit" <?php echo ($system_msg_error_counter >0 ) ? 'disabled="disabled"' : '';  ?> class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Submit</button>
 		<?php echo form_close(); ?>

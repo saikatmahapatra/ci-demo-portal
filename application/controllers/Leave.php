@@ -134,6 +134,7 @@ class Leave extends CI_Controller {
         //pre apply system requirement check validation
 
         if ($this->input->post('form_action') == 'add') {
+            //print_r($_POST);die();
             if ($this->validate_form_data('add') == true && $system_msg_error_counter == 0) {  
                 $from_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('leave_from_date'))); // or your date as well
                 $to_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('leave_to_date')));
@@ -151,7 +152,7 @@ class Leave extends CI_Controller {
                     'user_id' => $this->sess_user_id,
                     'leave_created_on' => date('Y-m-d H:i:s'),
                     'leave_status' => 'B',
-                    'leave_term' => $this->input->post('leave_term'),
+                    'leave_term' => $this->input->post('leave_term') ? $this->input->post('leave_term') : 'F',
                     'supervisor_approver_id'=> $supervisor_approver_id,
                     'supervisor_approver_status'=>'P',
                     'director_approver_id'=>$director_approver_id,
