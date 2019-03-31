@@ -98,7 +98,7 @@
 						$cb_is_checked = $this->input->post('leave_term') === 'H';
 						echo form_checkbox('leave_term', 'H', $cb_is_checked, array('id' => 'trems','class' => 'form-check-input'));
 					?>				
-					<label class="form-check-label" for="trems">Apply <span class="font-weight-bold">half day</span> leave for the selected date range.</label>
+					<label class="form-check-label" for="trems">Apply half day leave.</label>
 				</div>
 				<?php echo form_error('leave_term'); ?>
 			</div>
@@ -129,6 +129,7 @@
 				<div class="table-responsive">
 					<ul>
 					<li>PL, CL balance will be credited automatically as per credit cycle.</li>
+					<li>To apply half day leave click on the "Apply half day leave" checkbox. On approval 0.5 leave balance will be deducted.</li>
 					<li>Self cancellation is allowed once leave request is in applied/processing status. For approved leave you can request leave cancellation.</li>
 					<li>Once leave cancellaion approved by approver, debited leave balance will be credit back to the leave balance.</li>
 					<li>For leave balance debit, credit related issues or information please contact to your HR.</li>
