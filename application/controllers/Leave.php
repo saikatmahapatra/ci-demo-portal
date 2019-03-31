@@ -767,11 +767,11 @@ class Leave extends CI_Controller {
         $leave_balance_id = $leave_balance[0]['id'];
         $available_leave_balance = $leave_balance[0][strtolower($leave_type)];
         //print_r($leave_balance);die();
-        $updated_leave_balance = ($available_leave_balance-$applied_for_days_count);
+        $updated_leave_balance = ($available_leave_balance - ($applied_for_days_count * $leave_term_multiplier));
 
         //Update Leave Table with Number of approved days 
         $postdata = array();
-        $postdata['approved_for_days_count'] = $applied_for_days_count ;
+        $postdata['approved_for_days_count'] = $applied_for_days_count * $leave_term_multiplier;
         if(strtolower($leave_type) == 'cl'){
             $postdata['debited_cl'] = $applied_for_days_count * $leave_term_multiplier;
         }
@@ -790,6 +790,7 @@ class Leave extends CI_Controller {
             'updated_on' => date('Y-m-d H:i:s'),
             'updated_by' => $this->sess_user_id
         );
+        //print_r($postdata); die();
         $where = array('id'=>$leave_balance_id, 'user_id'=>$applicant_user_id);
         $is_update_balance = $this->leave_model->update($postdata, $where, 'user_leave_balance');
         return $is_update_balance;
