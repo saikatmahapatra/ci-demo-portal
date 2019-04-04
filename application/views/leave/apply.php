@@ -98,7 +98,7 @@
 						$cb_is_checked = $this->input->post('leave_term') === 'H';
 						echo form_checkbox('leave_term', 'H', $cb_is_checked, array('id' => 'trems','class' => 'custom-control-input'));
 					?>				
-					<label class="custom-control-label" for="trems">Apply half day leave for the selected duration.</label>
+					<label class="custom-control-label" for="trems">Apply half day leave.</label>
 				</div>
 				<?php echo form_error('leave_term'); ?>
 			</div>
