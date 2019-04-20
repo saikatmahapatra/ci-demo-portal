@@ -56,11 +56,24 @@
             </div>
         </div>
     </div>
-
-    
-
 </div>
-<?php } ?>
+<?php } else{
+    ?>
+<div class="row text-center home-card">
+    <div class="col-sm-6 col-md-3">
+        <div class="card my-1 border border-danger">
+            <div class="card-header text-danger">
+                <i class="icon fa fa-lg fa-3x fa-calendar-check-o"></i>
+            </div>
+            <div class="card-body p-0 pt-2">
+                <h6 class="card-title mb-0">Today</h6>
+                <p class="card-text"><?php echo date('d-M'); ?></p>
+            </div>
+        </div>
+    </div>
+</div>
+    <?php
+} ?>
 
 
 <div class="col-md-12 p-3 bg-white rounded shadow-sm recent-updates">
