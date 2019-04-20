@@ -2,7 +2,7 @@
 
 <div class="row heading-container mb-3">
     <div class="col-12">
-        <h1 class="h4 mb-3 font-weight-normal"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h1>
+        <h1 class="page-heading"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h1>
     </div>
 </div><!--/.heading-container-->
 
@@ -10,12 +10,24 @@
 <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
 <div class="row text-center home-card">
     <div class="col-sm-6 col-md-3">
-        <div class="card my-1 border border-success">
-            <div class="card-header text-success">
-                <i class="icon fa fa-lg fa-3x fa-users"></i>
+        <div class="card my-1 border border-danger">
+            <div class="card-header text-danger">
+                <i class="icon fa fa-lg fa-3x fa-calendar-check-o"></i>
             </div>
             <div class="card-body p-0 pt-2">
-                <h6 class="card-title text-uppercase mb-0">Employees</h6>
+                <h6 class="card-title mb-0">Today</h6>
+                <p class="card-text"><?php echo date('d-M'); ?></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-3">
+        <div class="card my-1 border border-success">
+            <div class="card-header text-success">
+                <i class="icon fa fa-lg fa-3x fa-user-o"></i>
+            </div>
+            <div class="card-body p-0 pt-2">
+                <h6 class="card-title mb-0">Employee Strength</h6>
                 <p class="card-text"><?php echo $user_count['data_rows'][0]['total']; ?></p>
             </div>
         </div>
@@ -27,7 +39,7 @@
                 <i class="icon fa fa-lg fa-3x fa-cubes"></i>
             </div>
             <div class="card-body p-0 pt-2">
-                <h6 class="card-title text-uppercase mb-0">Projects</h6>
+                <h6 class="card-title mb-0">Projects</h6>
                 <p class="card-text"><?php echo $projects_count['data_rows'][0]['total']; ?></p>
             </div>
         </div>
@@ -36,33 +48,23 @@
     <div class="col-sm-6 col-md-3">
         <div class="card my-1 border border-warning">
             <div class="card-header text-warning">
-                <i class="icon fa fa-lg fa-3x fa-calendar"></i>
+                <i class="icon fa fa-lg fa-3x fa-clock-o"></i>
             </div>
             <div class="card-body p-0 pt-2">
-                <h6 class="card-title text-uppercase mb-0">Task logged by</h6>
+                <h6 class="card-title mb-0">Timesheet Logged By</h6>
                 <p class="card-text"><?php echo $timesheet_user['data_rows'][0]['total']; ?></p>
             </div>
         </div>
     </div>
 
-    <div class="col-sm-6 col-md-3">
-        <div class="card my-1 border border-danger">
-            <div class="card-header text-danger">
-                <i class="icon fa fa-lg fa-3x fa-star"></i>
-            </div>
-            <div class="card-body p-0 pt-2">
-                <h6 class="card-title text-uppercase mb-0">{{key}}</h6>
-                <p class="card-text">{{value}}</p>
-            </div>
-        </div>
-    </div>
+    
 
 </div>
 <?php } ?>
 
 
 <div class="col-md-12 p-3 bg-white rounded shadow-sm recent-updates">
-   <h6 class="border-bottom border-gray pb-2 mb-0">Recent Updates</h6>
+   <h4 class="border-bottom border-gray pb-2 mb-0">News & Updates</h4>
    <?php $array_color = array('#007bff', '#AC193D', '#6f42c1','#DC572E'); ?>
    <?php foreach($data_rows as $key=>$row) { ?>
    <div class="media text-muted pt-3">
@@ -74,7 +76,7 @@
       </svg>
       <div class="media-body mb-0 lh-125 border-bottom border-gray">
         <!-- <div class="pb-3"> -->
-            <div class="d-block text-gray-dark h5"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a></div>
+            <div class="d-block text-gray-dark h4"><a target="_blank" class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a></div>
             <strong class="d-block text-gray-dark small">
                 <?php echo $content_type[$row['pagecontent_type']]['text']; ?>
                 <?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>

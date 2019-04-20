@@ -1,7 +1,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <div class="row heading-container">
     <div class="col-md-12">
-        <h1 class="h4 mb-3 font-weight-normal">
+        <h1 class="page-heading">
 			<?php echo isset($page_heading)? $page_heading:'Page Heading'; ?>
 		</h1>
 		<p><i class="fa fa-question-circle-o" aria-hidden="true"></i> Looking for help or information? Click <a class="" href="#" data-toggle="modal" data-target="#timesheetCalModal">here to read.</a></p>
