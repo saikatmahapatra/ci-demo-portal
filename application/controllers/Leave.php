@@ -119,7 +119,7 @@ class Leave extends CI_Controller {
         }
 
         if(sizeof($this->data['leave_balance'])<=0){
-            $system_msg['leave']= array('txt'=>'Your Leave balance is not yet updated in portal database.', 'css'=>'text-danger', 'has_error'=> true);   
+            $system_msg['leave']= array('txt'=>'No leave balance exists in database, for further details please contact to HR.', 'css'=>'text-danger', 'has_error'=> true);   
         }
 
         $this->data['system_msg'] = $system_msg;
