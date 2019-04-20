@@ -22,8 +22,8 @@
     </div>
 
     <div class="col-sm-6 col-md-3">
-        <div class="card my-1 border border-success">
-            <div class="card-header text-success">
+        <div class="card my-1 border border-info">
+            <div class="card-header text-info">
                 <i class="icon fa fa-lg fa-3x fa-user-o"></i>
             </div>
             <div class="card-body p-0 pt-2">
@@ -34,8 +34,8 @@
     </div>
 
     <div class="col-sm-6 col-md-3">
-        <div class="card my-1 border border-info">
-            <div class="card-header text-info">
+        <div class="card my-1 border border-warning">
+            <div class="card-header text-warning">
                 <i class="icon fa fa-lg fa-3x fa-cubes"></i>
             </div>
             <div class="card-body p-0 pt-2">
@@ -46,8 +46,8 @@
     </div>
 
     <div class="col-sm-6 col-md-3">
-        <div class="card my-1 border border-warning">
-            <div class="card-header text-warning">
+        <div class="card my-1 border border-success">
+            <div class="card-header text-success">
                 <i class="icon fa fa-lg fa-3x fa-clock-o"></i>
             </div>
             <div class="card-body p-0 pt-2">
