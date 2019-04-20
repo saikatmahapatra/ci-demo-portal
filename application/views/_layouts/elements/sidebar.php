@@ -41,13 +41,13 @@
         </li>
         
         <li class="treeview">
-            <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-laptop" aria-hidden="true"></i><span class="menu-label">Employee Self Services</span><i class="treeview-indicator fa fa-angle-right" aria-hidden="true"></i></a>
+            <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-laptop" aria-hidden="true"></i><span class="menu-label">Self Services</span><i class="treeview-indicator fa fa-angle-right" aria-hidden="true"></i></a>
             <ul class="treeview-menu">
-                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">Update Profile Information</a></li>
+                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">Update Profile</a></li>
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'document'); ?>">Upload Documents</a></li>
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/edit_approvers'); ?>">Change Leave Approvers</a></li>
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/apply'); ?>">Apply Leave</a></li>
-				<li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/history'); ?>">My Leave History</a></li>
+				<li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/history'); ?>">Leave History</a></li>
             </ul>
         </li>
         <!-- <li class="treeview">
