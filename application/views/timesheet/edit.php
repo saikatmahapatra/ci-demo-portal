@@ -5,7 +5,7 @@ $row = $rows[0];
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <div class="row heading-container">
     <div class="col-12">
-        <h1 class="h4 mb-3 font-weight-normal"><?php echo isset($page_heading)? $page_heading.$this->common_lib->display_date($row['timesheet_date']):'Page Heading'; ?></h1>
+        <h1 class="page-heading"><?php echo isset($page_heading)? $page_heading.$this->common_lib->display_date($row['timesheet_date']):'Page Heading'; ?></h1>
     </div>
 </div><!--/.heading-container-->
 

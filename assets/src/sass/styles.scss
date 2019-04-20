@@ -1,5 +1,5 @@
 // This files are essential for the theme
-@import 'fonts';
+//@import 'fonts';
 @import 'vars';
 @import 'customize-bootstrap';
 @import 'assets/vendors/bootstrap/scss/bootstrap';
@@ -13,7 +13,7 @@ body {
 
 body.login {
     margin-top: 0rem;
-    background-color: #f3f3f3;
+    // background-color: #f3f3f3;
 }
 
 .form-signin {
@@ -43,6 +43,10 @@ body.login {
     @media(max-width: 575px) {
         width: 120px;
     }
+}
+
+h1.page-heading {
+    font-size: 1.75rem;
 }
 
 
