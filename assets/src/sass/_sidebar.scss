@@ -9,7 +9,7 @@
     overflow: auto;
     z-index: 10;
     background-color: $sidebar-color;
-    box-shadow: 0px 8px 17px rgba(0, 0, 0, 0.2);
+    //box-shadow: 0px 8px 17px rgba(0, 0, 0, 0.2);
     transition: left 0.3s ease, width 0.3s ease;
     &::-webkit-scrollbar {
         width: 6px;

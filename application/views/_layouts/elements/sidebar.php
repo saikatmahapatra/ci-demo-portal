@@ -41,7 +41,7 @@
         </li>
         
         <li class="treeview">
-            <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-laptop" aria-hidden="true"></i><span class="menu-label">Self Services</span><i class="treeview-indicator fa fa-angle-right" aria-hidden="true"></i></a>
+            <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-folder" aria-hidden="true"></i><span class="menu-label">Self Services</span><i class="treeview-indicator fa fa-angle-right" aria-hidden="true"></i></a>
             <ul class="treeview-menu">
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">Update Profile</a></li>
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'document'); ?>">Upload Documents</a></li>
@@ -50,22 +50,8 @@
 				<li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/history'); ?>">Leave History</a></li>
             </ul>
         </li>
-        <!-- <li class="treeview">
-            <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-user"></i><span class="menu-label">My Profile</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-            <ul class="treeview-menu">
-                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">View Profile</a></li>
-                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/profile_pic'); ?>">Profile Pic</a></li>
-                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/edit_profile'); ?>">Edit Basic Information</a></li>
-                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/add_address'); ?>">Add Address</a></li>
-				<li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/add_education'); ?>">Add Education</a></li>
-                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/add_work_experience'); ?>">Add Work Experience</a></li>
-                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/add_bank_account'); ?>">Add Salary Account</a></li>	
-                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/add_emergency_contact'); ?>">Add Emergency Contact</a></li>	
-                <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'document'); ?>">Upload Documents</a></li>
-            </ul>
-        </li> -->
         <li class="treeview">
-            <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-check"></i><span class="menu-label">Work List</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+            <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-folder"></i><span class="menu-label">Work List</span><i class="treeview-indicator fa fa-angle-right"></i></a>
             <ul class="treeview-menu">
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/manage/assigned_to_me'); ?>">Leave Assigned to Me</a></li>
                 
@@ -74,9 +60,9 @@
 
         <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
 			<li class="treeview">
-                <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-user-plus"></i><span class="menu-label">Manage Employees</span><i class="treeview-indicator fa fa-angle-right" aria-hidden="true"></i></a>
+                <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-folder"></i><span class="menu-label">Employees</span><i class="treeview-indicator fa fa-angle-right" aria-hidden="true"></i></a>
                 <ul class="treeview-menu">
-                    <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">All Employees</a></li>
+                    <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Manage Employees</a></li>
                     <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/create_account'); ?>">Add New Employee</a></li>
                     <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/leave_balance'); ?>">Leave Balance Sheet</a></li>
                     <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'leave/manage/all'); ?>">All Leave Requests</a></li>
@@ -84,12 +70,12 @@
             </li>
         <?php } else { ?>
         <li>
-            <a class="menu-item" href="<?php echo base_url('user/people');?>"><i class="menu-icon fa fa-globe"></i><span class="menu-label">Employees</span></a>
+            <a class="menu-item" href="<?php echo base_url('user/people');?>"><i class="menu-icon fa fa-folder"></i><span class="menu-label">Employees</span></a>
         </li>
         <?php } ?>
 
         <li class="treeview">
-            <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-clock-o" aria-hidden="true"></i><span class="menu-label">Timesheet & Projects</span><i class="treeview-indicator fa fa-angle-right" aria-hidden="true"></i></a>
+            <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-folder" aria-hidden="true"></i><span class="menu-label">Timesheet & Projects</span><i class="treeview-indicator fa fa-angle-right" aria-hidden="true"></i></a>
             <ul class="treeview-menu">
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">My Timesheet</a></li>
                 <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
@@ -102,7 +88,7 @@
         
         <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>			
         <li class="treeview">
-            <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-list-ul" aria-hidden="true"></i><span class="menu-label">Content Management</span><i class="treeview-indicator fa fa-angle-right" aria-hidden="true"></i></a>
+            <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-folder" aria-hidden="true"></i><span class="menu-label">CMS</span><i class="treeview-indicator fa fa-angle-right" aria-hidden="true"></i></a>
             <ul class="treeview-menu">
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'cms'); ?>">Manage Contents - Updates</a></li>
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'cms/add'); ?>">Add New Content</a></li>
@@ -111,7 +97,7 @@
         </li>
         <?php } ?>
         <li>
-            <a class="menu-item" href="<?php echo base_url('holiday/view');?>"><i class="menu-icon fa fa-calendar-check-o" aria-hidden="true"></i><span class="menu-label">Holiday List</span></a>
+            <a class="menu-item" href="<?php echo base_url('holiday/view');?>"><i class="menu-icon fa fa-folder" aria-hidden="true"></i><span class="menu-label">Holiday List</span></a>
         </li>
         <!-- <li>
             <a class="menu-item" href="<?php echo base_url('faq');?>"><i class="menu-icon fa fa-question-circle-o" aria-hidden="true"></i><span class="menu-label">FAQ</span></a>
