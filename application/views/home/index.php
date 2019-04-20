@@ -85,7 +85,7 @@
     <?php foreach($data_rows as $key=>$row) { ?>
         <div class="my-2 py-2 border-bottom border-gray">
             <div class="mb-0 lh-125" style="max-height: 130px; overflow: hidden;">
-                    <div class="text-gray-dark h4"><a target="_blank" class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a></div>
+                    <div class="text-gray-dark h4"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a></div>
                     <strong class="text-muted text-gray-dark small">
                         <?php echo $content_type[$row['pagecontent_type']]['text']; ?>
                         <?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
