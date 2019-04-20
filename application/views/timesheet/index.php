@@ -113,7 +113,7 @@
 				</div><!--/.col-md-9-->	  
 			</div>
 
-			<div class="mt-3">
+			<div class="mt-3 d-none">
 				<h6>Monthly Timesheet Statistics: </h6>
 				<div class="">You have logged tasks for : <span id="total_days">0.0</span> days</div>
 				<div class="">Monthly working efforts : <span id="total_hrs">0.0</span> hrs</div>
