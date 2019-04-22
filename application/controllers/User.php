@@ -132,7 +132,7 @@ class User extends CI_Controller {
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         $search_keywords = NULL;
         if($this->input->get_post('form_action') == 'search'){
-            $search_keywords = $this->input->get_post('user_search_keywords');
+            $search_keywords = $this->input->get_post('q');
         }
         //die($search_keywords);
 
