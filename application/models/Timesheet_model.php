@@ -204,6 +204,28 @@ class Timesheet_model extends CI_Model {
         return $result;
     }
 
+	function get_project_dropdown_searchable($keywords) {
+        $result = array();
+        $this->db->select('id,project_name,project_number');		
+        $this->db->where('project_status','Y');
+        //$this->db->order_by('project_name');	
+        $this->db->like('project_name', $keywords);
+        $this->db->or_like('project_number', $keywords);
+        $query = $this->db->get('projects');
+        #echo $this->db->last_query();
+        //$result = array('' => 'Select');
+        if ($query->num_rows()) {
+            $res = $query->result();
+            $i=0;
+            foreach ($res as $r) {
+                $result[$i]["id"] = $r->id;
+                $result[$i]["text"] =$r->project_name.' - '.$r->project_number;
+                $i++;
+            }
+        }
+        return $result;
+    }
+
     function get_user_dropdown() {
         $result = array();
         $this->db->select('id,user_firstname,user_lastname, user_emp_id');		
@@ -217,6 +239,30 @@ class Timesheet_model extends CI_Model {
             $res = $query->result();
             foreach ($res as $r) {
                 $result[$r->id] = $r->user_firstname.' '.$r->user_lastname.' ('.$r->user_emp_id.')';
+            }
+        }
+        return $result;
+    }
+
+    function get_user_dropdown_searchable($keywords) {
+        $result = array();
+        $this->db->select('id,user_firstname,user_lastname, user_emp_id');		
+        $this->db->where('user_status !=','A');
+        $this->db->where('user_type','U');
+        $this->db->like('user_firstname', $keywords); 
+        $this->db->or_like('user_emp_id', $keywords);
+        $this->db->or_like('user_lastname', $keywords);
+        //$this->db->order_by('user_firstname');
+        $query = $this->db->get('users');
+        //echo $this->db->last_query();
+        //$result = array('' => 'Select');
+        if ($query->num_rows()) {
+            $res = $query->result();
+            $i=0;
+            foreach ($res as $r) {
+                $result[$i]["id"] = $r->id;
+                $result[$i]["text"] =$r->user_firstname.' '.$r->user_lastname.' ('.$r->user_emp_id.')';
+                $i++;
             }
         }
         return $result;

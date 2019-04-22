@@ -80,6 +80,50 @@ $(function() {
             e.preventDefault();
             $('#timesheet-search-form .form-control').val('');
         });
+
+
+        //Select 2 User Search
+        $('.select2-control-user').select2({
+            ajax: {
+                url: SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/get_user_dropdown_searchable',
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        q: params.term, // search term
+                        page: params.page
+                    };
+                },
+                cache: true
+            },
+            placeholder: 'Search',
+            //escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+            minimumInputLength: 3,
+            //templateResult: formatRepo,
+            //templateSelection: formatRepoSelection
+        });
+
+
+        //Select 2 Project Search
+        $('.select2-control-project').select2({
+            ajax: {
+                url: SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/get_project_dropdown_searchable',
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        q: params.term, // search term
+                        page: params.page
+                    };
+                },
+                cache: true
+            },
+            placeholder: 'Search',
+            //escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+            minimumInputLength: 3,
+            //templateResult: formatRepo,
+            //templateSelection: formatRepoSelection
+        });
     }
 
 });
