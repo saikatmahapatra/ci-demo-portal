@@ -14,7 +14,7 @@
 			  <ul class="navbar-nav">
                 <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
                 <li class="nav-item search">
-                    <?php echo form_open(base_url('search/index'), array( 'method' => 'get','class'=>'form-inline','name' => '','id' => 'ci-form-helper',)); ?>
+                    <?php echo form_open(base_url('user/people'), array( 'method' => 'get','class'=>'form-inline','name' => '','id' => 'ci-form-helper',)); ?>
 				    <?php echo form_hidden('form_action', 'search'); ?>
 					  <input name="q" class="form-control search-input" type="search" placeholder="Search Employees" aria-label="Search">
 					  <button class="search-button" type="submit"><i class="fa fa-search"></i></button>

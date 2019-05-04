@@ -6,18 +6,22 @@
 </div><!--/.heading-container-->
 
 
-<div class="row d-sm-none">
-	<div class="col-md-8">
-	<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'form-inline','name' => '','id' => 'search-user-form',)); ?>
+<div class="row my-3">
+	<div class="col-md-4">
+	<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'','name' => '','id' => 'search-user-form',)); ?>
 	<?php echo form_hidden('form_action', 'search'); ?>
-			<?php echo form_input(array(
-				'name' => 'user_search_keywords',
-				'id' => 'user_search_keywords',
-				'class' => 'form-control',
-				'placeholder' => 'Search Employee',
-			)); ?>
-			<?php echo form_error('user_search_keywords'); ?>
-		<?php echo form_button(array('type' => 'submit', 'content' => '<i class="fa fa-search" aria-hidden="true"></i> Search', 'class' => 'my-1 btn btn-primary')); ?>
+	<div class="input-group">
+		<?php echo form_input(array(
+			'name' => 'q',
+			'id' => 'q',
+			'class' => 'form-control',
+			'placeholder' => 'Search Employees',
+		)); ?>
+		<?php echo form_error('q'); ?>
+		<div class="input-group-append">
+			<button class="btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+		</div>
+	</div>
 	<?php echo form_close(); ?>
 	</div>
 </div>
@@ -37,7 +41,7 @@
 				<?php
 				if(isset($data_rows) && sizeof($data_rows)<=0){
 					?>
-					<div class="col-md-12">We're sorry! No result found based on your search keyword. Please verify the search keyword.</div>
+					<div class="alert alert-danger"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Oops! No results found.</div>
 					<?php
 				}
 				?>

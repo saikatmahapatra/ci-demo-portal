@@ -26,17 +26,17 @@
 				<div class="form-row">
 					<div class="form-group col-md-4 ci-select2">
 						<label for="q_emp" class="">Employee</label>
-						<?php echo form_dropdown('q_emp', $user_arr, $this->input->get_post('q_emp'),array('class' => 'form-control select2-control', 'id'=>'q_emp')); ?> 
+						<?php echo form_dropdown('q_emp', array(), $this->input->get_post('q_emp'),array('class' => 'form-control select2-control-user', 'id'=>'q_emp')); ?> 
 						<?php echo form_error('q_emp'); ?>
 					</div>
 					
 					<div class="form-group col-md-4 ci-select2">
 						<label for="q_project" class="">Project</label>
-						<?php echo form_dropdown('q_project', $project_arr, $this->input->get_post('q_project'),array('class' => 'form-control select2-control','id'=>'q_project')); ?> 
+						<?php echo form_dropdown('q_project', array(), $this->input->get_post('q_project'),array('class' => 'form-control select2-control-project','id'=>'q_project')); ?> 
 						<?php echo form_error('q_project'); ?>
 					</div>
 
-					<div class="form-group col-md-2">									
+					<div class="form-group col-md-2">
 						<label for="from_date" class="">From <span class="required">*</span></label>
 						<?php 
 							$first_day_this_month = date('01-m-Y');

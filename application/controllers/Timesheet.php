@@ -537,6 +537,26 @@ class Timesheet extends CI_Controller {
         //echo "ok"; die();
     }
 
+    function get_user_dropdown_searchable(){
+        if($this->input->get_post('q')){
+            $query_str = $this->input->get_post('q');
+            $result = $this->timesheet_model->get_user_dropdown_searchable($query_str);
+            $output_format["results"]= $result;
+            print_r(json_encode($output_format)); die();
+        }
+        
+    }
+
+    function get_project_dropdown_searchable(){
+        if($this->input->get_post('q')){
+            $query_str = $this->input->get_post('q');
+            $result = $this->timesheet_model->get_project_dropdown_searchable($query_str);
+            $output_format["results"]= $result;
+            print_r(json_encode($output_format)); die();
+        }
+        
+    }
+
 }
 
 ?>
