@@ -1,4 +1,4 @@
-<div class="card card-login mx-auto mt-3">
+<div class="card card-login mx-auto mt-5">
   <div class="card-header">Reset Password</div>
   <div class="card-body">
 	<div class="text-center mb-4">
