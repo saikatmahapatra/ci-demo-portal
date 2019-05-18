@@ -1,4 +1,25 @@
 // Componant: Sidebar 
+.sidebar-toggle {
+    padding: 0 15px;
+    font-family: fontAwesome;
+    color: #fff;
+    line-height: 2.4;
+    transition: background-color 0.3s ease;
+    @media(max-width: 767px) {
+        order: -1;
+    }
+    &:before {
+        content: "\f0c9";
+        font-size: 21px;
+    }
+    &:focus,
+    &:hover {
+        color: #fff;
+        background-color: darken($primary-color, 10);
+        text-decoration: none;
+    }
+}
+
 .sidebar {
     position: fixed;
     top: 0;

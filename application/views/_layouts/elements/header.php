@@ -42,7 +42,7 @@
 
                 <li class="nav-item dropdown nav-icon-adjust">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
+                        aria-expanded="false"><i class="fa fa-user-circle fa-lg" aria-hidden="true"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown03">					
                         <div class="dropdown-item welcome-user-container">					
                             <div class="mb-1"><?php echo isset($this->session->userdata['sess_user']['user_title'])? $this->session->userdata['sess_user']['user_title']:''; ?> <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></div>
