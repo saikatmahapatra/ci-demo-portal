@@ -79,7 +79,7 @@
 							<div class="media border mb-2 mt-2 p-2">
 								<img class="align-self-center mr-3 rounded dp-sm" src="<?php echo base_url($img_src);?>">
 								<div class="media-body">
-									<div class="h6"><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></div>
+									<div class=""><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></div>
 									<div class="small"><?php echo 'Emp ID : '.$row['user_emp_id']; ?></div>
 									<?php
 									$email_id = explode('@',$row['user_email']);
