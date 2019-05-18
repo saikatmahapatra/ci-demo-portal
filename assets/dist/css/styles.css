@@ -8520,12 +8520,9 @@ body.login {
 
 h1.page-heading {
   font-size: 1.75rem;
+  font-weight: 300;
 }
 
-/*.navbar-collapse {
-    max-height: 340px;
-    overflow-y: auto;
-}*/
 .scrollup {
   width: 40px;
   height: 40px;
@@ -8548,11 +8545,6 @@ h1.page-heading {
 .tnc-content h1,
 .tnc-content h2 {
   font-size: 1rem;
-}
-
-.required {
-  color: #dc3545;
-  font-weight: bold;
 }
 
 .thumbnail {
@@ -8588,7 +8580,6 @@ h1.page-heading {
   color: #212121;
 }
 
-/*profile card link*/
 .content-wrap {
   word-break: break-all;
 }
@@ -9540,6 +9531,11 @@ select.form-control.dob-inline {
   width: auto;
 }
 
+.required {
+  color: #dc3545;
+  font-weight: bold;
+}
+
 .custom-control-label::before {
   border: 1px solid #ced4da;
 }
@@ -9584,4 +9580,56 @@ select.form-control.dob-inline {
 
 .ci-select2 .select2-container {
   max-width: 100%;
+}
+
+.card-login {
+  max-width: 25rem;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group label,
+.form-label-group input {
+  padding: 0.75rem 0.75rem;
+}
+
+.form-label-group label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.form-label-group input:-ms-input-placeholder,
+.form-label-group input::-ms-input-placeholder,
+.form-label-group input::-moz-placeholder,
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(0.75rem + 0.75rem * (2 / 3));
+  padding-bottom: calc(0.75rem / 3);
+}
+
+.form-label-group input:not(:placeholder-shown) ~ label {
+  padding-top: calc(0.75rem / 3);
+  padding-bottom: calc(0.75rem / 3);
+  font-size: 12px;
+  color: #6c757d;
+}
+
+.form-label-group .form-control {
+  height: auto;
 }

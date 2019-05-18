@@ -70,6 +70,7 @@ body.login {
     }
 }
 
+//Site Logo
 .logo {
     width: 190px;
     @media(max-width: 575px) {
@@ -77,8 +78,10 @@ body.login {
     }
 }
 
+// Page Heading
 h1.page-heading {
     font-size: 1.75rem;
+    font-weight: 300;
 }
 
 // Extra small devices (portrait phones, less than 576px)
@@ -95,19 +98,7 @@ h1.page-heading {
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {}
 
-
-/*.navbar-collapse {
-    max-height: 340px;
-    overflow-y: auto;
-}*/
-
-@media (max-width: 576px) {
-    // .navbar-collapse {
-    //     max-height: 340px;
-    //     overflow-y: auto;
-    // }
-}
-
+//Scroll To Top
 .scrollup {
     width: 40px;
     height: 40px;
@@ -118,6 +109,7 @@ h1.page-heading {
     display: none;
 }
 
+// CI Server side Errors
 .validation-error {
     color: $validation-error-color;
     font-size: .875rem;
@@ -131,11 +123,7 @@ h1.page-heading {
     }
 }
 
-.required {
-    color: $mandatory_field_star-color;
-    font-weight: bold;
-}
-
+// Images
 .thumbnail {
     margin-bottom: 20px;
     padding: 0px;
@@ -179,9 +167,7 @@ h1.page-heading {
     color: #212121;
 }
 
-
-/*profile card link*/
-
+// Profile Cards
 .content-wrap {
     word-break: break-all;
 }

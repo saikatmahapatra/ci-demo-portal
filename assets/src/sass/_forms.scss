@@ -25,6 +25,11 @@ select.form-control.dob-inline {
     width: auto;
 }
 
+.required {
+    color: $mandatory_field_star-color;
+    font-weight: bold;
+}
+
 // Custom Form Control
 .custom-control-label {
     &::before {
@@ -71,5 +76,55 @@ select.form-control.dob-inline {
 .ci-select2 {
     .select2-container {
         max-width: 100%;
+    }
+}
+
+.card-login {
+    max-width: 25rem;
+}
+
+// Bootstrap 4 Floating Label
+.form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.form-label-group {
+    label,
+    input {
+        padding: 0.75rem 0.75rem;
+    }
+    label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        margin-bottom: 0;
+        /* Override default `<label>` margin */
+        line-height: 1.5;
+        color: $gray-700;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+        transition: all .1s ease-in-out;
+    }
+    input:-ms-input-placeholder,
+    input::-ms-input-placeholder,
+    input::-moz-placeholder,
+    input::placeholder {
+        color: transparent;
+    }
+    input:not(:placeholder-shown) {
+        padding-top: calc(0.75rem + 0.75rem * (2 / 3));
+        padding-bottom: calc(0.75rem / 3);
+    }
+    input:not(:placeholder-shown)~label {
+        padding-top: calc(0.75rem / 3);
+        padding-bottom: calc(0.75rem / 3);
+        font-size: 12px;
+        color: $gray-600;
+    }
+    .form-control {
+        height: auto;
     }
 }
