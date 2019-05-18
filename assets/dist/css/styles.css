@@ -8514,8 +8514,12 @@ body.login {
 
 @media (max-width: 575px) {
   .logo {
-    width: 120px;
+    width: 145px;
   }
+}
+
+.logo-2x {
+  width: 150px;
 }
 
 h1.page-heading {
@@ -8962,24 +8966,8 @@ table.ci-table.dataTable {
   color: #000;
 }
 
-.recent-updates .media-body {
-  max-height: 130px;
-  overflow: hidden;
-}
-
-.recent-updates .media-body img {
-  width: 64px;
-  height: 64px;
-}
-
-.card-news-details img {
-  width: 100% !important;
-  height: auto;
-}
-
-.home-card .card-text {
-  font-size: 1.5rem;
-  font-weight: 200;
+.card-recent-updates .subject-title {
+  font-weight: 600;
 }
 
 .bg-light-primary {

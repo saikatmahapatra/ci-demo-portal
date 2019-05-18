@@ -77,15 +77,15 @@
 
 
 
-<div class="card mt-4">
-  <div class="card-header h5">
+<div class="card card-recent-updates mt-4">
+  <div class="card-header h6">
   <i class="fa fa-newspaper-o text-primary" aria-hidden="true"></i> News & Updates
   </div>
   <div class="card-body">
     <?php foreach($data_rows as $key=>$row) { ?>
         <div class="my-2 py-2 border-bottom border-gray">
             <div class="mb-0 lh-125" style="max-height: 130px; overflow: hidden;">
-                    <div class="text-gray-dark h4"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a></div>
+                    <div class="subject-title text-gray-dark h5"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a></div>
                     <strong class="text-muted text-gray-dark small">
                         <?php echo $content_type[$row['pagecontent_type']]['text']; ?>
                         <?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
@@ -96,9 +96,9 @@
             </div>
         </div>
     <?php } ?>
-    <div class="my-3">
-        <?php echo $pagination_link;?>
-    </div>
+  </div>
+  <div class="card-footer">
+    <?php echo $pagination_link;?>
   </div>
 </div>
 

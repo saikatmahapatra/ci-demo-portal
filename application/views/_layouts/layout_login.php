@@ -24,7 +24,7 @@
     <![endif]-->
 </head>
 
-<body class="login" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
+<body class="login bg-dark" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
 
     <main role="main" class="container">
         <?php echo $maincontent; ?>

@@ -5,7 +5,7 @@ body {
 
 body.login {
     margin-top: 0rem;
-    // background-color: #f3f3f3;
+    //@include linear-gradient(lighten($primary-color, 0%), $primary-color);
 }
 
 .app {
@@ -74,8 +74,12 @@ body.login {
 .logo {
     width: 190px;
     @media(max-width: 575px) {
-        width: 120px;
+        width: 145px;
     }
+}
+
+.logo-2x {
+    width: 150px;
 }
 
 // Page Heading
@@ -516,28 +520,9 @@ table.ci-table.dataTable {
 }
 
 //News Feed 
-.recent-updates {
-    .media-body {
-        max-height: 130px;
-        overflow: hidden;
-        img {
-            width: 64px;
-            height: 64px;
-        }
-    }
-}
-
-.card-news-details {
-    img {
-        width: 100% !important;
-        height: auto;
-    }
-}
-
-.home-card {
-    .card-text {
-        font-size: 1.5rem;
-        font-weight: 200;
+.card-recent-updates {
+    .subject-title {
+        font-weight: 600;
     }
 }
 
