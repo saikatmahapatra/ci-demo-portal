@@ -52,9 +52,9 @@
                         </div><!--/.welcome-user-container-->
                         
                         <div class="dropdown-divider mt-3"></div>			
-                        <a class="dropdown-item"  href="<?php echo base_url($this->router->directory.'user/my_profile/'); ?>"><i class="fa fa-user-o" aria-hidden="true"></i> My Profile</a>
-                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/change_password'); ?>"><i class="fa fa-key" aria-hidden="true"></i> Change Password</a>
-                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/logout'); ?>"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                        <a class="dropdown-item"  href="<?php echo base_url($this->router->directory.'user/my_profile/'); ?>">My Profile</a>
+                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/change_password'); ?>">Change Password</a>
+                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/logout'); ?>">Logout</a>
                     </div>
                 </li>
                 <?php } ?>

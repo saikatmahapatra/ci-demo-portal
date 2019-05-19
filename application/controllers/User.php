@@ -158,7 +158,7 @@ class User extends CI_Controller {
         $result_array = $this->user_model->get_users(NULL, $per_page, $offset, $search_keywords, 'U');
         $this->data['data_rows'] = $result_array['data_rows'];
 		
-		$this->data['page_heading'] = 'People';
+		$this->data['page_heading'] = 'Employees';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/people', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -856,7 +856,6 @@ class User extends CI_Controller {
         ########### Validate User Auth End #############
 		
 		//View Page Config
-        $this->data['page_heading'] = "Profile";
         $this->breadcrumbs->push('Profile','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 
@@ -883,7 +882,7 @@ class User extends CI_Controller {
         }
         
 
-		$this->data['page_heading'] = 'Profile';
+		$this->data['page_heading'] = 'Employee Profile';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/profile', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -1280,7 +1279,7 @@ class User extends CI_Controller {
             }
         }
 	
-		$this->data['page_heading'] = 'Edit My Profile';
+		$this->data['page_heading'] = 'Edit Basic Information';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_profile', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
