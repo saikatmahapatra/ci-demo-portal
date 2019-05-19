@@ -39,7 +39,7 @@ class Errors extends CI_Controller {
 		$data = array();
 		$this->data['page_heading'] = "Oops! Authorization Error";
         $this->data['maincontent'] = $this->load->view('errors/auth_error', $this->data, true);
-        $this->load->view('_layouts/layout_login', $this->data);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 
 }

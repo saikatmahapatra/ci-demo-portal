@@ -203,7 +203,7 @@ class Cms extends CI_Controller {
                     $this->session->set_flashdata('flash_message', 'Data Added Successfully.');
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
                     
-                    if($this->input->post('send_email_notification') == 'Y'){
+                    if($this->input->post('send_email_notification') == 'Y' || $this->input->post('send_email_notification_2') == 'Y'){
                         $this->send_email_notification($postdata['pagecontent_type'], $postdata['pagecontent_title'], $postdata['pagecontent_text']);
                     }
 
@@ -242,7 +242,7 @@ class Cms extends CI_Controller {
                 $where_array = array('id' => $this->input->post('id'));
                 $res = $this->cms_model->update($postdata, $where_array);
                 
-                if($this->input->post('send_email_notification') == 'Y'){
+                if($this->input->post('send_email_notification') == 'Y' || $this->input->post('send_email_notification_2') == 'Y'){
                     $this->send_email_notification($postdata['pagecontent_type'], $postdata['pagecontent_title'], $postdata['pagecontent_text']);
                 }
 
@@ -288,9 +288,11 @@ class Cms extends CI_Controller {
     }
 
     function send_email_notification($content_type, $subject, $message){
+        //print_r($_POST); die();
+        //echo "XXXXXXXXX"; die();
         $this->load->model('user_model');
         $send_to_email_arr = $this->user_model->get_user_email(NULL, 'U');
-        //print_r($send_to_email_arr);
+        //print_r($send_to_email_arr['personal']);
         //die();
         $message_html = '';
         $message_html.='<div id="message_wrapper" style="border-top: 2px solid #5133AB;">';
@@ -303,7 +305,11 @@ class Cms extends CI_Controller {
         //echo $message_html; die();
         $config['mailtype'] = 'html';
         $this->email->initialize($config);
-        $this->email->to($send_to_email_arr);
+        $this->email->to($send_to_email_arr['work']);
+        if(isset($_POST['send_email_notification_2']) && $_POST['send_email_notification_2'] == 'Y'){
+            //print_r($send_to_email_arr['personal']); die();
+            $this->email->cc($send_to_email_arr['personal']);
+        }
         //$this->email->to($this->config->item('app_admin_email'));
         //$this->email->bcc($send_to_email_arr);
         $sess_user_firstname = $this->common_lib->get_sess_user('user_firstname');
