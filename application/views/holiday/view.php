@@ -2,7 +2,7 @@
 <div class="row heading-container">
     <div class="col-md-12">
 		<h1 class="page-heading"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h1>
-		<p class="alert alert-info"><i class="fa fa-info-circle" aria-hidden="true"></i> Please note that <span class="text-danger font-weight-bold h4">*</span> marked dates are optional holiday.<p>
+		<p class="alert alert-info"><i class="fa fa-info-circle" aria-hidden="true"></i> Please note that <span class="h5 text-danger font-weight-bold">*</span> marked dates are optional holiday.<p>
     </div>
 </div><!--/.heading-container-->
 
@@ -33,7 +33,7 @@
 							<th scope="row"><?php echo $count;?></th>
 							<td>
 								<?php echo $this->common_lib->display_date($row['holiday_date'], null, null, 'd-M-Y'); ?>
-								<?php echo $row['holiday_type']=='O' ? '<span class="text-danger font-weight-bold h4">*</span>' : '' ;?>
+								<?php echo $row['holiday_type']=='O' ? '<span class="text-danger font-weight-bold h5">*</span>' : '' ;?>
 							</td>
 							<td>
 								<?php echo $this->common_lib->display_date($row['holiday_date'], null, null, 'l'); ?>
@@ -41,7 +41,7 @@
 							<!-- <td><?php echo $arr_holiday_type[$row['holiday_type']]; ?></td> -->
 							<td>
 								<?php echo $row['holiday_description']; ?>
-								<?php echo $row['holiday_type']=='O' ? ' <span class="small text-danger font-italic">('.strtolower($arr_holiday_type[$row['holiday_type']]).')</span>' : '' ;?>
+								<?php echo $row['holiday_type']=='O' ? ' <span class="text-danger font-italic">('.strtolower($arr_holiday_type[$row['holiday_type']]).')</span>' : '' ;?>
 							</td>
 						</tr>
 						<?php
