@@ -28,14 +28,14 @@
 					$count = 1;
 					foreach($data_rows as $key=>$row){
 						?>
-						<tr class="<?php echo $row['holiday_type']=='O' ? 'table-warning' : '' ;?>">
+						<tr class="<?php echo $row['holiday_type']=='O' ? '' : '' ;?>">
 							<th scope="row"><?php echo $count;?></th>
 							<td><?php echo $this->common_lib->display_date($row['holiday_date'], null, null, 'd-M-Y'); ?></td>
 							<td><?php echo $this->common_lib->display_date($row['holiday_date'], null, null, 'l'); ?></td>
 							<!-- <td><?php echo $arr_holiday_type[$row['holiday_type']]; ?></td> -->
 							<td>
 								<?php echo $row['holiday_description']; ?>
-								<?php echo $row['holiday_type']=='O' ? '('.$arr_holiday_type[$row['holiday_type']].')' : '' ;?>
+								<?php echo $row['holiday_type']=='O' ? ' <span class="text-danger">('.$arr_holiday_type[$row['holiday_type']].')</span>' : '' ;?>
 							</td>
 						</tr>
 						<?php
