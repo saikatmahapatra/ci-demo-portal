@@ -304,7 +304,7 @@ class User extends CI_Controller {
     function auth_error() {        
 		$this->data['page_heading'] = 'Authorization Error Occured';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/auth_error', $this->data, true);
-        $this->load->view('_layouts/layout_login', $this->data);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 
     function validate_login_form_data() {

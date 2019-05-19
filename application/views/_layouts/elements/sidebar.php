@@ -1,6 +1,6 @@
 <div class="sidebar-overlay" data-toggle="sidebar"></div>
-<aside class="sidebar">
-    <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
+<?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
+<aside class="sidebar">    
     <?php
         $img_src = "";
         $default_path = "assets/dist/img/default_user@2x.jpg";
@@ -33,7 +33,7 @@
             </p>
         </div>
     </div>
-    <?php } ?>
+    
 
     <ul class="menu">
         <li>
@@ -106,3 +106,4 @@
     </ul>
 
 </aside>
+<?php } ?>
