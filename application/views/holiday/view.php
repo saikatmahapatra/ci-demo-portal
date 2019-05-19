@@ -2,17 +2,17 @@
 <div class="row heading-container">
     <div class="col-md-12">
 		<h1 class="page-heading"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h1>
-		<p class="alert alert-info"><i class="fa fa-info-circle" aria-hidden="true"></i> Please note that <span class="h5 text-danger font-weight-bold">*</span> marked dates are optional holiday.<p>
     </div>
 </div><!--/.heading-container-->
 
 <div class="row mt-4">
-	<div class="col-md-12">
+	<div class="col-md-8">
 		<!-- <div class="grid-action-holder row my-2">
 			<div class="col-md-12">
 				<span class="m-1 p-1 table-warning"> Optional Holidays</span>
 			</div>	
 		</div> -->
+		<p class="alert alert-info"><i class="fa fa-info-circle" aria-hidden="true"></i> Please note that <span class="h5 text-danger font-weight-bold">*</span> marked dates are optional holiday.<p>
 		<div class="table-responsive">
 			<table class="table ci-table table-bordered">
 				<thead class="thead-dark">
