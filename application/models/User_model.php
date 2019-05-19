@@ -631,7 +631,7 @@ class User_model extends CI_Model {
     }
 
     function get_user_email($user_id=NULL, $user_type=NULL) {
-        $this->db->select('t1.user_email');
+        $this->db->select('t1.user_email, t1.user_email_secondary');
         if(isset($user_id)){
             $this->db->where(array('t1.id' => $user_id));
         }
@@ -642,10 +642,14 @@ class User_model extends CI_Model {
         $query = $this->db->get('users as t1');
         //echo $this->db->last_query();
         $result = $query->result_array();
-        $email = array();
+        $email['work'] = array();
+        $email['personal'] = array();
         if($result){
             foreach ($result as $row){
-                array_push($email, $row['user_email']);
+                array_push($email['work'], $row['user_email']);
+                if(strlen($row['user_email_secondary'])>0){
+                    array_push($email['personal'], $row['user_email_secondary']);
+                }
             } 
         }               
         return $email;
