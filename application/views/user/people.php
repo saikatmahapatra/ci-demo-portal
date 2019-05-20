@@ -40,12 +40,13 @@
 				<?php
 				if(isset($data_rows) && sizeof($data_rows)<=0){
 					?>
-					<div class="alert alert-danger"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Oops! No results found.</div>
+					<div class="text-danger"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Oops! No results found.</div>
 					<?php
 				}
 				?>
 				<?php
 				if(isset($data_rows)){
+					//print_r($data_rows);
 					$count = 1;
 					foreach($data_rows as $key=>$row){
 						?>
@@ -78,8 +79,8 @@
 							<div class="media border mb-2 mt-2 p-2">
 								<img class="align-self-center mr-3 rounded dp-sm" src="<?php echo base_url($img_src);?>">
 								<div class="media-body">
-									<div class=""><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></div>
-									<div class="small"><?php echo 'Emp ID : '.$row['user_emp_id']; ?></div>
+									<div class=""><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?><?php echo ' ('.$row['user_emp_id'].')'; ?></div>
+									<div class="small"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '' ; ?></div>
 									<?php
 									$email_id = explode('@',$row['user_email']);
 									?>
