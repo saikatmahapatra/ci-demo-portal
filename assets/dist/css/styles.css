@@ -8437,6 +8437,12 @@ body {
   margin-top: 4rem;
 }
 
+@media (max-width: 480px) {
+  body {
+    margin-top: 2rem;
+  }
+}
+
 body.login {
   margin-top: 0rem;
 }
@@ -9144,7 +9150,7 @@ button.bg-light-dark:focus {
   padding: 10px 0;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 575px) {
   .search {
     display: none;
   }

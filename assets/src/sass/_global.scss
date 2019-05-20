@@ -1,5 +1,8 @@
 body {
     margin-top: 4rem;
+    @media(max-width: 480px) {
+        margin-top: 2rem;
+    }
 }
 
 body.login {
