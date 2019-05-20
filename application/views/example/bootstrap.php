@@ -1,8 +1,9 @@
-<div class="row mb-5">
-    <div class="col-md-12">
-        <h1><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h1>
+<?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
+<div class="row page-title-container">
+    <div class="col-sm-12">
+        <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
     </div>
-</div><!--/.heading-container-->
+</div><!--/.page-title-container-->
 		
 		
 <!-- Main jumbotron for a primary marketing message or call to action -->

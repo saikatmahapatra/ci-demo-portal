@@ -50,7 +50,7 @@ class Timesheet extends CI_Controller {
 		
 		//View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
-		$this->data['page_heading'] = $this->router->class.' : '.$this->router->method;
+		$this->data['page_title'] = $this->router->class.' : '.$this->router->method;
         
     }
 	
@@ -108,7 +108,7 @@ class Timesheet extends CI_Controller {
 		$data = array();
 		$this->data['cal'] = $this->calendar->generate($year,$month,$data);
 		$month_name = date('M', mktime(0, 0, 0, $month, 10));		
-		$this->data['page_heading'] = 'Timesheet';
+		$this->data['page_title'] = 'Timesheet';
 		
 		$this->add();
 		
@@ -326,7 +326,7 @@ class Timesheet extends CI_Controller {
         if(sizeof($this->data['rows'])<=0){
             redirect($this->router->directory.$this->router->class);
         }
-		$this->data['page_heading'] = 'Edit Timesheet Entry for ';
+		$this->data['page_title'] = 'Edit Timesheet Entry for ';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -390,7 +390,7 @@ class Timesheet extends CI_Controller {
             }
         }
 
-		$this->data['page_heading'] = 'Search Timesheet Report';
+		$this->data['page_title'] = 'Search Timesheet Report';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/report', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

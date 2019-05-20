@@ -43,7 +43,7 @@ class Home extends CI_Controller {
 
         //View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
-        $this->data['page_heading'] = $this->router->class.' : '.$this->router->method;
+        $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
 		
 		// load Breadcrumbs
 		$this->load->library('breadcrumbs');
@@ -106,8 +106,8 @@ class Home extends CI_Controller {
         $this->data['display_reminder_modal'] = sizeof($profile_completion) > 0 ? 'true' : 'false';
         
 
-		//$this->data['page_heading'] = 'Welcome to '.$this->config->item('app_company_product');
-		$this->data['page_heading'] = 'Dashboard';
+		//$this->data['page_title'] = 'Welcome to '.$this->config->item('app_company_product');
+		$this->data['page_title'] = 'Dashboard';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -128,19 +128,19 @@ class Home extends CI_Controller {
         $id = $this->uri->segment(3);		
 		$result_array = $this->cms_model->get_contents($id, NULL, NULL, FALSE, FALSE);
         $this->data['data_rows'] = $result_array['data_rows'];        
-		$this->data['page_heading'] = 'Welcome';
+		$this->data['page_title'] = 'Welcome';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/details', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
 
     function under_construction(){
-        $this->data['page_heading'] = 'Under Construction';
+        $this->data['page_title'] = 'Under Construction';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/under_construction', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
 
     function feedback(){
-        $this->data['page_heading'] = 'Feedback';
+        $this->data['page_title'] = 'Feedback';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/feedback', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
