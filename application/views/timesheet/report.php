@@ -5,15 +5,12 @@
     </div>
 </div><!--/.page-title-container-->
 
-
-
-
 <div class="row">
 	<div class="col-md-12">
 		<?php
 		// Show server side flash messages
 		if (isset($alert_message)) {
-			$html_alert_ui = '';                
+			$html_alert_ui = '';
 			$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
 			echo $html_alert_ui;
 		}
@@ -22,17 +19,17 @@
 		<div class="row mb-3">
 			<div class="col-md-12">
 			<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'ci-form','name' => '','id' => 'timesheet-search-form')); ?>
-			<?php echo form_hidden('form_action', 'search'); ?>		  
+			<?php echo form_hidden('form_action', 'search'); ?>
 				<div class="form-row">
 					<div class="form-group col-md-4 ci-select2">
 						<label for="q_emp" class="">Employee</label>
-						<?php echo form_dropdown('q_emp', array(), $this->input->get_post('q_emp'),array('class' => 'form-control select2-control-user', 'id'=>'q_emp')); ?> 
+						<?php echo form_dropdown('q_emp', $user_arr, $this->input->get_post('q_emp'),array('class' => 'form-control select2-control', 'id'=>'q_emp')); ?> 
 						<?php echo form_error('q_emp'); ?>
 					</div>
 					
 					<div class="form-group col-md-4 ci-select2">
 						<label for="q_project" class="">Project</label>
-						<?php echo form_dropdown('q_project', array(), $this->input->get_post('q_project'),array('class' => 'form-control select2-control-project','id'=>'q_project')); ?> 
+						<?php echo form_dropdown('q_project', $project_arr, $this->input->get_post('q_project'),array('class' => 'form-control select2-control','id'=>'q_project')); ?> 
 						<?php echo form_error('q_project'); ?>
 					</div>
 
@@ -61,8 +58,9 @@
 			</div>
 		</div>
 		
-		<?php if(isset($data_rows) && sizeof($data_rows)>0){ ?>
+		
 		<div class="table-responsive">
+			<?php if(isset($data_rows) && sizeof($data_rows)>0){ ?>
 			<?php echo form_open(current_url(), array('method' => 'GET', 'class' => 'form-inline my-3 ml-2', 'name' => 'download_data')); ?>
 				<input type="hidden" name="form_action" value="search">
 				<input type="hidden" name="form_action_primary" value="download">
@@ -72,6 +70,7 @@
 				<input type="hidden" name="to_date" value="<?php echo $this->input->get('to_date');?>">
 				<button type="submit" class="btn btn-sm btn-outline-secondary" title="Download"> <i class="fa fa-download" aria-hidden="true"></i> Download as Excel</button>
 			<?php echo form_close(); ?>
+			<?php } ?>
 
 			<table class="table table-striped">
 				<thead class="thead-dark">
@@ -80,12 +79,14 @@
 						<th scope="col" style="width:15%;">Employee</th>
 						<th scope="col" style="width:20%;">Project</th>
 						<th scope="col" style="width:20%;">Activity</th>
-						<th scope="col" style="width:5%;">Efforts(Hours)</th>
+						<th scope="col" style="width:5%;">Effort(hrs)</th>
 						<th scope="col" style="width:30%;">Task Description</th>
 						
 					</tr>
 				</thead>
 				<tbody>
+				<?php if(isset($data_rows)){ ?>
+				<?php if(sizeof($data_rows)>0) { ?>
 						<?php foreach($data_rows as $row){ ?>
 							<tr>
 								<td><?php echo $this->common_lib->display_date($row['timesheet_date']);?></td>
@@ -95,8 +96,23 @@
 								<td><?php echo $row['timesheet_hours'];?></td>
 								<td><?php echo $row['timesheet_description'];?></td>
 							</tr>
-						<?php } ?>
-			
+						<?php } // end foreach?>
+					<?php } else{ ?>
+						<tr>
+						<td colspan="6" class="text-danger">
+							No records found based on your search criteria.
+						</td>
+					</tr>
+					<?php }?>
+				<?php } else {?>
+					<tr>
+						<td colspan="6" class="text-info">
+							Please search selecting employee, project and date range.
+						</td>
+					</tr>
+					<?php
+				}
+				?>
 				</tbody>
 				<tfoot>
 					<tr>
@@ -104,17 +120,13 @@
 						<th scope="col">Employee</th>
 						<th scope="col">Project</th>
 						<th scope="col">Activity</th>
-						<th scope="col">Efforts(Hours)</th>
+						<th scope="col">Effort(Hours)</th>
 						<th scope="col">Task Description</th>
 					</tr>
 				</tfoot>
-			</table>					
+			</table>
 		</div>
-		<?php } else {?>
-			<div class="alert alert-warning">No result found</div>
-		<?php }?>
 		<?php echo isset($pagination_link) ? $pagination_link : ''; ?>
-			
 		</div>
 	</div>
 </div><!--/.row-->
