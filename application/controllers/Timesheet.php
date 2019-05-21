@@ -244,41 +244,36 @@ class Timesheet extends CI_Controller {
         foreach ($data_rows as $result) {
             $no++;
             $row = array();
-            //$row[] = $this->common_lib->display_date($result['timesheet_date']);
-            //$row[] = $result['project_name'];
-            //$row[] = $result['task_activity_name'];
-            //$row[] = $result['timesheet_hours'];
-            //$row[] = $result['timesheet_review_status'];
-			
-			$html = '<div class="font-weight-bold">'.$this->common_lib->display_date($result['timesheet_date']).' <span class="float-right">'.$result['timesheet_hours'].' hrs</span></div>';			
-			$html.= '<div class="">'.$result['project_number'].' '.$result['project_name'].'<span class="float-right">'.$result['task_activity_name'].'</span></div>';			
+            $row[] = $this->common_lib->display_date($result['timesheet_date']);
+            $row[] = $result['project_name'].', '.$result['task_activity_name'];
+            $row[] = $result['timesheet_hours'];
+            //$row[] = $result['timesheet_description'];
+			$html = '';
+			//$html.= '<div class="">'.$this->common_lib->display_date($result['timesheet_date']).' <span class="mx-3">'.$result['timesheet_hours'].' hrs</span></div>';			
+			//$html.= '<div class="">'.$result['project_number'].' '.$result['project_name'].'<span class="mx-3">'.$result['task_activity_name'].'</span></div>';			
 			
             
                 //add html for action
-                $action_html = '<span class="float-right">';
+                $action_html = '<div class="mt-2">';
                 if(($year == $current_year) && ($month == $current_month)){
-                $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
-                    'class' => 'btn btn-sm btn-outline-secondary mr-2',
-                    'data-toggle' => 'tooltip',
-                    'data-original-title' => 'Edit',
-                    'title' => 'Edit',
-                ));            
-                $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-trash" aria-hidden="true"></i> Delete', array(
-                    'class' => 'btn btn-sm btn-outline-danger btn-delete',
-                    'data-confirmation'=>false,
-                    'data-confirmation-message'=>'Are you sure, you want to delete this?',
-                    'data-toggle' => 'tooltip',
-                    'data-original-title' => 'Delete',
-                    'title' => 'Delete',
-                ));
+                    $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
+                        'class' => 'btn btn-sm btn-outline-secondary mr-2',
+                        'data-toggle' => 'tooltip',
+                        'data-original-title' => 'Edit',
+                        'title' => 'Edit',
+                    ));            
+                    $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-trash" aria-hidden="true"></i> Delete', array(
+                        'class' => 'btn btn-sm btn-outline-danger btn-delete',
+                        'data-confirmation'=>false,
+                        'data-confirmation-message'=>'Are you sure, you want to delete this?',
+                        'data-toggle' => 'tooltip',
+                        'data-original-title' => 'Delete',
+                        'title' => 'Delete',
+                    ));
                 }
-                $action_html.='</span>';           
-            
-			$html.= '<div>'.$result['timesheet_description'].' '.$action_html.'</div>';		
-			//$html.=$action_html;
+                $action_html.='</div>';
 
-            //$row[] = $action_html;
-			$row[] = $html;
+            $row[] = $result['timesheet_description'].$action_html;
             $data[] = $row;
         }
 

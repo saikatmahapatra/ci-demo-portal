@@ -97,7 +97,7 @@
         </li>
         <?php } ?>
         <li>
-            <a class="menu-item" href="<?php echo base_url('holiday/view');?>"><i class="menu-icon fa fa-plane" aria-hidden="true"></i><span class="menu-label">Calendar Holiday</span></a>
+            <a class="menu-item" href="<?php echo base_url('holiday/view');?>"><i class="menu-icon fa fa-coffee" aria-hidden="true"></i><span class="menu-label">Holidays</span></a>
         </li>
         <!-- <li>
             <a class="menu-item" href="<?php echo base_url('faq');?>"><i class="menu-icon fa fa-question-circle-o" aria-hidden="true"></i><span class="menu-label">FAQ</span></a>
