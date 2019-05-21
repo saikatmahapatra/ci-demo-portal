@@ -106,7 +106,7 @@
 					<?php }?>
 				<?php } else {?>
 					<tr>
-						<td colspan="6" class="text-info">
+						<td colspan="6" class="">
 							Please search selecting employee, project and date range.
 						</td>
 					</tr>
