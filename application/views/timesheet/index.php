@@ -126,17 +126,16 @@
 				<div class="table-responsive">
 					<table id="timesheet-datatable" class="table ci-table table-striped w-100">
 						<thead class="thead-dark">
-							<!--<tr>
-								<th scope="col">Date</th>
-								<th scope="col">Project</th>
-								<th scope="col">Activity</th>
-								<th scope="col">Hours</th>
-								<th scope="col">Status</th>
-								<th scope="col">Action</th>
-							</tr>-->
 							<tr>
-								<th scope="col">Date & Tasks</th>
+								<th scope="col" style="width:10%">Date</th>
+								<th scope="col" style="width:20%">Project Activity</th>
+								<th scope="col" style="width:10%">Hours</th>
+								<th scope="col" style="width:55%">Description</th>
+								<!-- <th scope="col"></th> -->
 							</tr>
+							<!-- <tr>
+								<th scope="col">Date & Tasks</th>
+							</tr> -->
 						</thead>
 						<tbody></tbody>
 					</table>
