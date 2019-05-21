@@ -79,14 +79,15 @@ $row = $rows[0];
 
 		<div class="form-row">
 			<div class="form-group col-md-12">
-				<label class="">Send Email Notification to (optional)</label>
-				<div class="custom-control custom-checkbox custom-control-inline mx-2">
+				<!-- <label class="">Send Email Notification to (optional)</label> -->
+				<div class="custom-control custom-checkbox custom-control-inline">
 					<?php
 						$cb_is_checked = $this->input->post('send_email_notification') === 'Y';
 						echo form_checkbox('send_email_notification', 'Y', $cb_is_checked, array('id' => 'send_email_notification','class' => 'custom-control-input'));
 					?>
-					<label class="custom-control-label" for="send_email_notification">Office email</label>
+					<label class="custom-control-label" for="send_email_notification">Send Email Notification to office email (optional)</label>
 				</div>
+				<?php /* ?>
 				<div class="custom-control custom-checkbox custom-control-inline">
 					<?php
 						$cb_is_checked_2 = $this->input->post('send_email_notification_2') === 'Y';
@@ -94,6 +95,7 @@ $row = $rows[0];
 					?>
 					<label class="custom-control-label" for="send_email_notification_2">Personal email</label>
 				</div>
+				<?php */ ?>
 			</div>
 		</div>
 

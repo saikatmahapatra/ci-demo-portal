@@ -41,7 +41,7 @@
         </li>
         
         <li class="treeview">
-            <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-laptop" aria-hidden="true"></i><span class="menu-label">Self Services</span><i class="treeview-indicator fa fa-angle-right" aria-hidden="true"></i></a>
+            <a class="menu-item" href="<?php echo base_url('#');?>" data-toggle="treeview"><i class="menu-icon fa fa-desktop" aria-hidden="true"></i><span class="menu-label">Self Services</span><i class="treeview-indicator fa fa-angle-right" aria-hidden="true"></i></a>
             <ul class="treeview-menu">
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">Update Profile</a></li>
                 <li><a class="treeview-item" href="<?php echo base_url($this->router->directory.'document'); ?>">Upload Documents</a></li>
@@ -97,7 +97,7 @@
         </li>
         <?php } ?>
         <li>
-            <a class="menu-item" href="<?php echo base_url('holiday/view');?>"><i class="menu-icon fa fa-calendar-times-o" aria-hidden="true"></i><span class="menu-label">Holiday List</span></a>
+            <a class="menu-item" href="<?php echo base_url('holiday/view');?>"><i class="menu-icon fa fa-plane" aria-hidden="true"></i><span class="menu-label">Calendar Holiday</span></a>
         </li>
         <!-- <li>
             <a class="menu-item" href="<?php echo base_url('faq');?>"><i class="menu-icon fa fa-question-circle-o" aria-hidden="true"></i><span class="menu-label">FAQ</span></a>
