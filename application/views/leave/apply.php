@@ -1,10 +1,10 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<div class="row heading-container">
-    <div class="col-12">
-        <h1 class="page-heading"><?php echo isset($page_heading)? $page_heading:'Page Heading'; ?></h1>
+<div class="row page-title-container">
+    <div class="col-sm-12">
+		<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
 		<p><i class="fa fa-question-circle-o" aria-hidden="true"></i> Looking for help or information? Click <a class="" href="#" data-toggle="modal" id="view_leave_balance_update_details" data-target="#leaveBalanceModal">here to read.</a></p>
     </div>
-</div><!--/.heading-container-->
+</div><!--/.page-title-container-->
 
 <div class="row">
 	<div class="col-md-12">

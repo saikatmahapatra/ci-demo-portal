@@ -23,7 +23,7 @@ class Example extends CI_Controller {
         
         $this->data['alert_message'] = NULL;
         $this->data['alert_message_css'] = NULL;
-		$this->data['page_heading'] = $this->router->class.' : '.$this->router->method;
+		$this->data['page_title'] = $this->router->class.' : '.$this->router->method;
         
     }
 
@@ -71,7 +71,7 @@ class Example extends CI_Controller {
                 redirect(current_url());
             }
         }
-        $this->data['page_heading'] = 'CI Form Syntax';
+        $this->data['page_title'] = 'CI Form Syntax';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/form_helper', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -137,7 +137,7 @@ class Example extends CI_Controller {
     }
 
     function bootstrap() {
-        $this->data['page_heading'] = 'Bootstrap SASS Customized Theme Components : UX Guide';
+        $this->data['page_title'] = 'Bootstrap SASS Customized Theme Components : UX Guide';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/bootstrap', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -190,7 +190,7 @@ class Example extends CI_Controller {
 		$this->data['entry_for'] = date('Y/m/d');
 		$data = array();
 		$this->data['cal'] = $this->calendar->generate($year,$month,$data);
-		$this->data['page_heading'] = 'Calendar';
+		$this->data['page_title'] = 'Calendar';
         
 
         //Simulate Form Submit
@@ -290,7 +290,7 @@ class Example extends CI_Controller {
         $this->data['captcha_word'] = $cap['word'];
         $this->data['captcha_image'] = $cap['image'];
 		
-		$this->data['page_heading'] = 'Contact Us';
+		$this->data['page_title'] = 'Contact Us';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/contact_form', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

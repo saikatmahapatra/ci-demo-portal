@@ -1,14 +1,15 @@
 <?php
 $row = $data_rows[0];
 ?>
-<div class="row heading-container">
-    <div class="col-12">
-        <h1 class="page-heading"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></h1>
+<?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
+<div class="row page-title-container">
+    <div class="col-sm-12">
+        <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
     </div>
-</div><!--/.heading-container-->
+</div><!--/.page-title-container-->
 
 <div class="row">
-	<div class="col-md-12 mb-4" data-id="<?php echo $row['id'];?>">
+	<div class="col-md-12" data-id="<?php echo $row['id'];?>">
 		<div class="card-news-details">
 			<div class="card-news-header h5 d-none">
 			<?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?>

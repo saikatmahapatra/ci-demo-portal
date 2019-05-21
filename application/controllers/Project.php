@@ -45,7 +45,7 @@ class Project extends CI_Controller {
 
         //View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
-        $this->data['page_heading'] = $this->router->class.' : '.$this->router->method;
+        $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
 		
 		// load Breadcrumbs
 		$this->load->library('breadcrumbs');
@@ -69,7 +69,7 @@ class Project extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		
-		$this->data['page_heading'] = 'Projects';
+		$this->data['page_title'] = 'Projects';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -158,7 +158,7 @@ class Project extends CI_Controller {
                 }
             }
         }
-		$this->data['page_heading'] = 'Add Project';
+		$this->data['page_title'] = 'Add Project';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/add', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -166,7 +166,7 @@ class Project extends CI_Controller {
     function edit() {
         //Check user permission by permission name mapped to db
         //$is_authorized = $this->common_lib->is_auth('cms-edit');
-		//$this->data['page_heading'] = "Edit Page Content";
+		//$this->data['page_title'] = "Edit Page Content";
 		$this->breadcrumbs->push('Edit','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
@@ -190,7 +190,7 @@ class Project extends CI_Controller {
         }
         $result_array = $this->project_model->get_rows($this->id);
         $this->data['rows'] = $result_array['data_rows'];
-		$this->data['page_heading'] = 'Edit Project';
+		$this->data['page_title'] = 'Edit Project';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }   
@@ -230,7 +230,7 @@ class Project extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		
-		$this->data['page_heading'] = 'Timesheet Activities';
+		$this->data['page_title'] = 'Timesheet Activities';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/activity', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -326,7 +326,7 @@ class Project extends CI_Controller {
                 }
             }
         }
-		$this->data['page_heading'] = 'Add Activity';
+		$this->data['page_title'] = 'Add Activity';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/add_activity', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -334,7 +334,7 @@ class Project extends CI_Controller {
     function edit_activity() {
         //Check user permission by permission name mapped to db
         //$is_authorized = $this->common_lib->is_auth('cms-edit');
-		//$this->data['page_heading'] = "Edit Page Content";
+		//$this->data['page_title'] = "Edit Page Content";
 		$this->breadcrumbs->push('Edit','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
@@ -356,7 +356,7 @@ class Project extends CI_Controller {
         }
         $result_array = $this->project_model->get_activity_rows($this->id);
         $this->data['rows'] = $result_array['data_rows'];
-		$this->data['page_heading'] = 'Edit Activity';
+		$this->data['page_title'] = 'Edit Activity';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_activity', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

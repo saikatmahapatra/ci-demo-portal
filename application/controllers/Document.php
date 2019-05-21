@@ -41,7 +41,7 @@ class Document extends CI_Controller {
         $this->data['alert_message_css'] = NULL;
 
         $this->data['id'] = $this->uri->segment(3) ? $this->uri->segment(3) : $this->sess_user_id;
-        $this->data['page_heading'] = $this->router->class.' : '.$this->router->method;
+        $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
 		
 		// load Breadcrumbs
 		// $this->load->library('breadcrumbs');
@@ -95,7 +95,7 @@ class Document extends CI_Controller {
         if ($this->input->post('form_action') == 'file_upload') {
             $this->upload_file();
         }
-		$this->data['page_heading'] = 'My Documents';
+		$this->data['page_title'] = 'My Documents';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

@@ -24,7 +24,7 @@ class Faq extends CI_Controller {
     }
 
     function index() {
-		$this->data['page_heading'] = 'FAQ';
+		$this->data['page_title'] = 'FAQ';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

@@ -38,7 +38,7 @@ class Search extends CI_Controller {
 
         //View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
-        $this->data['page_heading'] = $this->router->class.' : '.$this->router->method;
+        $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
 		
 		// load Breadcrumbs
 		$this->load->library('breadcrumbs');
@@ -89,7 +89,7 @@ class Search extends CI_Controller {
         }
         //die($search_keywords);
 
-		$this->data['page_heading'] = 'Search Result';
+		$this->data['page_title'] = 'Search Result';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

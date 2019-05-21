@@ -39,7 +39,7 @@ class Holiday extends CI_Controller {
 
         //View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
-        $this->data['page_heading'] = $this->router->class.' : '.$this->router->method;
+        $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
 		
 		// load Breadcrumbs
 		$this->load->library('breadcrumbs');
@@ -79,7 +79,7 @@ class Holiday extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		
-		$this->data['page_heading'] = 'Holiday Calendar';
+		$this->data['page_title'] = 'Holiday Calendar';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -172,7 +172,7 @@ class Holiday extends CI_Controller {
                 }
             }
         }
-		$this->data['page_heading'] = 'Add a Holiday';
+		$this->data['page_title'] = 'Add a Holiday';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/add', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -214,7 +214,7 @@ class Holiday extends CI_Controller {
         }
         $result_array = $this->holiday_model->get_rows($this->uri->segment(3));
         $this->data['rows'] = $result_array['data_rows'];
-		$this->data['page_heading'] = 'Edit Holiday';
+		$this->data['page_title'] = 'Edit Holiday';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -270,7 +270,7 @@ class Holiday extends CI_Controller {
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		$result_array = $this->holiday_model->get_holidays(NULL, NULL, NULL, FALSE, FALSE);
         $this->data['data_rows'] = $result_array['data_rows'];
-		$this->data['page_heading'] = 'Calendar Holidays - '.date('Y');
+		$this->data['page_title'] = 'Calendar Holidays - '.date('Y');
         $this->data['maincontent'] = $this->load->view($this->router->class.'/view', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

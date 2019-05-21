@@ -71,7 +71,7 @@ class Leave extends CI_Controller {
 		
 		//View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
-		$this->data['page_heading'] = $this->router->class.' : '.$this->router->method;
+		$this->data['page_title'] = $this->router->class.' : '.$this->router->method;
         
     }
 
@@ -80,7 +80,7 @@ class Leave extends CI_Controller {
     }
 	
 	function apply() {
-		$this->data['page_heading'] = 'Apply Leave';		
+		$this->data['page_title'] = 'Apply Leave';		
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');        
         $this->data['approvers'] = $this->user_model->get_user_approvers($this->sess_user_id);
@@ -249,7 +249,7 @@ class Leave extends CI_Controller {
     }
 
     function history() {
-        $this->data['page_heading'] = 'Leave History';
+        $this->data['page_title'] = 'Leave History';
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');		
         // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition
@@ -278,14 +278,14 @@ class Leave extends CI_Controller {
     }
 
     function manage() {
-        $this->data['page_heading'] = 'Leave Requests Management';
+        $this->data['page_title'] = 'Leave Requests Management';
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition
         $cond = array();
         $cond['assigned_to_user_id'] = $this->sess_user_id;
         if($this->uri->segment(3) == 'pending'){
-            $this->data['page_heading'] = 'Leave Requests Management - Pending Leave';
+            $this->data['page_title'] = 'Leave Requests Management - Pending Leave';
             $cond['leave_status'] = array('B');
             $cond['assigned_to_user_id'] = $this->sess_user_id;
         }
@@ -453,7 +453,7 @@ class Leave extends CI_Controller {
     }
 
     function details() {				
-        $this->data['page_heading'] = 'Leave Details';   
+        $this->data['page_title'] = 'Leave Details';   
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');   
         $result_array = $this->leave_model->get_rows($this->id, NULL, NULL, FALSE, TRUE);
@@ -463,7 +463,7 @@ class Leave extends CI_Controller {
     }
 
     function details_process() {				
-        $this->data['page_heading'] = 'Manage Leave Request';   
+        $this->data['page_title'] = 'Manage Leave Request';   
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');   
         $result_array = $this->leave_model->get_rows($this->id, NULL, NULL, FALSE, TRUE);
@@ -477,7 +477,7 @@ class Leave extends CI_Controller {
         $is_authorized = $this->common_lib->is_auth(array(
             'crud-leave-balance'
         ));  
-        $this->data['page_heading'] = 'Leave Balance Sheet';      
+        $this->data['page_title'] = 'Leave Balance Sheet';      
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         if ($this->input->post('form_action') == 'leave_balance_update') {

@@ -1,11 +1,12 @@
 body {
-    margin-top: 5rem;
-    margin-bottom: 3rem;
+    margin-top: 4rem;
+    @media(max-width: 480px) {
+        margin-top: 2rem;
+    }
 }
 
 body.login {
     margin-top: 0rem;
-    //@include linear-gradient(lighten($primary-color, 0%), $primary-color);
 }
 
 .app {
@@ -82,8 +83,20 @@ body.login {
     width: 150px;
 }
 
-// Page Heading
-h1.page-heading {
+// Breadcrumb
+.breadcrumb {
+    margin-top: 0px;
+    padding: 0px;
+    background: $white;
+}
+
+// View Page Title
+.page-title-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.page-title {
     font-size: 1.75rem;
     font-weight: 300;
 }
@@ -193,14 +206,6 @@ a[data-link-type="user-profile-card"] {
     dt {
         /*font-weight: normal;*/
         color: $gray-700;
-    }
-}
-
-.heading-container {
-    .breadcrumb {
-        margin-top: 0px;
-        padding: 0px;
-        background: $white;
     }
 }
 
