@@ -35,7 +35,7 @@
 				<thead class="thead-dark">
 					<tr>
 						<th>Name</th>
-						<th>Emp ID</th>
+						<th>EmpID</th>
 						<th>Email</th>
 						<th>Phone</th>
 						<th>Designation</th>
@@ -47,7 +47,7 @@
 				<tfoot>
 					<tr>
 						<th>Name</th>
-						<th>Emp ID</th>
+						<th>EmpID</th>
 						<th>Email</th>
 						<th>Phone</th>
 						<th>Designation</th>
