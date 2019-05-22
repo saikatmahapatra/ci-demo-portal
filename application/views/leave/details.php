@@ -29,7 +29,7 @@ $row = $data_rows[0];
 				<dl class="row">
 					<dt class="col-md-2">Leave Status</dt>
 					<dd class="col-md-4 font-weight-bold">
-					<span class=""><i class="fa fa-circle <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>
+					<span class=""><i class="fa fa-flash <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>
 					<span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>"> <?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
 					</dd>
 					<dt class="col-md-2">Leave Request No</dt>

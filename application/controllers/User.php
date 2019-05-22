@@ -218,7 +218,7 @@ class User extends CI_Controller {
             // $html_contact.= '<div> Mobile (W) : '.$result['user_phone2'].'</div>';
             // $row[] = $html_contact;
             $row[] = $result['user_phone1'];
-            $row[] = '<span class=""><i class="fa fa-circle '.$status_indicator.'" aria-hidden="true"></i></span>';
+            $row[] = '<span class=""><i class="fa fa-flash '.$status_indicator.'" aria-hidden="true"></i></span>';
 
             //$row[] = ($result['user_status'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive</span>';
             //add html for action
