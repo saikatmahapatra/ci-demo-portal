@@ -270,7 +270,7 @@ class Holiday extends CI_Controller {
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		$result_array = $this->holiday_model->get_holidays(NULL, NULL, NULL, FALSE, FALSE);
         $this->data['data_rows'] = $result_array['data_rows'];
-		$this->data['page_title'] = 'Calendar Holidays - '.date('Y');
+		$this->data['page_title'] = date('Y').' Holidays';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/view', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
