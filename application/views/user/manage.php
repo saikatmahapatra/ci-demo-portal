@@ -34,11 +34,11 @@
 			<table id="user-datatable" class="table ci-table table-striped">					
 				<thead class="thead-dark">
 					<tr>
-						<th>Employee</th>
-						<th>Emp#</th>
+						<th>Name</th>
+						<th>Emp ID</th>
+						<th>Email</th>
+						<th>Phone</th>
 						<th>Designation</th>
-						<th>Registered Email</th>
-						<th>Mobile</th>
 						<th>Status</th>
 						<th>Action</th>
 					</tr>
@@ -46,11 +46,11 @@
 				<tbody></tbody>
 				<tfoot>
 					<tr>
-						<th>Employee</th>
+						<th>Name</th>
 						<th>Emp ID</th>
+						<th>Email</th>
+						<th>Phone</th>
 						<th>Designation</th>
-						<th>Registered Email</th>
-						<th>Mobile</th>
 						<th>Status</th>
 						<th>Action</th>
 					</tr>

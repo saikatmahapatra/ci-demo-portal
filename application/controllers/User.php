@@ -191,39 +191,14 @@ class User extends CI_Controller {
             if($result['user_status'] == 'N'){
                 $status_indicator = 'text-warning';
             }
-            $html_name.= $result['user_firstname'] . '&nbsp;' . $result['user_lastname'];
-            //$html_name.= '<div> DOB : '.$this->common_lib->display_date($result['user_dob']).'</div>';
-            //$html_name.= '<div> Gender : '.$result['user_gender'].'</div>';
-            //$html_name.= '<div> Blood Gr : '.$result['user_blood_group'].'</div>';
-            //$html_name.= '<div class="small"> Reg. On : '.$this->common_lib->display_date($result['user_registration_date'], true).'</div>';
-            //$html_name.= '<div class="small"> Last Login : '.($result['user_login_date_time'] != NULL ? $this->common_lib->display_date($result['user_login_date_time'], true) : '').'</div>';
-            //$html_name.= ($result['user_status'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active Account</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive Account</span>';
-            $row[] = $html_name;           
-            $row[] = $result['user_emp_id'];           
-            $row[] = $result['designation_name'];           
 
-            // $html_corp=''; 
-            // $html_corp.= '<div class=""> Emp # : '.$result['user_emp_id'].'</div>';
-            // $html_corp.= '<div> DOJ : '.($result['user_doj'] != NULL ? $this->common_lib->display_date($result['user_doj']) : '').'</div>';
-            // $html_corp.= '<div class=""> Designation : '.$result['designation_name'].'</div>';
-            // $html_corp.= '<div class=""> RBAC Group : '.$result['role_name'].'</div>';
-            // $row[] = $html_corp;
-            
-            $row[] = '<span class="">'.$result['user_email'].'</span>';
-
-            // $html_contact=''; 
-            // $html_contact.= '<div class=""> Email (W) : '.$result['user_email'].'</div>';
-            // $html_contact.= '<div> Mobile (P) : '.$result['user_phone1'].'</div>';
-            // $html_contact.= '<div> Email (P) : '.$result['user_email_secondary'].'</div>';            
-            // $html_contact.= '<div> Mobile (W) : '.$result['user_phone2'].'</div>';
-            // $row[] = $html_contact;
+            $row[] = $result['user_firstname'] . ' ' . $result['user_lastname'];
+            $row[] = $result['user_emp_id'];
+            $row[] = $result['user_email'];
             $row[] = $result['user_phone1'];
+            $row[] = $result['designation_name'];
             $row[] = '<span class=""><i class="fa fa-flash '.$status_indicator.'" aria-hidden="true"></i></span>';
-
-            //$row[] = ($result['user_status'] == 'Y') ? '<span data-user-id="'.$result['id'].'" class="account-status badge badge-success">Active</span>' : '<span data-user-id="'.$result['id'].'" class="account-status badge badge-danger">Inactive</span>';
-            //add html for action
             $action_html = '';
-
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-info" aria-hidden="true"></i> Details', array(
                 'class' => 'btn btn-sm btn-outline-secondary mr-1',
                 'data-toggle' => 'tooltip',
@@ -231,7 +206,6 @@ class User extends CI_Controller {
                 'title' => 'View Profile'
                 
             ));
-            
             if($result['user_status'] != 'A'){
                 $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
                     'class' => 'btn btn-sm btn-outline-secondary mr-1',
