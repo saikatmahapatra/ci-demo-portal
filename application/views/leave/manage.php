@@ -24,12 +24,12 @@
 		<div class="grid-action-holder row my-2">
 			
 			<div class="col-md-12">
-				<!-- <span class="mx-2"><i class="fa fa-circle text-primary" aria-hidden="true"></i> Applied</span>
-				<span class="mx-2"><i class="fa fa-circle text-secondary" aria-hidden="true"></i> Pending</span>
-				<span class="mx-2"><i class="fa fa-circle text-info" aria-hidden="true"></i> Processing</span>
-				<span class="mx-2"><i class="fa fa-circle text-warning" aria-hidden="true"></i> Cancelled</span>
-				<span class="mx-2"><i class="fa fa-circle text-success" aria-hidden="true"></i> Approved</span>
-				<span class="mx-2"><i class="fa fa-circle text-danger" aria-hidden="true"></i> Rejected</span> -->
+				<!-- <span class="mx-2"><i class="fa fa-circle-o-notch text-primary" aria-hidden="true"></i> Applied</span>
+				<span class="mx-2"><i class="fa fa-circle-o-notch text-secondary" aria-hidden="true"></i> Pending</span>
+				<span class="mx-2"><i class="fa fa-circle-o-notch text-info" aria-hidden="true"></i> Processing</span>
+				<span class="mx-2"><i class="fa fa-circle-o-notch text-warning" aria-hidden="true"></i> Cancelled</span>
+				<span class="mx-2"><i class="fa fa-circle-o-notch text-success" aria-hidden="true"></i> Approved</span>
+				<span class="mx-2"><i class="fa fa-circle-o-notch text-danger" aria-hidden="true"></i> Rejected</span> -->
 				<span class="mx-2"><i class="fa fa-check text-success" aria-hidden="true"></i> Approved</span>
 				<span class="mx-2"><i class="fa fa-close text-danger" aria-hidden="true"></i> Rejected</span>
 				<span class="mx-2"><i class="fa fa-close text-warning" aria-hidden="true"></i> Cancelled</span>

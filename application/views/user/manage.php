@@ -17,9 +17,9 @@
 		?>
 		<div class="grid-action-holder row my-2 px-3">
 			<div class="col-md-8">
-			<span class="mx-2"><i class="fa fa-circle text-success" aria-hidden="true"></i> Active Employees</span>
-			<span class="mx-2"><i class="fa fa-circle text-warning" aria-hidden="true"></i> Inactive Employees</span>
-			<span class="mx-2"><i class="fa fa-circle text-danger" aria-hidden="true"></i> Ex-Employees</span>
+			<span class="mx-2"><i class="fa fa-circle-o-notch text-success" aria-hidden="true"></i> Active Employees</span>
+			<span class="mx-2"><i class="fa fa-circle-o-notch text-warning" aria-hidden="true"></i> Inactive Employees</span>
+			<span class="mx-2"><i class="fa fa-circle-o-notch text-danger" aria-hidden="true"></i> Ex-Employees</span>
 			</div>
 			<div class="col-md-4 text-right">
 			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-plus"></i> Add New</a>
@@ -34,11 +34,11 @@
 			<table id="user-datatable" class="table ci-table table-striped">					
 				<thead class="thead-dark">
 					<tr>
-						<th>Employee</th>
-						<th>Emp#</th>
+						<th>Name</th>
+						<th>Emp ID</th>
+						<th>Email</th>
+						<th>Phone</th>
 						<th>Designation</th>
-						<th>Registered Email</th>
-						<th>Mobile</th>
 						<th>Status</th>
 						<th>Action</th>
 					</tr>
@@ -46,11 +46,11 @@
 				<tbody></tbody>
 				<tfoot>
 					<tr>
-						<th>Employee</th>
+						<th>Name</th>
 						<th>Emp ID</th>
+						<th>Email</th>
+						<th>Phone</th>
 						<th>Designation</th>
-						<th>Registered Email</th>
-						<th>Mobile</th>
 						<th>Status</th>
 						<th>Action</th>
 					</tr>
