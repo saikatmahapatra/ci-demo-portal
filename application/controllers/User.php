@@ -197,7 +197,7 @@ class User extends CI_Controller {
             $row[] = $result['user_email'];
             $row[] = $result['user_phone1'];
             $row[] = $result['designation_name'];
-            $row[] = '<span class=""><i class="fa fa-flash '.$status_indicator.'" aria-hidden="true"></i></span>';
+            $row[] = '<span class=""><i class="fa fa-circle-o-notch '.$status_indicator.'" aria-hidden="true"></i></span>';
             $action_html = '';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-info" aria-hidden="true"></i> Details', array(
                 'class' => 'btn btn-sm btn-outline-secondary mr-1',
