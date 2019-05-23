@@ -79,7 +79,7 @@ class Holiday extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		
-		$this->data['page_title'] = 'Holiday Calendar';
+		$this->data['page_title'] = 'Holiday Management';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -102,20 +102,20 @@ class Holiday extends CI_Controller {
             $no++;
             $row = array();
             $row[] = $this->common_lib->display_date($result['holiday_date'], null, null, 'd-M-Y');
-            $row[] = $this->common_lib->display_date($result['holiday_date'], null, null, 'l');
+            $row[] = $this->common_lib->display_date($result['holiday_date'], null, null, 'D');
             $row[] = $result['holiday_description'];
             $row[] = $this->data['arr_holiday_type'][$result['holiday_type']];
             //add html for action
             $action_html = '';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
-                'class' => 'btn btn-sm btn-outline-secondary mr-1',
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i>', array(
+                'class' => 'btn btn-sm btn-outline-secondary mx-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit',
                 'title' => 'Edit',
             ));
             $action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-trash" aria-hidden="true"></i> Delete', array(
-                'class' => 'btn btn-sm btn-outline-danger btn-delete ml-1',
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-trash" aria-hidden="true"></i>', array(
+                'class' => 'btn btn-sm btn-outline-danger btn-delete mx-1',
 				'data-confirmation'=>true,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',
                 'data-toggle' => 'tooltip',
