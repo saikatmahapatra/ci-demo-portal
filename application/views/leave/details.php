@@ -12,21 +12,23 @@ $row = $data_rows[0];
 
 <div class="row">
 	<div class="col-md-12">
-	<?php
-	// Show server side flash messages
-	if (isset($alert_message)) {
-		$html_alert_ui = '';                
-		$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-		echo $html_alert_ui;
-	}
-	?>
-	</div>	
-</div>
+		<div class="card ci-card">
+			<div class="card-header">
+				Leave Request No <?php echo $row['leave_req_id'];?>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->uri->segment(5).'/'.$this->uri->segment(6));?>" class="btn btn-sm float-right btn-outline-secondary"><i class="fa fa-chevron-left"></i> Back</a>
+			</div><!--/.card-header-->
 
+			<div class="card-body">
+				<?php
+					// Show server side flash messages
+					if (isset($alert_message)) {
+						$html_alert_ui = '';
+						$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
+						echo $html_alert_ui;
+					}
+				?>
 
-<div class="row">
-	<div class="col-md-12">		
-				<dl class="row">
+					<dl class="row">
 					<dt class="col-md-2">Leave Status</dt>
 					<dd class="col-md-4 font-weight-bold">
 					<span class=""><i class="fa fa-circle-o-notch <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>
@@ -229,17 +231,14 @@ $row = $data_rows[0];
 							<div class=""><?php echo isset($row['director_approver_comment']) ? $row['director_approver_comment']: ''; ?></div>
 						</div>
 					</div>			
-            	</div><!--/.row .ci-wizard-->
-
-				
-
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->uri->segment(5).'/'.$this->uri->segment(6));?>" class="ml-2 btn btn-outline-secondary"><i class="fa fa-chevron-left"></i> Back</a>
-
-			
-	</div>
-</div>
-
-
+          </div><!--/.row .ci-wizard-->
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->uri->segment(5).'/'.$this->uri->segment(6));?>" class="btn btn-sm btn-outline-secondary"><i class="fa fa-chevron-left"></i> Back</a>
+			</div><!--./card-body-->
+			<!--<div class="card-footer"></div>--><!--/.card-footer-->
+		</div><!--/.card-->
+		
+	</div><!--/.col-->
+</div><!--/.row-->
 
 <!-- Update Leave / Leave Action -->
 <div class="modal fade" id="leaveActionModal" tabindex="-1" role="dialog" aria-labelledby="leaveActionModal" aria-hidden="true">
