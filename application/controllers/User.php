@@ -199,21 +199,20 @@ class User extends CI_Controller {
             $row[] = $result['designation_name'];
             $row[] = '<span class=""><i class="fa fa-circle-o-notch '.$status_indicator.'" aria-hidden="true"></i></span>';
             $action_html = '';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-info" aria-hidden="true"></i> Details', array(
-                'class' => 'btn btn-sm btn-outline-secondary mr-1',
+            
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i>', array(
+                'class' => 'btn btn-sm btn-outline-secondary mx-1',
+                'data-toggle' => 'tooltip',
+                'data-original-title' => 'Edit Profile',
+                'title' => 'Edit Profile'
+            ));
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-info-circle" aria-hidden="true"></i>', array(
+                'class' => 'btn btn-sm btn-outline-info mx-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'View Profile',
                 'title' => 'View Profile'
                 
             ));
-            if($result['user_status'] != 'A'){
-                $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
-                    'class' => 'btn btn-sm btn-outline-secondary mr-1',
-                    'data-toggle' => 'tooltip',
-                    'data-original-title' => 'Edit Profile',
-                    'title' => 'Edit Profile'
-                ));
-            }
             $row[] = $action_html;
             $data[] = $row;
         }

@@ -66,7 +66,7 @@ class Holiday_model extends CI_Model {
                 );
              // default order
             $order = array(
-                't1.holiday_date' => 'desc'
+                't1.holiday_date' => 'asc'
                 );
             $i = 0;
             foreach ($column_search as $item) { // loop column

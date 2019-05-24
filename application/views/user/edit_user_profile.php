@@ -37,13 +37,13 @@
 		
 			
 
-		<div class="row mt-3 mb-3">
+		<div class="row">
 			<div class="col-md-2">
 				<img class="align-self-center mr-3 rounded dp" src="<?php echo base_url($img_src);?>">
 			</div>
 			<div class="col-md-10">
 				
-			<div class="h5">
+			<div class="font-weight-bold">
 				<?php
 					echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 					echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
@@ -51,11 +51,11 @@
 					echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
 				?>
 			</div>
-			<span class="h6 <?php echo $user_status_arr[$row['user_status']]['css']; ?>"><?php echo $user_status_arr[$row['user_status']]['text']; ?></span>
+			<span class=" <?php echo $user_status_arr[$row['user_status']]['css']; ?>"><i class="fa fa-circle-o-notch" aria-hidden="true"></i> <?php echo $user_status_arr[$row['user_status']]['text']; ?></span>
 
 			<!--<div class="small"><?php //echo isset($row['role_name']) ? $row['role_name'] : ''; ?></div>-->
-			<div class="small"><?php echo isset($row['user_emp_id']) ? 'Emp # '.$row['user_emp_id'] : ''; ?></div>
-			<div class="small"><?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
+			<div class="">Emp ID : <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
+			<div class="">Designation : <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
 			<div class="">
 				<i class="fa fa-envelope-o" aria-hidden="true"></i> 
 				<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
@@ -63,7 +63,7 @@
 			<div class="">
 				<i class="fa fa-phone" aria-hidden="true"></i>
 				<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
-				<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>        
+				<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' , '.$row['user_phone2'] : ''; ?></a>        
 			</div>
 			</div>
 		</div>
@@ -222,7 +222,7 @@
 			  	</div>
 				<?php if($row['id'] != $this->common_lib->get_sess_user('id')){?>
 				<div class="form-group col-md-4">
-					<label for="user_status" class="">Portal Account Status <span class="required">*</span></label>
+					<label for="user_status" class="">Account Status <span class="required">*</span></label>
 					<div class="">
 						<div class="custom-control custom-radio custom-control-inline">
 							<?php
@@ -238,9 +238,8 @@
 								echo form_radio(array('name' => 'user_status', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_status', 'N'));
 							?>
 							<label class="custom-control-label" for="N">Inactive</span></label>
-						</div>								
+						</div>
 					</div>
-					<small id="emailHelp" class="form-text text-muted">Inactive users will not be able to login.</small>
 					<?php echo form_error('user_status'); ?>
 				</div>
 				<?php } else{
@@ -293,7 +292,7 @@
         <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
 
-		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn btn-outline-danger mr-2">Close Portal Account</a>
+		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn btn-outline-danger mx-2"><i class="fa fa-fw fa-close"></i> Close Account</a>
         <?php echo form_close(); ?>
     </div>
 </div>
