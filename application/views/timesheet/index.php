@@ -7,8 +7,22 @@
 </div><!--/.page-title-container-->
 
 <div class="row">
-	<div class="col-md-12">		
-		<nav>
+	<div class="col-md-12">
+		<div class="card ci-card">
+			<div class="card-header">
+				Form
+			</div><!--/.card-header-->
+
+			<div class="card-body">
+				<?php
+					// Show server side flash messages
+					if (isset($alert_message)) {
+						$html_alert_ui = '';
+						$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
+						echo $html_alert_ui;
+					}
+				?>
+				<nav>
 			<div class="nav nav-tabs ci-nav-tab" id="nav-tab" role="tablist">
 				<a class="nav-item nav-link active" id="nav-add-tab" data-toggle="tab" href="#nav-add" role="tab" aria-controls="nav-add" aria-selected="true">Log Tasks</a>
 				
@@ -144,9 +158,13 @@
 			</div><!--/#nav-list-->
 		
 		</div><!--/.tab-content #nav-tabContent-->
-	</div>
-</div>
-
+				
+			</div><!--./card-body-->
+			<!--<div class="card-footer"></div>--><!--/.card-footer-->
+		</div><!--/.card-->
+		
+	</div><!--/.col-->
+</div><!--/.row-->
 
 <!-- Modal -->
 <div class="modal fade" id="timesheetCalModal" tabindex="-1" role="dialog" aria-labelledby="timesheetCalModalLabel" aria-hidden="true">
