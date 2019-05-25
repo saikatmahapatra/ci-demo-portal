@@ -321,7 +321,7 @@ class Timesheet extends CI_Controller {
         if(sizeof($this->data['rows'])<=0){
             redirect($this->router->directory.$this->router->class);
         }
-		$this->data['page_title'] = 'Edit Timesheet Entry for ';
+		$this->data['page_title'] = 'Edit Timesheet';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
