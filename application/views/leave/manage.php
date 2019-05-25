@@ -10,7 +10,7 @@
 		<div class="card ci-card">
 			<div class="card-header">
 				Data Table
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/leave_balance');?>" class="float-right btn btn-sm btn-outline-secondary" title="Leave Balance Management"> <i class="fa fa-list"></i> Manage Leave Balance</a>
+				<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/leave_balance');?>" class="float-right btn btn-sm btn-outline-secondary" title="Leave Balance Management"> <i class="fa fa-list"></i> Manage Leave Balance</a> -->
 			</div><!--/.card-header-->
 
 			<div class="card-body">
