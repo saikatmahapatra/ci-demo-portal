@@ -89,7 +89,7 @@
 								<th scope="col" style="width:15%;">Employee</th>
 								<th scope="col" style="width:20%;">Project</th>
 								<th scope="col" style="width:20%;">Activity</th>
-								<th scope="col" style="width:5%;">Effort(hrs)</th>
+								<th scope="col" style="width:5%;">Hrs</th>
 								<th scope="col" style="width:30%;">Task Description</th>
 								
 							</tr>
@@ -130,7 +130,7 @@
 								<th scope="col">Employee</th>
 								<th scope="col">Project</th>
 								<th scope="col">Activity</th>
-								<th scope="col">Effort(Hours)</th>
+								<th scope="col">Hrs</th>
 								<th scope="col">Task Description</th>
 							</tr>
 						</tfoot>
