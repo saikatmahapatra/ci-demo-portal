@@ -6,23 +6,24 @@
     </div>
 </div><!--/.page-title-container-->
 
-
 <div class="row">
-    <div class="col-md-12">
-       <?php
-			// Show server side flash messages
-			if (isset($alert_message)) {
-				$html_alert_ui = '';                
-				$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-				echo $html_alert_ui;
-			}
-		?> 
-    </div>
-</div><!--/.row-->
+	<div class="col-md-12">
+		<div class="card ci-card">
+			<div class="card-header">
+				Form
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/my_profile');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Back to Profile"> <i class="fa fa-chevron-left"></i> Back</a>
+			</div><!--/.card-header-->
 
-<div class="row">	
-    <div class="col-md-8">        
-        <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'edit_education', 'id' => 'edit_education'));?>
+			<div class="card-body">
+				<?php
+					// Show server side flash messages
+					if (isset($alert_message)) {
+						$html_alert_ui = '';
+						$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
+						echo $html_alert_ui;
+					}
+				?>
+				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'edit_education', 'id' => 'edit_education'));?>
         <?php echo form_hidden('form_action', 'edit'); ?>
 			
 			<div class="form-row">                
@@ -117,9 +118,13 @@
 			<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/my_profile');?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
         <?php echo form_close(); ?>
-    </div>  
-</div>
-
+			
+			</div><!--./card-body-->
+			<!--<div class="card-footer"></div>--><!--/.card-footer-->
+		</div><!--/.card-->
+		
+	</div><!--/.col-->
+</div><!--/.row-->
 
 
 <!-- Modal -->

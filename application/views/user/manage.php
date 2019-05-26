@@ -6,56 +6,64 @@
 </div><!--/.page-title-container-->
 
 <div class="row">
-    <div class="col-md-12">
-        <?php
-		// Show server side flash messages
-		if (isset($alert_message)) {
-			$html_alert_ui = '';                
-			$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-			echo $html_alert_ui;
-		}
-		?>
-		<div class="grid-action-holder row my-2 px-3">
-			<div class="col-md-8">
-			<span class="mx-2"><i class="fa fa-circle-o-notch text-success" aria-hidden="true"></i> Active Employees</span>
-			<span class="mx-2"><i class="fa fa-circle-o-notch text-warning" aria-hidden="true"></i> Inactive Employees</span>
-			<span class="mx-2"><i class="fa fa-circle-o-notch text-danger" aria-hidden="true"></i> Ex-Employees</span>
-			</div>
-			<div class="col-md-4 text-right">
-			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-plus"></i> Add New</a>
-			</div>		
-		</div><!--/.grid-action-holder-->
-		<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'form-inline my-1 mx-3', 'name' => 'download_data')); ?>
-				<input type="hidden" name="form_action" value="download">
-				<button type="submit" class="btn btn-sm btn-outline-secondary" title="Download"> <i class="fa fa-download" aria-hidden="true"></i> Download as Excel</button>
-			<?php echo form_close(); ?>
-		<div class="table-responsive">					
-			
-			<table id="user-datatable" class="table ci-table table-striped">					
-				<thead class="thead-dark">
-					<tr>
-						<th>Name</th>
-						<th>EmpID</th>
-						<th>Email</th>
-						<th>Phone</th>
-						<th>Designation</th>
-						<th>Status</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody></tbody>
-				<tfoot>
-					<tr>
-						<th>Name</th>
-						<th>EmpID</th>
-						<th>Email</th>
-						<th>Phone</th>
-						<th>Designation</th>
-						<th>Status</th>
-						<th>Action</th>
-					</tr>
-				</tfoot>
-			</table>
-		</div><!--/.table-responsive-->
-    </div>
-</div>
+	<div class="col-md-12">
+		<div class="card ci-card">
+			<div class="card-header">
+				Data Table
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="float-right btn btn-sm btn-outline-success" data-toggle="tooltip" title="Create portal account of new employee"> <i class="fa fa-plus"></i> Add New Employee</a>
+				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'float-right mx-2', 'name' => 'download_data')); ?>
+					<input type="hidden" name="form_action" value="download">
+					<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download data as excel"> <i class="fa fa-download" aria-hidden="true"></i> Download</button>
+				<?php echo form_close(); ?>
+			</div><!--/.card-header-->
+
+			<div class="card-body">
+				
+				<?php
+				// Show server side flash messages
+				if (isset($alert_message)) {
+					$html_alert_ui = '';
+					$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
+					echo $html_alert_ui;
+				}
+				?>
+				
+				<div class="table-responsive">
+					<div class="grid-action-holder px-3 mb-3">
+						<span class=""><i class="fa fa-circle-o-notch text-success" aria-hidden="true"></i> Active</span>
+						<span class=""><i class="fa fa-circle-o-notch text-warning" aria-hidden="true"></i> Inactive</span>
+						<span class=""><i class="fa fa-circle-o-notch text-danger" aria-hidden="true"></i> Archived</span>
+					</div><!--/.grid-action-holder-->
+
+					<table id="user-datatable" class="table ci-table table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th>Name</th>
+								<th>EmpID</th>
+								<th>Email</th>
+								<th>Phone</th>
+								<th>Designation</th>
+								<th>Status</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+						<tfoot>
+							<tr>
+								<th>Name</th>
+								<th>EmpID</th>
+								<th>Email</th>
+								<th>Phone</th>
+								<th>Designation</th>
+								<th>Status</th>
+								<th>Action</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div><!--/.table-responsive-->
+			</div><!--./card-body-->
+			<!--<div class="card-footer"></div>--><!--/.card-footer-->
+		</div><!--/.card-->
+		
+	</div><!--/.col-->
+</div><!--/.row-->
