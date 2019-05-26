@@ -164,32 +164,45 @@
 						<div class="row mt-3">
 							<div class="col-md-12">
 								<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a>
-								<!--<h6>Communication Address</h6><hr>-->
-									<?php if(isset($address)){
-										foreach($address as $key=>$addr){
-										?>
-											<dl class="row">
-												<dt class="col-md-12"><?php echo isset($address_type[$addr['address_type']]) ? $address_type[$addr['address_type']] : 'Address'; ?></dt>
-												<dd class="col-md-12">
-													<div class="mt-2">
-														<?php //echo isset($addr['name'])? $addr['name'].',&nbsp;' :'';?>
-														<?php echo isset($addr['address']) ? $addr['address'] : '';?>
-														<?php echo isset($addr['locality'])? ', '.$addr['locality'] : '';?>
-														<?php echo isset($addr['city']) ? ', '.$addr['city'].', ' : '';?>
-														<?php echo isset($addr['state_name']) ? $addr['state_name'] : '';?>
-														<?php echo isset($addr['zip']) ? ' - '.$addr['zip'] : '';?>  
-														<?php echo isset($addr['phone1'])? '<div>Phone: '.$addr['phone1'].'</div> ':'';?>
-														<?php echo isset($addr['landmark'])? '<div>Landmark: '.$addr['landmark'].'</div> ':'';?>
-													</div>
-													<div class="mt-2 mb-2">
-														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
-														<!--<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-outline-danger btn-sm ml-1"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>-->
-													</div>
-												</dd>
-											</dl><!--/dl.row-->
-										<?php
-										}
-									}?>
+
+								<div class="table-responsive-sm">
+										<table class="table table-striped">
+											<thead class="thead-dark">
+												<tr>
+												<th scope="col">Address Type</th>
+												<th scope="col">Address</th>
+												<th scope="col"></th>
+												</tr>
+											</thead>
+											<tbody>
+											<?php if(isset($address)){
+													foreach($address as $key=>$addr){
+													?>
+													<tr>
+														<td>
+															<?php echo isset($address_type[$addr['address_type']]) ? $address_type[$addr['address_type']] : 'Address'; ?>
+														</td>
+														<td>
+															<?php //echo isset($addr['name'])? $addr['name'].',&nbsp;' :'';?>
+															<?php echo isset($addr['address']) ? $addr['address'] : '';?>
+															<?php echo isset($addr['locality'])? ', '.$addr['locality'] : '';?>
+															<?php echo isset($addr['city']) ? ', '.$addr['city'].', ' : '';?>
+															<?php echo isset($addr['state_name']) ? $addr['state_name'] : '';?>
+															<?php echo isset($addr['zip']) ? ' - '.$addr['zip'] : '';?>  
+															<?php echo isset($addr['phone1'])? '<div>Phone: '.$addr['phone1'].'</div> ':'';?>
+															<?php echo isset($addr['landmark'])? '<div>Landmark: '.$addr['landmark'].'</div> ':'';?>
+														</td>
+														<td>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-lg fa-edit" aria-hidden="true"></i></a>
+															<!--<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-outline-danger btn-sm ml-1"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>-->
+														</td>
+													</tr>
+													<?php
+													}
+												}?>
+											</tbody>
+										</table>
+									</div><!--/.table-responsive-sm-->
 							</div>
 						</div>
 					</div> <!--/#tab-2-->
