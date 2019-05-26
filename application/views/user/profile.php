@@ -11,105 +11,98 @@
 </div><!--/.page-title-container-->
 
 <div class="row">
-   <div class="col-12">
-      <?php
-		// Show server side flash messages
-		if (isset($alert_message)) {
-			$html_alert_ui = '';
-			$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-			echo $html_alert_ui;
-		}
-		?>
-   </div>
-</div>
-
-
-<div class="row user-profile-card">
 	<div class="col-md-12">
-		<div class="row profile-header mx-auto py-3">
-			<div class="col-md-2">
+		<div class="card ci-card user-profile-card">
+			<div class="card-header profile-header">
+			<div class="row">
+					<div class="col-md-2">
+						<?php   
+							$img_src = "";
+							$default_path = "assets/dist/img/default_user.jpg";
+							if(isset($profile_pic)){					
+								$user_dp = "assets/uploads/user/profile_pic/".$profile_pic;					
+								if (file_exists(FCPATH . $user_dp)) {
+									$img_src = $user_dp;
+								}else{
+									$img_src = $default_path;
+								}
+							}else{
+								$img_src = $default_path;
+							}
+						?>
+						<img class="align-self-center dp img-thumbnail d-block mb-2" src="<?php echo base_url($img_src);?>">
+					</div>
+
+					<div class="col-md-10">
+						<div class="float-left">
+							<h5>
+								<?php
+									//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
+									echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
+									echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
+									echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
+								?>
+							</h5>
+							<div class="">Employee ID : <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
+							<div class="">Designation : <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
+							<div class="">
+								<i class="fa fa-envelope-o" aria-hidden="true"></i> 
+								<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
+							</div>
+							<div class="">
+								<i class="fa fa-phone" aria-hidden="true"></i>
+								<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
+								<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>        
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/.card-header-->
+
+			<div class="card-body">
 				<?php
-				$img_src = "";
-				$default_path = "assets/dist/img/default_user.jpg";
-				if(isset($profile_pic)){					
-					$user_dp = "assets/uploads/user/profile_pic/".$profile_pic;					
-					if (file_exists(FCPATH . $user_dp)) {
-						$img_src = $user_dp;
-					}else{
-						$img_src = $default_path;
+					// Show server side flash messages
+					if (isset($alert_message)) {
+						$html_alert_ui = '';
+						$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
+						echo $html_alert_ui;
 					}
-				}else{
-					$img_src = $default_path;
-				}
 				?>
-				<img class="align-self-center mr-1 dp img-thumbnail" src="<?php echo base_url($img_src);?>">
-			</div>
-			<div class="col-md-10">
-				<div class="h5">
-					<?php
-						//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
-						echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
-						echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
-						echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
-					?>
-				</div>
-				<!--<div class="small"><?php //echo isset($row['role_name']) ? $row['role_name'] : ''; ?></div>-->
-				<div class="">Employee ID : <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
-				<div class="">Designation : <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
-				<div class="">
-					<i class="fa fa-envelope-o" aria-hidden="true"></i> 
-					<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
-				</div>
-				<div class="">
-					<i class="fa fa-phone" aria-hidden="true"></i>
-					<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
-					<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>        
-				</div>            
-				<div class="d-none">
-					<?php echo (isset($row['user_bio']) && strlen($row['user_bio'])>0) ? '<span class="text-muted">'.$row['user_bio'].'</span>' : ''; ?>
-					<!--<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>">Edit</a>-->
-				</div>
-			</div>
-		</div>
-	</div>
 
-
-	<div class="col-md-12 my-3">
-		<div class="row">
-			<div class="col-md-12">
 				<nav>
 					<div class="nav nav-tabs ci-nav-tab" id="nav-tab" role="tablist">
-					<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><i class="fa fa-info-circle" aria-hidden="true"></i> Basic Info</a>
-					<?php if($this->common_lib->is_auth(array('view-user-address'),false) == true){ ?>		
-					<a class="nav-item nav-link" id="nav-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><i class="fa fa-map-marker" aria-hidden="true"></i> Address</a>								
-					<?php } ?>
-					
-					<?php  if($this->common_lib->is_auth(array('view-user-education'),false) == true){ ?>		
-					<a class="nav-item nav-link" id="nav-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><i class="fa fa-certificate" aria-hidden="true"></i> Education</a>			
-					<?php } ?>
-					
-					<?php if($this->common_lib->is_auth(array('view-user-exp'),false) == true){ ?>		
-					<a class="nav-item nav-link" id="nav-4" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false"><i class="fa fa-briefcase" aria-hidden="true"></i> Experiences</a>
-					<?php } ?>
-					
-					<?php if($this->common_lib->is_auth(array('view-user-bank'),false) == true){ ?>		
-					<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="false"><i class="fa fa-credit-card" aria-hidden="true"></i> Salary A/C</a>
-					<?php } ?>
+						<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><i class="fa fa-info-circle" aria-hidden="true"></i> Basic Info</a>
+						<?php if($this->common_lib->is_auth(array('view-user-address'),false) == true){ ?>		
+						<a class="nav-item nav-link" id="nav-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><i class="fa fa-map-marker" aria-hidden="true"></i> Address</a>								
+						<?php } ?>
+						
+						<?php  if($this->common_lib->is_auth(array('view-user-education'),false) == true){ ?>		
+						<a class="nav-item nav-link" id="nav-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><i class="fa fa-certificate" aria-hidden="true"></i> Education</a>			
+						<?php } ?>
+						
+						<?php if($this->common_lib->is_auth(array('view-user-exp'),false) == true){ ?>		
+						<a class="nav-item nav-link" id="nav-4" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false"><i class="fa fa-briefcase" aria-hidden="true"></i> Experiences</a>
+						<?php } ?>
+						
+						<?php if($this->common_lib->is_auth(array('view-user-bank'),false) == true){ ?>		
+						<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="false"><i class="fa fa-credit-card" aria-hidden="true"></i> Salary A/C</a>
+						<?php } ?>
 
-					<?php if($this->common_lib->is_auth(array('view-user-uploads'),false) == true){ ?>		
-					<a class="nav-item nav-link" id="nav-7" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fa fa-cloud-download" aria-hidden="true"></i> Documents</a>
-					<?php } ?>
+						<?php if($this->common_lib->is_auth(array('view-user-uploads'),false) == true){ ?>		
+						<a class="nav-item nav-link" id="nav-7" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fa fa-cloud-download" aria-hidden="true"></i> Documents</a>
+						<?php } ?>
 
-					<?php if($this->common_lib->is_auth(array('view-emergency-contacts'),false) == true){ ?>		
-					<a class="nav-item nav-link" id="nav-8" data-toggle="tab" href="#tab-8" role="tab" aria-controls="tab-8" aria-selected="false"><i class="fa fa-medkit" aria-hidden="true"></i> Emergenncy Contacts</a>
-					<?php } ?>
+						<?php if($this->common_lib->is_auth(array('view-emergency-contacts'),false) == true){ ?>		
+						<a class="nav-item nav-link" id="nav-8" data-toggle="tab" href="#tab-8" role="tab" aria-controls="tab-8" aria-selected="false"><i class="fa fa-medkit" aria-hidden="true"></i> Emergenncy Contacts</a>
+						<?php } ?>
 
-					<?php if($this->common_lib->is_auth(array('view-user-account-stat'),false) == true){ ?>		
-					<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false"><i class="fa fa-pie-chart" aria-hidden="true"></i> Others</a>
-					<?php } ?>
-					
+						<?php if($this->common_lib->is_auth(array('view-user-account-stat'),false) == true){ ?>		
+						<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false"><i class="fa fa-pie-chart" aria-hidden="true"></i> Others</a>
+						<?php } ?>
 					</div>
 				</nav>
+
+
 				<div class="tab-content" id="nav-tabContent">
 					<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="nav-1">
 						<div class="row mt-3">
@@ -163,27 +156,39 @@
 					<div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="nav-2">
 						<div class="row mt-3">
 							<div class="col-md-12">
-							<?php if(isset($address)){
-										foreach($address as $key=>$addr){
-										?>
-											<dl class="row">
-												<dt class="col-md-12"><?php echo isset($address_type[$addr['address_type']]) ? $address_type[$addr['address_type']] : 'Address'; ?></dt>
-												<dd class="col-md-12">
-													<div class="mt-2">
-														<?php //echo isset($addr['name'])? $addr['name'].',&nbsp;' :'';?>
-														<?php echo isset($addr['address']) ? $addr['address'] : '';?>
-														<?php echo isset($addr['locality'])? ', '.$addr['locality'] : '';?>
-														<?php echo isset($addr['city']) ? ', '.$addr['city'].', ' : '';?>
-														<?php echo isset($addr['state_name']) ? $addr['state_name'] : '';?>
-														<?php echo isset($addr['zip']) ? ' - '.$addr['zip'] : '';?>  
-														<?php echo isset($addr['phone1'])? '<div>Phone: '.$addr['phone1'].'</div> ':'';?>                              
-														<?php echo isset($addr['landmark'])? '<div>Landmark: '.$addr['landmark'].'</div> ':'';?>
-													</div>													
-												</dd>												
-											</dl><!--/dl.row-->
-										<?php
-										}
-									}?>
+							<div class="table-responsive-sm">
+										<table class="table table-striped">
+											<thead class="thead-dark">
+												<tr>
+												<th scope="col">Address Type</th>
+												<th scope="col">Address</th>
+												</tr>
+											</thead>
+											<tbody>
+											<?php if(isset($address)){
+													foreach($address as $key=>$addr){
+													?>
+													<tr>
+														<td>
+															<?php echo isset($address_type[$addr['address_type']]) ? $address_type[$addr['address_type']] : 'Address'; ?>
+														</td>
+														<td>
+															<?php //echo isset($addr['name'])? $addr['name'].',&nbsp;' :'';?>
+															<?php echo isset($addr['address']) ? $addr['address'] : '';?>
+															<?php echo isset($addr['locality'])? ', '.$addr['locality'] : '';?>
+															<?php echo isset($addr['city']) ? ', '.$addr['city'].', ' : '';?>
+															<?php echo isset($addr['state_name']) ? $addr['state_name'] : '';?>
+															<?php echo isset($addr['zip']) ? ' - '.$addr['zip'] : '';?>  
+															<?php echo isset($addr['phone1'])? '<div>Phone: '.$addr['phone1'].'</div> ':'';?>
+															<?php echo isset($addr['landmark'])? '<div>Landmark: '.$addr['landmark'].'</div> ':'';?>
+														</td>
+													</tr>
+													<?php
+													}
+												}?>
+											</tbody>
+										</table>
+									</div><!--/.table-responsive-sm-->
 							</div>
 						</div>
 					</div> <!--/#tab-2-->
@@ -475,10 +480,9 @@
 							</div>
 						</div> <!--/#tab-8-->
 					<?php } ?>
-
-					
-					</div><!--/.tab-content-->
-			</div>
-		</div>
-	</div>
+				</div><!--/.tab-content-->
+			</div><!--./card-body-->
+			<!--<div class="card-footer"></div>--><!--/.card-footer-->
+		</div><!--/.card-->
+	</div><!--/.col-->
 </div><!--/.row-->

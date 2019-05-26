@@ -194,19 +194,19 @@ class User extends CI_Controller {
 
             $row[] = $result['user_firstname'] . ' ' . $result['user_lastname'];
             $row[] = $result['user_emp_id'];
-            $row[] = $result['user_email'];
+            $row[] = '<span data-toggle="tooltip" title="'.$result['user_email'].'">'.explode('@',$result['user_email'])[0].'</span>';
             $row[] = $result['user_phone1'];
             $row[] = $result['designation_name'];
             $row[] = '<span class=""><i class="fa fa-circle-o-notch '.$status_indicator.'" aria-hidden="true"></i></span>';
             $action_html = '';
             
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i>', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-lg fa-edit" aria-hidden="true"></i>', array(
                 'class' => 'btn btn-sm btn-outline-secondary mx-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit Profile',
                 'title' => 'Edit Profile'
             ));
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-info-circle" aria-hidden="true"></i>', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-lg fa-info-circle" aria-hidden="true"></i>', array(
                 'class' => 'btn btn-sm btn-outline-info mx-1',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'View Profile',

@@ -99,7 +99,7 @@
 									<?php //echo ', '.$row['applied_for_days_count'].' day(s)';?></td>
 									<td><span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>"><?php echo $leave_status_arr[$row['leave_status']]['text'];?></span></td>
 									<td>
-									<a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));?>" class="btn btn-outline-info btn-sm" title="Details"><i class="fa fa-lg fa-info-circle" aria-hidden="true"></i></a>
+									<a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));?>" class="btn btn-outline-info btn-sm" data-toggle="tooltip" title="View Details"><i class="fa fa-lg fa-info-circle" aria-hidden="true"></i></a>
 									
 									</td>
 								</tr>

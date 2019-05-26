@@ -91,6 +91,9 @@ function renderDataTable() {
             targets: [-1], //last column
             orderable: false, //set not orderable
         }, ],
+        initComplete: function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        }
     });
 }
 

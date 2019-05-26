@@ -256,13 +256,13 @@ class Timesheet extends CI_Controller {
                 //add html for action
                 $action_html = '<div class="mt-2">';
                 if(($year == $current_year) && ($month == $current_month)){
-                    $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), '<i class="fa fa-edit" aria-hidden="true"></i> Edit', array(
+                    $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), '<i class="fa fa-lg fa-edit" aria-hidden="true"></i>', array(
                         'class' => 'btn btn-sm btn-outline-secondary mr-2',
                         'data-toggle' => 'tooltip',
                         'data-original-title' => 'Edit',
                         'title' => 'Edit',
                     ));            
-                    $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-trash" aria-hidden="true"></i> Delete', array(
+                    $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-lg fa-trash" aria-hidden="true"></i>', array(
                         'class' => 'btn btn-sm btn-outline-danger btn-delete',
                         'data-confirmation'=>false,
                         'data-confirmation-message'=>'Are you sure, you want to delete this?',
