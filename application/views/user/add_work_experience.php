@@ -5,22 +5,28 @@
     </div>
 </div><!--/.page-title-container-->
 
-<div class="row">	
-    <div class="col-md-8">
-		<?php
-			// Show server side flash messages
-			if (isset($alert_message)) {
-				$html_alert_ui = '';                
-				$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-				echo $html_alert_ui;
-			}
-		?>
+<div class="row">
+	<div class="col-md-12">
+		<div class="card ci-card">
+			<div class="card-header">
+				Form
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/my_profile');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Back to Profile"> <i class="fa fa-chevron-left"></i> Back</a>
+			</div><!--/.card-header-->
 
-        <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form', 'name' => 'address_add','id' => 'address_add')); ?>
+			<div class="card-body">
+				<?php
+					// Show server side flash messages
+					if (isset($alert_message)) {
+						$html_alert_ui = '';
+						$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
+						echo $html_alert_ui;
+					}
+				?>
+				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form', 'name' => 'address_add','id' => 'address_add')); ?>
         <?php echo form_hidden('form_action', 'add'); ?>
 				
-				<div class="form-row">                
-					<div class="form-group col-md-12">                                
+				<div class="form-row">
+					<div class="form-group col-md-3">
 						<label for="company_id" class="">Company Name <span class="required">*</span></label>
 						<?php
 						echo form_dropdown('company_id', $arr_company, set_value('company_id'), array(
@@ -30,12 +36,7 @@
 						?> 
 						<?php echo form_error('company_id'); ?>
 				</div>
-
-									
-      </div>
-			
-			<div class="form-row">
-			<div class="form-group col-md-4">                                
+			<div class="form-group col-md-3">                                
 					<label for="from_date" class="">From Date <span class="required">*</span></label>				
 					<?php
 					echo form_input(array(
@@ -52,7 +53,7 @@
 					<?php echo form_error('from_date'); ?>
 				</div>
 
-				<div class="form-group col-md-4">        							
+				<div class="form-group col-md-3">        							
 					<label for="to_date" class="">To Date <span class="required">*</span></label>				
 						<?php
 						echo form_input(array(
@@ -68,7 +69,7 @@
 						?>
 						<?php echo form_error('to_date'); ?>
 				</div>
-						<div class="form-group col-md-4">
+						<div class="form-group col-md-3">
 						<label for="designation_id" class="">Designation/Role <span class="required">*</span></label>
 						<?php
 						echo form_dropdown('designation_id', $arr_designation_prev_work, set_value('designation_id'), array(
@@ -91,10 +92,12 @@
 			<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/my_profile');?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
         <?php echo form_close(); ?>
-    </div>  
-</div>
-
-
+			</div><!--./card-body-->
+			<!--<div class="card-footer"></div>--><!--/.card-footer-->
+		</div><!--/.card-->
+		
+	</div><!--/.col-->
+</div><!--/.row-->
 
 <!-- Add Company Modal -->
 <div class="modal fade" id="addCompany" tabindex="-1" role="dialog" aria-labelledby="addCompany" aria-hidden="true">

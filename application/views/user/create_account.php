@@ -6,16 +6,23 @@
 </div><!--/.page-title-container-->
 
 <div class="row">
-    <div class="col-md-8">
-        <?php
-		// Show server side flash messages
-		if (isset($alert_message)) {
-			$html_alert_ui = '';                
-			$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-			echo $html_alert_ui;
-		}
-		?>
-        <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>
+	<div class="col-md-12">
+		<div class="card ci-card">
+			<div class="card-header">
+				Form
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Manage Employees"> <i class="fa fa-list"></i> Manage Employees</a>
+			</div><!--/.card-header-->
+
+			<div class="card-body">
+				<?php
+					// Show server side flash messages
+					if (isset($alert_message)) {
+						$html_alert_ui = '';
+						$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
+						echo $html_alert_ui;
+					}
+				?>
+				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>
         <?php echo form_hidden('form_action', 'create_account'); ?>        
         <div class="form-row">
 		
@@ -29,7 +36,7 @@
 				<?php echo form_error('user_title'); ?>
 			</div>
 		
-			<div class="form-group col-md-4">                            
+			<div class="form-group col-md-3">
 				<label for="user_firstname" class="">First Name <span class="required">*</span></label>
 				<?php
 				echo form_input(array(
@@ -44,7 +51,7 @@
 				<?php echo form_error('user_firstname'); ?>
 			</div>
 			
-			<div class="form-group col-md-5">                            
+			<div class="form-group col-md-3">
 				<label for="user_lastname" class="">Last Name <span class="required">*</span></label>
 				<?php
 				echo form_input(array(
@@ -61,7 +68,7 @@
 		</div>
 		
 		<div class="form-row">
-			<div class="form-group col-md-6">
+			<div class="form-group col-md-3">
 				<label for="user_email" class="">Email (Work) <span class="required">*</span></label>
 				<?php
 				echo form_input(array(
@@ -76,7 +83,7 @@
 				<?php echo form_error('user_email'); ?>
 			</div>
 			
-			<div class="form-group col-md-6">
+			<div class="form-group col-md-3">
 				<label for="user_email_secondary" class="">Email (Personal) </label>
 				<?php
 				echo form_input(array(
@@ -90,10 +97,8 @@
 				?> 
 				<?php echo form_error('user_email_secondary'); ?>
 			</div>
-		</div>
-		
-		<div class="form-row">			
-			<div class="form-group col-md-6">                           
+			
+			<div class="form-group col-md-3">                           
 				<label for="user_phone1" class="">Mobile (Personal/Primary) <span class="required">*</span></label>
 				<?php
 				echo form_input(array(
@@ -108,7 +113,7 @@
 				<?php echo form_error('user_phone1'); ?>
 			</div>
 			
-			<div class="form-group col-md-6">                            
+			<div class="form-group col-md-3">                            
 					<label for="user_phone2" class="">Mobile (Work) </label>
 					<?php
 					echo form_input(array(
@@ -138,7 +143,7 @@
 				<?php echo form_error('user_department'); ?>
 			</div><?php */ ?>
 			
-			<div class="form-group col-md-4">                            
+			<div class="form-group col-md-3">                            
 				<label for="user_doj" class="">Date of Joining </label>				
 				<?php
 				echo form_input(array(
@@ -155,7 +160,7 @@
 				<?php echo form_error('user_doj'); ?>
 			</div>
 			
-			<div class="form-group col-md-4">
+			<div class="form-group col-md-3">
 			  <label for="user_designation" class="">Designation </label>
 				<?php
 				echo form_dropdown('user_designation', $arr_designations, set_value('user_designation'), array(
@@ -165,7 +170,7 @@
 				<?php echo form_error('user_designation'); ?>
 			</div>	
 
-			<div class="form-group col-md-4">
+			<div class="form-group col-md-3">
 			  <label for="user_department" class="">Department </label>
 				<?php
 				echo form_dropdown('user_department', $arr_departments, set_value('user_department'), array(
@@ -177,7 +182,7 @@
 		</div>
 		
 		<div class="form-row">
-				<div class="form-group col-md-6">                            
+				<div class="form-group col-md-4">                            
 					<label for="user_dob" class="">Date of Birth <span class="required">*</span></label>				
 					<?php
 					/*echo form_input(array(
@@ -201,7 +206,7 @@
 					<?php echo form_error('dob_month'); ?>
 					<?php echo form_error('dob_year'); ?>
 				</div>
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-4">
 					<label for="gender">Gender <span class="required">*</span></label>
 					<div class="">
 						<div class="custom-control custom-radio custom-control-inline">
@@ -242,5 +247,10 @@
         <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
         <?php echo form_close(); ?>
-    </div>
-</div>
+			
+			</div><!--./card-body-->
+			<!--<div class="card-footer"></div>--><!--/.card-footer-->
+		</div><!--/.card-->
+		
+	</div><!--/.col-->
+</div><!--/.row-->

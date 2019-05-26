@@ -11,16 +11,23 @@
 </div><!--/.page-title-container-->
 
 <div class="row">
-    <div class="col-md-10">
-		<?php
-			// Show server side flash messages
-			if (isset($alert_message)) {
-				$html_alert_ui = '';                
-				$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-				echo $html_alert_ui;
-			}
-		?>
-		<?php   
+	<div class="col-md-12">
+		<div class="card ci-card">
+			<div class="card-header">
+				Form
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Manage Employees"> <i class="fa fa-list"></i> Manage Employees</a>
+			</div><!--/.card-header-->
+
+			<div class="card-body">
+				<?php
+					// Show server side flash messages
+					if (isset($alert_message)) {
+						$html_alert_ui = '';
+						$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
+						echo $html_alert_ui;
+					}
+				?>
+				<?php   
 			$img_src = "";
 			$default_path = "assets/dist/img/default_user.jpg";
 			if(isset($profile_pic)){					
@@ -294,5 +301,10 @@
 
 		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn btn-outline-danger mx-2"><i class="fa fa-fw fa-close"></i> Close Account</a>
         <?php echo form_close(); ?>
-    </div>
-</div>
+			
+			</div><!--./card-body-->
+			<!--<div class="card-footer"></div>--><!--/.card-footer-->
+		</div><!--/.card-->
+		
+	</div><!--/.col-->
+</div><!--/.row-->

@@ -5,38 +5,40 @@
     </div>
 </div><!--/.page-title-container-->
 
-<div class="row my-3">
-	<div class="col-md-4">
-	<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'','name' => '','id' => 'search-user-form',)); ?>
-	<?php echo form_hidden('form_action', 'search'); ?>
-	<div class="input-group">
-		<?php echo form_input(array(
-			'name' => 'q',
-			'id' => 'q',
-			'class' => 'form-control',
-			'placeholder' => 'Search Employees',
-		)); ?>
-		<?php echo form_error('q'); ?>
-		<div class="input-group-append">
-			<button class="btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-		</div>
-	</div>
-	<?php echo form_close(); ?>
-	</div>
-</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="card ci-card">
+			<div class="card-header">
+				Employee Directory
+			</div><!--/.card-header-->
+
+			<div class="card-body">
+				<?php
+					// Show server side flash messages
+					if (isset($alert_message)) {
+						$html_alert_ui = '';
+						$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
+						echo $html_alert_ui;
+					}
+				?>
+				<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'my-3','name' => '','id' => 'search-user-form',)); ?>
+					<?php echo form_hidden('form_action', 'search'); ?>
+					<div class="input-group">
+						<?php echo form_input(array(
+							'name' => 'q',
+							'id' => 'q',
+							'class' => 'form-control',
+							'placeholder' => 'Search employee by name, email, phone, designation',
+						)); ?>
+						<?php echo form_error('q'); ?>
+						<div class="input-group-append">
+							<button class="btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+						</div>
+					</div>
+				<?php echo form_close(); ?>
 
 
-	
-	<?php
-	// Show server side flash messages
-	if (isset($alert_message)) {
-		$html_alert_ui = '';
-		$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-		echo $html_alert_ui;
-	}
-	?>
-		
-	<?php //print_r($data_rows); ?>
 				<?php
 				if(isset($data_rows) && sizeof($data_rows)<=0){
 					?>
@@ -76,7 +78,7 @@
 
 						<div class="col-md-4">
 							<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile/'.$row['id']);?>" data-link-type="user-profile-card">
-							<div class="media border mb-2 mt-2 p-2">
+							<div class="media border rounded my-2 p-2">
 								<img class="align-self-center mr-3 rounded dp-sm" src="<?php echo base_url($img_src);?>">
 								<div class="media-body">
 									<div class=""><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?><?php echo ' ('.$row['user_emp_id'].')'; ?></div>
@@ -99,7 +101,12 @@
 					if ($count%3 != 1) echo "</div>"; 
 				}
 				?>
-
-<div class="row">
-	<div class="col-md-12"><?php echo $pagination_link;?></div>
-</div>
+				<div class="col-md-12"><?php echo $pagination_link;?></div>
+				
+			
+			</div><!--./card-body-->
+			<!--<div class="card-footer"></div>--><!--/.card-footer-->
+		</div><!--/.card-->
+		
+	</div><!--/.col-->
+</div><!--/.row-->

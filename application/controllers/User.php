@@ -1277,7 +1277,7 @@ class User extends CI_Controller {
         $rows = $this->user_model->get_rows($user_id);
         $this->data['row'] = $rows['data_rows'];
         if(isset($this->data['row'][0]) && $this->data['row'][0]['user_status']=='A'){
-            $this->session->set_flashdata('flash_message', 'Unable to process your request.');
+            $this->session->set_flashdata('flash_message', '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> You can\'t edit the selected user as the user account has already been archived.');
             $this->session->set_flashdata('flash_message_css', 'alert-danger');
             redirect($this->router->directory.$this->router->class.'/manage');
         }
