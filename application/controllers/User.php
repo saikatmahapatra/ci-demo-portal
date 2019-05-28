@@ -1362,14 +1362,14 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = 'Update Leave Approvers';
+		$this->data['page_title'] = 'Change Leave Approvers';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_approvers', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
 
     function validate_edit_approver_form() {
         $this->form_validation->set_rules('user_supervisor_id', ' ', 'required');
-        $this->form_validation->set_rules('user_hr_approver_id', ' ', 'required');
+        //$this->form_validation->set_rules('user_hr_approver_id', ' ', 'required');
         $this->form_validation->set_rules('user_director_approver_id', ' ', 'required');
         //$this->form_validation->set_rules('user_finance_approver_id', ' ', 'required'); 
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');

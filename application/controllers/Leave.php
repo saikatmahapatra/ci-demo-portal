@@ -99,24 +99,25 @@ class Leave extends CI_Controller {
         $hr_approver_id = isset($this->data['approvers'][0]['user_hr_approver_id']) ? $this->data['approvers'][0]['user_hr_approver_id'] : NULL;
         $hr_approver_name = isset($this->data['approvers'][0]['user_hr_approver_id']) ? $this->data['approvers'][0]['hr_firstname'].' '.$this->data['approvers'][0]['hr_lastname'] : NULL;
 
-        
-        if($supervisor_approver_id == NULL || $supervisor_approver_id == 0){            
-            $system_msg['supervisor'] = array('txt'=>'No supervisor (L1 approver) is tagged. Click '.anchor(base_url('user/edit_approvers'),' here').' to update.', 'css'=>'text-danger', 'has_error'=> true);
+        // Initial/ L1 Approver
+        if($supervisor_approver_id == NULL || $supervisor_approver_id == 0){
+            $system_msg['supervisor'] = array('txt'=>'Please add your L1 Approver (Initial). Click '.anchor(base_url('user/edit_approvers'),' here').' to update.', 'css'=>'text-danger', 'has_error'=> true);
         }else{
-            $system_msg['supervisor'] = array('txt'=>'Your Supervisor/L1 Approver is '.$supervisor_approver_name.' ('.$this->data['approvers'][0]['supervisor_emp_id'].') . Click '.anchor(base_url('user/edit_approvers'),' here').' to change.', 'css'=>'', 'has_error'=> false);
+            $system_msg['supervisor'] = array('txt'=>'Your L1 Approver (Initial) is '.$supervisor_approver_name.' ('.$this->data['approvers'][0]['supervisor_emp_id'].') . Click '.anchor(base_url('user/edit_approvers'),' here').' to change.', 'css'=>'', 'has_error'=> false);
         }
 
+        // Final / L2 Approver
         if($director_approver_id == NULL || $director_approver_id == 0){
-            $system_msg['director'] = array('txt'=>'No director (L2 approver) is tagged. Click '.anchor(base_url('user/edit_approvers'),' here').' to update.', 'css'=>'text-danger', 'has_error'=> true);
+            $system_msg['director'] = array('txt'=>'Please add your L2 Approver (Final). Click '.anchor(base_url('user/edit_approvers'),' here').' to update.', 'css'=>'text-danger', 'has_error'=> true);
         }else{
-            $system_msg['director'] = array('txt'=>'Your Director/L2 Approver is '.$director_approver_name.' ('.$this->data['approvers'][0]['director_emp_id'].') . Click '.anchor(base_url('user/edit_approvers'),' here').' to change.', 'css'=>'', 'has_error'=> false);
+            $system_msg['director'] = array('txt'=>'Your L2 Approver (Final) is '.$director_approver_name.' ('.$this->data['approvers'][0]['director_emp_id'].') . Click '.anchor(base_url('user/edit_approvers'),' here').' to change.', 'css'=>'', 'has_error'=> false);
         }
 
-        if($hr_approver_id == NULL || $hr_approver_id == 0){
+        /*if($hr_approver_id == NULL || $hr_approver_id == 0){
             $system_msg['hr'] = array('txt'=>'No HR is tagged. Click '.anchor(base_url('user/edit_approvers'),' here').' to update.', 'css'=>'text-danger', 'has_error'=> true);
         }else{
             $system_msg['hr'] = array('txt'=>'Your HR Approver is '.$hr_approver_name.' ('.$this->data['approvers'][0]['hr_emp_id'].') . Click '.anchor(base_url('user/edit_approvers'),' here').' to change.', 'css'=>'', 'has_error'=> false);
-        }
+        }*/
 
         if(sizeof($this->data['leave_balance'])<=0){
             $system_msg['leave']= array('txt'=>'No leave balance exists in database, for further details please contact to HR.', 'css'=>'text-danger', 'has_error'=> true);   
@@ -166,7 +167,7 @@ class Leave extends CI_Controller {
                 );
                 $insert_id = $this->leave_model->insert($postdata);
                 if ($insert_id) {
-                    $this->session->set_flashdata('flash_message', 'You have applied leave successfully. Please note your leave request no <strong>'.$leave_request_id.'</strong> for future references. You will get email update informing leave status. For more details go to '.anchor(base_url('leave/history'),'My Leave History'));
+                    $this->session->set_flashdata('flash_message', 'You have applied leave successfully. Please note your leave request no <strong>'.$leave_request_id.'</strong> for future references. You will get email notification informing leave status. For more details go to '.anchor(base_url('leave/history'),'My Leave History'));
                     $this->session->set_flashdata('flash_message_css', 'alert-success');
 
                     ######## Send Email to Applicant ###########
@@ -185,7 +186,7 @@ class Leave extends CI_Controller {
                     $leave_reason = $data['leave_reason'];
                     $applied_for_days_count = $data['applied_for_days_count'];
                     
-                    $subject= $this->config->item('app_email_subject_prefix').' Leave Request '.$leave_request_id.' - '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
+                    $subject= $this->config->item('app_email_subject_prefix').' Leave Request No '.$leave_request_id.' - '.$leave_status;
                     $message = 'You have successfully applied leave. You can track your leave history from '.anchor(base_url('leave/details/'.$data['id'].'/'.$data['leave_req_id'].'/history'));
                     $message_table ='<table border="1">';
                     $message_table.='<tbody>';
@@ -236,7 +237,7 @@ class Leave extends CI_Controller {
                     $leave_reason = $data['leave_reason'];
                     $applied_for_days_count = $data['applied_for_days_count'];
 
-                    $subject= $this->config->item('app_email_subject_prefix').' Leave Notification : By '.$applicant_name.' '.$leave_request_id.' - '.$leave_status.' : '.$leave_type .' from '.$leave_from_to;
+                    $subject= $this->config->item('app_email_subject_prefix').' Leave Notification : Applied By '.$applicant_name.' '.$leave_request_id.' - '.$leave_status;
                     $message = 'You can manage leave request from '.anchor(base_url('leave/manage'));
                     $this->send_notification($to, $from, $from_name, $subject, $message.$message_table);
 
@@ -349,7 +350,7 @@ class Leave extends CI_Controller {
 
     function validate_leave_term(){
         if($this->input->post('leave_term') == 'H' && $this->input->post('leave_type') != 'CL'){
-            $this->form_validation->set_message('validate_leave_term', 'Halfday can be applied for CL only.');
+            $this->form_validation->set_message('validate_leave_term', 'This is applicable for CL only.');
             return false;
         }else{
             return true;
@@ -369,7 +370,7 @@ class Leave extends CI_Controller {
         }
     }
 
-    function is_leave_exists_in_date_range(){       
+    function is_leave_exists_in_date_range(){
         $cond = array(
             'from_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_from_date')),
             'to_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_to_date')),
@@ -918,12 +919,12 @@ class Leave extends CI_Controller {
         $message_table.='<tr>';
 
         
-        $message_table.='<td>L1 Approver </td>';
+        $message_table.='<td>Initial Approver (L1) </td>';
         $message_table.='<td>:</td>';
         $message_table.='<td>'.$this->data['leave_status_arr'][$data['supervisor_approver_status']]['text'].'<br>'.$data['supervisor_approver_firstname'].' '.$data['supervisor_approver_lastname'].'<br>'.$data['supervisor_approver_comment'].'<br>'.$this->common_lib->display_date($data['supervisor_approver_datetime'], true).'</td>';
         $message_table.='</tr>';
 
-        $message_table.='<td>L2 Approver </td>';
+        $message_table.='<td>Final Approver (L2) </td>';
         $message_table.='<td>:</td>';
         $message_table.='<td>'.$this->data['leave_status_arr'][$data['director_approver_status']]['text'].'<br>'.$data['director_approver_firstname'].' '.$data['director_approver_lastname'].'<br>'.$data['director_approver_comment'].'<br>'.$this->common_lib->display_date($data['director_approver_datetime'], true).'</td>';
         $message_table.='</tr>';

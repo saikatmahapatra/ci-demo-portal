@@ -33,8 +33,8 @@
 							<tr>
 								<th scope="col">Request No</th>
 								<th scope="col">Applicant</th>
-								<th scope="col">Supervisor</th>
-								<th scope="col">Director</th>
+								<th scope="col">L1 Approver</th>
+								<th scope="col">L2 Approver</th>
 								<th scope="col">Leave Summary</th>
 								<th scope="col">Status</th>
 								<th scope="col"></th>
