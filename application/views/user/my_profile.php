@@ -75,12 +75,13 @@
 							<?php 
 								$approver = isset($approvers[0]) ? $approvers[0] : null;
 							?>
-							<label class=""><i class="fa fa-user-o" aria-hidden="true"></i> My Approvers</label>
-							<div class="">Director : <?php echo isset($approver) ? $approver['director_firstname'].' '.$approver['director_lastname'].' ('.$approver['director_emp_id'].')' : ''; ?></div>
-							<div class="">HR : <?php echo isset($approver) ? $approver['hr_firstname'].' '.$approver['hr_lastname'].' ('.$approver['hr_emp_id'].')' : ''; ?></div>
-							<div class="">Supervisor : <?php echo isset($approver) ? $approver['supervisor_firstname'].' '.$approver['supervisor_lastname'].' ('.$approver['supervisor_emp_id'].')':''; ?>
+							<label class=""><i class="fa fa-user" aria-hidden="true"></i> Leave Approvers</label>
+							<div class="">L1 Approver : <?php echo isset($approver) ? $approver['supervisor_firstname'].' '.$approver['supervisor_lastname'].' ('.$approver['supervisor_emp_id'].')':''; ?>
 							</div>
-							<div class="">Finance : <?php echo isset($approver) ? $approver['finance_firstname'].' '.$approver['finance_lastname'].' ('.$approver['finance_emp_id'].')' : ''; ?></div>
+							<div class="">L2 Approver : <?php echo isset($approver) ? $approver['director_firstname'].' '.$approver['director_lastname'].' ('.$approver['director_emp_id'].')' : ''; ?></div>
+							<div class="d-none">HR : <?php echo isset($approver) ? $approver['hr_firstname'].' '.$approver['hr_lastname'].' ('.$approver['hr_emp_id'].')' : ''; ?></div>
+							
+							<div class="d-none">Finance : <?php echo isset($approver) ? $approver['finance_firstname'].' '.$approver['finance_lastname'].' ('.$approver['finance_emp_id'].')' : ''; ?></div>
 						</div>
 					</div>
 				</div>
