@@ -237,7 +237,7 @@ class Leave extends CI_Controller {
                     $leave_reason = $data['leave_reason'];
                     $applied_for_days_count = $data['applied_for_days_count'];
 
-                    $subject= $this->config->item('app_email_subject_prefix').' Leave Notification : Applied By '.$applicant_name.' '.$leave_request_id.' - '.$leave_status;
+                    $subject= $this->config->item('app_email_subject_prefix').' Leave Notification : Applied By '.$applicant_name.' - Leave Req No '.$leave_request_id.' - '.$leave_status;
                     $message = 'You can manage leave request from '.anchor(base_url('leave/manage'));
                     $this->send_notification($to, $from, $from_name, $subject, $message.$message_table);
 
