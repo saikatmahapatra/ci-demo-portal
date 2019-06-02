@@ -537,3 +537,14 @@ $value in $theme-colors {
     @include bg-variant(".bg-light-#{$color}",
     lighten($value, 30%));
 }
+
+// CI card
+.ci-card {
+    border: none;
+    .card-header {
+        background-color: inherit;
+    }
+    .card-body {
+        padding: 1.25rem 0rem;
+    }
+}
