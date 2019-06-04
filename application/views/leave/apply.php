@@ -34,11 +34,11 @@
 						}
 					?>
 						
-						<li class="text-info font-weight-bold">
-							<span class="">Your Leave Balance : </span>
-							<span class="mx-3">Casual Leave (CL) : <?php echo isset($leave_balance[0]['cl']) ? $leave_balance[0]['cl'] : '0.0'; ?></span>
-							<span class="ml-3">Privileged Leave (PL) : <?php echo isset($leave_balance[0]['pl']) ? $leave_balance[0]['pl'] : '0.0'; ?></span>
-							<!-- <span class="ml-3">Optional Leave (OL) : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></span> -->
+						<li class="text-info">
+							<span class="font-weight-bold">Leave Balance : </span>
+							<span class="mx-3">CL : <?php echo isset($leave_balance[0]['cl']) ? $leave_balance[0]['cl'] : '0.0'; ?></span>
+							<span class="">PL : <?php echo isset($leave_balance[0]['pl']) ? $leave_balance[0]['pl'] : '0.0'; ?></span>
+							<!-- <span class="ml-3">OL : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></span> -->
 							<!-- <span class="ml-3"><a class="" href="#" id="view_leave_balance_update_details" data-toggle="modal" data-target="#leaveBalanceModal">Click here to view balance details</a></span> -->
 						</li>
 					</ul>
