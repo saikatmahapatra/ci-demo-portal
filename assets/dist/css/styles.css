@@ -8613,9 +8613,11 @@ a[data-link-type="user-profile-card"] {
   text-decoration: none;
 }
 
+.user-profile-card .card-header,
 .user-profile-card .profile-header {
-  background-color: #e9ecef;
-  border-top: 2px solid #1e4bb2;
+  background-color: #e9ecef !important;
+  border-top: 2px solid #1e4bb2 !important;
+  padding: 0.75rem 1.25rem !important;
 }
 
 .user-profile-card dt {
@@ -9066,6 +9068,7 @@ button.bg-light-dark:focus {
 
 .ci-card .card-header {
   background-color: inherit;
+  padding: 0.75rem 0rem;
 }
 
 .ci-card .card-body {
