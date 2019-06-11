@@ -49,54 +49,47 @@
 					</div>
 
 					<div class="col-md-10">
-						<div class="float-left">
-							<h5>
-								<?php
-									//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
-									echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
-									echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
-									echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
-								?>
-							</h5>
-							<div class="">Employee ID : <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
-							<div class="">Designation : <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
-							<div class="">
-								<i class="fa fa-envelope-o" aria-hidden="true"></i> 
-								<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
+						<div class="row">
+							<div class="col-md-6">
+								<h5>
+									<?php
+										//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
+										echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
+										echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
+										echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
+									?>
+								</h5>
+								<div class="">Employee ID : <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
+								<div class="">Designation : <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
+								<div class="">
+									<i class="fa fa-envelope-o" aria-hidden="true"></i> 
+									<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
+								</div>
+								<div class="">
+									<i class="fa fa-phone" aria-hidden="true"></i>
+									<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
+									<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>        
+								</div>
 							</div>
-							<div class="">
-								<i class="fa fa-phone" aria-hidden="true"></i>
-								<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
-								<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>        
-							</div>
-						</div>
 
-						<div class="float-right">
-							<?php 
-								$approver = isset($approvers[0]) ? $approvers[0] : null;
-							?>
-							<label class=""><i class="fa fa-user" aria-hidden="true"></i> Leave Approvers</label>
-							<div class="">L1 Approver : <?php echo isset($approver) ? $approver['supervisor_firstname'].' '.$approver['supervisor_lastname'].' ('.$approver['supervisor_emp_id'].')':''; ?>
+							<div class="col-md-6">
+								<?php 
+									$approver = isset($approvers[0]) ? $approvers[0] : null;
+								?>
+								<label class=""><i class="fa fa-user" aria-hidden="true"></i> Leave Approvers</label>
+								<div class="">L1 Approver : <?php echo isset($approver) ? $approver['supervisor_firstname'].' '.$approver['supervisor_lastname'].' ('.$approver['supervisor_emp_id'].')':''; ?>
+								</div>
+								<div class="">L2 Approver : <?php echo isset($approver) ? $approver['director_firstname'].' '.$approver['director_lastname'].' ('.$approver['director_emp_id'].')' : ''; ?></div>
+								<div class="d-none">HR : <?php echo isset($approver) ? $approver['hr_firstname'].' '.$approver['hr_lastname'].' ('.$approver['hr_emp_id'].')' : ''; ?></div>
+								
+								<div class="d-none">Finance : <?php echo isset($approver) ? $approver['finance_firstname'].' '.$approver['finance_lastname'].' ('.$approver['finance_emp_id'].')' : ''; ?></div>
 							</div>
-							<div class="">L2 Approver : <?php echo isset($approver) ? $approver['director_firstname'].' '.$approver['director_lastname'].' ('.$approver['director_emp_id'].')' : ''; ?></div>
-							<div class="d-none">HR : <?php echo isset($approver) ? $approver['hr_firstname'].' '.$approver['hr_lastname'].' ('.$approver['hr_emp_id'].')' : ''; ?></div>
-							
-							<div class="d-none">Finance : <?php echo isset($approver) ? $approver['finance_firstname'].' '.$approver['finance_lastname'].' ('.$approver['finance_emp_id'].')' : ''; ?></div>
 						</div>
 					</div>
 				</div>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
-				<?php
-					// Show server side flash messages
-					if (isset($alert_message)) {
-						$html_alert_ui = '';
-						$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-						echo $html_alert_ui;
-					}
-				?>
-
 				<nav>
 					<div class="nav nav-tabs ci-nav-tab" id="nav-tab" role="tablist">
 						<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><i class="fa fa-info-circle" aria-hidden="true"></i> Basic Info</a>			
