@@ -29,7 +29,7 @@
 		<div class="card ci-card user-profile-card">
 			<div class="card-header profile-header">
 				<div class="row">
-					<div class="col-md-2">
+					<div class="col-lg-2">
 						<?php   
 							$img_src = "";
 							$default_path = "assets/dist/img/default_user.jpg";
@@ -48,9 +48,9 @@
 						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>" data-toggle="tooltip" title="Change or remove this profile image"><i class="fa fa-camera"></i> Change</a>
 					</div>
 
-					<div class="col-md-10">
+					<div class="col-lg-10">
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-lg-6">
 								<h5>
 									<?php
 										//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
@@ -72,7 +72,7 @@
 								</div>
 							</div>
 
-							<div class="col-md-6">
+							<div class="col-lg-6">
 								<?php 
 									$approver = isset($approvers[0]) ? $approvers[0] : null;
 								?>
