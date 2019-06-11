@@ -199,9 +199,11 @@ a[data-link-type="user-profile-card"] {
 }
 
 .user-profile-card {
+    .card-header,
     .profile-header {
-        background-color: $gray-200;
-        border-top: 2px solid $primary-color;
+        background-color: $gray-200 !important;
+        border-top: 2px solid $primary-color !important;
+        padding: 0.75rem 1.25rem !important;
     }
     dt {
         /*font-weight: normal;*/
@@ -536,4 +538,16 @@ table.ci-table.dataTable {
 $value in $theme-colors {
     @include bg-variant(".bg-light-#{$color}",
     lighten($value, 30%));
+}
+
+// CI card
+.ci-card {
+    border: none;
+    .card-header {
+        background-color: inherit;
+        padding: 0.75rem 0rem;
+    }
+    .card-body {
+        padding: 1.25rem 0rem;
+    }
 }

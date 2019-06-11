@@ -379,7 +379,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_email_secondary', 'personal email', 'valid_email|differs[user_email]');
         //$this->form_validation->set_rules('user_password', 'password', 'required|trim|min_length[6]');
         $this->form_validation->set_rules('user_phone1', 'mobile (personal)', 'required|trim|min_length[10]|max_length[10]|numeric');
-        $this->form_validation->set_rules('user_phone2', 'mobile (work)', 'trim|min_length[10]|max_length[10]|numeric|differs[user_phone1]');
+        $this->form_validation->set_rules('user_phone2', 'mobile (office)', 'trim|min_length[10]|max_length[10]|numeric|differs[user_phone1]');
         //$this->form_validation->set_rules('user_password_confirm', 'confirm password', 'required|matches[user_password]');
         $this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
         $this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
@@ -868,7 +868,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_phone2', 'office mobile', 'trim|min_length[10]|max_length[10]|numeric|differs[user_phone1]
 ');
         $this->form_validation->set_rules('user_bio', 'about you', 'max_length[100]');
-        $this->form_validation->set_rules('user_email', 'registered email (work)', 'required|valid_email');
+        $this->form_validation->set_rules('user_email', 'registered email (office)', 'required|valid_email');
         $this->form_validation->set_rules('user_email_secondary', 'personal email', 'required|valid_email|differs[user_email]');
         $this->form_validation->set_rules('user_blood_group', 'blood group', 'required');
         /* $this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
@@ -1994,9 +1994,9 @@ class User extends CI_Controller {
             'A' => 'Sr No.',
             'B' => 'Employee ID',
             'C' => 'Name',
-            'D' => 'Email (Work)',
+            'D' => 'Email (Office)',
             'E' => 'Email (Personal)',
-            'F' => 'Mobile (Work)',
+            'F' => 'Mobile (Office)',
             'G' => 'Mobile (Personal)',
             'H' => 'DOB',
             'I' => 'Gender',

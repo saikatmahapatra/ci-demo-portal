@@ -32,7 +32,7 @@
         <?php echo form_hidden('user_email', $row['user_email']); ?>
             <div class="form-row">
             <div class="form-group col-md-4">
-				<label for="user_email_secondary" class="">Email (Personal) <span class="required">*</span></label>
+				<label for="user_email_secondary" class="">Email ID (Personal) <span class="required">*</span></label>
 				<?php
 				echo form_input(array(
 					'name' => 'user_email_secondary',
@@ -58,7 +58,7 @@
                 <?php echo form_error('user_phone1'); ?>
             </div>
             <div class="form-group col-md-4">
-                <label for="user_phone2" class="">10-digit Mobile Number (Work)</label>
+                <label for="user_phone2" class="">10-digit Mobile Number (Office)</label>
                 <?php
                 echo form_input(array(
                     'name' => 'user_phone2',

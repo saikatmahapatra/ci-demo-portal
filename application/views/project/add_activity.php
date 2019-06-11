@@ -11,7 +11,7 @@
 		<div class="card ci-card">
 			<div class="card-header">
 				Form
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/activity');?>" class="float-right btn btn-sm btn-outline-secondary" title="Manage"> <i class="fa fa-eye"></i> View All</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/activity');?>" class="float-right btn btn-sm btn-outline-secondary" title="Manage"> <i class="fa fa-list"></i> View All</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
