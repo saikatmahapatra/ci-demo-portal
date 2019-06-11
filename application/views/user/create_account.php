@@ -69,7 +69,7 @@
 		
 		<div class="form-row">
 			<div class="form-group col-md-3">
-				<label for="user_email" class="">Email (Work) <span class="required">*</span></label>
+				<label for="user_email" class="">Email ID (Office) <span class="required">*</span></label>
 				<?php
 				echo form_input(array(
 					'name' => 'user_email',
@@ -84,7 +84,7 @@
 			</div>
 			
 			<div class="form-group col-md-3">
-				<label for="user_email_secondary" class="">Email (Personal) </label>
+				<label for="user_email_secondary" class="">Email ID (Personal) </label>
 				<?php
 				echo form_input(array(
 					'name' => 'user_email_secondary',
@@ -99,7 +99,7 @@
 			</div>
 			
 			<div class="form-group col-md-3">                           
-				<label for="user_phone1" class="">Mobile (Personal/Primary) <span class="required">*</span></label>
+				<label for="user_phone1" class="">Mobile Number (Personal) <span class="required">*</span></label>
 				<?php
 				echo form_input(array(
 					'name' => 'user_phone1',
@@ -114,7 +114,7 @@
 			</div>
 			
 			<div class="form-group col-md-3">                            
-					<label for="user_phone2" class="">Mobile (Work) </label>
+					<label for="user_phone2" class="">Mobile Number (Office) </label>
 					<?php
 					echo form_input(array(
 						'name' => 'user_phone2',
