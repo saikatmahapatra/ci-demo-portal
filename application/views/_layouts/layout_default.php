@@ -33,11 +33,13 @@
 
     <main role="main" class="container-fluid">
         <?php echo $maincontent; ?>
+        
+        <footer class="footer">
+            <?php echo $el_footer; ?>
+        </footer>
     </main>
 	
-	<footer class="footer">
-        <?php echo $el_footer; ?>
-    </footer>
+	
 
 	<button class="btn btn-outline-secondary scrollup"><i aria-hidden="true" class="fa fa-arrow-up"></i></button>
 	<div class="ajax-loader-ui" id="ajax-loader" style="display:none;">

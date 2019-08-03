@@ -33,7 +33,7 @@ $config['app_email_footer'] = $html_email_footer;
 $config['app_company_product'] = 'United Exploration India Pvt. Ltd.';
 $config['app_logo_name_login'] = '<b>Admin</b> Dashboard';
 $config['app_logo_name_admin_dashboard'] = 'Portal Admin';
-$config['app_logo_name_dashboard'] = 'Employee Portal';
+$config['app_logo_name_dashboard'] = '<b>eP</b>ortal';
 $config['app_logo_name_dashboard_xs'] = '<b>U</b>Aadmin';
 
 $config['app_html_title'] = 'ePortal - United Exploration India Pvt. Ltd.';

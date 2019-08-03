@@ -88,6 +88,8 @@
                             </div>
                         </div>
                     </div>
+                <?php } else { ?>
+                    <p>Oops! There are nothing to display here.</p>
                 <?php } ?>
             </div><!--/.card-body-->
             <!-- <div class="card-footer">

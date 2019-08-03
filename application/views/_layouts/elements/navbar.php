@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top colorgraph-navbar">
         <a class="navbar-brand" href="<?php echo base_url($this->router->directory); ?>">
-            <!--<img class="logo" alt="Brand Logo" src="">-->
-			<b>eP</b>ortal
+            <!-- <img class="logo" src="<?php echo base_url('assets/src/img/logo.png');?>"> -->
+            <?php echo $this->config->item('app_logo_name_dashboard'); ?>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
