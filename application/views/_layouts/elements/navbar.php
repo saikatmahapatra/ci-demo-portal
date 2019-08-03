@@ -67,10 +67,10 @@
 				<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown_3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More...</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown_3">
+                        <a class="dropdown-item" href="#">Link 1</a>
+                        <a class="dropdown-item" href="#">Link 2</a>
                         <a class="dropdown-item" target="new" href="http://unitedexploration.co.in/">Corporate Website</a>
-                        <a class="dropdown-item" target="new" href="http://unitedexploration.co.in/our-team/">Key People</a>
-                        <a class="dropdown-item" target="new" href="http://unitedexploration.co.in/gallery/">Gallery</a>
-                        <a class="dropdown-item" href="#">Case Study</a>
+                        <a class="dropdown-item" href="#">Link 4</a>
                     </div>
                 </li>
             </ul>
