@@ -8897,15 +8897,15 @@ table.ci-table.dataTable {
   height: 5px;
   border-top: 0;
   background: #c4e17f;
-  background: -webkit-gradient(linear, left top, right top, from #28a745, to #fd7e14);
-  background: linear-gradient(to right, #28a745, #fd7e14);
+  background: -webkit-gradient(linear, left top, right top, from #a8ff1b, to #cf1180);
+  background: linear-gradient(to right, #a8ff1b, #cf1180);
 }
 
 .colorgraph-navbar::after {
   content: "";
   height: 5px;
-  background: -webkit-gradient(linear, left top, right top, from #28a745, to #fd7e14);
-  background: linear-gradient(to right, #28a745, #fd7e14);
+  background: -webkit-gradient(linear, left top, right top, from #a8ff1b, to #cf1180);
+  background: linear-gradient(to right, #a8ff1b, #cf1180);
   width: 100%;
   position: absolute;
   bottom: -2px;
@@ -8914,86 +8914,6 @@ table.ci-table.dataTable {
 
 .news-card .subject-title {
   font-weight: 600;
-}
-
-.bg-light-primary {
-  background-color: #7fa0ea !important;
-}
-
-a.bg-light-primary:hover, a.bg-light-primary:focus,
-button.bg-light-primary:hover,
-button.bg-light-primary:focus {
-  background-color: #547fe2 !important;
-}
-
-.bg-light-secondary {
-  background-color: #bcc1c6 !important;
-}
-
-a.bg-light-secondary:hover, a.bg-light-secondary:focus,
-button.bg-light-secondary:hover,
-button.bg-light-secondary:focus {
-  background-color: #a1a8ae !important;
-}
-
-.bg-light-success {
-  background-color: #86e29b !important;
-}
-
-a.bg-light-success:hover, a.bg-light-success:focus,
-button.bg-light-success:hover,
-button.bg-light-success:focus {
-  background-color: #5dd879 !important;
-}
-
-.bg-light-info {
-  background-color: #7adeee !important;
-}
-
-a.bg-light-info:hover, a.bg-light-info:focus,
-button.bg-light-info:hover,
-button.bg-light-info:focus {
-  background-color: #4cd3e9 !important;
-}
-
-.bg-light-warning {
-  background-color: #ffe7a0 !important;
-}
-
-a.bg-light-warning:hover, a.bg-light-warning:focus,
-button.bg-light-warning:hover,
-button.bg-light-warning:focus {
-  background-color: #ffdb6d !important;
-}
-
-.bg-light-danger {
-  background-color: #f3b7bd !important;
-}
-
-a.bg-light-danger:hover, a.bg-light-danger:focus,
-button.bg-light-danger:hover,
-button.bg-light-danger:focus {
-  background-color: #eb8c95 !important;
-}
-
-.bg-light-light {
-  background-color: white !important;
-}
-
-a.bg-light-light:hover, a.bg-light-light:focus,
-button.bg-light-light:hover,
-button.bg-light-light:focus {
-  background-color: #e6e5e5 !important;
-}
-
-.bg-light-dark {
-  background-color: #7a8793 !important;
-}
-
-a.bg-light-dark:hover, a.bg-light-dark:focus,
-button.bg-light-dark:hover,
-button.bg-light-dark:focus {
-  background-color: #626d78 !important;
 }
 
 @media (max-width: 576px) {

@@ -10,7 +10,7 @@
 	<div class="col-md-12">
 		<div class="card ci-card">
 			<div class="card-header">
-				Employee Directory
+				Search Employees
 			</div><!--/.card-header-->
 
 			<div class="card-body">

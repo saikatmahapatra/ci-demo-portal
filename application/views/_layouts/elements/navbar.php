@@ -33,7 +33,7 @@
                     <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
                         Organization & Assets
                     <?php } else{?>
-                        Organization & Policy
+                        Organization
                     <?php }?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdown_2">
@@ -45,10 +45,10 @@
                             <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'project'); ?>">Add / Manage Projects</a>
                             <a class="dropdown-item" href="<?php echo base_url('project/activity'); ?>">Add / Manage Timesheet Activity</a>
                             <a class="dropdown-item" href="<?php echo base_url('holiday/view');?>">Holiday Calendar</a>
-                            <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet</a>
+                            <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet - Log Tasks</a>
                             <a class="dropdown-item" href="<?php echo base_url('timesheet/report'); ?>">Timesheet Report</a>
                     <?php } else{?>
-                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet</a>
+                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet - Log Tasks</a>
                         <a class="dropdown-item" href="<?php echo base_url('user/people');?>">Employee Directory</a>
                         <a class="dropdown-item" href="<?php echo base_url('holiday/view');?>">Holiday Calendar</a>
                     <?php }?>
@@ -65,7 +65,7 @@
                 </li>
                 <?php }?>
 				<li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown_3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Discover More</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown_3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More...</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown_3">
                         <a class="dropdown-item" target="new" href="http://unitedexploration.co.in/">Corporate Website</a>
                         <a class="dropdown-item" target="new" href="http://unitedexploration.co.in/our-team/">Key People</a>
@@ -150,7 +150,7 @@
         <?php } // end of session check ?>
     </nav>
 
-    <!-- <div class="nav-scroller bg-white box-shadow">
+<!-- <div class="nav-scroller bg-white box-shadow">
       <nav class="nav nav-underline">
         <a class="nav-link active" href="#">Dashboard</a>
         <a class="nav-link" href="#">
