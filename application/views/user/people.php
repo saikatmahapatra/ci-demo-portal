@@ -86,7 +86,7 @@
 									<?php
 									$email_id = explode('@',$row['user_email']);
 									?>
-									<div class=""><i class="fa fa-envelope-open-o" aria-hidden="true"></i> <a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>" title="<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $email_id[0] : ''; ?></a></div>
+									<div class=""><i class="fa fa-envelope-open-o" aria-hidden="true"></i> <a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>" title="<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
 									<div class=""><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
 								</div>
 							</div>

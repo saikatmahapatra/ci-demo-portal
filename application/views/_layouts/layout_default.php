@@ -25,13 +25,13 @@
     <![endif]-->
 </head>
 
-<body class="app sidebar-mini" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
+<body data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
 	
 	
 	<?php echo $el_navbar; ?>
-    <?php echo $el_sidebar; ?>
+    <?php //echo $el_sidebar; ?>
 
-    <main role="main" class="main-content">
+    <main role="main" class="container-fluid">
         <?php echo $maincontent; ?>
     </main>
 	
@@ -39,10 +39,9 @@
         <?php echo $el_footer; ?>
     </footer>
 
-	<button class="btn btn-primary scrollup"><i aria-hidden="true" class="fa fa-arrow-up"></i></button>
+	<button class="btn btn-outline-secondary scrollup"><i aria-hidden="true" class="fa fa-arrow-up"></i></button>
 	<div class="ajax-loader-ui" id="ajax-loader" style="display:none;">
-		<!--<img src="<?php echo base_url('assets/src/img/ajax-loader.svg');?>" class="ajax-loader-img" alt="Loading...">-->
-		<div class="ajax-loader-img"></div>
+		<img src="<?php echo base_url('assets/dist/img/ajax-loader.svg');?>" class="ajax-loader-img" alt="Loading...">
 	</div>
 
     

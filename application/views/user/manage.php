@@ -36,7 +36,7 @@
 					</div><!--/.grid-action-holder-->
 
 					<table id="user-datatable" class="table ci-table table-striped">
-						<thead class="thead-dark">
+						<thead class="thead-light">
 							<tr>
 								<th>Name</th>
 								<th>EmpID</th>

@@ -24,9 +24,9 @@
     <![endif]-->
 </head>
 
-<body class="login bg-dark" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
+<body class="login" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
 
-    <main role="main" class="container">
+    <main role="main" class="container-fluid">
         <?php echo $maincontent; ?>
     </main>
 	
@@ -34,10 +34,9 @@
         <?php echo $el_footer; ?>
     </footer>
     
-	<button class="btn btn-primary scrollup"><i aria-hidden="true" class="fa fa-arrow-up"></i></button>
+	<button class="btn btn-outline-secondary scrollup"><i aria-hidden="true" class="fa fa-arrow-up"></i></button>
 	<div class="ajax-loader-ui" id="ajax-loader" style="display:none;">
-		<!--<img src="<?php echo base_url('assets/src/img/ajax-loader.svg');?>" class="ajax-loader-img" alt="Loading...">-->
-		<div class="ajax-loader-img"></div>
+		<img src="<?php echo base_url('assets/dist/img/ajax-loader.svg');?>" class="ajax-loader-img" alt="Loading...">
 	</div>
 
     <!-- jQuery -->    

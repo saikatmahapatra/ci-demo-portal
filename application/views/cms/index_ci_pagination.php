@@ -31,7 +31,7 @@
 			
 		<div class="table-responsive">
 			<table class="table table-striped">
-				<thead class="thead-dark">
+				<thead class="thead-light">
 					<tr>
 						<th scope="col">Title</th>
 						<th scope="col">Content Type</th>

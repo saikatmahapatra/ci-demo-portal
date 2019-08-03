@@ -27,7 +27,7 @@
 
 		<div class="table-responsive">
 			<table id="cms-datatable" class="table ci-table table-striped">
-				<thead class="thead-dark">
+				<thead class="thead-light">
 					<tr>
 						<th scope="col">Type</th>								
 						<th scope="col">Title</th>

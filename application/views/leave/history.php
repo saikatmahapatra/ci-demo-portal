@@ -25,7 +25,7 @@
 				
 				<div class="table-responsive">
 					<table class="table table-striped">
-						<thead class="thead-dark">
+						<thead class="thead-light">
 							<tr>
 								<th scope="col">Request No</th>
 								<th scope="col">Leave Type</th>

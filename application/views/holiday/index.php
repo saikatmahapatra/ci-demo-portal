@@ -26,7 +26,7 @@
 
 			<div class="table-responsive">
 			<table id="holiday-datatable" class="table ci-table table-striped">
-				<thead class="thead-dark">
+				<thead class="thead-light">
 					<tr>
 						<th scope="col">Date</th>
 						<th scope="col">Day</th>
