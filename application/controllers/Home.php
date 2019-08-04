@@ -128,7 +128,7 @@ class Home extends CI_Controller {
         $id = $this->uri->segment(3);		
 		$result_array = $this->cms_model->get_contents($id, NULL, NULL, FALSE, FALSE);
         $this->data['data_rows'] = $result_array['data_rows'];        
-		$this->data['page_title'] = 'Welcome';
+		$this->data['page_title'] = 'Notice Board';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/details', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

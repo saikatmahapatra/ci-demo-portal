@@ -9,14 +9,14 @@
     <div class="col-md-8">
         <div class="card news-card">
             <div class="card-header h6">
-            <i class="fa fa-newspaper-o fa-lg" aria-hidden="true"></i> Internal Broadcast, News & Updates
+            <i class="fa fa-newspaper-o fa-lg" aria-hidden="true"></i> Notice Board
             </div>
             <div class="card-body">
                 <?php foreach($data_rows as $key=>$row) { ?>
                     <div class="my-2 py-2 border-bottom border-gray">
                         <div class="mb-0 lh-125" style="max-height: 130px; overflow: hidden;">
-                                <div class="subject-title text-gray-dark h5"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a></div>
-                                <strong class="text-muted text-gray-dark small">
+                                <div class="subject-title"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a></div>
+                                <strong class="text-muted small">
                                     <?php echo $content_type[$row['pagecontent_type']]['text']; ?>
                                     <?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
                                     <?php echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>
