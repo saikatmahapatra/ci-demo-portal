@@ -102,7 +102,7 @@ class Home extends CI_Controller {
         
         //User Profile Completion Status Check
         $profile_completion = $this->home_model->get_user_profile_completion_status($this->sess_user_id);
-        $this->data['profile_completion_status'] = $profile_completion;
+        $this->data['profile_msg'] = $profile_completion;
         $this->data['display_reminder_modal'] = sizeof($profile_completion) > 0 ? 'true' : 'false';
         
 

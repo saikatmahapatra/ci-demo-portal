@@ -9931,6 +9931,10 @@ table.ci-table.dataTable {
   font-weight: 600;
 }
 
+.news-card .card-body {
+  padding: 15px;
+}
+
 @media (max-width: 576px) {
   .navbar-collapse {
     max-height: 340px;

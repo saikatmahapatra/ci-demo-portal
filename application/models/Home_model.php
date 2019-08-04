@@ -51,17 +51,8 @@ class Home_model extends CI_Model {
     }
 
     function get_user_profile_completion_status($user_id){
-        return $message = array();
+        $message = array();
         $strength = 0;
-
-        // address
-        $this->db->select('id');
-        $this->db->where('user_id', $user_id);
-        $query = $this->db->get('user_addresses');
-        $num_rows = $query->num_rows();
-        if($num_rows <= 0 ){
-            $message['address'] = 'Add your permanent, residential address.';
-        }
 
         // emergency contacts
         $this->db->select('id');
@@ -69,7 +60,16 @@ class Home_model extends CI_Model {
         $query = $this->db->get('user_emergency_contacts');
         $num_rows = $query->num_rows();
         if($num_rows <= 0 ){
-            $message['emergency_contacts'] = 'Add emergency contacts. You can add up to 3 contacts.';
+            $message[] = 'emergency contacts';
+        }
+
+        // address
+        $this->db->select('id');
+        $this->db->where('user_id', $user_id);
+        $query = $this->db->get('user_addresses');
+        $num_rows = $query->num_rows();
+        if($num_rows <= 0 ){
+            $message[] = 'communication addresses';
         }
 
         // education
@@ -78,25 +78,26 @@ class Home_model extends CI_Model {
         $query = $this->db->get('user_academics');
         $num_rows = $query->num_rows();
         if($num_rows <= 0 ){
-            $message['education'] = 'Add academics records.';
+            $message[] = 'education details';
         }
 
         // user approvers
-        $this->db->select('id');
-        $this->db->where('user_id', $user_id);
-        $query = $this->db->get('user_approvers');
-        $num_rows = $query->num_rows();
-        if($num_rows <= 0 ){
-            $message['leave_approvers'] = 'Set your Leave approvers.';
-        }
+        // $this->db->select('id');
+        // $this->db->where('user_id', $user_id);
+        // $query = $this->db->get('user_approvers');
+        // $num_rows = $query->num_rows();
+        // if($num_rows <= 0 ){
+        //     $message[] = 'leave approvers';
+        // }
+        
         // user_bank_account
-        $this->db->select('id');
-        $this->db->where('user_id', $user_id);
-        $query = $this->db->get('user_bank_account');
-        $num_rows = $query->num_rows();
-        if($num_rows <= 0 ){
-            //$message['bank'] = 'Salary Account, PAN etc details.';
-        }
+        // $this->db->select('id');
+        // $this->db->where('user_id', $user_id);
+        // $query = $this->db->get('user_bank_account');
+        // $num_rows = $query->num_rows();
+        // if($num_rows <= 0 ){
+        //     $message[] = 'salary account';
+        // }
 
         // user_work_exp
         $this->db->select('id');
@@ -104,7 +105,7 @@ class Home_model extends CI_Model {
         $query = $this->db->get('user_work_exp');
         $num_rows = $query->num_rows();
         if($num_rows <= 0 ){
-            $message['work'] = 'Add your previous work experiences (if any).';
+            $message[] = 'previous work experiences';
         }
 
         return $message;

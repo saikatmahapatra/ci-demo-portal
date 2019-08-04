@@ -5,6 +5,22 @@
     </div>
 </div><!--/.page-title-container-->
 
+
+<?php if(isset($profile_msg) && sizeof($profile_msg > 0)){ ?>
+<div class="row <?php echo ($display_reminder_modal == 'false') ? 'd-none' : ''; ?>" id="userReminderModal" data-display="<?php echo $display_reminder_modal; ?>">
+    <div class="col-md-12">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong><?php echo $this->common_lib->get_greetings(); ?>!</strong> You should add these details to your pofile - <?php echo implode(', ', $profile_msg);?>        
+        <a href="<?php echo base_url('user/my_profile');?>" class="btn btn-sm btn-outline-primary">Update Now</a>
+        <button type="button" class="close btn_remind_later" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    </div>
+</div>
+<?php } ?>
+
+
 <div class="row">
     <div class="col-md-8">
         <div class="card news-card">
@@ -12,7 +28,25 @@
             <i class="fa fa-newspaper-o fa-lg" aria-hidden="true"></i> Notice Board
             </div>
             <div class="card-body">
+            
+                <ul class="list-group list-group-flush">
                 <?php foreach($data_rows as $key=>$row) { ?>
+                    <li class="list-group-item">
+                        <div class="subject-title"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a></div>
+                        <div class="text-muted small">
+                            <?php echo $content_type[$row['pagecontent_type']]['text']; ?>
+                            <?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
+                            <?php echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>
+                            <?php echo $this->common_lib->display_date($row['pagecontent_created_on'],true,null,'d-M-Y h:i:s a'); ?>
+                        </div>
+                        <div class="mt-1">
+                            <?php echo isset($row['pagecontent_text']) ? word_limiter($this->common_lib->remove_empty_p($row['pagecontent_text']), 25, anchor(site_url('/home/details/'.$row['id']),' read more...')) : '';?>
+                        </div>
+                    </li>
+                <?php }  ?>
+                </ul>
+
+                <?php /*foreach($data_rows as $key=>$row) { ?>
                     <div class="my-2 py-2 border-bottom border-gray">
                         <div class="mb-0 lh-125" style="max-height: 130px; overflow: hidden;">
                                 <div class="subject-title"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a></div>
@@ -25,7 +59,7 @@
                                 <?php echo isset($row['pagecontent_text']) ? $this->common_lib->remove_empty_p($row['pagecontent_text']) : '';?>
                         </div>
                     </div>
-                <?php } ?>
+                <?php } */ ?>
             </div>
             <div class="card-footer text-center">
                 <?php echo $pagination_link;?>
@@ -96,37 +130,5 @@
                 As on today
             </div> -->
         </div><!--/.card-->
-    </div>
-</div>
-
-<!-- Modal -->
-<div data-display="<?php echo $display_reminder_modal; ?>" class="modal fade" id="userReminderModal" tabindex="-1" role="dialog" aria-labelledby="userReminderModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="userReminderModalLabel">Hi <?php echo $this->session->userdata['sess_user']['user_firstname'];?>,  <?php echo $this->common_lib->get_greetings(); ?> !</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Here are few tips to make your profile better.
-                <ul>
-                    <?php 
-                    if(isset($profile_completion_status)){
-                        foreach($profile_completion_status as $key => $msg){
-                            ?>
-                            <li><?php echo $msg; ?></li>
-                            <?php
-                        }
-                    }
-                    ?>
-                </ul>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn_remind_later">Remind Me Later</button>
-                <a href="<?php echo base_url('user/my_profile');?>" class="btn btn-primary">Update Now</a>
-            </div>
-        </div>
     </div>
 </div>

@@ -19,7 +19,7 @@ $row = $data_rows[0];
 	</div><!--/.card-body-->
 	<div class="card-footer">
 			
-			<div class="text-center small">
+			<div class="text-center text-muted small">
 				<i class="fa fa-clock-o" aria-hidden="true"></i>
 				<?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
 				<?php echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>
