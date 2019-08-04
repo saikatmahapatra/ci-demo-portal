@@ -11,7 +11,7 @@ $row = $data_rows[0];
 
 <div class="card">
 	<div class="card-header h6">
-	<i class="fa fa-newspaper-o fa-lg" aria-hidden="true"></i> <?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?>
+		<?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?>
 	</div>
 	<div class="card-body">
 		<?php echo isset($row['pagecontent_text']) ? $row['pagecontent_text'] : '';?>
