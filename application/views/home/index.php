@@ -39,8 +39,8 @@
                             <?php echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>
                             <?php echo $this->common_lib->display_date($row['pagecontent_created_on'],true,null,'d-M-Y h:i:s a'); ?>
                         </div>
-                        <div class="mt-1">
-                            <?php echo isset($row['pagecontent_text']) ? word_limiter($this->common_lib->remove_empty_p($row['pagecontent_text']), 25, anchor(site_url('/home/details/'.$row['id']),' read more...')) : '';?>
+                        <div class="mb-0 lh-125" style="max-height: 120px; overflow: hidden;">
+                            <?php echo isset($row['pagecontent_text']) ? ($this->common_lib->remove_empty_p($row['pagecontent_text'])) : '';?>
                         </div>
                     </li>
                 <?php }  ?>
