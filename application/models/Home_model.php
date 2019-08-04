@@ -73,13 +73,13 @@ class Home_model extends CI_Model {
         }
 
         // education
-        $this->db->select('id');
-        $this->db->where('user_id', $user_id);
-        $query = $this->db->get('user_academics');
-        $num_rows = $query->num_rows();
-        if($num_rows <= 0 ){
-            $message[] = 'education details';
-        }
+        // $this->db->select('id');
+        // $this->db->where('user_id', $user_id);
+        // $query = $this->db->get('user_academics');
+        // $num_rows = $query->num_rows();
+        // if($num_rows <= 0 ){
+        //     $message[] = 'education details';
+        // }
 
         // user approvers
         // $this->db->select('id');
@@ -100,13 +100,13 @@ class Home_model extends CI_Model {
         // }
 
         // user_work_exp
-        $this->db->select('id');
-        $this->db->where('user_id', $user_id);
-        $query = $this->db->get('user_work_exp');
-        $num_rows = $query->num_rows();
-        if($num_rows <= 0 ){
-            $message[] = 'previous work experiences';
-        }
+        // $this->db->select('id');
+        // $this->db->where('user_id', $user_id);
+        // $query = $this->db->get('user_work_exp');
+        // $num_rows = $query->num_rows();
+        // if($num_rows <= 0 ){
+        //     $message[] = 'previous work experiences';
+        // }
 
         return $message;
     }
