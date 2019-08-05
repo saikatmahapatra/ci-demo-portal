@@ -150,19 +150,15 @@
         <?php } // end of session check ?>
     </nav>
 
-<!-- <div class="nav-scroller bg-white box-shadow">
-      <nav class="nav nav-underline">
-        <a class="nav-link active" href="#">Dashboard</a>
-        <a class="nav-link" href="#">
-          Friends
-          <span class="badge badge-pill bg-light align-text-bottom">27</span>
-        </a>
-        <a class="nav-link" href="#">Explore</a>
-        <a class="nav-link" href="#">Suggestions</a>
+<!-- <div class="mb-2 bg-light small">
+      <nav class="nav ">
+        <a class="nav-link" href="#">Quick Links</a>
+        <a class="nav-link" href="#">Apply Leave</a>
+        <a class="nav-link" href="#">Timesheet</a>
         <a class="nav-link" href="#">Link</a>
         <a class="nav-link" href="#">Link</a>
         <a class="nav-link" href="#">Link</a>
         <a class="nav-link" href="#">Link</a>
         <a class="nav-link" href="#">Link</a>
       </nav>
-    </div> -->
+</div> -->
