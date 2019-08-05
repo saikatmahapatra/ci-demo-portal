@@ -16,7 +16,7 @@
                     <ul class="list-group list-group-flush">
                     <?php foreach($data_rows as $key=>$row) { ?>
                         <li class="list-group-item">
-                        <a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a>
+                        <a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/redirect/policy');?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a>
                         </li>
                     <?php }  ?>
                     </ul>

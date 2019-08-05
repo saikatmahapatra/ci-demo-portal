@@ -15,7 +15,7 @@ $row = $data_rows[0];
 	</div>
 	<div class="card-body">
 		<?php echo isset($row['pagecontent_text']) ? $row['pagecontent_text'] : '';?>
-		<a href="<?php echo base_url();?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back to dashboard</a>
+		<a href="<?php echo $redirect_back_url; ?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
 	</div><!--/.card-body-->
 	<div class="card-footer">
 			
