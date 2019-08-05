@@ -116,7 +116,7 @@ class Cms_model extends CI_Model {
         return array('num_rows' => $num_rows, 'data_rows' => $result);
     }
 	
-	function get_contents($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
+	function get_contents($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE, $filter = NULL) {
         $result = array();
         $this->db->select('t1.*,t2.user_email, t2.user_lastname, t2.user_firstname');
         $this->db->join('users as t2', 't2.id = t1.pagecontent_user_id', 'left');
@@ -126,7 +126,12 @@ class Cms_model extends CI_Model {
 		if($limit){
            $this->db->limit($limit, $offset);
         }
-		$this->db->where('t1.pagecontent_status', 'Y');
+        $this->db->where('t1.pagecontent_status', 'Y');
+
+        if(isset($filter) && isset($filter['content_type'])){
+            $this->db->where_in('t1.pagecontent_type', $filter['content_type']);
+        }
+
 		$this->db->order_by('t1.id', 'desc');
         $query = $this->db->get('cms as t1');
         //print_r($this->db->last_query());
@@ -140,7 +145,7 @@ class Cms_model extends CI_Model {
             '' => 'Select',
             'news' => 'News',
             'notice' => 'Notice',
-            'policy' => 'Policy'
+            'policy' => 'Policy - Company/HR Policies'
         );
         return $data;
     }
