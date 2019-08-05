@@ -1,5 +1,5 @@
 <div class="card card-login border border-secondary mx-auto mt-3">
-  <div class="card-header text-white bg-dark"><?php echo $this->config->item('app_logo_name_dashboard'); ?> - <?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></div>
+  <div class="card-header text-white bg-black"><?php echo $this->config->item('app_logo_name_dashboard'); ?> - <?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></div>
   <div class="colorgraph-2"></div>
   <div class="card-body">
 	<div class="text-center mb-4">

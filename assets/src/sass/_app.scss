@@ -475,7 +475,7 @@ table.ci-table.dataTable {
     .subject-title {
         font-weight: 600;
     }
-    .card-body{
+    .card-body {
         padding: 15px;
     }
 }
@@ -521,6 +521,10 @@ table.ci-table.dataTable {
     border: .3em solid;
     border-width: 0 .15em .15em 0;
     transform: rotatez(45deg);
+}
+
+.bg-black {
+    background-color: $black !important;
 }
 
 .navbar .nav-item {
