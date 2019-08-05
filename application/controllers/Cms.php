@@ -139,7 +139,7 @@ class Cms extends CI_Controller {
             if($result['pagecontent_status'] == 'N'){
                 $status_indicator = 'text-warning';
             }
-            $row[] = '<i class="fa fa-circle-o-notch '.$status_indicator.'" aria-hidden="true"></i>';
+            $row[] = '<i class="fa fa-circle-o '.$status_indicator.'" aria-hidden="true"></i>';
             //add html for action
             $action_html = '';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' .$result['id']), '<i class="fa fa-lg fa-edit" aria-hidden="true"></i>', array(

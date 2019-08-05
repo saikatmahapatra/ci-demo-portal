@@ -28,8 +28,8 @@
 				
 				<div class="table-responsive">
 					<div class="grid-action-holder px-3 mb-3">
-						<span class=""><i class="fa fa-circle-o-notch text-success" aria-hidden="true"></i> Published Content</span>
-						<span class=""><i class="fa fa-circle-o-notch text-warning" aria-hidden="true"></i> Unpublished Content</span>
+						<span class=""><i class="fa fa-circle-o text-success" aria-hidden="true"></i> Published Content</span>
+						<span class=""><i class="fa fa-circle-o text-warning" aria-hidden="true"></i> Unpublished Content</span>
 					</div><!--/.grid-action-holder-->
 
 					<table id="cms-datatable" class="table ci-table table-striped">

@@ -58,7 +58,7 @@
 					echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
 				?>
 			</div>
-			<span class=" <?php echo $user_status_arr[$row['user_status']]['css']; ?>"><i class="fa fa-circle-o-notch" aria-hidden="true"></i> <?php echo $user_status_arr[$row['user_status']]['text']; ?></span>
+			<span class=" <?php echo $user_status_arr[$row['user_status']]['css']; ?>"><i class="fa fa-circle-o" aria-hidden="true"></i> <?php echo $user_status_arr[$row['user_status']]['text']; ?></span>
 
 			<!--<div class="small"><?php //echo isset($row['role_name']) ? $row['role_name'] : ''; ?></div>-->
 			<div class="">Emp ID : <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>

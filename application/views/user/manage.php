@@ -30,9 +30,9 @@
 				
 				<div class="table-responsive">
 					<div class="grid-action-holder px-3 mb-3">
-						<span class=""><i class="fa fa-circle-o-notch text-success" aria-hidden="true"></i> Active</span>
-						<span class=""><i class="fa fa-circle-o-notch text-warning" aria-hidden="true"></i> Inactive</span>
-						<span class=""><i class="fa fa-circle-o-notch text-danger" aria-hidden="true"></i> Archived</span>
+						<span class=""><i class="fa fa-circle-o text-success" aria-hidden="true"></i> Active</span>
+						<span class=""><i class="fa fa-circle-o text-warning" aria-hidden="true"></i> Inactive</span>
+						<span class=""><i class="fa fa-circle-o text-danger" aria-hidden="true"></i> Archived</span>
 					</div><!--/.grid-action-holder-->
 
 					<table id="user-datatable" class="table ci-table table-striped">
