@@ -51,9 +51,9 @@ $config['app_faq'] = array(
     array('question'=>'Can I edit the task details I have logged ?', 'answer'=>'Yes. You can update the task details, project, activity, hours etc details.'),
 );
 
-$config['app_copy_right'] = 'Copyright '.date('Y').' &copy; United Exploration India Pvt. Ltd.';
-$config['app_admin_copy_right'] = 'Copyright &copy; '.date('Y').' <a href="http://unitedexploration.co.in/">United Exploration India Pvt. Ltd.</a>';
+$config['app_copy_right'] = 'Copyright '.date('Y').' &copy; United Exploration India (P) Ltd';
+$config['app_admin_copy_right'] = 'Copyright &copy; '.date('Y').' <a href="http://unitedexploration.co.in/">United Exploration India (P) Ltd</a>';
 //$config['app_version'] = 'App Version '.CI_VERSION.'.16';
-$config['app_version'] = 'App Version 3.2.16'; // CIVerMajor.RelVer.UIVer
+$config['app_version'] = 'Version 5.0'; // CIVerMajor.RelVer.UIVer
 
 

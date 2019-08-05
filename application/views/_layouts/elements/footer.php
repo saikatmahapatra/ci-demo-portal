@@ -1,4 +1,4 @@
-<div class="mt-5 py-2">
+<div class="mt-5 py-2 small">
     <div class="text-muted text-center">
         <!-- <img class="logo" src="<?php echo base_url('assets/src/img/logo-dark.png');?>"> -->
         <?php echo $this->config->item('app_admin_copy_right');?>
