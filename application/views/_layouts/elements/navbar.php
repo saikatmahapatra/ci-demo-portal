@@ -69,7 +69,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdown_3">
                         <a class="dropdown-item" href="#">Link 1</a>
                         <a class="dropdown-item" href="#">Link 2</a>
-                        <a class="dropdown-item" target="new" href="http://unitedexploration.co.in/">Corporate Website</a>
+                        <a class="dropdown-item" target="_blank" href="http://unitedexploration.co.in/">Corporate Website</a>
                         <a class="dropdown-item" href="#">Link 4</a>
                     </div>
                 </li> -->
