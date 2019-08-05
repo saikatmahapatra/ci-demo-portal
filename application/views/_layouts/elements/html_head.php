@@ -8,7 +8,7 @@
 <meta name="author" content="<?php echo $el_html_tag_meta_author; ?>">
 <meta name="robots" content="index, follow" />
 
-<link rel="icon" href="<?php echo base_url('assets/dist/img/favicon.ico'); ?>">
+<link rel="icon" href="<?php echo base_url('assets/dist/img/favicon.png'); ?>">
 
 <noscript>
 JavaScript must be enabled in order to use this Application in standard view. 

@@ -2,7 +2,7 @@
 	<div class="col-md-8">		
 		<div class="card">
 			<div class="card-header text-center bg-primary text-white">
-				<img class="mb-1" style="width:80px;" src="<?php echo base_url('assets/src/img/logo.svg');?>">
+				<img class="mb-1" style="width:80px;" src="<?php echo base_url('assets/dist/img/logo.svg');?>">
 				<h6><?php echo $this->config->item('app_company_product');?></h6>
 				<h5 class=""><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h5>
 			</div>

@@ -4,9 +4,5 @@
 @import 'customize-bootstrap';
 // Bootstrap 4 SCSS
 @import 'assets/vendors/bootstrap/scss/bootstrap';
-//Custom CSS
-@import '_mixins.scss';
-@import 'global';
-@import '_navbar.scss';
-@import 'sidebar';
-@import '_forms.scss';
+//Custom CSS - This App Specific CSS
+@import '_app.scss';

@@ -10,7 +10,7 @@
 		<div class="card ci-card">
 			<div class="card-header">
 				Data Table
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>" class="float-right btn btn-sm btn-outline-success" title="Apply Leave"> <i class="fa fa-plane"></i> Apply Leave</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>" class="float-right btn btn-sm btn-outline-secondary" title="Apply Leave"> <i class="fa fa-send-o"></i> Apply Leave</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -25,7 +25,7 @@
 				
 				<div class="table-responsive">
 					<table class="table table-striped">
-						<thead class="thead-dark">
+						<thead class="thead-light">
 							<tr>
 								<th scope="col">Request No</th>
 								<th scope="col">Leave Type</th>
@@ -49,7 +49,7 @@
 									<td><?php echo $this->common_lib->display_date($row['leave_to_date']);?></td>
 									<td><?php echo $row['applied_for_days_count'].' day(s)';?></td>
 									<td>
-										<!-- <span class="small"><i class="fa fa-circle-o-notch <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>  -->
+										<!-- <span class="small"><i class="fa fa-circle-o <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>  -->
 										<span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>">  <?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
 									</td>
 									<!-- <td><?php echo isset($row['leave_reason']) ? word_limiter($row['leave_reason'], 5) : '';?></td> -->

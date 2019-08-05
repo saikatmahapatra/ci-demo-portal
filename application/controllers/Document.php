@@ -52,21 +52,14 @@ class Document extends CI_Controller {
         
         $this->data['arr_upload_file_type_name'] = array(
             "" => "Select",
-            "aadhar_card" => "Aadhar Card",
-            "pan_card" => "PAN Card",
-            "driving_license" => "Driving License",
-            "voter_card" => "Voter Card",
+            "address_proof" => "Address Proof",
+            "govt_id_proof" => "Govt. ID Proof",
             "medical_fit_certificate" => "Medical Fit Certificate",
-            "school_certificate" => "School Certificate",
-            "10_marksheet" => "10th Equivallent Mark Sheet",
-            "10_certificate" => "10th Certificate",
-            "12_marksheet" => "12th Equivallent Mark Sheet",
-            "12_certificate" => "12th Certificate",
+            "10_marksheet" => "10th Mark Sheet",
+            "12_marksheet" => "12th Mark Sheet",
             "graduation_marksheet" => "Graduation Mark Sheet (Final Semistar)",
-            "pg_marksheet" => "Post Graduation Marksheet (Final Semistar)",
+            "pg_marksheet" => "PG Marksheet (Final Semistar)",
             "work_exp_letter" => "Work Experience Letter",
-            "permanent_addr_proof" => "Premanent Address Proof",
-            "current_addr_proof" => "Current Address Proof",
         );
         ksort($this->data['arr_upload_file_type_name']);
 

@@ -11,7 +11,7 @@
 		<div class="card ci-card">
 			<div class="card-header">
 				Form
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="float-right btn btn-sm btn-outline-secondary" title="Manage"> <i class="fa fa-list"></i> Track Leave History</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="float-right btn btn-sm btn-outline-secondary" > <i class="fa fa-clock-o"></i> Leave History</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -24,7 +24,7 @@
 					}
 				?>
 
-				<div class="form-text text-muted bg-light py-1 mb-3">
+				<div class="form-text mb-4 text-muted">
 					<ul>
 					<?php
 						foreach($system_msg as $key=>$val){
@@ -34,13 +34,13 @@
 						}
 					?>
 						
-						<li class="text-info">
-							<span class="font-weight-bold">Leave Balance : </span>
-							<span class="mx-3">CL : <?php echo isset($leave_balance[0]['cl']) ? $leave_balance[0]['cl'] : '0.0'; ?></span>
-							<span class="">PL : <?php echo isset($leave_balance[0]['pl']) ? $leave_balance[0]['pl'] : '0.0'; ?></span>
-							<!-- <span class="ml-3">OL : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></span> -->
-							<!-- <span class="ml-3"><a class="" href="#" id="view_leave_balance_update_details" data-toggle="modal" data-target="#leaveBalanceModal">Click here to view balance details</a></span> -->
-						</li>
+					<li class="">
+						<span class="">Leave Balance : </span>
+						<span class="font-weight-bold mr-3">CL : <?php echo isset($leave_balance[0]['cl']) ? $leave_balance[0]['cl'] : '0.0'; ?></span>
+						<span class="font-weight-bold">PL : <?php echo isset($leave_balance[0]['pl']) ? $leave_balance[0]['pl'] : '0.0'; ?></span>
+						<!-- <span class="ml-3">OL : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></span> -->
+						<!-- <span class="ml-3"><a class="" href="#" id="view_leave_balance_update_details" data-toggle="modal" data-target="#leaveBalanceModal">Click here to view balance details</a></span> -->
+					</li>
 					</ul>
 				</div>
 				<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => 'ci-form-leave',)); ?>
@@ -68,14 +68,14 @@
 					</div>
 					
 					<div class="form-group col-md-5">
-						<label for="leave_reason" class="bmd-label-floating">Reason <span class="required">*</span></label>
+						<label for="leave_reason" class="bmd-label-floating">Leave Reason <span class="required">*</span></label>
 						<?php
 						echo form_input(array(
 							'name' => 'leave_reason',
 							'value' => set_value('leave_reason'),
 							'id' => 'leave_reason',
 							'class' => 'form-control',
-							'placeholder'=>'Briefly describe leave reason (max 100 letters)',
+							'placeholder'=>'Max 100 characters',
 							'maxlength' => '100'
 						));
 						?>

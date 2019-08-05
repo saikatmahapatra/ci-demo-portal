@@ -14,8 +14,8 @@
 		</div> -->
 		<!-- <p class="alert alert-info"><i class="fa fa-info-circle" aria-hidden="true"></i> Please note that <span class="h5 text-danger font-weight-bold">*</span> marked dates are optional holiday.<p> -->
 		<div class="table-responsive">
-			<table class="table table-sm ci-table table-bordered">
-				<thead class="thead-dark">
+			<table class="table ci-table table-sm table-bordered">
+				<thead class="thead-light">
 				<tr>
 					<th scope="col">#</th>
 					<th scope="col">Date</th>
@@ -41,7 +41,7 @@
 							<!-- <td><?php echo $arr_holiday_type[$row['holiday_type']]; ?></td> -->
 							<td>
 								<?php echo $row['holiday_description']; ?>
-								<?php echo $row['holiday_type']=='O' ? ' <span class="text-danger font-italic">('.strtolower($arr_holiday_type[$row['holiday_type']]).')</span>' : '' ;?>
+								<?php echo $row['holiday_type']=='O' ? '('.strtolower($arr_holiday_type[$row['holiday_type']]).')' : '' ;?>
 							</td>
 						</tr>
 						<?php

@@ -68,24 +68,6 @@ $has-data: lighten($color_green, 50%);
 // Validation Error Message Colors
 $validation-error-color: $red;
 $mandatory_field_star-color: $red;
-//Ajax Loader
-$ajaxloader-color: '%231e4bb2';
-// ------- Sidebar Width --------
-$sidebar-width: 230px;
-// ------- Sidebar Colors --------
-// Background color of sidebar
-$sidebar-color: $gray-900;
-// -- Suggested sidebar background colors
-// dark  : #222d32
-// light : #f8f8f8
-// Sidebar accent varible is used to determine the color of the links
-// of the sidebar. The allowed values are 'light' or 'dark' only
-$sidebar-accent: dark;
-// The following varibles indecate sidebar link color
-// and link hover color when using a dark sidebar color
-$sidebar-dark-color: $white;
-$sidebar-dark-link-color: $white;
-// The following varibles indecate sidebar link color
-// and link hover color when using a light sidebar color
-$sidebar-light-color: $black;
-$sidebar-light-link-color: $gray-600;
+// Colorgraph
+$from_color: #a8ff1b;
+$to_color: #cf1180;

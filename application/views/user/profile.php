@@ -158,7 +158,7 @@
 							<div class="col-md-12">
 							<div class="table-responsive-sm">
 										<table class="table table-striped">
-											<thead class="thead-dark">
+											<thead class="thead-light">
 												<tr>
 												<th scope="col">Address Type</th>
 												<th scope="col">Address</th>
@@ -218,7 +218,7 @@
 							}*/?>
 								<div class="table-responsive-sm">
 									<table class="table table-striped">
-										<thead class="thead-dark">
+										<thead class="thead-light">
 											<tr>
 											<th scope="col">Degree & Specialization</th>												
 											<th scope="col">University/Board/Council</th>
@@ -260,7 +260,7 @@
 								
 									<div class="table-responsive-sm">
 										<table class="table table-striped">
-											<thead class="thead-dark">
+											<thead class="thead-light">
 												<tr>
 													<th scope="col">Employer</th>												
 													<th scope="col">Designation/Role</th>
@@ -326,7 +326,7 @@
 
 								<div class="table-responsive-sm">
 									<table class="table  table-striped">
-										<thead class="thead-dark">
+										<thead class="thead-light">
 											<tr>
 												<th scope="col">Account Uses</th>
 												<th scope="col">Account No</th>
@@ -435,7 +435,7 @@
 									<!-- <a class="btn btn-primary btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"> Add</a> -->
 										<div class="table-responsive-sm">
 											<table class="table table-striped">
-												<thead class="thead-dark">
+												<thead class="thead-light">
 													<tr>
 													<th scope="col">Contact Person</th>
 													<th scope="col">Relationship</th>

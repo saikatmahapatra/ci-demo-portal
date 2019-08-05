@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
 	<div class="col-sm-12 col-md-4 form-signin">
 		<div class="text-center">
-			<img class="logo-2x py-2" src="<?php echo base_url('assets/src/img/logo-dark.png');?>">
+			<img class="logo-2x py-2" src="<?php echo base_url('assets/dist/img/logo-dark.png');?>">
 			<h1 class="page-title"><?php echo isset($page_title)? $page_title:'Untitled Page'; ?></h1>
 		</div>
 		<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'')) ?>
