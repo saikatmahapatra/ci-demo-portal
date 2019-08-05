@@ -53,9 +53,11 @@ $nav-tabs-link-active-bg: $primary-color;
 $nav-tabs-link-active-border-color: $primary-color;
 $nav-tabs-link-hover-border-color: transparent;
 // Nav Bar Dark
-$navbar-dark-color: $gray-lighter;
-$navbar-dark-hover-color: $white;
+$navbar-dark-color: $white;
+$navbar-dark-hover-color: $gray-lighter;
 $navbar-dark-active-color: $white;
+// $dropdown-link-hover-color: $white;
+// $dropdown-link-hover-bg: $black;
 //$navbar-padding-y: 4px;
 //$navbar-padding-x: 0.5rem;
 //Nav Bar Light Color
