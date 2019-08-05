@@ -10,7 +10,7 @@
 		<div class="card ci-card">
 			<div class="card-header">
 				Data Table
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>" class="float-right btn btn-sm btn-outline-success" title="Apply Leave"> <i class="fa fa-plane"></i> Apply Leave</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>" class="float-right btn btn-sm btn-outline-secondary" title="Apply Leave"> <i class="fa fa-send-o"></i> Apply Leave</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">

@@ -11,7 +11,7 @@
 		<div class="card ci-card">
 			<div class="card-header">
 				Form
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="float-right btn btn-sm btn-outline-secondary" title="Manage"> <i class="fa fa-list"></i> Track Leave History</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="float-right btn btn-sm btn-outline-secondary" > <i class="fa fa-clock-o"></i> Leave History</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
