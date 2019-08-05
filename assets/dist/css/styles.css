@@ -8443,16 +8443,10 @@ body.login {
 }
 
 .logo {
-  width: 190px;
+  width: 50px;
 }
 
-@media (max-width: 575px) {
-  .logo {
-    width: 145px;
-  }
-}
-
-.logo-2x {
+.logo-login {
   width: 150px;
 }
 

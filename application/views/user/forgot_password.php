@@ -3,7 +3,7 @@
   <div class="colorgraph-2"></div>
   <div class="card-body">
 	<div class="text-center mb-4">
-		<img class="logo-2x" src="<?php echo base_url('assets/src/img/logo-dark.png');?>">
+		<img class="logo-login" src="<?php echo base_url('assets/dist/img/logo-dark.png');?>">
 		<!-- <h6><?php echo $this->config->item('app_company_product');?></h6> -->
 		<h1 class="page-title"><?php echo isset($page_title) ? $page_title :'Untitled Page'; ?></h1>
 		<p>Password reset OTP will be sent to your registered email.</p>
