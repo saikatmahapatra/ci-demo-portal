@@ -102,7 +102,7 @@ class Home extends CI_Controller {
         
         //User Profile Completion Status Check
         $profile_completion = $this->home_model->get_user_profile_completion_status($this->sess_user_id);
-        $this->data['profile_completion_status'] = $profile_completion;
+        $this->data['profile_msg'] = $profile_completion;
         $this->data['display_reminder_modal'] = sizeof($profile_completion) > 0 ? 'true' : 'false';
         
 
@@ -127,8 +127,12 @@ class Home extends CI_Controller {
 
         $id = $this->uri->segment(3);		
 		$result_array = $this->cms_model->get_contents($id, NULL, NULL, FALSE, FALSE);
-        $this->data['data_rows'] = $result_array['data_rows'];        
-		$this->data['page_title'] = 'Welcome';
+        $this->data['data_rows'] = $result_array['data_rows'];
+        $this->data['redirect_back_url'] = site_url('home');
+        if($this->uri->segment(4) == 'redirect' && $this->uri->segment(5) != ''){
+            $this->data['redirect_back_url'] = site_url('home/'.$this->uri->segment(5));
+        }
+		$this->data['page_title'] = 'Notice Board';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/details', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -142,6 +146,47 @@ class Home extends CI_Controller {
     function feedback(){
         $this->data['page_title'] = 'Feedback';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/feedback', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function policy() {
+        // Check user permission by permission name mapped to db
+        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
+		
+		// Check user permission by permission name mapped to db
+        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
+			
+		$this->breadcrumbs->push('View','/');				
+		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
+		
+        $this->data['alert_message'] = $this->session->flashdata('flash_message');
+        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+
+        // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition
+        $filter = array('content_type' => array('policy'));
+		$result_array = $this->cms_model->get_contents(NULL, NULL, NULL, FALSE, FALSE, $filter);
+		$total_num_rows = $result_array['num_rows'];
+		
+		//pagination config
+		$additional_segment = $this->router->directory.$this->router->class.'/policy';
+		$per_page = 4;
+		$config['uri_segment'] = 4;
+		$config['num_links'] = 1;
+		$config['use_page_numbers'] = TRUE;
+		//$this->pagination->initialize($config);
+		
+		$page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
+		$offset = ($page*$per_page);
+		$this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
+		//end of pagination config
+        
+
+        // Data Rows - Refer to model method definition
+        $result_array = $this->cms_model->get_contents(NULL, $per_page, $offset, FALSE, TRUE, $filter);
+        $this->data['data_rows'] = $result_array['data_rows'];
+
+		$this->data['page_title'] = 'HR & Organization Policy';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/policy', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
 

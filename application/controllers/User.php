@@ -50,7 +50,7 @@ class User extends CI_Controller {
 		$this->data['arr_designations'] = $this->user_model->get_designation_dropdown('Y');
 		$this->data['arr_departments'] = $this->user_model->get_department_dropdown();
 		$this->data['arr_user_title'] = array(''=>'Select Title','Mr.'=>'Mr.','Mrs.'=>'Mrs.','Dr.'=>'Dr.','Ms.'=>'Ms.');
-        $this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-');
+        $this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-', 'NA'=>'Unknown/Not Applicable');
         $this->data['bank_ac_type'] = array('SB'=>'Savings','CU'=>'Current');
         $this->data['account_uses'] = array('SAL'=>'Salary Credit','REI'=>'Reimbursement');
         $this->data['arr_gender'] = array('M'=>'Male','F'=>'Female');
@@ -158,7 +158,7 @@ class User extends CI_Controller {
         $result_array = $this->user_model->get_users(NULL, $per_page, $offset, $search_keywords, 'U');
         $this->data['data_rows'] = $result_array['data_rows'];
 		
-		$this->data['page_title'] = 'Employees';
+		$this->data['page_title'] = 'Employee Directory';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/people', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -194,10 +194,10 @@ class User extends CI_Controller {
 
             $row[] = $result['user_firstname'] . ' ' . $result['user_lastname'];
             $row[] = $result['user_emp_id'];
-            $row[] = '<span data-toggle="tooltip" title="'.$result['user_email'].'">'.explode('@',$result['user_email'])[0].'</span>';
+            $row[] = $result['user_email'];
             $row[] = $result['user_phone1'];
             $row[] = $result['designation_name'];
-            $row[] = '<span class=""><i class="fa fa-circle-o-notch '.$status_indicator.'" aria-hidden="true"></i></span>';
+            $row[] = '<span class=""><i class="fa fa-circle-o '.$status_indicator.'" aria-hidden="true"></i></span>';
             $action_html = '';
             
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-lg fa-edit" aria-hidden="true"></i>', array(
@@ -627,7 +627,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = 'Forgot Password?';
+		$this->data['page_title'] = 'Forgot Password';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/forgot_password', $this->data, true);
         $this->load->view('_layouts/layout_login', $this->data);
     }

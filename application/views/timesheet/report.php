@@ -83,7 +83,7 @@
 					<?php } */ ?>
 
 					<table class="table table-striped">
-						<thead class="thead-dark">
+						<thead class="thead-light">
 							<tr>
 								<th scope="col" style="width:10%;">Date</th>
 								<th scope="col" style="width:15%;">Employee</th>

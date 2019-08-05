@@ -161,7 +161,7 @@
 
 								<div class="table-responsive-sm">
 										<table class="table table-striped">
-											<thead class="thead-dark">
+											<thead class="thead-light">
 												<tr>
 												<th scope="col">Address Type</th>
 												<th scope="col">Address</th>
@@ -208,7 +208,7 @@
 								<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a>
 									<div class="table-responsive-sm">
 										<table class="table table-striped">
-											<thead class="thead-dark">
+											<thead class="thead-light">
 												<tr>
 												<th scope="col">Degree & Specialization</th>
 												<th scope="col">University/Board/Council</th>
@@ -247,7 +247,7 @@
 								<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a>
 									<div class="table-responsive-sm">
 										<table class="table table-striped">
-											<thead class="thead-dark">
+											<thead class="thead-light">
 												<tr>
 													<th scope="col">Employer</th>
 													<th scope="col">Designation/Role</th>
@@ -313,7 +313,7 @@
 
 								<div class="table-responsive-sm">
 										<table class="table table-striped">
-											<thead class="thead-dark">
+											<thead class="thead-light">
 												<tr>
 													<th scope="col">Account Uses</th>
 													<th scope="col">Account No</th>
@@ -373,7 +373,7 @@
 								<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a>
 									<div class="table-responsive-sm">
 										<table class="table table-striped">
-											<thead class="thead-dark">
+											<thead class="thead-light">
 												<tr>
 												<th scope="col">Contact Person</th>
 												<th scope="col">Relationship</th>

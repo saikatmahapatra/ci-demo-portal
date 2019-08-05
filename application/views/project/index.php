@@ -25,11 +25,11 @@
 				?>
 				<div class="table-responsive">
 					<div class="grid-action-holder px-3 mb-3">
-						<span class=""><i class="fa fa-circle-o-notch text-success" aria-hidden="true"></i> Published</span>
-						<span class=""><i class="fa fa-circle-o-notch text-warning" aria-hidden="true"></i> Unpublished</span>
+						<span class=""><i class="fa fa-circle-o text-success" aria-hidden="true"></i> Published</span>
+						<span class=""><i class="fa fa-circle-o text-warning" aria-hidden="true"></i> Unpublished</span>
 					</div><!--/.grid-action-holder-->
 					<table id="project-datatable" class="table ci-table table-striped">
-						<thead class="thead-dark">
+						<thead class="thead-light">
 							<tr>						
 								<th scope="col">Project</th>
 								<th scope="col">Code</th>

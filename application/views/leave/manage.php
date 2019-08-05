@@ -29,7 +29,7 @@
 						<span class=""><i class="fa fa-close text-warning" aria-hidden="true"></i> Cancelled</span>	
 					</div><!--/.grid-action-holder-->
 					<table class="table table-striped">
-						<thead class="thead-dark">
+						<thead class="thead-light">
 							<tr>
 								<th scope="col">Request No</th>
 								<th scope="col">Applicant</th>

@@ -33,7 +33,7 @@ $config['app_email_footer'] = $html_email_footer;
 $config['app_company_product'] = 'United Exploration India Pvt. Ltd.';
 $config['app_logo_name_login'] = '<b>Admin</b> Dashboard';
 $config['app_logo_name_admin_dashboard'] = 'Portal Admin';
-$config['app_logo_name_dashboard'] = 'Employee Portal';
+$config['app_logo_name_dashboard'] = '<b>eP</b>ortal';
 $config['app_logo_name_dashboard_xs'] = '<b>U</b>Aadmin';
 
 $config['app_html_title'] = 'ePortal - United Exploration India Pvt. Ltd.';
@@ -52,8 +52,7 @@ $config['app_faq'] = array(
 );
 
 $config['app_copy_right'] = 'Copyright '.date('Y').' &copy; United Exploration India Pvt. Ltd.';
-$config['app_admin_copy_right'] = 'Copyright &copy; '.date('Y').' <a href="http://unitedexploration.co.in/">United Exploration India Pvt. Ltd.</a>';
-//$config['app_version'] = 'App Version '.CI_VERSION.'.16';
-$config['app_version'] = 'App Version 3.2.16'; // CIVerMajor.RelVer.UIVer
+$config['app_admin_copy_right'] = 'Copyright &copy; '.date('Y').' <a href="http://unitedexploration.co.in" target="_blank">United Exploration India (P) Ltd</a>';
+$config['app_version'] = 'Version 5.0'; // Recommended format CIVerMajor.RelVer.UIVer
 
 

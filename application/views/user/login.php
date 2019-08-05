@@ -1,8 +1,9 @@
-<div class="card card-login mx-auto mt-5">
-  <div class="card-header">Sign In</div>
+<div class="card card-login border border-secondary mx-auto mt-3">
+  <div class="card-header text-white bg-black"><?php echo $this->config->item('app_logo_name_dashboard'); ?> - <?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></div>
+  <div class="colorgraph-2"></div>
   <div class="card-body">
 	<div class="text-center mb-4">
-		<img class="logo-2x" src="<?php echo base_url('assets/src/img/logo-dark.png');?>">
+		<img class="logo-login" src="<?php echo base_url('assets/dist/img/logo-dark.png');?>">
 		<!-- <h6><?php echo $this->config->item('app_company_product');?></h6> -->
 		<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
 	</div>

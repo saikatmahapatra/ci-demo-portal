@@ -26,7 +26,7 @@
 					<?php echo isset($upload_error_message) ? $upload_error_message : ''; ?>
 					<div class="form-row">
 						<div class="form-group col-md-12">
-							<label for="upload_file_type_name" class="">Document <span class="required">*</span></label>
+							<label for="upload_file_type_name" class="">Document Type <span class="required">*</span></label>
 							<?php echo form_dropdown('upload_file_type_name', $arr_upload_file_type_name, set_value('upload_file_type_name'), array('class' => 'form-control','id' => 'upload_file_type_name',));?>
 							<?php echo form_error('upload_file_type_name'); ?>
 						</div>
@@ -45,7 +45,7 @@
 							
 						</div>		
 					</div>
-					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Upload','class' => 'btn btn-primary'));?>
+					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
 					<?php echo form_close(); ?>	
 			
 			</div><!--./card-body-->
@@ -61,7 +61,7 @@
 				<div class="card-body">
 					<div class="table-responsive">
 							<table class="table ci-table table-striped">
-								<thead class="thead-dark">
+								<thead class="thead-light">
 									<tr>
 										<th scope="col">Uploaded Document(s)</th>
 									</tr>

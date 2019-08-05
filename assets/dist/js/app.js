@@ -453,11 +453,14 @@ function reminderModal() {
     var userReminderModal = '#userReminderModal';
     var showUserReminder = sessionStorage.getItem('showUserReminder');
     if ($(userReminderModal).attr('data-display') == 'true' && (showUserReminder == 'true' || showUserReminder == null)) {
-        $(userReminderModal).modal('show');
+        $(userReminderModal).css('display','block');
+    }else{
+        $(userReminderModal).css('display','none');
     }
+    
     $(userReminderModal + ' .btn_remind_later').on('click', function(e) {
         e.preventDefault();
         sessionStorage.setItem('showUserReminder', 'false');
-        $(userReminderModal).modal('hide');
+        $(userReminderModal).css('display','none');
     });
 }
