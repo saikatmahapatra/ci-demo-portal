@@ -41,7 +41,7 @@
 							<!-- <td><?php echo $arr_holiday_type[$row['holiday_type']]; ?></td> -->
 							<td>
 								<?php echo $row['holiday_description']; ?>
-								<?php echo $row['holiday_type']=='O' ? '('.ucfirst(strtolower($arr_holiday_type[$row['holiday_type']])).')' : '' ;?>
+								<?php echo $row['holiday_type']=='O' ? '('.strtolower($arr_holiday_type[$row['holiday_type']]).')' : '' ;?>
 							</td>
 						</tr>
 						<?php

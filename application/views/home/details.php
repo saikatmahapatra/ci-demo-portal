@@ -23,7 +23,7 @@ $row = $data_rows[0];
 				<i class="fa fa-clock-o" aria-hidden="true"></i>
 				<?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
 				<?php echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>
-				<?php echo $this->common_lib->display_date($row['pagecontent_created_on'],true); ?>
+				<?php echo $this->common_lib->display_date($row['pagecontent_created_on'],true,null,'d-M-Y h:i:s a'); ?>
 			</div>
 	</div>
 </div><!--/.card-->
