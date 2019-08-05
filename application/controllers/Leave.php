@@ -101,16 +101,16 @@ class Leave extends CI_Controller {
 
         // Initial/ L1 Approver
         if($supervisor_approver_id == NULL || $supervisor_approver_id == 0){
-            $system_msg['supervisor'] = array('txt'=>'Please add your L1 Approver (Initial). Click '.anchor(base_url('user/edit_approvers'),' here').' to update.', 'css'=>'text-danger', 'has_error'=> true);
+            $system_msg['supervisor'] = array('txt'=>'Please add your L1 approver (initial). Click '.anchor(base_url('user/edit_approvers'),' here').' to update.', 'css'=>'text-danger', 'has_error'=> true);
         }else{
-            $system_msg['supervisor'] = array('txt'=>'Your L1 Approver (Initial) is '.$supervisor_approver_name.' ('.$this->data['approvers'][0]['supervisor_emp_id'].') . Click '.anchor(base_url('user/edit_approvers'),' here').' to change.', 'css'=>'', 'has_error'=> false);
+            $system_msg['supervisor'] = array('txt'=>'Your L1 approver (initial) is '.$supervisor_approver_name.' ('.$this->data['approvers'][0]['supervisor_emp_id'].') . Click '.anchor(base_url('user/edit_approvers'),' here').' to change.', 'css'=>'', 'has_error'=> false);
         }
 
         // Final / L2 Approver
         if($director_approver_id == NULL || $director_approver_id == 0){
-            $system_msg['director'] = array('txt'=>'Please add your L2 Approver (Final). Click '.anchor(base_url('user/edit_approvers'),' here').' to update.', 'css'=>'text-danger', 'has_error'=> true);
+            $system_msg['director'] = array('txt'=>'Please add your L2 approver (final). Click '.anchor(base_url('user/edit_approvers'),' here').' to update.', 'css'=>'text-danger', 'has_error'=> true);
         }else{
-            $system_msg['director'] = array('txt'=>'Your L2 Approver (Final) is '.$director_approver_name.' ('.$this->data['approvers'][0]['director_emp_id'].') . Click '.anchor(base_url('user/edit_approvers'),' here').' to change.', 'css'=>'', 'has_error'=> false);
+            $system_msg['director'] = array('txt'=>'Your L2 approver (final) is '.$director_approver_name.' ('.$this->data['approvers'][0]['director_emp_id'].') . Click '.anchor(base_url('user/edit_approvers'),' here').' to change.', 'css'=>'', 'has_error'=> false);
         }
 
         /*if($hr_approver_id == NULL || $hr_approver_id == 0){
