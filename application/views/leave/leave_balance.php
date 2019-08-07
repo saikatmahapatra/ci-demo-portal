@@ -10,7 +10,7 @@
 		<div class="card ci-card">
 			<div class="card-header">
 				Form
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage/all');?>" class="float-right btn btn-sm btn-outline-secondary" title="Manage"> <i class="fa fa-list"></i> Manage Leave Requests</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage/all');?>" class="float-right btn btn-sm btn-outline-secondary" title=""> <i class="fa fa-list"></i> Manage Leave Requests</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">

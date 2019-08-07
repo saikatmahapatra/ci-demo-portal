@@ -131,19 +131,6 @@ a[data-link-type="user-profile-card"] {
     text-decoration: none;
 }
 
-.user-profile-card {
-    .card-header,
-    .profile-header {
-        background-color: $gray-200 !important;
-        border-top: 2px solid $primary-color !important;
-        padding: 0.75rem 1.25rem !important;
-    }
-    dt {
-        /*font-weight: normal;*/
-        color: $gray-700;
-    }
-}
-
 // CI Calendar
 .ci-calendar {
     border: 2px solid $calendar-border;

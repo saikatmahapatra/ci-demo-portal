@@ -13,7 +13,7 @@ $row = $rows[0];
 		<div class="card ci-card">
 			<div class="card-header">
 				Data Table
-				<a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="float-right btn btn-sm btn-outline-secondary" title="Manage"> <i class="fa fa-list"></i> View All</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="float-right btn btn-sm btn-outline-secondary" title=""> <i class="fa fa-list"></i> View All</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
