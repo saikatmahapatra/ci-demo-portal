@@ -283,8 +283,8 @@ $row = $data_rows[0];
         
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times-circle"></i> Close</button>
-        <button type="button" id="btnManageLeave" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="btnManageLeave" class="btn btn-primary">Save changes</button>
         
       </div>
     </div>

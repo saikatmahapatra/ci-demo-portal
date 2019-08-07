@@ -57,7 +57,7 @@
 					</div>
 
 					<div class="col-md-2 mt-4">
-						<button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Submit</button>
+						<button type="submit" class="btn btn-primary">Submit</button>
 					</div>
 				</div>
 				<?php echo form_close(); ?>

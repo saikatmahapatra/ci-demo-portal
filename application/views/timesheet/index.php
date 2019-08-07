@@ -121,7 +121,7 @@
 					<!-- <div class="small text-right"><span class="" id="remaining_description_length"><?php echo isset($remaining_description_length) ? $remaining_description_length : '200'; ?></span> characters remaining.</div> -->
 					</div>
 					
-					<button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Submit</button>
+					<button type="submit" class="btn btn-primary">Submit</button>
 				</div><!--/.col-md-9-->	  
 			</div>
 

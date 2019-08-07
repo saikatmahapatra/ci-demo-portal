@@ -24,7 +24,7 @@
 			<label for="user_email">Registered Email ID</label>
 			<?php echo form_error('user_email'); ?>
 		</div>
-		<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-lg btn-primary btn-block'));?>
+		<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-lg btn-primary btn-block'));?>
 		
 	<?php form_close(); ?>
 	
