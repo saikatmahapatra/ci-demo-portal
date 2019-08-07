@@ -129,14 +129,14 @@
 								<dt class="col-md-2">Designation</dt>
 								<dd class="col-md-4"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
 							
-								<dt class="col-md-2">Email ID (Office)</dt>
+								<dt class="col-md-2">Email (Office)</dt>
 								<dd class="col-md-4"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?></a></dd>
-								<dt class="col-md-2">Mobile Number (Office)</dt>
+								<dt class="col-md-2">Mobile (Office)</dt>
 								<dd class="col-md-4"><?php echo isset($row['user_phone2']) ? $row['user_phone2'] : '-'; ?></dd>
 							
-								<dt class="col-md-2">Email ID (Personal)</dt>
+								<dt class="col-md-2">Email (Personal)</dt>
 								<dd class="col-md-4"><a href="mailto:<?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?>"><?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?></a></dd>			
-								<dt class="col-md-2">Mobile Number (Personal)</dt>
+								<dt class="col-md-2">Mobile (Personal)</dt>
 								<dd class="col-md-4"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : '-'; ?></dd>						
 							
 								<dt class="col-md-2">Date of Birth</dt>
