@@ -91,8 +91,8 @@
 							</div>
 				</div>
 			
-				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/my_profile');?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
+				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/my_profile');?>" class="ml-2 btn btn-secondary">Cancel</a>
         <?php echo form_close(); ?>
 			
 			</div><!--./card-body-->
@@ -117,8 +117,8 @@
         <input type="text" class="form-control" id="new_company_name" name="new_company_name" placeholder="Company Name">				
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times-circle"></i> Close</button>
-        <button type="button" id="btnaddCompany" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="btnaddCompany" class="btn btn-primary">Save changes</button>
         
       </div>
     </div>
@@ -141,8 +141,8 @@
         <input type="text" class="form-control" id="new_designation_name" name="new_designation_name" placeholder="Designation Name">				
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-fw fa-times-circle"></i> Close</button>
-        <button type="button" id="btnaddDesignation" class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="btnaddDesignation" class="btn btn-primary">Save changes</button>
         
       </div>
     </div>

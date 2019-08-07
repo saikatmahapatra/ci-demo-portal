@@ -23,7 +23,7 @@
 					}
 				?>
 				<div class="table-responsive">
-					<div class="grid-action-holder px-3 mb-3">
+					<div class="grid-action-holder mb-3">
 						<span class=""><i class="fa fa-check text-success" aria-hidden="true"></i> Approved</span>
 						<span class=""><i class="fa fa-close text-danger" aria-hidden="true"></i> Rejected</span>
 						<span class=""><i class="fa fa-close text-warning" aria-hidden="true"></i> Cancelled</span>	

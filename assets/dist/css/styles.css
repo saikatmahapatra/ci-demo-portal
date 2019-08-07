@@ -8533,18 +8533,6 @@ a[data-link-type="user-profile-card"] {
   text-decoration: none;
 }
 
-.user-profile-card .card-header,
-.user-profile-card .profile-header {
-  background-color: #e9ecef !important;
-  border-top: 2px solid #1e4bb2 !important;
-  padding: 0.75rem 1.25rem !important;
-}
-
-.user-profile-card dt {
-  /*font-weight: normal;*/
-  color: #495057;
-}
-
 .ci-calendar {
   border: 2px solid #1e4bb2;
 }
@@ -8952,7 +8940,6 @@ table.ci-table.dataTable {
 .notification-title {
   padding: 8px 20px;
   text-align: center;
-  background-color: rgba(30, 75, 178, 0.4);
   color: #333;
 }
 

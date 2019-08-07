@@ -28,12 +28,10 @@
 <body data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
 	
 	
-	<?php echo $el_navbar; ?>
-    <?php //echo $el_sidebar; ?>
-
+    <?php echo $el_navbar; ?>
+    
     <main role="main" class="container-fluid">
         <?php echo $maincontent; ?>
-        
         <footer class="footer">
             <?php echo $el_footer; ?>
         </footer>

@@ -27,7 +27,7 @@
 		<label for="user_password">Password</label>
 		<?php echo form_error('user_password'); ?>
 	</div>
-	<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-sign-in"></i> Sign In','class' => 'btn btn-lg btn-primary btn-block'));?>
+	<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Sign In','class' => 'btn btn-lg btn-primary btn-block'));?>
 	
 	<?php form_close(); ?>
 

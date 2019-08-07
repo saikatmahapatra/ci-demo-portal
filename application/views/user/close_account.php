@@ -19,7 +19,7 @@
 					echo isset($row['user_emp_id']) ? ' (Emp ID '.$row['user_emp_id'].') ': '';
 					echo isset($row['user_email']) ? '; '.$row['user_email']: '';
 				?>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Manage Employees"> <i class="fa fa-list"></i> Manage Employees</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title=""> <i class="fa fa-list"></i> Manage Employees</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -88,8 +88,8 @@
 					</div>
 				</div>
 
-				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_user_profile/'.$row['id']);?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
+				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_user_profile/'.$row['id']);?>" class="ml-2 btn btn-secondary">Cancel</a>
 				<?php echo form_close(); ?>
 				
 			</div><!--./card-body-->

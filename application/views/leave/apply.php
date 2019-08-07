@@ -95,7 +95,7 @@
 					</div>
 				</div>
 				
-				<button type="submit" <?php echo ($system_msg_error_counter >0 ) ? 'disabled="disabled"' : '';  ?> class="btn btn-primary"><i class="fa fa-fw fa-check-circle"></i> Submit</button>
+				<button type="submit" <?php echo ($system_msg_error_counter >0 ) ? 'disabled="disabled"' : '';  ?> class="btn btn-primary">Submit</button>
 				<?php echo form_close(); ?>
 			</div><!--./card-body-->
 			<!--<div class="card-footer"></div>--><!--/.card-footer-->

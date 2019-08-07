@@ -10,7 +10,7 @@
 		<div class="card ci-card">
 			<div class="card-header">
 				Data Table
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="float-right btn btn-sm btn-outline-success" data-toggle="tooltip" title="Create portal account of new employee"> <i class="fa fa-plus"></i> Add New Employee</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="float-right btn btn-sm btn-outline-success" data-toggle="tooltip" title="Create new user account"> <i class="fa fa-plus"></i> Add New</a>
 				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'float-right mx-2', 'name' => 'download_data')); ?>
 					<input type="hidden" name="form_action" value="download">
 					<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download data as excel"> <i class="fa fa-download" aria-hidden="true"></i> Download</button>
@@ -29,7 +29,7 @@
 				?>
 				
 				<div class="table-responsive">
-					<div class="grid-action-holder px-3 mb-3">
+					<div class="grid-action-holder mb-3">
 						<span class=""><i class="fa fa-circle-o text-success" aria-hidden="true"></i> Active</span>
 						<span class=""><i class="fa fa-circle-o text-warning" aria-hidden="true"></i> Inactive</span>
 						<span class=""><i class="fa fa-circle-o text-danger" aria-hidden="true"></i> Archived</span>

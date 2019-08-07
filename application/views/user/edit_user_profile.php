@@ -15,7 +15,7 @@
 		<div class="card ci-card">
 			<div class="card-header">
 				Form
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Manage Employees"> <i class="fa fa-list"></i> Manage Employees</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title=""> <i class="fa fa-list"></i> Manage Employees</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -64,11 +64,9 @@
 			<div class="">Emp ID : <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
 			<div class="">Designation : <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
 			<div class="">
-				<i class="fa fa-envelope-o" aria-hidden="true"></i> 
 				<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
 			</div>
 			<div class="">
-				<i class="fa fa-phone" aria-hidden="true"></i>
 				<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
 				<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' , '.$row['user_phone2'] : ''; ?></a>        
 			</div>
@@ -296,10 +294,10 @@
                 </div>
 			</div>
 
-        <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-fw fa-check-circle"></i> Submit','class' => 'btn btn-primary'));?>
-		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="ml-2 btn btn-secondary"><i class="fa fa-fw fa-times-circle"></i> Cancel</a>
+        <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
+		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="ml-2 btn btn-secondary">Cancel</a>
 
-		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn btn-outline-danger mx-2"><i class="fa fa-fw fa-close"></i> Close Account</a>
+		<a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn btn-outline-danger mx-2">Close Account</a>
         <?php echo form_close(); ?>
 			
 			</div><!--./card-body-->

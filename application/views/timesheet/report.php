@@ -65,7 +65,7 @@
 
 
 					</div>					
-					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => '<i class="fa fa-search"></i> Search','class' => 'btn btn-primary'));?>
+					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Search','class' => 'btn btn-primary'));?>
 					<?php echo form_button(array('name' => 'reset_btn','type' => 'reset','content' => 'Reset','class' => 'btn btn-secondary','id'=>'reset_timesheet_form'));?>
 				<?php echo form_close(); ?>
 				
