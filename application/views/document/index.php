@@ -6,7 +6,7 @@
 </div><!--/.page-title-container-->
 
 <div class="row">
-	<div class="col-md-5">
+	<div class="col-md-5 mb-3">
 		<div class="card ci-card">
 			<div class="card-header">
 				Form
@@ -54,7 +54,7 @@
 
 		</div><!--/.col-->
 
-		<div class="col-md-7">
+		<div class="col-md-7 mb-3">
 			<div class="card ci-card">
 				<div class="card-header">Data Table</div><!--/.card-header-->
 

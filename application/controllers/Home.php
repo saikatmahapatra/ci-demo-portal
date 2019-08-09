@@ -98,6 +98,8 @@ class Home extends CI_Controller {
         $this->data['user_count'] = $this->home_model->get_user_count();
         $this->data['projects_count'] = $this->home_model->get_user_projects();
         $this->data['timesheet_user'] = $this->home_model->get_user_of_timesheet();
+        $this->data['user_applied_leave'] = $this->home_model->get_user_applied_leave_count();
+        $this->data['user_approved_leave'] = $this->home_model->get_user_approved_leave_count();
         // Dashboard Stats
         
         //User Profile Completion Status Check
