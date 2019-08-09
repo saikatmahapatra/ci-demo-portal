@@ -318,6 +318,21 @@ table.ci-table.dataTable {
     }
 }
 
+.accordion {
+    .card-header {
+        cursor: pointer;
+    }
+    .card-header:before {
+        font-family: 'FontAwesome';
+        content: "\f068";
+        margin-right: 15px;
+    }
+    .card-header.collapsed:before {
+        /* symbol for "collapsed" panels */
+        content: "\f067";
+    }
+}
+
 // CI Wizard - Step wise progress indicator
 .ci-wizard {
     padding: 0 0 10px 0;
