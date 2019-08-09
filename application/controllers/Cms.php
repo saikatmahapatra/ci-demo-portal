@@ -73,7 +73,7 @@ class Cms extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		
-		$this->data['page_title'] = 'Manage Contents - Recent Updates';
+		$this->data['page_title'] = 'Content Management System (CMS)';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -211,7 +211,7 @@ class Cms extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = 'Add New Content - Recent Updates';
+		$this->data['page_title'] = 'Add New Content';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/add', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -255,7 +255,7 @@ class Cms extends CI_Controller {
         }
         $result_array = $this->cms_model->get_rows($this->id);
         $this->data['rows'] = $result_array['data_rows'];
-		$this->data['page_title'] = 'Edit Content - Recent Updates';
+		$this->data['page_title'] = 'Edit Content';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

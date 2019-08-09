@@ -22,7 +22,7 @@
 
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 mb-3">
         <div class="card news-card">
             <div class="card-header h6">
             <i class="fa fa-newspaper-o fa-lg" aria-hidden="true"></i> Notice Board
@@ -53,69 +53,40 @@
         </div><!--/.card-->
     </div>
     
-    <div class="col-md-4">
-        <div class="card card-recent-updates">
+    <div class="col-md-4 mb-3">
+        <div class="card">
             <div class="card-header h6">
             <i class="fa fa-line-chart fa-lg" aria-hidden="true"></i> At a Glance
             </div>
             <div class="card-body">
                 <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
-                    <div class="text-center home-card">
-                        <div class="col-sm-12">
-                            <div class="card my-1 border border-danger">
-                                <div class="card-header text-danger">
-                                    <i class="icon fa fa-lg fa-3x fa-calendar-check-o"></i>
-                                </div>
-                                <div class="card-body p-0 pt-2">
-                                    <h6 class="card-title mb-0">Today</h6>
-                                    <p class="card-text"><?php echo date('d-M'); ?></p>
-                                </div>
-                            </div>
+                    <div class="d-flex flex-column">
+                        <div class="py-3 border-bottom">
+                            <i class="fa fa-fw fa-id-badge fa-2x align-middle" aria-hidden="true" style="color: #a9289a;"></i>
+                                <span class="font-weight-bold"><?php echo isset($user_count) ? $user_count['data_rows'][0]['total'] : '0'; ?></span> employees
                         </div>
-
-                        <div class="col-sm-12">
-                            <div class="card my-1 border border-info">
-                                <div class="card-header text-info">
-                                    <i class="icon fa fa-lg fa-3x fa-user-o"></i>
-                                </div>
-                                <div class="card-body p-0 pt-2">
-                                    <h6 class="card-title mb-0">Employee Strength</h6>
-                                    <p class="card-text"><?php echo $user_count['data_rows'][0]['total']; ?></p>
-                                </div>
-                            </div>
+                        <div class="py-3 border-bottom">
+                            <i class="fa fa-fw fa-puzzle-piece fa-2x align-middle" aria-hidden="true" style="color: #007bff;"></i>
+                                <span class="font-weight-bold"><?php echo isset($projects_count) ? $projects_count['data_rows'][0]['total'] : '0'; ?></span> projects
                         </div>
-
-                        <div class="col-sm-12">
-                            <div class="card my-1 border border-warning">
-                                <div class="card-header text-warning">
-                                    <i class="icon fa fa-lg fa-3x fa-cubes"></i>
-                                </div>
-                                <div class="card-body p-0 pt-2">
-                                    <h6 class="card-title mb-0">Projects</h6>
-                                    <p class="card-text"><?php echo $projects_count['data_rows'][0]['total']; ?></p>
-                                </div>
-                            </div>
+                        <div class="py-3 border-bottom">
+                            <i class="fa fa-fw fa-clock-o fa-2x align-middle" aria-hidden="true" style="color: #495057;"></i>
+                                <span class="font-weight-bold"><?php echo isset($timesheet_user) ? $timesheet_user['data_rows'][0]['total'] : '0'; ?></span> users logged task today
                         </div>
-
-                        <div class="col-sm-12">
-                            <div class="card my-1 border border-success">
-                                <div class="card-header text-success">
-                                    <i class="icon fa fa-lg fa-3x fa-clock-o"></i>
-                                </div>
-                                <div class="card-body p-0 pt-2">
-                                    <h6 class="card-title mb-0">Timesheet Logged By</h6>
-                                    <p class="card-text"><?php echo $timesheet_user['data_rows'][0]['total']; ?></p>
-                                </div>
-                            </div>
+                        <div class="py-3">
+                            <i class="fa fa-fw fa-send-o fa-2x align-middle" aria-hidden="true" style="color: #fd7e14;"></i>
+                                <span class="font-weight-bold"><?php echo isset($user_applied_leave) ? $user_applied_leave['data_rows'][0]['total'] : '0'; ?></span> leaves applied, <span class="font-weight-bold"><?php echo isset($user_approved_leave) ? $user_approved_leave['data_rows'][0]['total'] : '0'; ?></span> approved in <?php echo date('M');?>
                         </div>
-                    </div>
+                    </div><!--/.flex-column-->
                 <?php } else { ?>
-                    <p>Oops! There are nothing to display here.</p>
+                    <div class="d-flex flex-column">
+                        <p>Oops! There are nothing to display here for you.</p>
+                    </div><!--/.flex-column-->
                 <?php } ?>
             </div><!--/.card-body-->
-            <!-- <div class="card-footer">
-                As on today
-            </div> -->
+            <div class="card-footer text-center text-muted small">
+            <i class="fa fa-clock-o" aria-hidden="true"></i> updated today
+            </div>
         </div><!--/.card-->
     </div>
 </div>
