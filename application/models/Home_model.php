@@ -32,6 +32,38 @@ class Home_model extends CI_Model {
         return array('num_rows' => $num_rows, 'data_rows' => $result);
     }
 
+    function get_user_applied_leave_count() {
+        $result = array();
+        $this->db->select('count(*) as total');
+        $this->db->where('t1.leave_status', 'B');
+        $this->db->where(
+			array(
+            'MONTH(`leave_created_on`)' => date('m')
+			)
+		);
+        $query = $this->db->get('user_leaves t1');
+        //print_r($this->db->last_query());
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return array('num_rows' => $num_rows, 'data_rows' => $result);
+    }
+
+    function get_user_approved_leave_count() {
+        $result = array();
+        $this->db->select('count(*) as total');
+        $this->db->where('t1.leave_status', 'A');
+        $this->db->where(
+			array(
+            'MONTH(`leave_created_on`)' => date('m')
+			)
+		);
+        $query = $this->db->get('user_leaves t1');
+        //print_r($this->db->last_query());
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return array('num_rows' => $num_rows, 'data_rows' => $result);
+    }
+
     function get_user_of_timesheet() {
         $result = array();
         $this->db->select('count(distinct(t1.timesheet_created_by)) as total');        

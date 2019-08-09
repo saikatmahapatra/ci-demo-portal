@@ -98,6 +98,8 @@ class Home extends CI_Controller {
         $this->data['user_count'] = $this->home_model->get_user_count();
         $this->data['projects_count'] = $this->home_model->get_user_projects();
         $this->data['timesheet_user'] = $this->home_model->get_user_of_timesheet();
+        $this->data['user_applied_leave'] = $this->home_model->get_user_applied_leave_count();
+        $this->data['user_approved_leave'] = $this->home_model->get_user_approved_leave_count();
         // Dashboard Stats
         
         //User Profile Completion Status Check
@@ -132,7 +134,7 @@ class Home extends CI_Controller {
         if($this->uri->segment(4) == 'redirect' && $this->uri->segment(5) != ''){
             $this->data['redirect_back_url'] = site_url('home/'.$this->uri->segment(5));
         }
-		$this->data['page_title'] = 'Notice Board';
+        $this->data['page_title'] = 'Notice Board';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/details', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -169,7 +171,7 @@ class Home extends CI_Controller {
 		
 		//pagination config
 		$additional_segment = $this->router->directory.$this->router->class.'/policy';
-		$per_page = 4;
+		$per_page = 30;
 		$config['uri_segment'] = 4;
 		$config['num_links'] = 1;
 		$config['use_page_numbers'] = TRUE;
@@ -185,7 +187,7 @@ class Home extends CI_Controller {
         $result_array = $this->cms_model->get_contents(NULL, $per_page, $offset, FALSE, TRUE, $filter);
         $this->data['data_rows'] = $result_array['data_rows'];
 
-		$this->data['page_title'] = 'HR & Organization Policy';
+		$this->data['page_title'] = 'HR Policy';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/policy', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
