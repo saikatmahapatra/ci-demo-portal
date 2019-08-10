@@ -38,18 +38,18 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdown_2">
                         <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
-                            <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'home/policy'); ?>">HR Policy</a>
-                            <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Manage Employees</a>
+                            <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'home/policy'); ?>">HR Policies</a>
+                            <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Employee Management</a>
                             <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account'); ?>">Add New Employee</a>
-                            <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/leave_balance'); ?>">Add / Manage Leave Balance</a>
-                            <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/manage/all'); ?>">View Leave Requests</a>
-                            <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'project'); ?>">Add / Manage Projects</a>
-                            <a class="dropdown-item" href="<?php echo base_url('project/activity'); ?>">Add / Manage Timesheet Activity</a>
+                            <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/leave_balance'); ?>">Leave Balance Sheet</a>
+                            <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/manage/all'); ?>">Track Leave Requests</a>
+                            <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'project'); ?>">Projects</a>
+                            <a class="dropdown-item" href="<?php echo base_url('project/activity'); ?>">Timesheet Task Activities</a>
                             <a class="dropdown-item" href="<?php echo base_url('holiday/view');?>">Holiday Calendar</a>
                             <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet - Log Tasks</a>
                             <a class="dropdown-item" href="<?php echo base_url('timesheet/report'); ?>">Timesheet Report</a>
                     <?php } else{?>
-                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'home/policy'); ?>">HR Policy</a>
+                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'home/policy'); ?>">HR Policies</a>
                         <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Timesheet - Log Tasks</a>
                         <a class="dropdown-item" href="<?php echo base_url('user/people');?>">Employee Directory</a>
                         <a class="dropdown-item" href="<?php echo base_url('holiday/view');?>">Holiday Calendar</a>

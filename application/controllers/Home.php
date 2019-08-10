@@ -187,7 +187,7 @@ class Home extends CI_Controller {
         $result_array = $this->cms_model->get_contents(NULL, $per_page, $offset, FALSE, TRUE, $filter);
         $this->data['data_rows'] = $result_array['data_rows'];
 
-		$this->data['page_title'] = 'HR Policy';
+		$this->data['page_title'] = 'HR Policies';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/policy', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

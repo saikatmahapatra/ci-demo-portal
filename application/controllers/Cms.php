@@ -73,7 +73,7 @@ class Cms extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		
-		$this->data['page_title'] = 'Content Management System (CMS)';
+		$this->data['page_title'] = 'Manage Contents';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
