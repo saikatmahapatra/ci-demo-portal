@@ -285,23 +285,28 @@ class Leave extends CI_Controller {
         // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition
         $cond = array();
         $cond['assigned_to_user_id'] = $this->sess_user_id;
+        
         if($this->uri->segment(3) == 'pending'){
             $this->data['page_title'] = 'Leave Requests Management - Pending Leave';
             $cond['leave_status'] = array('B');
             $cond['assigned_to_user_id'] = $this->sess_user_id;
         }
+
         if($this->uri->segment(3) == 'approved'){
             $cond['leave_status'] = array('A');
             $cond['assigned_to_user_id'] = $this->sess_user_id;
         }
+
         if($this->uri->segment(3) == 'cancelled'){
             $cond['leave_status'] = array('C');
             $cond['assigned_to_user_id'] = $this->sess_user_id;
         }
+
         if($this->uri->segment(3) == 'rejected'){
             $cond['leave_status'] = array('R');
             $cond['assigned_to_user_id'] = $this->sess_user_id;
         }
+
         if($this->uri->segment(3) == 'all'){
             $is_authorized = $this->common_lib->is_auth(array(
                 'crud-leave-balance'
@@ -309,9 +314,19 @@ class Leave extends CI_Controller {
             $cond['leave_status'] = NULL;
             $cond['assigned_to_user_id'] = NULL;
         }
+
         if($this->uri->segment(3)== ''){
             redirect($this->router->directory.$this->router->class.'/'.$this->router->method.'/assigned_to_me');
         }
+        
+        if($this->input->get_post('form_action') == 'search'){
+            $cond['leave_status'] = $this->input->get_post('leave_status');
+            $cond['leave_from_date'] = $this->input->get_post('leave_from_date');
+            $cond['leave_to_date'] = $this->input->get_post('leave_to_date');
+        }
+
+        
+
 		$result_array = $this->leave_model->get_rows(NULL, NULL, NULL, FALSE, FALSE, $cond);
 		$total_num_rows = $result_array['num_rows'];
 		

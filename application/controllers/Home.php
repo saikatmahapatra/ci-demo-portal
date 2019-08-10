@@ -100,6 +100,7 @@ class Home extends CI_Controller {
         $this->data['timesheet_user'] = $this->home_model->get_user_of_timesheet();
         $this->data['user_applied_leave'] = $this->home_model->get_user_applied_leave_count();
         $this->data['user_approved_leave'] = $this->home_model->get_user_approved_leave_count();
+        $this->data['pending_leave_action'] = $this->home_model->get_pending_leave_action_count($this->sess_user_id);
         // Dashboard Stats
         
         //User Profile Completion Status Check

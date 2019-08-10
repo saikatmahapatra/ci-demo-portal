@@ -62,11 +62,11 @@
 								<div class="">Employee ID : <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
 								<div class="">Designation : <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
 								<div class="">
-									<i class="fa fa-envelope-o" aria-hidden="true"></i> 
+									<i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i> 
 									<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
 								</div>
 								<div class="">
-									<i class="fa fa-phone" aria-hidden="true"></i>
+									<i class="fa fa-fw fa-phone" aria-hidden="true"></i>
 									<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
 									<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>        
 								</div>
