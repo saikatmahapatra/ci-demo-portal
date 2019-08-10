@@ -62,22 +62,22 @@
                 <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
                     <div class="d-flex flex-column">
                         <div class="py-3 border-bottom">
-                            <a href="<?php echo base_url('user/manage'); ?>">
+                            <a title="View Details" href="<?php echo base_url('user/manage'); ?>">
                             <i class="fa fa-fw fa-id-badge fa-2x align-middle" aria-hidden="true" style="color: #a9289a;"></i> <span class="font-weight-bold"><?php echo isset($user_count) ? $user_count['data_rows'][0]['total'] : '0'; ?></span> employees
                             </a>
                         </div>
                         <div class="py-3 border-bottom">
-                            <a href="<?php echo base_url('project'); ?>">
+                            <a title="View Details" href="<?php echo base_url('project'); ?>">
                                 <i class="fa fa-fw fa-puzzle-piece fa-2x align-middle" aria-hidden="true" style="color: #007bff;"></i> <span class="font-weight-bold"><?php echo isset($projects_count) ? $projects_count['data_rows'][0]['total'] : '0'; ?></span> projects
                             </a>
                         </div>
                         <div class="py-3 border-bottom">
-                            <a href="<?php echo base_url('timesheet/report'); ?>">
+                            <a title="View Details" href="<?php echo base_url('timesheet/report'); ?>">
                                 <i class="fa fa-fw fa-clock-o fa-2x align-middle" aria-hidden="true" style="color: #495057;"></i> <span class="font-weight-bold"><?php echo isset($timesheet_user) ? $timesheet_user['data_rows'][0]['total'] : '0'; ?></span> users logged task today
                             </a>
                         </div>
                         <div class="py-3">
-                            <a href="<?php echo base_url('leave/manage/all'); ?>">
+                            <a title="View Details" href="<?php echo base_url('leave/manage/all'); ?>">
                                 <i class="fa fa-fw fa-send-o fa-2x align-middle" aria-hidden="true" style="color: #fd7e14;"></i> <span class="font-weight-bold"><?php echo isset($user_approved_leave) ? $user_approved_leave['data_rows'][0]['total'] : '0'; ?></span> of <span class="font-weight-bold"><?php echo isset($user_applied_leave) ? $user_applied_leave['data_rows'][0]['total'] : '0'; ?></span> leave req. approved for <?php echo date('M');?>
                             </a>
                         </div>
@@ -89,7 +89,7 @@
                 <?php } ?>
             </div><!--/.card-body-->
             <div class="card-footer text-center text-muted small">
-            <i class="fa fa-clock-o" aria-hidden="true"></i> updated today
+            <i class="fa fa-clock-o" aria-hidden="true"></i> Updated on <?php echo date('d-M-Y h:i:s a');?>
             </div>
         </div><!--/.card-->
     </div>
