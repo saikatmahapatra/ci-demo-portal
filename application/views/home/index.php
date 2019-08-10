@@ -54,7 +54,7 @@
     </div>
     
     <div class="col-md-4 mb-3">
-        <div class="card">
+        <div class="card card-stat">
             <div class="card-header h6">
             <i class="fa fa-line-chart fa-lg" aria-hidden="true"></i> At a Glance
             </div>
@@ -62,20 +62,24 @@
                 <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
                     <div class="d-flex flex-column">
                         <div class="py-3 border-bottom">
-                            <i class="fa fa-fw fa-id-badge fa-2x align-middle" aria-hidden="true" style="color: #a9289a;"></i>
-                                <span class="font-weight-bold"><?php echo isset($user_count) ? $user_count['data_rows'][0]['total'] : '0'; ?></span> employees
+                            <a href="<?php echo base_url('user/manage'); ?>">
+                            <i class="fa fa-fw fa-id-badge fa-2x align-middle" aria-hidden="true" style="color: #a9289a;"></i> <span class="font-weight-bold"><?php echo isset($user_count) ? $user_count['data_rows'][0]['total'] : '0'; ?></span> employees
+                            </a>
                         </div>
                         <div class="py-3 border-bottom">
-                            <i class="fa fa-fw fa-puzzle-piece fa-2x align-middle" aria-hidden="true" style="color: #007bff;"></i>
-                                <span class="font-weight-bold"><?php echo isset($projects_count) ? $projects_count['data_rows'][0]['total'] : '0'; ?></span> projects
+                            <a href="<?php echo base_url('project'); ?>">
+                                <i class="fa fa-fw fa-puzzle-piece fa-2x align-middle" aria-hidden="true" style="color: #007bff;"></i> <span class="font-weight-bold"><?php echo isset($projects_count) ? $projects_count['data_rows'][0]['total'] : '0'; ?></span> projects
+                            </a>
                         </div>
                         <div class="py-3 border-bottom">
-                            <i class="fa fa-fw fa-clock-o fa-2x align-middle" aria-hidden="true" style="color: #495057;"></i>
-                                <span class="font-weight-bold"><?php echo isset($timesheet_user) ? $timesheet_user['data_rows'][0]['total'] : '0'; ?></span> users logged task today
+                            <a href="<?php echo base_url('timesheet/report'); ?>">
+                                <i class="fa fa-fw fa-clock-o fa-2x align-middle" aria-hidden="true" style="color: #495057;"></i> <span class="font-weight-bold"><?php echo isset($timesheet_user) ? $timesheet_user['data_rows'][0]['total'] : '0'; ?></span> users logged task today
+                            </a>
                         </div>
                         <div class="py-3">
-                            <i class="fa fa-fw fa-send-o fa-2x align-middle" aria-hidden="true" style="color: #fd7e14;"></i>
-                                <span class="font-weight-bold"><?php echo isset($user_applied_leave) ? $user_applied_leave['data_rows'][0]['total'] : '0'; ?></span> leaves applied, <span class="font-weight-bold"><?php echo isset($user_approved_leave) ? $user_approved_leave['data_rows'][0]['total'] : '0'; ?></span> approved in <?php echo date('M');?>
+                            <a href="<?php echo base_url('leave/manage/all'); ?>">
+                                <i class="fa fa-fw fa-send-o fa-2x align-middle" aria-hidden="true" style="color: #fd7e14;"></i> <span class="font-weight-bold"><?php echo isset($user_approved_leave) ? $user_approved_leave['data_rows'][0]['total'] : '0'; ?></span> of <span class="font-weight-bold"><?php echo isset($user_applied_leave) ? $user_applied_leave['data_rows'][0]['total'] : '0'; ?></span> leave req. approved for <?php echo date('M');?>
+                            </a>
                         </div>
                     </div><!--/.flex-column-->
                 <?php } else { ?>

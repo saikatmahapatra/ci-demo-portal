@@ -8917,6 +8917,11 @@ table.ci-table.dataTable {
   padding: 15px;
 }
 
+.card-stat .card-body a {
+  color: inherit !important;
+  text-decoration: none;
+}
+
 @media (max-width: 576px) {
   .navbar-collapse {
     max-height: 340px;

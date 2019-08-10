@@ -479,6 +479,13 @@ table.ci-table.dataTable {
     }
 }
 
+.card-stat {
+    .card-body a {
+        color: inherit !important;
+        text-decoration: none;
+    }
+}
+
 // Generate Lighter Background
 // @each $color,
 // $value in $theme-colors {
