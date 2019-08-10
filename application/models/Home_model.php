@@ -35,10 +35,13 @@ class Home_model extends CI_Model {
     function get_user_applied_leave_count() {
         $result = array();
         $this->db->select('count(*) as total');
-        $this->db->where('t1.leave_status', 'B');
+        //$this->db->where('t1.leave_status', 'B');
         $this->db->where(
 			array(
-            'MONTH(`leave_created_on`)' => date('m')
+                'YEAR(`leave_from_date`) >=' => date('Y'),
+                'MONTH(`leave_from_date`) >=' => date('m'),
+                'YEAR(`leave_to_date`) <=' => date('Y'),
+                'MONTH(`leave_to_date`) <=' => date('m')
 			)
 		);
         $query = $this->db->get('user_leaves t1');
@@ -54,9 +57,12 @@ class Home_model extends CI_Model {
         $this->db->where('t1.leave_status', 'A');
         $this->db->where(
 			array(
-            'MONTH(`leave_created_on`)' => date('m')
+                'YEAR(`leave_from_date`) >=' => date('Y'),
+                'MONTH(`leave_from_date`) >=' => date('m'),
+                'YEAR(`leave_to_date`) <=' => date('Y'),
+                'MONTH(`leave_to_date`) <=' => date('m')
 			)
-		);
+        );
         $query = $this->db->get('user_leaves t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();
