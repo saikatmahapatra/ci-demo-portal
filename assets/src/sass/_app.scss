@@ -232,11 +232,10 @@ a[data-link-type="user-profile-card"] {
 }
 
 // Nav Tabs
-.nav-link.active {
-    border: 0;
-    border-bottom: 1px solid $nav-tabs-border-color;
-}
-
+// .nav-link.active {
+//     border: 0;
+//     border-bottom: 1px solid $nav-tabs-border-color;
+// }
 // PACE JS
 .pace {
     pointer-events: none;
