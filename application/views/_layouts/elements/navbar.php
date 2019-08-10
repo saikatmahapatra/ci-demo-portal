@@ -42,7 +42,7 @@
                             <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Employee Management</a>
                             <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/create_account'); ?>">Add New Employee</a>
                             <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/leave_balance'); ?>">Leave Balance Sheet</a>
-                            <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/manage/all'); ?>">Track Leave Requests</a>
+                            <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/manage/all'); ?>">View Leave Requests</a>
                             <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'project'); ?>">Projects</a>
                             <a class="dropdown-item" href="<?php echo base_url('project/activity'); ?>">Timesheet Task Activities</a>
                             <a class="dropdown-item" href="<?php echo base_url('holiday/view');?>">Holiday Calendar</a>
