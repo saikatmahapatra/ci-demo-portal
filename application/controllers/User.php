@@ -788,14 +788,19 @@ class User extends CI_Controller {
         ));*/
         ########### Validate User Auth End #############
 		
-		//View Page Config
+        //View Page Config
+        $is_self_account = true;
+        if(!empty($this->uri->segment(3)) && ($this->uri->segment(3) != $this->sess_user_id)){
+            $is_self_account = false;
+        }
+        $this->data['is_self_account'] = $is_self_account;
         $this->data['page_title'] = "My Profile";
-        $this->breadcrumbs->push('Profile','/');				
+        $this->breadcrumbs->push('Profile','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-		$user_id =  $this->sess_user_id;		
+		$user_id = $this->uri->segment(3) ? $this->uri->segment(3) : $this->sess_user_id;
         $rows = $this->user_model->get_rows($user_id);		
 		$res_pic = $this->user_model->get_user_profile_pic($user_id);
 		$this->data['profile_pic'] = $res_pic[0]['user_profile_pic'];
@@ -809,54 +814,8 @@ class User extends CI_Controller {
         
         $this->data['approvers'] = $this->user_model->get_user_approvers($this->sess_user_id);
         //print_r($this->data['approvers']); 
-		$this->data['page_title'] = 'My Profile';
+		$this->data['page_title'] = ($is_self_account == true) ? "My Profile" : "Employee Profile";
         $this->data['maincontent'] = $this->load->view($this->router->class.'/my_profile', $this->data, true);
-        $this->load->view('_layouts/layout_default', $this->data);
-    }
-	
-	
-	function profile() {
-        ########### Validate User Auth #############
-        $is_logged_in = $this->common_lib->is_logged_in();
-        if ($is_logged_in == FALSE) {
-            redirect($this->router->directory.$this->router->class.'/login');
-        }
-        //Has logged in user permission to access this page or method?        
-        /*$this->common_lib->is_auth(array(
-            'default-super-admin-access',
-            'default-admin-access',
-        ));*/
-        ########### Validate User Auth End #############
-		
-		//View Page Config
-        $this->breadcrumbs->push('Profile','/');				
-		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-		$user_id = $this->uri->segment(3)? $this->uri->segment(3): $this->sess_user_id;	
-        $rows = $this->user_model->get_rows($user_id);		
-		$res_pic = $this->user_model->get_user_profile_pic($user_id);
-		$this->data['profile_pic'] = $res_pic[0]['user_profile_pic'];
-        $this->data['row'] = $rows['data_rows'];
-        $this->data['address'] = $this->user_model->get_user_address(NULL,$user_id,NULL);
-        $this->data['econtact'] = $this->user_model->get_user_emergency_contacts(NULL,$user_id);
-        $this->data['education'] = $this->user_model->get_user_education(NULL, $user_id);
-        $this->data['job_exp'] = $this->user_model->get_user_work_experience(NULL, $user_id);
-        $this->data['user_national_identifiers'] = $this->user_model->get_user_national_identifiers($user_id);        
-        $this->data['bank_details'] = $this->user_model->get_user_bank_account_details(NULL, $user_id);
-        
-        if($this->common_lib->is_auth(array('view-user-uploads'),false) == true){
-            $this->load->model('upload_model');
-            $upload_related_to = 'user';
-            $this->data['upload_related_to'] = $upload_related_to;
-            $this->data['upload_object_user_id'] = $user_id;
-            $this->data['all_uploads'] = $this->upload_model->get_uploads($upload_related_to, $user_id, NULL, NULL);
-        }
-        
-
-		$this->data['page_title'] = 'Employee Profile';
-        $this->data['maincontent'] = $this->load->view($this->router->class.'/profile', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
 	

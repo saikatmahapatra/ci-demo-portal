@@ -3,6 +3,85 @@
    $user_row = $row;
    //print_r($address);
 ?>
+<?php 
+	// Display profile tab
+	$display_address = false;
+	$display_education = false;
+	$display_experience = false;
+	$display_salary_ac = false;
+	$display_uploaded_files = false;
+	$display_emergency_contact = false;
+	$display_others = false;
+	if($is_self_account !== true){
+		if($this->common_lib->is_auth(array('view-user-address'),false) == true){
+			$display_address = true;
+		}else{
+			$display_address = false;
+		}
+	}else{
+		$display_address = true;
+	}
+
+	if($is_self_account !== true){
+		if($this->common_lib->is_auth(array('view-user-education'),false) == true){
+			$display_education = true;
+		}else{
+			$display_education = false;
+		}
+	}else{
+		$display_education = true;
+	}
+	
+	if($is_self_account !== true){
+		if($this->common_lib->is_auth(array('view-user-exp'),false) == true){
+			$display_experience = true;
+		}else{
+			$display_experience = false;
+		}
+	}else{
+		$display_experience = true;
+	}
+
+	if($is_self_account !== true){
+		if($this->common_lib->is_auth(array('view-user-bank'),false) == true){
+			$display_salary_ac = true;
+		}else{
+			$display_salary_ac = false;
+		}
+	}else{
+		$display_salary_ac = true;
+	}
+
+	if($is_self_account !== true){
+		if($this->common_lib->is_auth(array('view-user-uploads'),false) == true){
+			$display_uploaded_files = true;
+		}else{
+			$display_uploaded_files = false;
+		}
+	}else{
+		$display_uploaded_files = false;
+	}
+
+	if($is_self_account !== true){
+		if($this->common_lib->is_auth(array('view-emergency-contacts'),false) == true){
+			$display_emergency_contact = true;
+		}else{
+			$display_emergency_contact = false;
+		}
+	}else{
+		$display_emergency_contact = true;
+	}
+
+	if($is_self_account !== true){
+		if($this->common_lib->is_auth(array('view-user-account-stat'),false) == true){
+			$display_others = true;
+		}else{
+			$display_others = false;
+		}
+	}else{
+		$display_others = true;
+	}
+?>
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <div class="row page-title-container">
     <div class="col-sm-12">
@@ -15,7 +94,8 @@
 	<div class="col-lg-12">
 		<div class="card">
 			<div class="card-header h6">
-			<?php echo isset($row['user_emp_id']) ? 'Employee Code - UEIPL/'.$row['user_emp_id'] : ''; ?>
+				<i class="fa fa-user-circle " aria-hidden="true"></i>
+				<?php echo isset($row['user_emp_id']) ? 'Employee Code - UEIPL/'.$row['user_emp_id'] : ''; ?>
 			</div><!--/.card-header-->
 			<div class="card-body">
 				<?php
@@ -43,7 +123,7 @@
 							}
 						?>
 						<img class="dp rounded mx-auto d-block img-thumbnail" src="<?php echo base_url($img_src);?>">
-						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>" data-toggle="tooltip" title="Change or remove this profile image"><i class="fa fa-camera"></i> Change</a>
+						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>" data-toggle="tooltip" title="Change or remove this photo"><i class="fa fa-camera"></i> Change</a>
 						<div class="h5 my-2">
 							<?php
 								//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
@@ -52,29 +132,47 @@
 								echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
 							?>
 						</div>
-						<div class="">Employee ID - <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
-						<div class="">Designation - <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
-						<div class="">Department - <?php echo isset($row['department_name']) ? $row['department_name'] : ''; ?></div>
 						<div class="">
-							<i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i> 
 							<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
 						</div>
 						<div class="">
-							<i class="fa fa-fw fa-phone" aria-hidden="true"></i>
 							<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
 							<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>        
 						</div>
+						<div class="">Employee ID - <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
+						<div class="">Designation - <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
+						<div class="">Department - <?php echo isset($row['department_name']) ? $row['department_name'] : ''; ?></div>
 					</div><!--/.col-md-3-->
 					<div class="col-lg-9">
 						<nav>
-							<div class="nav nav-tabs ci-nav-tab" id="nav-tab" role="tablist">
-								<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><i class="fa fa-info-circle" aria-hidden="true"></i> Basic Info</a>			
-								<a class="nav-item nav-link" id="nav-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><i class="fa fa-map-marker" aria-hidden="true"></i> Address</a>									
-								<a class="nav-item nav-link" id="nav-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><i class="fa fa-certificate" aria-hidden="true"></i> Education</a>			
+							<div class="nav nav-tabs ci-nav-tab small" id="nav-tab" role="tablist">
+								<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><i class="fa fa-info-circle" aria-hidden="true"></i> Basic Info</a>
+
+								<?php if($display_address == true){  ?>
+								<a class="nav-item nav-link" id="nav-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><i class="fa fa-map-marker" aria-hidden="true"></i> Address</a>
+								<?php } ?>
+
+								<?php if($display_education == true){  ?>
+								<a class="nav-item nav-link" id="nav-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><i class="fa fa-certificate" aria-hidden="true"></i> Education</a>
+								<?php } ?>
+
+								<?php if($display_experience == true){  ?>
 								<a class="nav-item nav-link" id="nav-4" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false"><i class="fa fa-briefcase" aria-hidden="true"></i> Experiences</a>
+								<?php } ?>
+								
+								<?php if($display_salary_ac == true){  ?>
 								<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="false"><i class="fa fa-credit-card" aria-hidden="true"></i> Salary A/C</a>
+								<?php } ?>
+
+								<?php if($display_emergency_contact == true){  ?>
 								<a class="nav-item nav-link" id="nav-7" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fa fa-medkit" aria-hidden="true"></i> Emergency Contacts</a>
-								<?php if($this->common_lib->is_auth(array('view-user-account-stat'),false) == true){ ?>		
+								<?php } ?>
+
+								<?php if($display_uploaded_files == true){  ?>
+								<a class="nav-item nav-link" id="nav-8" data-toggle="tab" href="#tab-8" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fa fa-cloud-download" aria-hidden="true"></i> Docs</a>
+								<?php } ?>
+
+								<?php if($display_others == true){  ?>
 								<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false"><i class="fa fa-pie-chart" aria-hidden="true"></i> Others</a>
 								<?php } ?>
 							</div>
@@ -128,6 +226,7 @@
 								</div>
 							</div> <!--/#tab-1-->
 							
+							<?php if($display_address == true){  ?>
 							<div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="nav-2">
 								<div class="row mt-3">
 									<div class="col-md-12">
@@ -174,8 +273,9 @@
 									</div>
 								</div>
 							</div> <!--/#tab-2-->
+							<?php } ?>
 							
-							
+							<?php if($display_education == true){  ?>
 							<div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="nav-3">
 								<div class="row mt-3">
 									<div class="col-md-12">
@@ -214,7 +314,9 @@
 									</div>
 								</div>
 							</div> <!--/#tab-3-->
+							<?php } ?>
 							
+							<?php if($display_experience == true){  ?>
 							<div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="nav-4">
 								<div class="row mt-3">
 									<div class="col-md-12">
@@ -257,7 +359,9 @@
 									</div>
 								</div>
 							</div><!--/#tab-4-->
-
+							<?php } ?>
+							
+							<?php if($display_salary_ac == true){  ?>
 							<div class="tab-pane fade" id="tab-5" role="tabpanel" aria-labelledby="nav-5">
 								<div class="row mt-3">
 									<div class="col-md-12">
@@ -318,8 +422,9 @@
 									</div>
 								</div>
 							</div><!--/#tab-5-->
+							<?php } ?>
 
-							<?php if($this->common_lib->is_auth(array('view-user-account-stat'),false) == true){ ?>		
+							<?php if($display_others == true){  ?>
 								<div class="tab-pane fade" id="tab-6" role="tabpanel" aria-labelledby="nav-6">
 									<div class="row mt-3">
 										<div class="col-md-12">
@@ -341,6 +446,7 @@
 								</div><!--/#tab-6-->
 							<?php } ?>
 
+							<?php if($display_emergency_contact == true){  ?>
 							<div class="tab-pane fade" id="tab-7" role="tabpanel" aria-labelledby="nav-7">
 								<div class="row mt-3">
 									<div class="col-md-12">
@@ -351,8 +457,8 @@
 														<tr>
 														<th scope="col">Contact Person</th>
 														<th scope="col">Relationship</th>
-														<th scope="col">Contact Number(s)</th>
-														<th scope="col">Communication Address</th>
+														<th scope="col">Contact No</th>
+														<th scope="col">Address</th>
 														<th scope="col"></th>
 														</tr>
 													</thead>
@@ -395,6 +501,54 @@
 									</div>
 								</div>
 							</div> <!--/#tab-7-->
+							<?php } ?>
+							
+							<?php if($display_uploaded_files == true){  ?>
+							<div class="tab-pane fade" id="tab-8" role="tabpanel" aria-labelledby="nav-8">
+								<div class="row mt-3">
+									<div class="col-md-12">
+										<?php
+											if (isset($all_uploads) && sizeof($all_uploads) > 0) {
+												foreach ($all_uploads as $key => $upload) {
+											?>
+											<div class="file-container row my-2" id="upload_grid_<?php echo $upload['id']; ?>">
+												<div class="col-md-6"><?php echo $arr_upload_file_type_name[$upload['upload_file_type_name']]; ?></div>
+												<div class="col-md-4">
+													<div class="small">
+														<div class="text-muted">
+															<?php echo 'Uploaded on '.$this->common_lib->display_date($upload['upload_datetime'], true); ?>
+														</div>
+														<div class="text-muted">
+															<?php echo $char_doc_verification[$upload['upload_is_verified']]; ?>
+														</div>							
+													</div>
+												</div>
+												<div class="col-md-2">
+													<?php
+														$file_path = 'assets/uploads/'.$upload_related_to.'/docs/' . $upload_object_user_id . '/' . $upload['upload_file_name'];
+														if (file_exists(FCPATH . $file_path)) {
+															$file_src = base_url($file_path);
+															$btn_class='';
+														} else {
+															$file_src = '#';
+															$btn_class='disabled';	
+														}
+													?>
+													
+													<a data-target="window" target="_new" href="<?php echo $file_src;?>" title="<?php echo $upload['upload_file_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><i class="fa fa-download"></i> View</a>												
+												</div>
+											</div>
+											<?php } //foreach ?>
+											<?php }else {?>
+											<div class="row">
+												<div class="col-md-12">No documents uploaded...</div>
+											</div>
+											<?php }?>
+									</div>
+								</div>
+							</div><!--/#tab-8-->
+							<?php }  ?>
+
 						</div><!--/.tab-content-->
 					</div><!--/.col-md-9-->
 				</div><!--/.row-->
