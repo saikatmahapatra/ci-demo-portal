@@ -350,6 +350,7 @@ function initPage() {
     renderFieldHelp();
     setActiveTarget();
     openInWindow();
+    initDatePicker();
 
     //Select 2
     $('.select2-control').select2();
@@ -443,14 +444,22 @@ function reminderModal() {
     var userReminderModal = '#userReminderModal';
     var showUserReminder = sessionStorage.getItem('showUserReminder');
     if ($(userReminderModal).attr('data-display') == 'true' && (showUserReminder == 'true' || showUserReminder == null)) {
-        $(userReminderModal).css('display','block');
-    }else{
-        $(userReminderModal).css('display','none');
+        $(userReminderModal).css('display', 'block');
+    } else {
+        $(userReminderModal).css('display', 'none');
     }
-    
+
     $(userReminderModal + ' .btn_remind_later').on('click', function(e) {
         e.preventDefault();
         sessionStorage.setItem('showUserReminder', 'false');
-        $(userReminderModal).css('display','none');
+        $(userReminderModal).css('display', 'none');
+    });
+}
+
+function initDatePicker() {
+    $('.form-control-datepicker').datepicker({
+        format: "dd-mm-yyyy",
+        weekStart: 1,
+        autoclose: true,
     });
 }

@@ -100,6 +100,7 @@ class Home extends CI_Controller {
         $this->data['timesheet_user'] = $this->home_model->get_user_of_timesheet();
         $this->data['user_applied_leave'] = $this->home_model->get_user_applied_leave_count();
         $this->data['user_approved_leave'] = $this->home_model->get_user_approved_leave_count();
+        $this->data['pending_leave_action'] = $this->home_model->get_pending_leave_action_count($this->sess_user_id);
         // Dashboard Stats
         
         //User Profile Completion Status Check
@@ -187,7 +188,7 @@ class Home extends CI_Controller {
         $result_array = $this->cms_model->get_contents(NULL, $per_page, $offset, FALSE, TRUE, $filter);
         $this->data['data_rows'] = $result_array['data_rows'];
 
-		$this->data['page_title'] = 'HR Policy';
+		$this->data['page_title'] = 'HR Policies';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/policy', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

@@ -35,10 +35,13 @@ class Home_model extends CI_Model {
     function get_user_applied_leave_count() {
         $result = array();
         $this->db->select('count(*) as total');
-        $this->db->where('t1.leave_status', 'B');
+        //$this->db->where('t1.leave_status', 'B');
         $this->db->where(
 			array(
-            'MONTH(`leave_created_on`)' => date('m')
+                'YEAR(`leave_from_date`) >=' => date('Y'),
+                'MONTH(`leave_from_date`) >=' => date('m'),
+                'YEAR(`leave_to_date`) <=' => date('Y'),
+                'MONTH(`leave_to_date`) <=' => date('m')
 			)
 		);
         $query = $this->db->get('user_leaves t1');
@@ -54,9 +57,33 @@ class Home_model extends CI_Model {
         $this->db->where('t1.leave_status', 'A');
         $this->db->where(
 			array(
-            'MONTH(`leave_created_on`)' => date('m')
+                'YEAR(`leave_from_date`) >=' => date('Y'),
+                'MONTH(`leave_from_date`) >=' => date('m'),
+                'YEAR(`leave_to_date`) <=' => date('Y'),
+                'MONTH(`leave_to_date`) <=' => date('m')
 			)
-		);
+        );
+        $query = $this->db->get('user_leaves t1');
+        //print_r($this->db->last_query());
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return array('num_rows' => $num_rows, 'data_rows' => $result);
+    }
+
+    function get_pending_leave_action_count($user_id) {
+        $result = array();
+        $this->db->select('count(*) as total');
+        $this->db->where(
+			array(
+                'YEAR(`leave_from_date`) >=' => date('Y'),
+                'MONTH(`leave_from_date`) >=' => date('m'),
+                'YEAR(`leave_to_date`) <=' => date('Y'),
+                'MONTH(`leave_to_date`) <=' => date('m')
+			)
+        );
+        $this->db->where('t1.leave_status !=', 'C');
+        $this->db->where('((t1.supervisor_approver_id = "'.$user_id.'" AND t1.supervisor_approver_status = "P")');
+        $this->db->or_where('(t1.director_approver_id = "'.$user_id.'" AND t1.director_approver_status = "P" ))');
         $query = $this->db->get('user_leaves t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();
@@ -66,7 +93,7 @@ class Home_model extends CI_Model {
 
     function get_user_of_timesheet() {
         $result = array();
-        $this->db->select('count(distinct(t1.timesheet_created_by)) as total');        
+        $this->db->select('count(distinct(t1.timesheet_created_by)) as total');
         $this->db->where(
 			array(
 			'YEAR(`timesheet_date`)' => date('Y'),
