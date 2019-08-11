@@ -19,7 +19,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Self Services</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown_1">
-                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/my_profile'); ?>">Update Profile</a>
+                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/profile'); ?>">Update Profile</a>
                         <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'document'); ?>">Upload Documents</a>
                         <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/edit_approvers'); ?>">Change Leave Approvers</a>
                         <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/apply'); ?>">Apply Leave</a>
@@ -142,7 +142,7 @@
                         </div><!--/.welcome-user-container-->
                         
                         <div class="dropdown-divider mt-2"></div>			
-                        <a class="dropdown-item"  href="<?php echo base_url($this->router->directory.'user/my_profile/'); ?>">My Profile</a>
+                        <a class="dropdown-item"  href="<?php echo base_url($this->router->directory.'user/profile/'); ?>">My Profile</a>
                         <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/change_password'); ?>">Change Password</a>
                         <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/logout'); ?>">Logout</a>
                     </div>

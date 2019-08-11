@@ -11,7 +11,7 @@
     <div class="col-md-12">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
         <strong><?php echo $this->common_lib->get_greetings(); ?>!</strong> You should add these details to your pofile - <?php echo implode(', ', $profile_msg);?>        
-        <a href="<?php echo base_url('user/my_profile');?>" class="btn btn-sm btn-outline-secondary">Update Now</a>
+        <a href="<?php echo base_url('user/profile');?>" class="btn btn-sm btn-outline-secondary">Update Now</a>
         <button type="button" class="close btn_remind_later" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
