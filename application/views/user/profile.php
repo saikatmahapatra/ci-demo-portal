@@ -214,11 +214,16 @@
 										<dd class="col-md-4"><a href="mailto:<?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?>"><?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?></a></dd>			
 										<dt class="col-md-2">Mobile (Personal)</dt>
 										<dd class="col-md-4"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : '-'; ?></dd>						
-									
-										<dt class="col-md-2">Date of Birth</dt>
+										
+										<dt class="col-md-2"><?php echo ($is_self_account == true) ? "Date of Birth" : "Birth Day";?></dt>
 										<dd class="col-md-4">
+										<?php if($is_self_account == true) {?>	
 										<?php echo isset($row['user_dob']) ? $this->common_lib->display_date($row['user_dob']) : '-'; ?>
+										<?php } else{?>
+										<?php echo isset($row['user_dob']) ? $this->common_lib->display_date($row['user_dob'],NULL, TRUE) : '-'; ?>
+										<?php } ?>
 										</dd>
+
 										<dt class="col-md-2">Gender</dt>
 										<dd class="col-md-4"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : ''; ?></dd>
 									
