@@ -22,7 +22,44 @@
 						echo $html_alert_ui;
 					}
 				?>
-				<div class="table-responsive">
+				<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'ci-form','name' => '','id' => 'leave-search-form')); ?>
+					<?php echo form_hidden('form_action', 'search'); ?>
+					<div class="form-row">
+						<div class="form-group col-md-2">
+							<label for="leave_status" class="">Leave Status</label>
+							<?php 
+								$leave_status = array();
+								$leave_status[''] = 'All';
+								foreach($leave_status_arr as $key=>$val){
+									$leave_status[$key] = $val['text'];
+								}
+							?>
+							<?php echo form_dropdown('leave_status', $leave_status, $this->input->get_post('leave_status'),array('class' => 'form-control','id'=>'leave_status')); ?> 
+							<?php echo form_error('leave_status'); ?>
+						</div>
+
+						<div class="form-group col-md-2">
+							<label for="leave_from_date" class="">Leave From Date</label>
+							<?php 
+								$first_day_this_month = '';
+								$last_day_this_month  = '';
+							?>
+							<?php echo form_input(array('name' => 'leave_from_date','value' => (isset($_REQUEST['leave_from_date']) ? $_REQUEST['leave_from_date'] : $first_day_this_month),'id' => 'leave_from_date','class' => 'form-control form-control-datepicker', 'placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
+							<?php echo form_error('leave_from_date'); ?>
+						</div>
+					
+						<div class="form-group col-md-2">
+							<label for="leave_to_date" class="">Leave To Date </label>
+							<?php echo form_input(array('name' => 'leave_to_date','value' => (isset($_REQUEST['leave_to_date']) ? $_REQUEST['leave_to_date'] : $last_day_this_month),'class' => 'form-control form-control-datepicker','id' => 'leave_to_date','placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
+							<?php echo form_error('leave_to_date'); ?>
+						</div>
+					</div>
+					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Search','class' => 'btn btn-primary'));?>
+					<?php //echo form_input(array('name' => 'reset_btn','type' => 'reset','value' => 'Reset','class' => 'btn btn-secondary', 'id' => 'reset_leave_search_form'));?>
+					<a href="<?php echo current_url();?>" class="btn btn-secondary">Reset</a>
+				<?php echo form_close(); ?>
+
+				<div class="table-responsive mt-3">
 					<div class="grid-action-holder mb-3">
 						<span class=""><i class="fa fa-check text-success" aria-hidden="true"></i> Approved</span>
 						<span class=""><i class="fa fa-close text-danger" aria-hidden="true"></i> Rejected</span>

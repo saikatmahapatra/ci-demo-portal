@@ -79,7 +79,7 @@ class Holiday extends CI_Controller {
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 		
-		$this->data['page_title'] = 'Holiday Management';
+		$this->data['page_title'] = 'Manage Holidays';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -172,7 +172,7 @@ class Holiday extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = 'Add a Holiday';
+		$this->data['page_title'] = 'Add New Holiday';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/add', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
