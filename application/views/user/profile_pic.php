@@ -38,7 +38,7 @@
 							$img_src = $default_path;
 						}
 						?>
-						<img class="align-self-center mr-3 rounded dp" src="<?php echo base_url($img_src);?>" alt="">
+						<img class="dp rounded mx-auto d-block img-thumbnail" src="<?php echo base_url($img_src);?>" alt="">
 						<?php if(isset($profile_pic) && sizeof($profile_pic)>0){ ?>
 							<div class="edit"><a class="btn btn-sm btn-outline-danger my-2" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><i class="fa fa-remove"></i> Remove</a></div>
 						<?php } ?>
