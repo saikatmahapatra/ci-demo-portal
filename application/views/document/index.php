@@ -78,7 +78,7 @@
 											}
 										?>
 										<td>
-											<a href="#" class="btn btn-sm btn-outline-danger btn-delete-file mr-3" data-confirmation="1" data-confirmation-message="Are you sure, you want to delete this?" data-upload_id="<?php echo $upload['id'];?>" title="Delete <?php echo $upload['upload_file_type_name']; ?>" data-path="<?php echo $file_path;?>"><i class="fa fa-fw fa-lg fa-trash"></i></a>
+											<a href="#" class="btn btn-sm btn-outline-danger btn-delete-file mr-3" data-confirmation="1" data-confirmation-message="Are you sure, you want to delete this?" data-upload_id="<?php echo $upload['id'];?>" title="Delete <?php echo $upload['upload_file_type_name']; ?>" data-path="<?php echo $file_path;?>"><i class="fa fa-fw  fa-trash"></i></a>
 											<a href="<?php echo $file_src;?>" title="<?php echo $upload['upload_file_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="<?php echo $btn_class;?>" target="_new"><?php echo $arr_upload_file_type_name[$upload['upload_file_type_name']]; ?></a>
 										</td>
 									
