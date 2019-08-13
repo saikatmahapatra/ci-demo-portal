@@ -8,10 +8,9 @@ $row = $data_rows[0];
 
 <div class="row">
 	<div class="col-md-12">
-		<div class="card ci-card">
-			<div class="card-header">
-				Leave Request No <?php echo $row['leave_req_id'];?>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->uri->segment(5).'/'.$this->uri->segment(6));?>" class="btn btn-sm float-right btn-outline-secondary"><i class="fa fa-fw fa-chevron-left"></i> Back</a>
+		<div class="card ci-card ci-dl">
+			<div class="card-header h6">
+				Leave Request No - <?php echo $row['leave_req_id'];?>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
