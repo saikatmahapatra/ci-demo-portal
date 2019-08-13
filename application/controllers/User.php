@@ -197,17 +197,18 @@ class User extends CI_Controller {
             $row[] = $result['user_email'];
             $row[] = $result['user_phone1'];
             $row[] = $result['designation_name'];
-            $row[] = '<span class=""><i class="fa fa-circle-o '.$status_indicator.'" aria-hidden="true"></i></span>';
+            $row[] = '<span class=""><i class="fa fa-fw fa-circle-o '.$status_indicator.'" aria-hidden="true"></i></span>';
             $action_html = '';
             
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-lg fa-edit" aria-hidden="true"></i>', array(
-                'class' => 'btn btn-sm btn-outline-secondary mx-1',
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-fw fa-edit" aria-hidden="true"></i>', array(
+                'class' => 'btn btn-sm btn-outline-secondary',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit Profile',
                 'title' => 'Edit Profile'
             ));
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-lg fa-info-circle" aria-hidden="true"></i>', array(
-                'class' => 'btn btn-sm btn-outline-info mx-1',
+            $action_html.='&nbsp;';
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-fw fa-info-circle" aria-hidden="true"></i>', array(
+                'class' => 'btn btn-sm btn-outline-info',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'View Profile',
                 'title' => 'View Profile'
@@ -1236,7 +1237,7 @@ class User extends CI_Controller {
         $rows = $this->user_model->get_rows($user_id);
         $this->data['row'] = $rows['data_rows'];
         if(isset($this->data['row'][0]) && $this->data['row'][0]['user_status']=='A'){
-            $this->session->set_flashdata('flash_message', '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> You can\'t edit the selected user as the user account has already been archived.');
+            $this->session->set_flashdata('flash_message', '<i class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></i> You can\'t edit the selected user as the user account has already been archived.');
             $this->session->set_flashdata('flash_message_css', 'alert-danger');
             redirect($this->router->directory.$this->router->class.'/manage');
         }

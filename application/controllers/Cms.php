@@ -139,18 +139,18 @@ class Cms extends CI_Controller {
             if($result['pagecontent_status'] == 'N'){
                 $status_indicator = 'text-warning';
             }
-            $row[] = '<i class="fa fa-circle-o '.$status_indicator.'" aria-hidden="true"></i>';
+            $row[] = '<i class="fa fa-fw fa-circle-o '.$status_indicator.'" aria-hidden="true"></i>';
             //add html for action
             $action_html = '';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' .$result['id']), '<i class="fa fa-lg fa-edit" aria-hidden="true"></i>', array(
-                'class' => 'btn btn-sm btn-outline-secondary mx-1',
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' .$result['id']), '<i class="fa fa-fw fa-edit" aria-hidden="true"></i>', array(
+                'class' => 'btn btn-sm btn-outline-secondary',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit',
                 'title' => 'Edit',
             ));
             $action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-lg fa-trash" aria-hidden="true"></i>', array(
-                'class' => 'btn btn-sm btn-outline-danger btn-delete mx-1',
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-fw fa-trash" aria-hidden="true"></i>', array(
+                'class' => 'btn btn-sm btn-outline-danger btn-delete',
 				'data-confirmation'=>true,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',
                 'data-toggle' => 'tooltip',
