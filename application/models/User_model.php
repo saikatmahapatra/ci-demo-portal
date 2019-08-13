@@ -52,7 +52,7 @@ class User_model extends CI_Model {
         }else{
             $this->db->select('t1.*,t2.role_name, t2.role_weight,t3.department_name, t4.designation_name');
         }
-        
+        $this->db->where('t1.user_status !=', 'A');
         if ($id) {
             $this->db->where('t1.id', $id);
         }
