@@ -8456,12 +8456,9 @@ body.login {
   background: #fff;
 }
 
-.page-title-container {
-  margin-bottom: 0.5rem;
-}
-
 .page-title {
   font-size: 1.25rem;
+  margin-bottom: .75rem;
 }
 
 .scrollup {
