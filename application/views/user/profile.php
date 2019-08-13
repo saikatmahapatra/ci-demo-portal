@@ -178,53 +178,51 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 									<?php if($is_self_account == true) { ?>
-									<a class="btn btn-outline-secondary btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Edit Basic Info</a>
-									<?php } ?>
-									<!--<h6>Basic Info</h6><hr>-->		
-									<dl class="row">
-										<dt class="col-md-2">Name</dt>
-										<dd class="col-md-4">
-											<?php
-											echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
-											echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
-											echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
-											echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
-											?>
-										</dd>
-										<dt class="col-md-2">Employee ID</dt>
-										<dd class="col-md-4"><?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : '-'; ?></dd>
-									
-										<dt class="col-md-2">Date of Joining</dt>
-										<dd class="col-md-4"><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></dd>
-										<dt class="col-md-2">Designation</dt>
-										<dd class="col-md-4"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
-									
-										<dt class="col-md-2">Email (Office)</dt>
-										<dd class="col-md-4"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?></a></dd>
-										<dt class="col-md-2">Mobile (Office)</dt>
-										<dd class="col-md-4"><?php echo isset($row['user_phone2']) ? $row['user_phone2'] : '-'; ?></dd>
-									
-										<dt class="col-md-2">Email (Personal)</dt>
-										<dd class="col-md-4"><a href="mailto:<?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?>"><?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?></a></dd>			
-										<dt class="col-md-2">Mobile (Personal)</dt>
-										<dd class="col-md-4"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : '-'; ?></dd>						
-										
-										<dt class="col-md-2"><?php echo ($is_self_account == true) ? "Date of Birth" : "Birth Day";?></dt>
-										<dd class="col-md-4">
-										<?php if($is_self_account == true) {?>	
-										<?php echo isset($row['user_dob']) ? $this->common_lib->display_date($row['user_dob']) : '-'; ?>
-										<?php } else{?>
-										<?php echo isset($row['user_dob']) ? $this->common_lib->display_date($row['user_dob'],NULL, TRUE) : '-'; ?>
+										<a class="btn btn-outline-secondary btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Edit</a>
 										<?php } ?>
-										</dd>
+										<dl class="row">
+											<dt class="col-md-2">Name</dt>
+											<dd class="col-md-4">
+												<?php
+												echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
+												echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
+												echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
+												echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
+												?>
+											</dd>
+											<dt class="col-md-2">Employee ID</dt>
+											<dd class="col-md-4"><?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : '-'; ?></dd>
+										
+											<dt class="col-md-2">Date of Joining</dt>
+											<dd class="col-md-4"><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></dd>
+											<dt class="col-md-2">Designation</dt>
+											<dd class="col-md-4"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
+										
+											<dt class="col-md-2">Email (office)</dt>
+											<dd class="col-md-4"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?></a></dd>
+											<dt class="col-md-2">Mobile (office)</dt>
+											<dd class="col-md-4"><?php echo isset($row['user_phone2']) ? $row['user_phone2'] : '-'; ?></dd>
+										
+											<dt class="col-md-2">Email (personal)</dt>
+											<dd class="col-md-4"><a href="mailto:<?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?>"><?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?></a></dd>			
+											<dt class="col-md-2">Mobile (personal)</dt>
+											<dd class="col-md-4"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : '-'; ?></dd>						
+											
+											<dt class="col-md-2"><?php echo ($is_self_account == true) ? "Date of Birth" : "Birth Day";?></dt>
+											<dd class="col-md-4">
+											<?php if($is_self_account == true) {?>	
+											<?php echo isset($row['user_dob']) ? $this->common_lib->display_date($row['user_dob']) : '-'; ?>
+											<?php } else{?>
+											<?php echo isset($row['user_dob']) ? $this->common_lib->display_date($row['user_dob'],NULL, TRUE) : '-'; ?>
+											<?php } ?>
+											</dd>
 
-										<dt class="col-md-2">Gender</dt>
-										<dd class="col-md-4"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : ''; ?></dd>
-									
-										<dt class="col-md-2">Blood Group</dt>
-										<dd class="col-md-4"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : ''; ?></dd>								
-									</dl><!--/dl.row-->
-									
+											<dt class="col-md-2">Gender</dt>
+											<dd class="col-md-4"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : ''; ?></dd>
+										
+											<dt class="col-md-2">Blood Group</dt>
+											<dd class="col-md-4"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : ''; ?></dd>								
+										</dl><!--/dl.row-->
 									</div>
 								</div>
 							</div> <!--/#tab-1-->
@@ -234,7 +232,7 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New Address</a>
 										<?php } ?>
 
 										<div class="table-responsive-sm">
@@ -289,7 +287,7 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New Education</a>
 										<?php } ?>
 											<div class="table-responsive-sm">
 												<table class="table table-striped">
@@ -336,7 +334,7 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New Work Experience</a>
 									<?php } ?>
 											<div class="table-responsive-sm">
 												<table class="table table-striped">
@@ -388,7 +386,7 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New Account</a>
 									<?php } ?>
 										<?php //print_r($bank_details);?>
 										<?php $uni = isset($user_national_identifiers) ? $user_national_identifiers[0] : ''; ?>
@@ -455,9 +453,9 @@
 									<div class="row mt-3">
 										<div class="col-md-12">
 											<dl class="row">
-												<dt class="col-sm-3">User Status</dt>
+												<dt class="col-sm-3">Portal Account Status</dt>
 												<dd class="col-sm-3">
-													<?php echo isset($user_row['user_status']) ? '<span class="'.$user_status_arr[$user_row['user_status']]['css'].'">'.($user_status_arr[$user_row['user_status']]['text'] ).'</span>' : '-'; ?>
+													<?php echo isset($user_row['user_status']) ? $user_status_arr[$user_row['user_status']]['text'] : '-'; ?>
 												</dd>
 												<dt class="col-sm-3">Registered on</dt>
 												<dd class="col-sm-3"><?php echo isset($user_row['user_registration_date']) ? $this->common_lib->display_date($user_row['user_registration_date'],true) : '-'; ?></dd>									
@@ -477,7 +475,7 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New Emergency Contact</a>
 										<?php } ?>
 											<div class="table-responsive-sm">
 												<table class="table table-striped">
