@@ -1,10 +1,6 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<div class="row page-title-container">
-    <div class="col-sm-12">
-		<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
-		<p><i class="fa fa-question-circle-o" aria-hidden="true"></i> Looking for help or information? Click <a class="" href="#" data-toggle="modal" data-target="#timesheetCalModal">here to read.</a></p>
-    </div>
-</div><!--/.page-title-container-->
+<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
+<p><i class="fa fa-question-circle-o" aria-hidden="true"></i> Looking for help or information? Click <a class="" href="#" data-toggle="modal" data-target="#timesheetCalModal">here to read.</a></p>
 
 <div class="row">
 	<div class="col-md-12">

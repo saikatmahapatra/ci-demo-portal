@@ -2,13 +2,7 @@
 $row = $data_rows[0];
 ?>
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<div class="row page-title-container">
-    <div class="col-sm-12">
-		<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>        
-    </div>
-</div><!--/.page-title-container-->
-
-
+<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="card">
 	<div class="card-header h6">
 		<?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?>

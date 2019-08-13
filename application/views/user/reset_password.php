@@ -5,7 +5,7 @@
 	<div class="text-center mb-4">
 		<img class="logo-login" src="<?php echo base_url('assets/dist/img/logo-dark.png');?>">
 		<!-- <h6><?php echo $this->config->item('app_company_product');?></h6> -->
-		<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
+		<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 	</div>
 	<?php
 		// Show server side flash messages
