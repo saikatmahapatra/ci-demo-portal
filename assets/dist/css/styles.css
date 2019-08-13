@@ -8521,7 +8521,7 @@ body.login {
   word-break: break-all;
 }
 
-.card-user-profile dt {
+.ci-dl dt {
   font-weight: 400;
   color: #6c757d;
 }
