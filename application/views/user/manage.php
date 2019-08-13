@@ -24,11 +24,11 @@
 				?>
 				
 				<div class="table-responsive">
-					<div class="grid-action-holder mb-3">
+					<div class="status-icon-group status-icon-justify mb-3">
 						<span class=""><i class="fa fa-fw fa-circle-o text-success" aria-hidden="true"></i> Active</span>
 						<span class=""><i class="fa fa-fw fa-circle-o text-warning" aria-hidden="true"></i> Inactive</span>
 						<span class=""><i class="fa fa-fw fa-circle-o text-danger" aria-hidden="true"></i> Archived</span>
-					</div><!--/.grid-action-holder-->
+					</div><!--/.status-icon-group status-icon-justify-->
 
 					<table id="user-datatable" class="table ci-table table-striped">
 						<thead class="thead-light">

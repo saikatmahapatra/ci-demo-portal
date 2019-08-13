@@ -55,11 +55,11 @@
 				<?php echo form_close(); ?>
 
 				<div class="table-responsive mt-3">
-					<div class="grid-action-holder mb-3">
+					<div class="status-icon-group status-icon-justify mb-3">
 						<span class=""><i class="fa fa-fw fa-check text-success" aria-hidden="true"></i> Approved</span>
 						<span class=""><i class="fa fa-fw fa-close text-danger" aria-hidden="true"></i> Rejected</span>
 						<span class=""><i class="fa fa-fw fa-close text-warning" aria-hidden="true"></i> Cancelled</span>	
-					</div><!--/.grid-action-holder-->
+					</div><!--/.status-icon-group status-icon-justify-->
 					<table class="table table-striped">
 						<thead class="thead-light">
 							<tr>

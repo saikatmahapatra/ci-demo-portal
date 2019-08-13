@@ -2,7 +2,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-md-7">
-		<!-- <div class="grid-action-holder row my-2">
+		<!-- <div class="status-icon-group status-icon-justify row my-2">
 			<div class="col-md-12">
 				<span class="m-1 p-1 table-warning"> Optional Holidays</span>
 			</div>	
