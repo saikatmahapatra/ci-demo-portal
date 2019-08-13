@@ -3624,15 +3624,15 @@ input[type="button"].btn-block {
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 2px solid #dee2e6;
 }
 
 .nav-tabs .nav-item {
-  margin-bottom: -1px;
+  margin-bottom: -2px;
 }
 
 .nav-tabs .nav-link {
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
 }
@@ -3649,13 +3649,13 @@ input[type="button"].btn-block {
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #fff;
-  background-color: #0062cc;
+  color: #0062cc;
+  background-color: #fff;
   border-color: #0062cc;
 }
 
 .nav-tabs .dropdown-menu {
-  margin-top: -1px;
+  margin-top: -2px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -8521,13 +8521,9 @@ body.login {
   word-break: break-all;
 }
 
-a[data-link-type="user-profile-card"] {
-  text-decoration: none;
-  color: inherit;
-}
-
-.user-profile-card a {
-  text-decoration: none;
+.card-user-profile dt {
+  font-weight: 400;
+  color: #6c757d;
 }
 
 .ci-calendar {
@@ -8640,6 +8636,18 @@ a[data-link-type="user-profile-card"] {
   margin-top: -32px;
   /* -1 * image height / 2 */
   display: block;
+}
+
+.ci-nav-tab .nav-link:hover, .ci-nav-tab .nav-link:focus {
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.ci-nav-tab .nav-link.active {
+  border: 0;
+  border-bottom: 5px solid #0062cc;
+  color: inherit;
 }
 
 .pace {

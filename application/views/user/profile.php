@@ -86,7 +86,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-lg-12">
-		<div class="card">
+		<div class="card card-user-profile">
 			<div class="card-header h6">
 				<i class="fa fa-fw fa-user-circle " aria-hidden="true"></i>
 				<?php echo isset($row['user_emp_id']) ? 'Employee Code - UEIPL/'.$row['user_emp_id'] : ''; ?>

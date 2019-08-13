@@ -117,13 +117,11 @@ body.login {
     word-break: break-all;
 }
 
-a[data-link-type="user-profile-card"] {
-    text-decoration: none;
-    color: inherit;
-}
-
-.user-profile-card a {
-    text-decoration: none;
+.card-user-profile {
+    dt {
+        font-weight: 400;
+        color: $gray-600;
+    }
 }
 
 // CI Calendar
@@ -226,11 +224,23 @@ a[data-link-type="user-profile-card"] {
     }
 }
 
-// Nav Tabs
-// .nav-link.active {
-//     border: 0;
-//     border-bottom: 1px solid $nav-tabs-border-color;
-// }
+// Navtab
+.ci-nav-tab {
+    .nav-link {
+        &:hover,
+        &:focus {
+            border-top-color: transparent;
+            border-left-color: transparent;
+            border-right-color: transparent;
+        }
+    }
+    .nav-link.active {
+        border: 0;
+        border-bottom: 5px solid $primary-color;
+        color: inherit;
+    }
+}
+
 // PACE JS
 .pace {
     pointer-events: none;
