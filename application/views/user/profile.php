@@ -88,7 +88,7 @@
 	<div class="col-lg-12">
 		<div class="card">
 			<div class="card-header h6">
-				<i class="fa fa-user-circle " aria-hidden="true"></i>
+				<i class="fa fa-fw fa-user-circle " aria-hidden="true"></i>
 				<?php echo isset($row['user_emp_id']) ? 'Employee Code - UEIPL/'.$row['user_emp_id'] : ''; ?>
 			</div><!--/.card-header-->
 			<div class="card-body">
@@ -118,7 +118,7 @@
 						?>
 						<img class="dp rounded mx-auto d-block img-thumbnail" src="<?php echo base_url($img_src);?>">
 						<?php if($is_self_account == true) { ?>
-						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>" data-toggle="tooltip" title="Change or remove this photo"><i class="fa fa-camera"></i> Change</a>
+						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>" data-toggle="tooltip" title="Change or remove this photo"><i class="fa fa-fw fa-camera"></i> Change</a>
 						<?php } ?>
 						<div class="h5 my-2">
 							<?php
@@ -142,34 +142,34 @@
 					<div class="col-lg-9">
 						<nav>
 							<div class="nav nav-tabs ci-nav-tab small" id="nav-tab" role="tablist">
-								<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><i class="fa fa-info-circle" aria-hidden="true"></i> Basic Info</a>
+								<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><i class="fa fa-fw fa-info-circle" aria-hidden="true"></i> Basic Info</a>
 
 								<?php if($display_address == true){  ?>
-								<a class="nav-item nav-link" id="nav-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><i class="fa fa-map-marker" aria-hidden="true"></i> Address</a>
+								<a class="nav-item nav-link" id="nav-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Address</a>
 								<?php } ?>
 
 								<?php if($display_education == true){  ?>
-								<a class="nav-item nav-link" id="nav-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><i class="fa fa-certificate" aria-hidden="true"></i> Education</a>
+								<a class="nav-item nav-link" id="nav-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><i class="fa fa-fw fa-certificate" aria-hidden="true"></i> Education</a>
 								<?php } ?>
 
 								<?php if($display_experience == true){  ?>
-								<a class="nav-item nav-link" id="nav-4" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false"><i class="fa fa-briefcase" aria-hidden="true"></i> Experiences</a>
+								<a class="nav-item nav-link" id="nav-4" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false"><i class="fa fa-fw fa-briefcase" aria-hidden="true"></i> Experiences</a>
 								<?php } ?>
 								
 								<?php if($display_salary_ac == true){  ?>
-								<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="false"><i class="fa fa-credit-card" aria-hidden="true"></i> Salary A/C</a>
+								<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="false"><i class="fa fa-fw fa-credit-card" aria-hidden="true"></i> Salary A/C</a>
 								<?php } ?>
 
 								<?php if($display_emergency_contact == true){  ?>
-								<a class="nav-item nav-link" id="nav-7" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fa fa-medkit" aria-hidden="true"></i> Emergency Contacts</a>
+								<a class="nav-item nav-link" id="nav-7" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fa fa-fw fa-medkit" aria-hidden="true"></i> Emergency Contacts</a>
 								<?php } ?>
 
 								<?php if($display_uploaded_files == true){  ?>
-								<a class="nav-item nav-link" id="nav-8" data-toggle="tab" href="#tab-8" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fa fa-cloud-download" aria-hidden="true"></i> Docs</a>
+								<a class="nav-item nav-link" id="nav-8" data-toggle="tab" href="#tab-8" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fa fa-fw fa-cloud-download" aria-hidden="true"></i> Docs</a>
 								<?php } ?>
 
 								<?php if($display_others == true){  ?>
-								<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false"><i class="fa fa-pie-chart" aria-hidden="true"></i> Others</a>
+								<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false"><i class="fa fa-fw fa-pie-chart" aria-hidden="true"></i> Others</a>
 								<?php } ?>
 							</div>
 						</nav>
@@ -178,7 +178,7 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 									<?php if($is_self_account == true) { ?>
-									<a class="btn btn-outline-secondary btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><i class="fa fa-edit" aria-hidden="true"></i> Edit Basic Info</a>
+									<a class="btn btn-outline-secondary btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Edit Basic Info</a>
 									<?php } ?>
 									<!--<h6>Basic Info</h6><hr>-->		
 									<dl class="row">
@@ -234,7 +234,7 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 										<?php } ?>
 
 										<div class="table-responsive-sm">
@@ -268,8 +268,8 @@
 																</td>
 																<?php if($is_self_account == true) { ?>
 																<td>
-																	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-lg fa-edit" aria-hidden="true"></i></a>
-																	<!--<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-outline-danger btn-sm ml-1"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>-->
+																	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-fw fa-lg fa-edit" aria-hidden="true"></i></a>
+																	<!--<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-outline-danger btn-sm ml-1"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Delete</a>-->
 																</td>
 																<?php } ?>
 															</tr>
@@ -289,7 +289,7 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 										<?php } ?>
 											<div class="table-responsive-sm">
 												<table class="table table-striped">
@@ -317,7 +317,7 @@
 																<td><?php echo isset($edu['academic_from_year']) ? $edu['academic_from_year'].'-'.$edu['academic_to_year']:'';?></td>
 																<td><?php echo isset($edu['academic_marks_percentage'])?$edu['academic_marks_percentage'].' %':'';?></td>
 																<?php if($is_self_account == true) { ?>
-																<td><a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-lg fa-edit" aria-hidden="true"></i></a></td>
+																<td><a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-fw fa-lg fa-edit" aria-hidden="true"></i></a></td>
 																<?php } ?>
 															</tr>
 															<?php
@@ -336,7 +336,7 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 									<?php } ?>
 											<div class="table-responsive-sm">
 												<table class="table table-striped">
@@ -369,7 +369,7 @@
 																	<td><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></td>
 																	<td><?php echo isset($row['from_date']) ? $this->common_lib->display_date($row['from_date']) :'';?></td>
 																	<td><?php echo isset($row['to_date']) ? $this->common_lib->display_date($row['to_date']) :'';?></td>											<?php if($is_self_account == true) { ?>				
-																	<td><a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-lg fa-edit" aria-hidden="true"></i></a></td>
+																	<td><a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-fw fa-lg fa-edit" aria-hidden="true"></i></a></td>
 																	<?php } ?>
 																</tr>
 															<?php
@@ -388,7 +388,7 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 									<?php } ?>
 										<?php //print_r($bank_details);?>
 										<?php $uni = isset($user_national_identifiers) ? $user_national_identifiers[0] : ''; ?>
@@ -436,7 +436,7 @@
 																	<td><?php echo isset($row['bank_account_no'])? $row['bank_account_no']: ' ';?></td>
 																	<td><?php echo isset($row['account_type']) ? $bank_ac_type[$row['account_type']] : '-'; ?></td>															
 																	<td><?php echo isset($row['ifsc_code']) ? $row['ifsc_code'] : '-'; ?></td>
-																	<td><?php echo isset($row['bank_name'])? $row['bank_name']: ' ';?></td>							<?php if($is_self_account == true) { ?>				<td><a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-lg fa-edit" aria-hidden="true"></i></a></td>
+																	<td><?php echo isset($row['bank_name'])? $row['bank_name']: ' ';?></td>							<?php if($is_self_account == true) { ?>				<td><a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-fw fa-lg fa-edit" aria-hidden="true"></i></a></td>
 																	<?php } ?>
 																</tr>
 															<?php
@@ -477,7 +477,7 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 										<?php } ?>
 											<div class="table-responsive-sm">
 												<table class="table table-striped">
@@ -512,8 +512,8 @@
 																
 																<?php if($is_self_account == true) { ?>
 																<td>
-																	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_emergency_contact/'.$con["id"]);?>" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-lg fa-edit" aria-hidden="true"></i></a>
-																	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_emergency_contact/'.$con["id"]);?>" class="btn btn-outline-danger btn-sm" data-toggle="tooltip" title="Delete"><i class="fa fa-lg fa-trash" aria-hidden="true"></i></a>
+																	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_emergency_contact/'.$con["id"]);?>" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-fw fa-lg fa-edit" aria-hidden="true"></i></a>
+																	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_emergency_contact/'.$con["id"]);?>" class="btn btn-outline-danger btn-sm" data-toggle="tooltip" title="Delete"><i class="fa fa-fw fa-lg fa-trash" aria-hidden="true"></i></a>
 																</td>
 																<?php } ?>
 															</tr>
@@ -568,7 +568,7 @@
 														}
 													?>
 													
-													<a data-target="window" target="_new" href="<?php echo $file_src;?>" title="<?php echo $upload['upload_file_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><i class="fa fa-download"></i> View</a>
+													<a data-target="window" target="_new" href="<?php echo $file_src;?>" title="<?php echo $upload['upload_file_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><i class="fa fa-fw fa-download"></i> View</a>
 												</div>
 											</div>
 											<?php } //foreach ?>

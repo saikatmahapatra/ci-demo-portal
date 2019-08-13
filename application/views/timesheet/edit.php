@@ -11,7 +11,7 @@ $row = $rows[0];
 		<div class="card ci-card">
 			<div class="card-header">
 				Work Log of <?php echo $this->common_lib->display_date($row['timesheet_date']); ?>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="float-right btn btn-sm btn-outline-secondary" title=""> <i class="fa fa-chevron-left"></i> Back to Timesheet</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="float-right btn btn-sm btn-outline-secondary" title=""> <i class="fa fa-fw fa-chevron-left"></i> Back to Timesheet</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">

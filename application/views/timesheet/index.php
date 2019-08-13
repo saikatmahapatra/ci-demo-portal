@@ -1,6 +1,6 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-<p><i class="fa fa-question-circle-o" aria-hidden="true"></i> Looking for help or information? Click <a class="" href="#" data-toggle="modal" data-target="#timesheetCalModal">here to read.</a></p>
+<p><i class="fa fa-fw fa-question-circle-o" aria-hidden="true"></i> Looking for help or information? Click <a class="" href="#" data-toggle="modal" data-target="#timesheetCalModal">here to read.</a></p>
 
 <div class="row">
 	<div class="col-md-12">
@@ -57,7 +57,7 @@
 					</div>
 					<?php echo form_error('selected_date'); ?>
 					<div class="mt-2"><a id="clear_selected_days" class="btn btn-outline-secondary btn-sm" href="#">Clear all selected days</a></div>
-					<a class="text-centre d-none" href="#"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download this month's timesheet</a>
+					<a class="text-centre d-none" href="#"><i class="fa fa-fw fa-file-excel-o" aria-hidden="true"></i> Download this month's timesheet</a>
 				</div><!--/.col-md-3-->
 
 				<div class="col-md-8 offset-md-1">

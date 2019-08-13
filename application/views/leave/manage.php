@@ -5,7 +5,7 @@
 		<div class="card ci-card">
 			<div class="card-header">
 				Data Table
-				<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/leave_balance');?>" class="float-right btn btn-sm btn-outline-secondary" title="Leave Balance Management"> <i class="fa fa-list"></i> Manage Leave Balance</a> -->
+				<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/leave_balance');?>" class="float-right btn btn-sm btn-outline-secondary" title="Leave Balance Management"> <i class="fa fa-fw fa-list"></i> Manage Leave Balance</a> -->
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -56,9 +56,9 @@
 
 				<div class="table-responsive mt-3">
 					<div class="grid-action-holder mb-3">
-						<span class=""><i class="fa fa-check text-success" aria-hidden="true"></i> Approved</span>
-						<span class=""><i class="fa fa-close text-danger" aria-hidden="true"></i> Rejected</span>
-						<span class=""><i class="fa fa-close text-warning" aria-hidden="true"></i> Cancelled</span>	
+						<span class=""><i class="fa fa-fw fa-check text-success" aria-hidden="true"></i> Approved</span>
+						<span class=""><i class="fa fa-fw fa-close text-danger" aria-hidden="true"></i> Rejected</span>
+						<span class=""><i class="fa fa-fw fa-close text-warning" aria-hidden="true"></i> Cancelled</span>	
 					</div><!--/.grid-action-holder-->
 					<table class="table table-striped">
 						<thead class="thead-light">
@@ -100,7 +100,7 @@
 											$fa_icon = 'fa-close';
 										}
 										?>
-										<?php echo isset($row['supervisor_approver_status']) ? '<span class="'.$leave_status_arr[$row['supervisor_approver_status']]['css'].'"><i class="fa '.$fa_icon.'" aria-hidden="true"></i></span>' : ''; ?>
+										<?php echo isset($row['supervisor_approver_status']) ? '<span class="'.$leave_status_arr[$row['supervisor_approver_status']]['css'].'"><i class="fa fa-fw '.$fa_icon.'" aria-hidden="true"></i></span>' : ''; ?>
 										<?php echo isset($row['supervisor_approver_firstname']) ? $row['supervisor_approver_firstname'] : ''?>
 										<?php echo isset($row['supervisor_approver_lastname']) ? $row['supervisor_approver_lastname'] : ''?>
 										<?php echo isset($row['supervisor_approver_emp_id']) ? '('.$row['supervisor_approver_emp_id'].')' : ''?>							
@@ -118,7 +118,7 @@
 											$fa_icon = 'fa-close';
 										}
 										?>
-										<?php echo isset($row['director_approver_status']) ? '<span class="'.$leave_status_arr[$row['director_approver_status']]['css'].'"><i class="fa '.$fa_icon.'" aria-hidden="true"></i></span>': ''; ?>
+										<?php echo isset($row['director_approver_status']) ? '<span class="'.$leave_status_arr[$row['director_approver_status']]['css'].'"><i class="fa fa-fw '.$fa_icon.'" aria-hidden="true"></i></span>': ''; ?>
 										<?php echo isset($row['director_approver_firstname']) ? $row['director_approver_firstname'] : ''?>
 										<?php echo isset($row['director_approver_lastname']) ? $row['director_approver_lastname'] : ''?>
 										<?php echo isset($row['director_approver_emp_id']) ? '('.$row['director_approver_emp_id'].')' : ''?>
@@ -131,7 +131,7 @@
 									<?php //echo ', '.$row['applied_for_days_count'].' day(s)';?></td>
 									<td><span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>"><?php echo $leave_status_arr[$row['leave_status']]['text'];?></span></td>
 									<td>
-									<a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));?>" class="btn btn-outline-info btn-sm" data-toggle="tooltip" title="View Details"><i class="fa fa-lg fa-info-circle" aria-hidden="true"></i></a>
+									<a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));?>" class="btn btn-outline-info btn-sm" data-toggle="tooltip" title="View Details"><i class="fa fa-fw fa-lg fa-info-circle" aria-hidden="true"></i></a>
 									
 									</td>
 								</tr>

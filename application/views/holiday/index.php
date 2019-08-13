@@ -5,7 +5,7 @@
 		<div class="card ci-card">
 			<div class="card-header">
 				Data Table
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="float-right btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-plus"></i> Add New</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="float-right btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-fw fa-plus"></i> Add New</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">

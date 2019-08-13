@@ -5,7 +5,7 @@
 		<div class="card ci-card">
 			<div class="card-header">
 				Form
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Back to Profile"> <i class="fa fa-chevron-left"></i> Back</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Back to Profile"> <i class="fa fa-fw fa-chevron-left"></i> Back</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">

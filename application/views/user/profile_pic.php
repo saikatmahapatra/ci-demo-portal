@@ -5,7 +5,7 @@
 		<div class="card ci-card">
 			<div class="card-header">
 				Profile Image
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Back to Profile"> <i class="fa fa-chevron-left"></i> Back</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Back to Profile"> <i class="fa fa-fw fa-chevron-left"></i> Back</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -35,7 +35,7 @@
 						?>
 						<img class="dp rounded mx-auto d-block img-thumbnail" src="<?php echo base_url($img_src);?>" alt="">
 						<?php if(isset($profile_pic) && sizeof($profile_pic)>0){ ?>
-							<div class="edit"><a class="btn btn-sm btn-outline-danger my-2" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><i class="fa fa-remove"></i> Remove</a></div>
+							<div class="edit"><a class="btn btn-sm btn-outline-danger my-2" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><i class="fa fa-fw fa-remove"></i> Remove</a></div>
 						<?php } ?>
 					</div>
 					<div class="col-md-8">

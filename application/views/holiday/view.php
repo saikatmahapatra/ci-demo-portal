@@ -7,7 +7,7 @@
 				<span class="m-1 p-1 table-warning"> Optional Holidays</span>
 			</div>	
 		</div> -->
-		<!-- <p class="alert alert-info"><i class="fa fa-info-circle" aria-hidden="true"></i> Please note that <span class="h5 text-danger font-weight-bold">*</span> marked dates are optional holiday.<p> -->
+		<!-- <p class="alert alert-info"><i class="fa fa-fw fa-info-circle" aria-hidden="true"></i> Please note that <span class="h5 text-danger font-weight-bold">*</span> marked dates are optional holiday.<p> -->
 		<div class="table-responsive">
 			<table class="table ci-table table-sm table-bordered">
 				<thead class="thead-light">

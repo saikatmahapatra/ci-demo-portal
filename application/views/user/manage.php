@@ -5,10 +5,10 @@
 		<div class="card ci-card">
 			<div class="card-header">
 				Data Table
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="float-right btn btn-sm btn-outline-success" data-toggle="tooltip" title="Create new user account"> <i class="fa fa-plus"></i> Add New</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="float-right btn btn-sm btn-outline-success" data-toggle="tooltip" title="Create new user account"> <i class="fa fa-fw fa-plus"></i> Add New</a>
 				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'float-right mx-2', 'name' => 'download_data')); ?>
 					<input type="hidden" name="form_action" value="download">
-					<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download data as excel"> <i class="fa fa-download" aria-hidden="true"></i> Download</button>
+					<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download data as excel"> <i class="fa fa-fw fa-download" aria-hidden="true"></i> Download</button>
 				<?php echo form_close(); ?>
 			</div><!--/.card-header-->
 
@@ -25,9 +25,9 @@
 				
 				<div class="table-responsive">
 					<div class="grid-action-holder mb-3">
-						<span class=""><i class="fa fa-circle-o text-success" aria-hidden="true"></i> Active</span>
-						<span class=""><i class="fa fa-circle-o text-warning" aria-hidden="true"></i> Inactive</span>
-						<span class=""><i class="fa fa-circle-o text-danger" aria-hidden="true"></i> Archived</span>
+						<span class=""><i class="fa fa-fw fa-circle-o text-success" aria-hidden="true"></i> Active</span>
+						<span class=""><i class="fa fa-fw fa-circle-o text-warning" aria-hidden="true"></i> Inactive</span>
+						<span class=""><i class="fa fa-fw fa-circle-o text-danger" aria-hidden="true"></i> Archived</span>
 					</div><!--/.grid-action-holder-->
 
 					<table id="user-datatable" class="table ci-table table-striped">

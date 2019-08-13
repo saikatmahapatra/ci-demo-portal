@@ -1,14 +1,14 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-<p><i class="fa fa-question-circle-o" aria-hidden="true"></i> Looking for help or information? Click <a class="" href="#" data-toggle="modal" id="view_leave_balance_update_details" data-target="#leaveBalanceModal">here to read.</a></p>
+<p><i class="fa fa-fw fa-question-circle-o" aria-hidden="true"></i> Looking for help or information? Click <a class="" href="#" data-toggle="modal" id="view_leave_balance_update_details" data-target="#leaveBalanceModal">here to read.</a></p>
 
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
 			<div class="card-header">
 				Form
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="float-right btn btn-sm btn-outline-secondary" > <i class="fa fa-clock-o"></i> Leave History</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="float-right btn btn-sm btn-outline-secondary" > <i class="fa fa-fw fa-clock-o"></i> Leave History</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">

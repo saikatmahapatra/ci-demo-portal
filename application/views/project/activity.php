@@ -5,7 +5,7 @@
 		<div class="card ci-card">
 			<div class="card-header">
 				Data Table
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add_activity');?>" class="float-right btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-plus"></i> Add New</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add_activity');?>" class="float-right btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-fw fa-plus"></i> Add New</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -19,8 +19,8 @@
 				?>
 				<div class="table-responsive">
 					<div class="grid-action-holder mb-3">
-						<span class=""><i class="fa fa-circle-o text-success" aria-hidden="true"></i> Published</span>
-						<span class=""><i class="fa fa-circle-o text-warning" aria-hidden="true"></i> Unpublished</span>
+						<span class=""><i class="fa fa-fw fa-circle-o text-success" aria-hidden="true"></i> Published</span>
+						<span class=""><i class="fa fa-fw fa-circle-o text-warning" aria-hidden="true"></i> Unpublished</span>
 					</div><!--/.grid-action-holder-->
 					<table id="activity-datatable" class="table ci-table table-striped">
 						<thead class="thead-light">

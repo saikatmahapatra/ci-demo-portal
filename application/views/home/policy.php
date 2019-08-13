@@ -11,7 +11,7 @@
                         <div id="collapse_<?php echo isset($row['id']) ? $row['id'] : '';?>" class="collapse" aria-labelledby="heading_<?php echo isset($row['id']) ? $row['id'] : '';?>" data-parent="#accordion">
                             <div class="card-body">
                             <div class="text-muted small mb-1">
-                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>
                                 <?php //echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
                                 <?php //echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>
                                 <?php echo $this->common_lib->display_date($row['pagecontent_created_on'],true,null,'d-M-Y h:i:s a'); ?>
