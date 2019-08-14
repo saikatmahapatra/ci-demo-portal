@@ -18,21 +18,23 @@
 					echo $html_alert_ui;
 				}
 				?>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="btn btn-sm btn-outline-primary card-link" data-toggle="tooltip" title="Create new user account"> <i class="fa fa-fw fa-plus"></i> Add New</a>
+				<div class="ci-link-group">
+					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="btn btn-sm btn-outline-success mr-2" data-toggle="tooltip" title="Create new user account"> <i class="fa fa-fw fa-plus"></i> Add New</a>
+				
+					<?php echo form_open(current_url(), array('method' => 'post', 'class' => '', 'name' => 'download_data')); ?>
+						<input type="hidden" name="form_action" value="download">
+						<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download data as excel"> <i class="fa fa-fw fa-download" aria-hidden="true"></i> Download</button>
+					<?php echo form_close(); ?>
+				</div>
 
-				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'btn p-0', 'name' => 'download_data')); ?>
-					<input type="hidden" name="form_action" value="download">
-					<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download data as excel"> <i class="fa fa-fw fa-download" aria-hidden="true"></i> Download</button>
-				<?php echo form_close(); ?>
-
-				<div class="table-responsive mt-2">
+				<div class="table-responsive">
 
 					<table id="user-datatable" class="table ci-table table-striped">
 						<thead class="thead-light">
 							<tr>
-								<th>Name</th>
-								<th>EmpID</th>
-								<th>Email</th>
+								<th>Employee Name</th>
+								<th>Emp ID</th>
+								<th>Email ID</th>
 								<th>Phone</th>
 								<th>Designation</th>
 								<th>Status</th>
@@ -42,9 +44,9 @@
 						<tbody></tbody>
 						<tfoot>
 							<tr>
-								<th>Name</th>
-								<th>EmpID</th>
-								<th>Email</th>
+								<th>Employee Name</th>
+								<th>Emp ID</th>
+								<th>Email ID</th>
 								<th>Phone</th>
 								<th>Designation</th>
 								<th>Status</th>

@@ -26,8 +26,9 @@
 						echo $html_alert_ui;
 					}
 				?>
-
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title=""> <i class="fa fa-fw fa-list"></i> Manage Employees</a>
+				<div class="ci-link-group">
+					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title=""> <i class="fa fa-fw fa-list"></i> Manage Employees</a>
+				</div>
 
 				
 				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>
@@ -36,7 +37,7 @@
 				
 				<div class="form-row">
 					<div class="form-group col-md-4">
-						<label for="user_dor" class="">Date of Release from Organization </label>
+						<label for="user_dor" class="">Date of Release from Organization <span class="required">*</span></label>
 						<?php
 						echo form_input(array(
 							'name' => 'user_dor',
@@ -55,7 +56,7 @@
 
 				<div class="form-row">
 					<div class="form-group col-md-8">
-						<label for="user_dor" class="">Comments </label>
+						<label for="user_dor" class="">Comments <span class="required">*</span></label>
 						<?php
 							echo form_textarea(array(
 								'name' => 'account_close_comments',
@@ -79,7 +80,7 @@
 								$cb_is_checked = $this->input->post('terms') === 'accept';
 								echo form_checkbox('terms', 'accept', $cb_is_checked, array('id' => 'terms','class' => 'custom-control-input'));
 							?>
-							<label class="custom-control-label" for="terms">I understand that, this action can not be undo. Portal account will be archived forever and this user will not be able to login permanently.</label>
+							<label class="custom-control-label" for="terms">I understand that, this action can not be undo. Portal account will be archived forever and this user will not be able to login permanently. <span class="required">*</span></label>
 						</div>
 						<?php echo form_error('terms'); ?>
 					</div>
