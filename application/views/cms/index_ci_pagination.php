@@ -16,8 +16,8 @@
 		</div>	
 			
 		<th class="table-responsive">
-			<table class="table table-striped">
-				<thead class="thead-light">
+			<table class="table ci-table table-striped">
+				<thead class="thead-dark">
 					<tr>
 						<th scope="col">Title</th>
 						<th scope="col">Content Type</th>
@@ -44,15 +44,6 @@
 				}
 				?>
 				</tbody>
-				<tfoot>
-					<tr>
-						<th scope="col">Title</th>
-						<th scope="col">Content Type</th>
-						<th scope="col">Text/Content</th>
-						<th scope="col">Status</th>
-						<th scope="col">Action</th>
-					</tr>
-				</tfoot>
 			</table>
 			
 		</th><!--/.table-responsive-->

@@ -8710,12 +8710,16 @@ body.login {
   padding-top: 30px !important;
 }
 
-table.ci-table.dataTable {
+.table.ci-table.dataTable {
   clear: both;
   margin-top: 0px !important;
   margin-bottom: 0px !important;
   max-width: none !important;
   border-collapse: collapse !important;
+}
+
+.table.ci-table th {
+  font-weight: 400;
 }
 
 .ci-accordion-card {
@@ -9149,4 +9153,14 @@ select.form-control.dob-inline {
   margin-bottom: 15px;
   display: flex;
   justify-content: flex-end !important;
+}
+
+.user-profile-section {
+  margin: 10px 0px 15px 0px;
+}
+
+.user-profile-section .section-heading {
+  color: #6c757d;
+  font-weight: 700;
+  font-size: 80%;
 }

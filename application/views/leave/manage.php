@@ -59,8 +59,8 @@
 						<span class=""><i class="fa fa-fw fa-close text-danger" aria-hidden="true"></i> Rejected</span>
 						<span class=""><i class="fa fa-fw fa-close text-warning" aria-hidden="true"></i> Cancelled</span>	
 					</div><!--/.status-icon-group status-icon-justify-->
-					<table class="table table-striped">
-						<thead class="thead-light">
+					<table class="table ci-table table-striped">
+						<thead class="thead-dark">
 							<tr>
 								<th scope="col">Request No</th>
 								<th scope="col">Applicant</th>

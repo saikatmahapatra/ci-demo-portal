@@ -80,8 +80,8 @@
 					<?php echo form_close(); ?>
 					<?php } */ ?>
 
-					<table class="table table-striped">
-						<thead class="thead-light">
+					<table class="table ci-table table-striped">
+						<thead class="thead-dark">
 							<tr>
 								<th scope="col" style="width:10%;">Date</th>
 								<th scope="col" style="width:15%;">Employee</th>
@@ -122,16 +122,6 @@
 						}
 						?>
 						</tbody>
-						<tfoot>
-							<tr>
-								<th scope="col">Date</th>
-								<th scope="col">Employee</th>
-								<th scope="col">Project</th>
-								<th scope="col">Activity</th>
-								<th scope="col">Hrs</th>
-								<th scope="col">Task Description</th>
-							</tr>
-						</tfoot>
 					</table>
 					<?php echo isset($pagination_link) ? $pagination_link : ''; ?>
 				</div>

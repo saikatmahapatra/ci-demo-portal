@@ -22,7 +22,7 @@
 
 			<div class="table-responsive">
 			<table id="holiday-datatable" class="table ci-table table-striped">
-				<thead class="thead-light">
+				<thead class="thead-dark">
 					<tr>
 						<th scope="col">Date</th>
 						<th scope="col">Day</th>
@@ -32,15 +32,6 @@
 					</tr>
 				</thead>
 				<tbody></tbody>
-				<tfoot>
-					<tr>
-						<th scope="col">Date</th>
-						<th scope="col">Day</th>
-						<th scope="col">Occasion</th>
-						<th scope="col">Holiday Type</th>
-						<th scope="col">Action</th>
-					</tr>
-				</tfoot>
 			</table>
 		</div><!--/.table-responsive-->
 				

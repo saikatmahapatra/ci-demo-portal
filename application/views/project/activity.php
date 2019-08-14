@@ -21,7 +21,7 @@
 				</div>
 				<div class="table-responsive">
 					<table id="activity-datatable" class="table ci-table table-striped">
-						<thead class="thead-light">
+						<thead class="thead-dark">
 							<tr>
 								<th scope="col">Activity Name</th>
 								<th scope="col">Status</th>
@@ -29,13 +29,6 @@
 							</tr>
 						</thead>
 						<tbody></tbody>
-						<tfoot>
-							<tr>
-								<th scope="col">Activity Name</th>
-								<th scope="col">Status</th>
-								<th scope="col">Action</th>
-							</tr>
-						</tfoot>
 					</table>
 				</div><!--/.table-responsive-->
 			

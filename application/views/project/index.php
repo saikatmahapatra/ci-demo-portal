@@ -22,7 +22,7 @@
 
 				<div class="table-responsive">
 					<table id="project-datatable" class="table ci-table table-striped">
-						<thead class="thead-light">
+						<thead class="thead-dark">
 							<tr>						
 								<th scope="col">Project</th>
 								<th scope="col">Code</th>
@@ -32,15 +32,6 @@
 							</tr>
 						</thead>
 						<tbody></tbody>
-						<tfoot>
-							<tr>
-								<th scope="col">Project</th>
-								<th scope="col">Code</th>
-								<!-- <th scope="col">Desription</th> -->
-								<th scope="col">Status</th>
-								<th scope="col">Action</th>
-							</tr>
-						</tfoot>
 					</table>
 				</div><!--/.table-responsive-->
 			

@@ -56,7 +56,7 @@
 				<div class="card-body">
 					<div class="table-responsive">
 							<table class="table ci-table table-striped">
-								<thead class="thead-light">
+								<thead class="thead-dark">
 									<tr>
 										<th scope="col">Uploaded Document(s)</th>
 									</tr>

@@ -4,7 +4,7 @@
 	<div class="col-md-7">
 		<div class="table-responsive">
 			<table class="table ci-table table-sm table-bordered text-center">
-				<thead class="thead-light">
+				<thead class="thead-dark">
 				<tr>
 					<th scope="col">#</th>
 					<th scope="col">Date</th>

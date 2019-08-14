@@ -30,29 +30,18 @@
 				<div class="table-responsive">
 
 					<table id="user-datatable" class="table ci-table table-striped">
-						<thead class="thead-light">
+						<thead class="thead-dark">
 							<tr>
-								<th>Employee Name</th>
-								<th>Emp ID</th>
-								<th>Email ID</th>
-								<th>Phone</th>
+								<th>Name</th>
+								<th>Employee ID</th>
+								<th>Email Address (office)</th>
+								<th>Mobile</th>
 								<th>Designation</th>
 								<th>Status</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody></tbody>
-						<tfoot>
-							<tr>
-								<th>Employee Name</th>
-								<th>Emp ID</th>
-								<th>Email ID</th>
-								<th>Phone</th>
-								<th>Designation</th>
-								<th>Status</th>
-								<th>Action</th>
-							</tr>
-						</tfoot>
 					</table>
 				</div><!--/.table-responsive-->
 			</div><!--./card-body-->

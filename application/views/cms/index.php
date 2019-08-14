@@ -22,7 +22,7 @@
 
 				<div class="table-responsive">
 					<table id="cms-datatable" class="table ci-table table-striped">
-						<thead class="thead-light">
+						<thead class="thead-dark">
 							<tr>								
 								<th scope="col">Title</th>
 								<th scope="col">Type</th>
@@ -32,15 +32,6 @@
 							</tr>
 						</thead>
 						<tbody></tbody>
-						<tfoot>
-							<tr>
-								<th scope="col">Title</th>
-								<th scope="col">Type</th>
-								<th scope="col">Created On</th>
-								<th scope="col">Status</th>
-								<th scope="col">Action</th>
-							</tr>
-						</tfoot>
 					</table>
 				</div><!--/.table-responsive-->
 			</div><!--./card-body-->

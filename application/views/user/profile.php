@@ -235,51 +235,34 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 										<?php } ?>
+										<?php if(isset($address)){
+											foreach($address as $key=>$addr){
+											?>
+											<div class="user-profile-section">
+												<div class="section-heading">
+													<?php echo isset($address_type[$addr['address_type']]) ? $address_type[$addr['address_type']] : 'Address'; ?>
 
-										<div class="table-responsive-sm">
-												<table class="table table-striped">
-													<thead class="thead-light">
-														<tr>
-														<th scope="col">Address Type</th>
-														<th scope="col">Address</th>
-														<?php if($is_self_account == true) { ?>
-														<th scope="col"></th>
-														<?php } ?>
-														</tr>
-													</thead>
-													<tbody>
-													<?php if(isset($address)){
-															foreach($address as $key=>$addr){
-															?>
-															<tr>
-																<td>
-																	<?php echo isset($address_type[$addr['address_type']]) ? $address_type[$addr['address_type']] : 'Address'; ?>
-																</td>
-																<td>
-																	<?php //echo isset($addr['name'])? $addr['name'].',&nbsp;' :'';?>
-																	<?php echo isset($addr['address']) ? $addr['address'] : '';?>
-																	<?php echo isset($addr['locality'])? ', '.$addr['locality'] : '';?>
-																	<?php echo isset($addr['city']) ? ', '.$addr['city'].', ' : '';?>
-																	<?php echo isset($addr['state_name']) ? $addr['state_name'] : '';?>
-																	<?php echo isset($addr['zip']) ? ' - '.$addr['zip'] : '';?>  
-																	<?php echo isset($addr['phone1'])? '<div>Phone: '.$addr['phone1'].'</div> ':'';?>
-																	<?php echo isset($addr['landmark'])? '<div>Landmark: '.$addr['landmark'].'</div> ':'';?>
-																</td>
-																<?php if($is_self_account == true) { ?>
-																<td>
-																	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-fw  fa-edit" aria-hidden="true"></i></a>
-																	<!--<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-outline-danger btn-sm ml-1"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Delete</a>-->
-																</td>
-																<?php } ?>
-															</tr>
-															<?php
-															}
-														}?>
-													</tbody>
-												</table>
-											</div><!--/.table-responsive-sm-->
+													<?php if($is_self_account == true) { ?>
+														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fa fa-fw  fa-edit" aria-hidden="true"></i> Edit</a>
+														<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-link btn-sm"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Delete</a> -->
+													<?php } ?>
+												</div>
+												<div>
+													<?php //echo isset($addr['name'])? $addr['name'].',&nbsp;' :'';?>
+													<?php echo isset($addr['address']) ? $addr['address'] : '';?>
+													<?php echo isset($addr['locality'])? ', '.$addr['locality'] : '';?>
+													<?php echo isset($addr['city']) ? ', '.$addr['city'].', ' : '';?>
+													<?php echo isset($addr['state_name']) ? $addr['state_name'] : '';?>
+													<?php echo isset($addr['zip']) ? ' - '.$addr['zip'] : '';?>  
+													<?php echo isset($addr['phone1'])? '<div>Phone - '.$addr['phone1'].'</div> ':'';?>
+													<?php echo isset($addr['landmark'])? '<div>Landmark - '.$addr['landmark'].'</div> ':'';?>
+												</div>
+											</div>
+											<?php
+											}
+										}?>
 									</div>
 								</div>
 							</div> <!--/#tab-2-->
@@ -290,43 +273,33 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 										<?php } ?>
-											<div class="table-responsive-sm">
-												<table class="table table-striped">
-													<thead class="thead-light">
-														<tr>
-														<th scope="col">Degree & Specialization</th>
-														<th scope="col">University/Board/Council</th>
-														<th scope="col">Duration</th>
-														<th scope="col">Marks</th>
-														<?php if($is_self_account == true) { ?>
-														<th scope="col"></th>
-														<?php } ?>
-														</tr>
-													</thead>
-													<tbody>
-													<?php if(isset($education)){
-															foreach($education as $key=>$edu){
-															?>
-															<tr>
-																<td>
-																	<?php echo isset($edu['qualification_name'])?$edu['qualification_name']: ' ';?> - <?php echo isset($edu['degree_name'])?$edu['degree_name']:'';?><br>
-																	<?php echo isset($edu['specialization_name'])?$edu['specialization_name']:'';?>
-																</td>
-																<td><?php echo isset($edu['institute_name']) ? $edu['institute_name']: '';?></td>
-																<td><?php echo isset($edu['academic_from_year']) ? $edu['academic_from_year'].'-'.$edu['academic_to_year']:'';?></td>
-																<td><?php echo isset($edu['academic_marks_percentage'])?$edu['academic_marks_percentage'].' %':'';?></td>
-																<?php if($is_self_account == true) { ?>
-																<td><a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-fw  fa-edit" aria-hidden="true"></i></a></td>
-																<?php } ?>
-															</tr>
-															<?php
-															}
-														}?>
-													</tbody>
-												</table>
-											</div><!--/.table-responsive-sm-->
+										
+										<?php if(isset($education)){
+											foreach($education as $key=>$edu){
+											?>
+											<div class="user-profile-section">
+												<div class="section-heading">
+												<?php echo isset($edu['qualification_name'])?$edu['qualification_name']: ' ';?> - <?php echo isset($edu['degree_name'])?$edu['degree_name']:'';?>
+												<?php echo isset($edu['academic_from_year']) ? '('.$edu['academic_from_year'].'-'.$edu['academic_to_year'].')':'';?>
+												<?php if($is_self_account == true) { ?>
+													<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fa fa-fw  fa-edit" aria-hidden="true"></i> Edit</a>
+												<?php } ?>
+												</div>
+												<div>
+													<?php echo isset($edu['specialization_name'])?$edu['specialization_name']:'';?>
+												</div>
+												<div>
+													<?php echo isset($edu['institute_name']) ? $edu['institute_name']: '';?>
+												</div>
+												<div>
+													<?php echo isset($edu['academic_marks_percentage'])?$edu['academic_marks_percentage'].' %':'';?>
+												</div>
+											</div>
+											<?php
+											}
+										}?>
 									</div>
 								</div>
 							</div> <!--/#tab-3-->
@@ -340,8 +313,8 @@
 										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 									<?php } ?>
 											<div class="table-responsive-sm">
-												<table class="table table-striped">
-													<thead class="thead-light">
+												<table class="table ci-table table-striped">
+													<thead class="thead-dark">
 														<tr>
 															<th scope="col">Employer</th>
 															<th scope="col">Designation/Role</th>
@@ -406,8 +379,8 @@
 										</dl>
 
 										<div class="table-responsive-sm">
-												<table class="table table-striped">
-													<thead class="thead-light">
+												<table class="table ci-table table-striped">
+													<thead class="thead-dark">
 														<tr>
 															<th scope="col">Account Uses</th>
 															<th scope="col">Account No</th>
@@ -472,8 +445,8 @@
 										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 										<?php } ?>
 											<div class="table-responsive-sm">
-												<table class="table table-striped">
-													<thead class="thead-light">
+												<table class="table ci-table table-striped">
+													<thead class="thead-dark">
 														<tr>
 														<th scope="col">Contact Person</th>
 														<th scope="col">Relationship</th>

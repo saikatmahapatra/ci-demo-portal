@@ -21,8 +21,8 @@
 				</div>
 
 				<div class="table-responsive">
-					<table class="table table-striped">
-						<thead class="thead-light">
+					<table class="table ci-table table-striped">
+						<thead class="thead-dark">
 							<tr>
 								<th scope="col">Request No</th>
 								<th scope="col">Leave Type</th>

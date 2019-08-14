@@ -125,7 +125,7 @@
 				
 				<div class="table-responsive">
 					<table id="timesheet-datatable" class="table ci-table table-striped w-100">
-						<thead class="thead-light">
+						<thead class="thead-dark">
 							<tr>
 								<th scope="col" style="width:10%">Date</th>
 								<th scope="col" style="width:20%">Project Activity</th>
