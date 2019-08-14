@@ -14,7 +14,7 @@
 					echo isset($row['user_emp_id']) ? ' (Emp ID '.$row['user_emp_id'].') ': '';
 					echo isset($row['user_email']) ? '; '.$row['user_email']: '';
 				?>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title=""> <i class="fa fa-fw fa-list"></i> Manage Employees</a>
+				
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -26,6 +26,8 @@
 						echo $html_alert_ui;
 					}
 				?>
+
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title=""> <i class="fa fa-fw fa-list"></i> Manage Employees</a>
 
 				
 				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>

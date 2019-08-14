@@ -3,9 +3,8 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
-			<div class="card-header">
+			<div class="card-header h6">
 				Data Table
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="float-right btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-fw fa-plus"></i> Add New</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -17,6 +16,9 @@
 						echo $html_alert_ui;
 					}
 				?>
+			<div class="ci-link-group">	
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-fw fa-plus"></i> Add New</a>
+			</div>
 
 			<div class="table-responsive">
 			<table id="holiday-datatable" class="table ci-table table-striped">

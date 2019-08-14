@@ -8458,7 +8458,7 @@ body.login {
 
 .page-title {
   font-size: 1.25rem;
-  margin-bottom: .75rem;
+  margin-bottom: 1rem;
 }
 
 .scrollup {
@@ -8922,6 +8922,10 @@ table.ci-table.dataTable {
   text-decoration: none;
 }
 
+.ci-card .card-header.h6 {
+  font-weight: 400;
+}
+
 @media (max-width: 576px) {
   .navbar-collapse {
     max-height: 340px;
@@ -9139,4 +9143,10 @@ select.form-control.dob-inline {
 
 .form-label-group .form-control {
   height: auto;
+}
+
+.ci-link-group {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: flex-end !important;
 }

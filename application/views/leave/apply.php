@@ -6,9 +6,8 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
-			<div class="card-header">
+			<div class="card-header h6">
 				Form
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="float-right btn btn-sm btn-outline-secondary" > <i class="fa fa-fw fa-clock-o"></i> Leave History</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -20,6 +19,9 @@
 						echo $html_alert_ui;
 					}
 				?>
+				<div class="ci-link-group">
+					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="btn btn-sm btn-outline-secondary" > <i class="fa fa-fw fa-clock-o"></i> View Leave History</a>
+				</div>
 
 				<div class="form-text mb-4 text-muted">
 					<ul>
@@ -40,6 +42,8 @@
 					</li>
 					</ul>
 				</div>
+				
+
 				<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => 'ci-form-leave',)); ?>
 				<?php echo form_hidden('form_action', 'add'); ?>
 				<div class="form-row">

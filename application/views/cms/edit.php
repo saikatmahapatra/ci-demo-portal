@@ -7,10 +7,7 @@ $row = $rows[0];
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
-			<div class="card-header">
-				Data Table
-				<a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="float-right btn btn-sm btn-outline-secondary" title=""> <i class="fa fa-fw fa-list"></i> View All</a>
-			</div><!--/.card-header-->
+			<div class="card-header h6">Form</div><!--/.card-header-->
 
 			<div class="card-body">
 				<?php

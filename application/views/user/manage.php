@@ -3,13 +3,9 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
-			<div class="card-header">
+			<div class="card-header h6">
 				Data Table
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="float-right btn btn-sm btn-outline-success" data-toggle="tooltip" title="Create new user account"> <i class="fa fa-fw fa-plus"></i> Add New</a>
-				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'float-right mx-2', 'name' => 'download_data')); ?>
-					<input type="hidden" name="form_action" value="download">
-					<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download data as excel"> <i class="fa fa-fw fa-download" aria-hidden="true"></i> Download</button>
-				<?php echo form_close(); ?>
+				
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -22,12 +18,14 @@
 					echo $html_alert_ui;
 				}
 				?>
-				
-				<div class="table-responsive">
-					<div class="status-icon-group status-icon-justify mb-3">
-						<span class=""><i class="fa fa-fw fa-circle-o text-success" aria-hidden="true"></i> Active</span>
-						<span class=""><i class="fa fa-fw fa-circle-o text-warning" aria-hidden="true"></i> Inactive</span>
-					</div><!--/.status-icon-group status-icon-justify-->
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="btn btn-sm btn-outline-primary card-link" data-toggle="tooltip" title="Create new user account"> <i class="fa fa-fw fa-plus"></i> Add New</a>
+
+				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'btn p-0', 'name' => 'download_data')); ?>
+					<input type="hidden" name="form_action" value="download">
+					<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download data as excel"> <i class="fa fa-fw fa-download" aria-hidden="true"></i> Download</button>
+				<?php echo form_close(); ?>
+
+				<div class="table-responsive mt-2">
 
 					<table id="user-datatable" class="table ci-table table-striped">
 						<thead class="thead-light">

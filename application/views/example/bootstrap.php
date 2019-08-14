@@ -134,7 +134,7 @@
 	<div class="row">
 		<div class="col-md-3">
 			<div class="card">
-				<h5 class="card-header">Card Header</h5>
+				<h5 class="card-header h6">Card Header</h5>
 				<div class="card-body">
 					<h5 class="card-title">Card title</h5>
 					<p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Click here for <a href="#" class="">more details</a></p>                        
@@ -145,7 +145,7 @@
 		
 		<div class="col-md-3">
 			<div class="card">
-				<h5 class="card-header">Featured</h5>
+				<h5 class="card-header h6">Featured</h5>
 				<div class="card-body">
 					<h5 class="card-title">Card title</h5>
 					<p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -180,7 +180,7 @@
 	<h2 class="h3 mb-3 font-weight-normal mt-4">Accordion</h2>
 	<div id="accordion">
 		<div class="card">
-			<div class="card-header" id="heading_1">
+			<div class="card-header h6" id="heading_1">
 				<h5 class="mb-0">
 					<button class="btn btn-link btn-block" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" aria-controls="collapse_1">Heading #1</button>
 				</h5>
@@ -193,7 +193,7 @@
 			</div>
 		</div>
 		<div class="card">
-			<div class="card-header" id="heading_2">
+			<div class="card-header h6" id="heading_2">
 				<h5 class="mb-0">
 					<button class="btn btn-link collapsed btn-block" data-toggle="collapse" data-target="#collapse_2" aria-expanded="false" aria-controls="collapse_2">Heading #2</button>
 				</h5>
@@ -205,7 +205,7 @@
 			</div>
 		</div>
 		<div class="card">
-			<div class="card-header" id="heading_3">
+			<div class="card-header h6" id="heading_3">
 				<h5 class="mb-0">
 					<button class="btn btn-link collapsed btn-block" data-toggle="collapse" data-target="#collapse_3" aria-expanded="false" aria-controls="collapse_3">Heading #3</button>
 				</h5>

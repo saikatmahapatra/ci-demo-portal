@@ -55,7 +55,13 @@ class Project extends CI_Controller {
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		
 		//Pagination
-		 $this->load->library('pagination');
+         $this->load->library('pagination');
+         
+         $this->data['arr_status_flag'] = array(
+            'Y'=>array('text'=>'Active', 'css'=>'text-success'),
+            'N'=>array('text'=>'Inactive', 'css'=>'text-warning'),
+            'A'=>array('text'=>'Archived', 'css'=>'text-danger')
+        );
 		
     }
 
@@ -94,15 +100,7 @@ class Project extends CI_Controller {
             
             $row[] = $result['project_name'];
             $row[] = $result['project_number'];
-            //$row[] = $result['project_desc'];            
-            $status_indicator = 'text-secondary';            
-            if($result['project_status'] == 'Y'){
-                $status_indicator = 'text-success';
-            }
-            if($result['project_status'] == 'N'){
-                $status_indicator = 'text-warning';
-            }
-            $row[] = '<i class="fa fa-fw fa-circle-o '.$status_indicator.'" aria-hidden="true"></i>';
+            $row[] = '<i class="fa fa-fw fa-bookmark-o '.$this->data['arr_status_flag'][$result['project_status']]['css'].'" aria-hidden="true"></i> '.$this->data['arr_status_flag'][$result['project_status']]['text'];
             //add html for action
             $action_html = '';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' .$result['id']), '<i class="fa fa-fw fa-edit" aria-hidden="true"></i>', array(
@@ -253,15 +251,7 @@ class Project extends CI_Controller {
             $no++;
             $row = array();
             $row[] = $result['task_activity_name'];
-            //$row[] = $result['project_desc'];            
-            $status_indicator = 'text-secondary';            
-            if($result['task_activity_status'] == 'Y'){
-                $status_indicator = 'text-success';
-            }
-            if($result['task_activity_status'] == 'N'){
-                $status_indicator = 'text-warning';
-            }
-            $row[] = '<i class="fa fa-fw fa-circle-o '.$status_indicator.'" aria-hidden="true"></i>';
+            $row[] = '<i class="fa fa-fw fa-bookmark-o '.$this->data['arr_status_flag'][$result['task_activity_status']]['css'].'" aria-hidden="true"></i> '.$this->data['arr_status_flag'][$result['task_activity_status']]['text'];
             //add html for action
             $action_html = '';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_activity/' .$result['id']), '<i class="fa fa-fw fa-edit" aria-hidden="true"></i>', array(

@@ -3,11 +3,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
-			<div class="card-header">
-				Profile Image
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Back to Profile"> <i class="fa fa-fw fa-chevron-left"></i> Back</a>
-			</div><!--/.card-header-->
-
+			<div class="card-header h6">Profile Photo</div><!--/.card-header-->
 			<div class="card-body">
 				<?php
 					// Show server side flash messages

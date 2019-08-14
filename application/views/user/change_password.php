@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-md-5">
 		<div class="card ci-card">
-			<div class="card-header">
+			<div class="card-header h6">
 				Change Password Form
 			</div><!--/.card-header-->
 

@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-md-5 mb-3">
 		<div class="card ci-card">
-			<div class="card-header">
+			<div class="card-header h6">
 				Form
 			</div><!--/.card-header-->
 
@@ -51,7 +51,7 @@
 
 		<div class="col-md-7 mb-3">
 			<div class="card ci-card">
-				<div class="card-header">Data Table</div><!--/.card-header-->
+				<div class="card-header h6">Data Table</div><!--/.card-header-->
 
 				<div class="card-body">
 					<div class="table-responsive">

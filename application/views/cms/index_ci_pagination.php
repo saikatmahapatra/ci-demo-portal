@@ -1,7 +1,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-<div class="row">
-	<div class="col-md-12">
+<th class="row">
+	<th class="col-md-12">
 		<?php
 		// Show server side flash messages
 		if (isset($alert_message)) {
@@ -11,17 +11,11 @@
 		}
 		?>
 		
-		<div class="status-icon-group status-icon-justify row my-2 px-3">
-			<div class="col-md-8">
-			<span class="mx-2"><i class="fa fa-fw fa-circle-o text-success" aria-hidden="true"></i> Published Content</span>
-			<span class="mx-2"><i class="fa fa-fw fa-circle-o text-warning" aria-hidden="true"></i> Unpublished Content</span>
-			</div>
-			<div class="col-md-4 text-right">
+		<div class="ci-link-group">
 			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-fw fa-plus"></i> Add New</a>
-			</div>		
-		</div><!--/.status-icon-group status-icon-justify-->	
+		</div>	
 			
-		<div class="table-responsive">
+		<th class="table-responsive">
 			<table class="table table-striped">
 				<thead class="thead-light">
 					<tr>
@@ -61,9 +55,9 @@
 				</tfoot>
 			</table>
 			
-		</div><!--/.table-responsive-->
+		</th><!--/.table-responsive-->
 		<?php echo $pagination_link; ?>
 			
 		
-	</div>
-</div><!--/.row-->
+	</th>
+</th><!--/.row-->

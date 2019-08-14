@@ -25,8 +25,8 @@ $row = $data_rows[0];
 
 					<dl class="row">
 					<dt class="col-md-2">Leave Status</dt>
-					<dd class="col-md-4 font-weight-bold">
-					<span class=""><i class="fa fa-fw fa-circle-o <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>
+					<dd class="col-md-4">
+					<span class=""><i class="fa fa-fw fa-bookmark-o <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>
 					<span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>"> <?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
 					</dd>
 					<dt class="col-md-2">Leave Request No</dt>
@@ -227,7 +227,7 @@ $row = $data_rows[0];
 						</div>
 					</div>			
           </div><!--/.row .ci-wizard-->
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->uri->segment(5).'/'.$this->uri->segment(6));?>" class="btn btn-sm btn-outline-secondary"><i class="fa fa-fw fa-chevron-left"></i> Back</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->uri->segment(5).'/'.$this->uri->segment(6));?>" class="btn btn-link btn-sm btn-back"><i class="fa fa-fw fa-chevron-left"></i> Back</a>
 			</div><!--./card-body-->
 			<!--<div class="card-footer"></div>--><!--/.card-footer-->
 		</div><!--/.card-->

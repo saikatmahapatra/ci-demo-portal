@@ -9,7 +9,7 @@ $row = $data_rows[0];
 	</div>
 	<div class="card-body">
 		<?php echo isset($row['pagecontent_text']) ? $row['pagecontent_text'] : '';?>
-		<a href="<?php echo $redirect_back_url; ?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-fw fa-chevron-left" aria-hidden="true"></i> Back</a>
+		<a href="<?php echo $redirect_back_url; ?>" class="btn btn-link btn-sm btn-back"><i class="fa fa-fw fa-chevron-left" aria-hidden="true"></i> Back</a>
 	</div><!--/.card-body-->
 	<div class="card-footer">
 			

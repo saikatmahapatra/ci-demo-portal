@@ -3,9 +3,8 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
-			<div class="card-header">
+			<div class="card-header h6">
 				Data Table
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>" class="float-right btn btn-sm btn-outline-secondary" title="Apply Leave"> <i class="fa fa-fw fa-send-o"></i> Apply Leave</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -17,7 +16,10 @@
 						echo $html_alert_ui;
 					}
 				?>
-				
+				<div class="ci-link-group">
+					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>" class="btn btn-sm btn-outline-secondary" title="Apply Leave"> <i class="fa fa-fw fa-send-o"></i> Apply Leave</a>
+				</div>
+
 				<div class="table-responsive">
 					<table class="table table-striped">
 						<thead class="thead-light">
@@ -44,7 +46,7 @@
 									<td><?php echo $this->common_lib->display_date($row['leave_to_date']);?></td>
 									<td><?php echo $row['applied_for_days_count'].' day(s)';?></td>
 									<td>
-										<!-- <span class="small"><i class="fa fa-fw fa-circle-o <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>  -->
+										<!-- <span class="small"><i class="fa fa-fw fa-bookmark-o <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>  -->
 										<span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>">  <?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
 									</td>
 									<!-- <td><?php echo isset($row['leave_reason']) ? word_limiter($row['leave_reason'], 5) : '';?></td> -->

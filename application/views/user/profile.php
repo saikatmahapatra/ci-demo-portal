@@ -86,7 +86,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-lg-12">
-		<div class="card ci-dl">
+		<div class="card ci-card ci-dl">
 			<div class="card-header h6">
 				<i class="fa fa-fw fa-user-circle " aria-hidden="true"></i>
 				<?php echo isset($row['user_emp_id']) ? 'Employee Code - UEIPL/'.$row['user_emp_id'] : ''; ?>
@@ -133,11 +133,16 @@
 						</div>
 						<div class="">
 							<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
-							<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>        
+							<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>
 						</div>
 						<div class="">Employee ID - <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
 						<div class="">Designation - <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
 						<div class="">Department - <?php echo isset($row['department_name']) ? $row['department_name'] : ''; ?></div>
+
+						<?php if($is_self_account == true) { ?>
+							<a class="btn btn-sm btn-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Edit Basic Information</a>
+						<?php } ?>
+						
 					</div><!--/.col-md-3-->
 					<div class="col-lg-9">
 						<nav>
@@ -177,9 +182,7 @@
 							<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="nav-1">
 								<div class="row mt-3">
 									<div class="col-md-12">
-									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-secondary btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><i class="fa fa-fw fa-edit" aria-hidden="true"></i> Edit</a>
-										<?php } ?>
+										
 										<dl class="row">
 											<dt class="col-md-2">Name</dt>
 											<dd class="col-md-4">
@@ -232,7 +235,7 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New Address</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 										<?php } ?>
 
 										<div class="table-responsive-sm">
@@ -287,7 +290,7 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New Education</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 										<?php } ?>
 											<div class="table-responsive-sm">
 												<table class="table table-striped">
@@ -334,7 +337,7 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New Work Experience</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 									<?php } ?>
 											<div class="table-responsive-sm">
 												<table class="table table-striped">
@@ -386,7 +389,7 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New Account</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 									<?php } ?>
 										<?php //print_r($bank_details);?>
 										<?php $uni = isset($user_national_identifiers) ? $user_national_identifiers[0] : ''; ?>
@@ -395,15 +398,6 @@
 											<dt class="col-md-2">PAN No</dt>
 											<dd class="col-md-4">
 												<?php echo isset($uni['user_pan_no']) ? $uni['user_pan_no'] : '-';?>
-											</dd>
-											<dt class="col-md-2">Aadhar No</dt>
-											<dd class="col-md-4">
-												<?php echo isset($uni['user_aadhar_no']) ? $uni['user_aadhar_no'] : '-';?>
-											</dd>
-										
-											<dt class="col-md-2">Passport No</dt>
-											<dd class="col-md-4">
-												<?php echo isset($uni['user_passport_no']) ? $uni['user_passport_no'] : '-';?>
 											</dd>
 											<dt class="col-md-2">UAN No (PF)</dt>
 											<dd class="col-md-4">
@@ -475,7 +469,7 @@
 								<div class="row mt-3">
 									<div class="col-md-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New Emergency Contact</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 										<?php } ?>
 											<div class="table-responsive-sm">
 												<table class="table table-striped">

@@ -197,7 +197,7 @@ class User extends CI_Controller {
             $row[] = $result['user_email'];
             $row[] = $result['user_phone1'];
             $row[] = $result['designation_name'];
-            $row[] = '<span class=""><i class="fa fa-fw fa-circle-o '.$status_indicator.'" aria-hidden="true"></i></span>';
+            $row[] = '<span class=""><i class="fa fa-fw fa-bookmark-o '.$status_indicator.'" aria-hidden="true"></i></span>';
             $action_html = '';
             
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-fw fa-edit" aria-hidden="true"></i>', array(
@@ -1844,10 +1844,8 @@ class User extends CI_Controller {
             if ($this->validate_user_bank_account_form_data('add') == true) {
                 $postdata_user = array(					
                     'user_pan_no' => strtoupper($this->input->post('user_pan_no')),
-                    'user_aadhar_no' => $this->input->post('user_aadhar_no'),                    
-                    'user_passport_no' => strtoupper($this->input->post('user_passport_no')), 
                     'user_uan_no' => $this->input->post('user_uan_no')
-                );                
+                );
                 $where = array('id' => $this->sess_user_id);
                 $res = $this->user_model->update($postdata_user, $where);
 
@@ -1889,10 +1887,8 @@ class User extends CI_Controller {
             if ($this->validate_user_bank_account_form_data('edit') == true) {
                 $postdata_user = array(					
                     'user_pan_no' => strtoupper($this->input->post('user_pan_no')),
-                    'user_aadhar_no' => $this->input->post('user_aadhar_no'),                    
-                    'user_passport_no' => strtoupper($this->input->post('user_passport_no')), 
                     'user_uan_no' => $this->input->post('user_uan_no')
-                );                
+                );
                 $where = array('id' => $this->sess_user_id);
                 $res = $this->user_model->update($postdata_user, $where);
 
@@ -1921,9 +1917,9 @@ class User extends CI_Controller {
         if($mode == 'add'){
             $this->form_validation->set_rules('account_uses', 'account for', 'required|callback_check_is_account_uses_exists'); 
         }  
-        $this->form_validation->set_rules('user_pan_no', 'PAN no', 'required|regex_match[/^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/]'); 
+        $this->form_validation->set_rules('user_pan_no', 'PAN no', 'regex_match[/^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/]'); 
         //$this->form_validation->set_rules('user_aadhar_no', 'Aadhar no', 'required'); 
-        $this->form_validation->set_rules('user_passport_no', 'passport', 'alpha_numeric'); 
+        //$this->form_validation->set_rules('user_passport_no', 'passport', 'alpha_numeric'); 
         $this->form_validation->set_rules('user_uan_no', 'UAN no', 'numeric'); 
         
         $this->form_validation->set_rules('bank_id', 'bank selection', 'required'); 

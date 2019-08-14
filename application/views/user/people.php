@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
-			<div class="card-header">
+			<div class="card-header h6">
 				Search Employees
 			</div><!--/.card-header-->
 

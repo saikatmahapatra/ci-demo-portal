@@ -4,19 +4,8 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
-			<div class="card-header">
+			<div class="card-header h6">
 				Search
-				<?php if(isset($data_rows) && sizeof($data_rows)>0){ ?>
-					<?php echo form_open(current_url(), array('method' => 'GET', 'class' => 'float-right', 'name' => 'download_data')); ?>
-						<input type="hidden" name="form_action" value="search">
-						<input type="hidden" name="form_action_primary" value="download">
-						<input type="hidden" name="q_emp" value="<?php echo $this->input->get('q_emp');?>">
-						<input type="hidden" name="q_project" value="<?php echo $this->input->get('q_project');?>">
-						<input type="hidden" name="from_date" value="<?php echo $this->input->get('from_date');?>">
-						<input type="hidden" name="to_date" value="<?php echo $this->input->get('to_date');?>">
-						<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download the data as excel"> <i class="fa fa-fw fa-download" aria-hidden="true"></i> Download</button>
-					<?php echo form_close(); ?>
-				<?php } ?>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -65,6 +54,18 @@
 					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Search','class' => 'btn btn-primary'));?>
 					<?php echo form_button(array('name' => 'reset_btn','type' => 'reset','content' => 'Reset','class' => 'btn btn-secondary','id'=>'reset_timesheet_form'));?>
 				<?php echo form_close(); ?>
+
+				<?php if(isset($data_rows) && sizeof($data_rows)>0){ ?>
+					<?php echo form_open(current_url(), array('method' => 'GET', 'class' => 'mt-2', 'name' => 'download_data')); ?>
+						<input type="hidden" name="form_action" value="search">
+						<input type="hidden" name="form_action_primary" value="download">
+						<input type="hidden" name="q_emp" value="<?php echo $this->input->get('q_emp');?>">
+						<input type="hidden" name="q_project" value="<?php echo $this->input->get('q_project');?>">
+						<input type="hidden" name="from_date" value="<?php echo $this->input->get('from_date');?>">
+						<input type="hidden" name="to_date" value="<?php echo $this->input->get('to_date');?>">
+						<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download the data as excel"> <i class="fa fa-fw fa-download" aria-hidden="true"></i> Download</button>
+					<?php echo form_close(); ?>
+				<?php } ?>
 				
 				<div class="table-responsive mt-3">
 					<?php /*if(isset($data_rows) && sizeof($data_rows)>0){ ?>

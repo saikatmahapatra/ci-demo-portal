@@ -3,9 +3,8 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
-			<div class="card-header">
+			<div class="card-header h6">
 				Form
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title=""> <i class="fa fa-fw fa-list"></i> Manage Employees</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
