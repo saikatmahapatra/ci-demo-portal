@@ -5,7 +5,7 @@
 <div class="row <?php echo ($display_reminder_modal == 'false') ? 'd-none' : ''; ?>" id="userReminderModal" data-display="<?php echo $display_reminder_modal; ?>">
     <div class="col-md-12">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong><?php echo $this->common_lib->get_greetings(); ?>!</strong> You should add these details to your pofile - <?php echo implode(', ', $profile_msg);?>        
+        <strong><?php echo $this->common_lib->get_greetings(); ?>!</strong> You can improve your profile details by adding <?php echo implode(', ', $profile_msg);?>
         <a href="<?php echo base_url('user/profile');?>" class="btn btn-sm btn-outline-secondary">Update Now</a>
         <button type="button" class="close btn_remind_later" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
