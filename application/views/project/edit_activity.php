@@ -32,7 +32,7 @@ $row = $rows[0];
 					</div>		
 					<div class="form-row">
 						<div class="form-group col-md-12">									
-						<label for="task_activity_status" class="">Display Status <span class="required">*</span></label>				
+						<label for="task_activity_status" class="">Status <span class="required">*</span></label>				
 								<div class="">
 									<div class="custom-control custom-radio custom-control-inline">
 										<?php
@@ -40,7 +40,7 @@ $row = $rows[0];
 
 											echo form_radio(array('name' => 'task_activity_status','value' => 'Y','id' => 'Y','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('task_activity_status', 'Y'));
 										?>
-										<label class="custom-control-label" for="Y">Publish</span></label>
+										<label class="custom-control-label" for="Y">Active</span></label>
 									</div>
 									
 									<div class="custom-control custom-radio custom-control-inline">
@@ -49,7 +49,7 @@ $row = $rows[0];
 
 											echo form_radio(array('name' => 'task_activity_status', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('task_activity_status', 'N'));
 										?>
-										<label class="custom-control-label" for="N">Unpublish</span></label>
+										<label class="custom-control-label" for="N">Inactive</span></label>
 									</div>								
 								</div>
 								<?php echo form_error('task_activity_status'); ?>

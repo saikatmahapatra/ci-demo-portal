@@ -43,14 +43,14 @@
 
 					<div class="form-row">
 						<div class="form-group col-md-12">									
-							<label for="project_status" class="">Display Status <span class="required">*</span></label>				
+							<label for="project_status" class="">Status <span class="required">*</span></label>				
 							<div class="">
 								<div class="custom-control custom-radio custom-control-inline">
 									<?php
 										$radio_is_checked = $this->input->post('project_status') == 'Y';
 										echo form_radio(array('name' => 'project_status','value' => 'Y','id' => 'Y','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('project_status', 'Y'));
 									?>
-									<label class="custom-control-label" for="Y">Publish</span></label>
+									<label class="custom-control-label" for="Y">Active</span></label>
 								</div>
 								
 								<div class="custom-control custom-radio custom-control-inline">
@@ -58,7 +58,7 @@
 										$radio_is_checked = $this->input->post('project_status') == 'N';
 										echo form_radio(array('name' => 'project_status', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('project_status', 'N'));
 									?>
-									<label class="custom-control-label" for="N">Unpublish</span></label>
+									<label class="custom-control-label" for="N">Inactive</span></label>
 								</div>								
 							</div>
 							<small class="form-text text-muted">Unpublished projects will not appear at timesheet project list dropdown.</small>

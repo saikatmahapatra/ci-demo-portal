@@ -52,7 +52,7 @@ $row = $rows[0];
 
 				<div class="form-row">
 				<div class="form-group col-md-12">									
-					<label for="pagecontent_status" class="">Display Status <span class="required">*</span></label>
+					<label for="pagecontent_status" class="">Status <span class="required">*</span></label>
 						<?php //echo form_dropdown('pagecontent_status', array('Y'=>'Yes','N'=>'No'), (isset($_POST['pagecontent_status']) ? set_value('pagecontent_status') : $row['pagecontent_status']), array('class' => 'form-control')); ?>
 							<!--<div class="">-->
 								<div class="custom-control custom-radio custom-control-inline">
@@ -61,7 +61,7 @@ $row = $rows[0];
 
 										echo form_radio(array('name' => 'pagecontent_status','value' => 'Y','id' => 'Y','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('pagecontent_status', 'Y'));
 									?>
-									<label class="custom-control-label" for="Y">Publish</span></label>
+									<label class="custom-control-label" for="Y">Active</span></label>
 								</div>
 								
 								<div class="custom-control custom-radio custom-control-inline">
@@ -70,7 +70,7 @@ $row = $rows[0];
 
 										echo form_radio(array('name' => 'pagecontent_status', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('pagecontent_status', 'N'));
 									?>
-									<label class="custom-control-label" for="N">Unpublish</span></label>
+									<label class="custom-control-label" for="N">Inactive</span></label>
 								</div>								
 							<!--</div>-->
 					</div>
