@@ -27,15 +27,15 @@
                 <ul class="list-group list-group-flush">
                 <?php foreach($data_rows as $key=>$row) { ?>
                     <li class="list-group-item">
-                        <div class="subject-title"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a></div>
+                        <div class="subject-title"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></a></div>
                         <div class="text-muted small">
-                            <?php echo $content_type[$row['pagecontent_type']]['text']; ?>
+                            <?php echo $content_type[$row['content_type']]['text']; ?>
                             <?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
                             <?php echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>
-                            <?php echo $this->common_lib->display_date($row['pagecontent_created_on'],true,null,'d-M-Y h:i:s a'); ?>
+                            <?php echo $this->common_lib->display_date($row['content_created_on'],true,null,'d-M-Y h:i:s a'); ?>
                         </div>
                         <div class="mb-0 lh-125" style="max-height: 120px; overflow: hidden;">
-                            <?php echo isset($row['pagecontent_text']) ? ($this->common_lib->remove_empty_p($row['pagecontent_text'])) : '';?>
+                            <?php echo isset($row['content_text']) ? ($this->common_lib->remove_empty_p($row['content_text'])) : '';?>
                         </div>
                     </li>
                 <?php }  ?>

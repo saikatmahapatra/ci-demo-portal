@@ -32,10 +32,10 @@
 					foreach($data_rows as $row){
 						?>
 						<tr>
-							<td><?php echo $row['id'].' - '.$row['pagecontent_title'];?></td>
-							<td><?php echo $row['pagecontent_type'];?></td>
-							<td><?php echo $row['pagecontent_type'];?></td>
-							<td><?php echo $row['pagecontent_status'];?></td>
+							<td><?php echo $row['id'].' - '.$row['content_title'];?></td>
+							<td><?php echo $row['content_type'];?></td>
+							<td><?php echo $row['content_type'];?></td>
+							<td><?php echo $row['content_status'];?></td>
 							<td><a href="#">edit</a></td>
 							
 						</tr>

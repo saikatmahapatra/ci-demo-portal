@@ -20,18 +20,19 @@ function domReady() {
     $('.cms-datepicker').datepicker({
         format: "dd-mm-yyyy",
         weekStart: 1,
+        startDate: '0d',
         autoclose: true
     });
 
     // Classic CK Editor
-    CKEDITOR.replace('pagecontent_text', {
+    CKEDITOR.replace('content_text', {
         filebrowserBrowseUrl: SITE_URL + 'assets/vendors/ckfinder/ckfinder.html',
         filebrowserImageBrowseUrl: SITE_URL + 'assets/vendors/ckfinder/ckfinder.html?type=Images',
         filebrowserUploadUrl: SITE_URL + 'assets/vendors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
         filebrowserImageUploadUrl: SITE_URL + 'assets/vendors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
     });
 
-    //CKEDITOR.replace('pagecontent_text');
+    //CKEDITOR.replace('content_text');
 
 }
 
