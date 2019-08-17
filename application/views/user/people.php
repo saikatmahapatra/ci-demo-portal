@@ -71,7 +71,7 @@
 						
 
 						<div class="col-md-4">
-							<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile/'.$row['id']);?>" data-link-type="user-profile-card">
+							<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile/'.$row['id']);?>" class="user-profile-card-people">
 							<div class="media border rounded my-2 p-2">
 								<img class="align-self-center mr-3 rounded dp-sm" src="<?php echo base_url($img_src);?>">
 								<div class="media-body">
@@ -80,8 +80,8 @@
 									<?php
 									$email_id = explode('@',$row['user_email']);
 									?>
-									<div class="" style="word-break: break-all;"><i class="fa fa-fw fa-envelope-open-o" aria-hidden="true"></i> <a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>" title="<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
-									<div class=""><i class="fa fa-fw fa-phone" aria-hidden="true"></i> <a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
+									<div class="small" style="word-break: break-all;"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>" title="<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
+									<div class="small"><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
 								</div>
 							</div>
 							</a>

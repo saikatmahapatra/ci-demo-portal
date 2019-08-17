@@ -309,7 +309,8 @@ body.login {
 }
 
 .table.ci-table {
-    thead th {
+    thead th,
+    tfoot th {
         font-weight: 700;
         font-size: 80%;
     }
@@ -762,4 +763,9 @@ select.form-control.dob-inline {
         font-weight: 700;
         font-size: 80%;
     }
+}
+
+.user-profile-card-people {
+    color: inherit;
+    text-decoration: none !important;
 }

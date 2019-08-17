@@ -8718,7 +8718,8 @@ body.login {
   border-collapse: collapse !important;
 }
 
-.table.ci-table thead th {
+.table.ci-table thead th,
+.table.ci-table tfoot th {
   font-weight: 700;
   font-size: 80%;
 }
@@ -9164,4 +9165,9 @@ select.form-control.dob-inline {
   color: #6c757d;
   font-weight: 700;
   font-size: 80%;
+}
+
+.user-profile-card-people {
+  color: inherit;
+  text-decoration: none !important;
 }
