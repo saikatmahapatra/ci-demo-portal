@@ -18,41 +18,38 @@
 					}
 				?>
 				
-				<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'ci-form','name' => '','id' => 'timesheet-search-form')); ?>
+				<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'ci-form form-inline','name' => '','id' => 'timesheet-search-form')); ?>
 					<?php echo form_hidden('form_action', 'search'); ?>
-					<div class="form-row">
-						<div class="form-group col-md-4 ci-select2">
-							<label for="q_emp" class="">Employee</label>
-							<?php echo form_dropdown('q_emp', $user_arr, $this->input->get_post('q_emp'),array('class' => 'form-control select2-control', 'id'=>'q_emp')); ?> 
-							<?php echo form_error('q_emp'); ?>
-						</div>
-						
-						<div class="form-group col-md-4 ci-select2">
-							<label for="q_project" class="">Project</label>
-							<?php echo form_dropdown('q_project', $project_arr, $this->input->get_post('q_project'),array('class' => 'form-control select2-control','id'=>'q_project')); ?> 
-							<?php echo form_error('q_project'); ?>
-						</div>
 
-						<div class="form-group col-md-2">
-							<label for="from_date" class="">From <span class="required">*</span></label>
-							<?php 
-								$first_day_this_month = date('01-m-Y');
-								$last_day_this_month  = date('t-m-Y');
-							?>
-							<?php echo form_input(array('name' => 'from_date','value' => (isset($_REQUEST['from_date']) ? $_REQUEST['from_date'] : $first_day_this_month),'id' => 'from_date','class' => 'form-control report-datepicker', 'placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
-							<?php echo form_error('from_date'); ?>
-						</div>
+					<div class="form-group mb-2 mr-sm-2 ci-select2">
+						<label for="q_emp" class="sr-only">Employee </label>
+						<?php echo form_dropdown('q_emp', $user_arr, $this->input->get_post('q_emp'),array('class' => 'form-control select2-control', 'id'=>'q_emp')); ?> 
+						<?php echo form_error('q_emp'); ?>
+					</div>
 					
-						<div class="form-group col-md-2">									
-							<label for="to_date" class="">To <span class="required">*</span></label>
-							<?php echo form_input(array('name' => 'to_date','value' => (isset($_REQUEST['to_date']) ? $_REQUEST['to_date'] : $last_day_this_month),'class' => 'form-control report-datepicker','id' => 'to_date','placeholder' => 'dd-mm-yyyy','readonly'=>true));?>
-							<?php echo form_error('to_date'); ?>
-						</div>
+					<div class="form-group mb-2 mr-sm-2 ci-select2">
+						<label for="q_project" class="sr-only">Project </label>
+						<?php echo form_dropdown('q_project', $project_arr, $this->input->get_post('q_project'),array('class' => 'form-control select2-control','id'=>'q_project')); ?> 
+						<?php echo form_error('q_project'); ?>
+					</div>
 
-
-					</div>					
-					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Search','class' => 'btn btn-primary'));?>
-					<?php echo form_button(array('name' => 'reset_btn','type' => 'reset','content' => 'Reset','class' => 'btn btn-secondary','id'=>'reset_timesheet_form'));?>
+					<div class="form-group mb-2 mr-sm-2">
+						<label for="from_date" class="sr-only">From Date <span class="required">*</span></label>
+						<?php 
+							$first_day_this_month = date('01-m-Y');
+							$last_day_this_month  = date('t-m-Y');
+						?>
+						<?php echo form_input(array('name' => 'from_date','value' => (isset($_REQUEST['from_date']) ? $_REQUEST['from_date'] : $first_day_this_month),'id' => 'from_date','class' => 'form-control report-datepicker', 'placeholder' => 'From Date','readonly'=>true));?>
+						<?php echo form_error('from_date'); ?>
+					</div>
+				
+					<div class="form-group mb-2 mr-sm-2">
+						<label for="to_date" class="sr-only">To Date <span class="required">*</span></label>
+						<?php echo form_input(array('name' => 'to_date','value' => (isset($_REQUEST['to_date']) ? $_REQUEST['to_date'] : $last_day_this_month),'class' => 'form-control report-datepicker','id' => 'to_date','placeholder' => 'To Date','readonly'=>true));?>
+						<?php echo form_error('to_date'); ?>
+					</div>
+					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Search','class' => 'btn btn-primary mb-2 mr-2'));?>
+					<?php echo form_button(array('name' => 'reset_btn','type' => 'reset','content' => 'Reset','class' => 'btn btn-secondary mb-2','id'=>'reset_timesheet_form'));?>
 				<?php echo form_close(); ?>
 
 				<?php if(isset($data_rows) && sizeof($data_rows)>0){ ?>
