@@ -51,8 +51,8 @@ class User extends CI_Controller {
 		$this->data['arr_departments'] = $this->user_model->get_department_dropdown();
 		$this->data['arr_user_title'] = array(''=>'Select Title','Mr.'=>'Mr.','Mrs.'=>'Mrs.','Dr.'=>'Dr.','Ms.'=>'Ms.');
         $this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-', 'NA'=>'Unknown');
-        $this->data['bank_ac_type'] = array('SB'=>'Savings','CU'=>'Current');
-        $this->data['account_uses'] = array('SAL'=>'Salary Credit','REI'=>'Reimbursement');
+        $this->data['bank_ac_type'] = array('SB'=>'Savings Account','CU'=>'Current Account');
+        $this->data['account_uses'] = array('SAL'=>'Salary Credit Account','REI'=>'Reimbursement Account');
         $this->data['arr_gender'] = array('M'=>'Male','F'=>'Female');
 
         $this->data['arr_upload_file_type_name'] = array(

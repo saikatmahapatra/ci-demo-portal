@@ -312,46 +312,42 @@
 									<?php if($is_self_account == true) { ?>
 										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 									<?php } ?>
-											<div class="table-responsive-sm">
-												<table class="table ci-table table-striped">
-													<thead class="thead-dark">
-														<tr>
-															<th scope="col">Employer</th>
-															<th scope="col">Designation/Role</th>
-															<th scope="col">From</th>
-															<th scope="col">To</th>
-															<?php if($is_self_account == true) { ?>
-															<th scope="col"></th>
+
+											<div class="user-profile-section">
+												<div class="section-heading">
+													<?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?>
+													
+												</div>
+												<div class="">
+													United Exploration India Pvt. Ltd.
+												</div>
+												<div class="text-muted">
+													<?php echo isset($row['user_doj']) ? ' '.$this->common_lib->display_date($row['user_doj'],NULL, NULL, 'd/m/Y').' to ' : '-'; ?>
+													<?php echo isset($row['user_dor']) ? ' '.$this->common_lib->display_date($row['user_dor'],NULL, NULL, 'd/m/Y') : 'till date'; ?>
+												</div>
+											</div>
+											
+											<?php if(isset($job_exp)){
+												foreach($job_exp as $key=>$row){
+												?>
+												<div class="user-profile-section">
+														<div class="section-heading">
+															<?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?>
+															<?php if($is_self_account == true) { ?>		
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fa fa-fw  fa-pencil" aria-hidden="true"></i> Edit</a>
 															<?php } ?>
-														</tr>
-														<tr>
-															<td>United Exploration India Pvt. Ltd.</td>
-															<td><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></td>
-															<td><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></td>
-															<td><?php echo isset($row['user_dor']) ? $this->common_lib->display_date($row['user_dor']) : '-'; ?></td>
-															<?php if($is_self_account == true) { ?>
-															<td>-</td>
-															<?php } ?>
-														</tr>
-													</thead>
-													<tbody>
-														<?php if(isset($job_exp)){
-															foreach($job_exp as $key=>$row){
-															?>
-																<tr>
-																	<td><?php echo isset($row['company_name'])? $row['company_name']: ' ';?></td>
-																	<td><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></td>
-																	<td><?php echo isset($row['from_date']) ? $this->common_lib->display_date($row['from_date']) :'';?></td>
-																	<td><?php echo isset($row['to_date']) ? $this->common_lib->display_date($row['to_date']) :'';?></td>											<?php if($is_self_account == true) { ?>				
-																	<td><a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-fw  fa-pencil" aria-hidden="true"></i></a></td>
-																	<?php } ?>
-																</tr>
-															<?php
-															}
-														}?>
-													</tbody>
-												</table>
-											</div><!--/.table-responsive-sm-->
+														</div>
+														<div class="">
+															<?php echo isset($row['company_name'])? $row['company_name']: ' ';?>
+														</div>
+														<div class="text-muted">
+															<?php echo isset($row['from_date']) ? ' '.$this->common_lib->display_date($row['from_date'],NULL, NULL, 'd/m/Y').' to ' : '-'; ?>
+															<?php echo isset($row['to_date']) ? ' '.$this->common_lib->display_date($row['to_date'], NULL, NULL, 'd/m/Y') : 'till date'; ?>
+														</div>
+													</div>
+												<?php
+												}
+											}?>
 									</div>
 								</div>
 							</div><!--/#tab-4-->
@@ -377,39 +373,28 @@
 												<?php echo isset($uni['user_uan_no']) ? $uni['user_uan_no'] : '-';?>
 											</dd>
 										</dl>
-
-										<div class="table-responsive-sm">
-												<table class="table ci-table table-striped">
-													<thead class="thead-dark">
-														<tr>
-															<th scope="col">Account Uses</th>
-															<th scope="col">Account No</th>
-															<th scope="col">Account Type</th>
-															<th scope="col">IFSC</th>
-															<th scope="col">Bank</th>
-															<?php if($is_self_account == true) { ?>
-															<th scope="col"></th>
-															<?php } ?>
-														</tr>
-													</thead>
-													<tbody>
-														<?php if(isset($bank_details)){
-															foreach($bank_details as $key=>$row){
-															?>
-																<tr>
-																	<td><?php echo isset($row['account_uses'])? $account_uses[$row['account_uses']]: ' ';?></td>
-																	<td><?php echo isset($row['bank_account_no'])? $row['bank_account_no']: ' ';?></td>
-																	<td><?php echo isset($row['account_type']) ? $bank_ac_type[$row['account_type']] : '-'; ?></td>															
-																	<td><?php echo isset($row['ifsc_code']) ? $row['ifsc_code'] : '-'; ?></td>
-																	<td><?php echo isset($row['bank_name'])? $row['bank_name']: ' ';?></td>							<?php if($is_self_account == true) { ?>				<td><a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-fw  fa-pencil" aria-hidden="true"></i></a></td>
-																	<?php } ?>
-																</tr>
-															<?php
-															}
-														}?>
-													</tbody>
-												</table>
-											</div><!--/.table-responsive-sm-->
+										<?php if(isset($bank_details)){
+											foreach($bank_details as $key=>$row){
+											?>
+												<div class="user-profile-section">
+													<div class="section-heading">
+														<?php echo isset($row['bank_name'])? $row['bank_name']: ' ';?>
+														<?php echo isset($row['ifsc_code']) ? '('.$row['ifsc_code'].')' : '-'; ?>
+														<?php if($is_self_account == true) { ?>	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i> Edit</a>	<?php } ?>
+													</div>
+													<div class="text-muted small">
+													<?php echo isset($row['account_uses'])? $account_uses[$row['account_uses']]: ' ';?>
+													</div>
+													<div class="">
+														<?php echo isset($row['account_type']) ? $bank_ac_type[$row['account_type']] : '-'; ?>
+													</div>
+													<div>
+														A/C No - <?php echo isset($row['bank_account_no'])? $row['bank_account_no']: ' ';?>
+													</div>
+												</div>
+											<?php
+											}
+										}?>
 									</div>
 								</div>
 							</div><!--/#tab-5-->
@@ -444,58 +429,39 @@
 										<?php if($is_self_account == true) { ?>
 										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 										<?php } ?>
-											<div class="table-responsive-sm">
-												<table class="table ci-table table-striped">
-													<thead class="thead-dark">
-														<tr>
-														<th scope="col">Contact Person</th>
-														<th scope="col">Relationship</th>
-														<th scope="col">Contact No</th>
-														<th scope="col">Address</th>
-														<?php if($is_self_account == true) { ?>
-														<th scope="col"></th>
-														<?php } ?>
-														</tr>
-													</thead>
-													<tbody>
-													<?php 
-														if(isset($econtact) && sizeof($econtact)>0){
-															foreach($econtact as $key=>$con){
-															?>
-															<tr>
-																<td>
-																	<?php echo isset($con['contact_person_name'])?$con['contact_person_name']: ' ';?>
-																</td>
-																<td><?php echo isset($con['relationship']) ? $con['relationship']: '';?></td>
-																
-																<td>
-																	<?php echo isset($con['contact_person_phone1'])?$con['contact_person_phone1'] : '';?>
 
-																	<?php echo isset($con['contact_person_phone2']) && strlen($con['contact_person_phone2'])>0 ? ' / '.$con['contact_person_phone2'] : '';?>
-																</td>
-																<td><?php echo isset($con['contact_person_address']) ? $con['contact_person_address'] : '';?></td>
-																
-																<?php if($is_self_account == true) { ?>
-																<td>
-																	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_emergency_contact/'.$con["id"]);?>" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-fw  fa-pencil" aria-hidden="true"></i></a>
-																	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_emergency_contact/'.$con["id"]);?>" class="btn btn-outline-danger btn-sm" data-toggle="tooltip" title="Delete"><i class="fa fa-fw  fa-trash-o" aria-hidden="true"></i></a>
-																</td>
-																<?php } ?>
-															</tr>
-															<?php
-															}
-														}else{
-															?>
-															<tr>
-																<td colspan="5">No records found</td>
-															</tr>
-															<?php
-														}
-													?>
-														
-													</tbody>
-												</table>
-											</div><!--/.table-responsive-sm-->
+
+
+
+										<?php 
+											if(isset($econtact) && sizeof($econtact)>0){
+												foreach($econtact as $key=>$con){
+												?>
+												<div class="user-profile-section">
+													<div class="section-heading">
+														<?php echo isset($con['contact_person_name'])?$con['contact_person_name']: ' ';?>
+														<?php if($is_self_account == true) { ?>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_emergency_contact/'.$con["id"]);?>" class="btn-action"><i class="fa fa-fw  fa-pencil" aria-hidden="true"></i> Edit</a>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_emergency_contact/'.$con["id"]);?>" class="btn-action"><i class="fa fa-fw  fa-trash-o" aria-hidden="true"></i> Delete</a>
+														<?php } ?>
+													</div>
+													<div class="text-muted small"><?php echo isset($con['relationship']) ? $con['relationship']: '';?></div>													
+													<div>
+														<?php echo isset($con['contact_person_address']) ? $con['contact_person_address'] : '';?>
+													</div>
+													<div>
+														<?php echo isset($con['contact_person_phone1'])?$con['contact_person_phone1'] : '';?>
+														<?php echo isset($con['contact_person_phone2']) && strlen($con['contact_person_phone2'])>0 ? ' / '.$con['contact_person_phone2'] : '';?>
+													</div>
+												</div>
+												<?php
+												}
+											}else{
+												?>
+												<div>No records found</div>
+												<?php
+											}
+										?>
 									</div>
 								</div>
 							</div> <!--/#tab-7-->
