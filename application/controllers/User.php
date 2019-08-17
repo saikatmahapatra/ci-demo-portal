@@ -50,7 +50,7 @@ class User extends CI_Controller {
 		$this->data['arr_designations'] = $this->user_model->get_designation_dropdown('Y');
 		$this->data['arr_departments'] = $this->user_model->get_department_dropdown();
 		$this->data['arr_user_title'] = array(''=>'Select Title','Mr.'=>'Mr.','Mrs.'=>'Mrs.','Dr.'=>'Dr.','Ms.'=>'Ms.');
-        $this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-', 'NA'=>'Unknown/Not Applicable');
+        $this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-', 'NA'=>'Unknown');
         $this->data['bank_ac_type'] = array('SB'=>'Savings','CU'=>'Current');
         $this->data['account_uses'] = array('SAL'=>'Salary Credit','REI'=>'Reimbursement');
         $this->data['arr_gender'] = array('M'=>'Male','F'=>'Female');
@@ -83,9 +83,9 @@ class User extends CI_Controller {
         );
 
         $this->data['user_status_arr'] = array(
-            'N'=>array('text'=>'Inactive', 'css'=>'text-warning'),
-            'A'=>array('text'=>'Archived', 'css'=>'text-danger'),
-            'Y'=>array('text'=>'Active', 'css'=>'text-success')
+            'N'=>array('text'=>'Inactive', 'css'=>''),
+            'A'=>array('text'=>'Archived', 'css'=>''),
+            'Y'=>array('text'=>'Active', 'css'=>'')
         );
     }
 
@@ -186,7 +186,7 @@ class User extends CI_Controller {
             $row[] = $result['user_email'];
             $row[] = $result['user_phone1'];
             $row[] = $result['designation_name'];
-            $row[] = '<i class="fa fa-fw fa-bookmark-o '.$this->data['user_status_arr'][$result['user_status']]['css'].'" aria-hidden="true"></i> '.$this->data['user_status_arr'][$result['user_status']]['text'];
+            $row[] = '<span class="'.$this->data['user_status_arr'][$result['user_status']]['css'].'">'.$this->data['user_status_arr'][$result['user_status']]['text'].'</span>';
             $action_html = '';
             
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>', array(

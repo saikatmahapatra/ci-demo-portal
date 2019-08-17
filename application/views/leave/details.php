@@ -10,7 +10,7 @@ $row = $data_rows[0];
 	<div class="col-md-12">
 		<div class="card ci-card ci-dl">
 			<div class="card-header h6">
-				Leave Request No - <?php echo $row['leave_req_id'];?>
+				Ref ID # <?php echo $row['leave_req_id'];?>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -26,8 +26,7 @@ $row = $data_rows[0];
 					<dl class="row">
 					<dt class="col-md-2">Leave Status</dt>
 					<dd class="col-md-4">
-					<span class=""><i class="fa fa-fw fa-bookmark-o <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>
-					<span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>"> <?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
+						<?php echo $leave_status_arr[$row['leave_status']]['text'];?>
 					</dd>
 					<dt class="col-md-2">Leave Request No</dt>
 					<dd class="col-md-4"><?php echo $row['leave_req_id'];?></dd>

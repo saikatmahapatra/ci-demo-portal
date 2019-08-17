@@ -56,9 +56,9 @@ class Cms extends CI_Controller {
         $this->data['breadcrumbs'] = $this->breadcrumbs->show();
         
         $this->data['arr_status_flag'] = array(
-            'Y'=>array('text'=>'Active', 'css'=>'text-success'),
-            'N'=>array('text'=>'Inactive', 'css'=>'text-warning'),
-            'A'=>array('text'=>'Archived', 'css'=>'text-danger')
+            'Y'=>array('text'=>'Active', 'css'=>''),
+            'N'=>array('text'=>'Inactive', 'css'=>''),
+            'A'=>array('text'=>'Archived', 'css'=>'')
         );
 		
 		//Pagination
@@ -137,7 +137,7 @@ class Cms extends CI_Controller {
             $row[] = $result['pagecontent_title'];
             $row[] = $result['pagecontent_type'];
             $row[] = $this->common_lib->display_date($result['pagecontent_created_on'], true);
-            $row[] = '<i class="fa fa-fw fa-bookmark-o '.$this->data['arr_status_flag'][$result['pagecontent_status']]['css'].'" aria-hidden="true"></i> '.$this->data['arr_status_flag'][$result['pagecontent_status']]['text'];
+            $row[] = '<span class="'.$this->data['arr_status_flag'][$result['pagecontent_status']]['css'].'"> '.$this->data['arr_status_flag'][$result['pagecontent_status']]['text'].'</span>';
             //add html for action
             $action_html = '';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' .$result['id']), '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>', array(

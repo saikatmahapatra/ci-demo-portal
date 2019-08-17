@@ -58,9 +58,9 @@ class Project extends CI_Controller {
          $this->load->library('pagination');
          
          $this->data['arr_status_flag'] = array(
-            'Y'=>array('text'=>'Active', 'css'=>'text-success'),
-            'N'=>array('text'=>'Inactive', 'css'=>'text-warning'),
-            'A'=>array('text'=>'Archived', 'css'=>'text-danger')
+            'Y'=>array('text'=>'Active', 'css'=>''),
+            'N'=>array('text'=>'Inactive', 'css'=>''),
+            'A'=>array('text'=>'Archived', 'css'=>'')
         );
 		
     }
@@ -100,7 +100,7 @@ class Project extends CI_Controller {
             
             $row[] = $result['project_name'];
             $row[] = $result['project_number'];
-            $row[] = '<i class="fa fa-fw fa-bookmark-o '.$this->data['arr_status_flag'][$result['project_status']]['css'].'" aria-hidden="true"></i> '.$this->data['arr_status_flag'][$result['project_status']]['text'];
+            $row[] = '<span class="'.$this->data['arr_status_flag'][$result['project_status']]['css'].'">'.$this->data['arr_status_flag'][$result['project_status']]['text'].'</span>';
             //add html for action
             $action_html = '';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' .$result['id']), '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>', array(
@@ -251,7 +251,8 @@ class Project extends CI_Controller {
             $no++;
             $row = array();
             $row[] = $result['task_activity_name'];
-            $row[] = '<i class="fa fa-fw fa-bookmark-o '.$this->data['arr_status_flag'][$result['task_activity_status']]['css'].'" aria-hidden="true"></i> '.$this->data['arr_status_flag'][$result['task_activity_status']]['text'];
+            $row[] = '<span class="'.$this->data['arr_status_flag'][$result['task_activity_status']]['css'].'">'.$this->data['arr_status_flag'][$result['task_activity_status']]['text'].'</span>';
+            
             //add html for action
             $action_html = '';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_activity/' .$result['id']), '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>', array(
