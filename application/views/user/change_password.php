@@ -1,14 +1,9 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<div class="row page-title-container">
-    <div class="col-sm-12">
-        <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
-    </div>
-</div><!--/.page-title-container-->
-
+<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-md-5">
 		<div class="card ci-card">
-			<div class="card-header">
+			<div class="card-header h6">
 				Change Password Form
 			</div><!--/.card-header-->
 

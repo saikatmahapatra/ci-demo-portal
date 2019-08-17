@@ -1,11 +1,6 @@
 <?php $row = $row[0]; ?>
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<div class="row page-title-container">
-    <div class="col-sm-12">
-        <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
-    </div>
-</div><!--/.page-title-container-->
-
+<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
@@ -19,7 +14,7 @@
 					echo isset($row['user_emp_id']) ? ' (Emp ID '.$row['user_emp_id'].') ': '';
 					echo isset($row['user_email']) ? '; '.$row['user_email']: '';
 				?>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title=""> <i class="fa fa-list"></i> Manage Employees</a>
+				
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -31,6 +26,9 @@
 						echo $html_alert_ui;
 					}
 				?>
+				<div class="ci-link-group">
+					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title=""> <i class="fa fa-fw fa-list"></i> Manage Employees</a>
+				</div>
 
 				
 				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>
@@ -39,7 +37,7 @@
 				
 				<div class="form-row">
 					<div class="form-group col-md-4">
-						<label for="user_dor" class="">Date of Release from Organization </label>
+						<label for="user_dor" class="">Date of Release from Organization <span class="required">*</span></label>
 						<?php
 						echo form_input(array(
 							'name' => 'user_dor',
@@ -58,7 +56,7 @@
 
 				<div class="form-row">
 					<div class="form-group col-md-8">
-						<label for="user_dor" class="">Comments </label>
+						<label for="user_dor" class="">Comments <span class="required">*</span></label>
 						<?php
 							echo form_textarea(array(
 								'name' => 'account_close_comments',
@@ -82,7 +80,7 @@
 								$cb_is_checked = $this->input->post('terms') === 'accept';
 								echo form_checkbox('terms', 'accept', $cb_is_checked, array('id' => 'terms','class' => 'custom-control-input'));
 							?>
-							<label class="custom-control-label" for="terms">I understand that, this action can not be undo. Portal account will be archived forever and this user will not be able to login permanently.</label>
+							<label class="custom-control-label" for="terms">I understand that, this action can not be undo. Portal account will be archived forever and this user will not be able to login permanently. <span class="required">*</span></label>
 						</div>
 						<?php echo form_error('terms'); ?>
 					</div>

@@ -1,21 +1,10 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<div class="row page-title-container">
-    <div class="col-sm-12">
-        <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
-    </div>
-</div><!--/.page-title-container-->
-
+<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-md-7">
-		<!-- <div class="grid-action-holder row my-2">
-			<div class="col-md-12">
-				<span class="m-1 p-1 table-warning"> Optional Holidays</span>
-			</div>	
-		</div> -->
-		<!-- <p class="alert alert-info"><i class="fa fa-info-circle" aria-hidden="true"></i> Please note that <span class="h5 text-danger font-weight-bold">*</span> marked dates are optional holiday.<p> -->
 		<div class="table-responsive">
-			<table class="table ci-table table-sm table-bordered">
-				<thead class="thead-light">
+			<table class="table ci-table table-sm table-bordered text-center">
+				<thead class="thead-dark">
 				<tr>
 					<th scope="col">#</th>
 					<th scope="col">Date</th>
@@ -30,7 +19,7 @@
 					foreach($data_rows as $key=>$row){
 						?>
 						<tr class="<?php echo $row['holiday_type']=='O' ? '' : '' ;?>">
-							<th scope="row"><?php echo $count;?></th>
+							<td scope="row"><?php echo $count;?></td>
 							<td>
 								<?php echo $this->common_lib->display_date($row['holiday_date'], null, null, 'd-M-Y'); ?>
 								<?php //echo $row['holiday_type']=='O' ? '<span class="text-danger font-weight-bold h5">*</span>' : '' ;?>

@@ -55,7 +55,13 @@ class Project extends CI_Controller {
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		
 		//Pagination
-		 $this->load->library('pagination');
+         $this->load->library('pagination');
+         
+         $this->data['arr_status_flag'] = array(
+            'Y'=>array('text'=>'Active', 'css'=>''),
+            'N'=>array('text'=>'Inactive', 'css'=>''),
+            'A'=>array('text'=>'Archived', 'css'=>'')
+        );
 		
     }
 
@@ -94,26 +100,18 @@ class Project extends CI_Controller {
             
             $row[] = $result['project_name'];
             $row[] = $result['project_number'];
-            //$row[] = $result['project_desc'];            
-            $status_indicator = 'text-secondary';            
-            if($result['project_status'] == 'Y'){
-                $status_indicator = 'text-success';
-            }
-            if($result['project_status'] == 'N'){
-                $status_indicator = 'text-warning';
-            }
-            $row[] = '<i class="fa fa-circle-o '.$status_indicator.'" aria-hidden="true"></i>';
+            $row[] = '<span class="'.$this->data['arr_status_flag'][$result['project_status']]['css'].'">'.$this->data['arr_status_flag'][$result['project_status']]['text'].'</span>';
             //add html for action
             $action_html = '';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' .$result['id']), '<i class="fa fa-lg fa-edit" aria-hidden="true"></i>', array(
-                'class' => 'btn btn-sm btn-outline-secondary mx-1',
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' .$result['id']), '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>', array(
+                'class' => 'btn btn-sm btn-outline-secondary',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit',
                 'title' => 'Edit',
             ));
             /*$action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-trash" aria-hidden="true"></i> Delete', array(
-                'class' => 'btn btn-sm btn-outline-danger btn-delete ml-1',
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-fw fa-trash-o" aria-hidden="true"></i> Delete', array(
+                'class' => 'btn btn-sm btn-outline-danger btn-delete',
 				'data-confirmation'=>true,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',
                 'data-toggle' => 'tooltip',
@@ -253,26 +251,19 @@ class Project extends CI_Controller {
             $no++;
             $row = array();
             $row[] = $result['task_activity_name'];
-            //$row[] = $result['project_desc'];            
-            $status_indicator = 'text-secondary';            
-            if($result['task_activity_status'] == 'Y'){
-                $status_indicator = 'text-success';
-            }
-            if($result['task_activity_status'] == 'N'){
-                $status_indicator = 'text-warning';
-            }
-            $row[] = '<i class="fa fa-circle-o '.$status_indicator.'" aria-hidden="true"></i>';
+            $row[] = '<span class="'.$this->data['arr_status_flag'][$result['task_activity_status']]['css'].'">'.$this->data['arr_status_flag'][$result['task_activity_status']]['text'].'</span>';
+            
             //add html for action
             $action_html = '';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_activity/' .$result['id']), '<i class="fa fa-lg fa-edit" aria-hidden="true"></i>', array(
-                'class' => 'btn btn-sm btn-outline-secondary mx-1',
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_activity/' .$result['id']), '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>', array(
+                'class' => 'btn btn-sm btn-outline-secondary',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit',
                 'title' => 'Edit',
             ));
             /*$action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-trash" aria-hidden="true"></i> Delete', array(
-                'class' => 'btn btn-sm btn-outline-danger btn-delete ml-1',
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-fw fa-trash-o" aria-hidden="true"></i> Delete', array(
+                'class' => 'btn btn-sm btn-outline-danger btn-delete',
 				'data-confirmation'=>true,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',
                 'data-toggle' => 'tooltip',

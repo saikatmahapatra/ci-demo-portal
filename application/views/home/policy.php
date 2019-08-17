@@ -1,10 +1,5 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<div class="row page-title-container">
-    <div class="col-sm-12">
-        <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
-    </div>
-</div><!--/.page-title-container-->
-
+<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
     <div class="col-md-8">
         <?php if(isset($data_rows) && sizeof($data_rows> 0)){ ?>
@@ -16,7 +11,7 @@
                         <div id="collapse_<?php echo isset($row['id']) ? $row['id'] : '';?>" class="collapse" aria-labelledby="heading_<?php echo isset($row['id']) ? $row['id'] : '';?>" data-parent="#accordion">
                             <div class="card-body">
                             <div class="text-muted small mb-1">
-                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>
                                 <?php //echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
                                 <?php //echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>
                                 <?php echo $this->common_lib->display_date($row['pagecontent_created_on'],true,null,'d-M-Y h:i:s a'); ?>

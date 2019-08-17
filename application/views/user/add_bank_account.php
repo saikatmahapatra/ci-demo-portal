@@ -1,20 +1,13 @@
 <?php $uni = isset($user_national_identifiers) ? $user_national_identifiers[0] : ''; ?>
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<div class="row page-title-container">
-    <div class="col-sm-12">
-        <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
-    </div>
-</div><!--/.page-title-container-->
+<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <?php $uni = isset($user_national_identifiers) ? $user_national_identifiers[0] : ''; ?>
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
-			<div class="card-header">
-				Form
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Back to Profile"> <i class="fa fa-chevron-left"></i> Back</a>
-			</div><!--/.card-header-->
+			<div class="card-header h6">Form</div><!--/.card-header-->
 
 			<div class="card-body">
 				<?php
@@ -31,7 +24,7 @@
 			<h6 class="">National Identification (Govt ID)</h6>
 			<div class="form-row">
 				<div class="form-group col-md-3">                                
-					<label for="user_pan_no" class="">PAN Number <span class="required">*</span></label>				
+					<label for="user_pan_no" class="">PAN Number</label>
 					<?php
 					echo form_input(array(
 						'name' => 'user_pan_no',
@@ -44,38 +37,6 @@
 					));
 					?>
 					<?php echo form_error('user_pan_no'); ?>
-				</div>
-				
-				<div class="form-group col-md-3">
-					<label for="user_aadhar_no" class="">Aadhar Number</label>				
-						<?php
-						echo form_input(array(
-							'name' => 'user_aadhar_no',
-							'value' => isset($_POST['user_aadhar_no']) ? set_value('user_aadhar_no') : $uni['user_aadhar_no'],
-							'id' => 'user_aadhar_no',
-							'maxlength' => '12',
-							'class' => 'form-control',
-							'placeholder' => '',
-							'autocomplete'=>'off',
-						));
-						?>
-						<?php echo form_error('user_aadhar_no'); ?>
-				</div>
-
-				<div class="form-group col-md-3">        							
-					<label for="user_passport_no" class="">Passport No</label>				
-						<?php
-						echo form_input(array(
-							'name' => 'user_passport_no',
-							'value' => isset($_POST['user_passport_no']) ? set_value('user_passport_no') : $uni['user_passport_no'],
-							'id' => 'user_passport_no',
-							'maxlength' => '12',
-							'class' => 'form-control text-uppercase',
-							'placeholder' => '',
-							'autocomplete'=>'off',
-						));
-						?>
-						<?php echo form_error('user_passport_no'); ?>
 				</div>
 
 				<div class="form-group col-md-3">        							

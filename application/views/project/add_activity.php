@@ -1,17 +1,10 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<div class="row page-title-container">
-    <div class="col-sm-12">
-        <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
-    </div>
-</div><!--/.page-title-container-->
-
-
+<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
-			<div class="card-header">
+			<div class="card-header h6">
 				Form
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/activity');?>" class="float-right btn btn-sm btn-outline-secondary" title=""> <i class="fa fa-list"></i> View All</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -36,14 +29,14 @@
 
 					<div class="form-row">
 						<div class="form-group col-md-12">									
-							<label for="task_activity_status" class="">Display Status <span class="required">*</span></label>				
+							<label for="task_activity_status" class="">Status <span class="required">*</span></label>				
 							<div class="">
 								<div class="custom-control custom-radio custom-control-inline">
 									<?php
 										$radio_is_checked = $this->input->post('task_activity_status') == 'Y';
 										echo form_radio(array('name' => 'task_activity_status','value' => 'Y','id' => 'Y','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('task_activity_status', 'Y'));
 									?>
-									<label class="custom-control-label" for="Y">Publish</span></label>
+									<label class="custom-control-label" for="Y">Active</span></label>
 								</div>
 								
 								<div class="custom-control custom-radio custom-control-inline">
@@ -51,7 +44,7 @@
 										$radio_is_checked = $this->input->post('task_activity_status') == 'N';
 										echo form_radio(array('name' => 'task_activity_status', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('task_activity_status', 'N'));
 									?>
-									<label class="custom-control-label" for="N">Unpublish</span></label>
+									<label class="custom-control-label" for="N">Inactive</span></label>
 								</div>								
 							</div>
 							<small class="form-text text-muted">Unpublished projects will not appear at timesheet project list dropdown.</small>
