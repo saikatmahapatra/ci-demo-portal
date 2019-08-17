@@ -19,12 +19,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Self Services</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown_1">
-                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/profile'); ?>">Update Profile</a>
+                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/apply'); ?>">Apply Leave</a>
+                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/history'); ?>">View Leave History</a>
+                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/manage/assigned_to_me'); ?>">Approve Leave Requests</a>
                         <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'document'); ?>">Upload Documents</a>
                         <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/edit_approvers'); ?>">Change Leave Approvers</a>
-                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/apply'); ?>">Apply Leave</a>
-                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/history'); ?>">My Leave History</a>
-                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/manage/assigned_to_me'); ?>">Approve Leave Requests</a>
 
                     </div>
                 </li>
