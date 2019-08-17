@@ -93,7 +93,7 @@ $row = $data_rows[0];
 							$edit_icon = '';						
 							if($this->common_lib->get_sess_user('id') == $row['user_id']){
 								$set_attributes = 'data-action-by="applicant" data-action-by-userid="'.$row['user_id'].'"';
-								$edit_icon = '<i class="fa fa-fw fa-edit" aria-hidden="true"></i>';
+								$edit_icon = '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>';
 							}
 							if($row['leave_status'] == 'R' || $row['leave_status'] == 'C'){
 								$set_attributes ='';	
@@ -159,7 +159,7 @@ $row = $data_rows[0];
 							$edit_icon = '';
 							if($this->common_lib->get_sess_user('id') == $row['supervisor_approver_id']){
 								$set_attributes = 'data-action-by="supervisor" data-action-by-userid="'.$row['supervisor_approver_id'].'"';
-								$edit_icon = '<i class="fa fa-fw fa-edit" aria-hidden="true"></i>';
+								$edit_icon = '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>';
 							}
 							if(($row['leave_status'] == 'R' || $row['leave_status'] == 'C' || $row['director_approver_status']=='A')){
 								//&&  $row['cancel_requested']!='Y'
@@ -207,7 +207,7 @@ $row = $data_rows[0];
 							$set_attributes ='';
 							$edit_icon = '';
 							if(($this->common_lib->get_sess_user('id') == $row['director_approver_id']) && ($row['supervisor_approver_status']=='A' || ( $row['leave_status'] == 'A' && $row['cancel_requested'] == 'Y' ))) {
-								$edit_icon = '<i class="fa fa-fw fa-edit" aria-hidden="true"></i>';
+								$edit_icon = '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>';
 								$set_attributes = 'data-action-by="director" data-action-by-userid="'.$row['director_approver_id'].'"';
 							}
 							if($row['leave_status'] == 'R' || $row['leave_status'] == 'C' || ( $row['leave_status'] == 'A' && $row['cancel_requested'] == 'N' )){
