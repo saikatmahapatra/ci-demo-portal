@@ -33,8 +33,8 @@
 						<thead class="thead-dark">
 							<tr>
 								<th>Name</th>
-								<th>Employee ID</th>
-								<th>Email Address (office)</th>
+								<th>Emp ID</th>
+								<th>Email</th>
 								<th>Mobile</th>
 								<th>Designation</th>
 								<th>Status</th>

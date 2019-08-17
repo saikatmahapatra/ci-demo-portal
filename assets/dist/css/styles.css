@@ -8718,7 +8718,7 @@ body.login {
   border-collapse: collapse !important;
 }
 
-.table.ci-table th {
+.table.ci-table thead th {
   font-weight: 400;
 }
 

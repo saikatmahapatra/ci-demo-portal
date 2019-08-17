@@ -63,7 +63,7 @@
 		
 		<div class="form-row">
 			<div class="form-group col-md-3">
-				<label for="user_email" class="">Email ID (office) <span class="required">*</span></label>
+				<label for="user_email" class="">Email (office) <span class="required">*</span></label>
 				<?php
 				echo form_input(array(
 					'name' => 'user_email',
@@ -78,7 +78,7 @@
 			</div>
 			
 			<div class="form-group col-md-3">
-				<label for="user_email_secondary" class="">Email ID (personal) </label>
+				<label for="user_email_secondary" class="">Email (personal) </label>
 				<?php
 				echo form_input(array(
 					'name' => 'user_email_secondary',
@@ -93,7 +93,7 @@
 			</div>
 			
 			<div class="form-group col-md-3">                           
-				<label for="user_phone1" class="">Mobile Number (personal) <span class="required">*</span></label>
+				<label for="user_phone1" class="">Mobile (personal) <span class="required">*</span></label>
 				<?php
 				echo form_input(array(
 					'name' => 'user_phone1',
@@ -108,7 +108,7 @@
 			</div>
 			
 			<div class="form-group col-md-3">                            
-					<label for="user_phone2" class="">Mobile Number (office) </label>
+					<label for="user_phone2" class="">Mobile (office) </label>
 					<?php
 					echo form_input(array(
 						'name' => 'user_phone2',
@@ -137,7 +137,7 @@
 				<?php echo form_error('user_department'); ?>
 			</div><?php */ ?>
 			
-			<div class="form-group col-md-3">                            
+			<div class="form-group col-md-3">
 				<label for="user_doj" class="">Date of Joining </label>				
 				<?php
 				echo form_input(array(
@@ -145,8 +145,8 @@
 					'value' => set_value('user_doj'),
 					'id' => 'user_doj',
 					'maxlength' => '10',
-					'class' => 'form-control dob-datepicker',
-					'placeholder' => '',
+					'class' => 'form-control',
+					'placeholder' => 'dd-mm-yyyy',
 					'autocomplete'=>'off',
 					'readonly'=>true
 				));
@@ -176,31 +176,23 @@
 		</div>
 		
 		<div class="form-row">
-				<div class="form-group col-md-4">                            
-					<label for="user_dob" class="">Date of Birth <span class="required">*</span></label>				
+				<div class="form-group col-md-3">
+					<label for="user_dob" class="">Date of Birth <span class="required">*</span></label>
 					<?php
-					/*echo form_input(array(
+					echo form_input(array(
 						'name' => 'user_dob',
 						'value' => set_value('user_dob'),
 						'id' => 'user_dob',
 						'maxlength' => '10',
-						'class' => 'form-control dob-datepicker',
+						'class' => 'form-control',
 						'placeholder' => 'dd-mm-yyyy',
 						'autocomplete'=>'off',
 						'readonly'=>true
-					));*/
+					));
 					?>
-					<?php /*echo form_error('user_dob'); */?>
-					<div class="">
-						<?php echo form_dropdown('dob_day', $day_arr, set_value('dob_day'), array('class' => 'form-control dob-inline',));?>
-						<?php echo form_dropdown('dob_month', $month_arr, set_value('dob_month'), array('class' => 'form-control dob-inline',));?>
-						<?php echo form_dropdown('dob_year', $year_arr, set_value('dob_year'), array('class' => 'form-control dob-inline'));?>
-					</div>
-					<?php echo form_error('dob_day'); ?>
-					<?php echo form_error('dob_month'); ?>
-					<?php echo form_error('dob_year'); ?>
+					<?php echo form_error('user_dob');?>
 				</div>
-				<div class="form-group col-md-4">
+				<div class="form-group col-md-3">
 					<label for="gender">Gender <span class="required">*</span></label>
 					<div class="">
 						<div class="custom-control custom-radio custom-control-inline">

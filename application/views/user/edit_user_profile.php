@@ -137,7 +137,7 @@
 					'value' => isset($_POST['user_doj']) ? set_value('user_doj') : $this->common_lib->display_date($row['user_doj']),
 					'id' => 'user_doj',
 					'maxlength' => '10',
-					'class' => 'form-control dob-datepicker',
+					'class' => 'form-control',
 					'placeholder' => '',
 					'autocomplete'=>'off',
 					'readonly'=>true
@@ -171,30 +171,18 @@
 				<div class="form-group col-md-4">                            
 					<label for="user_dob" class="">Date of Birth <span class="required">*</span></label>				
 					<?php
-					/*echo form_input(array(
+					echo form_input(array(
 						'name' => 'user_dob',
-						'value' => set_value('user_dob'),
+						'value' => isset($_POST['user_dob']) ? set_value('user_dob') : $this->common_lib->display_date($row['user_dob']),
 						'id' => 'user_dob',
 						'maxlength' => '10',
-						'class' => 'form-control dob-datepicker',
+						'class' => 'form-control',
 						'placeholder' => 'dd-mm-yyyy',
 						'autocomplete'=>'off',
 						'readonly'=>true
-					));*/
+					));
 					?>
-					<?php /*echo form_error('user_dob'); */?>
-					<div class="">
-                        <?php
-                        $dob = explode('-',$row['user_dob']);
-                        //print_r($dob);
-                        ?>
-						<?php echo form_dropdown('dob_day', $day_arr, isset($_POST['dob_day']) ? set_value('dob_day') :  $dob[2] , array('class' => 'form-control dob-inline',));?>
-						<?php echo form_dropdown('dob_month', $month_arr, isset($_POST['dob_day']) ? set_value('dob_month') : $dob[1], array('class' => 'form-control dob-inline',));?>
-						<?php echo form_dropdown('dob_year', $year_arr, isset($_POST['dob_day']) ? set_value('dob_year') : $dob[0], array('class' => 'form-control dob-inline'));?>
-					</div>
-					<?php echo form_error('dob_day'); ?>
-					<?php echo form_error('dob_month'); ?>
-					<?php echo form_error('dob_year'); ?>
+					<?php echo form_error('user_dob');?>
 				</div>
 				<div class="form-group col-md-4">
 					<label for="gender">Gender <span class="required">*</span></label>
