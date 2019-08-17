@@ -491,6 +491,14 @@ body.login {
     }
 }
 
+.news-card-details {
+    .card-body {
+        img {
+            width: 100%;
+        }
+    }
+}
+
 .card-stat {
     .card-body a {
         color: inherit !important;
@@ -761,7 +769,7 @@ select.form-control.dob-inline {
     .section-heading {
         color: $gray-600;
         font-weight: 700;
-        font-size: 80%;
+        font-size: 90%;
     }
 }
 

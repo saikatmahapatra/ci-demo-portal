@@ -8923,6 +8923,10 @@ body.login {
   padding: 15px;
 }
 
+.news-card-details .card-body img {
+  width: 100%;
+}
+
 .card-stat .card-body a {
   color: inherit !important;
   text-decoration: none;
@@ -9164,7 +9168,7 @@ select.form-control.dob-inline {
 .user-profile-section .section-heading {
   color: #6c757d;
   font-weight: 700;
-  font-size: 80%;
+  font-size: 90%;
 }
 
 .user-profile-card-people {
