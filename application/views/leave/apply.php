@@ -1,17 +1,13 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<div class="row page-title-container">
-    <div class="col-sm-12">
-		<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
-		<p><i class="fa fa-question-circle-o" aria-hidden="true"></i> Looking for help or information? Click <a class="" href="#" data-toggle="modal" id="view_leave_balance_update_details" data-target="#leaveBalanceModal">here to read.</a></p>
-    </div>
-</div><!--/.page-title-container-->
+
+<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
+<p><i class="fa fa-fw fa-question-circle-o" aria-hidden="true"></i> Looking for help or information? Click <a class="" href="#" data-toggle="modal" id="view_leave_balance_update_details" data-target="#leaveBalanceModal">here to read.</a></p>
 
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
-			<div class="card-header">
+			<div class="card-header h6">
 				Form
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="float-right btn btn-sm btn-outline-secondary" > <i class="fa fa-clock-o"></i> Leave History</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -23,6 +19,9 @@
 						echo $html_alert_ui;
 					}
 				?>
+				<div class="ci-link-group">
+					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="btn btn-sm btn-outline-secondary" > <i class="fa fa-fw fa-clock-o"></i> View Leave History</a>
+				</div>
 
 				<div class="form-text mb-4 text-muted">
 					<ul>
@@ -43,6 +42,8 @@
 					</li>
 					</ul>
 				</div>
+				
+
 				<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => 'ci-form-leave',)); ?>
 				<?php echo form_hidden('form_action', 'add'); ?>
 				<div class="form-row">
@@ -124,7 +125,7 @@
 					<li>For leave balance debit, credit related issues or information please contact to your HR.</li>
 					</ul>
 					<table class="table table-sm ci-table table-bordered text-center">
-						<thead class="thead-light">
+						<thead class="thead-dark">
 						<tr>
 							<th scope="col">Casual Leave (CL)</th>
 							<th scope="col">Privileged Leave (PL)</th>

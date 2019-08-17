@@ -1,16 +1,10 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<div class="row page-title-container">
-    <div class="col-sm-12">
-        <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
-    </div>
-</div><!--/.page-title-container-->
-
+<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
-			<div class="card-header">
+			<div class="card-header h6">
 				Data Table
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>" class="float-right btn btn-sm btn-outline-secondary" title="Apply Leave"> <i class="fa fa-send-o"></i> Apply Leave</a>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -22,10 +16,13 @@
 						echo $html_alert_ui;
 					}
 				?>
-				
+				<div class="ci-link-group">
+					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>" class="btn btn-sm btn-outline-secondary" title="Apply Leave"> <i class="fa fa-fw fa-send-o"></i> Apply Leave</a>
+				</div>
+
 				<div class="table-responsive">
-					<table class="table table-striped">
-						<thead class="thead-light">
+					<table class="table ci-table table-striped">
+						<thead class="thead-dark">
 							<tr>
 								<th scope="col">Request No</th>
 								<th scope="col">Leave Type</th>
@@ -49,12 +46,12 @@
 									<td><?php echo $this->common_lib->display_date($row['leave_to_date']);?></td>
 									<td><?php echo $row['applied_for_days_count'].' day(s)';?></td>
 									<td>
-										<!-- <span class="small"><i class="fa fa-circle-o <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>  -->
+										<!-- <span class="small"><i class="fa fa-fw fa-circle-o-notch <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>  -->
 										<span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>">  <?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
 									</td>
 									<!-- <td><?php echo isset($row['leave_reason']) ? word_limiter($row['leave_reason'], 5) : '';?></td> -->
 									<td>
-									<a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/history');?>" class="btn btn-outline-info btn-sm" data-toggle="tooltip" title="View Details"><i class="fa fa-lg fa-info-circle" aria-hidden="true"></i></a>
+									<a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/history');?>" class="btn btn-outline-info btn-sm" data-toggle="tooltip" title="View Details"><i class="fa fa-fw  fa-info-circle" aria-hidden="true"></i></a>
 									</td>
 								</tr>
 								<?php

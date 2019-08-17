@@ -4,18 +4,13 @@ $row = $data_rows[0];
 //print_r($row);
 ?>
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<div class="row page-title-container">
-    <div class="col-sm-12">
-        <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
-    </div>
-</div><!--/.page-title-container-->
+<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 
 <div class="row">
 	<div class="col-md-12">
-		<div class="card ci-card">
-			<div class="card-header">
-				Leave Request No <?php echo $row['leave_req_id'];?>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->uri->segment(5).'/'.$this->uri->segment(6));?>" class="btn btn-sm float-right btn-outline-secondary"><i class="fa fa-chevron-left"></i> Back</a>
+		<div class="card ci-card ci-dl">
+			<div class="card-header h6">
+				Ref ID # <?php echo $row['leave_req_id'];?>
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -30,9 +25,8 @@ $row = $data_rows[0];
 
 					<dl class="row">
 					<dt class="col-md-2">Leave Status</dt>
-					<dd class="col-md-4 font-weight-bold">
-					<span class=""><i class="fa fa-circle-o <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>
-					<span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>"> <?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
+					<dd class="col-md-4">
+						<?php echo $leave_status_arr[$row['leave_status']]['text'];?>
 					</dd>
 					<dt class="col-md-2">Leave Request No</dt>
 					<dd class="col-md-4"><?php echo $row['leave_req_id'];?></dd>
@@ -98,7 +92,7 @@ $row = $data_rows[0];
 							$edit_icon = '';						
 							if($this->common_lib->get_sess_user('id') == $row['user_id']){
 								$set_attributes = 'data-action-by="applicant" data-action-by-userid="'.$row['user_id'].'"';
-								$edit_icon = '<i class="fa fa-edit" aria-hidden="true"></i>';
+								$edit_icon = '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>';
 							}
 							if($row['leave_status'] == 'R' || $row['leave_status'] == 'C'){
 								$set_attributes ='';	
@@ -164,7 +158,7 @@ $row = $data_rows[0];
 							$edit_icon = '';
 							if($this->common_lib->get_sess_user('id') == $row['supervisor_approver_id']){
 								$set_attributes = 'data-action-by="supervisor" data-action-by-userid="'.$row['supervisor_approver_id'].'"';
-								$edit_icon = '<i class="fa fa-edit" aria-hidden="true"></i>';
+								$edit_icon = '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>';
 							}
 							if(($row['leave_status'] == 'R' || $row['leave_status'] == 'C' || $row['director_approver_status']=='A')){
 								//&&  $row['cancel_requested']!='Y'
@@ -212,7 +206,7 @@ $row = $data_rows[0];
 							$set_attributes ='';
 							$edit_icon = '';
 							if(($this->common_lib->get_sess_user('id') == $row['director_approver_id']) && ($row['supervisor_approver_status']=='A' || ( $row['leave_status'] == 'A' && $row['cancel_requested'] == 'Y' ))) {
-								$edit_icon = '<i class="fa fa-edit" aria-hidden="true"></i>';
+								$edit_icon = '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>';
 								$set_attributes = 'data-action-by="director" data-action-by-userid="'.$row['director_approver_id'].'"';
 							}
 							if($row['leave_status'] == 'R' || $row['leave_status'] == 'C' || ( $row['leave_status'] == 'A' && $row['cancel_requested'] == 'N' )){
@@ -232,7 +226,7 @@ $row = $data_rows[0];
 						</div>
 					</div>			
           </div><!--/.row .ci-wizard-->
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->uri->segment(5).'/'.$this->uri->segment(6));?>" class="btn btn-sm btn-outline-secondary"><i class="fa fa-chevron-left"></i> Back</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->uri->segment(5).'/'.$this->uri->segment(6));?>" class="btn btn-link btn-sm btn-back"><i class="fa fa-fw fa-chevron-left"></i> Back</a>
 			</div><!--./card-body-->
 			<!--<div class="card-footer"></div>--><!--/.card-footer-->
 		</div><!--/.card-->

@@ -1,18 +1,10 @@
 <?php $row = $row[0]; ?>
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<div class="row page-title-container">
-    <div class="col-sm-12">
-        <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
-    </div>
-</div><!--/.page-title-container-->
-
+<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
-			<div class="card-header">
-				Form
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="float-right btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Back to Profile"> <i class="fa fa-chevron-left"></i> Back</a>
-			</div><!--/.card-header-->
+			<div class="card-header h6">Form</div><!--/.card-header-->
 
 			<div class="card-body">
 				<?php
@@ -32,7 +24,7 @@
         <?php echo form_hidden('user_email', $row['user_email']); ?>
             <div class="form-row">
             <div class="form-group col-md-4">
-				<label for="user_email_secondary" class="">Email ID (Personal) <span class="required">*</span></label>
+				<label for="user_email_secondary" class="">Email ID (personal) <span class="required">*</span></label>
 				<?php
 				echo form_input(array(
 					'name' => 'user_email_secondary',
@@ -44,7 +36,7 @@
 				<?php echo form_error('user_email_secondary'); ?>
 			</div>
             <div class="form-group col-md-4">
-                <label for="user_phone1" class="">10-digit Mobile Number (Personal) <span class="required">*</span></label>
+                <label for="user_phone1" class="">10-digit Mobile Number (personal) <span class="required">*</span></label>
                 <?php
                 echo form_input(array(
                     'name' => 'user_phone1',
@@ -58,7 +50,7 @@
                 <?php echo form_error('user_phone1'); ?>
             </div>
             <div class="form-group col-md-4">
-                <label for="user_phone2" class="">10-digit Mobile Number (Office)</label>
+                <label for="user_phone2" class="">10-digit Mobile Number (office)</label>
                 <?php
                 echo form_input(array(
                     'name' => 'user_phone2',

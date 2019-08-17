@@ -3624,15 +3624,15 @@ input[type="button"].btn-block {
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 2px solid #dee2e6;
 }
 
 .nav-tabs .nav-item {
-  margin-bottom: -1px;
+  margin-bottom: -2px;
 }
 
 .nav-tabs .nav-link {
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
 }
@@ -3649,13 +3649,13 @@ input[type="button"].btn-block {
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #fff;
-  background-color: #0062cc;
+  color: #0062cc;
+  background-color: #fff;
   border-color: #0062cc;
 }
 
 .nav-tabs .dropdown-menu {
-  margin-top: -1px;
+  margin-top: -2px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -8443,7 +8443,7 @@ body.login {
 }
 
 .logo {
-  width: 50px;
+  width: 65px;
 }
 
 .logo-login {
@@ -8456,12 +8456,9 @@ body.login {
   background: #fff;
 }
 
-.page-title-container {
-  margin-bottom: 0.5rem;
-}
-
 .page-title {
   font-size: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .scrollup {
@@ -8524,21 +8521,17 @@ body.login {
   word-break: break-all;
 }
 
-a[data-link-type="user-profile-card"] {
-  text-decoration: none;
-  color: inherit;
-}
-
-.user-profile-card a {
-  text-decoration: none;
+.ci-dl dt {
+  font-weight: 400;
+  color: #6c757d;
 }
 
 .ci-calendar {
-  border: 2px solid #0062cc;
+  border: 2px solid #6c757d;
 }
 
 .ci-calendar th {
-  background: #0062cc;
+  background: #6c757d;
   font-size: 1rem;
   color: #fff;
   vertical-align: center !important;
@@ -8645,6 +8638,18 @@ a[data-link-type="user-profile-card"] {
   display: block;
 }
 
+.ci-nav-tab .nav-link:hover, .ci-nav-tab .nav-link:focus {
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.ci-nav-tab .nav-link.active {
+  border: 0;
+  border-bottom: 5px solid #0062cc;
+  color: inherit;
+}
+
 .pace {
   pointer-events: none;
   user-select: none;
@@ -8705,12 +8710,17 @@ a[data-link-type="user-profile-card"] {
   padding-top: 30px !important;
 }
 
-table.ci-table.dataTable {
+.table.ci-table.dataTable {
   clear: both;
   margin-top: 0px !important;
   margin-bottom: 0px !important;
   max-width: none !important;
   border-collapse: collapse !important;
+}
+
+.table.ci-table thead th {
+  font-weight: 700;
+  font-size: 80%;
 }
 
 .ci-accordion-card {
@@ -8915,6 +8925,10 @@ table.ci-table.dataTable {
 .card-stat .card-body a {
   color: inherit !important;
   text-decoration: none;
+}
+
+.ci-card .card-header.h6 {
+  font-weight: 400;
 }
 
 @media (max-width: 576px) {
@@ -9134,4 +9148,20 @@ select.form-control.dob-inline {
 
 .form-label-group .form-control {
   height: auto;
+}
+
+.ci-link-group {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: flex-end !important;
+}
+
+.user-profile-section {
+  margin: 10px 0px 15px 0px;
+}
+
+.user-profile-section .section-heading {
+  color: #6c757d;
+  font-weight: 700;
+  font-size: 80%;
 }

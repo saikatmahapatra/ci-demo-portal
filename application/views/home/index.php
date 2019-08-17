@@ -1,16 +1,11 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<div class="row page-title-container">
-    <div class="col-sm-12">
-        <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
-    </div>
-</div><!--/.page-title-container-->
-
+<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 
 <?php if(isset($profile_msg) && sizeof($profile_msg > 0)){ ?>
 <div class="row <?php echo ($display_reminder_modal == 'false') ? 'd-none' : ''; ?>" id="userReminderModal" data-display="<?php echo $display_reminder_modal; ?>">
     <div class="col-md-12">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong><?php echo $this->common_lib->get_greetings(); ?>!</strong> You should add these details to your pofile - <?php echo implode(', ', $profile_msg);?>        
+        You can improve your profile details by adding <?php echo implode(', ', $profile_msg);?>
         <a href="<?php echo base_url('user/profile');?>" class="btn btn-sm btn-outline-secondary">Update Now</a>
         <button type="button" class="close btn_remind_later" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -25,7 +20,7 @@
     <div class="col-md-8 mb-3">
         <div class="card news-card">
             <div class="card-header h6">
-            <i class="fa fa-newspaper-o fa-lg" aria-hidden="true"></i> Notice Board
+            <i class="fa fa-fw fa-newspaper-o fa-lg" aria-hidden="true"></i> Notice Board
             </div>
             <div class="card-body">
                 <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>
@@ -56,7 +51,7 @@
     <div class="col-md-4 mb-3">
         <div class="card card-stat">
             <div class="card-header h6">
-            <i class="fa fa-line-chart fa-lg" aria-hidden="true"></i> At a Glance
+            <i class="fa fa-fw fa-line-chart fa-lg" aria-hidden="true"></i> At a Glance
             </div>
             <div class="card-body">
                 <div class="d-flex flex-column">
@@ -99,7 +94,7 @@
                 </div><!--/.flex-column-->
             </div><!--/.card-body-->
             <div class="card-footer text-center text-muted small">
-            <i class="fa fa-clock-o" aria-hidden="true"></i> Updated on <?php echo date('d-M-Y h:i:s a');?>
+            <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> Updated on <?php echo date('d-M-Y h:i:s a');?>
             </div>
         </div><!--/.card-->
     </div>

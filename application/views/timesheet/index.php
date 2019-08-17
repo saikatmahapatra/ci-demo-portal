@@ -1,16 +1,12 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<div class="row page-title-container">
-    <div class="col-sm-12">
-		<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
-		<p><i class="fa fa-question-circle-o" aria-hidden="true"></i> Looking for help or information? Click <a class="" href="#" data-toggle="modal" data-target="#timesheetCalModal">here to read.</a></p>
-    </div>
-</div><!--/.page-title-container-->
+<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
+<p><i class="fa fa-fw fa-question-circle-o" aria-hidden="true"></i> Looking for help or information? Click <a class="" href="#" data-toggle="modal" data-target="#timesheetCalModal">here to read.</a></p>
 
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
-			<div class="card-header">
-				Form
+			<div class="card-header h6">
+				Log Tasks
 			</div><!--/.card-header-->
 
 			<div class="card-body">
@@ -31,16 +27,6 @@
 		</nav>
 		
 		<div class="tab-content" id="nav-tabContent">
-			
-			<?php
-			// Show server side flash messages
-			if (isset($alert_message)) {
-				$html_alert_ui = '';
-				$html_alert_ui.='<div class="mt-2 mb-2 auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-				echo $html_alert_ui;
-			}
-			?>
-		
 			<div class="mt-3 tab-pane fade show active" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab">			
 			<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form form-timesheet','name' => '','id' => 'ci-form-timesheet',)); ?>
 			<?php echo form_hidden('form_action', 'add'); ?>		  
@@ -61,7 +47,7 @@
 					</div>
 					<?php echo form_error('selected_date'); ?>
 					<div class="mt-2"><a id="clear_selected_days" class="btn btn-outline-secondary btn-sm" href="#">Clear all selected days</a></div>
-					<a class="text-centre d-none" href="#"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download this month's timesheet</a>
+					<a class="text-centre d-none" href="#"><i class="fa fa-fw fa-file-excel-o" aria-hidden="true"></i> Download this month's timesheet</a>
 				</div><!--/.col-md-3-->
 
 				<div class="col-md-8 offset-md-1">
@@ -139,12 +125,12 @@
 				
 				<div class="table-responsive">
 					<table id="timesheet-datatable" class="table ci-table table-striped w-100">
-						<thead class="thead-light">
+						<thead class="thead-dark">
 							<tr>
-								<th scope="col" style="width:10%">Date</th>
-								<th scope="col" style="width:20%">Project Activity</th>
-								<th scope="col" style="width:10%">Hours</th>
-								<th scope="col" style="width:55%">Description</th>
+								<th scope="col">Date</th>
+								<th scope="col">Activity</th>
+								<th scope="col">Hours</th>
+								<th scope="col">Description</th>
 								<!-- <th scope="col"></th> -->
 							</tr>
 							<!-- <tr>

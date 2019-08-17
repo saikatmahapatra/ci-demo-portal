@@ -1,15 +1,9 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<div class="row page-title-container">
-    <div class="col-sm-12">
-        <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></h1>
-    </div>
-</div><!--/.page-title-container-->
-
-
+<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-md-12">
 		<div class="card ci-card">
-			<div class="card-header">
+			<div class="card-header h6">
 				Search Employees
 			</div><!--/.card-header-->
 
@@ -33,7 +27,7 @@
 						)); ?>
 						<?php echo form_error('q'); ?>
 						<div class="input-group-append">
-							<button class="btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+							<button class="btn" type="submit"><i class="fa fa-fw fa-search" aria-hidden="true"></i></button>
 						</div>
 					</div>
 				<?php echo form_close(); ?>
@@ -42,7 +36,7 @@
 				<?php
 				if(isset($data_rows) && sizeof($data_rows)<=0){
 					?>
-					<div class="text-danger"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Oops! No results found.</div>
+					<div class="text-danger"><i class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></i> Oops! No results found.</div>
 					<?php
 				}
 				?>

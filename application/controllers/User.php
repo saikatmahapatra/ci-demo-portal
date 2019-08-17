@@ -50,9 +50,9 @@ class User extends CI_Controller {
 		$this->data['arr_designations'] = $this->user_model->get_designation_dropdown('Y');
 		$this->data['arr_departments'] = $this->user_model->get_department_dropdown();
 		$this->data['arr_user_title'] = array(''=>'Select Title','Mr.'=>'Mr.','Mrs.'=>'Mrs.','Dr.'=>'Dr.','Ms.'=>'Ms.');
-        $this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-', 'NA'=>'Unknown/Not Applicable');
-        $this->data['bank_ac_type'] = array('SB'=>'Savings','CU'=>'Current');
-        $this->data['account_uses'] = array('SAL'=>'Salary Credit','REI'=>'Reimbursement');
+        $this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-', 'NA'=>'Unknown');
+        $this->data['bank_ac_type'] = array('SB'=>'Savings Account','CU'=>'Current Account');
+        $this->data['account_uses'] = array('SAL'=>'Salary Credit Account','REI'=>'Reimbursement Account');
         $this->data['arr_gender'] = array('M'=>'Male','F'=>'Female');
 
         $this->data['arr_upload_file_type_name'] = array(
@@ -83,9 +83,9 @@ class User extends CI_Controller {
         );
 
         $this->data['user_status_arr'] = array(
-            'N'=>array('text'=>'Inactive', 'css'=>'text-warning'),
-            'A'=>array('text'=>'Archived', 'css'=>'text-danger'),
-            'Y'=>array('text'=>'Active', 'css'=>'text-success')
+            'N'=>array('text'=>'Inactive', 'css'=>''),
+            'A'=>array('text'=>'Archived', 'css'=>''),
+            'Y'=>array('text'=>'Active', 'css'=>'')
         );
     }
 
@@ -181,33 +181,23 @@ class User extends CI_Controller {
             $no++;
             $row = array();
             $html_name='';
-            $status_indicator = 'text-secondary';
-            if($result['user_status'] == 'A'){
-                $status_indicator = 'text-danger';
-            }
-            if($result['user_status'] == 'Y'){
-                $status_indicator = 'text-success';
-            }
-            if($result['user_status'] == 'N'){
-                $status_indicator = 'text-warning';
-            }
-
             $row[] = $result['user_firstname'] . ' ' . $result['user_lastname'];
             $row[] = $result['user_emp_id'];
             $row[] = $result['user_email'];
             $row[] = $result['user_phone1'];
             $row[] = $result['designation_name'];
-            $row[] = '<span class=""><i class="fa fa-circle-o '.$status_indicator.'" aria-hidden="true"></i></span>';
+            $row[] = '<span class="'.$this->data['user_status_arr'][$result['user_status']]['css'].'">'.$this->data['user_status_arr'][$result['user_status']]['text'].'</span>';
             $action_html = '';
             
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-lg fa-edit" aria-hidden="true"></i>', array(
-                'class' => 'btn btn-sm btn-outline-secondary mx-1',
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>', array(
+                'class' => 'btn btn-sm btn-outline-secondary',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit Profile',
                 'title' => 'Edit Profile'
             ));
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-lg fa-info-circle" aria-hidden="true"></i>', array(
-                'class' => 'btn btn-sm btn-outline-info mx-1',
+            $action_html.='&nbsp;';
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-fw fa-info-circle" aria-hidden="true"></i>', array(
+                'class' => 'btn btn-sm btn-outline-info',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'View Profile',
                 'title' => 'View Profile'
@@ -311,7 +301,6 @@ class User extends CI_Controller {
             if ($this->validate_create_account_form_data() == true) {
                 //$activation_token = md5(time('Y-m-d h:i:s'));
                 $activation_token = $this->common_lib->generate_rand_id(6, FALSE);
-                $dob = $this->input->post('dob_year') . '-' . $this->input->post('dob_month') . '-' . $this->input->post('dob_day');
 				$user_emp_id = $this->user_model->get_new_emp_id();
 				$password = $this->common_lib->generate_rand_id();
                 $postdata = array(
@@ -321,7 +310,7 @@ class User extends CI_Controller {
                     'user_gender' => $this->input->post('user_gender'),
                     'user_email' => strtolower($this->input->post('user_email')),
                     'user_email_secondary' => strtolower($this->input->post('user_email_secondary')),
-                    'user_dob' => $dob,
+                    'user_dob' => $this->common_lib->convert_to_mysql($this->input->post('user_dob')),
                     'user_doj' => $this->common_lib->convert_to_mysql($this->input->post('user_doj')),
                     'user_role' => $this->input->post('user_role'),
                     'user_department' => $this->input->post('user_department'),
@@ -381,10 +370,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_phone1', 'mobile (personal)', 'required|trim|min_length[10]|max_length[10]|numeric');
         $this->form_validation->set_rules('user_phone2', 'mobile (office)', 'trim|min_length[10]|max_length[10]|numeric|differs[user_phone1]');
         //$this->form_validation->set_rules('user_password_confirm', 'confirm password', 'required|matches[user_password]');
-        $this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
-        $this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
-        $this->form_validation->set_rules('dob_year', 'birth year selection', 'required');
-        //$this->form_validation->set_rules('user_dob', 'date of birth', 'required');
+        $this->form_validation->set_rules('user_dob', 'date of birth', 'required');
         //$this->form_validation->set_rules('user_doj', 'date of joining', 'required');
         $this->form_validation->set_rules('user_role', 'access group', 'required');
         //$this->form_validation->set_rules('user_designation', 'designation', 'required');
@@ -403,17 +389,16 @@ class User extends CI_Controller {
         if ($this->input->post('form_action') == 'self_registration') {
             if ($this->validate_registration_form_data() == true) {
                 $activation_token = md5(time('Y-m-d h:i:s'));
-                $dob = $this->input->post('dob_year') . '-' . $this->input->post('dob_month') . '-' . $this->input->post('dob_day');
 				$user_emp_id = $this->user_model->get_new_emp_id();				
                 $postdata = array(
-                    'user_title' => $this->input->post('user_title'),                    
-                    'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),                   
+                    'user_title' => $this->input->post('user_title'),
+                    'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),
                     'user_lastname' => ucwords(strtolower($this->input->post('user_lastname'))),
                     'user_gender' => $this->input->post('user_gender'),
                     'user_email' => strtolower($this->input->post('user_email')),
 					'user_role' => $this->input->post('user_role'),
                     'user_email_secondary' => strtolower($this->input->post('user_email_secondary')),
-                    'user_dob' => $dob,
+                    'user_dob' => $this->common_lib->convert_to_mysql($this->input->post('user_dob')),
 					'user_phone1' => $this->input->post('user_phone1'),                    
                     'user_password' => md5($this->input->post('user_password')),
                     'user_activation_key' => $activation_token,
@@ -468,10 +453,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_password', 'password', 'required|trim|min_length[6]');
         $this->form_validation->set_rules('user_phone1', 'mobile number', 'required|trim|min_length[10]|max_length[10]|numeric');        
         $this->form_validation->set_rules('user_password_confirm', 'confirm password', 'required|matches[user_password]');
-        $this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
-        $this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
-        $this->form_validation->set_rules('dob_year', 'birth year selection', 'required');
-        //$this->form_validation->set_rules('user_dob', 'date of birth', 'required');
+        $this->form_validation->set_rules('user_dob', 'date of birth', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -1195,7 +1177,7 @@ class User extends CI_Controller {
                     //'user_lastname' => $this->input->post('user_lastname'),
                     //'user_bio' => $this->input->post('user_bio'),
                     //'user_gender' => $this->input->post('user_gender'),                   
-                    //'user_dob' => $dob,
+                    //'user_dob' => $this->common_lib->convert_to_mysql($this->input->post('user_dob')),
                     'user_phone1' => $this->input->post('user_phone1'),
                     'user_phone2' => $this->input->post('user_phone2'),                  
                     'user_email_secondary' => $this->input->post('user_email_secondary'),                  
@@ -1236,7 +1218,7 @@ class User extends CI_Controller {
         $rows = $this->user_model->get_rows($user_id);
         $this->data['row'] = $rows['data_rows'];
         if(isset($this->data['row'][0]) && $this->data['row'][0]['user_status']=='A'){
-            $this->session->set_flashdata('flash_message', '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> You can\'t edit the selected user as the user account has already been archived.');
+            $this->session->set_flashdata('flash_message', '<i class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></i> You can\'t edit the selected user as the user account has already been archived.');
             $this->session->set_flashdata('flash_message_css', 'alert-danger');
             redirect($this->router->directory.$this->router->class.'/manage');
         }
@@ -1248,13 +1230,12 @@ class User extends CI_Controller {
 
         if ($this->input->post('form_action') == 'update_profile') {
             if ($this->validate_edit_user_profile_form() == true) {
-                $dob = $this->input->post('dob_year') . '-' . $this->input->post('dob_month') . '-' . $this->input->post('dob_day');
                 $postdata = array(
                     'user_title' => $this->input->post('user_title'),                    
                     'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),
                     'user_lastname' => ucwords(strtolower($this->input->post('user_lastname'))),
                     'user_gender' => $this->input->post('user_gender'),
-                    'user_dob' => $dob,
+                    'user_dob' => $this->common_lib->convert_to_mysql($this->input->post('user_dob')),
                     'user_doj' => $this->common_lib->convert_to_mysql($this->input->post('user_doj')),
                     //'user_role' => $this->input->post('user_role'),
                     'user_department' => $this->input->post('user_department'),
@@ -1344,10 +1325,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_firstname', 'first name', 'required|alpha|min_length[3]|max_length[25]');
         $this->form_validation->set_rules('user_lastname', 'last name', 'required|alpha_numeric_spaces|min_length[3]|max_length[30]');
         $this->form_validation->set_rules('user_gender', 'gender selection', 'required');
-        $this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
-        $this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
-        $this->form_validation->set_rules('dob_year', 'birth year selection', 'required');
-        //$this->form_validation->set_rules('user_dob', 'date of birth', 'required');
+        $this->form_validation->set_rules('user_dob', 'date of birth', 'required');
         //$this->form_validation->set_rules('user_doj', 'date of joining', 'required');
         //$this->form_validation->set_rules('user_role', 'access group', 'required');
         //$this->form_validation->set_rules('user_designation', 'designation', 'required');
@@ -1843,10 +1821,8 @@ class User extends CI_Controller {
             if ($this->validate_user_bank_account_form_data('add') == true) {
                 $postdata_user = array(					
                     'user_pan_no' => strtoupper($this->input->post('user_pan_no')),
-                    'user_aadhar_no' => $this->input->post('user_aadhar_no'),                    
-                    'user_passport_no' => strtoupper($this->input->post('user_passport_no')), 
                     'user_uan_no' => $this->input->post('user_uan_no')
-                );                
+                );
                 $where = array('id' => $this->sess_user_id);
                 $res = $this->user_model->update($postdata_user, $where);
 
@@ -1888,10 +1864,8 @@ class User extends CI_Controller {
             if ($this->validate_user_bank_account_form_data('edit') == true) {
                 $postdata_user = array(					
                     'user_pan_no' => strtoupper($this->input->post('user_pan_no')),
-                    'user_aadhar_no' => $this->input->post('user_aadhar_no'),                    
-                    'user_passport_no' => strtoupper($this->input->post('user_passport_no')), 
                     'user_uan_no' => $this->input->post('user_uan_no')
-                );                
+                );
                 $where = array('id' => $this->sess_user_id);
                 $res = $this->user_model->update($postdata_user, $where);
 
@@ -1920,9 +1894,9 @@ class User extends CI_Controller {
         if($mode == 'add'){
             $this->form_validation->set_rules('account_uses', 'account for', 'required|callback_check_is_account_uses_exists'); 
         }  
-        $this->form_validation->set_rules('user_pan_no', 'PAN no', 'required|regex_match[/^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/]'); 
+        $this->form_validation->set_rules('user_pan_no', 'PAN no', 'regex_match[/^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/]'); 
         //$this->form_validation->set_rules('user_aadhar_no', 'Aadhar no', 'required'); 
-        $this->form_validation->set_rules('user_passport_no', 'passport', 'alpha_numeric'); 
+        //$this->form_validation->set_rules('user_passport_no', 'passport', 'alpha_numeric'); 
         $this->form_validation->set_rules('user_uan_no', 'UAN no', 'numeric'); 
         
         $this->form_validation->set_rules('bank_id', 'bank selection', 'required'); 

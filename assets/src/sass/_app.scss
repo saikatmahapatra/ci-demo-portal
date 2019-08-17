@@ -19,7 +19,7 @@ body.login {
 
 //Site Logo
 .logo {
-    width: 50px;
+    width: 65px;
 }
 
 .logo-login {
@@ -34,14 +34,9 @@ body.login {
 }
 
 // View Page Title
-.page-title-container {
-    //margin-top: 1rem;
-    margin-bottom: 0.5rem;
-}
-
 .page-title {
     font-size: 1.25rem;
-    //font-weight: 300;
+    margin-bottom: 1rem;
 }
 
 // Extra small devices (portrait phones, less than 576px)
@@ -122,13 +117,11 @@ body.login {
     word-break: break-all;
 }
 
-a[data-link-type="user-profile-card"] {
-    text-decoration: none;
-    color: inherit;
-}
-
-.user-profile-card a {
-    text-decoration: none;
+.ci-dl {
+    dt {
+        font-weight: 400;
+        color: $gray-600;
+    }
 }
 
 // CI Calendar
@@ -231,11 +224,23 @@ a[data-link-type="user-profile-card"] {
     }
 }
 
-// Nav Tabs
-// .nav-link.active {
-//     border: 0;
-//     border-bottom: 1px solid $nav-tabs-border-color;
-// }
+// Navtab
+.ci-nav-tab {
+    .nav-link {
+        &:hover,
+        &:focus {
+            border-top-color: transparent;
+            border-left-color: transparent;
+            border-right-color: transparent;
+        }
+    }
+    .nav-link.active {
+        border: 0;
+        border-bottom: 5px solid $primary-color;
+        color: inherit;
+    }
+}
+
 // PACE JS
 .pace {
     pointer-events: none;
@@ -295,12 +300,19 @@ a[data-link-type="user-profile-card"] {
 }
 
 //DataTable Style Override
-table.ci-table.dataTable {
+.table.ci-table.dataTable {
     clear: both;
     margin-top: 0px !important;
     margin-bottom: 0px !important;
     max-width: none !important;
     border-collapse: collapse !important;
+}
+
+.table.ci-table {
+    thead th {
+        font-weight: 700;
+        font-size: 80%;
+    }
 }
 
 //CI Accordion 
@@ -491,16 +503,20 @@ table.ci-table.dataTable {
 //     @include bg-variant(".bg-light-#{$color}", lighten($value, 30%));
 // }
 // CI card
-// .ci-card {
-//     border: none;
-//     .card-header {
-//         background-color: inherit;
-//         padding: 0.75rem 0rem;
-//     }
-//     .card-body {
-//         padding: 1.25rem 0rem;
-//     }
-// }
+.ci-card {
+    .card-header.h6 {
+        font-weight: 400;
+    }
+    //border: none;
+    // .card-header {
+    //     background-color: inherit;
+    //     padding: 0.75rem 0rem;
+    // }
+    // .card-body {
+    //     padding: 1.25rem 0rem;
+    // }
+}
+
 //Navbar
 // Make nav bar scrolable in SM devices once menu items are many
 @media (max-width: 576px) {
@@ -730,5 +746,20 @@ select.form-control.dob-inline {
     }
     .form-control {
         height: auto;
+    }
+}
+
+.ci-link-group {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-end !important;
+}
+
+.user-profile-section {
+    margin: 10px 0px 15px 0px;
+    .section-heading {
+        color: $gray-600;
+        font-weight: 700;
+        font-size: 80%;
     }
 }
