@@ -86,6 +86,12 @@
                         </p> -->
                     <?php } ?>
 
+                    <div class="py-3 border-bottom">
+                        <a title="View Details" href="<?php echo base_url('timesheet/index'); ?>">
+                            <i class="fa fa-fw fa-list fa-2x align-middle" aria-hidden="true" style="color: #AC193D;"></i> <span class="font-weight-bold"><?php echo isset($user_timesheet_stat) ? $user_timesheet_stat['stat_data']['total_days'] : '0'; ?></span> days tasks logged by you for <?php echo date('M');?>
+                        </a>
+                    </div>
+
                     <div class="pt-3">
                         <a title="View Details" href="<?php echo base_url('leave/manage/assigned_to_me'); ?>">
                             <i class="fa fa-fw fa-check-square-o fa-2x align-middle" aria-hidden="true" style="color: #6f42c1;"></i> <span class="font-weight-bold"><?php echo isset($pending_leave_action) ? $pending_leave_action['data_rows'][0]['total'] : '0'; ?></span> leave req. waiting for your approval in <?php echo date('M');?>
