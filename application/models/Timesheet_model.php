@@ -194,7 +194,7 @@ class Timesheet_model extends CI_Model {
         $this->db->order_by('project_name');		
         $query = $this->db->get('projects');
         #echo $this->db->last_query();
-        $result = array('' => 'Select');
+        $result = array('' => 'Select Project');
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
@@ -234,7 +234,7 @@ class Timesheet_model extends CI_Model {
         $this->db->order_by('user_firstname');		
         $query = $this->db->get('users');
         #echo $this->db->last_query();
-        $result = array('' => 'Select');
+        $result = array('' => 'Select Employee');
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {

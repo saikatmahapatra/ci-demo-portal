@@ -95,12 +95,14 @@ class Home extends CI_Controller {
         $this->data['data_rows'] = $result_array['data_rows'];
 		
         // Dashboard Stats
+        $this->load->model('timesheet_model');
         $this->data['user_count'] = $this->home_model->get_user_count();
         $this->data['projects_count'] = $this->home_model->get_user_projects();
         $this->data['timesheet_user'] = $this->home_model->get_user_of_timesheet();
         $this->data['user_applied_leave'] = $this->home_model->get_user_applied_leave_count();
         $this->data['user_approved_leave'] = $this->home_model->get_user_approved_leave_count();
         $this->data['pending_leave_action'] = $this->home_model->get_pending_leave_action_count($this->sess_user_id);
+        $this->data['user_timesheet_stat'] = $this->timesheet_model->get_timesheet_stats(date('Y'), date('m'), $this->sess_user_id);
         // Dashboard Stats
         
         //User Profile Completion Status Check
