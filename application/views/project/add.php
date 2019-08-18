@@ -61,7 +61,6 @@
 									<label class="custom-control-label" for="N">Inactive</span></label>
 								</div>								
 							</div>
-							<small class="form-text text-muted">Unpublished projects will not appear at timesheet project list dropdown.</small>
 							<?php echo form_error('project_status'); ?>
 						</div>		
 					</div>

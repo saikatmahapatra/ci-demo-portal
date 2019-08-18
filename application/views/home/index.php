@@ -77,7 +77,7 @@
 
                         <div class="py-3 border-bottom">
                             <a title="View Details" href="<?php echo base_url('leave/manage/all'); ?>">
-                                <i class="fa fa-fw fa-send-o fa-2x align-middle" aria-hidden="true" style="color: #fd7e14;"></i> <span class="font-weight-bold"><?php echo isset($user_approved_leave) ? $user_approved_leave['data_rows'][0]['total'] : '0'; ?></span> of <span class="font-weight-bold"><?php echo isset($user_applied_leave) ? $user_applied_leave['data_rows'][0]['total'] : '0'; ?></span> leave req. approved for <?php echo date('M');?>
+                                <i class="fa fa-fw fa-send-o fa-2x align-middle" aria-hidden="true" style="color: #fd7e14;"></i> <span class="font-weight-bold"><?php echo isset($user_approved_leave) ? $user_approved_leave['data_rows'][0]['total'] : '0'; ?></span> of <span class="font-weight-bold"><?php echo isset($user_applied_leave) ? $user_applied_leave['data_rows'][0]['total'] : '0'; ?></span> leave req. approved in <?php echo date('M');?>
                             </a>
                         </div>
                     <?php } else{ ?>
@@ -88,7 +88,7 @@
 
                     <div class="py-3 border-bottom">
                         <a title="View Details" href="<?php echo base_url('timesheet/index'); ?>">
-                            <i class="fa fa-fw fa-list fa-2x align-middle" aria-hidden="true" style="color: #AC193D;"></i> <span class="font-weight-bold"><?php echo isset($user_timesheet_stat) ? $user_timesheet_stat['stat_data']['total_days'] : '0'; ?></span> days tasks logged by you for <?php echo date('M');?>
+                            <i class="fa fa-fw fa-list fa-2x align-middle" aria-hidden="true" style="color: #AC193D;"></i> <span class="font-weight-bold"><?php echo isset($user_timesheet_stat) ? $user_timesheet_stat['stat_data']['total_days'] : '0'; ?></span> days tasks logged by you in <?php echo date('M');?>
                         </a>
                     </div>
 
