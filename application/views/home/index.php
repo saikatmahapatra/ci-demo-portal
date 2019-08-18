@@ -88,7 +88,7 @@
 
                     <div class="py-3 border-bottom">
                         <a title="View Details" href="<?php echo base_url('timesheet/index'); ?>">
-                            <i class="fa fa-fw fa-list fa-2x align-middle" aria-hidden="true" style="color: #AC193D;"></i> <span class="font-weight-bold"><?php echo isset($user_timesheet_stat) ? $user_timesheet_stat['stat_data']['total_days'] : '0'; ?></span> days tasks logged by you in <?php echo date('M');?>
+                            <i class="fa fa-fw fa-list fa-2x align-middle" aria-hidden="true" style="color: #AC193D;"></i> <span class="font-weight-bold"><?php echo isset($user_timesheet_stat) ? $user_timesheet_stat['stat_data']['total_days'] : '0'; ?></span> days task logged by you in <?php echo date('M');?>
                         </a>
                     </div>
 
