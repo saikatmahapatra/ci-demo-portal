@@ -45,9 +45,8 @@
 										echo form_radio(array('name' => 'task_activity_status', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('task_activity_status', 'N'));
 									?>
 									<label class="custom-control-label" for="N">Inactive</span></label>
-								</div>								
+								</div>
 							</div>
-							<small class="form-text text-muted">Unpublished projects will not appear at timesheet project list dropdown.</small>
 							<?php echo form_error('task_activity_status'); ?>
 						</div>		
 					</div>

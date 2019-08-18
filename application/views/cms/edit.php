@@ -30,45 +30,45 @@ $row = $rows[0];
 				
 				<div class="form-row">	
 					<div class="form-group col-md-4">
-						<label for="pagecontent_type" class="">Content Type <span class="required">*</span></label>
-						<?php echo form_dropdown('pagecontent_type', $arr_content_type, (isset($_POST['pagecontent_type']) ? set_value('pagecontent_type') : $row['pagecontent_type']), array('class' => 'form-control',));?>
-						<?php echo form_error('pagecontent_type'); ?>
+						<label for="content_type" class="">Content Type <span class="required">*</span></label>
+						<?php echo form_dropdown('content_type', $arr_content_type, (isset($_POST['content_type']) ? set_value('content_type') : $row['content_type']), array('class' => 'form-control',));?>
+						<?php echo form_error('content_type'); ?>
 					</div>	
 					<div class="form-group col-md-8">
-						<label for="pagecontent_title" class="">Content Title <span class="required">*</span></label>
-						<?php echo form_input(array('name' => 'pagecontent_title', 'value' => (isset($_POST['pagecontent_title']) ? set_value('pagecontent_title') : $row['pagecontent_title']), 'id' => 'pagecontent_title', 'class' => 'form-control', 'placeholder' => ''));?>
-						<?php echo form_error('pagecontent_title'); ?>
+						<label for="content_title" class="">Content Title <span class="required">*</span></label>
+						<?php echo form_input(array('name' => 'content_title', 'value' => (isset($_POST['content_title']) ? set_value('content_title') : $row['content_title']), 'id' => 'content_title', 'class' => 'form-control', 'placeholder' => ''));?>
+						<?php echo form_error('content_title'); ?>
 					</div>
 				</div>
 				
 				
 				
 				<div class="form-group">
-					<label for="pagecontent_text" class="">Content(HTML) <span class="required">*</span></label>
-					<?php echo form_textarea(array('name' => 'pagecontent_text','value' => (isset($_POST['pagecontent_text']) ? set_value('pagecontent_text') : $row['pagecontent_text']),'class' => 'form-control textarea','id' => 'pagecontent_text','rows' => '2','cols' => '50','placeholder' => '')); ?>
-					<?php echo form_error('pagecontent_text'); ?>
+					<label for="content_text" class="">Content(HTML) <span class="required">*</span></label>
+					<?php echo form_textarea(array('name' => 'content_text','value' => (isset($_POST['content_text']) ? set_value('content_text') : $row['content_text']),'class' => 'form-control textarea','id' => 'content_text','rows' => '2','cols' => '50','placeholder' => '')); ?>
+					<?php echo form_error('content_text'); ?>
 				</div>
 				
 
 				<div class="form-row">
 				<div class="form-group col-md-12">									
-					<label for="pagecontent_status" class="">Status <span class="required">*</span></label>
-						<?php //echo form_dropdown('pagecontent_status', array('Y'=>'Yes','N'=>'No'), (isset($_POST['pagecontent_status']) ? set_value('pagecontent_status') : $row['pagecontent_status']), array('class' => 'form-control')); ?>
+					<label for="content_status" class="">Status <span class="required">*</span></label>
+						<?php //echo form_dropdown('content_status', array('Y'=>'Yes','N'=>'No'), (isset($_POST['content_status']) ? set_value('content_status') : $row['content_status']), array('class' => 'form-control')); ?>
 							<!--<div class="">-->
 								<div class="custom-control custom-radio custom-control-inline">
 									<?php
-										$radio_is_checked = isset($_POST['pagecontent_status']) ? $_POST['pagecontent_status'] == 'Y' : ($row['pagecontent_status'] == 'Y');
+										$radio_is_checked = isset($_POST['content_status']) ? $_POST['content_status'] == 'Y' : ($row['content_status'] == 'Y');
 
-										echo form_radio(array('name' => 'pagecontent_status','value' => 'Y','id' => 'Y','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('pagecontent_status', 'Y'));
+										echo form_radio(array('name' => 'content_status','value' => 'Y','id' => 'Y','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('content_status', 'Y'));
 									?>
 									<label class="custom-control-label" for="Y">Active</span></label>
 								</div>
 								
 								<div class="custom-control custom-radio custom-control-inline">
 									<?php
-										$radio_is_checked = isset($_POST['pagecontent_status']) ? $_POST['pagecontent_status'] == 'N' : ($row['pagecontent_status'] == 'N');
+										$radio_is_checked = isset($_POST['content_status']) ? $_POST['content_status'] == 'N' : ($row['content_status'] == 'N');
 
-										echo form_radio(array('name' => 'pagecontent_status', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('pagecontent_status', 'N'));
+										echo form_radio(array('name' => 'content_status', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('content_status', 'N'));
 									?>
 									<label class="custom-control-label" for="N">Inactive</span></label>
 								</div>								
@@ -85,7 +85,7 @@ $row = $rows[0];
 								$cb_is_checked = $this->input->post('send_email_notification') === 'Y';
 								echo form_checkbox('send_email_notification', 'Y', $cb_is_checked, array('id' => 'send_email_notification','class' => 'custom-control-input'));
 							?>
-							<label class="custom-control-label" for="send_email_notification">Send Email Notification to office email (optional)</label>
+							<label class="custom-control-label" for="send_email_notification">Send this as an email notification (optional)</label>
 						</div>
 						<?php /* ?>
 						<div class="custom-control custom-checkbox custom-control-inline">

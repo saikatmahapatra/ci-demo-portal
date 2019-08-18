@@ -27,15 +27,15 @@
                 <ul class="list-group list-group-flush">
                 <?php foreach($data_rows as $key=>$row) { ?>
                     <li class="list-group-item">
-                        <div class="subject-title"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['pagecontent_title']) ? $row['pagecontent_title'] : '';?></a></div>
+                        <div class="subject-title"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></a></div>
                         <div class="text-muted small">
-                            <?php echo $content_type[$row['pagecontent_type']]['text']; ?>
+                            <?php echo $content_type[$row['content_type']]['text']; ?>
                             <?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
                             <?php echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>
-                            <?php echo $this->common_lib->display_date($row['pagecontent_created_on'],true,null,'d-M-Y h:i:s a'); ?>
+                            <?php echo $this->common_lib->display_date($row['content_created_on'],true,null,'d-M-Y h:i:s a'); ?>
                         </div>
                         <div class="mb-0 lh-125" style="max-height: 120px; overflow: hidden;">
-                            <?php echo isset($row['pagecontent_text']) ? ($this->common_lib->remove_empty_p($row['pagecontent_text'])) : '';?>
+                            <?php echo isset($row['content_text']) ? ($this->common_lib->remove_empty_p($row['content_text'])) : '';?>
                         </div>
                     </li>
                 <?php }  ?>
@@ -77,7 +77,7 @@
 
                         <div class="py-3 border-bottom">
                             <a title="View Details" href="<?php echo base_url('leave/manage/all'); ?>">
-                                <i class="fa fa-fw fa-send-o fa-2x align-middle" aria-hidden="true" style="color: #fd7e14;"></i> <span class="font-weight-bold"><?php echo isset($user_approved_leave) ? $user_approved_leave['data_rows'][0]['total'] : '0'; ?></span> of <span class="font-weight-bold"><?php echo isset($user_applied_leave) ? $user_applied_leave['data_rows'][0]['total'] : '0'; ?></span> leave req. approved for <?php echo date('M');?>
+                                <i class="fa fa-fw fa-send-o fa-2x align-middle" aria-hidden="true" style="color: #fd7e14;"></i> <span class="font-weight-bold"><?php echo isset($user_approved_leave) ? $user_approved_leave['data_rows'][0]['total'] : '0'; ?></span> of <span class="font-weight-bold"><?php echo isset($user_applied_leave) ? $user_applied_leave['data_rows'][0]['total'] : '0'; ?></span> leave req. approved in <?php echo date('M');?>
                             </a>
                         </div>
                     <?php } else{ ?>
@@ -85,6 +85,12 @@
                             Oops! There are nothing to display here for you.
                         </p> -->
                     <?php } ?>
+
+                    <div class="py-3 border-bottom">
+                        <a title="View Details" href="<?php echo base_url('timesheet/index'); ?>">
+                            <i class="fa fa-fw fa-list fa-2x align-middle" aria-hidden="true" style="color: #AC193D;"></i> <span class="font-weight-bold"><?php echo isset($user_timesheet_stat) ? $user_timesheet_stat['stat_data']['total_days'] : '0'; ?></span> days task logged by you in <?php echo date('M');?>
+                        </a>
+                    </div>
 
                     <div class="pt-3">
                         <a title="View Details" href="<?php echo base_url('leave/manage/assigned_to_me'); ?>">

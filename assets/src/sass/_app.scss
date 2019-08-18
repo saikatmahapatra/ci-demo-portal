@@ -67,6 +67,7 @@ body.login {
 // CI Server side Errors
 .validation-error {
     color: $validation-error-color;
+    font-size: 80%;
 }
 
 .tnc-content {
@@ -309,7 +310,8 @@ body.login {
 }
 
 .table.ci-table {
-    thead th {
+    thead th,
+    tfoot th {
         font-weight: 700;
         font-size: 80%;
     }
@@ -487,6 +489,14 @@ body.login {
     }
     .card-body {
         padding: 15px;
+    }
+}
+
+.news-card-details {
+    .card-body {
+        img {
+            width: 100%;
+        }
     }
 }
 
@@ -760,6 +770,11 @@ select.form-control.dob-inline {
     .section-heading {
         color: $gray-600;
         font-weight: 700;
-        font-size: 80%;
+        font-size: 90%;
     }
+}
+
+.user-profile-card-people {
+    color: inherit;
+    text-decoration: none !important;
 }
