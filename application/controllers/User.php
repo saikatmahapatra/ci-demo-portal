@@ -244,6 +244,10 @@ class User extends CI_Controller {
                         redirect(current_url());
                     }
                     if ($login_status == 'success') {
+                        $login_time = $this->user_model->get_user_login_timestamp($login_data['id']);
+                        if($login_time){
+                            $login_data['user_login_date_time'] = $login_time[0]['user_login_date_time'];
+                        }
                         $this->session->set_userdata('sess_user', $login_data);
                         if($this->session->userdata('sess_post_login_redirect_url')){
                             redirect($this->session->userdata('sess_post_login_redirect_url'));
