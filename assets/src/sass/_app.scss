@@ -68,6 +68,7 @@ body.login {
 .validation-error {
     color: $validation-error-color;
     font-size: 80%;
+    margin-top: .25rem;
 }
 
 .tnc-content {
@@ -777,4 +778,16 @@ select.form-control.dob-inline {
 .user-profile-card-people {
     color: inherit;
     text-decoration: none !important;
+}
+
+// Dashboard statistics
+.stat {
+    padding: 15px 0px 15px 0px;
+    .count {
+        font-weight: 700;
+    }
+}
+
+.stat:not(:last-child) {
+    border-bottom: 1px solid $gray-400;
 }
