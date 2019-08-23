@@ -196,6 +196,16 @@ class User_model extends CI_Model {
         }
     }
 
+    function get_user_login_timestamp($id){
+        $this->db->select('t1.user_login_date_time');
+        $this->db->where(array(
+            't1.id' => $id
+        ));
+        $query = $this->db->get('users as t1');
+        $result = $query->result_array();
+        return $result;
+    }
+
     function check_is_email_registered($user_email, $db_operation_type = NULL, $user_id = NULL, $user_role = NULL) {
         $this->db->select('id');
         $this->db->where('user_email', $user_email);
