@@ -1,5 +1,5 @@
-<?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
+
 <div class="row">
 	<div class="col-md-8">
 	<?php
@@ -14,7 +14,7 @@
     <?php echo form_hidden('form_action', 'send'); ?>
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label for="name">Name <span class="required">*</span></label>
+                <label for="name" class="required">Name</label>
                 <?php
                 echo form_input(array(
                     'name' => 'name',
@@ -29,7 +29,7 @@
             </div>
             
             <div class="form-group col-md-4">
-                <label for="email" class="">Email <span class="required">*</span></label>			
+                <label for="email" class="required">Email</label>			
                 <?php
                 echo form_input(array(
                     'name' => 'email',
@@ -59,7 +59,7 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-12"> 
-                <label for="message" class="">Message <span class="required">*</span></label>
+                <label for="message" class="required">Message</label>
                 <?php
                 echo form_textarea(array(
                     'name' => 'message',
@@ -75,12 +75,11 @@
                 <?php echo form_error('message'); ?>
             </div>
         </div>
-        <?php /* ?>
         <div class="form-row">
             <div class="form-group col-md-4">
                 <div><?php print_r($captcha_image); ?></div>
                 <br>
-                <?php echo form_hidden('hdn_captcha_word', $captcha_word); ?> 
+                <?php echo form_hidden('captcha_word', $captcha_word); ?> 
                 <?php
                 echo form_input(array(
                     'name' => 'captcha',
@@ -96,7 +95,6 @@
                 <?php echo form_error('captcha'); ?>
             </div>
         </div>
-        <?php */ ?>
         
 		<?php
 		echo form_submit(array(

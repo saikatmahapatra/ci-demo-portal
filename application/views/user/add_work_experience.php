@@ -19,7 +19,7 @@
 				
 				<div class="form-row">
 					<div class="form-group col-md-3">
-						<label for="company_id" class="">Company Name <span class="required">*</span></label>
+						<label for="company_id" class="required">Company Name</label>
 						<?php
 						echo form_dropdown('company_id', $arr_company, set_value('company_id'), array(
 							'class' => 'form-control',
@@ -28,8 +28,8 @@
 						?> 
 						<?php echo form_error('company_id'); ?>
 				</div>
-			<div class="form-group col-md-3">                                
-					<label for="from_date" class="">From Date <span class="required">*</span></label>				
+			<div class="form-group col-md-3">
+					<label for="from_date" class="required">From Date</label>				
 					<?php
 					echo form_input(array(
 						'name' => 'from_date',
@@ -46,7 +46,7 @@
 				</div>
 
 				<div class="form-group col-md-3">        							
-					<label for="to_date" class="">To Date <span class="required">*</span></label>				
+					<label for="to_date" class="required">To Date</label>				
 						<?php
 						echo form_input(array(
 							'name' => 'to_date',
@@ -62,7 +62,7 @@
 						<?php echo form_error('to_date'); ?>
 				</div>
 						<div class="form-group col-md-3">
-						<label for="designation_id" class="">Designation/Role <span class="required">*</span></label>
+						<label for="designation_id" class="required">Designation/Role</label>
 						<?php
 						echo form_dropdown('designation_id', $arr_designation_prev_work, set_value('designation_id'), array(
 							'class' => 'form-control',
@@ -75,7 +75,7 @@
 
 			<div class="form-row d-none">
 						<div class="form-group col-md-12">
-						<label for="job_description" class="">Key Roles (Optional) </label>
+						<label for="job_description" class="">Key Roles  </label>
 						<?php echo form_textarea(array('name' => 'job_description','value' => set_value('job_description'),'class' => 'form-control','id' => 'job_description','rows' => '2','cols' => '50','placeholder' => 'Describe roles')); ?>
 						<?php echo form_error('job_description'); ?>
 						</div>

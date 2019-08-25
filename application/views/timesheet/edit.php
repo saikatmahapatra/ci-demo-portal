@@ -29,7 +29,7 @@ $row = $rows[0];
 					
 					<div class="form-row">
 						<div class="form-group col-md-4">
-							<label for="project_id" class="bmd-label-floating">Project <span class="required">*</span></label>
+							<label for="project_id" class="required">Project</label>
 							<?php
 							echo form_dropdown('project_id', $project_arr, (isset($_POST['project_id']) ? set_value('project_id') : $row['project_id']), array(
 								'class' => 'form-control',
@@ -39,7 +39,7 @@ $row = $rows[0];
 						</div>
 								
 						<div class="form-group col-md-4">
-							<label for="activity_id" class="bmd-label-floating">Activity <span class="required">*</span></label>
+							<label for="activity_id" class="required">Activity</label>
 							<?php
 							echo form_dropdown('activity_id', $task_task_activity_type_array, (isset($_POST['activity_id']) ? set_value('activity_id') : $row['activity_id']), array(
 								'class' => 'form-control',
@@ -49,8 +49,7 @@ $row = $rows[0];
 						</div>
 							
 						<div class="form-group col-md-4">
-							<label for="timesheet_hours" class="bmd-label-floating">Working Efforts (In Hours)<span class="required">*</span></label>							
-							<?php
+							<label for="timesheet_hours" class="required">Working Efforts (In Hours)</label>	<?php
 							echo form_input(array(
 								'name' => 'timesheet_hours',
 								'value' => (isset($_POST['timesheet_hours']) ? set_value('timesheet_hours') : $row['timesheet_hours']),
@@ -66,7 +65,7 @@ $row = $rows[0];
 						
 					
 					<div class="form-group">
-					<label for="timesheet_description" class="bmd-label-floating">Task Description <span class="required">*</span></label>
+					<label for="timesheet_description" class="required">Task Description</label>
 					<?php
 					echo form_textarea(array(
 						'name' => 'timesheet_description',

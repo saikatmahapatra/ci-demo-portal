@@ -30,12 +30,12 @@ $row = $rows[0];
 				
 				<div class="form-row">	
 					<div class="form-group col-md-4">
-						<label for="content_type" class="">Content Type <span class="required">*</span></label>
+						<label for="content_type" class="required">Content Type</label>
 						<?php echo form_dropdown('content_type', $arr_content_type, (isset($_POST['content_type']) ? set_value('content_type') : $row['content_type']), array('class' => 'form-control',));?>
 						<?php echo form_error('content_type'); ?>
 					</div>	
 					<div class="form-group col-md-8">
-						<label for="content_title" class="">Content Title <span class="required">*</span></label>
+						<label for="content_title" class="required">Content Title</label>
 						<?php echo form_input(array('name' => 'content_title', 'value' => (isset($_POST['content_title']) ? set_value('content_title') : $row['content_title']), 'id' => 'content_title', 'class' => 'form-control', 'placeholder' => ''));?>
 						<?php echo form_error('content_title'); ?>
 					</div>
@@ -44,7 +44,7 @@ $row = $rows[0];
 				
 				
 				<div class="form-group">
-					<label for="content_text" class="">Content(HTML) <span class="required">*</span></label>
+					<label for="content_text" class="required">Content Description</label>
 					<?php echo form_textarea(array('name' => 'content_text','value' => (isset($_POST['content_text']) ? set_value('content_text') : $row['content_text']),'class' => 'form-control textarea','id' => 'content_text','rows' => '2','cols' => '50','placeholder' => '')); ?>
 					<?php echo form_error('content_text'); ?>
 				</div>
@@ -52,7 +52,7 @@ $row = $rows[0];
 
 				<div class="form-row">
 				<div class="form-group col-md-12">									
-					<label for="content_status" class="">Status <span class="required">*</span></label>
+					<label for="content_status" class="required">Status</label>
 						<?php //echo form_dropdown('content_status', array('Y'=>'Yes','N'=>'No'), (isset($_POST['content_status']) ? set_value('content_status') : $row['content_status']), array('class' => 'form-control')); ?>
 							<!--<div class="">-->
 								<div class="custom-control custom-radio custom-control-inline">
@@ -79,13 +79,13 @@ $row = $rows[0];
 
 				<div class="form-row">
 					<div class="form-group col-md-12">
-						<!-- <label class="">Send Email Notification to (optional)</label> -->
+						<!-- <label class="">Send Email Notification to </label> -->
 						<div class="custom-control custom-checkbox custom-control-inline">
 							<?php
 								$cb_is_checked = $this->input->post('send_email_notification') === 'Y';
 								echo form_checkbox('send_email_notification', 'Y', $cb_is_checked, array('id' => 'send_email_notification','class' => 'custom-control-input'));
 							?>
-							<label class="custom-control-label" for="send_email_notification">Send this as an email notification (optional)</label>
+							<label class="custom-control-label" for="send_email_notification">Send this as an email notification </label>
 						</div>
 						<?php /* ?>
 						<div class="custom-control custom-checkbox custom-control-inline">
@@ -101,7 +101,7 @@ $row = $rows[0];
 
 				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
 				
-				<a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="ml-2 btn btn-secondary">Cancel</a>                             
+				<a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="ml-2 btn btn-secondary">Cancel</a>
 				<?php echo form_close(); ?>
 			</div><!--./card-body-->
 			<!--<div class="card-footer"></div>--><!--/.card-footer-->

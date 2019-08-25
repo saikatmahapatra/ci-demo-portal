@@ -20,7 +20,7 @@
         <?php echo form_hidden('form_action', 'insert_address'); ?>
 			<div class="form-row">
 				<div class="form-group col-md-12">
-					<label for="address_type" class="">Address Type <span class="required">*</span></label>					
+					<label for="address_type" class="required">Address Type</label>
 					<div>
 					<?php						
 					if(isset($address_type)){
@@ -45,8 +45,8 @@
 			
 
 			<div class="form-row">
-				<div class="form-group col-md-12">        						
-					<label for="address" class="">Address <span class="required">*</span></label>
+				<div class="form-group col-md-12">
+					<label for="address" class="required">Address</label>
 					<?php 
 					echo form_textarea(array(
 					'name' => 'address',
@@ -65,8 +65,8 @@
 			
 			<div class="form-row">
 
-				<div class="form-group col-md-6">						
-					<label for="locality" class="">Locality / Area Name<span class="required">*</span></label>
+				<div class="form-group col-md-6">		
+					<label for="locality" class="required">Locality / Area Name</label>
 					<?php
 					echo form_input(array(
 						'name' => 'locality',
@@ -80,7 +80,7 @@
 				</div>
 
 				<div class="form-group col-md-6">        						
-					<label for="zip" class="">Pin Code <span class="required">*</span></label>
+					<label for="zip" class="required">Pin Code</label>
 					<?php
 					echo form_input(array(
 						'name' => 'zip',
@@ -99,7 +99,7 @@
 				
 			<div class="form-row">				
 				<div class="form-group col-md-6">
-					<label for="city" class="">City / District / Town <span class="required">*</span></label>
+					<label for="city" class="required">City / District / Town</label>
 					<?php 
 					echo form_input(array(
 					'name' => 'city',
@@ -113,16 +113,8 @@
 					<?php echo form_error('city'); ?>
 				</div>				
 				<div class="form-group col-md-6">
-					<label for="state" class="">State/Union Territory <span class="required">*</span></label>
-					<?php 
-					/*echo form_input(array(
-					'name' => 'state',
-					'value' => set_value('state'),
-					'id' => 'state',
-					'class' => 'form-control',
-					'maxlength' => '30',
-					'placeholder'=>'',
-					));*/
+					<label for="state" class="required">State/Union Territory</label>
+					<?php
 					echo form_dropdown('state', $arr_states, set_value('state') , array(
 						'class' => 'form-control',
 						'id' => 'state'
@@ -135,7 +127,7 @@
 				
 			<div class="form-row">	
 				<div class="form-group col-md-6">
-					<label for="phone1" class="">Phone (Optional)</label>
+					<label for="phone1" class="">Phone </label>
 					<?php 
 					echo form_input(array(
 					'name' => 'phone1',
@@ -149,7 +141,7 @@
 					<?php echo form_error('phone1'); ?>
 				</div>
 				<div class="form-group col-md-6">
-					<label for="landmark" class="">Landmark (Optional)</label>
+					<label for="landmark" class="">Landmark </label>
 					<?php 
 					echo form_input(array(
 					'name' => 'landmark',

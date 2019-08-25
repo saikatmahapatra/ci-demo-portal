@@ -9054,9 +9054,10 @@ select.form-control.dob-inline {
   width: auto;
 }
 
-.required {
+label.required::after {
+  content: ' *';
+  font-weight: 400;
   color: #dc3545;
-  font-weight: bold;
 }
 
 .custom-control-label::before {

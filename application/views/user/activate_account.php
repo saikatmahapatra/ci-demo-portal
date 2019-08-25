@@ -16,7 +16,7 @@
 			?>
 		
 			<div class="form-group">
-				<label for="user_email">Registered Email <span class="required">*</span></label>
+				<label for="user_email" class="required">Registered Email</label>
 				<!-- <div class="input-group">
 					<div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-fw fa-envelope" aria-hidden="true"></i></div></div> -->
 					<?php echo form_input(array('name' => 'user_email', 'value' => set_value('user_email'),'id' => 'name','class' => 'form-control','placeholder' => '','maxlength' => '100','autocomplete' => 'off'));?>
@@ -25,7 +25,7 @@
 				<?php echo form_error('user_email'); ?>
 			</div>
 			<div class="form-group">
-				<label for="activation_otp">Activation OTP <span class="required">*</span></label>
+				<label for="activation_otp" class="required">Activation OTP</label>
 				<!-- <div class="input-group">
 					<div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-fw fa-lock" aria-hidden="true"></i></div></div> -->
 					<?php echo form_password(array('name' => 'activation_otp','value' => set_value('activation_otp'),'id' =>'activation_otp','placeholder' => '','class' => 'form-control','maxlength' => '16', 'autocomplete' => 'off'));?>

@@ -1,5 +1,5 @@
-<?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>		
+<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>	
+		
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
 	<div class="container">
@@ -55,7 +55,7 @@
 		</div><!--/.col-->
 	</div><!--/.row-->
 	<p>Primary color is the main color of the application which is used for navbar, active links and primary button.</p>		
-	<h2 class="h3 mb-3 font-weight-normal mt-4">Button</h2>       
+	<h2 class="h3 mb-3 font-weight-normal">Button</h2>       
 	<button type="button" class="btn btn-primary">.btn-primary</button>
 	<button type="button" class="btn btn-secondary">.btn-secondary</button>
 	<button type="button" class="btn btn-success">.btn-success</button>
@@ -66,11 +66,11 @@
 	<button type="button" class="btn btn-dark">.btn-dark</button>
 	<button type="button" class="btn btn-link">.btn-link</button>
 
-	<h2 class="h3 mb-3 font-weight-normal mt-4">Button Outline</h1>
+	<h2 class="h3 mb-3 font-weight-normal">Button Outline</h1>
 	<button type="button" class="btn btn-outline-primary">.btn .btn-outline-primary</button>
 	<button type="button" class="btn btn-outline-secondary">btn-outline-secondary</button>
 
-	<h2 class="h3 mb-3 font-weight-normal mt-4">Progress Bar</h1>        
+	<h2 class="h3 mb-3 font-weight-normal">Progress Bar</h1>        
 	<div class="progress">
 		<div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 32%" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100">32%</div>
 	</div>
@@ -78,7 +78,7 @@
 		<div class="progress-bar progress-bar-striped bg-secondary" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
 	</div>
 
-	<h2 class="h3 mb-3 font-weight-normal mt-4">Alerts</h2>
+	<h2 class="h3 mb-3 font-weight-normal">Alerts</h2>
 	<div class="alert alert-primary" role="alert">
 		This is a primary alert—check it out!
 	</div>
@@ -87,7 +87,7 @@
 	</div>
 
 
-	<h2 class="h3 mb-3 font-weight-normal mt-4">Tooltip</h2>
+	<h2 class="h3 mb-3 font-weight-normal">Tooltip</h2>
 	<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
 	Tooltip on top
 	</button>
@@ -104,7 +104,7 @@
 	Tooltip with HTML
 	</button>
 
-	<h2 class="h3 mb-3 font-weight-normal mt-4">News Feed</h2>
+	<h2 class="h3 mb-3 font-weight-normal">News Feed</h2>
 
 	<div class="row">
 		
@@ -130,11 +130,11 @@
 		
 	</div>
 
-	<h2 class="h3 mb-3 font-weight-normal mt-4">Card</h2>
+	<h2 class="h3 mb-3 font-weight-normal">Card</h2>
 	<div class="row">
 		<div class="col-md-3">
 			<div class="card">
-				<h5 class="card-header h6">Card Header</h5>
+				<h5 class="card-header">Card Header</h5>
 				<div class="card-body">
 					<h5 class="card-title">Card title</h5>
 					<p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Click here for <a href="#" class="">more details</a></p>                        
@@ -145,7 +145,7 @@
 		
 		<div class="col-md-3">
 			<div class="card">
-				<h5 class="card-header h6">Featured</h5>
+				<h5 class="card-header">Featured</h5>
 				<div class="card-body">
 					<h5 class="card-title">Card title</h5>
 					<p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -177,10 +177,10 @@
 		
 	</div>
 
-	<h2 class="h3 mb-3 font-weight-normal mt-4">Accordion</h2>
+	<h2 class="h3 mb-3 font-weight-normal">Accordion</h2>
 	<div id="accordion">
 		<div class="card">
-			<div class="card-header h6" id="heading_1">
+			<div class="card-header" id="heading_1">
 				<h5 class="mb-0">
 					<button class="btn btn-link btn-block" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" aria-controls="collapse_1">Heading #1</button>
 				</h5>
@@ -193,7 +193,7 @@
 			</div>
 		</div>
 		<div class="card">
-			<div class="card-header h6" id="heading_2">
+			<div class="card-header" id="heading_2">
 				<h5 class="mb-0">
 					<button class="btn btn-link collapsed btn-block" data-toggle="collapse" data-target="#collapse_2" aria-expanded="false" aria-controls="collapse_2">Heading #2</button>
 				</h5>
@@ -205,7 +205,7 @@
 			</div>
 		</div>
 		<div class="card">
-			<div class="card-header h6" id="heading_3">
+			<div class="card-header" id="heading_3">
 				<h5 class="mb-0">
 					<button class="btn btn-link collapsed btn-block" data-toggle="collapse" data-target="#collapse_3" aria-expanded="false" aria-controls="collapse_3">Heading #3</button>
 				</h5>
@@ -218,7 +218,7 @@
 		</div>
 	</div> <!--/#accordion-->
 
-	<h2 class="h3 mb-3 font-weight-normal mt-4">Form Control</h2>
+	<h2 class="h3 mb-3 font-weight-normal">Form Control</h2>
 	<form>
 		<div class="form-row">
 			<div class="form-group col-md-4">
@@ -375,40 +375,9 @@
 		<button class="btn btn-secondary">Cancel</button>
 	</form><!--/form-->
 
-	<h2 class="h3 mb-3 font-weight-normal mt-4">Steps Indicator</h2>
-	<div class="row ci-wizard">                
-		<div class="col-sm-3 ci-wizard-step complete">
-			<div class="text-center ci-wizard-stepnum">Step 1</div>
-			<div class="progress"><div class="progress-bar"></div></div>
-			<a href="#" class="ci-wizard-dot"></a>
-			<div class="ci-wizard-info text-center">Lorem ipsum dolor sit amet.</div>
-		</div>
-		
-		<div class="col-sm-3 ci-wizard-step complete"><!-- complete -->
-			<div class="text-center ci-wizard-stepnum">Step 2</div>
-			<div class="progress"><div class="progress-bar"></div></div>
-			<a href="#" class="ci-wizard-dot"></a>
-			<div class="ci-wizard-info text-center">Nam mollis tristique erat vel tristique. Aliquam erat volutpat. Mauris et vestibulum nisi. Duis molestie nisl sed scelerisque vestibulum. Nam placerat tristique placerat</div>
-		</div>
-		
-		<div class="col-sm-3 ci-wizard-step active"><!-- complete -->
-			<div class="text-center ci-wizard-stepnum">Step 3</div>
-			<div class="progress"><div class="progress-bar"></div></div>
-			<a href="#" class="ci-wizard-dot"></a>
-			<div class="ci-wizard-info text-center">Integer semper dolor ac auctor rutrum. Duis porta ipsum vitae mi bibendum bibendum</div>
-		</div>
-		
-		<div class="col-sm-3 ci-wizard-step disabled"><!-- active -->
-			<div class="text-center ci-wizard-stepnum">Step 4</div>
-			<div class="progress"><div class="progress-bar"></div></div>
-			<a href="#" class="ci-wizard-dot"></a>
-			<div class="ci-wizard-info text-center"> Curabitur mollis magna at blandit vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae</div>
-		</div>			
-	</div><!--/.row .ci-wizard-->
 
 
-
-	<h2 class="h3 mb-3 font-weight-normal mt-4">Modal</h2>
+	<h2 class="h3 mb-3 font-weight-normal">Modal</h2>
 	<!-- Button trigger modal -->
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Launch demo modal</button>
 

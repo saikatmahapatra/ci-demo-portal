@@ -37,14 +37,14 @@
 				
 				<div class="form-row">
 					<div class="form-group col-md-4">
-						<label for="user_dor" class="">Date of Release from Organization <span class="required">*</span></label>
+						<label for="user_dor" class="required">Date of Release</label>
 						<?php
 						echo form_input(array(
 							'name' => 'user_dor',
 							'value' => set_value('user_dor'),
 							'id' => 'user_dor',
 							'maxlength' => '10',
-							'class' => 'form-control dob-datepicker',
+							'class' => 'form-control',
 							'placeholder' => 'dd-mm-yyyy',
 							'autocomplete'=>'off',
 							'readonly'=>true
@@ -56,7 +56,7 @@
 
 				<div class="form-row">
 					<div class="form-group col-md-8">
-						<label for="user_dor" class="">Comments <span class="required">*</span></label>
+						<label for="user_dor" class="required">Comments</label>
 						<?php
 							echo form_textarea(array(
 								'name' => 'account_close_comments',
@@ -80,7 +80,7 @@
 								$cb_is_checked = $this->input->post('terms') === 'accept';
 								echo form_checkbox('terms', 'accept', $cb_is_checked, array('id' => 'terms','class' => 'custom-control-input'));
 							?>
-							<label class="custom-control-label" for="terms">I understand that, this action can not be undo. Portal account will be archived forever and this user will not be able to login permanently. <span class="required">*</span></label>
+							<label class="custom-control-label required" for="terms">I understand that, this action can not be undo. Portal account will be archived forever and this user will not be able to login permanently.</label>
 						</div>
 						<?php echo form_error('terms'); ?>
 					</div>

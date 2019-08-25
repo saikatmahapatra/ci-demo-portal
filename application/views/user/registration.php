@@ -21,7 +21,7 @@
 				<div class="form-row">
 				
 					<div class="form-group col-md-3">
-					  <label for="user_title" class="">Title <span class="required">*</span></label>
+					  <label for="user_title" class="required">Title</label>
 						<?php
 						echo form_dropdown('user_title', $arr_user_title, set_value('user_title'), array(
 							'class' => 'form-control field-help'
@@ -30,8 +30,8 @@
 						<?php echo form_error('user_title'); ?>
 					</div>
 				
-					<div class="form-group col-md-4">                            
-						<label for="user_firstname" class="">First Name <span class="required">*</span></label>
+					<div class="form-group col-md-4">
+						<label for="user_firstname" class="required">First Name</label>
 						<?php
 						echo form_input(array(
 							'name' => 'user_firstname',
@@ -45,8 +45,8 @@
 						<?php echo form_error('user_firstname'); ?>
 					</div>
 					
-					<div class="form-group col-md-5">                            
-						<label for="user_lastname" class="">Last Name <span class="required">*</span></label>
+					<div class="form-group col-md-5">
+						<label for="user_lastname" class="required">Last Name</label>
 						<?php
 						echo form_input(array(
 							'name' => 'user_lastname',
@@ -63,7 +63,7 @@
 				
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label for="user_email" class="">Email ID (office) <span class="required">*</span></label>
+						<label for="user_email" class="required">Email ID (office)</label>
 						<?php
 						echo form_input(array(
 							'name' => 'user_email',
@@ -78,7 +78,7 @@
 					</div>
 					
 					<div class="form-group col-md-6">
-						<label for="user_phone1" class="">10-digit Mobile Number (personal) <span class="required">*</span></label>
+						<label for="user_phone1" class="required">10-digit Mobile Number (personal)</label>
 						<?php
 						echo form_input(array(
 							'name' => 'user_phone1',
@@ -95,7 +95,7 @@
 				
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label for="user_password" class="">Password <span class="required">*</span></label>
+						<label for="user_password" class="required">Password</label>
 						<?php
 						echo form_password(array(
 							'name' => 'user_password',
@@ -110,7 +110,7 @@
 					</div>
 					
 					<div class="form-group col-md-6">
-						<label for="user_password_confirm" class="">Confirm Password <span class="required">*</span></label>
+						<label for="user_password_confirm" class="required">Confirm Password</label>
 						<?php
 						echo form_password(array(
 							'name' => 'user_password_confirm',
@@ -128,32 +128,24 @@
 				
 				
 				<div class="form-row">
-						<div class="form-group col-md-6">                            
-							<label for="user_dob" class="">Date of Birth <span class="required">*</span></label>				
+						<div class="form-group col-md-6">
+							<label for="user_dob" class="required">Date of Birth</label>
 							<?php
-							/*echo form_input(array(
+							echo form_input(array(
 								'name' => 'user_dob',
 								'value' => set_value('user_dob'),
 								'id' => 'user_dob',
 								'maxlength' => '10',
-								'class' => 'form-control dob-datepicker',
+								'class' => 'form-control',
 								'placeholder' => 'dd-mm-yyyy',
 								'autocomplete'=>'off',
 								'readonly'=>true
-							));*/
+							));
 							?>
-							<?php /*echo form_error('user_dob'); */?>
-							<div class="">
-								<?php echo form_dropdown('dob_day', $day_arr, set_value('dob_day'), array('class' => 'form-control dob-inline',));?>
-								<?php echo form_dropdown('dob_month', $month_arr, set_value('dob_month'), array('class' => 'form-control dob-inline',));?>
-								<?php echo form_dropdown('dob_year', $year_arr, set_value('dob_year'), array('class' => 'form-control dob-inline'));?>
-							</div>
-							<?php echo form_error('dob_day'); ?>
-							<?php echo form_error('dob_month'); ?>
-							<?php echo form_error('dob_year'); ?>
+							<?php echo form_error('user_dob'); ?>
 						</div>
 						<div class="form-group col-md-6">
-							<label for="gender">Gender <span class="required">*</span></label>
+							<label for="gender" class="required">Gender</label>
 							<div class="">
 								<div class="custom-control custom-radio custom-control-inline">
 									<?php

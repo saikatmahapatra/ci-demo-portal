@@ -21,17 +21,17 @@
 					
 					<div class="form-row">
 						<div class="form-group col-md-3">									
-							<label for="holiday_date" class="">Holiday Date <span class="required">*</span></label>
+							<label for="holiday_date" class="required">Holiday Date</label>
 							<?php echo form_input(array('name' => 'holiday_date', 'value' => set_value('holiday_date'), 'id' => 'holiday_date', 'class' => 'form-control holiday-datepicker', 'placeholder' => '', 'readonly'=>true));?>
 							<?php echo form_error('holiday_date'); ?>
 						</div>
 						<div class="form-group col-md-5">									
-							<label for="holiday_description" class="">Holiday Reason / Occasion <span class="required">*</span></label>
+							<label for="holiday_description" class="required">Holiday Reason / Occasion</label>
 							<?php echo form_input(array('name' => 'holiday_description', 'value' => set_value('holiday_description'), 'id' => 'holiday_description', 'class' => 'form-control', 'placeholder' => ''));?>
 							<?php echo form_error('holiday_description'); ?>
 						</div>
 						<div class="form-group col-md-4">									
-							<label for="holiday_type" class="">Holiday Type <span class="required">*</span></label>
+							<label for="holiday_type" class="required">Holiday Type</label>
 							<?php echo form_dropdown('holiday_type', $arr_holiday_type, set_value('holiday_type'), array('class' => 'form-control')); ?>
 							<?php echo form_error('holiday_type'); ?>
 						</div>

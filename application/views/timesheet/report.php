@@ -34,7 +34,7 @@
 					</div>
 
 					<div class="form-group mb-2 mr-sm-2">
-						<label for="from_date" class="sr-only">From Date <span class="required">*</span></label>
+						<label for="from_date" class="sr-only required">From Date</label>
 						<?php 
 							$first_day_this_month = date('01-m-Y');
 							$last_day_this_month  = date('t-m-Y');
@@ -44,7 +44,7 @@
 					</div>
 				
 					<div class="form-group mb-2 mr-sm-2">
-						<label for="to_date" class="sr-only">To Date <span class="required">*</span></label>
+						<label for="to_date" class="sr-only required">To Date</label>
 						<?php echo form_input(array('name' => 'to_date','value' => (isset($_REQUEST['to_date']) ? $_REQUEST['to_date'] : $last_day_this_month),'class' => 'form-control report-datepicker','id' => 'to_date','placeholder' => 'To Date','readonly'=>true));?>
 						<?php echo form_error('to_date'); ?>
 					</div>

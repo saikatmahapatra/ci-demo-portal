@@ -48,7 +48,7 @@
 				<?php echo form_hidden('form_action', 'add'); ?>
 				<div class="form-row">
 					<div class="form-group col-md-3">
-						<label for="leave_type" class="bmd-label-floating">Leave Type <span class="required">*</span></label>
+						<label for="leave_type" class="required">Leave Type</label>
 						<?php
 						echo form_dropdown('leave_type', $leave_type_arr, set_value('leave_type'), array(
 							'class' => 'form-control',
@@ -57,19 +57,19 @@
 						<?php echo form_error('leave_type'); ?>
 					</div>
 					<div class="form-group col-md-2">
-						<label for="leave_from_date" class="bmd-label-floating">From Date <span class="required">*</span></label>
+						<label for="leave_from_date" class="required">From Date</label>
 						<?php echo form_input(array('name' => 'leave_from_date','value' => set_value('leave_from_date'),'id' => 'leave_from_date','class' => 'form-control', 'placeholder'=>'dd-mm-yyyy', 'readonly'=>'readonly')); ?>
 						<?php echo form_error('leave_from_date'); ?>
 					</div>
 						
 					<div class="form-group col-md-2">
-						<label for="leave_to_date" class="bmd-label-floating">To Date <span class="required">*</span></label>		
+						<label for="leave_to_date" class="required">To Date</label>		
 						<?php echo form_input(array('name' => 'leave_to_date','value' => set_value('leave_to_date'),'id' => 'leave_to_date','class' => 'form-control', 'placeholder'=>'dd-mm-yyyy', 'readonly'=>'readonly')); ?>
 						<?php echo form_error('leave_to_date'); ?>
 					</div>
 					
 					<div class="form-group col-md-5">
-						<label for="leave_reason" class="bmd-label-floating">Leave Reason <span class="required">*</span></label>
+						<label for="leave_reason" class="required">Leave Reason</label>
 						<?php
 						echo form_input(array(
 							'name' => 'leave_reason',

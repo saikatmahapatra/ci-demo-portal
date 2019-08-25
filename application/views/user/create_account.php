@@ -21,7 +21,7 @@
         <div class="form-row">
 		
 			<div class="form-group col-md-3">
-			  <label for="user_title" class="">Title <span class="required">*</span></label>
+			  <label for="user_title" class="required">Title</label>
 				<?php
 				echo form_dropdown('user_title', $arr_user_title, set_value('user_title'), array(
 					'class' => 'form-control field-help'
@@ -31,7 +31,7 @@
 			</div>
 		
 			<div class="form-group col-md-3">
-				<label for="user_firstname" class="">First Name <span class="required">*</span></label>
+				<label for="user_firstname" class="required">First Name</label>
 				<?php
 				echo form_input(array(
 					'name' => 'user_firstname',
@@ -46,7 +46,7 @@
 			</div>
 			
 			<div class="form-group col-md-3">
-				<label for="user_lastname" class="">Last Name <span class="required">*</span></label>
+				<label for="user_lastname" class="required">Last Name</label>
 				<?php
 				echo form_input(array(
 					'name' => 'user_lastname',
@@ -63,7 +63,7 @@
 		
 		<div class="form-row">
 			<div class="form-group col-md-3">
-				<label for="user_email" class="">Email (office) <span class="required">*</span></label>
+				<label for="user_email" class="required">Email (office)</label>
 				<?php
 				echo form_input(array(
 					'name' => 'user_email',
@@ -93,7 +93,7 @@
 			</div>
 			
 			<div class="form-group col-md-3">                           
-				<label for="user_phone1" class="">Mobile (personal) <span class="required">*</span></label>
+				<label for="user_phone1" class="required">Mobile (personal)</label>
 				<?php
 				echo form_input(array(
 					'name' => 'user_phone1',
@@ -128,7 +128,7 @@
 		
 		<div class="form-row">
 			<?php /* ?><div class="form-group col-md-6">
-			  <label for="user_department" class="">Department <span class="required">*</span></label>
+			  <label for="user_department" class="required">Department</label>
 				<?php
 				echo form_dropdown('user_department', $arr_departments, set_value('user_department'), array(
 					'class' => 'form-control'
@@ -177,7 +177,7 @@
 		
 		<div class="form-row">
 				<div class="form-group col-md-3">
-					<label for="user_dob" class="">Date of Birth <span class="required">*</span></label>
+					<label for="user_dob" class="required">Date of Birth</label>
 					<?php
 					echo form_input(array(
 						'name' => 'user_dob',
@@ -193,7 +193,7 @@
 					<?php echo form_error('user_dob');?>
 				</div>
 				<div class="form-group col-md-3">
-					<label for="gender">Gender <span class="required">*</span></label>
+					<label for="gender" class="required">Gender</label>
 					<div class="">
 						<div class="custom-control custom-radio custom-control-inline">
 							<?php
@@ -218,7 +218,7 @@
 			<?php /* ?>
 			<div class="form-row">				
 				<div class="form-group col-md-6">
-				  <label for="user_role" class="">Access Group <span class="required">*</span></label>
+				  <label for="user_role" class="required">Access Group</label>
 					<?php
 					echo form_dropdown('user_role', $arr_roles, set_value('user_role'), array(
 						'class' => 'form-control field-help'

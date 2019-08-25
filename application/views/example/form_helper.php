@@ -1,7 +1,9 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
+
+
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-6">
 		<?php
 		// Show server side flash messages
 		if (isset($alert_message)) {
@@ -14,7 +16,7 @@
 		<?php echo form_hidden('form_action', 'add'); ?>		  
 			<div class="form-row">
 				<div class="form-group col-md-12">
-					<label for="user_email" class="">Email <span class="required">*</span></label>			
+					<label for="user_email" class="required">Email</label>			
 					<?php
 					echo form_input(array(
 						'name' => 'user_email',
@@ -35,7 +37,7 @@
 			
 			<div class="form-row">
 				<div class="form-group col-md-6">
-				  <label for="user_password" class="">Password <span class="required">*</span></label>
+				  <label for="user_password" class="required">Password</label>
 					<?php
 					echo form_password(array(
 						'name' => 'user_password',
@@ -52,7 +54,7 @@
 					<?php echo form_error('user_password'); ?>
 				</div>
 				<div class="form-group col-md-6">
-				  <label for="user_password_confirm" class="">Confirm Password <span class="required">*</span></label>
+				  <label for="user_password_confirm" class="required">Confirm Password</label>
 					<?php
 					echo form_password(array(
 						'name' => 'user_password_confirm',
@@ -70,7 +72,7 @@
 		  
 		  <div class="form-row">
 			<div class="form-group col-md-12">
-				<label for="address" class="">Address <span class="required">*</span></label>
+				<label for="address" class="required">Address</label>
 				<?php
 				echo form_textarea(array(
 					'name' => 'address',
@@ -90,7 +92,7 @@
 		  
 		  <div class="form-row">
 			<div class="form-group col-md-6">
-			  <label for="job_role" class="">Job Role <span class="required">*</span></label>
+			  <label for="job_role" class="required">Job Role</label>
 				<?php
 				echo form_dropdown('job_role', $job_role_arr, set_value('job_role'), array(
 					'class' => 'form-control',
@@ -99,7 +101,7 @@
 				<?php echo form_error('job_role'); ?>
 			</div>
 			<div class="form-group col-md-6">
-			  <label for="functional_domain" class="">Job Domain <span class="required">*</span></label>
+			  <label for="functional_domain" class="required">Job Domain</label>
 				<?php
 				echo form_multiselect('functional_domain', $domain_arr, set_value('functional_domain'), array(
 					'class' => 'form-control field-help',
@@ -114,7 +116,7 @@
 		  
 		  <div class="form-row">
 			<div class="form-group col-md-12">
-				<label for="userfile" class="">Resume <span class="required">*</span></label>
+				<label for="userfile" class="required">Resume</label>
 					
 					<div class="custom-file">
 						<?php
@@ -136,7 +138,7 @@
 		  
 		  <div class="form-row">
 			<div class="form-group col-md-12">
-				<label for="gender">Gender <span class="required">*</span></label>
+				<label for="gender" class="required">Gender</label>
 				
 				<div class="">
 					<div class="custom-control custom-radio custom-control-inline">
@@ -154,14 +156,6 @@
 						?>
 						<label class="custom-control-label" for="F">Female</span></label>
 					</div>
-					
-					<div class="custom-control custom-radio custom-control-inline">
-						<?php
-						$radio_is_checked = $this->input->post('user_gender') === 'T';
-						echo form_radio(array('name' => 'user_gender', 'value' => 'T', 'id' => 'T', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('user_gender', 'T'));
-						?>
-						<label class="custom-control-label" for="T">Better, I would not say</span></label>
-					</div>
 				</div>
 				<?php echo form_error('user_gender'); ?>
 			</div>
@@ -174,8 +168,7 @@
 						$cb_is_checked = $this->input->post('terms') === 'accept';
 						echo form_checkbox('terms', 'accept', $cb_is_checked, array('id' => 'trems','class' => 'form-check-input'));
 					?>				
-					<label class="form-check-label" for="trems">
-					<span class="required">*</span>I've read & accepting the <a href="#" data-toggle="modal" data-target="#tncModal">Terms of Uses Agreement</a>
+					<label class="form-check-label required" for="trems">I've read & accepting the <a href="#" data-toggle="modal" data-target="#tncModal">Terms of Uses Agreement</a>
 					</label>				
 				</div>
 				<?php echo form_error('terms'); ?>

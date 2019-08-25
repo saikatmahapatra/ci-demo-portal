@@ -21,7 +21,7 @@
 					
 					<div class="form-row">
 						<div class="form-group col-md-6">									
-							<label for="task_activity_name" class="">Activity Name <span class="required">*</span></label>
+							<label for="task_activity_name" class="required">Activity Name</label>
 							<?php echo form_input(array('name' => 'task_activity_name', 'value' => set_value('task_activity_name'), 'id' => 'task_activity_name', 'class' => 'form-control', 'placeholder' => ''));?>
 							<?php echo form_error('task_activity_name'); ?>
 						</div>		
@@ -29,7 +29,7 @@
 
 					<div class="form-row">
 						<div class="form-group col-md-12">									
-							<label for="task_activity_status" class="">Status <span class="required">*</span></label>				
+							<label for="task_activity_status" class="required">Status</label>
 							<div class="">
 								<div class="custom-control custom-radio custom-control-inline">
 									<?php

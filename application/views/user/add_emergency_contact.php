@@ -28,7 +28,7 @@
 				
 				<div class="form-row">				
 					<div class="form-group col-md-6">
-						<label for="contact_person_name" class="">Contact Person Name <span class="required">*</span></label>
+						<label for="contact_person_name" class="required">Contact Person Name</label>
 						<?php 
 						echo form_input(array(
 						'name' => 'contact_person_name',
@@ -42,7 +42,7 @@
 						<?php echo form_error('contact_person_name'); ?>
 					</div>
 					<div class="form-group col-md-6">
-						<label for="relationship_with_contact" class="">Relationship with Contact <span class="required">*</span></label>
+						<label for="relationship_with_contact" class="required">Relationship with Contact</label>
 						<?php
 						echo form_dropdown('relationship_with_contact', $arr_relationship, set_value('relationship_with_contact') , array(
 							'class' => 'form-control',
@@ -55,7 +55,7 @@
 				
 				<div class="form-row">
 					<div class="form-group col-md-12">
-						<label for="contact_person_address" class="">Communication Address (Optional)</label>
+						<label for="contact_person_address" class="">Communication Address</label>
 						<?php 
 						echo form_textarea(array(
 						'name' => 'contact_person_address',
@@ -65,7 +65,7 @@
 						'maxlength' => '200',
 						'rows'=>'2',
 						'cols'=>'2',
-						'placeholder' =>'House/Apt/Complex name & no, city/town, state, zip code'
+						'placeholder' =>''
 						));
 						?>
 						<?php echo form_error('contact_person_address'); ?>
@@ -74,7 +74,7 @@
 					
 				<div class="form-row">	
 					<div class="form-group col-md-6">
-						<label for="contact_person_phone1" class="">Mobile Number <span class="required">*</span></label>
+						<label for="contact_person_phone1" class="required">Mobile Number</label>
 						<?php 
 						echo form_input(array(
 						'name' => 'contact_person_phone1',
@@ -88,7 +88,7 @@
 						<?php echo form_error('contact_person_phone1'); ?>
 					</div>
 					<div class="form-group col-md-6">
-						<label for="contact_person_phone2" class="">Phone Number(Optional)</label>
+						<label for="contact_person_phone2" class="">Phone Number</label>
 						<?php 
 						echo form_input(array(
 						'name' => 'contact_person_phone2',

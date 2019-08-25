@@ -36,7 +36,7 @@
 			<?php echo form_hidden('selected_date',set_value('selected_date')); ?>
 			<div class="form-row">
 				<div class="col-md-3">	
-					<label>Select Date(s) <span class="required">*</span> </label>
+					<label class="required">Select Date(s)</label>
 					<?php echo $cal; ?>
 					<div class="small">
 						<div class="d-inline-block"><span class="i-today pr-2 pl-2 m-1 text-white"></span>Today</div>
@@ -53,7 +53,7 @@
 				<div class="col-md-8 offset-md-1">
 					<div class="form-row">
 						<div class="form-group col-md-4">
-						<label for="project_id" class="bmd-label-floating">Project <span class="required">*</span></label>
+						<label for="project_id" class="required">Project</label>
 							<?php
 							echo form_dropdown('project_id', $project_arr, set_value('project_id'), array(
 								'class' => 'form-control',
@@ -63,7 +63,7 @@
 						</div>
 								
 						<div class="form-group col-md-4">
-						<label for="activity_id" class="bmd-label-floating">Activity <span class="required">*</span></label>
+						<label for="activity_id" class="required">Activity</label>
 							<?php
 							echo form_dropdown('activity_id', $task_task_activity_type_array, set_value('activity_id'), array(
 								'class' => 'form-control',
@@ -73,7 +73,7 @@
 						</div>
 							
 						<div class="form-group col-md-4">
-							<label for="timesheet_hours" class="bmd-label-floating">Working Efforts (In Hours)<span class="required">*</span></label>
+							<label for="timesheet_hours" class="required">Working Efforts (In Hours)</label>
 							<?php
 							echo form_input(array(
 								'name' => 'timesheet_hours',
@@ -90,7 +90,7 @@
 					
 					
 					<div class="form-group">
-					<label for="timesheet_description" class="bmd-label-floating">Task Description <span class="required">*</span></label>
+					<label for="timesheet_description" class="required">Task Description</label>
 					<?php
 					echo form_textarea(array(
 						'name' => 'timesheet_description',

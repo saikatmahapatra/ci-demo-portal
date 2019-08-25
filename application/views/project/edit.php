@@ -25,12 +25,12 @@ $row = $rows[0];
 					
 					<div class="form-row">	
 						<div class="form-group col-md-4">
-							<label for="project_number" class="">Project Number/Code <span class="required">*</span></label>
+							<label for="project_number" class="required">Project Number/Code</label>
 							<?php echo form_input(array('name' => 'project_number', 'value' => (isset($_POST['project_number']) ? set_value('project_number') : $row['project_number']), 'id' => 'project_number', 'class' => 'form-control', 'placeholder' => '','maxlength'=>'15'));?>
 							<?php echo form_error('project_number'); ?>
 						</div>		
 						<div class="form-group col-md-8">
-							<label for="project_name" class="">Project Name <span class="required">*</span></label>
+							<label for="project_name" class="required">Project Name</label>
 							<?php echo form_input(array('name' => 'project_name', 'value' => (isset($_POST['project_name']) ? set_value('project_name') : $row['project_name']), 'id' => 'project_name', 'class' => 'form-control', 'placeholder' => ''));?>
 							<?php echo form_error('project_name'); ?>
 						</div>		
@@ -45,8 +45,8 @@ $row = $rows[0];
 					</div>
 					
 					<div class="form-row">
-						<div class="form-group col-md-12">									
-						<label for="project_status" class="">Status <span class="required">*</span></label>				
+						<div class="form-group col-md-12">
+						<label for="project_status" class="required">Status</label>
 								<div class="">
 									<div class="custom-control custom-radio custom-control-inline">
 										<?php
@@ -72,7 +72,7 @@ $row = $rows[0];
 					
 					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
 					
-					<a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="ml-2 btn btn-secondary">Cancel</a>                             
+					<a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="ml-2 btn btn-secondary">Cancel</a>
 				<?php echo form_close(); ?>
 			</div><!--./card-body-->
 			<!--<div class="card-footer"></div>--><!--/.card-footer-->

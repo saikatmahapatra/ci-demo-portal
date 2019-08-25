@@ -15,7 +15,7 @@
     <?php echo form_hidden('form_action', 'send'); ?>
         <div class="form-row">
 			<div class="form-group col-md-12">
-				<label for="ui_color_scheme">User Interface (color of theme, buttons, links) <span class="required">*</span></label>
+				<label for="ui_color_scheme" class="required">User Interface (color of theme, buttons, links)</label>
 				<div class="">
 				<input type="range" class="custom-range" min="0" max="5" id="customRange2">
 					<?php 
@@ -38,7 +38,7 @@
 
 		<div class="form-row">
 			<div class="form-group col-md-12">
-				<label for="nav_link_findout">Navigation links (menu links how easy to find out) <span class="required">*</span></label>
+				<label for="nav_link_findout" class="required">Navigation links (menu links how easy to find out)</label>
 				<div class="">
 					<?php 
 					for($i = 1 ; $i<=5 ; $i++){
@@ -60,7 +60,7 @@
 
         <div class="form-row">
             <div class="form-group col-md-12"> 
-                <label for="message" class="">Message <span class="required">*</span></label>
+                <label for="message" class="required">Message</label>
                 <?php
                 echo form_textarea(array(
                     'name' => 'message',

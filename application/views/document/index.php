@@ -21,14 +21,14 @@
 					<?php echo isset($upload_error_message) ? $upload_error_message : ''; ?>
 					<div class="form-row">
 						<div class="form-group col-md-12">
-							<label for="upload_file_type_name" class="">Document Type <span class="required">*</span></label>
+							<label for="upload_file_type_name" class="required">Document Type</label>
 							<?php echo form_dropdown('upload_file_type_name', $arr_upload_file_type_name, set_value('upload_file_type_name'), array('class' => 'form-control','id' => 'upload_file_type_name',));?>
 							<?php echo form_error('upload_file_type_name'); ?>
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-12">
-							<label for="userfile" class="">Select File <span class="required">*</span></label>
+							<label for="userfile" class="required">Select File</label>
 							<?php echo form_upload(array('name' => 'userfile', 'id' => 'userfile','class' => 'form-control','aria-describedby'=>'docHelp'));?>
 							<?php echo form_error('userfile'); ?>
 							<small id="docHelp" class="form-text text-muted bg-light p-1">

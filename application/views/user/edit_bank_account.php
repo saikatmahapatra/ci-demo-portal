@@ -59,7 +59,7 @@
 		
 		<div class="form-row">				
 				<!--<div class="form-group col-md-4">-->
-						<!--<label for="account_uses" class="">Account For <span class="required">*</span></label>-->
+						<!--<label for="account_uses" class="required">Account For</label>-->
 						<!--<div>-->
 						<?php						
 						/*if(isset($account_uses)){
@@ -84,8 +84,8 @@
 		</div>
 		
 		<div class="form-row">
-			<div class="form-group col-md-3">                                
-				<label for="bank_id" class="">Bank Name <span class="required">*</span></label>
+			<div class="form-group col-md-3">
+				<label for="bank_id" class="required">Bank</label>
 				<?php
 				echo form_dropdown('bank_id', $arr_banks, isset($_POST['bank_id']) ? set_value('bank_id') : $row['bank_id'], array(
 					'class' => 'form-control',
@@ -95,7 +95,7 @@
 				<?php echo form_error('bank_id'); ?>
 			</div>
 			<div class="form-group col-md-3">                                
-				<label for="bank_account_no" class="">Account No <span class="required">*</span></label>				
+				<label for="bank_account_no" class="required">Account No</label>				
 				<?php
 				echo form_input(array(
 					'name' => 'bank_account_no',
@@ -111,7 +111,7 @@
 			</div>
 			
 				<div class="form-group col-md-3">        							
-				<label for="confirm_bank_account_no" class="">Confirm Account No <span class="required">*</span></label>				
+				<label for="confirm_bank_account_no" class="required">Confirm Account No</label>				
 					<?php
 					echo form_input(array(
 						'name' => 'confirm_bank_account_no',
@@ -127,7 +127,7 @@
 			</div>
 		
 			<div class="form-group col-md-3">        							
-				<label for="ifsc_code" class="">IFSC Code <span class="required">*</span></label>				
+				<label for="ifsc_code" class="required">IFSC Code</label>				
 					<?php
 					echo form_input(array(
 						'name' => 'ifsc_code',
@@ -143,7 +143,7 @@
 			</div>
 			<div class="form-row">
 			<div class="form-group col-md-12">        							
-				<label for="account_type" class="">Account Type <span class="required">*</span></label>
+				<label for="account_type" class="required">Account Type</label>
 				<div>
 				<?php						
 				if(isset($bank_ac_type)){

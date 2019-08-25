@@ -77,7 +77,7 @@
         <div class="form-row">
 		
 			<div class="form-group col-md-3">
-			  <label for="user_title" class="">Title <span class="required">*</span></label>
+			  <label for="user_title" class="required">Title</label>
 				<?php
 				echo form_dropdown('user_title', $arr_user_title, isset($_POST['user_title']) ? set_value('user_title') : $row['user_title'], array(
 					'class' => 'form-control field-help'
@@ -86,8 +86,8 @@
 				<?php echo form_error('user_title'); ?>
 			</div>
 		
-			<div class="form-group col-md-4">                            
-				<label for="user_firstname" class="">First Name <span class="required">*</span></label>
+			<div class="form-group col-md-4">
+				<label for="user_firstname" class="required">First Name</label>
 				<?php
 				echo form_input(array(
 					'name' => 'user_firstname',
@@ -101,8 +101,8 @@
 				<?php echo form_error('user_firstname'); ?>
 			</div>
 			
-			<div class="form-group col-md-5">                            
-				<label for="user_lastname" class="">Last Name <span class="required">*</span></label>
+			<div class="form-group col-md-5">
+				<label for="user_lastname" class="required">Last Name</label>
 				<?php
 				echo form_input(array(
 					'name' => 'user_lastname',
@@ -120,7 +120,7 @@
 		
 		<div class="form-row">
 			<?php /* ?><div class="form-group col-md-6">
-			  <label for="user_department" class="">Department <span class="required">*</span></label>
+			  <label for="user_department" class="required">Department</label>
 				<?php
 				echo form_dropdown('user_department', $arr_departments, set_value('user_department'), array(
 					'class' => 'form-control'
@@ -168,8 +168,8 @@
 		</div>
 		
 		<div class="form-row">
-				<div class="form-group col-md-4">                            
-					<label for="user_dob" class="">Date of Birth <span class="required">*</span></label>				
+				<div class="form-group col-md-4">
+					<label for="user_dob" class="required">Date of Birth</label>				
 					<?php
 					echo form_input(array(
 						'name' => 'user_dob',
@@ -185,7 +185,7 @@
 					<?php echo form_error('user_dob');?>
 				</div>
 				<div class="form-group col-md-4">
-					<label for="gender">Gender <span class="required">*</span></label>
+					<label for="gender" class="required">Gender</label>
 					<div class="">
 						<div class="custom-control custom-radio custom-control-inline">
 							<?php
@@ -210,7 +210,7 @@
 			  	</div>
 				<?php if($row['id'] != $this->common_lib->get_sess_user('id')){?>
 				<div class="form-group col-md-4">
-					<label for="user_status" class="">Account Status <span class="required">*</span></label>
+					<label for="user_status" class="required">Account Status</label>
 					<div class="">
 						<div class="custom-control custom-radio custom-control-inline">
 							<?php
@@ -240,7 +240,7 @@
 
 			<div class="form-row">				
 				<div class="form-group col-md-4">
-				  <label for="user_role" class="">Access Group <span class="required">*</span></label>
+				  <label for="user_role" class="required">Access Group</label>
 					<?php
 					echo form_dropdown('user_role', $arr_roles, isset($row['user_role'])?$row['user_role']:set_value('user_role'), array(
 						'class' => 'form-control field-help'

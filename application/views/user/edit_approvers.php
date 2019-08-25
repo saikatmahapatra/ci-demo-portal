@@ -26,19 +26,19 @@ $approver = sizeof($approvers)>0 ? $approvers[0] : null;
                 
                     <div class="form-row">
                         <div class="form-group col-md-3 ci-select2">
-                            <label for="" class="">L1 Approver (Initial) <span class="required">*</span></label>
+                            <label for="" class="required">L1 Approver (Initial)</label>
                             <?php echo form_dropdown('user_supervisor_id', $user_arr, isset($approver['user_supervisor_id']) ? $approver['user_supervisor_id'] : set_value('user_supervisor_id') ,array('class' => 'form-control select2-control', 'id'=>'user_supervisor_id')); ?> 
                             <?php echo form_error('user_supervisor_id'); ?>
                         </div>
                     
                         <div class="form-group col-md-3 ci-select2">
-                            <label for="" class="">L2 Approver (Final) <span class="required">*</span></label>
+                            <label for="" class="required">L2 Approver (Final)</label>
                             <?php echo form_dropdown('user_director_approver_id', $user_arr, isset($approver['user_director_approver_id']) ? $approver['user_director_approver_id'] : set_value('user_supervisor_id') ,array('class' => 'form-control select2-control', 'id'=>'user_director_approver_id')); ?> 
                             <?php echo form_error('user_director_approver_id'); ?>
                         </div>
                     
                         <div class="form-group col-md-3 ci-select2 d-none">
-                            <label for="" class="">HR <span class="required">*</span></label>
+                            <label for="" class="required">HR</label>
                             <?php echo form_dropdown('user_hr_approver_id', $user_arr, isset($approver['user_hr_approver_id']) ? $approver['user_hr_approver_id'] : set_value('user_hr_approver_id') ,array('class' => 'form-control select2-control', 'id'=>'user_hr_approver_id')); ?> 
                             <?php echo form_error('user_hr_approver_id'); ?>
                         </div>

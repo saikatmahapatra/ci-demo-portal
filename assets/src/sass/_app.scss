@@ -656,9 +656,10 @@ select.form-control.dob-inline {
     width: auto;
 }
 
-.required {
+label.required::after {
+    content: ' *';
+    font-weight: 400;
     color: $mandatory_field_star-color;
-    font-weight: bold;
 }
 
 // Custom Form Control
