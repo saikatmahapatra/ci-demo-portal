@@ -273,9 +273,9 @@ class Cms extends CI_Controller {
     }
 
     function validate_form_data($action = NULL) {
-        $this->form_validation->set_rules('content_type', 'page content type', 'required');
-        $this->form_validation->set_rules('content_title', 'page content title', 'required');
-        $this->form_validation->set_rules('content_text', 'page content text', 'required');
+        $this->form_validation->set_rules('content_type', 'content type', 'required');
+        $this->form_validation->set_rules('content_title', 'title', 'required');
+        $this->form_validation->set_rules('content_text', 'description', 'required');
         $this->form_validation->set_rules('content_status', 'status', 'required');
 
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
