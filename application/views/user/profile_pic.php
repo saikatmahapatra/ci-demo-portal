@@ -53,7 +53,7 @@
 							<?php echo isset($upload_error_message) ? $upload_error_message : ''; ?>
 						</div>
 						<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Upload','class' => 'btn btn-primary'));?>
-						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="ml-2 btn btn-secondary">Cancel</a>
+						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="btn btn-light btn-cancel">Cancel</a>
 						<?php echo form_close(); ?>
 					</div>
 				</div>
