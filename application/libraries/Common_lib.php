@@ -290,6 +290,13 @@ class Common_lib {
     }
 
     /**
+     * Display Flash Message
+     */
+    function display_flash_message($message_text, $alert_css = NULL){
+        return '<div class="auto-closable-alert alert ' . $alert_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$message_text.'</div>';
+    }
+
+    /**
      * Is user logged in
      * @return boolean
      */
