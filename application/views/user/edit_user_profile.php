@@ -64,31 +64,13 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="user_firstname" class="required">First Name</label>
-						<?php
-						echo form_input(array(
-							'name' => 'user_firstname',
-							'value' => isset($_POST['user_firstname']) ? set_value('user_firstname') : $row['user_firstname'],
-							'id' => 'user_firstname',
-							'class' => 'form-control',
-							'maxlength' => '30',
-							'placeholder' => '',
-						));
-						?>
+						<?php echo form_input(array( 'name' => 'user_firstname', 'value' => isset($_POST['user_firstname']) ? set_value('user_firstname') : $row['user_firstname'], 'id' => 'user_firstname', 'class' => 'form-control', 'maxlength' => '30', 'placeholder' => '', )); ?>
 						<?php echo form_error('user_firstname'); ?>
 					</div>
 					
 					<div class="form-group col-md-6">
 						<label for="user_lastname" class="required">Last Name</label>
-						<?php
-						echo form_input(array(
-							'name' => 'user_lastname',
-							'value' => isset($_POST['user_lastname']) ? set_value('user_lastname') : $row['user_lastname'],
-							'id' => 'user_lastname',
-							'class' => 'form-control',
-							'maxlength' => '50',
-							'placeholder' => '',
-						));
-						?>
+						<?php echo form_input(array( 'name' => 'user_lastname', 'value' => isset($_POST['user_lastname']) ? set_value('user_lastname') : $row['user_lastname'], 'id' => 'user_lastname', 'class' => 'form-control', 'maxlength' => '50', 'placeholder' => '', )); ?>
 						<?php echo form_error('user_lastname'); ?>
 					</div>
 				</div>
@@ -96,40 +78,21 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="user_designation" class="">Designation </label>
-						<?php
-						echo form_dropdown('user_designation', $arr_designations, isset($_POST['user_designation']) ? set_value('user_designation') : $row['user_designation'], array(
-							'class' => 'form-control',									
-						));
-						?> 
+						<?php echo form_dropdown('user_designation', $arr_designations, isset($_POST['user_designation']) ? set_value('user_designation') : $row['user_designation'], array( 'class' => 'form-control', )); ?> 
 						<?php echo form_error('user_designation'); ?>
 					</div>	
 
 					<div class="form-group col-md-6">
 						<label for="user_department" class="">Department </label>
-						<?php
-						echo form_dropdown('user_department', $arr_departments, isset($_POST['user_department']) ? set_value('user_department') : $row['user_department'] , array(
-							'class' => 'form-control'
-						));
-						?> 
+						<?php echo form_dropdown('user_department', $arr_departments, isset($_POST['user_department']) ? set_value('user_department') : $row['user_department'] , array( 'class' => 'form-control' )); ?>
 						<?php echo form_error('user_department'); ?>
 					</div>
 				</div>
 
 				<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="user_dob" class="required">Date of Birth</label>				
-							<?php
-							echo form_input(array(
-								'name' => 'user_dob',
-								'value' => isset($_POST['user_dob']) ? set_value('user_dob') : $this->common_lib->display_date($row['user_dob']),
-								'id' => 'user_dob',
-								'maxlength' => '10',
-								'class' => 'form-control',
-								'placeholder' => 'dd-mm-yyyy',
-								'autocomplete'=>'off',
-								'readonly'=>true
-							));
-							?>
+							<label for="user_dob" class="required">Date of Birth</label>
+							<?php echo form_dropdown('user_department', $arr_departments, isset($_POST['user_department']) ? set_value('user_department') : $row['user_department'] , array( 'class' => 'form-control' )); ?> <?php echo form_input(array( 'name' => 'user_dob', 'value' => isset($_POST['user_dob']) ? set_value('user_dob') : $this->common_lib->display_date($row['user_dob']), 'id' => 'user_dob', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => 'dd-mm-yyyy', 'autocomplete'=>'off', 'readonly'=>true )); ?>
 							<?php echo form_error('user_dob');?>
 						</div>
 						<div class="form-group col-md-6">
@@ -187,18 +150,7 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="user_doj" class="">Date of Joining </label>				
-						<?php
-						echo form_input(array(
-							'name' => 'user_doj',
-							'value' => isset($_POST['user_doj']) ? set_value('user_doj') : $this->common_lib->display_date($row['user_doj']),
-							'id' => 'user_doj',
-							'maxlength' => '10',
-							'class' => 'form-control',
-							'placeholder' => '',
-							'autocomplete'=>'off',
-							'readonly'=>true
-						));
-						?>
+						<?php echo form_input(array( 'name' => 'user_doj', 'value' => isset($_POST['user_doj']) ? set_value('user_doj') : $this->common_lib->display_date($row['user_doj']), 'id' => 'user_doj', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => '', 'autocomplete'=>'off', 'readonly'=>true )); ?>
 						<?php echo form_error('user_doj'); ?>
 					</div>
 					<?php if($row['id'] != $this->common_lib->get_sess_user('id')){?>
