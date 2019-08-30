@@ -5,27 +5,18 @@
 	<div class="col-md-12">
 		<div class="card ci-card">
 			<div class="card-header h6">
-				Close Account of 
+				Delete Account
+			</div><!--/.card-header-->
+
+			<div class="card-body">
 				<?php
-					echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 					echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
 					echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
 					echo isset($row['user_lastname']) ? $row['user_lastname'] : '';
 					echo isset($row['user_emp_id']) ? ' (Emp ID '.$row['user_emp_id'].') ': '';
 					echo isset($row['user_email']) ? '; '.$row['user_email']: '';
 				?>
-				
-			</div><!--/.card-header-->
-
-			<div class="card-body">
-				<?php
-					// Show server side flash messages
-					if (isset($alert_message)) {
-						$html_alert_ui = '';
-						$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-						echo $html_alert_ui;
-					}
-				?>
+				<?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
 				<div class="ci-link-group">
 					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title=""> <i class="fa fa-fw fa-list"></i> Manage Employees</a>
 				</div>

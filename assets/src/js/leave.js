@@ -6,7 +6,7 @@ $(function() {
         format: "dd-mm-yyyy",
         weekStart: 1,
         autoclose: true,
-        startDate: '0d',
+        startDate: '-3m',
         container: $('#leave_from_date').parent()
     });
 
@@ -14,7 +14,7 @@ $(function() {
         format: "dd-mm-yyyy",
         weekStart: 1,
         autoclose: true,
-        startDate: '0d',
+        startDate: '-3m',
         container: $('#leave_to_date').parent()
     });
 

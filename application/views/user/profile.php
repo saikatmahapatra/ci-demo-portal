@@ -87,19 +87,9 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card ci-card ci-dl">
-			<div class="card-header h6">
-				<i class="fa fa-fw fa-user-circle " aria-hidden="true"></i>
-				<?php echo isset($row['user_emp_id']) ? 'Employee Code - UEIPL/'.$row['user_emp_id'] : ''; ?>
-			</div><!--/.card-header-->
+			<div class="card-header h6"><?php echo isset($row['user_emp_id']) ? 'Employee Code - UEIPL/'.$row['user_emp_id'] : ''; ?></div><!--/.card-header-->
 			<div class="card-body">
-				<?php
-				// Show server side flash messages
-				if (isset($alert_message)) {
-					$html_alert_ui = '';                
-					$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-					echo $html_alert_ui;
-				}
-				?>
+			<?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
 				<div class="row">
 					<div class="col-lg-3 text-center mb-3">
 						<?php   

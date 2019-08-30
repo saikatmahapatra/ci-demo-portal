@@ -9049,15 +9049,20 @@ body.login {
   font-size: 16px;
 }
 
-select.form-control.dob-inline {
-  display: inline !important;
-  width: auto;
-}
-
 label.required::after {
   content: ' *';
   font-weight: 400;
   color: #dc3545;
+}
+
+label.optional::after {
+  content: ' (optional)';
+  font-size: 90%;
+  color: #ced4da;
+}
+
+.ci-form-help-text {
+  font-size: 80%;
 }
 
 .custom-control-label::before {

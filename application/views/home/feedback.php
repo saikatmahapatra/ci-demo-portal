@@ -2,15 +2,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-md-8">
-	<?php
-		// Show server side flash messages
-		if (isset($alert_message)) {
-			$html_alert_ui = '';
-			$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-			echo $html_alert_ui;
-		}
-
-	?>
+	<?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
     <?php echo form_open_multipart(current_url(), array('method' => 'post', 'class' => 'ci-form', 'name' => '','id' => '',));?>
     <?php echo form_hidden('form_action', 'send'); ?>
         <div class="form-row">

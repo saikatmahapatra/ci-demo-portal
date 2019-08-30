@@ -308,7 +308,6 @@ class User extends CI_Controller {
 				$user_emp_id = $this->user_model->get_new_emp_id();
 				$password = $this->common_lib->generate_rand_id();
                 $postdata = array(
-                    'user_title' => $this->input->post('user_title'),
                     'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),
                     'user_lastname' => ucwords(strtolower($this->input->post('user_lastname'))),
                     'user_gender' => $this->input->post('user_gender'),
@@ -364,7 +363,6 @@ class User extends CI_Controller {
     }
 
     function validate_create_account_form_data() {
-        $this->form_validation->set_rules('user_title', 'title', 'required');
         $this->form_validation->set_rules('user_firstname', 'first name', 'required|alpha|min_length[3]|max_length[25]');
         $this->form_validation->set_rules('user_lastname', 'last name', 'required|alpha_numeric_spaces|min_length[3]|max_length[30]');
         $this->form_validation->set_rules('user_gender', 'gender selection', 'required');
@@ -395,7 +393,6 @@ class User extends CI_Controller {
                 $activation_token = md5(time('Y-m-d h:i:s'));
 				$user_emp_id = $this->user_model->get_new_emp_id();				
                 $postdata = array(
-                    'user_title' => $this->input->post('user_title'),
                     'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),
                     'user_lastname' => ucwords(strtolower($this->input->post('user_lastname'))),
                     'user_gender' => $this->input->post('user_gender'),
@@ -449,7 +446,6 @@ class User extends CI_Controller {
     }
 
     function validate_registration_form_data() {
-        $this->form_validation->set_rules('user_title', 'title', 'required');
         $this->form_validation->set_rules('user_firstname', 'first name', 'required|alpha|min_length[3]|max_length[25]');
         $this->form_validation->set_rules('user_lastname', 'last name', 'required|alpha_numeric_spaces|min_length[3]|max_length[30]');
         $this->form_validation->set_rules('user_gender', 'gender selection', 'required');
@@ -489,43 +485,6 @@ class User extends CI_Controller {
             }
         }
         return true;
-    }
-
-    function activate_account() {
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-
-        if ($this->input->post('form_action') == 'activate_account') {
-            if ($this->validate_activate_account_form() == true) {
-                $user_email = $this->input->post('user_email');
-                $activation_key = $this->input->post('activation_otp');
-                $found = $this->user_model->check_user_activation_key($user_email, NULL, $activation_key);
-                if ($found) {
-                    $postdata = array(
-                        'user_status' => 'Y',
-                        'user_activation_key' => NULL
-                    );
-                    $where = array('user_email' => $user_email, 'user_activation_key' => $activation_key);
-                    $act_res = $this->user_model->update($postdata, $where);
-                    if ($act_res) {
-                        $this->session->set_flashdata('flash_message', 'Account has been activated successfully.');
-                        $this->session->set_flashdata('flash_message_css', 'alert-success');
-                        redirect($this->router->directory.$this->router->class.'/login');
-                    } else {
-                        $this->session->set_flashdata('flash_message', 'Sorry! We\'re unable to process your request. Please try again.');
-                        $this->session->set_flashdata('flash_message_css', 'alert-danger');
-                        redirect(current_url());
-                    }
-                }else{
-                    $this->session->set_flashdata('flash_message', 'Sorry! We\'re unable validate & process your request.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-danger');
-                    redirect(current_url());
-                }
-            }
-        }
-        $this->data['page_title'] = 'Activate Account';
-        $this->data['maincontent'] = $this->load->view($this->router->class.'/activate_account', $this->data, true);
-        $this->load->view('_layouts/layout_login', $this->data);
     }
 
     function activate_account_auto_link() {
@@ -815,10 +774,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_bio', 'about you', 'max_length[100]');
         $this->form_validation->set_rules('user_email', 'registered email (office)', 'required|valid_email');
         $this->form_validation->set_rules('user_email_secondary', 'personal email', 'required|valid_email|differs[user_email]');
-        $this->form_validation->set_rules('user_blood_group', 'blood group', 'required');
-        /* $this->form_validation->set_rules('dob_day', 'birth day selection', 'required');
-          $this->form_validation->set_rules('dob_month', 'birth month selection', 'required');
-          $this->form_validation->set_rules('dob_year', 'birth year selection', 'required'); */
+        //$this->form_validation->set_rules('user_blood_group', 'blood group', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -1235,7 +1191,6 @@ class User extends CI_Controller {
         if ($this->input->post('form_action') == 'update_profile') {
             if ($this->validate_edit_user_profile_form() == true) {
                 $postdata = array(
-                    'user_title' => $this->input->post('user_title'),                    
                     'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),
                     'user_lastname' => ucwords(strtolower($this->input->post('user_lastname'))),
                     'user_gender' => $this->input->post('user_gender'),
@@ -1325,7 +1280,6 @@ class User extends CI_Controller {
     }
 
     function validate_edit_user_profile_form() {
-        $this->form_validation->set_rules('user_title', 'title', 'required');
         $this->form_validation->set_rules('user_firstname', 'first name', 'required|alpha|min_length[3]|max_length[25]');
         $this->form_validation->set_rules('user_lastname', 'last name', 'required|alpha_numeric_spaces|min_length[3]|max_length[30]');
         $this->form_validation->set_rules('user_gender', 'gender selection', 'required');
@@ -1523,24 +1477,6 @@ class User extends CI_Controller {
             return false;
         }
 	}
-	
-	function administrator() {
-		########### Validate User Auth #############
-        $is_logged_in = $this->common_lib->is_logged_in();
-        if ($is_logged_in == FALSE) {
-			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
-            redirect($this->router->directory.$this->router->class.'/login');
-        }
-        //Has logged in user permission to access this page or method?        
-        $this->common_lib->is_auth(array(
-            'default-super-admin-access',
-            'default-admin-access',
-        ));
-        ########### Validate User Auth End #############
-		$this->data['page_title'] = "Administrator Control Panel";
-        $this->data['maincontent'] = $this->load->view($this->router->class.'/administrator', $this->data, true);
-        $this->load->view('_layouts/layout_default', $this->data);
-    }
     
     function add_user_input_specialization(){
         $message = array('is_valid'=>false, 'insert_id'=>'','msg'=>'');

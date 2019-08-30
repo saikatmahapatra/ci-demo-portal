@@ -7,29 +7,11 @@
 				<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 			</div>
 			<div class="card-body">
-				<?php
-				// Show server side flash messages
-				if (isset($alert_message)) {
-					$html_alert_ui = '';                
-					$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-					echo $html_alert_ui;
-				}
-				?>
+			<?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
 				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>
-				<?php echo form_hidden('form_action', 'self_registration'); ?>        
-				<?php echo form_hidden('user_role', 3); ?>        
+				<?php echo form_hidden('form_action', 'self_registration'); ?>
+				<?php echo form_hidden('user_role', 3); ?>
 				<div class="form-row">
-				
-					<div class="form-group col-md-3">
-					  <label for="user_title" class="required">Title</label>
-						<?php
-						echo form_dropdown('user_title', $arr_user_title, set_value('user_title'), array(
-							'class' => 'form-control field-help'
-						));
-						?> 
-						<?php echo form_error('user_title'); ?>
-					</div>
-				
 					<div class="form-group col-md-4">
 						<label for="user_firstname" class="required">First Name</label>
 						<?php

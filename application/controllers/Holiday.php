@@ -252,7 +252,7 @@ class Holiday extends CI_Controller {
 		if($action == 'edit'){			
 			$this->form_validation->set_rules('holiday_date', 'holiday date', 'required');
 		}
-        $this->form_validation->set_rules('holiday_description', 'holiday description', 'required');
+        $this->form_validation->set_rules('holiday_description', 'holiday occasion', 'required');
         $this->form_validation->set_rules('holiday_type', 'holiday type', 'required');
 
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
