@@ -70,7 +70,7 @@ class Srbac extends CI_Controller {
 		$this->breadcrumbs->push('View','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
         
 		
 		$this->data['page_title'] = 'SRBAC';
@@ -85,7 +85,7 @@ class Srbac extends CI_Controller {
 		$this->breadcrumbs->push('View','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
         
 
         // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
@@ -175,7 +175,7 @@ class Srbac extends CI_Controller {
         //$this->data['page_title'] = "Add Page Content";
 		$this->breadcrumbs->push('Add','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
         
         if ($this->input->post('form_action') == 'insert') {
             if ($this->validate_form_data('add') == true) {
@@ -210,7 +210,7 @@ class Srbac extends CI_Controller {
 		//$this->data['page_title'] = "Edit Page Content";
 		$this->breadcrumbs->push('Edit','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
         
         if ($this->input->post('form_action') == 'update') {
             if ($this->validate_form_data('edit') == true) {

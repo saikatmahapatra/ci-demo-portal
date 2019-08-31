@@ -35,11 +35,7 @@ class Document extends CI_Controller {
             $this->router->class
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
-
         $this->load->model('upload_model');
-        
-        
-
         $this->data['id'] = $this->uri->segment(3) ? $this->uri->segment(3) : $this->sess_user_id;
         $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
 		
@@ -78,9 +74,6 @@ class Document extends CI_Controller {
             'default-admin-access'
         ));*/
 
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
-
         //Uploads
         $upload_related_to = 'user';
         $this->data['upload_related_to'] = $upload_related_to;
@@ -98,7 +91,6 @@ class Document extends CI_Controller {
             $upload_related_to = 'user'; // related to user, product, album, contents etc
             $upload_related_to_id = $this->data['id']; // related to id user id, product id, album id etc
             $upload_file_type_name = $this->input->post('upload_file_type_name'); // file type name
-            
             //Create directory for object specific
             $upload_path = 'assets/uploads/' . $upload_related_to . '/docs/' . $upload_related_to_id;
             if (!is_dir($upload_path)) {

@@ -120,7 +120,7 @@ class Timesheet extends CI_Controller {
         //Check user permission by permission name mapped to db
         //$is_authorized = $this->common_lib->is_auth('timesheet-add');
         
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
         
         if ($this->input->post('form_action') == 'add') {
 			//$this->data['remaining_description_length'] = (200 - strlen($this->input->post('timesheet_description')));
@@ -289,7 +289,7 @@ class Timesheet extends CI_Controller {
     }
     
     function edit() {
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
         
         
         $year = $this->input->get_post('year') ? $this->input->get_post('year') : date('Y');
@@ -345,7 +345,7 @@ class Timesheet extends CI_Controller {
         $this->data['project_arr'] = $this->timesheet_model->get_project_dropdown();		
         $this->data['user_arr'] = $this->timesheet_model->get_user_dropdown();		
 				
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
         
 
         

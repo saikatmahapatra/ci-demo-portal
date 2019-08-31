@@ -10,9 +10,6 @@ class User extends CI_Controller {
         parent::__construct();
         
         $this->load->model('user_model');
-        
-        
-
         // Get logged  in user id
         $this->sess_user_id = $this->common_lib->get_sess_user('id');
 
@@ -39,11 +36,6 @@ class User extends CI_Controller {
 		
 		// Address Types
 		$this->data['address_type'] = array('P'=>'Permanent Address','C'=>'Present Address');
-		
-		// DOB - DD MM YYYY drop down
-        $this->data['day_arr'] = $this->calander_days();
-        $this->data['month_arr'] = $this->calander_months();
-        $this->data['year_arr'] = $this->calander_years();
 		
 		//User Roles drop down
 		$this->data['arr_roles'] = $this->user_model->get_user_role_dropdown();
@@ -112,9 +104,6 @@ class User extends CI_Controller {
         
 		$this->breadcrumbs->push('View', '/');		
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
-		
 		$this->data['page_title'] = 'Manage Employees';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/manage', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
@@ -128,7 +117,7 @@ class User extends CI_Controller {
         }               
 		$this->breadcrumbs->push('People', '/');		
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
         
         $search_keywords = NULL;
         if($this->input->get_post('form_action') == 'search'){
@@ -225,8 +214,6 @@ class User extends CI_Controller {
             redirect($this->router->directory.'home');
         }
         ########### Validate User Auth End #############
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
         if ($this->input->post('form_action') == 'login') {
             if ($this->validate_login_form_data() == true) {
                 $email = $this->input->post('user_email');
@@ -297,9 +284,6 @@ class User extends CI_Controller {
             'default-admin-access',
         ));
         ########### Validate User Auth End #############
-		
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
         if ($this->input->post('form_action') == 'create_account') {
             if ($this->validate_create_account_form_data() == true) {
                 //$activation_token = md5(time('Y-m-d h:i:s'));
@@ -383,9 +367,7 @@ class User extends CI_Controller {
         }
     }
 	
-	function registration_x_depricated() {		
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
+	function registration_x_depricated() {
         if ($this->input->post('form_action') == 'self_registration') {
             if ($this->validate_registration_form_data() == true) {
                 $activation_token = md5(time('Y-m-d h:i:s'));
@@ -520,8 +502,6 @@ class User extends CI_Controller {
     }
 
     function forgot_password() {
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
         $this->session->unset_userdata('sess_forgot_password_username');
         if ($this->input->post('form_action') == 'forgot_password') {
             if ($this->validate_forgot_password_form() == true) {
@@ -580,8 +560,6 @@ class User extends CI_Controller {
     }
 
     function reset_password() {
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
         if(!$this->session->userdata('sess_forgot_password_username')){
             $this->common_lib->set_flash_message('Please enter your email.','alert-danger');
             redirect($this->router->directory.$this->router->class.'/forgot_password');
@@ -652,9 +630,6 @@ class User extends CI_Controller {
         }
         
         ########### Validate User Auth End #############
-
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
         if ($this->input->post('form_action') == 'change_password') {
             if ($this->validate_changepassword_form() == true) {
                 $postdata = array('user_password' => md5($this->input->post('user_new_password')));
@@ -728,9 +703,6 @@ class User extends CI_Controller {
         $this->data['page_title'] = "My Profile";
         $this->breadcrumbs->push('Profile','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
 		$user_id = $this->uri->segment(3) ? $this->uri->segment(3) : $this->sess_user_id;
         $rows = $this->user_model->get_rows($user_id);		
 		$res_pic = $this->user_model->get_user_profile_pic($user_id);
@@ -804,8 +776,6 @@ class User extends CI_Controller {
 			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
             redirect($this->router->directory.$this->router->class.'/login');
         }
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
         $this->data['arr_states'] = $this->user_model->get_state_dropdown();		
         if ($this->input->post('form_action') == 'insert_address') {
             if ($this->validate_user_address_form_data('add') == true) {
@@ -813,16 +783,16 @@ class User extends CI_Controller {
 					'user_id' => $this->sess_user_id,
                     'address_type' => $this->input->post('address_type'),
                     //'name' => $this->input->post('name'),
-                    'phone1' => $this->input->post('phone1'),                    
-                    'zip' => $this->input->post('zip'),                    
-                    'locality' => $this->input->post('locality'),                    
-                    'address' => $this->input->post('address'),                    
-                    'city' => $this->input->post('city'),                    
-                    'state' => $this->input->post('state'),                    
-                    //'country' => $this->input->post('country'),                    
-                    'landmark' => $this->input->post('landmark'),                    
-                    'phone2' => $this->input->post('phone2'),                    
-                );                
+                    'phone1' => $this->input->post('phone1'),
+                    'zip' => $this->input->post('zip'),
+                    'locality' => $this->input->post('locality'),
+                    'address' => $this->input->post('address'),
+                    'city' => $this->input->post('city'),
+                    'state' => $this->input->post('state'),
+                    //'country' => $this->input->post('country'),
+                    'landmark' => $this->input->post('landmark'),
+                    'phone2' => $this->input->post('phone2'),
+                );
                 $res = $this->user_model->insert($postdata,'user_addresses');
                 if ($res) {
                     $this->common_lib->set_flash_message('Address has been added successfully.','alert-success');
@@ -841,9 +811,7 @@ class User extends CI_Controller {
 			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
             redirect($this->router->directory.$this->router->class.'/login');
         }
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
-		$address_id = $this->uri->segment(3);        
+		$address_id = $this->uri->segment(3);
         $this->data['address'] = $this->user_model->get_user_address($address_id, $this->sess_user_id,NULL);
         $this->data['arr_states'] = $this->user_model->get_state_dropdown();
         //print_r($this->data['address']);die();
@@ -853,15 +821,15 @@ class User extends CI_Controller {
 					//'user_id' => $this->sess_user_id,
                     //'address_type' => $this->input->post('address_type'),
                     //'name' => $this->input->post('name'),
-                    'phone1' => $this->input->post('phone1'),                    
-                    'zip' => $this->input->post('zip'),                    
-                    'locality' => $this->input->post('locality'),                    
-                    'address' => $this->input->post('address'),                    
-                    'city' => $this->input->post('city'),                    
-                    'state' => $this->input->post('state'),                    
-                    //'country' => $this->input->post('country'),                    
-                    'landmark' => $this->input->post('landmark'),                    
-                    'phone2' => $this->input->post('phone2'),                   
+                    'phone1' => $this->input->post('phone1'),
+                    'zip' => $this->input->post('zip'),
+                    'locality' => $this->input->post('locality'),
+                    'address' => $this->input->post('address'),
+                    'city' => $this->input->post('city'),
+                    'state' => $this->input->post('state'),
+                    //'country' => $this->input->post('country'),
+                    'landmark' => $this->input->post('landmark'),
+                    'phone2' => $this->input->post('phone2'),
                 );
                 $where = array('id'=>$address_id, 'user_id' => $this->sess_user_id);
                 $res = $this->user_model->update($postdata, $where,'user_addresses');
@@ -882,8 +850,6 @@ class User extends CI_Controller {
         if ($is_logged_in == FALSE) {
             redirect($this->router->directory.$this->router->class.'/login');
         }
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
 		$address_id = $this->uri->segment(3);        
         $this->data['address'] = $this->user_model->get_user_address($address_id, $this->sess_user_id,NULL);
 		$where = array('id'=>$address_id, 'user_id' => $this->sess_user_id);
@@ -910,9 +876,8 @@ class User extends CI_Controller {
             $this->form_validation->set_rules('address_type', 'address type selection', 'required|callback_check_is_address_added');            
         }
         if($mode=="edit"){
-            //$this->form_validation->set_rules('address_type', 'address type selection', 'required');        		            
-        }    
-
+            //$this->form_validation->set_rules('address_type', 'address type selection', 'required');
+        } 
         //$this->form_validation->set_rules('name', ' ', 'required|min_length[3]|alpha_numeric_spaces');        
         $this->form_validation->set_rules('phone1', ' ', 'trim|min_length[10]|max_length[15]|numeric');        
         $this->form_validation->set_rules('zip', ' ', 'required|min_length[6]|max_length[6]|numeric');        
@@ -941,52 +906,13 @@ class User extends CI_Controller {
         }
         return true;
     }
-    	
-	function calander_days() {
-        $result = array();
-        $result[''] = 'Day';
-        for ($i = 0; $i < 31; $i++) {
-            $result[$i + 1] = sprintf('%02d', $i + 1);
-        }
-        return $result;
-    }
 
-    function calander_months() {
-        $result = array(
-            '' => 'Month',
-            '01' => 'Jan',
-            '02' => 'Feb',
-            '03' => 'Mar',
-            '04' => 'Apr',
-            '05' => 'May',
-            '06' => 'Jun',
-            '07' => 'Jul',
-            '08' => 'Aug',
-            '09' => 'Sep',
-            '10' => 'Oct',
-            '11' => 'Nov',
-            '12' => 'Dec',
-        );
-        return $result;
-    }
-
-    function calander_years() {
-        $result = array();
-        $result[''] = 'Year';
-        $current_year = (date('Y')-18); // 18 years age
-        $start_year = ($current_year - 100);
-        for ($i = $current_year; $i > $start_year; $i--) {
-            $result[$i] = $i;
-        }
-        return $result;
-    }
-	
 	function add_education() {
         $is_logged_in = $this->common_lib->is_logged_in();
         if ($is_logged_in == FALSE) {
             redirect($this->router->directory.$this->router->class.'/login');
         }
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
         
         $this->data['arr_academic_qualification'] = $this->user_model->get_qualification_dropdown();
         $this->data['arr_academic_degree'] = $this->user_model->get_degree_dropdown();
@@ -1021,8 +947,6 @@ class User extends CI_Controller {
         if ($is_logged_in == FALSE) {
             redirect($this->router->directory.$this->router->class.'/login');
         }
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
 		$education_id = $this->uri->segment(3);
 		$this->data['arr_academic_qualification'] = $this->user_model->get_qualification_dropdown();
 		$this->data['arr_academic_inst'] = $this->user_model->get_institute_dropdown();
@@ -1059,8 +983,6 @@ class User extends CI_Controller {
         if ($is_logged_in == FALSE) {
             redirect($this->router->directory.$this->router->class.'/login');
         }
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
 		$id = $this->uri->segment(3);
 		$where = array('id'=>$id, 'user_id' => $this->sess_user_id);
 		$res = $this->user_model->delete($where,'user_academics');
@@ -1103,8 +1025,6 @@ class User extends CI_Controller {
             'default-admin-access',
         ));*/
         ########### Validate User Auth End #############
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
         $rows = $this->user_model->get_rows($this->sess_user_id);
         $this->data['row'] = $rows['data_rows'];
 
@@ -1150,8 +1070,6 @@ class User extends CI_Controller {
         ));
         ########### Validate User Auth End #############
         $user_id = $this->uri->segment(3);
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
         $rows = $this->user_model->get_rows($user_id);
         $this->data['row'] = $rows['data_rows'];
         if(isset($this->data['row'][0]) && $this->data['row'][0]['user_status']=='A'){
@@ -1220,9 +1138,6 @@ class User extends CI_Controller {
             redirect($this->router->directory.$this->router->class.'/login');
         }
         $user_id = $this->sess_user_id;
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
-        
         $this->data['user_arr'] = $this->user_model->get_user_dropdown();
         $this->data['approvers'] = $this->user_model->get_user_approvers($user_id);
         if ($this->input->post('form_action') == 'update_approvers') {
@@ -1284,9 +1199,6 @@ class User extends CI_Controller {
             'default-admin-access',
         ));*/
         ########### Validate User Auth End #############
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
-        
 		$this->data['user_id'] = $this->sess_user_id;
 		
 		$res_pic = $this->user_model->get_user_profile_pic($this->sess_user_id);
@@ -1416,8 +1328,6 @@ class User extends CI_Controller {
             redirect($this->router->directory.$this->router->class.'/login');
         }
 		$this->load->model('project_model');
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
 		$this->data['arr_projects'] = $this->project_model->get_project_dropdown();
         if ($this->input->post('form_action') == 'add') {
             if ($this->validate_user_project_assign_form_data('add') == true) {
@@ -1467,9 +1377,7 @@ class User extends CI_Controller {
 
     function validate_add_user_input_specialization_data(){        
 		$this->form_validation->set_rules('specialization_name', 'specialization name', 'required|alpha_numeric_spaces|min_length[5]|max_length[100]|is_unique[academic_specialization.specialization_name]',
-        array(                
-                'is_unique'     => 'This %s already exists.'
-        ));
+        array('is_unique' => 'This %s already exists.'));
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -1549,13 +1457,8 @@ class User extends CI_Controller {
         if ($is_logged_in == FALSE) {
             redirect($this->router->directory.$this->router->class.'/login');
         }
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
-        		
         $this->data['arr_company'] = $this->user_model->get_company_dropdown();
         $this->data['arr_designation_prev_work'] = $this->user_model->get_designation_dropdown();
-        
-		
         if ($this->input->post('form_action') == 'add') {
             if ($this->validate_user_work_exp_form_data('add') == true) {
                 $postdata = array(
@@ -1583,8 +1486,6 @@ class User extends CI_Controller {
         if ($is_logged_in == FALSE) {
             redirect($this->router->directory.$this->router->class.'/login');
         }
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
 		$id = $this->uri->segment(3);
 		$this->data['arr_company'] = $this->user_model->get_company_dropdown();
         $this->data['arr_designation_prev_work'] = $this->user_model->get_designation_dropdown();
@@ -1617,8 +1518,6 @@ class User extends CI_Controller {
         if ($is_logged_in == FALSE) {
             redirect($this->router->directory.$this->router->class.'/login');
         }
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
 		$id = $this->uri->segment(3);
 		$where = array('id'=>$id, 'user_id' => $this->sess_user_id);
 		$res = $this->user_model->delete($where,'user_academics');
@@ -1667,9 +1566,7 @@ class User extends CI_Controller {
 
     function validate_add_user_input_company_data(){
 		$this->form_validation->set_rules('company_name', 'company name', 'required|min_length[5]|max_length[200]|is_unique[companies.company_name]',
-        array(                
-                'is_unique'     => 'This %s already exists.'
-        ));
+        array('is_unique'     => 'This %s already exists.'));
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -1700,9 +1597,7 @@ class User extends CI_Controller {
 
     function validate_add_user_input_designation_data(){
 		$this->form_validation->set_rules('designation_name', 'designation name', 'required|min_length[3]|max_length[200]|is_unique[designations.designation_name]',
-        array(                
-                'is_unique'     => 'This %s already exists.'
-        ));
+        array('is_unique' => 'This %s already exists.'));
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -1716,8 +1611,6 @@ class User extends CI_Controller {
         if ($is_logged_in == FALSE) {
             redirect($this->router->directory.$this->router->class.'/login');
         }
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
         $this->data['arr_banks'] = $this->user_model->get_bank_dropdown();
         $this->data['user_national_identifiers'] = $this->user_model->get_user_national_identifiers($this->sess_user_id);
 		
@@ -1756,8 +1649,6 @@ class User extends CI_Controller {
         if ($is_logged_in == FALSE) {
             redirect($this->router->directory.$this->router->class.'/login');
         }
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
 		$id = $this->uri->segment(3);
         $this->data['arr_banks'] = $this->user_model->get_bank_dropdown();        
         $this->data['bank_details'] = $this->user_model->get_user_bank_account_details($id, $this->sess_user_id);
@@ -2021,8 +1912,6 @@ class User extends CI_Controller {
             redirect($this->router->directory.$this->router->class.'/manage');
         }
         
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
         if ($this->input->post('form_action') == 'close_account') {
             if ($this->validate_close_account_form_data() == true) {
                 $postdata = array(
@@ -2064,8 +1953,6 @@ class User extends CI_Controller {
 			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
             redirect($this->router->directory.$this->router->class.'/login');
         }
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
         $this->data['arr_relationship'] = $this->user_model->get_relationship_dropdown();		
         $this->data['has_add_limit'] = $this->user_model->get_user_emergency_contacts_count($this->sess_user_id, 3);		
         if ($this->input->post('form_action') == 'add') {
@@ -2097,8 +1984,6 @@ class User extends CI_Controller {
             redirect($this->router->directory.$this->router->class.'/login');
         }
         $this->data['arr_relationship'] = $this->user_model->get_relationship_dropdown();
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
 		$ec_id = $this->uri->segment(3);
         $this->data['econtact'] = $this->user_model->get_user_emergency_contacts($ec_id, $this->sess_user_id);
         //print_r($this->data['contacts']);die();
@@ -2131,8 +2016,6 @@ class User extends CI_Controller {
         if ($is_logged_in == FALSE) {
             redirect($this->router->directory.$this->router->class.'/login');
         }
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
 		$id = $this->uri->segment(3);
 		$where = array('id'=>$id);
 		$res = $this->user_model->delete($where,'user_emergency_contacts');
@@ -2174,7 +2057,5 @@ class User extends CI_Controller {
         }
         echo json_encode($json); die();
     }
-
 }
-
 ?>

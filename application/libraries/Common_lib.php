@@ -20,6 +20,7 @@ class Common_lib {
         $this->CI = & get_instance();
         $this->CI->load->model('user_model');
         $this->CI->data['alert_message'] = NULL;
+        $this->CI->data['alert_message'] = $this->display_flash_message();
     }
 
     /**

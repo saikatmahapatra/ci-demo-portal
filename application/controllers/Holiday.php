@@ -30,13 +30,9 @@ class Holiday extends CI_Controller {
             $this->router->class
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
-
         
         $this->load->model('holiday_model');
-        
-        
         $this->id = $this->uri->segment(3);
-
         //View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
         $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
@@ -50,9 +46,7 @@ class Holiday extends CI_Controller {
 		
 		//Pagination
          $this->load->library('pagination');
-         
-         $this->data['arr_holiday_type'] = array(''=>'Select','C'=>'Calendar','O'=>'Optional');
-		
+         $this->data['arr_holiday_type'] = array(''=>'Select','C'=>'Calendar','O'=>'Optional');		
     }
 
     function index() {		
@@ -75,10 +69,6 @@ class Holiday extends CI_Controller {
 			
 		$this->breadcrumbs->push('View','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
-		
 		$this->data['page_title'] = 'Manage Holidays';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
@@ -155,8 +145,6 @@ class Holiday extends CI_Controller {
 		
 		$this->breadcrumbs->push('Add','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
         if ($this->input->post('form_action') == 'insert') {
             if ($this->validate_form_data('add') == true) {
                 $postdata = array(
@@ -191,9 +179,8 @@ class Holiday extends CI_Controller {
         ));
         ########### Validate User Auth End #############
 		
-		$this->breadcrumbs->push('Edit','/');				
-		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+		$this->breadcrumbs->push('Edit','/');
+        $this->data['breadcrumbs'] = $this->breadcrumbs->show();
         
         if ($this->input->post('form_action') == 'update') {
             if ($this->validate_form_data('edit') == true) {
@@ -261,10 +248,8 @@ class Holiday extends CI_Controller {
     }
 	
 	function view() {
-		$this->breadcrumbs->push('View','/');				
-		$this->data['breadcrumbs'] = $this->breadcrumbs->show();		
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
+		$this->breadcrumbs->push('View','/');
+		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		$result_array = $this->holiday_model->get_holidays(NULL, NULL, NULL, FALSE, FALSE);
         $this->data['data_rows'] = $result_array['data_rows'];
 		$this->data['page_title'] = date('Y').' Holidays';

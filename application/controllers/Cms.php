@@ -71,10 +71,6 @@ class Cms extends CI_Controller {
 			
 		$this->breadcrumbs->push('View','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
-		
 		$this->data['page_title'] = 'Manage Contents';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
@@ -84,10 +80,8 @@ class Cms extends CI_Controller {
         // Check user permission by permission name mapped to db
         // $is_authorized = $this->common_lib->is_auth('cms-list-view');
 			
-		$this->breadcrumbs->push('View','/');				
+		$this->breadcrumbs->push('View','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
 
         // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
 		$result_array = $this->cms_model->get_rows(NULL, NULL, NULL, FALSE, FALSE);
@@ -172,8 +166,6 @@ class Cms extends CI_Controller {
         //$this->data['page_title'] = "Add Page Content";
 		$this->breadcrumbs->push('Add','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
         if ($this->input->post('form_action') == 'insert') {
             if ($this->validate_form_data('add') == true) {
 
@@ -198,7 +190,6 @@ class Cms extends CI_Controller {
                     if($this->input->post('send_email_notification') == 'Y' || $this->input->post('send_email_notification_2') == 'Y'){
                         $this->send_email_notification($postdata['content_type'], $postdata['content_title'], $postdata['content_text']);
                     }
-
                     redirect($this->router->directory.$this->router->class.'/add');
                 }
             }
@@ -214,8 +205,6 @@ class Cms extends CI_Controller {
 		//$this->data['page_title'] = "Edit Page Content";
 		$this->breadcrumbs->push('Edit','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
-        
         if ($this->input->post('form_action') == 'update') {
             if ($this->validate_form_data('edit') == true) {
                 $postdata = array(
@@ -314,7 +303,5 @@ class Cms extends CI_Controller {
         //echo $this->email->print_debugger();
         //die();
     }
-
 }
-
 ?>

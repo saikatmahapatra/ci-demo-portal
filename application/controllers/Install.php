@@ -42,7 +42,7 @@ class Install extends CI_Controller {
 		
 		// Get logged  in user id
         $this->sess_user_id = $this->common_lib->get_sess_user('id');		
-        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
         		
 		$this->data['page_title'] = 'Install';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
