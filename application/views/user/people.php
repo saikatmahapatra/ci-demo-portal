@@ -63,7 +63,7 @@
 						<?php if ($count%3 == 1){ echo '<div class="row">'; } ?>
 						
 
-						<div class="col-md-4">
+						<div class="col-lg-4">
 							<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile/'.$row['id']);?>" class="user-profile-card-people">
 							<div class="media border rounded my-2 p-2">
 								<img class="align-self-center mr-3 rounded dp-sm" src="<?php echo base_url($img_src);?>">
@@ -88,7 +88,7 @@
 					if ($count%3 != 1) echo "</div>"; 
 				}
 				?>
-				<div class="col-md-12"><?php echo $pagination_link;?></div>
+				<div class="col-lg-12"><?php echo $pagination_link;?></div>
 				
 			
 			</div><!--./card-body-->

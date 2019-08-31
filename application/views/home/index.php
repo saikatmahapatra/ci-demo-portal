@@ -3,7 +3,7 @@
 
 <?php if(isset($profile_msg) && sizeof($profile_msg > 0)){ ?>
 <div class="row <?php echo ($display_reminder_modal == 'false') ? 'd-none' : ''; ?>" id="userReminderModal" data-display="<?php echo $display_reminder_modal; ?>">
-    <div class="col-md-12">
+    <div class="col-lg-12">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
         You can improve your profile details by adding <?php echo implode(', ', $profile_msg);?>
         <a href="<?php echo base_url('user/profile');?>" class="btn btn-sm btn-outline-secondary">Update Now</a>
@@ -17,7 +17,7 @@
 
 
 <div class="row">
-    <div class="col-md-8 mb-3">
+    <div class="col-lg-8 mb-3">
         <div class="card news-card">
             <div class="card-header h6">
             <i class="fa fa-fw fa-newspaper-o fa-lg" aria-hidden="true"></i> Notice Board
@@ -48,7 +48,7 @@
         </div><!--/.card-->
     </div>
     
-    <div class="col-md-4 mb-3">
+    <div class="col-lg-4 mb-3">
         <div class="card card-stat">
             <div class="card-header h6">
             <i class="fa fa-fw fa-line-chart fa-lg" aria-hidden="true"></i> At a Glance

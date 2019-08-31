@@ -108,7 +108,7 @@
 
 	<div class="row">
 		
-		<div class="col-md-12 mb-3">				
+		<div class="col-lg-12 mb-3">				
 			<div class="card-news pl-2 border-4 border-left border-success">					
 					<div class="card-news-header h5">Redmi Launched Mi Band in India @ 1699/-</div>
 					<div class="card-news-time-auther">
@@ -118,7 +118,7 @@
 			</div><!--/.card-news-->				
 		</div>
 		
-		<div class="col-md-12 mb-3">				
+		<div class="col-lg-12 mb-3">				
 			<div class="card-news pl-2 border-4 border-left border-danger">					
 					<div class="card-news-header h5">Redmi Launched Mi Band in India @ 1699/-</div>
 					<div class="card-news-time-auther">
@@ -132,7 +132,7 @@
 
 	<h2 class="h3 mb-3 font-weight-normal">Card</h2>
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-lg-3">
 			<div class="card">
 				<h5 class="card-header">Card Header</h5>
 				<div class="card-body">
@@ -143,7 +143,7 @@
 			</div>
 		</div>
 		
-		<div class="col-md-3">
+		<div class="col-lg-3">
 			<div class="card">
 				<h5 class="card-header">Featured</h5>
 				<div class="card-body">
@@ -158,7 +158,7 @@
 			</div>
 		</div>
 		
-		<div class="col-md-6">
+		<div class="col-lg-6">
 			<div class="card card-legend">			
 				<div class="card-body">
 					<h5 class="card-title text-on-card">Add Benificiary</h5>
@@ -221,21 +221,21 @@
 	<h2 class="h3 mb-3 font-weight-normal">Form Control</h2>
 	<form>
 		<div class="form-row">
-			<div class="form-group col-md-4">
+			<div class="form-group col-lg-4">
 				<label for="exampleFormControlInput2">Text Box</label>
 				<input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
 			</div>
-			<div class="form-group col-md-4">
+			<div class="form-group col-lg-4">
 				<label for="exampleFormControlInput3">Text Box (Small)</label>
 				<input type="email" class="form-control form-control-sm" id="exampleFormControlInput3" placeholder="name@example.com">
 			</div>
-			<div class="form-group col-md-4">
+			<div class="form-group col-lg-4">
 				<label for="exampleFormControlInput4">Text Box (Large)</label>
 				<input type="email" class="form-control form-control-lg" id="exampleFormControlInput4" placeholder="name@example.com">
 			</div>
 		</div><!--/.form-row-->			
 		<div class="form-row">
-			<div class="form-group col-md-4">
+			<div class="form-group col-lg-4">
 				<label for="exampleFormControlSelect1">Example select</label>
 				<select class="form-control" id="exampleFormControlSelect1">
 					<option value="1">1</option>
@@ -245,7 +245,7 @@
 					<option value="5">5</option>
 				</select>
 			</div>
-			<div class="form-group col-md-4">
+			<div class="form-group col-lg-4">
 				<label for="exampleFormControlSelect2">Example multiple select</label>
 				<select multiple class="form-control" id="exampleFormControlSelect2">
 					<option value="1">1</option>
@@ -255,13 +255,13 @@
 					<option value="5">5</option>
 				</select>
 			</div>
-			<div class="form-group col-md-4">
+			<div class="form-group col-lg-4">
 				<label for="exampleFormControlTextarea1">Example textarea</label>
 				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 			</div>
 		</div><!--/.form-row-->			
 		<div class="form-row">
-			<div class="form-group col-md-6">
+			<div class="form-group col-lg-6">
 				<div class="form-check">
 					<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
 					<label class="form-check-label" for="defaultCheck1"> Default checkbox </label>
@@ -283,7 +283,7 @@
 					<label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
 				</div>
 			</div>
-			<div class="form-group col-md-6">
+			<div class="form-group col-lg-6">
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
 					<label class="form-check-label" for="exampleRadios1"> Default radio </label>
@@ -313,7 +313,7 @@
 		
 		<div class="form-row mb-4">
 		
-			<div class="col-md-4">
+			<div class="col-lg-4">
 				
 				<div class="custom-control custom-checkbox my-1 mr-sm-2">
 					<input type="checkbox" class="custom-control-input" id="customcheckbox1">
@@ -338,7 +338,7 @@
 				
 			</div>
 			
-			<div class="col-md-4">
+			<div class="col-lg-4">
 				
 				<div class="custom-control custom-radio">
 					<input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
@@ -361,7 +361,7 @@
 				
 			</div>
 			
-			<div class="col-md-4">
+			<div class="col-lg-4">
 				<div class="custom-file">
 					<input type="file" class="custom-file-input" id="customFile">
 					<label class="custom-file-label" for="customFile">Choose file</label>

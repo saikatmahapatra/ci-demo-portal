@@ -1,7 +1,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-lg-12">
         <div class="card ci-card">
             <div class="card-header h6">Projects</div>
             <!--/.card-header-->
