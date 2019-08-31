@@ -16,47 +16,19 @@
 
 	<div class="form-group">
 		<label for="password_reset_key">6-digit OTP (received by email)</label>
-		<?php
-		echo form_password(array(
-			'name' => 'password_reset_key',
-			'value' => set_value('password_reset_key'),
-			'id' => 'password_reset_key',
-			'placeholder' => '',
-			'class' => 'form-control',
-			'maxlength' => '6',
-			'autofocus' => ''
-		));
-		?>
+		<?php echo form_password(array( 'name' => 'password_reset_key', 'value' => set_value('password_reset_key'), 'id' => 'password_reset_key', 'placeholder' => '', 'class' => 'form-control', 'maxlength' => '6', 'autofocus' => '' )); ?>
 		<?php echo form_error('password_reset_key'); ?>
 	</div>
 
 	<div class="form-group">
 		<label for="user_new_password" class="">New Password</label>
-		<?php
-		echo form_password(array(
-			'name' => 'user_new_password',
-			'value' => set_value('user_new_password'),
-			'id' => 'user_new_password',
-			'placeholder' => '',
-			'class' => 'form-control',
-			'maxlength' => '20',
-		));
-		?>
+		<?php echo form_password(array( 'name' => 'user_new_password', 'value' => set_value('user_new_password'), 'id' => 'user_new_password', 'placeholder' => '', 'class' => 'form-control', 'maxlength' => '20', )); ?>
 		<?php echo form_error('user_new_password'); ?>
 	</div>
 
 	<div class="form-group">
 		<label for="confirm_user_new_password">Confirm Password</label>
-		<?php
-		echo form_password(array(
-			'name' => 'confirm_user_new_password',
-			'value' => set_value('confirm_user_new_password'),
-			'id' => 'confirm_user_new_password',
-			'placeholder' => '',
-			'class' => 'form-control',
-			'maxlength' => '20',
-		));
-		?>
+		<?php echo form_password(array( 'name' => 'confirm_user_new_password', 'value' => set_value('confirm_user_new_password'), 'id' => 'confirm_user_new_password', 'placeholder' => '', 'class' => 'form-control', 'maxlength' => '20', )); ?>
 		<?php echo form_error('confirm_user_new_password'); ?>
 	</div>
 	<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-lg btn-primary btn-block'));?>	
