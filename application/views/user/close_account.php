@@ -17,7 +17,7 @@
 					echo isset($row['user_emp_id']) ? ' (Emp ID '.$row['user_emp_id'].') ': '';
 					echo isset($row['user_email']) ? '; '.$row['user_email']: '';
 				?>
-                <?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
+                <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>
                 <?php echo form_hidden('form_action', 'close_account'); ?>
                 <?php echo form_hidden('user_id', $row['id']); ?>

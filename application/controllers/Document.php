@@ -37,8 +37,8 @@ class Document extends CI_Controller {
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
 
         $this->load->model('upload_model');
-        $this->data['alert_message'] = NULL;
-        $this->data['alert_message_css'] = NULL;
+        
+        
 
         $this->data['id'] = $this->uri->segment(3) ? $this->uri->segment(3) : $this->sess_user_id;
         $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
@@ -78,8 +78,8 @@ class Document extends CI_Controller {
             'default-admin-access'
         ));*/
 
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
 
         //Uploads
         $upload_related_to = 'user';
@@ -138,19 +138,16 @@ class Document extends CI_Controller {
                     }
                     // Now update table
                     $update_upload = $this->upload_model->update($postdata, array('id' => $uploads[0]['id']), 'uploads');
-                    $this->session->set_flashdata('flash_message', 'File has been uploaded successfully.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    $this->common_lib->set_flash_message('File has been uploaded successfully.','alert-success');
                     redirect(current_url());
                 } else {
                     $upload_insert_id = $this->upload_model->insert($postdata, 'uploads');
-                    $this->session->set_flashdata('flash_message', 'File has been uploaded successfully.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    $this->common_lib->set_flash_message('File has been uploaded successfully.','alert-success');
                     redirect(current_url());
                 }
             } else if (sizeof($upload_result['upload_error']) > 0) {
                 $error_message = $upload_result['upload_error'];
-                $this->session->set_flashdata('flash_message', $error_message);
-                $this->session->set_flashdata('flash_message_css', 'alert-danger');
+                $this->common_lib->set_flash_message($error_message,'alert-danger');
                 redirect(current_url());
             }
         }

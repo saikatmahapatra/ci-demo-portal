@@ -89,7 +89,7 @@
 		<div class="card ci-card ci-dl">
 			<div class="card-header h6"><?php echo isset($row['user_emp_id']) ? 'Employee Code - UEIPL/'.$row['user_emp_id'] : ''; ?></div><!--/.card-header-->
 			<div class="card-body">
-			<?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
+			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<div class="row">
 					<div class="col-lg-3 text-center mb-3">
 						<?php   

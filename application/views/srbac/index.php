@@ -6,7 +6,7 @@
             <div class="card-header h6">SRBAC Roles</div>
             <!--/.card-header-->
             <div class="card-body">
-                <?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
+                <?php echo isset($alert_message) ? $alert_message : ''; ?>
 
                 <div class="table-responsive">
                     <table id="cms-datatable" class="table ci-table table-striped">

@@ -19,8 +19,8 @@ class Cronjob extends CI_Controller {
         $javascript_files = array();
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
         
-        $this->data['alert_message'] = NULL;
-        $this->data['alert_message_css'] = NULL;
+        
+        
         $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
         
         /**

@@ -7,7 +7,7 @@
 		<!-- <h6><?php echo $this->config->item('app_company_product');?></h6> -->
 		<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 	</div>
-	<?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
+	<?php echo isset($alert_message) ? $alert_message : ''; ?>
 	<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'')) ?>
 	<?php echo form_hidden('form_action', 'login'); ?>
 	<div class="form-group">

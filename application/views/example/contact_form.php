@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-lg-4">
-        <?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
+        <?php echo isset($alert_message) ? $alert_message : ''; ?>
         <?php echo form_open_multipart(current_url(), array('method' => 'post', 'class' => 'ci-form', 'name' => '','id' => '',));?>
         <?php echo form_hidden('form_action', 'send'); ?>
 

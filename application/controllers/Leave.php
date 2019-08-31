@@ -25,8 +25,8 @@ class Leave extends CI_Controller {
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
 		        
-        $this->data['alert_message'] = NULL;
-        $this->data['alert_message_css'] = NULL;
+        
+        
 		
 		//Check if any user logged in else redirect to login
         $is_logged_in = $this->common_lib->is_logged_in();
@@ -81,8 +81,8 @@ class Leave extends CI_Controller {
 	
 	function apply() {
 		$this->data['page_title'] = 'Apply Leave';		
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');        
+        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+                
         $this->data['approvers'] = $this->user_model->get_user_approvers($this->sess_user_id);
         //print_r($this->data['approvers']);
         $this->data['leave_balance'] = $this->leave_model->get_leave_balance(NULL, NULL, NULL, FALSE, FALSE, $this->sess_user_id);
@@ -167,8 +167,7 @@ class Leave extends CI_Controller {
                 );
                 $insert_id = $this->leave_model->insert($postdata);
                 if ($insert_id) {
-                    $this->session->set_flashdata('flash_message', 'You have applied leave successfully. Please note your leave request no <strong>'.$leave_request_id.'</strong> for future references. You will get email notification informing leave status. For more details go to '.anchor(base_url('leave/history'),'My Leave History'));
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    $this->common_lib->set_flash_message('You have applied leave successfully. Please note your leave request no <strong>'.$leave_request_id.'</strong> for future references. You will get email notification informing leave status. For more details go to '.anchor(base_url('leave/history'),'My Leave History'),'alert-success');
 
                     ######## Send Email to Applicant ###########
                     $result_array = $this->leave_model->get_rows($insert_id, NULL, NULL, FALSE, TRUE);
@@ -251,8 +250,8 @@ class Leave extends CI_Controller {
 
     function history() {
         $this->data['page_title'] = 'Leave History';
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');		
+        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        		
         // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition
         $cond = array(
             'applicant_user_id' =>  $this->sess_user_id
@@ -280,8 +279,8 @@ class Leave extends CI_Controller {
 
     function manage() {
         $this->data['page_title'] = 'Leave Requests Management';
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
         // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition
         $cond = array();
         $cond['assigned_to_user_id'] = $this->sess_user_id;
@@ -472,16 +471,15 @@ class Leave extends CI_Controller {
         $where_array = array('id' => $this->id);
         $res = $this->leave_model->delete($where_array);
         if ($res) {
-            $this->session->set_flashdata('flash_message', 'Leave Entry Deleted Successfully');
-            $this->session->set_flashdata('flash_message_css', 'alert-success');
+            $this->common_lib->set_flash_message('Leave Entry Deleted Successfully','alert-success');
             redirect($this->router->directory.$this->router->class.'');
         }
     }
 
     function details() {				
         $this->data['page_title'] = 'Leave Details';   
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');   
+        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+           
         $result_array = $this->leave_model->get_rows($this->id, NULL, NULL, FALSE, TRUE);
         $this->data['data_rows'] = $result_array['data_rows'];
         $this->data['maincontent'] = $this->load->view($this->router->class.'/details', $this->data, true);
@@ -490,8 +488,8 @@ class Leave extends CI_Controller {
 
     function details_process() {				
         $this->data['page_title'] = 'Manage Leave Request';   
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');   
+        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+           
         $result_array = $this->leave_model->get_rows($this->id, NULL, NULL, FALSE, TRUE);
         $this->data['data_rows'] = $result_array['data_rows'];
         $this->data['maincontent'] = $this->load->view($this->router->class.'/details_process', $this->data, true);
@@ -504,8 +502,8 @@ class Leave extends CI_Controller {
             'crud-leave-balance'
         ));  
         $this->data['page_title'] = 'Leave Balance Sheet';      
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
         if ($this->input->post('form_action') == 'leave_balance_update') {
             if ($this->validate_leave_balance_form_data() == true) {
                 if($this->input->post('id') != ''){
@@ -520,8 +518,7 @@ class Leave extends CI_Controller {
                     $where = array('id' => $this->input->post('id'));
                     $insert_id = $this->leave_model->update($postdata, $where, 'user_leave_balance');
                     if ($insert_id) {
-                        $this->session->set_flashdata('flash_message', 'Leave Balance Record Updated.');
-                        $this->session->set_flashdata('flash_message_css', 'alert-success');
+                        $this->common_lib->set_flash_message('Leave Balance Record Updated.','alert-success');
                         redirect(current_url());
                     }
                 }else{
@@ -535,8 +532,7 @@ class Leave extends CI_Controller {
                     );
                     $insert_id = $this->leave_model->insert($postdata, 'user_leave_balance');
                     if ($insert_id) {
-                        $this->session->set_flashdata('flash_message', 'Leave Balance Record Created.');
-                        $this->session->set_flashdata('flash_message_css', 'alert-success');
+                        $this->common_lib->set_flash_message('Leave Balance Record Created.','alert-success');
                         redirect(current_url());
                     }
                 }
@@ -586,8 +582,8 @@ class Leave extends CI_Controller {
         $is_cancel_requested = 'N';
         $send_email = false;
         $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>'', 'css'=>'alert alert-warning');
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
         
         if(($this->input->post('action')=='update')){
             $leave_id = $this->input->post('leave_id');
@@ -753,8 +749,7 @@ class Leave extends CI_Controller {
                 $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>validation_errors(),'css'=>''); 
             }
         }
-        $this->session->set_flashdata('flash_message', $message['msg']);
-        $this->session->set_flashdata('flash_message_css', $message['css']);
+        $this->common_lib->set_flash_message($message['msg'],$message['css']);
         echo json_encode($message); die();
     }
 

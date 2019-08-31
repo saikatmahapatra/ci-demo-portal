@@ -32,8 +32,8 @@ class Install extends CI_Controller {
         $this->common_lib->init_template_elements();
         
         $this->load->model('install_model');
-        $this->data['alert_message'] = NULL;
-        $this->data['alert_message_css'] = NULL;
+        
+        
     }
 
     function index() {
@@ -42,8 +42,8 @@ class Install extends CI_Controller {
 		
 		// Get logged  in user id
         $this->sess_user_id = $this->common_lib->get_sess_user('id');		
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');		
+        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        		
 		$this->data['page_title'] = 'Install';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);

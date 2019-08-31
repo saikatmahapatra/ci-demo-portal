@@ -36,11 +36,7 @@ class Cms extends CI_Controller {
             $this->router->class
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
-
-        
         $this->load->model('cms_model');
-        $this->data['alert_message'] = NULL;
-        $this->data['alert_message_css'] = NULL;
         $this->id = $this->uri->segment(3);
         $this->data['arr_content_type'] = $this->cms_model->get_pagecontent_type();
 
@@ -76,8 +72,8 @@ class Cms extends CI_Controller {
 		$this->breadcrumbs->push('View','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
 		
 		$this->data['page_title'] = 'Manage Contents';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
@@ -91,8 +87,7 @@ class Cms extends CI_Controller {
 		$this->breadcrumbs->push('View','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        $this->data['alert_message'] = $this->common_lib->display_flash_message();
 
         // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
 		$result_array = $this->cms_model->get_rows(NULL, NULL, NULL, FALSE, FALSE);
@@ -177,8 +172,8 @@ class Cms extends CI_Controller {
         //$this->data['page_title'] = "Add Page Content";
 		$this->breadcrumbs->push('Add','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
         if ($this->input->post('form_action') == 'insert') {
             if ($this->validate_form_data('add') == true) {
 
@@ -198,8 +193,7 @@ class Cms extends CI_Controller {
                 $insert_id = $this->cms_model->insert($postdata);
                 
                 if ($insert_id) {
-                    $this->session->set_flashdata('flash_message', 'Data Added Successfully.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    $this->common_lib->set_flash_message('Data Added Successfully.','alert-success');
                     
                     if($this->input->post('send_email_notification') == 'Y' || $this->input->post('send_email_notification_2') == 'Y'){
                         $this->send_email_notification($postdata['content_type'], $postdata['content_title'], $postdata['content_text']);
@@ -220,8 +214,8 @@ class Cms extends CI_Controller {
 		//$this->data['page_title'] = "Edit Page Content";
 		$this->breadcrumbs->push('Edit','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        $this->data['alert_message'] = $this->common_lib->display_flash_message();
+        
         if ($this->input->post('form_action') == 'update') {
             if ($this->validate_form_data('edit') == true) {
                 $postdata = array(
@@ -246,8 +240,7 @@ class Cms extends CI_Controller {
                 }
 
                 if ($res) {
-                    $this->session->set_flashdata('flash_message', 'Data Updated Successfully.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    $this->common_lib->set_flash_message('Data Updated Successfully.','alert-success');
                     redirect(current_url());
                 }
             }
@@ -266,8 +259,7 @@ class Cms extends CI_Controller {
         $where_array = array('id' => $this->id);
         $res = $this->cms_model->delete($where_array);
         if ($res) {
-            $this->session->set_flashdata('flash_message', 'Data Deleted Successfully.');
-            $this->session->set_flashdata('flash_message_css', 'alert-success');
+            $this->common_lib->set_flash_message('Data has been deleted successfully.','alert-success');
             redirect($this->router->directory.$this->router->class);
         }
     }

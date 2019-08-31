@@ -12,7 +12,7 @@ $row = $data_rows[0];
             <div class="card-header h6">Details of Leave</div>
             <!--/.card-header-->
             <div class="card-body">
-            <?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
+            <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <dl class="row">
                     <dt class="col-md-2">Reference No</dt>
                     <dd class="col-md-10"><?php echo $row['leave_req_id'];?></dd>

@@ -20,7 +20,6 @@ class Common_lib {
         $this->CI = & get_instance();
         $this->CI->load->model('user_model');
         $this->CI->data['alert_message'] = NULL;
-        $this->CI->data['alert_message_css'] = NULL;
     }
 
     /**
@@ -289,11 +288,29 @@ class Common_lib {
         }
     }
 
+    
+    /**
+     * Set flash message to display
+     */
+    function set_flash_message($msg, $css = NULL){
+        $this->CI->session->set_flashdata('flash_message', $msg);
+        $this->CI->session->set_flashdata('flash_message_css', $css);
+    }
+
     /**
      * Display Flash Message
      */
-    function display_flash_message($message_text, $alert_css = NULL){
-        return '<div class="auto-closable-alert alert ' . $alert_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$message_text.'</div>';
+    function display_flash_message(){
+        $msg = $this->CI->session->flashdata('flash_message');
+        $css = $this->CI->session->flashdata('flash_message_css');
+        $msg_html = NULL;
+        if(isset($msg)){
+         $msg_html = '<div class="alert ' . $css . ' alert-dismissable auto-closable-alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$msg.'</div>';
+        }else{
+            $msg_html = NULL; 
+        }
+        $this->CI->data['alert_message'] = NULL;
+        return $msg_html;
     }
 
     /**

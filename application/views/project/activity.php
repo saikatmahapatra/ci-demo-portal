@@ -6,7 +6,7 @@
             <div class="card-header h6">Timesheet Activities</div>
             <!--/.card-header-->
             <div class="card-body">
-            <?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
+            <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="ci-link-group">
                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/add_activity');?>"
                         class="float-right btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-fw fa-plus"></i>

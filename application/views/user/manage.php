@@ -6,7 +6,7 @@
 			<div class="card-header h6">Employees</div><!--/.card-header-->
 
 			<div class="card-body">
-			<?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
+			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<div class="ci-link-group">
 					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="btn btn-sm btn-outline-success mr-2" data-toggle="tooltip" title="Create new user account"> <i class="fa fa-fw fa-plus"></i> Add New</a>
 				

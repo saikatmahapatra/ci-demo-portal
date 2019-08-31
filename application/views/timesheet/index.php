@@ -9,7 +9,7 @@
             <div class="card-header h6">Log Tasks</div>
             <!--/.card-header-->
             <div class="card-body">
-            <?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
+            <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <nav>
                     <div class="nav nav-tabs ci-nav-tab" id="nav-tab" role="tablist">
                         <a class="nav-item nav-link active" id="nav-add-tab" data-toggle="tab" href="#nav-add"

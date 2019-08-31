@@ -6,7 +6,7 @@
             <div class="card-header h6">Leave Requests</div>
             <!--/.card-header-->
             <div class="card-body">
-            <?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
+            <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <?php echo form_open(current_url(), array( 'method' => 'get','class'=>'ci-form form-inline','name' => '','id' => 'leave-search-form')); ?>
                 <?php echo form_hidden('form_action', 'search'); ?>
 

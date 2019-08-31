@@ -5,7 +5,7 @@
 		<div class="card ci-card">
 			<div class="card-header h6">Change or Remove your profile photo</div><!--/.card-header-->
 			<div class="card-body">
-			<?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
+			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<div class="row">
 					<div class="col-lg-4 profile-pic">
 						<?php

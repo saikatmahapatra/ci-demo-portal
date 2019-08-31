@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col-md-12">
-	<?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
+	<?php echo isset($alert_message) ? $alert_message : ''; ?>
         <ul>
 			<li><a href="<?php echo base_url($this->router->directory.$this->router->class.'/bootstrap');?>" class="">Bootstrap </a></li>
             <li><a href="<?php echo base_url($this->router->directory.$this->router->class.'/form_helper');?>" class="">Form Helper</a></li>

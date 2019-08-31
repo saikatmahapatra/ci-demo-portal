@@ -7,7 +7,7 @@
             <!--/.card-header-->
 
             <div class="card-body">
-                <?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
+                <?php echo isset($alert_message) ? $alert_message : ''; ?>
 
                 <?php
 			if(!$has_add_limit){

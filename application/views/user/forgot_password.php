@@ -8,7 +8,7 @@
 		<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 		<p>Password reset OTP will be sent to your registered email.</p>
 	</div>
-	<?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
+	<?php echo isset($alert_message) ? $alert_message : ''; ?>
 
 	<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'')) ?>
 	<?php echo form_hidden('form_action', 'forgot_password'); ?>

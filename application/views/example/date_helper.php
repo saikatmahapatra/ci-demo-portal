@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col-md-12">
-    <?php echo isset($alert_message) ? $this->common_lib->display_flash_message($alert_message, $alert_message_css) : ''; ?>
+    <?php echo isset($alert_message) ? $alert_message : ''; ?>
 		<h4>Now</h4>
 		<?php echo now(); ?>
     
