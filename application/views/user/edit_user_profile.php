@@ -77,13 +77,13 @@
 				
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label for="user_designation" class="">Designation </label>
+						<label for="user_designation" class="optional">Designation </label>
 						<?php echo form_dropdown('user_designation', $arr_designations, isset($_POST['user_designation']) ? set_value('user_designation') : $row['user_designation'], array( 'class' => 'form-control', )); ?> 
 						<?php echo form_error('user_designation'); ?>
 					</div>	
 
 					<div class="form-group col-md-6">
-						<label for="user_department" class="">Department </label>
+						<label for="user_department" class="optional">Department </label>
 						<?php echo form_dropdown('user_department', $arr_departments, isset($_POST['user_department']) ? set_value('user_department') : $row['user_department'] , array( 'class' => 'form-control' )); ?>
 						<?php echo form_error('user_department'); ?>
 					</div>
@@ -92,7 +92,7 @@
 				<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="user_dob" class="required">Date of Birth</label>
-							<?php echo form_dropdown('user_department', $arr_departments, isset($_POST['user_department']) ? set_value('user_department') : $row['user_department'] , array( 'class' => 'form-control' )); ?> <?php echo form_input(array( 'name' => 'user_dob', 'value' => isset($_POST['user_dob']) ? set_value('user_dob') : $this->common_lib->display_date($row['user_dob']), 'id' => 'user_dob', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => 'dd-mm-yyyy', 'autocomplete'=>'off', 'readonly'=>true )); ?>
+							<?php echo form_input(array( 'name' => 'user_dob', 'value' => isset($_POST['user_dob']) ? set_value('user_dob') : $this->common_lib->display_date($row['user_dob']), 'id' => 'user_dob', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => 'dd-mm-yyyy', 'autocomplete'=>'off', 'readonly'=>true )); ?>
 							<?php echo form_error('user_dob');?>
 						</div>
 						<div class="form-group col-md-6">
@@ -123,12 +123,12 @@
 					
 				<div class="form-row">
 					<div class="form-group col-md-6 ci-select2">
-						<label for="" class="">Supervisor / Level 1 Approver</label>
+						<label for="" class="optional">Supervisor / Level 1 Approver</label>
 						<?php echo form_dropdown('user_supervisor_id', $user_arr, isset($approver['user_supervisor_id']) ? $approver['user_supervisor_id'] : set_value('user_supervisor_id') ,array('class' => 'form-control select2-control', 'id'=>'user_supervisor_id')); ?> 
 						<?php echo form_error('user_supervisor_id'); ?>
 					</div>
 					<div class="form-group col-md-6 ci-select2">
-						<label for="" class="">Director / Level 2 Approver</label>
+						<label for="" class="optional">Director / Level 2 Approver</label>
 						<?php echo form_dropdown('user_director_approver_id', $user_arr, isset($approver['user_director_approver_id']) ? $approver['user_director_approver_id'] : set_value('user_supervisor_id') ,array('class' => 'form-control select2-control', 'id'=>'user_director_approver_id')); ?> 
 						<?php echo form_error('user_director_approver_id'); ?>
 					</div>
@@ -136,12 +136,12 @@
 
 				<div class="form-row">
 					<div class="form-group col-md-6 ci-select2">
-						<label for="" class="">HR Approver</label>
+						<label for="" class="optional">HR Approver</label>
 						<?php echo form_dropdown('user_hr_approver_id', $user_arr, isset($approver['user_hr_approver_id']) ? $approver['user_hr_approver_id'] : set_value('user_hr_approver_id') ,array('class' => 'form-control select2-control', 'id'=>'user_hr_approver_id')); ?> 
 						<?php echo form_error('user_hr_approver_id'); ?>
 					</div>
 					<div class="form-group col-md-6 ci-select2">
-						<label for="" class="">Finance Approver</label>
+						<label for="" class="optional">Finance Approver</label>
 						<?php echo form_dropdown('user_finance_approver_id', $user_arr, isset($approver['user_finance_approver_id']) ? $approver['user_finance_approver_id'] : set_value('user_supervisor_id') ,array('class' => 'form-control select2-control', 'id'=>'user_finance_approver_id')); ?> 
 						<?php echo form_error('user_finance_approver_id'); ?>
 					</div>
@@ -149,7 +149,7 @@
 				
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label for="user_doj" class="">Date of Joining </label>				
+						<label for="user_doj" class="optional">Date of Joining </label>
 						<?php echo form_input(array( 'name' => 'user_doj', 'value' => isset($_POST['user_doj']) ? set_value('user_doj') : $this->common_lib->display_date($row['user_doj']), 'id' => 'user_doj', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => '', 'autocomplete'=>'off', 'readonly'=>true )); ?>
 						<?php echo form_error('user_doj'); ?>
 					</div>

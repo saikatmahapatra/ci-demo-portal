@@ -9058,7 +9058,7 @@ label.required::after {
 label.optional::after {
   content: ' (optional)';
   font-size: 90%;
-  color: #ced4da;
+  color: #adb5bd;
 }
 
 .ci-form-help-text {

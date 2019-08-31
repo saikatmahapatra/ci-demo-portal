@@ -660,7 +660,7 @@ label.required::after {
 label.optional::after {
     content: ' (optional)';
     font-size: 90%;
-    color: $gray-400;
+    color: $gray-500;
 }
 
 .ci-form-help-text {

@@ -41,7 +41,7 @@
 
                 <div class="form-row d-none">
                     <div class="form-group col-lg-12">
-                        <label for="job_description" class="">Key Roles </label>
+                        <label for="job_description" class="optional">Key Roles </label>
                         <?php echo form_textarea(array('name' => 'job_description','value' => isset($_POST['job_description']) ? set_value('job_description') : $row['job_description'],'class' => 'form-control','id' => 'job_description','rows' => '2','cols' => '50','placeholder' => 'Describe roles')); ?>
                         <?php echo form_error('job_description'); ?>
                     </div>

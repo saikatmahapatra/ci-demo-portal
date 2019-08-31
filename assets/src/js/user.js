@@ -24,7 +24,15 @@ function domReady() {
     $('#user_doj').datepicker({
         format: "dd-mm-yyyy",
         weekStart: 1,
-        autoclose: true
+        autoclose: true,
+        container: $('#user_doj').parent()
+    });
+
+    $('#user_dor').datepicker({
+        format: "dd-mm-yyyy",
+        weekStart: 1,
+        autoclose: true,
+        container: $('#user_dor').parent()
     });
 
     $('.job-exp-datepicker').datepicker({

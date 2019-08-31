@@ -385,7 +385,7 @@ class User extends CI_Controller {
         }
     }
 	
-	function registration_x() {		
+	function registration_x_depricated() {		
         $this->data['alert_message'] = $this->session->flashdata('flash_message');
         $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         if ($this->input->post('form_action') == 'self_registration') {
