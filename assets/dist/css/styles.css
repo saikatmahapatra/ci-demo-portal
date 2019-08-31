@@ -9049,12 +9049,6 @@ body.login {
   font-size: 16px;
 }
 
-label.required::after {
-  content: ' *';
-  font-weight: 400;
-  color: #dc3545;
-}
-
 label.optional::after {
   content: ' (optional)';
   font-size: 90%;

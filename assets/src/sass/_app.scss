@@ -651,12 +651,11 @@ body.login {
     font-size: 16px;
 }
 
-label.required::after {
-    content: ' *';
-    font-weight: 400;
-    color: $mandatory_field_star-color;
-}
-
+// label.required::after {
+//     content: ' *';
+//     font-weight: 400;
+//     color: $mandatory_field_star-color;
+// }
 label.optional::after {
     content: ' (optional)';
     font-size: 90%;
