@@ -37,8 +37,7 @@ class Home extends CI_Controller {
 
         $this->load->model('home_model');
         $this->load->model('cms_model');
-        $this->data['alert_message'] = NULL;
-        $this->data['alert_message_css'] = NULL;
+
         $this->id = $this->uri->segment(3);
 
         //View Page Config
@@ -66,11 +65,8 @@ class Home extends CI_Controller {
 		// Check user permission by permission name mapped to db
         // $is_authorized = $this->common_lib->is_auth('cms-list-view');
 			
-		$this->breadcrumbs->push('View','/');				
+		$this->breadcrumbs->push('View','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
 
         // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
 		$result_array = $this->cms_model->get_contents(NULL, NULL, NULL, FALSE, FALSE);
@@ -127,8 +123,8 @@ class Home extends CI_Controller {
 		$this->breadcrumbs->push('View','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        
+        
 
         $id = $this->uri->segment(3);		
 		$result_array = $this->cms_model->get_contents($id, NULL, NULL, FALSE, FALSE);
@@ -164,8 +160,8 @@ class Home extends CI_Controller {
 		$this->breadcrumbs->push('View','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        
+        
 
         // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition
         $filter = array('content_type' => array('policy'));

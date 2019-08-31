@@ -2,20 +2,12 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-md-8">
-	<?php
-		// Show server side flash messages
-		if (isset($alert_message)) {
-			$html_alert_ui = '';
-			$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-			echo $html_alert_ui;
-		}
-
-	?>
+	<?php echo isset($alert_message) ? $alert_message : ''; ?>
     <?php echo form_open_multipart(current_url(), array('method' => 'post', 'class' => 'ci-form', 'name' => '','id' => '',));?>
     <?php echo form_hidden('form_action', 'send'); ?>
         <div class="form-row">
 			<div class="form-group col-md-12">
-				<label for="ui_color_scheme">User Interface (color of theme, buttons, links) <span class="required">*</span></label>
+				<label for="ui_color_scheme" class="required">User Interface (color of theme, buttons, links)</label>
 				<div class="">
 				<input type="range" class="custom-range" min="0" max="5" id="customRange2">
 					<?php 
@@ -38,7 +30,7 @@
 
 		<div class="form-row">
 			<div class="form-group col-md-12">
-				<label for="nav_link_findout">Navigation links (menu links how easy to find out) <span class="required">*</span></label>
+				<label for="nav_link_findout" class="required">Navigation links (menu links how easy to find out)</label>
 				<div class="">
 					<?php 
 					for($i = 1 ; $i<=5 ; $i++){
@@ -60,7 +52,7 @@
 
         <div class="form-row">
             <div class="form-group col-md-12"> 
-                <label for="message" class="">Message <span class="required">*</span></label>
+                <label for="message" class="required">Message</label>
                 <?php
                 echo form_textarea(array(
                     'name' => 'message',
