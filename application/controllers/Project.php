@@ -36,13 +36,8 @@ class Project extends CI_Controller {
             $this->router->class
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
-
-        
         $this->load->model('project_model');
-        $this->data['alert_message'] = NULL;
-        $this->data['alert_message_css'] = NULL;
         $this->id = $this->uri->segment(3);
-
         //View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
         $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
@@ -68,13 +63,8 @@ class Project extends CI_Controller {
     function index() {
         // Check user permission by permission name mapped to db
         // $is_authorized = $this->common_lib->is_auth('cms-list-view');
-			
-		$this->breadcrumbs->push('View','/');				
+		$this->breadcrumbs->push('View','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-		
 		$this->data['page_title'] = 'Projects';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
@@ -84,11 +74,9 @@ class Project extends CI_Controller {
         //Total rows - Refer to model method definition
         $result_array = $this->project_model->get_rows();
         $total_rows = $result_array['num_rows'];
-
         // Total filtered rows - check without limit query. Refer to model method definition
         $result_array = $this->project_model->get_rows(NULL, NULL, NULL, TRUE, FALSE);
         $total_filtered = $result_array['num_rows'];
-
         // Data Rows - Refer to model method definition
         $result_array = $this->project_model->get_rows(NULL, NULL, NULL, TRUE);
         $data_rows = $result_array['data_rows'];
@@ -135,10 +123,8 @@ class Project extends CI_Controller {
     }    
 
     function add() {        
-		$this->breadcrumbs->push('Add','/');				
+		$this->breadcrumbs->push('Add','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         if ($this->input->post('form_action') == 'insert') {
             if ($this->validate_form_data('add') == true) {
 
@@ -150,8 +136,7 @@ class Project extends CI_Controller {
                 );
                 $insert_id = $this->project_model->insert($postdata);
                 if ($insert_id) {
-                    $this->session->set_flashdata('flash_message', 'Data Added Successfully.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    $this->common_lib->set_flash_message('Data Added Successfully.','alert-success');
                     redirect($this->router->directory.$this->router->class.'/add');
                 }
             }
@@ -165,10 +150,8 @@ class Project extends CI_Controller {
         //Check user permission by permission name mapped to db
         //$is_authorized = $this->common_lib->is_auth('cms-edit');
 		//$this->data['page_title'] = "Edit Page Content";
-		$this->breadcrumbs->push('Edit','/');				
+		$this->breadcrumbs->push('Edit','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         if ($this->input->post('form_action') == 'update') {
             if ($this->validate_form_data('edit') == true) {
                 $postdata = array(
@@ -180,8 +163,7 @@ class Project extends CI_Controller {
                 $where_array = array('id' => $this->input->post('id'));
                 $res = $this->project_model->update($postdata, $where_array);
                 if ($res) {
-                    $this->session->set_flashdata('flash_message', 'Data Updated Successfully.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    $this->common_lib->set_flash_message('Data Updated Successfully.','alert-success');
                     redirect(current_url());
                 }
             }
@@ -200,8 +182,7 @@ class Project extends CI_Controller {
         $where_array = array('id' => $this->id);
         $res = $this->project_model->delete($where_array);
         if ($res) {
-            $this->session->set_flashdata('flash_message', 'Data Deleted Successfully.');
-            $this->session->set_flashdata('flash_message_css', 'alert-success');
+            $this->common_lib->set_flash_message('Data Deleted Successfully.','alert-success');
             redirect($this->router->directory.$this->router->class.'');
         }
     }
@@ -221,13 +202,8 @@ class Project extends CI_Controller {
     function activity() {
         // Check user permission by permission name mapped to db
         // $is_authorized = $this->common_lib->is_auth('cms-list-view');
-			
-		$this->breadcrumbs->push('View','/');				
+		$this->breadcrumbs->push('View','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-		
 		$this->data['page_title'] = 'Timesheet Activities';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/activity', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
@@ -297,11 +273,9 @@ class Project extends CI_Controller {
         }
     }
 
-    function add_activity() {        
-		$this->breadcrumbs->push('Add','/');				
+    function add_activity() {
+		$this->breadcrumbs->push('Add','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         if ($this->input->post('form_action') == 'insert') {
             if ($this->validate_activity_form_data('add') == true) {
 
@@ -311,8 +285,7 @@ class Project extends CI_Controller {
                 );
                 $insert_id = $this->project_model->insert($postdata,'task_activities');
                 if ($insert_id) {
-                    $this->session->set_flashdata('flash_message', 'Data Added Successfully.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    $this->common_lib->set_flash_message('Data Added Successfully.','alert-success');
                     redirect($this->router->directory.$this->router->class.'/add_activity');
                 }
             }
@@ -326,10 +299,8 @@ class Project extends CI_Controller {
         //Check user permission by permission name mapped to db
         //$is_authorized = $this->common_lib->is_auth('cms-edit');
 		//$this->data['page_title'] = "Edit Page Content";
-		$this->breadcrumbs->push('Edit','/');				
+		$this->breadcrumbs->push('Edit','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         if ($this->input->post('form_action') == 'update') {
             if ($this->validate_activity_form_data('edit') == true) {
                 $postdata = array(
@@ -339,8 +310,7 @@ class Project extends CI_Controller {
                 $where_array = array('id' => $this->input->post('id'));
                 $res = $this->project_model->update($postdata, $where_array, 'task_activities');
                 if ($res) {
-                    $this->session->set_flashdata('flash_message', 'Data Updated Successfully.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    $this->common_lib->set_flash_message('Data Updated Successfully.','alert-success');
                     redirect(current_url());
                 }
             }

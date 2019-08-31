@@ -19,10 +19,7 @@ class Example extends CI_Controller {
         $javascript_files = array(
             $this->router->class
         );
-        $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
-        
-        $this->data['alert_message'] = NULL;
-        $this->data['alert_message_css'] = NULL;
+        $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);        
 		$this->data['page_title'] = $this->router->class.' : '.$this->router->method;
         
     }
@@ -33,9 +30,6 @@ class Example extends CI_Controller {
     }
 
     function form_helper() {
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-
         $this->data['job_role_arr'] = array(
             '' => '-Select-',
             '1' => 'Software Enginner',
@@ -66,8 +60,7 @@ class Example extends CI_Controller {
         if ($this->input->post('form_action') == 'add') {            
             if ($this->validate_form() == TRUE) {
                 print_r($this->input->post());
-                $this->session->set_flashdata('flash_message', '<strong>Ok! </strong>Validated and Ready to Insert Data.');
-                $this->session->set_flashdata('flash_message_css', 'alert-info');
+                $this->common_lib->set_flash_message('<strong>Ok! </strong>Validated and Ready to Insert Data.','alert-info');
                 redirect(current_url());
             }
         }
@@ -119,7 +112,6 @@ class Example extends CI_Controller {
 
     function date_helper() {
         $this->load->helper('date');
-
         $this->data['maincontent'] = $this->load->view($this->router->class.'/date_helper', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -128,10 +120,8 @@ class Example extends CI_Controller {
         $this->load->helper('directory');
         $map = directory_map('./assets', FALSE, TRUE);
         $this->data['read_dir'] = $map;
-
         $map = directory_map('./assets', 1);
         $this->data['sub_folders'] = $map;
-
         $this->data['maincontent'] = $this->load->view($this->router->class.'/directory_helper', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -143,13 +133,9 @@ class Example extends CI_Controller {
     }
 	
 	function calendar_lib() {
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-        
 		$year = $this->uri->segment(3) ? $this->uri->segment(3) : date('Y');
 		$month = $this->uri->segment(4) ? $this->uri->segment(4) : date('m');
-		$day = date('d');
-		
+		$day = date('d');		
 		$template='';
 		$template.='{table_open}<table class="table ci-calendar table-sm" border="0" cellpadding="" cellspacing="">{/table_open}';
 		$template.='{heading_row_start}<tr class="mn">{/heading_row_start}';
@@ -159,11 +145,9 @@ class Example extends CI_Controller {
 		$template.='{heading_row_end}</tr>{/heading_row_end}';
 		$template.='{week_row_start}<tr class="wk_nm">{/week_row_start}';
 		$template.='{week_day_cell}<td>{week_day}</td>{/week_day_cell}';
-		$template.='{week_row_end}</tr>{/week_row_end}';
-		
+		$template.='{week_row_end}</tr>{/week_row_end}';		
 		$css_days_rows = ($month != date('m'))? 'disabled_m': 'allowed_m';
-		$template.='{cal_row_start}<tr class="'.$css_days_rows.'">{/cal_row_start}';
-		
+		$template.='{cal_row_start}<tr class="'.$css_days_rows.'">{/cal_row_start}';		
 		$template.='{cal_cell_start}<td class="day">{/cal_cell_start}';
 		$template.='{cal_cell_content}<a href="{content}">{day}</a>{/cal_cell_content}';
 		$template.='{cal_cell_content_today}<div class="highlight"><a href="{content}">{day}</a></div>{/cal_cell_content_today}';
@@ -171,10 +155,8 @@ class Example extends CI_Controller {
 		$template.='{cal_cell_no_content_today}<div class="highlight">{day}</div>{/cal_cell_no_content_today}';
 		$template.='{cal_cell_blank}&nbsp;{/cal_cell_blank}';
 		$template.='{cal_cell_end}</td>{/cal_cell_end}';		
-		$template.='{cal_row_end}</tr>{/cal_row_end}';	
-		
+		$template.='{cal_row_end}</tr>{/cal_row_end}';
 		$template.='{table_close}</table>{/table_close}';
-		
 		$prefs = array (
                'start_day'    => 'monday',
                'month_type'   => 'short',
@@ -182,8 +164,7 @@ class Example extends CI_Controller {
 			   'show_next_prev'=>TRUE,			   
 			   'template'	  =>  $template
              );
-		$this->load->library('calendar',$prefs);
-		
+		$this->load->library('calendar',$prefs);		
 		$year = $this->uri->segment(3) ? $this->uri->segment(3) : date('Y');
 		$month = $this->uri->segment(4) ? $this->uri->segment(4) : date('m');
 		$day = date('d');		
@@ -191,17 +172,12 @@ class Example extends CI_Controller {
 		$data = array();
 		$this->data['cal'] = $this->calendar->generate($year,$month,$data);
 		$this->data['page_title'] = 'Calendar';
-        
-
-        //Simulate Form Submit
         if ($this->input->post('form_action') == 'add') {
             if ($this->validate_form_calander_data('add') == true) {
-                $this->session->set_flashdata('flash_message', 'Validation Successful.');
-                $this->session->set_flashdata('flash_message_css', 'alert-success');
+                $this->common_lib->set_flash_message('Validation Successful','alert-success');
                 redirect(current_url());
             }
         }
-
         $this->data['maincontent'] = $this->load->view($this->router->class.'/calendar_lib', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -217,9 +193,6 @@ class Example extends CI_Controller {
     }
 
     function contact_form() {
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-
         if ($this->input->post('form_action') == 'send') {
             if ($this->validate_contact_form() == true) {
                 $name = $this->input->post('name');
@@ -261,12 +234,10 @@ class Example extends CI_Controller {
                 $result = $this->email->send();
                 //echo $this->email->print_debugger(); die($html);
                 if ($result == true) {
-                    $this->session->set_flashdata('flash_message', 'Your message has been sent successfully.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    $this->common_lib->set_flash_message('Your message has been sent successfully','alert-success');
                     redirect(current_url());
                 } else {
-                    $this->session->set_flashdata('flash_message', 'Error occured while sending your message.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-danger');
+                    $this->common_lib->set_flash_message('Error occured while sending your message','alert-danger');
                     redirect(current_url());
                 }
             } else {

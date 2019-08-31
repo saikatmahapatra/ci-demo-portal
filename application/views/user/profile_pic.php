@@ -1,20 +1,13 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-lg-6">
 		<div class="card ci-card">
-			<div class="card-header h6">Profile Photo</div><!--/.card-header-->
+			<div class="card-header h6">Change or Remove your profile photo</div><!--/.card-header-->
 			<div class="card-body">
-				<?php
-					// Show server side flash messages
-					if (isset($alert_message)) {
-						$html_alert_ui = '';
-						$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-						echo $html_alert_ui;
-					}
-				?>
+			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<div class="row">
-					<div class="col-md-4 profile-pic">
+					<div class="col-lg-4 profile-pic">
 						<?php
 						$img_src = "";
 						$default_path = "assets/src/img/default_user.jpg";
@@ -34,7 +27,7 @@
 							<div class="edit"><a class="btn btn-sm btn-outline-danger my-2" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><i class="fa fa-fw fa-remove"></i> Remove</a></div>
 						<?php } ?>
 					</div>
-					<div class="col-md-8">
+					<div class="col-lg-8">
 						<?php echo form_open_multipart(current_url(), array('method' => 'post', 'class'=>'ci-form','role' => 'form'));?>
 						<?php echo form_hidden('form_action', 'file_upload'); ?>
 						<div class="form-group">
@@ -53,7 +46,7 @@
 							<?php echo isset($upload_error_message) ? $upload_error_message : ''; ?>
 						</div>
 						<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Upload','class' => 'btn btn-primary'));?>
-						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="ml-2 btn btn-secondary">Cancel</a>
+						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="btn btn-light btn-cancel">Cancel</a>
 						<?php echo form_close(); ?>
 					</div>
 				</div>

@@ -21,7 +21,6 @@
         <a href="<?php echo base_url('user/profile'); ?>"><img class="sidebar-user-avatar" src="<?php echo base_url($img_src);?>" alt="Profile Image" /></a>
         <div class="small">
             <p class="sidebar-user-name">
-                <?php //echo isset($this->session->userdata['sess_user']['user_title'])? $this->session->userdata['sess_user']['user_title']:''; ?>
                 <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'] : '' ;?>
                 <?php //echo isset($this->session->userdata['sess_user']['user_lastname']) ? ' '.substr($this->session->userdata['sess_user']['user_lastname'], 0, 1) : '' ;?>
             </p>

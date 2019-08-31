@@ -48,7 +48,7 @@ class User_model extends CI_Model {
 
     function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE, $userType = NULL) {
         if ($dataTable == TRUE){
-            $this->db->select('t1.id, t1.user_title, t1.user_emp_id, t1.user_firstname, t1.user_lastname, t1.user_email, t1.user_phone1,t1.user_status,t4.designation_name,t1.user_status');
+            $this->db->select('t1.id, t1.user_emp_id, t1.user_firstname, t1.user_lastname, t1.user_email, t1.user_phone1,t1.user_status,t4.designation_name,t1.user_status');
         }else{
             $this->db->select('t1.*,t2.role_name, t2.role_weight,t3.department_name, t4.designation_name');
         }
@@ -139,7 +139,7 @@ class User_model extends CI_Model {
         $loggedin_data = array();
         $auth_result = array('status' => $login_status, 'message' => $message, 'data' => $loggedin_data);
 
-        $this->db->select('t1.id,t1.user_email,t1.user_title, t1.user_firstname,t1.user_lastname,t1.user_role,t1.user_profile_pic,t1.user_status,t1.user_status,t2.role_name,t2.role_weight,t1.user_login_date_time, t1.user_emp_id, t3.designation_name');
+        $this->db->select('t1.id,t1.user_email, t1.user_firstname,t1.user_lastname,t1.user_role,t1.user_profile_pic,t1.user_status,t1.user_status,t2.role_name,t2.role_weight,t1.user_login_date_time, t1.user_emp_id, t3.designation_name');
 		$this->db->join('roles t2', 't1.user_role=t2.id');
 		$this->db->join('designations t3', 't1.user_designation=t3.id', 'left');
         $this->db->where(array(
@@ -172,7 +172,6 @@ class User_model extends CI_Model {
                     'id' => $row['id'],
                     'user_role' => $row['user_role'],
 					'user_role_name' => $row['role_name'],
-                    'user_title' => $row['user_title'],
                     'user_firstname' => $row['user_firstname'],
                     'user_lastname' => $row['user_lastname'],
                     'user_email' => $row['user_email'],

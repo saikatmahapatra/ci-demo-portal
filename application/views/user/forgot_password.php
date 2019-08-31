@@ -8,20 +8,14 @@
 		<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 		<p>Password reset OTP will be sent to your registered email.</p>
 	</div>
-	<?php
-		// Show server side flash messages
-		if (isset($alert_message)) {
-			$html_alert_ui = '';
-			$html_alert_ui.='<div class="auto-closable-alert alert ' . $alert_message_css . ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$alert_message.'</div>';
-			echo $html_alert_ui;
-		}
-	?>
+	<?php echo isset($alert_message) ? $alert_message : ''; ?>
 
 	<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'')) ?>
 	<?php echo form_hidden('form_action', 'forgot_password'); ?>
-		<div class="form-label-group">
-			<?php echo form_input(array('name' => 'user_email','value' => set_value('user_email'),'id' => 'user_email','class'=> 'form-control','placeholder' => 'Registered Email ID','maxlength' => '100','autofocus' => true,));?>
-			<label for="user_email">Registered Email ID</label>
+		<div class="form-group">
+			<label for="user_email">Registered Email</label>
+			<?php echo form_input(array('name' => 'user_email','value' => set_value('user_email'),'id' => 'user_email','class'=> 'form-control','placeholder' => '','maxlength' => '100','autofocus' => true,));?>
+			
 			<?php echo form_error('user_email'); ?>
 		</div>
 		<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-lg btn-primary btn-block'));?>

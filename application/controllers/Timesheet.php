@@ -23,8 +23,8 @@ class Timesheet extends CI_Controller {
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
 		        
-        $this->data['alert_message'] = NULL;
-        $this->data['alert_message_css'] = NULL;
+        
+        
 		
 		//Check if any user logged in else redirect to login
         $is_logged_in = $this->common_lib->is_logged_in();
@@ -120,8 +120,8 @@ class Timesheet extends CI_Controller {
         //Check user permission by permission name mapped to db
         //$is_authorized = $this->common_lib->is_auth('timesheet-add');
         
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        
+        
         if ($this->input->post('form_action') == 'add') {
 			//$this->data['remaining_description_length'] = (200 - strlen($this->input->post('timesheet_description')));
             if ($this->validate_form_data('add') == true) {
@@ -144,8 +144,7 @@ class Timesheet extends CI_Controller {
 				}
                 $insert_id = $this->timesheet_model->insert_batch($batch_post_data);
                 if ($insert_id) {
-                    $this->session->set_flashdata('flash_message', 'Timesheet Entry Added Successfully.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    $this->common_lib->set_flash_message('Timesheet Entry Added Successfully.','alert-success');
                     redirect(current_url());
                 }
             }
@@ -290,8 +289,8 @@ class Timesheet extends CI_Controller {
     }
     
     function edit() {
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        
+        
         
         $year = $this->input->get_post('year') ? $this->input->get_post('year') : date('Y');
         $month = $this->input->get_post('month') ? $this->input->get_post('month') : date('m');
@@ -311,8 +310,7 @@ class Timesheet extends CI_Controller {
                 $res = $this->timesheet_model->update($postdata, $where_array);
 
                 if ($res) {
-                    $this->session->set_flashdata('flash_message', 'Data Updated Successfully.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    $this->common_lib->set_flash_message('Data Updated Successfully.','alert-success');
                     redirect(current_url());
                 }
             }
@@ -333,8 +331,7 @@ class Timesheet extends CI_Controller {
         $where_array = array('id' => $this->id);
         $res = $this->timesheet_model->delete($where_array);
         if ($res) {
-            $this->session->set_flashdata('flash_message', 'Timesheet Entry Deleted Successfully.');
-            $this->session->set_flashdata('flash_message_css', 'alert-success');
+            $this->common_lib->set_flash_message('Timesheet Entry Deleted Successfully.','alert-success');
             redirect($this->router->directory.$this->router->class.'');
         }
     }
@@ -348,8 +345,8 @@ class Timesheet extends CI_Controller {
         $this->data['project_arr'] = $this->timesheet_model->get_project_dropdown();		
         $this->data['user_arr'] = $this->timesheet_model->get_user_dropdown();		
 				
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+        
+        
 
         
 

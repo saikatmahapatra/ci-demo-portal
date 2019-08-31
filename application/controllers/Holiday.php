@@ -30,13 +30,9 @@ class Holiday extends CI_Controller {
             $this->router->class
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
-
         
         $this->load->model('holiday_model');
-        $this->data['alert_message'] = NULL;
-        $this->data['alert_message_css'] = NULL;
         $this->id = $this->uri->segment(3);
-
         //View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
         $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
@@ -50,9 +46,7 @@ class Holiday extends CI_Controller {
 		
 		//Pagination
          $this->load->library('pagination');
-         
-         $this->data['arr_holiday_type'] = array(''=>'Select','C'=>'Calendar','O'=>'Optional');
-		
+         $this->data['arr_holiday_type'] = array(''=>'Select','C'=>'Calendar','O'=>'Optional');		
     }
 
     function index() {		
@@ -75,10 +69,6 @@ class Holiday extends CI_Controller {
 			
 		$this->breadcrumbs->push('View','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
-		
 		$this->data['page_title'] = 'Manage Holidays';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
@@ -155,8 +145,6 @@ class Holiday extends CI_Controller {
 		
 		$this->breadcrumbs->push('Add','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
         if ($this->input->post('form_action') == 'insert') {
             if ($this->validate_form_data('add') == true) {
                 $postdata = array(
@@ -166,8 +154,7 @@ class Holiday extends CI_Controller {
                 );
                 $insert_id = $this->holiday_model->insert($postdata);
                 if ($insert_id) {
-                    $this->session->set_flashdata('flash_message', 'Data Added Successfully.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    $this->common_lib->set_flash_message('Data Added Successfully.','alert-success');
                     redirect($this->router->directory.$this->router->class);
                 }
             }
@@ -192,10 +179,9 @@ class Holiday extends CI_Controller {
         ));
         ########### Validate User Auth End #############
 		
-		$this->breadcrumbs->push('Edit','/');				
-		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+		$this->breadcrumbs->push('Edit','/');
+        $this->data['breadcrumbs'] = $this->breadcrumbs->show();
+        
         if ($this->input->post('form_action') == 'update') {
             if ($this->validate_form_data('edit') == true) {
                 $postdata = array(
@@ -206,8 +192,7 @@ class Holiday extends CI_Controller {
                 $where_array = array('id' => $this->input->post('id'));
                 $res = $this->holiday_model->update($postdata, $where_array);
                 if ($res) {
-                    $this->session->set_flashdata('flash_message', 'Data Updated Successfully.');
-                    $this->session->set_flashdata('flash_message_css', 'alert-success');
+                    $this->common_lib->set_flash_message('Data Updated Successfully.','alert-success');
                     redirect($this->router->directory.$this->router->class);
                 }
             }
@@ -237,8 +222,7 @@ class Holiday extends CI_Controller {
         $where_array = array('id' => $this->id);
         $res = $this->holiday_model->delete($where_array);
         if ($res) {
-            $this->session->set_flashdata('flash_message', 'Data Deleted Successfully.');
-            $this->session->set_flashdata('flash_message_css', 'alert-success');
+            $this->common_lib->set_flash_message('Data Deleted Successfully.','alert-success');
             redirect($this->router->directory.$this->router->class);
         }
     }
@@ -252,7 +236,7 @@ class Holiday extends CI_Controller {
 		if($action == 'edit'){			
 			$this->form_validation->set_rules('holiday_date', 'holiday date', 'required');
 		}
-        $this->form_validation->set_rules('holiday_description', 'holiday description', 'required');
+        $this->form_validation->set_rules('holiday_description', 'holiday occasion', 'required');
         $this->form_validation->set_rules('holiday_type', 'holiday type', 'required');
 
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
@@ -264,10 +248,8 @@ class Holiday extends CI_Controller {
     }
 	
 	function view() {
-		$this->breadcrumbs->push('View','/');				
-		$this->data['breadcrumbs'] = $this->breadcrumbs->show();		
-        $this->data['alert_message'] = $this->session->flashdata('flash_message');
-        $this->data['alert_message_css'] = $this->session->flashdata('flash_message_css');
+		$this->breadcrumbs->push('View','/');
+		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		$result_array = $this->holiday_model->get_holidays(NULL, NULL, NULL, FALSE, FALSE);
         $this->data['data_rows'] = $result_array['data_rows'];
 		$this->data['page_title'] = date('Y').' Holidays';

@@ -15,7 +15,102 @@
 					<span class="sr-only">(current)</span>
 				</a>
                 </li>
-                
+
+
+
+                <li class="nav-item dropdown bs-mega-menu d-none"> <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Mega Menu Example </a>
+                    <ul class="dropdown-menu dropdown-mega-menu">
+                        <div class="row">
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <li class="dropdown-header">Glyphicons</li>
+                                    <li><a href="#">Available glyphs</a>
+                                    </li>
+                                    <li class="disabled"><a href="#">How to use</a>
+                                    </li>
+                                    <li><a href="#">Examples</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header">Dropdowns</li>
+                                    <li><a href="#">Example</a>
+                                    </li>
+                                    <li><a href="#">Aligninment options</a>
+                                    </li>
+                                    <li><a href="#">Headers</a>
+                                    </li>
+                                    <li><a href="#">Disabled menu items</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <li class="dropdown-header">Button groups</li>
+                                    <li><a href="#">Basic example</a>
+                                    </li>
+                                    <li><a href="#">Button toolbar</a>
+                                    </li>
+                                    <li><a href="#">Sizing</a>
+                                    </li>
+                                    <li><a href="#">Nesting</a>
+                                    </li>
+                                    <li><a href="#">Vertical variation</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header">Button dropdowns</li>
+                                    <li><a href="#">Single button dropdowns</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <li class="dropdown-header">Input groups</li>
+                                    <li><a href="#">Basic example</a>
+                                    </li>
+                                    <li><a href="#">Sizing</a>
+                                    </li>
+                                    <li><a href="#">Checkboxes and radio addons</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header">Navs</li>
+                                    <li><a href="#">Tabs</a>
+                                    </li>
+                                    <li><a href="#">Pills</a>
+                                    </li>
+                                    <li><a href="#">Justified</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <li class="dropdown-header">Navbar</li>
+                                    <li><a href="#">Default navbar</a>
+                                    </li>
+                                    <li><a href="#">Buttons</a>
+                                    </li>
+                                    <li><a href="#">Text</a>
+                                    </li>
+                                    <li><a href="#">Non-nav links</a>
+                                    </li>
+                                    <li><a href="#">Component alignment</a>
+                                    </li>
+                                    <li><a href="#">Fixed to top</a>
+                                    </li>
+                                    <li><a href="#">Fixed to bottom</a>
+                                    </li>
+                                    <li><a href="#">Static top</a>
+                                    </li>
+                                    <li><a href="#">Inverted navbar</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+
+
+
+
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Self Services</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown_1">
@@ -131,8 +226,7 @@
                             <!-- <div class="text-center d-none">
                             <img class="img-rounded border border-secondary" src="<?php echo base_url($img_src);?>" alt="Profile Image" style="width:64px; height:64px;" />
                             </div> -->
-                            <div class="mb-1">
-                                <?php echo isset($this->session->userdata['sess_user']['user_title'])? $this->session->userdata['sess_user']['user_title']:''; ?> <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></div>
+                            <div class="mb-1"><?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></div>
                             <div class="small"><?php echo isset($this->session->userdata['sess_user']['user_emp_id']) ? 'Employee ID : '.$this->session->userdata['sess_user']['user_emp_id'] :'';?></div>
                             <div class="small"><?php echo isset($this->session->userdata['sess_user']['designation_name']) ? $this->session->userdata['sess_user']['designation_name'] :'';?></div>
                             <div class="small"><?php echo isset($this->session->userdata['sess_user']['user_email']) ? $this->session->userdata['sess_user']['user_email'] :'';?></div>
