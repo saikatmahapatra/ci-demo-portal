@@ -21,7 +21,7 @@
                         <div class="row">
                             <li class="col-lg-3 col-md-6 dropdown-item">
                                 <ul>
-                                    <li class="dropdown-header">Self Services</li>
+                                    <li class="dropdown-header">Glyphicons</li>
                                     <li><a href="#">Available glyphs</a></li>
                                     <li class="disabled"><a href="#">How to use</a></li>
                                     <li><a href="#">Examples</a></li>
