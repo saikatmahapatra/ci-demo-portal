@@ -1,12 +1,12 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-lg-8">
 	<?php echo isset($alert_message) ? $alert_message : ''; ?>
     <?php echo form_open_multipart(current_url(), array('method' => 'post', 'class' => 'ci-form', 'name' => '','id' => '',));?>
     <?php echo form_hidden('form_action', 'send'); ?>
         <div class="form-row">
-			<div class="form-group col-md-12">
+			<div class="form-group col-lg-12">
 				<label for="ui_color_scheme" class="required">User Interface (color of theme, buttons, links)</label>
 				<div class="">
 				<input type="range" class="custom-range" min="0" max="5" id="customRange2">
@@ -29,7 +29,7 @@
         </div>
 
 		<div class="form-row">
-			<div class="form-group col-md-12">
+			<div class="form-group col-lg-12">
 				<label for="nav_link_findout" class="required">Navigation links (menu links how easy to find out)</label>
 				<div class="">
 					<?php 
@@ -51,7 +51,7 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-12"> 
+            <div class="form-group col-lg-12"> 
                 <label for="message" class="required">Message</label>
                 <?php
                 echo form_textarea(array(

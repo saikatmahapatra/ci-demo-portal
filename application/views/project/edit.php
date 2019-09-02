@@ -31,7 +31,7 @@ $row = $rows[0];
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-lg-12">
                         <label for="project_desc" class="optional">Description of Project</label>
                         <?php echo form_textarea(array('name' => 'project_desc','value' => (isset($_POST['project_desc']) ? set_value('project_desc') : $row['project_desc']),'class' => 'form-control textarea','id' => 'project_desc','rows' => '2','cols' => '50','placeholder' => '')); ?>
                         <?php echo form_error('project_desc'); ?>
@@ -39,7 +39,7 @@ $row = $rows[0];
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-lg-12">
                         <label for="project_status" class="required">Status</label>
                         <div class="">
                             <div class="custom-control custom-radio custom-control-inline">

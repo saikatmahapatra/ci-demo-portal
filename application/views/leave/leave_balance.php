@@ -52,7 +52,7 @@
 
     </div>
     <!--/.col-->
-    <div class="col-md-5">
+    <div class="col-lg-5">
         <div class="card ci-card">
             <div class="card-header h6">Leave Balance Update History</div>
             <!--/.card-header-->

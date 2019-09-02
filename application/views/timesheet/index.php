@@ -4,7 +4,7 @@
         href="#" data-toggle="modal" data-target="#timesheetCalModal">here to read.</a></p>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-lg-12">
         <div class="card ci-card">
             <div class="card-header h6">Log Tasks</div>
             <!--/.card-header-->
@@ -48,9 +48,9 @@
                                 <div class="mt-2"><a id="clear_selected_days" class="btn btn-outline-secondary btn-sm"
                                         href="#">Clear selection</a></div>
                             </div>
-                            <!--/.col-md-3-->
+                            <!--/.col-lg-3-->
 
-                            <div class="col-md-4 offset-md-1">
+                            <div class="col-lg-4 offset-md-1">
 
                                 <div class="form-row">
                                     <div class="form-group col-12">
@@ -85,7 +85,7 @@
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
-                            <!--/.col-md-9-->
+                            <!--/.col-lg-9-->
                         </div>
 
                         <div class="mt-3 d-none">

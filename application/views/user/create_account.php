@@ -12,13 +12,13 @@
 				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>
 				<?php echo form_hidden('form_action', 'create_account'); ?>        
 				<div class="form-row">		
-					<div class="form-group col-md-6">
+					<div class="form-group col-lg-6">
 						<label for="user_firstname" class="required">First Name</label>
 						<?php echo form_input(array( 'name' => 'user_firstname', 'value' => set_value('user_firstname'), 'id' => 'user_firstname', 'class' => 'form-control', 'maxlength' => '30', 'placeholder' => '', )); ?>
 						<?php echo form_error('user_firstname'); ?>
 					</div>
 					
-					<div class="form-group col-md-6">
+					<div class="form-group col-lg-6">
 						<label for="user_lastname" class="required">Last Name</label>
 						<?php echo form_input(array( 'name' => 'user_lastname', 'value' => set_value('user_lastname'), 'id' => 'user_lastname', 'class' => 'form-control', 'maxlength' => '50', 'placeholder' => '', )); ?>
 						<?php echo form_error('user_lastname'); ?>
@@ -26,12 +26,12 @@
 				</div>
 				
 				<div class="form-row">
-					<div class="form-group col-md-6">
+					<div class="form-group col-lg-6">
 						<label for="user_email" class="required">Email (office)</label>
 						<?php echo form_input(array( 'name' => 'user_email', 'value' => set_value('user_email'), 'id' => 'user_email', 'class' => 'form-control', 'maxlength' => '255', 'placeholder' => '', )); ?> 
 						<?php echo form_error('user_email'); ?>
 					</div>
-					<div class="form-group col-md-6">
+					<div class="form-group col-lg-6">
 						<label for="user_phone1" class="required">Mobile (personal)</label>
 						<?php echo form_input(array( 'name' => 'user_phone1', 'value' => set_value('user_phone1'), 'id' => 'user_phone1', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => '', )); ?>
 						<?php echo form_error('user_phone1'); ?>
@@ -39,12 +39,12 @@
 				</div>
 				
 				<div class="form-row">
-					<div class="form-group col-md-6">
+					<div class="form-group col-lg-6">
 						<label for="user_dob" class="required">Date of Birth</label>
 						<?php echo form_input(array( 'name' => 'user_dob', 'value' => set_value('user_dob'), 'id' => 'user_dob', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => 'dd-mm-yyyy', 'autocomplete'=>'off', 'readonly'=>true )); ?>
 						<?php echo form_error('user_dob');?>
 					</div>
-					<div class="form-group col-md-6">
+					<div class="form-group col-lg-6">
 							<label for="gender" class="required">Gender</label>
 							<div class="">
 								<div class="custom-control custom-radio custom-control-inline">
@@ -67,24 +67,24 @@
 					</div>
 				</div>
 				<div class="form-row">
-					<div class="form-group col-md-6">
+					<div class="form-group col-lg-6">
 						<label for="user_email_secondary" class="optional">Email (personal) </label>
 						<?php echo form_input(array( 'name' => 'user_email_secondary', 'value' => set_value('user_email_secondary'), 'id' => 'user_email_secondary', 'class' => 'form-control', 'maxlength' => '255', 'placeholder' => '', )); ?> 
 						<?php echo form_error('user_email_secondary'); ?>
 					</div>
-					<div class="form-group col-md-6">
+					<div class="form-group col-lg-6">
 							<label for="user_phone2" class="optional">Mobile (office) </label>
 							<?php echo form_input(array( 'name' => 'user_phone2', 'value' => set_value('user_phone2'), 'id' => 'user_phone2', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => '', )); ?>
 							<?php echo form_error('user_phone2'); ?>
 					</div>
 				</div>
 				<div class="form-row">
-					<div class="form-group col-md-6">
+					<div class="form-group col-lg-6">
 					<label for="user_designation" class="optional">Designation </label>
 					<?php echo form_dropdown('user_designation', $arr_designations, set_value('user_designation'), array( 'class' => 'form-control', )); ?> 
 						<?php echo form_error('user_designation'); ?>
 					</div>
-					<div class="form-group col-md-6">
+					<div class="form-group col-lg-6">
 					<label for="user_department" class="optional">Department </label>
 						<?php
 						echo form_dropdown('user_department', $arr_departments, set_value('user_department'), array(
@@ -97,7 +97,7 @@
 					
 					
 				<div class="form-row">
-					<div class="form-group col-md-6">
+					<div class="form-group col-lg-6">
 						<label for="user_doj" class="optional">Date of Joining </label>
 						<?php echo form_input(array( 'name' => 'user_doj', 'value' => set_value('user_doj'), 'id' => 'user_doj', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => 'dd-mm-yyyy', 'autocomplete'=>'off', 'readonly'=>true )); ?>
 						<?php echo form_error('user_doj'); ?>

@@ -3,7 +3,7 @@
 
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-lg-4">
     <?php echo isset($alert_message) ? $alert_message : ''; ?>
         <?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => '')); ?>
         <?php echo form_hidden('form_action', 'add'); ?>
