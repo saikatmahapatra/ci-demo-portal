@@ -5,7 +5,7 @@ $row = $data_rows[0];
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-lg-8">
 		<div class="card news-card-details">
 			<div class="card-header h6">
 				<?php echo isset($row['content_title']) ? $row['content_title'] : '';?>

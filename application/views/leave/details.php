@@ -7,35 +7,35 @@ $row = $data_rows[0];
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 
 <div class="row">
-    <div class="col-md-12 ci-dl">
+    <div class="col-lg-12 ci-dl">
         <div class="card ci-card">
             <div class="card-header h6">Details of Leave</div>
             <!--/.card-header-->
             <div class="card-body">
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <dl class="row">
-                    <dt class="col-md-2">Reference No</dt>
-                    <dd class="col-md-10"><?php echo $row['leave_req_id'];?></dd>
-                    <dt class="col-md-2">Status</dt>
-                    <dd class="col-md-10">
+                    <dt class="col-lg-2">Reference No</dt>
+                    <dd class="col-lg-10"><?php echo $row['leave_req_id'];?></dd>
+                    <dt class="col-lg-2">Status</dt>
+                    <dd class="col-lg-10">
                         <?php echo $leave_status_arr[$row['leave_status']]['text'];?>
                     </dd>
-                    <dt class="col-md-2">Applied on</dt>
-                    <dd class="col-md-10">
+                    <dt class="col-lg-2">Applied on</dt>
+                    <dd class="col-lg-10">
                         <?php echo $this->common_lib->display_date($row['leave_created_on'], TRUE, NULL, 'd/m/Y h:i:s a');?>
                     </dd>
-                    <dt class="col-md-2">Type of Leave</dt>
-                    <dd class="col-md-10"><?php echo $leave_type_arr[$row['leave_type']];?> -
+                    <dt class="col-lg-2">Type of Leave</dt>
+                    <dd class="col-lg-10"><?php echo $leave_type_arr[$row['leave_type']];?> -
                         <?php echo $leave_term_arr[$row['leave_term']];?></dd>
-                    <dt class="col-md-2">From - To</dt>
-                    <dd class="col-md-10">
+                    <dt class="col-lg-2">From - To</dt>
+                    <dd class="col-lg-10">
                         <?php echo $this->common_lib->display_date($row['leave_from_date'], NULL, NULL, 'd/m/Y');?> to
                         <?php echo $this->common_lib->display_date($row['leave_to_date'], NULL, NULL, 'd/m/Y');?></dd>
-                    <dt class="col-md-2">No of day(s)</dt>
-                    <dd class="col-md-10"><?php echo $row['applied_for_days_count'].' day(s)';?></dd>
+                    <dt class="col-lg-2">No of day(s)</dt>
+                    <dd class="col-lg-10"><?php echo $row['applied_for_days_count'].' day(s)';?></dd>
 
-                    <dt class="col-md-2">Applied by</dt>
-                    <dd class="col-md-10">
+                    <dt class="col-lg-2">Applied by</dt>
+                    <dd class="col-lg-10">
                         <?php echo isset($row['user_firstname']) ? $row['user_firstname'] : '';?>
                         <?php echo isset($row['user_lastname']) ? $row['user_lastname'] : '';?>
                         <?php echo isset($row['user_emp_id']) ? '('.$row['user_emp_id'].')' : '';?>
@@ -44,10 +44,10 @@ $row = $data_rows[0];
                         <?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : '';?>
                     </dd>
 
-                    <dt class="col-md-2">Purpose of Leave</dt>
-                    <dd class="col-md-10"><?php echo isset($row['leave_reason']) ? $row['leave_reason'] : '';?></dd>
-                    <dt class="col-md-2">Leave Balance</dt>
-                    <dd class="col-md-10">
+                    <dt class="col-lg-2">Purpose of Leave</dt>
+                    <dd class="col-lg-10"><?php echo isset($row['leave_reason']) ? $row['leave_reason'] : '';?></dd>
+                    <dt class="col-lg-2">Leave Balance</dt>
+                    <dd class="col-lg-10">
                         <span class="">Before apply
                             <?php echo isset($row['on_apply_cl_bal']) ? ' CL '.$row['on_apply_cl_bal'] : '' ;?>
                             <?php echo isset($row['on_apply_pl_bal']) ? ' PL '.$row['on_apply_pl_bal'] : '' ;?>
@@ -275,8 +275,8 @@ $row = $data_rows[0];
                 </button>
             </div>
             <div class="modal-body">
-                <div class="form-group col-md-12" id="responseMessage_leaveActionModal"></div>
-                <div class="form-group col-md-12">
+                <div class="form-group col-lg-12" id="responseMessage_leaveActionModal"></div>
+                <div class="form-group col-lg-12">
                     <?php 
 		if($row['leave_status'] == 'X'){
 			?>
@@ -300,7 +300,7 @@ $row = $data_rows[0];
                         <option value="C">Cancel</option>
                     </select>
                 </div>
-                <div class="form-group col-md-12">
+                <div class="form-group col-lg-12">
                     <label class="">Comments/Remarks </label>
                     <textarea class="form-control" id="leave_action_comment" name="leave_action_comment"
                         placeholder="Please enter your comments here"></textarea>
