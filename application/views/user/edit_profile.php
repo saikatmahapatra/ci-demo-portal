@@ -17,17 +17,17 @@
         <?php echo form_hidden('user_email', $row['user_email']); ?>
             
             <div class="form-group">
-				<label for="user_email_secondary" class="required">Email ID (personal)</label>
+				<label for="user_email_secondary" class="required">Email (personal)</label>
 				<?php echo form_input(array('name' => 'user_email_secondary','value' => (isset($_POST['user_email_secondary']) ? set_value('user_email_secondary') : $row['user_email_secondary']),'id' => 'user_email_secondary','class' => 'form-control'));?>
 				<?php echo form_error('user_email_secondary'); ?>
 			</div>
             <div class="form-group">
-                <label for="user_phone1" class="required">10-digit Mobile Number (personal)</label>
+                <label for="user_phone1" class="required">Mobile (personal)</label>
                 <?php echo form_input(array('name' => 'user_phone1','value' => (isset($_POST['user_phone1']) ? set_value('user_phone1') : $row['user_phone1']),'id' => 'user_phone1','class' => 'form-control','maxlength' => '10','minlength' => '10',));?>
                 <?php echo form_error('user_phone1'); ?>
             </div>
             <div class="form-group">
-                <label for="user_phone2" class="optional">10-digit Mobile Number (office)</label>
+                <label for="user_phone2" class="optional">Mobile (office)</label>
                 <?php echo form_input(array('name' => 'user_phone2','value' => (isset($_POST['user_phone2']) ? set_value('user_phone2') : $row['user_phone2']),'id' => 'user_phone2','class' => 'form-control','maxlength' => '10','minlength' => '10',)); ?>
                 <?php echo form_error('user_phone2'); ?>
             </div>

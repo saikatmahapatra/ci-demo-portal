@@ -157,7 +157,7 @@ class Timesheet extends CI_Controller {
         }
         $this->form_validation->set_rules('project_id', 'project selection', 'required');
         $this->form_validation->set_rules('activity_id', 'activity selection', 'required');
-        $this->form_validation->set_rules('timesheet_hours', 'efforts', 'required|numeric|less_than[18]|greater_than[0]');
+        $this->form_validation->set_rules('timesheet_hours', 'hours', 'required|numeric|less_than[18]|greater_than[0]');
         $this->form_validation->set_rules('timesheet_description', 'description', 'required|max_length[200]');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
@@ -431,7 +431,7 @@ class Timesheet extends CI_Controller {
             'C' => 'Employee',
             'D' => 'Project',
             'E' => 'Activity',
-            'F' => 'Efforts(Hours)',
+            'F' => 'Hours',
             'G' => 'Task Description',
             'H' => 'Added On',
             'I' => 'Updated On',
