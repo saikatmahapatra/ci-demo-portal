@@ -16,7 +16,7 @@
 				</a>
                 </li>
 
-                <li class="nav-item dropdown bs-mega-menu"> <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Mega Menu Example </a>
+                <li class="nav-item dropdown bs-mega-menu d-none"> <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Mega Menu Example </a>
                     <ul class="dropdown-menu dropdown-mega-menu">
                         <div class="row">
                             <li class="col-lg-3 col-md-6 dropdown-item">
