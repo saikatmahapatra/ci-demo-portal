@@ -826,6 +826,17 @@ label.optional::after {
                 }
             }
         }
+        .dropdown-item {
+            &:active {
+                background-color: #f5f5f5;
+                a {
+                    &:active {
+                        background-color: $primary-color;
+                        color: $white;
+                    }
+                }
+            }
+        }
         .divider {
             margin-top: 15px;
         }
