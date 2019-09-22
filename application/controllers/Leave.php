@@ -504,7 +504,7 @@ class Leave extends CI_Controller {
                         'updated_on' => date('Y-m-d H:i:s')
                     );
                     $where = array('id' => $this->input->post('id'));
-                    $insert_id = $this->leave_model->update($postdata, $where, 'user_leave_balance');
+                    $insert_id = $this->leave_model->update($postdata, $where, 'leave_balance');
                     if ($insert_id) {
                         $this->common_lib->set_flash_message('Leave Balance Record Updated.','alert-success');
                         redirect(current_url());
@@ -518,7 +518,7 @@ class Leave extends CI_Controller {
                         'created_by' => $this->sess_user_id,
                         'created_on' => date('Y-m-d H:i:s')
                     );
-                    $insert_id = $this->leave_model->insert($postdata, 'user_leave_balance');
+                    $insert_id = $this->leave_model->insert($postdata, 'leave_balance');
                     if ($insert_id) {
                         $this->common_lib->set_flash_message('Leave Balance Record Created.','alert-success');
                         redirect(current_url());
@@ -598,7 +598,7 @@ class Leave extends CI_Controller {
                         );
                         $final_leave_status = 'X';
                         $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
-                        $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
+                        $is_update = $this->leave_model->update($postdata, $where, 'leaves');
                         if($is_update>=1){
                             $message = array('is_valid'=>true, 'updated'=>true, 'insert_id'=>'','msg'=>'request has been cancelled.', 'css'=>'alert alert-success');
                         }
@@ -611,7 +611,7 @@ class Leave extends CI_Controller {
                             'cancel_request_datetime' => date('Y-m-d H:i:s')
                         );
                         $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
-                        $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
+                        $is_update = $this->leave_model->update($postdata, $where, 'leaves');
                         if($is_update>=1){
                             $message = array('is_valid'=>true, 'updated'=>true, 'insert_id'=>'','msg'=>'Your leave cancellation request has been taken.', 'css'=>'alert alert-success');
                         }
@@ -649,7 +649,7 @@ class Leave extends CI_Controller {
                         );
                         //print_r($postdata);die();
                         $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
-                        $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
+                        $is_update = $this->leave_model->update($postdata, $where, 'leaves');
                         if($is_update){
                             $message = array('is_valid'=>true, 'updated'=>true, 'insert_id'=>'','msg'=>'Leave request has been updated successfully.', 'css'=>'alert alert-success');
                             $send_email = true;
@@ -689,7 +689,7 @@ class Leave extends CI_Controller {
                             'director_approver_datetime' => date('Y-m-d H:i:s')
                         );
                         $where = array('id'=>$leave_id, 'leave_req_id'=>$leave_req_id);
-                        $is_update = $this->leave_model->update($postdata, $where, 'user_leaves');
+                        $is_update = $this->leave_model->update($postdata, $where, 'leaves');
                         if($is_update >=1 ){
                             $messageTxt = 'Leave request has been updated successfully.';
                             // If Approved deduct balance
@@ -785,7 +785,7 @@ class Leave extends CI_Controller {
             $postdata['debited_ol'] = $applied_for_days_count * $leave_term_multiplier;
         }
         $where = array('id'=>$leave_id);
-        $this->leave_model->update($postdata, $where, 'user_leaves');
+        $this->leave_model->update($postdata, $where, 'leaves');
 
         // Update Leave Balance Table
         $postdata = array(
@@ -795,7 +795,7 @@ class Leave extends CI_Controller {
         );
         //print_r($postdata); die();
         $where = array('id'=>$leave_balance_id, 'user_id'=>$applicant_user_id);
-        $is_update_balance = $this->leave_model->update($postdata, $where, 'user_leave_balance');
+        $is_update_balance = $this->leave_model->update($postdata, $where, 'leave_balance');
         return $is_update_balance;
     }
 
@@ -821,7 +821,7 @@ class Leave extends CI_Controller {
 
         // Also update user leave table
         $where = array('id' => $leave_id);
-        $is_user_leave_updated = $this->leave_model->update($postdata, $where, 'user_leaves');
+        $is_user_leave_updated = $this->leave_model->update($postdata, $where, 'leaves');
 
         return $is_update_balance;
     }

@@ -11,7 +11,7 @@ class Leave_model extends CI_Model {
 
     function insert($postdata, $table = NULL) {
         if ($table == NULL) {
-            $this->db->insert('user_leaves', $postdata);
+            $this->db->insert('leaves', $postdata);
         } else {
             $this->db->insert($table, $postdata);
         }
@@ -22,7 +22,7 @@ class Leave_model extends CI_Model {
 	
 	function insert_batch($postdata, $table = NULL) {
         if ($table == NULL) {
-            $this->db->insert_batch('user_leaves', $postdata);
+            $this->db->insert_batch('leaves', $postdata);
         } else {
             $this->db->insert_batch($table, $postdata);
         }
@@ -34,7 +34,7 @@ class Leave_model extends CI_Model {
     function update($postdata, $where_array = NULL, $table = NULL) {
         $this->db->where($where_array);
         if ($table == NULL) {
-            $result = $this->db->update('user_leaves', $postdata);
+            $result = $this->db->update('leaves', $postdata);
         } else {
             $result = $this->db->update($table, $postdata);
         }
@@ -45,7 +45,7 @@ class Leave_model extends CI_Model {
     function delete($where_array = NULL, $table = NULL) {
         $this->db->where($where_array);
         if ($table == NULL) {
-            $result = $this->db->delete('user_leaves');
+            $result = $this->db->delete('leaves');
         } else {
             $result = $this->db->delete($table);
         }
@@ -166,7 +166,7 @@ class Leave_model extends CI_Model {
             $this->db->where('t1.leave_to_date <=', $this->common_lib->convert_to_mysql($cond['leave_to_date']));
         }
 
-        $query = $this->db->get('user_leaves as t1');
+        $query = $this->db->get('leaves as t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();
         $result = $query->result_array();
@@ -187,7 +187,7 @@ class Leave_model extends CI_Model {
         if(isset($cond['leave_status'])){
             $this->db->where_in('t1.leave_status', $cond['leave_status']);
         }
-        $query = $this->db->get('user_leaves as t1');
+        $query = $this->db->get('leaves as t1');
         $num_rows = $query->num_rows();
         $result = $query->result_array();
         return array('num_rows' => $num_rows, 'data_rows' => $result);
@@ -259,7 +259,7 @@ class Leave_model extends CI_Model {
             }
         }
         $this->db->join('users t2', 't2.id = t1.user_id', 'left');        
-        $query = $this->db->get('user_leave_balance as t1');
+        $query = $this->db->get('leave_balance as t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();
         return $result = $query->result_array();
@@ -269,7 +269,7 @@ class Leave_model extends CI_Model {
     function update_pl_balance(){
         $this->db->set('pl', 'pl+1.5', FALSE);
         $this->db->set('pl_updated_by_cron_on', date('Y-m-d H:i:s'));
-        $this->db->update('user_leave_balance');
+        $this->db->update('leave_balance');
         //echo $this->db->last_query(); die();
         return ($this->db->affected_rows() > 0);
     }
@@ -277,7 +277,7 @@ class Leave_model extends CI_Model {
     function update_cl_balance(){
         $this->db->set('cl', 10, FALSE);
         $this->db->set('cl_updated_by_cron_on', date('Y-m-d H:i:s'));
-        $this->db->update('user_leave_balance');
+        $this->db->update('leave_balance');
         //echo $this->db->last_query(); die();
         return ($this->db->affected_rows() > 0);
     }
@@ -285,7 +285,7 @@ class Leave_model extends CI_Model {
     function update_ol_balance(){
         $this->db->set('ol', 2, FALSE);
         $this->db->set('ol_updated_by_cron_on', date('Y-m-d H:i:s'));
-        $this->db->update('user_leave_balance');
+        $this->db->update('leave_balance');
         //echo $this->db->last_query(); die();
         return ($this->db->affected_rows() > 0);
     }
@@ -302,7 +302,7 @@ class Leave_model extends CI_Model {
         }
         
         $this->db->where($where_array);
-        $this->db->update('user_leave_balance');
+        $this->db->update('leave_balance');
         //echo $this->db->last_query(); die();
         return ($this->db->affected_rows() > 0);
     }
