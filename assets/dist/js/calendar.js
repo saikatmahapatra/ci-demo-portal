@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
-        plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
+        plugins: ['bootstrap', 'interaction', 'dayGrid', 'timeGrid', 'list'],
+        themeSystem: 'bootstrap',
         header: {
             left: 'prev,next today',
             center: 'title',
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         loading: function(bool) {
-
+            console.log('loading..');
         }
     });
 
