@@ -11,7 +11,7 @@ class Leave_model extends CI_Model {
 
     function insert($postdata, $table = NULL) {
         if ($table == NULL) {
-            $this->db->insert('leaves', $postdata);
+            $this->db->insert('leave_applications', $postdata);
         } else {
             $this->db->insert($table, $postdata);
         }
@@ -22,7 +22,7 @@ class Leave_model extends CI_Model {
 	
 	function insert_batch($postdata, $table = NULL) {
         if ($table == NULL) {
-            $this->db->insert_batch('leaves', $postdata);
+            $this->db->insert_batch('leave_applications', $postdata);
         } else {
             $this->db->insert_batch($table, $postdata);
         }
@@ -34,7 +34,7 @@ class Leave_model extends CI_Model {
     function update($postdata, $where_array = NULL, $table = NULL) {
         $this->db->where($where_array);
         if ($table == NULL) {
-            $result = $this->db->update('leaves', $postdata);
+            $result = $this->db->update('leave_applications', $postdata);
         } else {
             $result = $this->db->update($table, $postdata);
         }
@@ -45,7 +45,7 @@ class Leave_model extends CI_Model {
     function delete($where_array = NULL, $table = NULL) {
         $this->db->where($where_array);
         if ($table == NULL) {
-            $result = $this->db->delete('leaves');
+            $result = $this->db->delete('leave_applications');
         } else {
             $result = $this->db->delete($table);
         }
@@ -166,7 +166,7 @@ class Leave_model extends CI_Model {
             $this->db->where('t1.leave_to_date <=', $this->common_lib->convert_to_mysql($cond['leave_to_date']));
         }
 
-        $query = $this->db->get('leaves as t1');
+        $query = $this->db->get('leave_applications as t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();
         $result = $query->result_array();
@@ -187,7 +187,7 @@ class Leave_model extends CI_Model {
         if(isset($cond['leave_status'])){
             $this->db->where_in('t1.leave_status', $cond['leave_status']);
         }
-        $query = $this->db->get('leaves as t1');
+        $query = $this->db->get('leave_applications as t1');
         $num_rows = $query->num_rows();
         $result = $query->result_array();
         return array('num_rows' => $num_rows, 'data_rows' => $result);
