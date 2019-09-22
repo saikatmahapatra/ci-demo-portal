@@ -44,7 +44,7 @@ class Home_model extends CI_Model {
                 'MONTH(`leave_to_date`) <=' => date('m')
 			)
 		);
-        $query = $this->db->get('leaves t1');
+        $query = $this->db->get('leave_applications t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();
         $result = $query->result_array();
@@ -63,7 +63,7 @@ class Home_model extends CI_Model {
                 'MONTH(`leave_to_date`) <=' => date('m')
 			)
         );
-        $query = $this->db->get('leaves t1');
+        $query = $this->db->get('leave_applications t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();
         $result = $query->result_array();
@@ -84,7 +84,7 @@ class Home_model extends CI_Model {
         $this->db->where('t1.leave_status !=', 'C');
         $this->db->where('((t1.supervisor_approver_id = "'.$user_id.'" AND t1.supervisor_approver_status = "P")');
         $this->db->or_where('(t1.director_approver_id = "'.$user_id.'" AND t1.director_approver_status = "P" ))');
-        $query = $this->db->get('leaves t1');
+        $query = $this->db->get('leave_applications t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();
         $result = $query->result_array();
