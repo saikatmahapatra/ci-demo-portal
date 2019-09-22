@@ -1334,7 +1334,7 @@ class User extends CI_Controller {
                 $postdata = array(					
                     'academic_qualification' => $this->input->post('academic_qualification')                 
                 );                
-                $res = $this->user_model->insert($postdata,'user_projects');
+                $res = $this->user_model->insert($postdata,'project_assignments');
                 if ($res) {
                     $this->common_lib->set_flash_message('Project has been added successfully.','alert-success');
                     redirect($this->router->directory.$this->router->class.'/profile');
