@@ -22,7 +22,7 @@ class Calendar extends CI_Controller {
         //Has logged in user permission to access this page or method?        
         $this->common_lib->is_auth(array(
             'default-super-admin-access',
-            'default-admin-access'
+            'default-user-access'
         ));
 
         // Get logged  in user id

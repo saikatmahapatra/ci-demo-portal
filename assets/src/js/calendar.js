@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         plugins: ['bootstrap', 'interaction', 'dayGrid', 'timeGrid', 'list'],
         themeSystem: 'bootstrap',
         header: {
-            left: 'prev,next today',
+            left: 'prevYear,prev,next,nextYear today',
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
         },
