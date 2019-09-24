@@ -15,9 +15,6 @@ function domReady() {
 }
 
 function loadEventCalendarData() {
-    console.log("event calendar load");
-}
-document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -28,12 +25,13 @@ document.addEventListener('DOMContentLoaded', function() {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
         },
-        defaultDate: '2019-08-12',
+        timeZone: 'local',
+        defaultDate: new Date(),
         editable: true,
         navLinks: true, // can click day/week names to navigate views
         eventLimit: true, // allow "more" link when too many events
         events: {
-            url: SITE_URL + 'assets/vendors/fullcalendar/examples/php/get-events.php',
+            url: SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/get_events',
             failure: function() {
                 console.log('error');
             }
@@ -44,4 +42,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     calendar.render();
-});
+}

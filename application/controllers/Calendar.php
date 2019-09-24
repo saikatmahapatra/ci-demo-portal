@@ -36,7 +36,7 @@ class Calendar extends CI_Controller {
             $this->router->class
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
-        $this->load->model('cms_model');
+        $this->load->model('calendar_model');
         $this->id = $this->uri->segment(3);
         
         //View Page Config
@@ -47,9 +47,8 @@ class Calendar extends CI_Controller {
 		$this->load->library('breadcrumbs');
 		// add breadcrumbs. push() - Append crumb to stack
 		$this->breadcrumbs->push('Home', '/');
-		$this->breadcrumbs->push('CMS', '/cms');		
-        $this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        
+		$this->breadcrumbs->push('Calendar', '/cms');		
+        $this->data['breadcrumbs'] = $this->breadcrumbs->show();        
         $this->data['arr_status_flag'] = array(
             'Y'=>array('text'=>'Active', 'css'=>''),
             'N'=>array('text'=>'Inactive', 'css'=>''),
@@ -64,11 +63,20 @@ class Calendar extends CI_Controller {
 		// Get logged  in user id
         $this->sess_user_id = $this->common_lib->get_sess_user('id');
 			
-		$this->breadcrumbs->push('View','/');				
+		$this->breadcrumbs->push('View','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		$this->data['page_title'] = 'Web Calendar';
+		$this->data['page_title'] = 'Calendar';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_event_calendar', $this->data);
+    }
+
+    function get_events(){
+        $user_id = $this->sess_user_id;
+        $start_date = $this->input->get_post('start');
+        $end_date = $this->input->get_post('end');
+
+        $json_response = $this->calendar_model->get_events($start_date, $end_date, $user_id);
+        echo $json_response; die();
     }
 }
 ?>
