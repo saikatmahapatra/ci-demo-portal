@@ -31,6 +31,17 @@ class Leave_model extends CI_Model {
         return $insert_id;
     }
 
+    function import_batch_data($postdata, $table = NULL) {
+        if ($table == NULL) {
+            $this->db->insert_batch('leave_balance', $postdata);
+        } else {
+            $this->db->insert_batch($table, $postdata);
+        }
+        //echo $this->db->last_query(); die();
+        $insert_id = $this->db->affected_rows();
+        return $insert_id;
+    }
+
     function update($postdata, $where_array = NULL, $table = NULL) {
         $this->db->where($where_array);
         if ($table == NULL) {

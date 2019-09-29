@@ -92,7 +92,7 @@ $(function() {
             success: function(data) {
                 $('#file').val('');
                 //load_data();
-                alert(data);
+                console.log(data);
             }
         })
     });
