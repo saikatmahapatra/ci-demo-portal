@@ -187,6 +187,7 @@ class Leave_model extends CI_Model {
         if ($id) {
             $this->db->where('t1.id', $id);
         }
+        $this->db->where('t2.user_status !=', 'A');
 
         ####################################################################
         ##################### Display using Data Table #####################
