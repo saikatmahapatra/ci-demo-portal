@@ -54,7 +54,8 @@ class Calendar_model extends CI_Model {
             {
               "title": "Leave ID 26737637 - Maternity leave",
               "start": "2019-08-07",
-              "end": "2019-12-10"
+              "end": "2019-12-10",
+              "url": "'.base_url('leave/details/37/0922194959').'"
             },
             {
               "id": "999",

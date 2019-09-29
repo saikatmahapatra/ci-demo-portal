@@ -24,9 +24,6 @@ class Leave extends CI_Controller {
             $this->router->class
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
-		        
-        
-        
 		
 		//Check if any user logged in else redirect to login
         $is_logged_in = $this->common_lib->is_logged_in();
@@ -44,7 +41,8 @@ class Leave extends CI_Controller {
 		
         $this->load->model('leave_model');
         $this->load->model('user_model');
-		$this->id = $this->uri->segment(3);
+        $this->id = $this->uri->segment(3);
+        $this->load->library('excel');
 		
 		
         $this->data['leave_type_arr'] = array(''=>'-Select-',
@@ -531,6 +529,82 @@ class Leave extends CI_Controller {
         $this->data['maincontent'] = $this->load->view($this->router->class.'/leave_balance', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
+
+
+    function leave_balance_import() {
+        // Check user permission by permission name mapped to db
+        $is_authorized = $this->common_lib->is_auth(array(
+            'crud-leave-balance'
+        ));  
+        $this->data['page_title'] = 'Leave Balance Import/Export';
+        if ($this->input->post('form_action') == 'leave_balance_update') {
+            if ($this->validate_leave_balance_form_data() == true) {
+                if($this->input->post('id') != ''){
+                    $postdata = array(                    
+                        'user_id' => $this->input->post('user_id'),
+                        'cl' => $this->input->post('cl'),
+                        'pl' => $this->input->post('pl'),
+                        'ol' => $this->input->post('ol'),
+                        'updated_by' => $this->sess_user_id,
+                        'updated_on' => date('Y-m-d H:i:s')
+                    );
+                    $where = array('id' => $this->input->post('id'));
+                    $insert_id = $this->leave_model->update($postdata, $where, 'leave_balance');
+                    if ($insert_id) {
+                        $this->common_lib->set_flash_message('Leave Balance Record Updated.','alert-success');
+                        redirect(current_url());
+                    }
+                }else{
+                    $postdata = array(
+                        'user_id' => $this->input->post('user_id'),
+                        'cl' => $this->input->post('cl'),
+                        'pl' => $this->input->post('pl'),
+                        'ol' => $this->input->post('ol'),
+                        'created_by' => $this->sess_user_id,
+                        'created_on' => date('Y-m-d H:i:s')
+                    );
+                    $insert_id = $this->leave_model->insert($postdata, 'leave_balance');
+                    if ($insert_id) {
+                        $this->common_lib->set_flash_message('Leave Balance Record Created.','alert-success');
+                        redirect(current_url());
+                    }
+                }
+            }
+        }
+        $this->load->model('user_model');
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/leave_balance_import', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function import(){
+		if(isset($_FILES["userfile"]["name"])){
+			$path = $_FILES["userfile"]["tmp_name"];
+			$object = PHPExcel_IOFactory::load($path);
+			foreach($object->getWorksheetIterator() as $worksheet){
+                //print_r($worksheet); die();
+				$highestRow = $worksheet->getHighestRow();
+				$highestColumn = $worksheet->getHighestColumn();
+				for($row=2; $row<=$highestRow; $row++)
+				{
+					$customer_name = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+					$address = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+					$city = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+					$postal_code = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+					$country = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+					$data[] = array(
+						'CustomerName'		=>	$customer_name,
+						'Address'			=>	$address,
+						'City'				=>	$city,
+						'PostalCode'		=>	$postal_code,
+						'Country'			=>	$country
+					);
+				}
+            }
+            print_r($data);
+			//$this->leave_model->insert($data);
+			echo 'Data Imported successfully'; die();
+		}	
+	}
 
     function validate_leave_balance_form_data($action = NULL) {
         $this->form_validation->set_rules('user_id', ' ', 'required');

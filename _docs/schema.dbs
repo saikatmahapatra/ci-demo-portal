@@ -35,3 +35,5 @@ ALTER TABLE `event_calendar`
 ALTER TABLE `event_calendar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
+
+ALTER TABLE `leave_balance` CHANGE `leave_as_on_date` `balance_date` DATE NULL DEFAULT NULL;
