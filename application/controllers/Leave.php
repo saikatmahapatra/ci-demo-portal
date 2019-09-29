@@ -604,7 +604,46 @@ class Leave extends CI_Controller {
 			//$this->leave_model->insert($data);
 			echo 'Data Imported successfully'; die();
 		}	
-	}
+    }
+    
+    function render_leave_balance_datatable() {
+        //Total rows - Refer to model method definition
+        $result_array = $this->leave_model->get_leave_balance_master();
+        $total_rows = $result_array['num_rows'];
+
+        // Total filtered rows - check without limit query. Refer to model method definition
+        $result_array = $this->leave_model->get_leave_balance_master(NULL, NULL, NULL, TRUE, FALSE);
+        $total_filtered = $result_array['num_rows'];
+
+        // Data Rows - Refer to model method definition
+        $result_array = $this->leave_model->get_leave_balance_master(NULL, NULL, NULL, TRUE);
+        $data_rows = $result_array['data_rows'];
+        $data = array();
+        $no = $_REQUEST['start'];
+        foreach ($data_rows as $result) {
+            $no++;
+            $row = array();
+            $row[] = (isset($result['user_firstname']) ? $result['user_firstname'] : '').' '.(isset($result['user_lastname']) ? $result['user_lastname'] : '');
+            $row[] = $this->common_lib->display_date($result['balance_date'], false);
+            $row[] = $result['cl'];
+            $row[] = $result['pl'];
+            $row[] = $result['sl'];
+            $row[] = $result['ol'];
+            $row[] = $this->common_lib->display_date($result['created_on'], true);
+            $data[] = $row;
+        }
+
+        /* jQuery Data Table JSON format */
+        $output = array(
+            'draw' => isset($_REQUEST['draw']) ? $_REQUEST['draw'] : '',
+            'recordsTotal' => $total_rows,
+            'recordsFiltered' => $total_filtered,
+            'data' => $data,
+        );
+        //output to json format
+        echo json_encode($output);
+    }
+
 
     function validate_leave_balance_form_data($action = NULL) {
         $this->form_validation->set_rules('user_id', ' ', 'required');
