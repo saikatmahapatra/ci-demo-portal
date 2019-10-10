@@ -531,13 +531,13 @@ class Leave extends CI_Controller {
     }
 
 
-    function leave_balance_import() {
+    function import_data() {
         // Check user permission by permission name mapped to db
         $is_authorized = $this->common_lib->is_auth(array(
             'crud-leave-balance'
         ));  
         $this->data['page_title'] = 'Leave Balance Import/Export';
-        $this->data['maincontent'] = $this->load->view($this->router->class.'/leave_balance_import', $this->data, true);
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/import_data', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
 

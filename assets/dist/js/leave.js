@@ -1,6 +1,6 @@
 $(function() {
 
-    if (ROUTER_METHOD == 'leave_balance_import') {
+    if (ROUTER_METHOD == 'import_data') {
         renderLeaveBalanceDataTable();
     }
 
@@ -82,19 +82,40 @@ $(function() {
 
     $('#import_form').on('submit', function(event) {
         event.preventDefault();
+        var formData = new FormData(this);
         $.ajax({
-            url: SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/import',
-            method: "POST",
-            data: new FormData(this),
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function(data) {
-                $('#file').val('');
-                //load_data();
-                console.log(data);
-            }
-        })
+                url: SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/import',
+                method: "POST",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function(data) {
+                    $('#userfile').val('');
+                    //load_data();
+                    console.log(data);
+                    leave_balance_datatable.ajax.reload();
+                }
+            })
+            // var xhr = new Ajax();
+            // xhr.type = 'POST';
+            // xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/import';
+            // xhr.data = formData;
+            // xhr.beforeSend = function() {
+            //     showAjaxLoader();
+            // }
+            // var promise = xhr.init();
+            // promise.done(function(response) {
+            //     console.log(response);
+            //     hideAjaxLoader();
+            //     $('#file').val('');
+            // });
+            // promise.fail(function() {
+            //     alert("Sorry, Can not process your request.");
+            // });
+            // promise.always(function() {
+
+        // });
     });
 });
 
@@ -143,12 +164,12 @@ function manage_leave_req(e) {
  * ------------------------------------------------------------------------------
  */
 function renderLeaveBalanceDataTable() {
-    table = $('#leave_balance_datatable').DataTable({
+    leave_balance_datatable = $('#leave_balance_datatable').DataTable({
         /*dom: 'Bfrtip',
         buttons: [
         	'copy', 'csv', 'excel', 'pdf', 'print'
-        ],
-        iDisplayLength: 10,*/
+        ],*/
+        iDisplayLength: 100,
         processing: true, //Feature control the processing indicator.
         serverSide: true, //Feature control DataTables' server-side processing mode.
         order: [], //Initial no order.
