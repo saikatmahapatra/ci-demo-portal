@@ -35,7 +35,7 @@
 	
     <?php echo $el_navbar; ?>
     
-    <main role="main" class="container">
+    <main role="main" class="container-fluid">
         <?php echo $maincontent; ?>
         <footer class="footer">
             <?php echo $el_footer; ?>
