@@ -111,38 +111,38 @@ class Calendar_model extends CI_Model {
             'user_id' => $this->common_lib->get_sess_user('id'),
         );
 
-        $data_holiday = array();
+        $data1 = array();
         $rs = $this->get_holidays($start, $end, $cond);
         if(isset($rs['data_rows']) && sizeof($rs['data_rows']) > 0){
           foreach($rs['data_rows'] as $key => $val){
-            $data_holiday[$key]['title'] = 'Holiday : '.$val['holiday_description'];
-            $data_holiday[$key]['start'] = $val['holiday_date'];
-            //$data_holiday[$key]['overlap'] = false;
-            //$data_holiday[$key]['rendering'] = 'background';
-            $data_holiday[$key]['color'] = '#f8d6d9'; // 80% lighten
-            $data_holiday[$key]['textColor'] = '#212529';
+            $data1[$key]['title'] = 'Holiday : '.$val['holiday_description'];
+            $data1[$key]['start'] = $val['holiday_date'];
+            //$data1[$key]['overlap'] = false;
+            //$data1[$key]['rendering'] = 'background';
+            $data1[$key]['color'] = '#f8d6d9'; // 80% lighten
+            $data1[$key]['textColor'] = '#212529';
           }
         }
         
-        $data_timesheet = array();
+        $data2 = array();
         $rs = $this->get_timesheet_logs($start, $end, $cond);
         if(isset($rs['data_rows']) && sizeof($rs['data_rows']) > 0){
             foreach($rs['data_rows'] as $key => $val){
               //print_r($val);
-              //$data_timesheet[$key]['title'] = $val['timesheet_hours'].' hrs';
-              //$data_timesheet[$key]['description'] = $val['project_name'].' : '.$val['timesheet_description'];
-              $data_timesheet[$key]['title'] = 'Worked : '.$val['timesheet_hours'].' hrs '.$val['project_name'].' : '.$val['timesheet_description'];
-              $data_timesheet[$key]['start'] = $val['timesheet_date'];
-              //$data_timesheet[$key]['overlap'] = false;
-              //$data_timesheet[$key]['rendering'] = 'background';
-              $data_timesheet[$key]['color'] = '#cce4fe';
-              $data_timesheet[$key]['textColor'] = '#212529';
-              $data_timesheet[$key]['url'] = base_url('timesheet/edit/'.$val['id']);
-              //$data_timesheet[$key]['allDay'] = false;
+              //$data2[$key]['title'] = $val['timesheet_hours'].' hrs';
+              //$data2[$key]['description'] = $val['project_name'].' : '.$val['timesheet_description'];
+              $data2[$key]['title'] = 'Worked : '.$val['timesheet_hours'].' hrs '.$val['project_name'].' : '.$val['timesheet_description'];
+              $data2[$key]['start'] = $val['timesheet_date'];
+              //$data2[$key]['overlap'] = false;
+              //$data2[$key]['rendering'] = 'background';
+              $data2[$key]['color'] = '#cce4fe';
+              $data2[$key]['textColor'] = '#212529';
+              $data2[$key]['url'] = base_url('timesheet/edit/'.$val['id']);
+              //$data2[$key]['allDay'] = false;
             }
           }
 
-          $data_leave = array();
+          $data3 = array();
           $rs = $this->get_leave_applications($start, $end, $cond);
           $leave_status_arr = array(
             'B'=>array('text'=>'Applied', 'css'=>'text-primary'),
@@ -155,16 +155,16 @@ class Calendar_model extends CI_Model {
             );
           if(isset($rs['data_rows']) && sizeof($rs['data_rows']) > 0){
             foreach($rs['data_rows'] as $key => $val){
-              $data_leave[$key]['title'] = 'Leave : '.$leave_status_arr[$val['leave_status']]['text'].' '.$val['leave_type'].'  '.$val['leave_req_id'].' : '.$val['leave_reason'];
-              $data_leave[$key]['start'] = date('c', strtotime($val['leave_from_date']));
-              $data_leave[$key]['end'] = date('c',strtotime($val['leave_to_date']));
-              $data_leave[$key]['color'] = '#fee5d0';
-              $data_leave[$key]['textColor'] = '#212529';
-              $data_leave[$key]['url'] = base_url('leave/details/'.$val['id'].'/'.$val['leave_req_id'].'/calendar');
+              $data3[$key]['title'] = 'Leave : '.$leave_status_arr[$val['leave_status']]['text'].' '.$val['leave_type'].'  '.$val['leave_req_id'].' : '.$val['leave_reason'];
+              $data3[$key]['start'] = date('c', strtotime($val['leave_from_date']));
+              $data3[$key]['end'] = date('c',strtotime($val['leave_to_date']));
+              $data3[$key]['color'] = '#fee5d0';
+              $data3[$key]['textColor'] = '#212529';
+              $data3[$key]['url'] = base_url('leave/details/'.$val['id'].'/'.$val['leave_req_id'].'/calendar');
             }
           }
 
-        $eventList = array_merge($data_holiday, $data_timesheet, $data_leave);
+        $eventList = array_merge($data1, $data2, $data3);
         return json_encode($eventList);
     }
 
