@@ -115,13 +115,12 @@ class Calendar_model extends CI_Model {
         $rs = $this->get_holidays($start, $end, $cond);
         if(isset($rs['data_rows']) && sizeof($rs['data_rows']) > 0){
           foreach($rs['data_rows'] as $key => $val){
-            $data_holiday[$key]['title'] = $val['holiday_description'];
+            $data_holiday[$key]['title'] = 'Holiday : '.$val['holiday_description'];
             $data_holiday[$key]['start'] = $val['holiday_date'];
             //$data_holiday[$key]['overlap'] = false;
             //$data_holiday[$key]['rendering'] = 'background';
-            $data_holiday[$key]['color'] = '#dc3545';
-            $data_holiday[$key]['textColor'] = '#fff';
-            $data_holiday[$key]['className'] = 'xxxx';
+            $data_holiday[$key]['color'] = '#f8d6d9'; // 80% lighten
+            $data_holiday[$key]['textColor'] = '#212529';
           }
         }
         
@@ -132,12 +131,12 @@ class Calendar_model extends CI_Model {
               //print_r($val);
               //$data_timesheet[$key]['title'] = $val['timesheet_hours'].' hrs';
               //$data_timesheet[$key]['description'] = $val['project_name'].' : '.$val['timesheet_description'];
-              $data_timesheet[$key]['title'] = $val['timesheet_hours'].' hrs '.$val['project_name'].' : '.$val['timesheet_description'];
+              $data_timesheet[$key]['title'] = 'Worked : '.$val['timesheet_hours'].' hrs '.$val['project_name'].' : '.$val['timesheet_description'];
               $data_timesheet[$key]['start'] = $val['timesheet_date'];
               //$data_timesheet[$key]['overlap'] = false;
               //$data_timesheet[$key]['rendering'] = 'background';
-              $data_timesheet[$key]['color'] = '#6f42c1';
-              //$data_timesheet[$key]['textColor'] = '#fff';
+              $data_timesheet[$key]['color'] = '#cce4fe';
+              $data_timesheet[$key]['textColor'] = '#212529';
               $data_timesheet[$key]['url'] = base_url('timesheet/edit/'.$val['id']);
               //$data_timesheet[$key]['allDay'] = false;
             }
@@ -145,13 +144,23 @@ class Calendar_model extends CI_Model {
 
           $data_leave = array();
           $rs = $this->get_leave_applications($start, $end, $cond);
+          $leave_status_arr = array(
+            'B'=>array('text'=>'Applied', 'css'=>'text-primary'),
+            'P'=>array('text'=>'Pending', 'css'=>'text-secondary'),
+            'C'=>array('text'=>'Cancelled', 'css'=>'text-warning'),
+            'R'=>array('text'=>'Rejected', 'css'=>'text-danger'),
+            'A'=>array('text'=>'Approved', 'css'=>'text-success'),
+            'O'=>array('text'=>'Processing', 'css'=>'text-info'),
+            'X'=>array('text'=>'Cancel Requested', 'css'=>'text-warning'),
+            );
           if(isset($rs['data_rows']) && sizeof($rs['data_rows']) > 0){
             foreach($rs['data_rows'] as $key => $val){
-              $data_leave[$key]['title'] = $val['leave_type'].'-'.$val['leave_status'].' : '.$val['leave_reason'];
+              $data_leave[$key]['title'] = 'Leave : '.$leave_status_arr[$val['leave_status']]['text'].' '.$val['leave_type'].'  '.$val['leave_req_id'].' : '.$val['leave_reason'];
               $data_leave[$key]['start'] = date('c', strtotime($val['leave_from_date']));
               $data_leave[$key]['end'] = date('c',strtotime($val['leave_to_date']));
-              $data_leave[$key]['color'] = '#dc3545';
-              $data_leave[$key]['textColor'] = '#fff';
+              $data_leave[$key]['color'] = '#fee5d0';
+              $data_leave[$key]['textColor'] = '#212529';
+              $data_leave[$key]['url'] = base_url('leave/details/'.$val['id'].'/'.$val['leave_req_id'].'/calendar');
             }
           }
 
