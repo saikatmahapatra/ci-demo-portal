@@ -14,10 +14,15 @@
     </div>
 </div>
 <?php } ?>
-
+<!-- 
+<div class="row">
+    <div class="col-12 mb-3">
+        <div id="calendar"></div>
+    </div>
+</div> -->
 
 <div class="row">
-    <div class="col-lg-8 mb-3">
+    <div class="col-lg-4 mb-3">
         <div class="card news-card">
             <div class="card-header h6">
             <i class="fa fa-fw fa-newspaper-o fa-lg" aria-hidden="true"></i> Notice Board
@@ -47,8 +52,12 @@
             </div>
         </div><!--/.card-->
     </div>
+
+    <div class="col-lg-8 mb-3">
+        <div id="calendar"></div>
+    </div>
     
-    <div class="col-lg-4 mb-3">
+    <div class="col-lg-4 mb-3 d-none">
         <div class="card card-stat">
             <div class="card-header h6">
             <i class="fa fa-fw fa-line-chart fa-lg" aria-hidden="true"></i> At a Glance
