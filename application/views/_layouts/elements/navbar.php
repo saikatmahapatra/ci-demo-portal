@@ -77,7 +77,96 @@
                     </ul>
                 </li>
 
-                <li class="nav-item dropdown">
+                <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
+                <li class="nav-item dropdown bs-mega-menu"> <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Administrator</a>
+                    <ul class="dropdown-menu dropdown-mega-menu">
+                        <div class="row">
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <li class="dropdown-header">Employee</li>
+                                    <li><a href="#">Add or Onboard New Employee</a></li>
+                                    <li><a href="#">Manage Employees / List View</a></li>
+                                    <li><a href="#">Global Calendar</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <li class="dropdown-header">CMS</li>
+                                    <li><a href="#">Add New Content</a></li>
+                                    <li><a href="#">Manage Contents / List View</a></li>
+                                    <li><a href="#">Add New Holiday</a></li>
+                                    <li><a href="#">Manage Calendar Holiday</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <li class="dropdown-header">Leave</li>
+                                    <li><a href="#">View/Track Leave Requests</a></li>
+                                    <li><a href="#">Leave Balance</a></li>
+                                    <li><a href="#">Import/Export Balance Sheet</a></li>
+                                    <li><a href="#">Leave to Approve</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <li class="dropdown-header">Project & Timesheet</li>
+                                    <li><a href="#">Timesheet Report</a></li>
+                                    <li><a href="#">Projects</a></li>
+                                    <li><a href="#">Task Activities</a></li>
+                                </ul>
+                            </li>
+
+                        </div>
+                    </ul>
+                </li>
+                <?php } ?>
+
+
+                <li class="nav-item dropdown bs-mega-menu"> <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Employee Self Services </a>
+                    <ul class="dropdown-menu dropdown-mega-menu">
+                        <div class="row">
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <li class="dropdown-header">Leave</li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'leave/apply'); ?>">Apply</a></li>
+                                    <li><a href="#">Leave History</a></li>
+                                    <li><a href="#">My Leave Approvers</a></li>
+                                    <li><a href="#">Leave to Approve</a></li>
+                                </ul>
+                            </li>
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <li class="dropdown-header">Timesheet</li>
+                                    <li><a href="#">Global Calendar</a></li>
+                                    <li><a href="#">Log Tasks</a></li>
+                                    <li><a href="#">Claim Tasks</a></li>
+                                </ul>
+                            </li>
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <li class="dropdown-header">Organization</li>
+                                    <li><a href="#">HR Policies</a></li>
+                                    <li><a href="#">Holidays</a></li>
+                                    <li><a href="#">Employee Directory</a></li>
+                                    <li class="disabled"><a href="#">CSR Activities</a></li>
+                                </ul>
+                            </li>
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <li class="dropdown-header">Profile</li>
+                                    <li><a href="#">My Profile</a></li>
+                                    <li><a href="#">Edit Basic Information</a></li>
+                                    <li><a href="#">Upload Documents</a></li>
+                                </ul>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown d-none">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Self Services</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown_1">
                         <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'leave/apply'); ?>">Apply Leave</a>
@@ -88,7 +177,7 @@
 
                     </div>
                 </li>
-				<li class="nav-item dropdown">
+				<li class="nav-item dropdown d-none">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown_2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
                         Organization & Assets
@@ -116,25 +205,6 @@
                     <?php }?>
                     </div>
                 </li>
-                <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown_3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CMS</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown_3">
-                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'cms'); ?>">Manage Contents</a>
-                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'cms/add'); ?>">Add New Content</a>
-                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'holiday'); ?>">Manage Holiday Calendar</a>
-                    </div>
-                </li>
-                <?php }?>
-				<!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown_3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More...</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown_3">
-                        <a class="dropdown-item" href="#">Link 1</a>
-                        <a class="dropdown-item" href="#">Link 2</a>
-                        <a class="dropdown-item" target="_blank" href="http://unitedexploration.co.in/">Corporate Website</a>
-                        <a class="dropdown-item" href="#">Link 4</a>
-                    </div>
-                </li> -->
             </ul>
 
             <ul class="navbar-nav my-2 my-lg-0">
