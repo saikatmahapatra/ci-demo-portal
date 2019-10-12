@@ -801,7 +801,7 @@ label.optional::after {
 .bs-mega-menu {
     position: static !important;
     .dropdown-mega-menu {
-        background-color: $gray-200;
+        background-color: $gray-100;
         padding: 20px 20px;
         width: 100%;
         li>ul {
@@ -826,8 +826,12 @@ label.optional::after {
             }
         }
         .dropdown-item {
+            &:hover,
+            &:focus {
+                background-color: #fff;
+            }
             &:active {
-                background-color: #f5f5f5;
+                background-color: #fff;
                 a {
                     &:active {
                         background-color: $primary-color;
