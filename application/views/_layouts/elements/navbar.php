@@ -113,7 +113,7 @@
 
                             <li class="col-lg-3 col-md-6 dropdown-item">
                                 <ul>
-                                    <li class="dropdown-header">Timesheet & Report</li>
+                                    <li class="dropdown-header">Timesheet & Project</li>
                                     <li><a href="<?php echo base_url($this->router->directory.'timesheet/report'); ?>">Timesheet Report</a></li>
                                     <li><a href="<?php echo base_url($this->router->directory.'project'); ?>">Projects</a></li>
                                     <li><a href="<?php echo base_url('project/activity'); ?>">Task Activities</a></li>
