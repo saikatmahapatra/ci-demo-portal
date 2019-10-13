@@ -20,6 +20,7 @@ function loadEventCalendarData() {
     var calendar = new FullCalendar.Calendar(calendarEl, {
         plugins: ['bootstrap', 'interaction', 'dayGrid', 'timeGrid', 'list'],
         themeSystem: 'standard',// bootstrap
+        height: 'auto',
         header: {
             left: 'prev,next today',
             center: 'title',
@@ -37,12 +38,16 @@ function loadEventCalendarData() {
             }
         },
         eventClick: function(info) {
-            //info.jsEvent.preventDefault();
-            console.log('Event: ' + info.event.title+'\nCoordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY+'\nView: ' + info.view.type);
+            info.jsEvent.preventDefault();
+            console.log(info);
             //info.el.style.borderColor = 'red'; // change the border color just for fun
+            $('#fcEventDetailsModal #fcEventDetailsModalLabel').empty().html(info.event.title);
+            $('#fcEventDetailsModal #fcEventDetailsModalBody').empty().html(info.event.title);
+            $('#fcEventDetailsModal').modal('show');
+            
         },
         dayClick: function(info) {
-           console.log('Day Click');
+           console.log(info);
            info.jsEvent.preventDefault();
         },
     });
