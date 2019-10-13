@@ -19,7 +19,7 @@ function loadEventCalendarData() {
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
         plugins: ['bootstrap', 'interaction', 'dayGrid', 'timeGrid', 'list'],
-        themeSystem: 'bootstrap',
+        //themeSystem: 'bootstrap',
         header: {
             left: 'prevYear,prev,next,nextYear today',
             center: 'title',
@@ -37,7 +37,10 @@ function loadEventCalendarData() {
             }
         },
         loading: function(bool) {
-            console.log('loading..');
+            showAjaxLoader();
+        },
+        eventAfterAllRender: function (view) {
+            hideAjaxLoader(); // remove your loading 
         }
     });
 
