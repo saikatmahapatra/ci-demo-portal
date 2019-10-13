@@ -115,7 +115,7 @@ class Calendar_model extends CI_Model {
         $rs = $this->get_holidays($start, $end, $cond);
         if(isset($rs['data_rows']) && sizeof($rs['data_rows']) > 0){
           foreach($rs['data_rows'] as $key => $val){
-            $data1[$key]['title'] = $val['holiday_description'];
+            $data1[$key]['title'] = 'Holiday : '.$val['holiday_description'];
             $data1[$key]['start'] = $val['holiday_date'];
             //$data1[$key]['overlap'] = false;
             //$data1[$key]['rendering'] = 'background';
@@ -131,7 +131,7 @@ class Calendar_model extends CI_Model {
               //print_r($val);
               //$data2[$key]['title'] = $val['timesheet_hours'].' hrs';
               //$data2[$key]['description'] = $val['project_name'].' : '.$val['timesheet_description'];
-              $data2[$key]['title'] = $val['timesheet_hours'].' hrs '.$val['project_name'].' : '.$val['timesheet_description'];
+              $data2[$key]['title'] = 'Worked : '.$val['timesheet_hours'].' hrs '.$val['project_name'].' : '.$val['timesheet_description'];
               $data2[$key]['start'] = $val['timesheet_date'];
               //$data2[$key]['overlap'] = false;
               //$data2[$key]['rendering'] = 'background';
@@ -155,7 +155,7 @@ class Calendar_model extends CI_Model {
             );
           if(isset($rs['data_rows']) && sizeof($rs['data_rows']) > 0){
             foreach($rs['data_rows'] as $key => $val){
-              $data3[$key]['title'] = $leave_status_arr[$val['leave_status']]['text'].' '.$val['leave_type'].'  '.$val['leave_req_id'].' : '.$val['leave_reason'];
+              $data3[$key]['title'] = 'Leave : '.$leave_status_arr[$val['leave_status']]['text'].' '.$val['leave_type'].'  '.$val['leave_req_id'].' : '.$val['leave_reason'];
               $data3[$key]['start'] = date('c', strtotime($val['leave_from_date']));
               $data3[$key]['end'] = date('c',strtotime($val['leave_to_date']));
               $data3[$key]['color'] = '#fee5d0';
