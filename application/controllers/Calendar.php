@@ -67,7 +67,7 @@ class Calendar extends CI_Controller {
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		$this->data['page_title'] = 'Calendar';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
-        $this->load->view('_layouts/layout_event_calendar', $this->data);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 
     function get_events(){

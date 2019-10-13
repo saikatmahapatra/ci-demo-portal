@@ -32,11 +32,14 @@ class Home extends CI_Controller {
         $this->common_lib->init_template_elements();
 
         // Load required js files for this controller
-        $javascript_files = array();
+        $javascript_files = array(
+            'calendar'
+        );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
 
         $this->load->model('home_model');
         $this->load->model('cms_model');
+        $this->load->model('calendar_model');
 
         $this->id = $this->uri->segment(3);
 
@@ -122,10 +125,6 @@ class Home extends CI_Controller {
 			
 		$this->breadcrumbs->push('View','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		
-        
-        
-
         $id = $this->uri->segment(3);		
 		$result_array = $this->cms_model->get_contents($id, NULL, NULL, FALSE, FALSE);
         $this->data['data_rows'] = $result_array['data_rows'];
@@ -158,11 +157,8 @@ class Home extends CI_Controller {
         // $is_authorized = $this->common_lib->is_auth('cms-list-view');
 			
 		$this->breadcrumbs->push('View','/');				
-		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		
+        $this->data['breadcrumbs'] = $this->breadcrumbs->show();
         
-        
-
         // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition
         $filter = array('content_type' => array('policy'));
 		$result_array = $this->cms_model->get_contents(NULL, NULL, NULL, FALSE, FALSE, $filter);
@@ -179,16 +175,23 @@ class Home extends CI_Controller {
 		$page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
 		$offset = ($page*$per_page);
 		$this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
-		//end of pagination config
+        //end of pagination config
         
-
         // Data Rows - Refer to model method definition
         $result_array = $this->cms_model->get_contents(NULL, $per_page, $offset, FALSE, TRUE, $filter);
         $this->data['data_rows'] = $result_array['data_rows'];
-
 		$this->data['page_title'] = 'HR Policies';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/policy', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function get_events(){
+        $user_id = $this->sess_user_id;
+        $start_date = $this->input->get_post('start');
+        $end_date = $this->input->get_post('end');
+
+        $json_response = $this->calendar_model->get_events($start_date, $end_date, $user_id);
+        echo $json_response; die();
     }
 
 }
