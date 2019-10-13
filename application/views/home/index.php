@@ -22,7 +22,7 @@
                 Global Calendar
                 <a href="<?php echo base_url('calendar/index'); ?>" class="btn btn-sm btn-light pull-right"><i class="fa fa-fw fa-window-maximize" aria-hidden="true"></i> Full Screen</a>
             </div>
-            <div id="calendar" class="card-body"></div>
+            <div id="ci_full_calendar" class="card-body"></div>
             <div class="card-footer text-center text-muted small">
             <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> Updated on <?php echo date('d-M-Y h:i:s a');?>
             </div>
