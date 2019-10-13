@@ -9284,3 +9284,7 @@ label.optional::after {
 #ci_full_calendar .fc-header-toolbar h2 {
   font-size: 1.25rem;
 }
+
+#ci_full_calendar .fc-title {
+  font-size: 13px;
+}
