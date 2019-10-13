@@ -9280,3 +9280,7 @@ label.optional::after {
     color: #fff;
   }
 }
+
+#ci_full_calendar .fc-header-toolbar h2 {
+  font-size: 1.25rem;
+}
