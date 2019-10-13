@@ -14,6 +14,15 @@ function domReady() {
 
 }
 
+function getFormattedDate(date) {
+    var year = date.getFullYear();
+    var month = (1 + date.getMonth()).toString();
+    month = month.length > 1 ? month : '0' + month;
+    var day = date.getDate().toString();
+    day = day.length > 1 ? day : '0' + day;
+    return month + '/' + day + '/' + year;
+  }
+
 function loadEventCalendarData() {
     var calendarEl = document.getElementById('ci_full_calendar');
 
@@ -41,7 +50,12 @@ function loadEventCalendarData() {
             info.jsEvent.preventDefault();
             console.log(info);
             //info.el.style.borderColor = 'red'; // change the border color just for fun
-            $('#fcEventDetailsModal #fcEventDetailsModalLabel').empty().html(info.event.title);
+
+            var modal_header_html = '';
+            modal_header_html+= info.event.start+' - '+info.event.end+'<br>';
+            modal_header_html+='<span class="small '+info.event.extendedProps.event_type_css+'">'+info.event.extendedProps.event_type+'</span>'
+            
+            $('#fcEventDetailsModal #fcEventDetailsModalLabel').empty().html(modal_header_html);
             $('#fcEventDetailsModal #fcEventDetailsModalBody').empty().html(info.event.title);
             $('#fcEventDetailsModal').modal('show');
             
