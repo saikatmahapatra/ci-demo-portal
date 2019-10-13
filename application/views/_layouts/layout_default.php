@@ -18,7 +18,7 @@
 
     <!--Full calendar-->
     <link href="<?php echo base_url('assets/vendors/fullcalendar/packages/core/main.css');?>" rel="stylesheet" />
-    <link href="<?php //echo base_url('assets/vendors/fullcalendar/packages/bootstrap/main.css');?>" rel="stylesheet" />
+    <link href="<?php echo base_url('assets/vendors/fullcalendar/packages/bootstrap/main.css');?>" rel="stylesheet" />
     <link href="<?php echo base_url('assets/vendors/fullcalendar/packages/daygrid/main.css');?>" rel="stylesheet" />
     <link href="<?php echo base_url('assets/vendors/fullcalendar/packages/timegrid/main.css');?>" rel="stylesheet" />
     <link href="<?php echo base_url('assets/vendors/fullcalendar/packages/list/main.css');?>" rel="stylesheet" />
@@ -78,7 +78,7 @@
 	<!--Full Calendar-->
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/core/main.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/interaction/main.js');?>"></script>
-    <script src="<?php //echo base_url('assets/vendors/fullcalendar/packages/bootstrap/main.js');?>"></script>
+    <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/bootstrap/main.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/daygrid/main.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/timegrid/main.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/list/main.js');?>"></script>
