@@ -15,15 +15,15 @@ function domReady() {
 }
 
 function loadEventCalendarData() {
-    var calendarEl = document.getElementById('calendar');
+    var calendarEl = document.getElementById('ci_full_calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
         plugins: ['bootstrap', 'interaction', 'dayGrid', 'timeGrid', 'list'],
-        //themeSystem: 'bootstrap',
+        themeSystem: 'standard',// bootstrap
         header: {
-            left: 'prevYear,prev,next,nextYear today',
+            left: 'prev,next today',
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
         },
         timeZone: 'local',
         defaultDate: new Date(),
@@ -36,12 +36,15 @@ function loadEventCalendarData() {
                 console.log('error');
             }
         },
-        loading: function(bool) {
-            showAjaxLoader();
+        eventClick: function(info) {
+            //info.jsEvent.preventDefault();
+            console.log('Event: ' + info.event.title+'\nCoordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY+'\nView: ' + info.view.type);
+            //info.el.style.borderColor = 'red'; // change the border color just for fun
         },
-        eventAfterAllRender: function (view) {
-            hideAjaxLoader(); // remove your loading 
-        }
+        dayClick: function(info) {
+           console.log('Day Click');
+           info.jsEvent.preventDefault();
+        },
     });
 
     calendar.render();
