@@ -9294,3 +9294,11 @@ label.optional::after {
 #ci_full_calendar .fc-title {
   font-size: 13px;
 }
+
+#timesheet_bootstrap_datepicker .datepicker-inline {
+  width: 100%;
+}
+
+#timesheet_bootstrap_datepicker .table-condensed {
+  width: 100%;
+}

@@ -28,10 +28,10 @@
                         <?php echo form_hidden('current_month', date('m')); ?>
                         <?php echo form_hidden('month_url', $this->uri->segment(4) ? $this->uri->segment(4) : date('m')); ?>
                         <?php echo form_hidden('selected_date',set_value('selected_date')); ?>
-                        <div class="form-row">
-                            <div class="col-sm-3">
+                        <!-- <div class="form-row"> -->
+                            <!-- <div class="col-sm-3">
                                 <label class="required">Select Date(s)</label>
-                                <?php echo $cal; ?>
+                                <?php //echo $cal; ?>
                                 <div class="small">
                                     <div class="d-inline-block"><span
                                             class="i-today pr-2 pl-2 m-1 text-white"></span>Today
@@ -47,10 +47,18 @@
                                 <?php echo form_error('selected_date'); ?>
                                 <div class="mt-2"><a id="clear_selected_days" class="btn btn-outline-secondary btn-sm"
                                         href="#">Clear selection</a></div>
-                            </div>
+                            </div> -->
                             <!--/.col-lg-3-->
 
-                            <div class="col-lg-4 offset-md-1">
+                            <div class="col-md-6">
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="required">Select Date(s)</label>
+                                        <div id="timesheet_bootstrap_datepicker"></div>
+                                        <?php echo form_error('selected_date'); ?>
+                                    </div>
+                                </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-12">
@@ -86,7 +94,7 @@
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                             <!--/.col-lg-9-->
-                        </div>
+                        <!-- </div> -->
 
                         <div class="mt-3 d-none">
                             <h6>Monthly Timesheet Statistics: </h6>

@@ -899,3 +899,14 @@ label.optional::after {
 }
 
 // End of Full Calendar Styling
+// BS inline timesheet datepicker
+#timesheet_bootstrap_datepicker {
+    .datepicker-inline {
+        width: 100%;
+    }
+    .table-condensed {
+        width: 100%;
+    }
+}
+
+// BS inline timesheet datepicker  ends
