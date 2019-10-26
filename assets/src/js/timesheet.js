@@ -3,90 +3,24 @@ var selectedDate = [];
 var splitted_uri;
 var month = '';
 var year = '';
-<<<<<<< HEAD
-var taskFilledDates = [];
-var currMonth = '';
-var currYear = '';
-getData();
-// Bootstrap date picker
-$('#dp_timesheet').datepicker({
-        multidate: true,
-        format: 'yyyy-mm-dd',
-        //daysOfWeekDisabled: "0",
-        daysOfWeekHighlighted: "0",
-        calendarWeeks: true,
-        todayHighlight: true,
-        todayBtn: true,
-        clearBtn: true,
-        beforeShowDay: function(date) {
-            // var d = date;
-            // var curr_date = d.getDate();
-            // var curr_month = d.getMonth() + 1; //Months are zero based
-            // var curr_year = d.getFullYear();
-            // var formattedDate = curr_year + "-" + curr_month + "-" + curr_date;
-
-            // if ($.inArray(formattedDate, taskFilledDates) != -1) {
-            //     return {
-            //         classes: 'filled'
-            //     };
-            // }
-            //return;
-        },
-        beforeShowMonth: function(date) {
-            // if (date.getMonth() == 8) {
-            //     return false;
-            // }
-        },
-        beforeShowYear: function(date) {
-            // if (date.getFullYear() == 2007) {
-            //     return false;
-            // }
-        },
-        //datesDisabled: ['10/06/2019', '10/21/2019'],
-        toggleActive: true
-    })
-    .on('changeDate', function(data) {
-        var selected_dates = $(this).datepicker('getFormattedDate');
-        $('input[name="selected_date"]').val(selected_dates);
-    })
-    .on('changeMonth', function(data) {
-        currMonth = new Date(data.date).getMonth() + 1;
-        currYear = String(data.date).split(" ")[3];
-        getData();
-    })
-    .on('show', function(e) {
-        console.log("--- on show----", e);
-        getData();
-    });
-// End of BS Datepicker
-
-=======
->>>>>>> parent of 3e5dfaf... timesheet dp related change
 
 $(function() {
     if (ROUTER_METHOD == 'index') {
         var selected_date = $('input[name="selected_date"]').val();
         if (selected_date) {
-<<<<<<< HEAD
-            $('#dp_timesheet').datepicker('setDates', selected_date.split(','));
-=======
             var selected_date_array = selected_date.split(',');
             selectedDate = selected_date_array;
-            $('#display_selected_date').html(selectedDate.join());
-            //console.log(selected_date_array,selected_date_array.length);
             if (selected_date_array.length > 0) {
-                //$("#clear_selected_days").removeClass('invisible').addClass('visible');
-                $.each(selected_date_array, function(index, clickedSelectedDay) {
-                    $(".day").each(function() {
+                $.each(selected_date_array, function(index, date) {
+                    var clickedSelectedDate = date.split('-');
+                    $("#timesheet_calendar[data-cal-month='" + clickedSelectedDate[1] + "'][data-cal-year='" + clickedSelectedDate[0] + "'] .day").each(function() {
                         var calDay = $(this).text();
-                        //console.log(calDay);
-                        if (calDay == clickedSelectedDay) {
+                        if (calDay == clickedSelectedDate[2]) {
                             $(this).addClass("selected");
                         }
                     });
                 });
             }
->>>>>>> parent of 3e5dfaf... timesheet dp related change
         }
 
         splitted_uri = window.location.href.split('timesheet/index/');
@@ -97,137 +31,28 @@ $(function() {
                 year = arr_month_year[0];
             }
         }
-        //console.log(month, year);
+
         //Load Timesheet Data On Page Load
         get_timesheet_stat();
 
-
-
         //Render Data Table
         renderDataTable();
-<<<<<<< HEAD
-<<<<<<< HEAD
-    } // end of index
-=======
-=======
->>>>>>> parent of 3e5dfaf... timesheet dp related change
-
-        // Display remaining characterSet
-        // $('#timesheet_description').on('keyup', function(e) {
-        //     var remaining_description_length = (200 - $(this).val().length);
-        //     $('#remaining_description_length').html(remaining_description_length);
-        // });
 
         //On cal dom load disable future dates
-        var today_d = $('input[name="today_date"]').val();
-        var current_month = $('input[name="current_month"]').val();
-        var month_url = $('input[name="month_url"]').val();
+        var today_d = $("#timesheet_calendar").attr('data-today');
+        today_d = today_d.split('-');
+        var current_m = $("#timesheet_calendar").attr('data-current-month');
+        var cal_m = $("#timesheet_calendar").attr('data-cal-month');
         $("#timesheet_calendar td.day").each(function() {
             var calDay = $(this).text();
             if (calDay.trim().length > 0) {
-                if ((current_month == month_url) && (parseInt(calDay) > parseInt(today_d))) {
+                if ((current_m == cal_m) && (parseInt(calDay) > parseInt(today_d[2])) || (parseInt(calDay) < (parseInt(today_d[2]) - 3))) {
                     $(this).attr("data-calday", "disabled_day");
                 }
             }
         });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of 3e5dfaf... timesheet dp related change
-
-
-        // Bootstrap date picker
-        $('#timesheet_bootstrap_datepicker').datepicker({
-<<<<<<< HEAD
-            multidate: true,
-            daysOfWeekDisabled: "0",
-            daysOfWeekHighlighted: "0",
-            calendarWeeks: true,
-            todayHighlight: true,
-            todayBtn: true,
-            clearBtn: true,
-            beforeShowDay: function(date) {
-                if (date.getMonth() == (new Date()).getMonth())
-                    switch (date.getDate()) {
-                        case 4:
-                            return {
-                                tooltip: 'Example tooltip',
-                                classes: 'active'
-                            };
-                        case 8:
-                            return false;
-                        case 12:
-                            return "green";
-                    }
-            },
-            beforeShowMonth: function(date) {
-                if (date.getMonth() == 8) {
-                    return false;
-                }
-            },
-            beforeShowYear: function(date) {
-                if (date.getFullYear() == 2007) {
-                    return false;
-                }
-            },
-            datesDisabled: ['10/06/2019', '10/21/2019'],
-            toggleActive: true
-        });
-
-        // End of BS Datepicker
-
->>>>>>> parent of bab7702... getDate
     }
->>>>>>> parent of ef1dbf6... bs dp added
-=======
-                multidate: true,
-                format: 'yyyy-mm-dd',
-                daysOfWeekDisabled: "0",
-                daysOfWeekHighlighted: "0",
-                calendarWeeks: true,
-                todayHighlight: true,
-                todayBtn: true,
-                clearBtn: true,
-                beforeShowDay: function(date) {
-                    if (date.getMonth() == (new Date()).getMonth())
-                        switch (date.getDate()) {
-                            case 4:
-                                return {
-                                    tooltip: 'Example tooltip',
-                                    classes: 'active'
-                                };
-                            case 8:
-                                return false;
-                            case 12:
-                                return "green";
-                        }
-                },
-                beforeShowMonth: function(date) {
-                    if (date.getMonth() == 8) {
-                        return false;
-                    }
-                },
-                beforeShowYear: function(date) {
-                    if (date.getFullYear() == 2007) {
-                        return false;
-                    }
-                },
-                datesDisabled: ['10/06/2019', '10/21/2019'],
-                toggleActive: true
-            })
-            .on('changeDate', function(data) {
-                //console.log(data);
-                //console.log(data.dates);
-                console.log(data.dates.join(", "));
-                $('input[name="today_date"]').val(data.dates);
-            });
-
-        // End of BS Datepicker
-
-    }
->>>>>>> parent of 3e5dfaf... timesheet dp related change
 
 
     if (ROUTER_METHOD == 'report') {
@@ -299,26 +124,19 @@ $(function() {
 $("body").on("click", "td[data-calday='allowed_day']", function(e) {
     //console.log(e);
     var day = $(this).text();
+    var cal_m = $("#timesheet_calendar").attr('data-cal-month');
+    var cal_y = $("#timesheet_calendar").attr('data-cal-year');
+    var date = cal_y + '-' + cal_m + '-' + day;
     if (day.trim().length > 0) {
         if ($(this).hasClass("selected")) {
             $(this).removeClass("selected");
-            selectedDate.splice($.inArray(day, selectedDate), 1);
+            selectedDate.splice($.inArray(date, selectedDate), 1);
 
         } else {
             $(this).addClass("selected");
-            selectedDate.push(day);
+            selectedDate.push(date);
         }
-        //$(this).toggleClass("selected");
     }
-
-    //$("#timesheetModal").modal("show");
-    /*console.log(selectedDate);
-    if(selectedDate.length>0){
-    	$("#clear_selected_days").removeClass('invisible').addClass('visible');
-    }else{
-    	$("#clear_selected_days").addClass('invisible');
-    }*/
-    $('#display_selected_date').html(selectedDate.join());
     $('input[name="selected_date"]').val(selectedDate.join());
 });
 
@@ -353,10 +171,11 @@ function get_timesheet_stat() {
 
 
         $.each(response.data.data_rows, function(i, obj) {
-            $(".day").each(function() {
+            var timesheet_date = obj.timesheet_date;
+            timesheet_date = timesheet_date.split('-');
+            $("#timesheet_calendar[data-cal-month='" + timesheet_date[1] + "'][data-cal-year='" + timesheet_date[0] + "'] .day").each(function() {
                 var calDay = $(this).text();
-                obj.timesheet_day = Number(obj.timesheet_day).toString();
-                if (calDay == obj.timesheet_day) {
+                if (calDay == Number(timesheet_date[2]).toString()) {
                     $(this).addClass("filled");
                 }
             });
@@ -393,40 +212,4 @@ function renderDataTable() {
             $('[data-toggle="tooltip"]').tooltip();
         }
     });
-<<<<<<< HEAD
-}
-
-function getData() {
-    var xhr = new Ajax();
-    xhr.type = 'POST';
-    xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/timesheet_stats';
-    xhr.beforeSend = function() {
-        showAjaxLoader();
-    };
-    xhr.data = { via: 'ajax', month: currMonth, year: currYear };
-    var promise = xhr.init();
-    promise.done(function(response) {
-        hideAjaxLoader();
-        r = response.data.data_rows[0]['timesheet_date'];
-        if (r != null) {
-            //$('#dp_timesheet').datepicker('setDates', r.split(','));
-            taskFilledDates = r.split(',');
-
-            $.each(taskFilledDates, function(index, value) {
-                console.log(index + ": " + value);
-                var day = value.split('-');
-                var d = Number(day[2]).toString();
-                $("#dp_timesheet td:not(.old):not(.new):not(.cw):contains(" + d + ")").filter(function(e) {
-                    return $(this).text() == d ? $(this).addClass('filled') : '';
-                });
-            });
-        }
-        //console.log(r);
-    });
-    promise.fail(function() {
-        alert("Failed");
-    });
-    promise.always(function() {});
-=======
->>>>>>> parent of 3e5dfaf... timesheet dp related change
 }

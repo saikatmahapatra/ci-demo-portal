@@ -24,9 +24,6 @@
                         aria-labelledby="nav-add-tab">
                         <?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form form-timesheet','name' => '','id' => 'ci-form-timesheet',)); ?>
                         <?php echo form_hidden('form_action', 'add'); ?>
-                        <?php echo form_hidden('today_date', date('d')); ?>
-                        <?php echo form_hidden('current_month', date('m')); ?>
-                        <?php echo form_hidden('month_url', $this->uri->segment(4) ? $this->uri->segment(4) : date('m')); ?>
                         <?php echo form_hidden('selected_date',set_value('selected_date')); ?>
                         <div class="form-row">
                             <div class="col-sm-3">
@@ -50,19 +47,7 @@
                             </div>
                             <!--/.col-lg-3-->
 
-<<<<<<< HEAD
-                            <div class="col-md-6">
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label class="required">Select Date(s)</label>
-                                        <div id="dp_timesheet"></div>
-                                        <?php echo form_error('selected_date'); ?>
-                                    </div>
-                                </div>
-=======
                             <div class="col-lg-4 offset-md-1">
->>>>>>> parent of ef1dbf6... bs dp added
 
                                 <div class="form-row">
                                     <div class="form-group col-12">
