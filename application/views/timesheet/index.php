@@ -24,9 +24,6 @@
                         aria-labelledby="nav-add-tab">
                         <?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form form-timesheet','name' => '','id' => 'ci-form-timesheet',)); ?>
                         <?php echo form_hidden('form_action', 'add'); ?>
-                        <?php echo form_hidden('today_date', date('d')); ?>
-                        <?php echo form_hidden('current_month', date('m')); ?>
-                        <?php echo form_hidden('month_url', $this->uri->segment(4) ? $this->uri->segment(4) : date('m')); ?>
                         <?php echo form_hidden('selected_date',set_value('selected_date')); ?>
                         <div class="form-row">
                             <div class="col-sm-3">
