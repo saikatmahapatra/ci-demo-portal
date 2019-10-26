@@ -18,17 +18,17 @@ $('#dp_timesheet').datepicker({
         todayBtn: true,
         clearBtn: true,
         beforeShowDay: function(date) {
-            var d = date;
-            var curr_date = d.getDate();
-            var curr_month = d.getMonth() + 1; //Months are zero based
-            var curr_year = d.getFullYear();
-            var formattedDate = curr_year + "-" + curr_month + "-" + curr_date;
+            // var d = date;
+            // var curr_date = d.getDate();
+            // var curr_month = d.getMonth() + 1; //Months are zero based
+            // var curr_year = d.getFullYear();
+            // var formattedDate = curr_year + "-" + curr_month + "-" + curr_date;
 
-            if ($.inArray(formattedDate, taskFilledDates) != -1) {
-                return {
-                    classes: 'filled'
-                };
-            }
+            // if ($.inArray(formattedDate, taskFilledDates) != -1) {
+            //     return {
+            //         classes: 'filled'
+            //     };
+            // }
             //return;
         },
         beforeShowMonth: function(date) {
@@ -227,7 +227,9 @@ function getData() {
                 console.log(index + ": " + value);
                 var day = value.split('-');
                 var d = Number(day[2]).toString();
-                $("#dp_timesheet td:not(.old):not(.new):not(.cw):contains(" + d + ")").addClass('filled');
+                $("#dp_timesheet td:not(.old):not(.new):not(.cw):contains(" + d + ")").filter(function(e) {
+                    return $(this).text() == d ? $(this).addClass('filled') : '';
+                });
             });
         }
         //console.log(r);
