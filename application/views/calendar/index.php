@@ -3,7 +3,7 @@
 <div class="row justify-content-center">
     <div class="col-lg-10">
         <?php echo isset($alert_message) ? $alert_message : ''; ?>
-        <div id="calendar"></div>
+        <div id="ci_full_calendar"></div>
     </div>
     <!--/.col-->
 </div>

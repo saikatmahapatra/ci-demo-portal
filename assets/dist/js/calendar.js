@@ -14,16 +14,26 @@ function domReady() {
 
 }
 
+function getFormattedDate(date) {
+    var year = date.getFullYear();
+    var month = (1 + date.getMonth()).toString();
+    month = month.length > 1 ? month : '0' + month;
+    var day = date.getDate().toString();
+    day = day.length > 1 ? day : '0' + day;
+    return month + '/' + day + '/' + year;
+  }
+
 function loadEventCalendarData() {
-    var calendarEl = document.getElementById('calendar');
+    var calendarEl = document.getElementById('ci_full_calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
         plugins: ['bootstrap', 'interaction', 'dayGrid', 'timeGrid', 'list'],
-        themeSystem: 'bootstrap',
+        themeSystem: 'standard',// bootstrap
+        height: 'auto',
         header: {
-            left: 'prevYear,prev,next,nextYear today',
+            left: 'prev,next today',
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
         },
         timeZone: 'local',
         defaultDate: new Date(),
@@ -36,9 +46,24 @@ function loadEventCalendarData() {
                 console.log('error');
             }
         },
-        loading: function(bool) {
-            console.log('loading..');
-        }
+        eventClick: function(info) {
+            info.jsEvent.preventDefault();
+            console.log(info);
+            //info.el.style.borderColor = 'red'; // change the border color just for fun
+
+            var modal_header_html = '';
+            modal_header_html+= info.event.start+' - '+info.event.end+'<br>';
+            modal_header_html+='<span class="small '+info.event.extendedProps.event_type_css+'">'+info.event.extendedProps.event_type+'</span>'
+            
+            $('#fcEventDetailsModal #fcEventDetailsModalLabel').empty().html(modal_header_html);
+            $('#fcEventDetailsModal #fcEventDetailsModalBody').empty().html(info.event.title);
+            $('#fcEventDetailsModal').modal('show');
+            
+        },
+        dayClick: function(info) {
+           console.log(info);
+           info.jsEvent.preventDefault();
+        },
     });
 
     calendar.render();
