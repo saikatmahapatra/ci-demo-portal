@@ -3,6 +3,7 @@ var selectedDate = [];
 var splitted_uri;
 var month = '';
 var year = '';
+<<<<<<< HEAD
 var taskFilledDates = [];
 var currMonth = '';
 var currYear = '';
@@ -59,22 +60,57 @@ $('#dp_timesheet').datepicker({
     });
 // End of BS Datepicker
 
+=======
+>>>>>>> parent of 3e5dfaf... timesheet dp related change
 
 $(function() {
     if (ROUTER_METHOD == 'index') {
         var selected_date = $('input[name="selected_date"]').val();
         if (selected_date) {
+<<<<<<< HEAD
             $('#dp_timesheet').datepicker('setDates', selected_date.split(','));
+=======
+            var selected_date_array = selected_date.split(',');
+            selectedDate = selected_date_array;
+            $('#display_selected_date').html(selectedDate.join());
+            //console.log(selected_date_array,selected_date_array.length);
+            if (selected_date_array.length > 0) {
+                //$("#clear_selected_days").removeClass('invisible').addClass('visible');
+                $.each(selected_date_array, function(index, clickedSelectedDay) {
+                    $(".day").each(function() {
+                        var calDay = $(this).text();
+                        //console.log(calDay);
+                        if (calDay == clickedSelectedDay) {
+                            $(this).addClass("selected");
+                        }
+                    });
+                });
+            }
+>>>>>>> parent of 3e5dfaf... timesheet dp related change
         }
-        //get_timesheet_stat();
+
+        splitted_uri = window.location.href.split('timesheet/index/');
+        if (splitted_uri[1] != undefined) {
+            var arr_month_year = splitted_uri[1].split('/');
+            if (arr_month_year) {
+                month = arr_month_year[1];
+                year = arr_month_year[0];
+            }
+        }
+        //console.log(month, year);
+        //Load Timesheet Data On Page Load
+        get_timesheet_stat();
 
 
 
         //Render Data Table
         renderDataTable();
 <<<<<<< HEAD
+<<<<<<< HEAD
     } // end of index
 =======
+=======
+>>>>>>> parent of 3e5dfaf... timesheet dp related change
 
         // Display remaining characterSet
         // $('#timesheet_description').on('keyup', function(e) {
@@ -96,11 +132,15 @@ $(function() {
         });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 3e5dfaf... timesheet dp related change
 
 
         // Bootstrap date picker
         $('#timesheet_bootstrap_datepicker').datepicker({
+<<<<<<< HEAD
             multidate: true,
             daysOfWeekDisabled: "0",
             daysOfWeekHighlighted: "0",
@@ -141,6 +181,53 @@ $(function() {
 >>>>>>> parent of bab7702... getDate
     }
 >>>>>>> parent of ef1dbf6... bs dp added
+=======
+                multidate: true,
+                format: 'yyyy-mm-dd',
+                daysOfWeekDisabled: "0",
+                daysOfWeekHighlighted: "0",
+                calendarWeeks: true,
+                todayHighlight: true,
+                todayBtn: true,
+                clearBtn: true,
+                beforeShowDay: function(date) {
+                    if (date.getMonth() == (new Date()).getMonth())
+                        switch (date.getDate()) {
+                            case 4:
+                                return {
+                                    tooltip: 'Example tooltip',
+                                    classes: 'active'
+                                };
+                            case 8:
+                                return false;
+                            case 12:
+                                return "green";
+                        }
+                },
+                beforeShowMonth: function(date) {
+                    if (date.getMonth() == 8) {
+                        return false;
+                    }
+                },
+                beforeShowYear: function(date) {
+                    if (date.getFullYear() == 2007) {
+                        return false;
+                    }
+                },
+                datesDisabled: ['10/06/2019', '10/21/2019'],
+                toggleActive: true
+            })
+            .on('changeDate', function(data) {
+                //console.log(data);
+                //console.log(data.dates);
+                console.log(data.dates.join(", "));
+                $('input[name="today_date"]').val(data.dates);
+            });
+
+        // End of BS Datepicker
+
+    }
+>>>>>>> parent of 3e5dfaf... timesheet dp related change
 
 
     if (ROUTER_METHOD == 'report') {
@@ -208,6 +295,39 @@ $(function() {
 
 });
 
+//$(".allowed_m .day").on("click", function(e) {
+$("body").on("click", "td[data-calday='allowed_day']", function(e) {
+    //console.log(e);
+    var day = $(this).text();
+    if (day.trim().length > 0) {
+        if ($(this).hasClass("selected")) {
+            $(this).removeClass("selected");
+            selectedDate.splice($.inArray(day, selectedDate), 1);
+
+        } else {
+            $(this).addClass("selected");
+            selectedDate.push(day);
+        }
+        //$(this).toggleClass("selected");
+    }
+
+    //$("#timesheetModal").modal("show");
+    /*console.log(selectedDate);
+    if(selectedDate.length>0){
+    	$("#clear_selected_days").removeClass('invisible').addClass('visible');
+    }else{
+    	$("#clear_selected_days").addClass('invisible');
+    }*/
+    $('#display_selected_date').html(selectedDate.join());
+    $('input[name="selected_date"]').val(selectedDate.join());
+});
+
+$("#clear_selected_days").on("click", function(e) {
+    e.preventDefault();
+    selectedDate = [];
+    $('input[name="selected_date"]').val('');
+    $(".day").removeClass("selected");
+});
 
 function get_timesheet_stat() {
     var xhr = new Ajax();
@@ -273,6 +393,7 @@ function renderDataTable() {
             $('[data-toggle="tooltip"]').tooltip();
         }
     });
+<<<<<<< HEAD
 }
 
 function getData() {
@@ -306,4 +427,6 @@ function getData() {
         alert("Failed");
     });
     promise.always(function() {});
+=======
+>>>>>>> parent of 3e5dfaf... timesheet dp related change
 }
