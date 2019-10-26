@@ -907,6 +907,12 @@ label.optional::after {
     .table-condensed {
         width: 100%;
     }
+    .datepicker table tr td.highlighted {
+        background: lighten($red, 35%);
+    }
+    .datepicker table tr td.filled {
+        background: $has-data;
+    }
 }
 
 // BS inline timesheet datepicker  ends

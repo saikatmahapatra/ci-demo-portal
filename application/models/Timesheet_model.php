@@ -185,7 +185,24 @@ class Timesheet_model extends CI_Model {
 		//echo $this->db->last_query(); //die();        
         $stat_data = $query->result_array();
         return array('num_rows' => $num_rows, 'data_rows' => $result, 'stat_data'=>$stat_data[0]);       
-	}
+    }
+    
+    function get_timesheet_data($year,$month, $user_id){
+        $this->db->select('GROUP_CONCAT(DISTINCT(t1.timesheet_date)) as timesheet_date');
+            $this->db->where(
+                array(
+                'YEAR(`timesheet_date`)' => $year,
+                'MONTH(`timesheet_date`)' => $month,
+                't1.timesheet_created_by' => $user_id
+                )
+            );
+            
+            $query = $this->db->get('timesheet as t1');
+            //echo $this->db->last_query(); //die();
+            $num_rows = $query->num_rows();
+            $result = $query->result_array();
+            return array('num_rows' => $num_rows, 'data_rows' => $result); 
+    }
 	
 	function get_project_dropdown() {
         $result = array();

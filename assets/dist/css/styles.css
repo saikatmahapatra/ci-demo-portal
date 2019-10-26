@@ -9302,3 +9302,11 @@ label.optional::after {
 #timesheet_bootstrap_datepicker .table-condensed {
   width: 100%;
 }
+
+#timesheet_bootstrap_datepicker .datepicker table tr td.highlighted {
+  background: #f6cdd1;
+}
+
+#timesheet_bootstrap_datepicker .datepicker table tr td.filled {
+  background: #a6ffa6;
+}

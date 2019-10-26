@@ -168,6 +168,7 @@ class Timesheet extends CI_Controller {
     }
 	
 	function check_selected_days(){
+        return true;
 		$not_allowed_days = array();
         $selected_days_array = explode(',',$this->input->post('selected_date'));
         $today = date('d');
@@ -198,8 +199,10 @@ class Timesheet extends CI_Controller {
             'message_css' => '',
             'data' => array(),
         );		
-		if($this->input->post('via')=='ajax'){			
-			$result_array = $this->timesheet_model->get_timesheet_stats($year, $month, $user_id);			
+		if($this->input->post('via')=='ajax'){
+            //print_r($_REQUEST); die();			
+            //$result_array = $this->timesheet_model->get_timesheet_stats($year, $month, $user_id);
+            $result_array = $this->timesheet_model->get_timesheet_data($year, $month, $user_id);
 			if($result_array['num_rows']>0){
 				$response = array(
 					'status' => 'ok',
