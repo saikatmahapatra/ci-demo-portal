@@ -9294,6 +9294,7 @@ label.optional::after {
 #ci_full_calendar .fc-title {
   font-size: 13px;
 }
+<<<<<<< HEAD
 
 #dp_timesheet .datepicker-inline {
   width: 100%;
@@ -9310,3 +9311,5 @@ label.optional::after {
 #dp_timesheet .datepicker table tr td.filled {
   background: #a6ffa6;
 }
+=======
+>>>>>>> parent of ef1dbf6... bs dp added

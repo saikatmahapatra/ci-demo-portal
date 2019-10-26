@@ -72,7 +72,31 @@ $(function() {
 
         //Render Data Table
         renderDataTable();
+<<<<<<< HEAD
     } // end of index
+=======
+
+        // Display remaining characterSet
+        // $('#timesheet_description').on('keyup', function(e) {
+        //     var remaining_description_length = (200 - $(this).val().length);
+        //     $('#remaining_description_length').html(remaining_description_length);
+        // });
+
+        //On cal dom load disable future dates
+        var today_d = $('input[name="today_date"]').val();
+        var current_month = $('input[name="current_month"]').val();
+        var month_url = $('input[name="month_url"]').val();
+        $("#timesheet_calendar td.day").each(function() {
+            var calDay = $(this).text();
+            if (calDay.trim().length > 0) {
+                if ((current_month == month_url) && (parseInt(calDay) > parseInt(today_d))) {
+                    $(this).attr("data-calday", "disabled_day");
+                }
+            }
+        });
+
+    }
+>>>>>>> parent of ef1dbf6... bs dp added
 
 
     if (ROUTER_METHOD == 'report') {
