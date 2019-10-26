@@ -60,7 +60,7 @@ class Timesheet extends CI_Controller {
 		$day = date('d');
 		
 		$template='';
-		$template.='{table_open}<table id="timesheet_calendar" class="table ci-calendar table-sm" border="0" cellpadding="" cellspacing="">{/table_open}';
+		$template.='{table_open}<table id="timesheet_calendar" class="table ci-calendar table-sm" border="0" cellpadding="" cellspacing="" data-today="'.date('Y-m-d').'" data-current-year="'.date('Y').'" data-current-month="'.date('m').'" data-cal-year="'.$year.'" data-cal-month="'.$month.'" >{/table_open}';
 		$template.='{heading_row_start}<tr class="mn">{/heading_row_start}';
 		$template.='{heading_previous_cell}<th class="prevcell"><a href="{previous_url}">&lt;&lt;</a></th>{/heading_previous_cell}';
 		$template.='{heading_title_cell}<th colspan="{colspan}">{heading}</th>{/heading_title_cell}';
@@ -119,9 +119,6 @@ class Timesheet extends CI_Controller {
 	function add() {
         //Check user permission by permission name mapped to db
         //$is_authorized = $this->common_lib->is_auth('timesheet-add');
-        
-        
-        
         if ($this->input->post('form_action') == 'add') {
 			//$this->data['remaining_description_length'] = (200 - strlen($this->input->post('timesheet_description')));
             if ($this->validate_form_data('add') == true) {
@@ -129,11 +126,9 @@ class Timesheet extends CI_Controller {
 				//print_r($selected_date_arr); die();
 				$batch_post_data = array();
 				
-				foreach($selected_date_arr as $key=>$day){
-					$year = $this->uri->segment(3) ? $this->uri->segment(3) : date('Y');
-					$month = $this->uri->segment(4) ? $this->uri->segment(4) : date('m');
+				foreach($selected_date_arr as $key=>$date){
 					$batch_post_data[$key] = array(
-						'timesheet_date' => $year.'-'.$month.'-'.$day,
+						'timesheet_date' => $date,
 						'project_id' => $this->input->post('project_id'),
 						'activity_id' => $this->input->post('activity_id'),
 						'timesheet_hours' => $this->input->post('timesheet_hours'),
@@ -168,22 +163,21 @@ class Timesheet extends CI_Controller {
     }
 	
 	function check_selected_days(){
-		$not_allowed_days = array();
-        $selected_days_array = explode(',',$this->input->post('selected_date'));
-        $today = date('d');
-        $current_month = $this->input->post('current_month');
-        $month_url = $this->input->post('month_url');
-		foreach($selected_days_array as $key=>$selected_day){
-			if(($current_month == $month_url) && ($selected_day > $today)){
-				$not_allowed_days[] = $this->common_lib->display_ordinal_suffix($selected_day);
+		$not_allowed_dates = array();
+        $selected_dates = explode(',',$this->input->post('selected_date'));
+        $today = date('Y-m-d');
+		foreach($selected_dates as $key=>$selected_date){
+			if(strtotime($selected_date) > strtotime($today)){
+				$not_allowed_dates[] = date('d/m/Y', strtotime($selected_date));
 			}
 		}
-        if(sizeof($not_allowed_days) <= 0 ){
+        if(sizeof($not_allowed_dates) <= 0 ){
             return true;
         }else{
-			sort($not_allowed_days);
-			$not_allowed_days_str = implode($not_allowed_days, ', ');
-            $this->form_validation->set_message('check_selected_days', 'You can not fill time sheet for '.$not_allowed_days_str.' '.date('M').'. Please unselect the date(s).');
+            //print_r($not_allowed_dates);
+			sort($not_allowed_dates);
+			$not_allowed_days_str = implode($not_allowed_dates, ', ');
+            $this->form_validation->set_message('check_selected_days', 'You are not allowed to log task for '.$not_allowed_days_str.'. Please unselect the date(s).');
             return false;
         }
     }

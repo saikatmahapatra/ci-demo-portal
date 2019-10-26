@@ -10,15 +10,12 @@ $(function() {
         if (selected_date) {
             var selected_date_array = selected_date.split(',');
             selectedDate = selected_date_array;
-            $('#display_selected_date').html(selectedDate.join());
-            //console.log(selected_date_array,selected_date_array.length);
             if (selected_date_array.length > 0) {
-                //$("#clear_selected_days").removeClass('invisible').addClass('visible');
-                $.each(selected_date_array, function(index, clickedSelectedDay) {
-                    $(".day").each(function() {
+                $.each(selected_date_array, function(index, date) {
+                    var clickedSelectedDate = date.split('-');
+                    $("#timesheet_calendar[data-cal-month='" + clickedSelectedDate[1] + "'][data-cal-year='" + clickedSelectedDate[0] + "'] .day").each(function() {
                         var calDay = $(this).text();
-                        //console.log(calDay);
-                        if (calDay == clickedSelectedDay) {
+                        if (calDay == clickedSelectedDate[2]) {
                             $(this).addClass("selected");
                         }
                     });
@@ -34,27 +31,22 @@ $(function() {
                 year = arr_month_year[0];
             }
         }
-        //console.log(month, year);
+        
         //Load Timesheet Data On Page Load
         get_timesheet_stat();
 
         //Render Data Table
         renderDataTable();
 
-        // Display remaining characterSet
-        // $('#timesheet_description').on('keyup', function(e) {
-        //     var remaining_description_length = (200 - $(this).val().length);
-        //     $('#remaining_description_length').html(remaining_description_length);
-        // });
-
         //On cal dom load disable future dates
-        var today_d = $('input[name="today_date"]').val();
-        var current_month = $('input[name="current_month"]').val();
-        var month_url = $('input[name="month_url"]').val();
+        var today_d = $("#timesheet_calendar").attr('data-today');
+        today_d = today_d.split('-');
+        var current_m = $("#timesheet_calendar").attr('data-current-month');
+        var cal_m = $("#timesheet_calendar").attr('data-cal-month');
         $("#timesheet_calendar td.day").each(function() {
             var calDay = $(this).text();
             if (calDay.trim().length > 0) {
-                if ((current_month == month_url) && (parseInt(calDay) > parseInt(today_d))) {
+                if ((current_m == cal_m) && ( parseInt(calDay) > parseInt(today_d[2])) ||  (parseInt(calDay) < (parseInt(today_d[2])-3)) ) {
                     $(this).attr("data-calday", "disabled_day");
                 }
             }
@@ -132,26 +124,19 @@ $(function() {
 $("body").on("click", "td[data-calday='allowed_day']", function(e) {
     //console.log(e);
     var day = $(this).text();
+    var cal_m = $("#timesheet_calendar").attr('data-cal-month');
+    var cal_y = $("#timesheet_calendar").attr('data-cal-year');
+    var date = cal_y + '-' + cal_m + '-' + day;
     if (day.trim().length > 0) {
         if ($(this).hasClass("selected")) {
             $(this).removeClass("selected");
-            selectedDate.splice($.inArray(day, selectedDate), 1);
+            selectedDate.splice($.inArray(date, selectedDate), 1);
 
         } else {
             $(this).addClass("selected");
-            selectedDate.push(day);
+            selectedDate.push(date);
         }
-        //$(this).toggleClass("selected");
     }
-
-    //$("#timesheetModal").modal("show");
-    /*console.log(selectedDate);
-    if(selectedDate.length>0){
-    	$("#clear_selected_days").removeClass('invisible').addClass('visible');
-    }else{
-    	$("#clear_selected_days").addClass('invisible');
-    }*/
-    $('#display_selected_date').html(selectedDate.join());
     $('input[name="selected_date"]').val(selectedDate.join());
 });
 
@@ -186,10 +171,11 @@ function get_timesheet_stat() {
 
 
         $.each(response.data.data_rows, function(i, obj) {
-            $(".day").each(function() {
+            var timesheet_date = obj.timesheet_date;
+            timesheet_date = timesheet_date.split('-');
+            $("#timesheet_calendar[data-cal-month='" + timesheet_date[1] + "'][data-cal-year='" + timesheet_date[0] + "'] .day").each(function() {
                 var calDay = $(this).text();
-                obj.timesheet_day = Number(obj.timesheet_day).toString();
-                if (calDay == obj.timesheet_day) {
+                if (calDay == Number(timesheet_date[2]).toString()) {
                     $(this).addClass("filled");
                 }
             });
