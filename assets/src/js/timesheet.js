@@ -64,40 +64,47 @@ $(function() {
 
         // Bootstrap date picker
         $('#timesheet_bootstrap_datepicker').datepicker({
-            multidate: true,
-            daysOfWeekDisabled: "0",
-            daysOfWeekHighlighted: "0",
-            calendarWeeks: true,
-            todayHighlight: true,
-            todayBtn: true,
-            clearBtn: true,
-            beforeShowDay: function(date) {
-                if (date.getMonth() == (new Date()).getMonth())
-                    switch (date.getDate()) {
-                        case 4:
-                            return {
-                                tooltip: 'Example tooltip',
-                                classes: 'active'
-                            };
-                        case 8:
-                            return false;
-                        case 12:
-                            return "green";
+                multidate: true,
+                format: 'yyyy-mm-dd',
+                daysOfWeekDisabled: "0",
+                daysOfWeekHighlighted: "0",
+                calendarWeeks: true,
+                todayHighlight: true,
+                todayBtn: true,
+                clearBtn: true,
+                beforeShowDay: function(date) {
+                    if (date.getMonth() == (new Date()).getMonth())
+                        switch (date.getDate()) {
+                            case 4:
+                                return {
+                                    tooltip: 'Example tooltip',
+                                    classes: 'active'
+                                };
+                            case 8:
+                                return false;
+                            case 12:
+                                return "green";
+                        }
+                },
+                beforeShowMonth: function(date) {
+                    if (date.getMonth() == 8) {
+                        return false;
                     }
-            },
-            beforeShowMonth: function(date) {
-                if (date.getMonth() == 8) {
-                    return false;
-                }
-            },
-            beforeShowYear: function(date) {
-                if (date.getFullYear() == 2007) {
-                    return false;
-                }
-            },
-            datesDisabled: ['10/06/2019', '10/21/2019'],
-            toggleActive: true
-        });
+                },
+                beforeShowYear: function(date) {
+                    if (date.getFullYear() == 2007) {
+                        return false;
+                    }
+                },
+                datesDisabled: ['10/06/2019', '10/21/2019'],
+                toggleActive: true
+            })
+            .on('changeDate', function(data) {
+                //console.log(data);
+                //console.log(data.dates);
+                console.log(data.dates.join(", "));
+                $('input[name="today_date"]').val(data.dates);
+            });
 
         // End of BS Datepicker
 
