@@ -9295,18 +9295,18 @@ label.optional::after {
   font-size: 13px;
 }
 
-#timesheet_bootstrap_datepicker .datepicker-inline {
+#dp_timesheet .datepicker-inline {
   width: 100%;
 }
 
-#timesheet_bootstrap_datepicker .table-condensed {
+#dp_timesheet .table-condensed {
   width: 100%;
 }
 
-#timesheet_bootstrap_datepicker .datepicker table tr td.highlighted {
+#dp_timesheet .datepicker table tr td.highlighted {
   background: #f6cdd1;
 }
 
-#timesheet_bootstrap_datepicker .datepicker table tr td.filled {
+#dp_timesheet .datepicker table tr td.filled {
   background: #a6ffa6;
 }

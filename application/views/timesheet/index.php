@@ -55,7 +55,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label class="required">Select Date(s)</label>
-                                        <div id="timesheet_bootstrap_datepicker"></div>
+                                        <div id="dp_timesheet"></div>
                                         <?php echo form_error('selected_date'); ?>
                                     </div>
                                 </div>

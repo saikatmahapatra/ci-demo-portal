@@ -3,10 +3,12 @@ var selectedDate = [];
 var splitted_uri;
 var month = '';
 var year = '';
-var taskFilledDates = ["2019-10-23", "2019-10-26"];
-
+var taskFilledDates = [];
+var currMonth = '';
+var currYear = '';
+getData();
 // Bootstrap date picker
-$('#timesheet_bootstrap_datepicker').datepicker({
+$('#dp_timesheet').datepicker({
         multidate: true,
         format: 'yyyy-mm-dd',
         //daysOfWeekDisabled: "0",
@@ -16,18 +18,6 @@ $('#timesheet_bootstrap_datepicker').datepicker({
         todayBtn: true,
         clearBtn: true,
         beforeShowDay: function(date) {
-            // if (date.getMonth() == (new Date()).getMonth())
-            //     switch (date.getDate()) {
-            //         case 4:
-            //             return {
-            //                 tooltip: 'Example tooltip',
-            //                 classes: 'active'
-            //             };
-            //         case 8:
-            //             return false;
-            //         case 12:
-            //             return "green";
-            //     }
             var d = date;
             var curr_date = d.getDate();
             var curr_month = d.getMonth() + 1; //Months are zero based
@@ -39,7 +29,7 @@ $('#timesheet_bootstrap_datepicker').datepicker({
                     classes: 'filled'
                 };
             }
-            return;
+            //return;
         },
         beforeShowMonth: function(date) {
             // if (date.getMonth() == 8) {
@@ -59,10 +49,13 @@ $('#timesheet_bootstrap_datepicker').datepicker({
         $('input[name="selected_date"]').val(selected_dates);
     })
     .on('changeMonth', function(data) {
-        getData(data);
+        currMonth = new Date(data.date).getMonth() + 1;
+        currYear = String(data.date).split(" ")[3];
+        getData();
     })
-    .on('show', function(data) {
-        getData(data);
+    .on('show', function(e) {
+        console.log("--- on show----", e);
+        getData();
     });
 // End of BS Datepicker
 
@@ -71,9 +64,11 @@ $(function() {
     if (ROUTER_METHOD == 'index') {
         var selected_date = $('input[name="selected_date"]').val();
         if (selected_date) {
-            $('#timesheet_bootstrap_datepicker').datepicker('setDates', selected_date.split(','));
+            $('#dp_timesheet').datepicker('setDates', selected_date.split(','));
         }
         //get_timesheet_stat();
+
+
 
         //Render Data Table
         renderDataTable();
@@ -212,10 +207,7 @@ function renderDataTable() {
     });
 }
 
-function getData(e) {
-    var currMonth = new Date(e.date).getMonth() + 1;
-    var currYear = String(e.date).split(" ")[3];
-    //console.log(currMonth, currYear);
+function getData() {
     var xhr = new Ajax();
     xhr.type = 'POST';
     xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/timesheet_stats';
@@ -228,8 +220,15 @@ function getData(e) {
         hideAjaxLoader();
         r = response.data.data_rows[0]['timesheet_date'];
         if (r != null) {
-            //$('#timesheet_bootstrap_datepicker').datepicker('setDates', r.split(','));
+            //$('#dp_timesheet').datepicker('setDates', r.split(','));
             taskFilledDates = r.split(',');
+
+            $.each(taskFilledDates, function(index, value) {
+                console.log(index + ": " + value);
+                var day = value.split('-');
+                var d = Number(day[2]).toString();
+                $("#dp_timesheet td:not(.old):not(.new):not(.cw):contains(" + d + ")").addClass('filled');
+            });
         }
         //console.log(r);
     });
