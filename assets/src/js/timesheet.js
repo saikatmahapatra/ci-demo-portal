@@ -31,7 +31,6 @@ $(function() {
                 year = arr_month_year[0];
             }
         }
-        
         //Load Timesheet Data On Page Load
         get_timesheet_stat();
 
@@ -46,7 +45,7 @@ $(function() {
         $("#timesheet_calendar td.day").each(function() {
             var calDay = $(this).text();
             if (calDay.trim().length > 0) {
-                if ((current_m == cal_m) && ( parseInt(calDay) > parseInt(today_d[2])) ||  (parseInt(calDay) < (parseInt(today_d[2])-3)) ) {
+                if ((current_m == cal_m) && (parseInt(calDay) > parseInt(today_d[2])) || (parseInt(calDay) < (parseInt(today_d[2]) - 3))) {
                     $(this).attr("data-calday", "disabled_day");
                 }
             }

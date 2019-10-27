@@ -24,9 +24,6 @@ class Leave extends CI_Controller {
             $this->router->class
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
-		        
-        
-        
 		
 		//Check if any user logged in else redirect to login
         $is_logged_in = $this->common_lib->is_logged_in();
@@ -44,7 +41,8 @@ class Leave extends CI_Controller {
 		
         $this->load->model('leave_model');
         $this->load->model('user_model');
-		$this->id = $this->uri->segment(3);
+        $this->id = $this->uri->segment(3);
+        $this->load->library('excel');
 		
 		
         $this->data['leave_type_arr'] = array(''=>'-Select-',
@@ -531,6 +529,90 @@ class Leave extends CI_Controller {
         $this->data['maincontent'] = $this->load->view($this->router->class.'/leave_balance', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
+
+
+    function import_data() {
+        // Check user permission by permission name mapped to db
+        $is_authorized = $this->common_lib->is_auth(array(
+            'crud-leave-balance'
+        ));  
+        $this->data['page_title'] = 'Leave Balance Import/Export';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/import_data', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function import(){
+		if(isset($_FILES["userfile"]["name"])){
+			$path = $_FILES["userfile"]["tmp_name"];
+			$object = PHPExcel_IOFactory::load($path);
+			foreach($object->getWorksheetIterator() as $worksheet){
+                //print_r($worksheet); die();
+				$highestRow = $worksheet->getHighestRow();
+				$highestColumn = $worksheet->getHighestColumn();
+				for($row=2; $row<=$highestRow; $row++){
+					$user_id = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+					$cl_balance = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+					$sl_balance = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+					$pl_balance = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+					$ol_balance = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+					$balance_date = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
+					$data[] = array(
+						'user_id' =>	$user_id,
+						'cl' =>	$cl_balance,
+						'sl' =>	$sl_balance,
+						'pl' =>	$pl_balance,
+						'ol' =>	$ol_balance,
+						'balance_date' =>	date('Y-m-d H:i:s'),
+						'created_on' =>	date('Y-m-d H:i:s'),
+						'created_by' =>	$this->sess_user_id,
+					);
+				}
+            }
+            //print_r($data);
+            $res = $this->leave_model->import_batch_data($data,'leave_balance');
+            //die();
+			echo $res. ' Data Imported successfully'; die();
+		}	
+    }
+    
+    function render_leave_balance_datatable() {
+        //Total rows - Refer to model method definition
+        $result_array = $this->leave_model->get_leave_balance_master();
+        $total_rows = $result_array['num_rows'];
+
+        // Total filtered rows - check without limit query. Refer to model method definition
+        $result_array = $this->leave_model->get_leave_balance_master(NULL, NULL, NULL, TRUE, FALSE);
+        $total_filtered = $result_array['num_rows'];
+
+        // Data Rows - Refer to model method definition
+        $result_array = $this->leave_model->get_leave_balance_master(NULL, NULL, NULL, TRUE);
+        $data_rows = $result_array['data_rows'];
+        $data = array();
+        $no = $_REQUEST['start'];
+        foreach ($data_rows as $result) {
+            $no++;
+            $row = array();
+            $row[] = (isset($result['user_firstname']) ? $result['user_firstname'] : '').' '.(isset($result['user_lastname']) ? $result['user_lastname'] : '');
+            $row[] = $this->common_lib->display_date($result['balance_date'], false);
+            $row[] = $result['cl'];
+            $row[] = $result['pl'];
+            $row[] = $result['sl'];
+            $row[] = $result['ol'];
+            $row[] = $this->common_lib->display_date($result['created_on'], true);
+            $data[] = $row;
+        }
+
+        /* jQuery Data Table JSON format */
+        $output = array(
+            'draw' => isset($_REQUEST['draw']) ? $_REQUEST['draw'] : '',
+            'recordsTotal' => $total_rows,
+            'recordsFiltered' => $total_filtered,
+            'data' => $data,
+        );
+        //output to json format
+        echo json_encode($output);
+    }
+
 
     function validate_leave_balance_form_data($action = NULL) {
         $this->form_validation->set_rules('user_id', ' ', 'required');
