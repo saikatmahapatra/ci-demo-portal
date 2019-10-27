@@ -31,7 +31,6 @@ $(function() {
                 year = arr_month_year[0];
             }
         }
-
         //Load Timesheet Data On Page Load
         get_timesheet_stat();
 
