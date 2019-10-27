@@ -8528,11 +8528,15 @@ body.login {
   color: #6c757d;
 }
 
+.ci-calendar {
+  border: 1px solid #b3b2b2;
+}
+
 .ci-calendar th {
   color: #495057;
   vertical-align: center !important;
   text-align: center;
-  border-top: none;
+  border-top: 1px solid #b3b2b2;
 }
 
 .ci-calendar td {
