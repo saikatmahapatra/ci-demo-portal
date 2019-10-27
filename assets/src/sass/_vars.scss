@@ -56,10 +56,10 @@ $primary-color: #0062cc;
 // of the page with pace.js plugin
 $complementry-color: adjust_hue($primary-color, 180);
 //CI Calendar
-$calendar-border: $gray-600;
-$calendar-heading-bg: $gray-600;
+$calendar-border: $gray-400;
+$calendar-heading-bg: $gray-200;
 $day_selected: lighten($color_blue, 30%);
-$calendar-week-bg: $gray-light;
+$calendar-week-bg: $gray-200;
 $calendar-grid-border: lighten($black, 70%);
 $today-highlight: $color_blue;
 $holiday: lighten($color_red, 40%);
