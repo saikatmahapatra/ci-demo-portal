@@ -8435,11 +8435,12 @@ a.text-dark:hover, a.text-dark:focus {
 
 body {
   margin-top: 4.5rem;
-  margin-bottom: 1rem;
+  background-color: #ecf0f5;
 }
 
 body.login {
   margin-top: 0rem;
+  background-color: #ecf0f5;
 }
 
 .logo {
@@ -8931,8 +8932,82 @@ body.login {
   text-decoration: none;
 }
 
-.ci-card .card-header.h6 {
-  font-weight: 400;
+.ci-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(26, 54, 126, 0.125);
+  border-radius: 0.25rem;
+}
+
+@media print {
+  .ci-card {
+    border: 1px solid #ddd;
+  }
+}
+
+.ci-card.small {
+  padding: 0;
+}
+
+.ci-card .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  color: #555;
+  border-radius: 3px;
+}
+
+.ci-card .overlay .l-text {
+  font-size: 24px;
+  margin-top: 15px;
+}
+
+.ci-card .card-header {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.88rem;
+}
+
+.ci-card .card-header-w-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ci-card .card-header-w-btn p {
+  margin: 0;
+}
+
+.ci-card .card-header-w-btn .title {
+  margin: 0;
+}
+
+.ci-card .card-header-w-btn .side {
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.ci-card .card-header-w-btn .btn-group {
+  flex: 0 0 auto;
+}
+
+.ci-card .card-footer {
+  border-top: 1px solid #ddd;
+  padding: 20px 0 0 0;
+  margin-top: 10px;
 }
 
 @media (max-width: 576px) {

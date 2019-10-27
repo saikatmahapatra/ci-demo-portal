@@ -26,7 +26,7 @@
 
 <body class="login" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
 
-    <main role="main" class="container">
+    <main role="main" class="container-fluid">
         <?php echo $maincontent; ?>
         <footer class="footer">
             <?php echo $el_footer; ?>
