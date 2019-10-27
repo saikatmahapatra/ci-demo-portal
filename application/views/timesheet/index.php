@@ -40,6 +40,8 @@
                                     <div class="d-inline-block"><span class="i-leave pr-2 pl-2 m-1"></span>Leave</div>
                                     <div class="d-inline-block"><span class="i-holiday pr-2 pl-2 m-1"></span>Holiday
                                     </div>
+                                    <div class="d-inline-block"><span class="i-disabled-date pr-2 pl-2 m-1"></span>Disabled
+                                    </div>
                                 </div>
                                 <?php echo form_error('selected_date'); ?>
                                 <div class="mt-2"><a id="clear_selected_days" class="btn btn-outline-secondary btn-sm"

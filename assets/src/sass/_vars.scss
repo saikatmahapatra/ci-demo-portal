@@ -56,10 +56,10 @@ $primary-color: #0062cc;
 // of the page with pace.js plugin
 $complementry-color: adjust_hue($primary-color, 180);
 //CI Calendar
-$calendar-border: $gray-600;
-$calendar-heading-bg: $gray-600;
+$calendar-border: $gray-400;
+$calendar-heading-bg: $gray-400;
 $day_selected: lighten($color_blue, 30%);
-$calendar-week-bg: $gray-light;
+$calendar-week-bg: $gray-400;
 $calendar-grid-border: lighten($black, 70%);
 $today-highlight: $color_blue;
 $holiday: lighten($color_red, 40%);
@@ -69,5 +69,5 @@ $has-data: lighten($color_green, 50%);
 $validation-error-color: $red;
 $mandatory_field_star-color: $red;
 // Colorgraph
-$from_color: #b61fb5;
-$to_color: #9b1b9a;
+$from_color: #a8ff1b;
+$to_color: #cf1180;
