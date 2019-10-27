@@ -3,9 +3,10 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ci-card">
-            <div class="card-header h6">Leave History</div>
+            <!-- <div class="card-header h6"></div> -->
             <!--/.card-header-->
             <div class="card-body">
+                <h5 class="card-title">Leave History</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="ci-link-group">
                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>"
@@ -71,8 +72,8 @@
                 <!--/.table-responsive-->
             </div>
             <!--/.card-body-->
-            <div class="card-footer d-none">
-            </div>
+            <!-- <div class="card-footer">
+            </div> -->
             <!--/.card-footer-->
         </div>
         <!--/.card ci-card-->

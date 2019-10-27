@@ -9,9 +9,10 @@ $row = $data_rows[0];
 <div class="row">
     <div class="col-lg-12 ci-dl">
         <div class="card ci-card">
-            <div class="card-header h6">Details of Leave</div>
+            <!-- <div class="card-header h6"></div> -->
             <!--/.card-header-->
             <div class="card-body">
+                <h5 class="card-title">Leave Details</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <dl class="row">
                     <dt class="col-lg-2">Reference No</dt>
@@ -254,8 +255,8 @@ $row = $data_rows[0];
             </div>
         </div>
         <!--/.card-body-->
-        <div class="card-footer d-none">
-        </div>
+        <!-- <div class="card-footer">
+        </div> -->
         <!--/.card-footer-->
     </div>
     <!--/.card ci-card-->

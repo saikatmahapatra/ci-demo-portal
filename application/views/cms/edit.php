@@ -7,9 +7,10 @@ $row = $rows[0];
 <div class="row">
     <div class="col-lg-6">
         <div class="card ci-card">
-            <div class="card-header h6">Edit Content</div>
+            <!-- <div class="card-header h6">Edit Content</div> -->
             <!--/.card-header-->
             <div class="card-body">
+            <h5 class="card-title">Edit Content</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <?php echo form_open(current_url(), array('method' => 'post', 'class'=>'ci-form','name' => 'myform','id' => 'myform','role' =>'form')); ?>
                 <?php echo form_hidden('form_action', 'update'); ?>

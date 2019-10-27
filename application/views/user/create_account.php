@@ -2,16 +2,13 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-lg-6">
-	https://dashboardpack.com/live-demo-preview/?livedemo=1881?utm_source=colorlib&utm_medium=reactlist&utm_campaign=architectangular
-		<div class="main-card mb-3 card ng-star-inserted"><div class="card-body"><h5 class="card-title">Grid Rows</h5><form novalidate="" class="ng-untouched ng-pristine ng-valid"><div class="form-row"><div class="col-md-6"><div class="position-relative form-group"><label for="exampleEmail11">Email</label><input class="form-control" id="exampleEmail11" name="email" placeholder="with a placeholder" type="email"><!----><bfv-messages _nghost-c8="" class="ng-star-inserted"><!----></bfv-messages></div></div><div class="col-md-6"><div class="position-relative form-group"><label for="examplePassword11">Password</label><input class="form-control" id="examplePassword11" name="password" placeholder="password placeholder" type="password"><!----><bfv-messages _nghost-c8="" class="ng-star-inserted"><!----></bfv-messages></div></div></div><div class="position-relative form-group"><label for="exampleAddress">Address</label><input class="form-control" id="exampleAddress" name="address" placeholder="1234 Main St" type="text"><!----><bfv-messages _nghost-c8="" class="ng-star-inserted"><!----></bfv-messages></div><div class="position-relative form-group"><label for="exampleAddress2">Address 2</label><input class="form-control" id="exampleAddress2" name="address2" placeholder="Apartment, studio, or floor" type="text"><!----><bfv-messages _nghost-c8="" class="ng-star-inserted"><!----></bfv-messages></div><div class="form-row"><div class="col-md-6"><div class="position-relative form-group"><label for="exampleCity">City</label><input class="form-control" id="exampleCity" name="city" type="text"><!----><bfv-messages _nghost-c8="" class="ng-star-inserted"><!----></bfv-messages></div></div><div class="col-md-4"><div class="position-relative form-group"><label for="exampleState">State</label><input class="form-control" id="exampleState" name="state" type="text"><!----><bfv-messages _nghost-c8="" class="ng-star-inserted"><!----></bfv-messages></div></div><div class="col-md-2"><div class="position-relative form-group"><label for="exampleZip">Zip</label><input class="form-control" id="exampleZip" name="zip" type="text"><!----><bfv-messages _nghost-c8="" class="ng-star-inserted"><!----></bfv-messages></div></div></div><div class="position-relative form-check"><input class="form-check-input" id="exampleCheck" name="check" type="checkbox"><label class="form-check-label" for="exampleCheck">Check me out</label></div><button class="mt-2 btn btn-primary">Sign in</button></form></div></div>
-
-
+		
 		<div class="card ci-card">
-			<div class="card-header h6">
-				Add New Employee
-			</div><!--/.card-header-->
-
+			<!-- <div class="card-header h6">
+			</div> -->
+			<!--/.card-header-->
 			<div class="card-body">
+			<h5 class="card-title">Create ESS Account</h5>
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>
 				<?php echo form_hidden('form_action', 'create_account'); ?>        

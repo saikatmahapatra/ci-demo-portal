@@ -17,13 +17,14 @@
 
 <div class="row">
     <div class="col-lg-8 mb-3">
-        <div class="card">
-            <div class="card-header">
-                Global Calendar
+        <div class="card ci-card">
+            <!-- <div class="card-header">
+            </div> -->            
+            <div class="card-body">
+                <h5 class="card-title">Global Calendar</h5>
                 <a href="<?php echo base_url('calendar/index'); ?>" class="btn btn-sm btn-light pull-right"><i class="fa fa-fw fa-window-maximize" aria-hidden="true"></i> Full Screen</a>
+                <div id="ci_full_calendar"></div>
             </div>
-            
-            <div id="ci_full_calendar" class="card-body"></div>
             <!-- Button trigger modal -->
             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fcEventDetailsModal">
             Launch demo modal
@@ -47,15 +48,13 @@
                 </div>
             </div>
             </div>
-            <div class="card-footer text-center text-muted small">
-            <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> Updated on <?php echo date('d-M-Y h:i:s a');?>
-            </div>
         </div>
     </div>
     <div class="col-lg-4 mb-3">
-        <div class="card news-card mb-3">
-            <div class="card-header">Notice Board</div>
+        <div class="card news-card ci-card">
+            <!-- <div class="card-header"></div> -->
             <div class="card-body">
+                <h5 class="card-title">Notice Board</h5>
                 <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>
                 <ul class="list-group list-group-flush">
                 <?php foreach($data_rows as $key=>$row) { ?>
@@ -63,8 +62,8 @@
                         <div class="subject-title"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></a></div>
                         <div class="text-muted small">
                             <?php echo $content_type[$row['content_type']]['text']; ?>
-                            <?php echo isset($row['user_firstname']) ? "By ".$row['user_firstname'] : '';?>
-                            <?php echo isset($row['user_lastname']) ? $row['user_lastname'].", " : '';?>
+                            <?php echo isset($row['user_firstname']) ? 'published by <a href="'.base_url('user/profile/'.$row['content_created_by']).'" target="_blank">'.$row['user_firstname'] : '';?>
+                            <?php echo isset($row['user_lastname']) ? $row['user_lastname']."</a> on " : '';?>
                             <?php echo $this->common_lib->display_date($row['content_created_on'],true,null,'d-M-Y h:i:s a'); ?>
                         </div>
                         <div class="mb-0 lh-125" style="max-height: 120px; overflow: hidden;">
@@ -74,15 +73,17 @@
                 <?php }  ?>
                 </ul>
                 <?php } ?>
-            </div>
-            <div class="card-footer text-center">
+                <div class="text-center mt-3">
                 <?php echo $pagination_link;?>
+                </div>
             </div>
+            <!-- <div class="card-footer text-center"></div> -->
         </div><!--/.card-->
 
-        <div class="card card-stat">
-            <div class="card-header">At a Glance</div>
+        <div class="card ci-card card-stat">
+            <!-- <div class="card-header"></div> -->
             <div class="card-body">
+                <h5 class="card-title">Statistics</h5>
                 <div class="d-flex flex-column">
                     <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
                     
@@ -149,9 +150,9 @@
                     </div>
                 </div><!--/.flex-column-->
             </div><!--/.card-body-->
-            <div class="card-footer text-center text-muted small">
-            <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> Updated on <?php echo date('d-M-Y h:i:s a');?>
-            </div>
+            <!-- <div class="card-footer text-center text-muted small">
+                <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> Updated on <?php echo date('d-M-Y h:i:s a');?>
+            </div> -->
         </div><!--/.card-->
     </div>
     <?php /* ?>

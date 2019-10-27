@@ -8,9 +8,10 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="card ci-card">
-            <div class="card-header h6">Apply Leave</div>
+            <!-- <div class="card-header h6"></div> -->
             <!--/.card-header-->
             <div class="card-body">
+                <h5 class="card-title">Leave Application Form</h5>
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="form-text mb-4 text-muted">
                     <ul>
