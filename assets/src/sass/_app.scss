@@ -128,18 +128,17 @@ body.login {
 
 // CI Calendar
 .ci-calendar {
-    border: 2px solid $calendar-border;
+    border: 1px solid $calendar-grid-border;
     th {
-        background: $calendar-heading-bg;
-        font-size: 1rem;
-        color: $white;
+        //background: $calendar-heading-bg;
+        color: $gray-700;
         vertical-align: center !important;
         text-align: center;
+        border-top: 1px solid $calendar-grid-border;
+        //border-top: none;
     }
     tr.wk_nm {
-        background: $calendar-week-bg;
-        color: $white;
-        /*font-weight:bold;*/
+        //background: $calendar-week-bg;
     }
     td {
         text-align: center;
@@ -158,7 +157,7 @@ body.login {
     td[data-calday='disabled_day'] {
         opacity: 0.5;
         cursor: default !important;
-        background: $gray-lightest;
+        background: $gray-200;
     }
     .highlight {
         background: $today-highlight;
@@ -166,7 +165,7 @@ body.login {
     }
     .prevcell a,
     .nextcell a {
-        color: $white !important;
+        color: $gray-900 !important;
         text-decoration: none !important;
     }
     .day.selected {
@@ -197,6 +196,10 @@ body.login {
 
 .i-holiday {
     background-color: $holiday;
+}
+
+.i-disabled-date {
+    background-color: $gray-200;
 }
 
 .i-has-data {
@@ -454,23 +457,17 @@ body.login {
 }
 
 // Color Graph
-.colorgraph-1::after {
-    content: "";
+.colorgraph-1 {
     height: 5px;
+    border-top: 0;
     background: #c4e17f;
     background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
     background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
     background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
     background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-    width: 100%;
-    position: absolute;
-    bottom: -2px;
-    left: 0;
 }
 
-.colorgraph-2::after {
-    content: "";
-    height: 5px;
+.colorgraph-2 {
     height: 5px;
     border-top: 0;
     background: #c4e17f;
@@ -871,6 +868,9 @@ label.optional::after {
         .dropdown-mega-menu {
             margin-left: 0;
             margin-right: 0;
+            .dropdown-header {
+                font-size: 1.25rem;
+            }
         }
         .dropdown-mega-menu>li {
             margin-bottom: 30px;
