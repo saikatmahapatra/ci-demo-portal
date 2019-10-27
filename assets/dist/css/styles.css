@@ -8528,20 +8528,11 @@ body.login {
   color: #6c757d;
 }
 
-.ci-calendar {
-  border: 1px solid #b3b2b2;
-}
-
 .ci-calendar th {
-  background: #e9ecef;
   color: #495057;
   vertical-align: center !important;
   text-align: center;
-  border-top: 1px solid #b3b2b2;
-}
-
-.ci-calendar tr.wk_nm {
-  background: #e9ecef;
+  border-top: none;
 }
 
 .ci-calendar td {
@@ -8565,7 +8556,7 @@ body.login {
 .ci-calendar td[data-calday='disabled_day'] {
   opacity: 0.5;
   cursor: default !important;
-  background: #f8f8f8;
+  background: #e9ecef;
 }
 
 .ci-calendar .highlight {

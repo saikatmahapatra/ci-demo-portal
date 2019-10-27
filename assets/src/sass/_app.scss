@@ -128,16 +128,17 @@ body.login {
 
 // CI Calendar
 .ci-calendar {
-    border: 1px solid $calendar-grid-border;
+    //border: 1px solid $calendar-grid-border;
     th {
-        background: $calendar-heading-bg;
+        //background: $calendar-heading-bg;
         color: $gray-700;
         vertical-align: center !important;
         text-align: center;
-        border-top: 1px solid $calendar-grid-border;
+        //border-top: 1px solid $calendar-grid-border;
+        border-top: none;
     }
     tr.wk_nm {
-        background: $calendar-week-bg;
+        //background: $calendar-week-bg;
     }
     td {
         text-align: center;
@@ -156,7 +157,7 @@ body.login {
     td[data-calday='disabled_day'] {
         opacity: 0.5;
         cursor: default !important;
-        background: $gray-lightest;
+        background: $gray-200;
     }
     .highlight {
         background: $today-highlight;
