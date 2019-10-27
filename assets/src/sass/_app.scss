@@ -524,67 +524,37 @@ main {
 // CI card
 // Componant: Card
 .ci-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(26, 54, 126, 0.125);
-    border-radius: 0.25rem;
-    @media print {
-        border: 1px solid #ddd;
-    }
-    &.small {
-        padding: 0;
-    }
-    .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background-color: rgba(255, 255, 255, 0.9);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        color: #555;
-        border-radius: 3px;
-        .l-text {
-            font-size: 24px;
-            margin-top: 15px;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+    border-width: 0;
+    transition: all .2s;
+    margin-bottom: 30px;
+
+    .card-body {
+        flex: 1 1 auto;
+        padding: 1.25rem;
+        .card-title {
+            text-transform: uppercase;
+            color: rgba(13, 27, 62, 0.7);
+            font-weight: bold;
+            font-size: 0.88rem;
         }
     }
-    .card-header {
+
+    .card-header, .card-title {
         text-transform: uppercase;
+        color: rgba(13, 27, 62, 0.7);
         font-weight: bold;
         font-size: 0.88rem;
+        background-color: none;
+        border-bottom: none;
     }
-    .card-header-w-btn {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-        p {
-            margin: 0;
-        }
-        .title {
-            margin: 0;
-        }
-        .side {
-            margin-bottom: 0;
-            padding-left: 0;
-        }
-        .btn-group {
-            flex: 0 0 auto;
-        }
+
+    .card-title {
+        margin-bottom: 0.75rem;
     }
-    .card-footer {
-        border-top: 1px solid #ddd;
-        padding: 20px 0 0 0;
-        margin-top: 10px;
+    .card-footer{
+        background-color: rgba(0, 0, 0, 0);
+        border-top: none;
     }
 }
 
@@ -861,7 +831,7 @@ label.optional::after {
 .bs-mega-menu {
     position: static !important;
     .dropdown-mega-menu {
-        background-color: $gray-200;
+        background-color: $black;
         padding: 20px 20px;
         width: 100%;
         li>ul {
