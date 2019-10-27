@@ -8602,6 +8602,10 @@ body.login {
   background-color: #f1a0b4;
 }
 
+.i-disabled-date {
+  background-color: #e9ecef;
+}
+
 .i-has-data {
   background-color: #a6ffa6;
 }
