@@ -845,7 +845,7 @@ label.optional::after {
                 padding: 8px 20px;
                 clear: both;
                 font-weight: normal;
-                color: $gray-700;
+                color: $white;
                 white-space: normal;
                 &:hover,
                 &:focus {
@@ -865,7 +865,18 @@ label.optional::after {
                     }
                 }
             }
+            &:hover{
+                .dropdown-header {
+                    color: $gray-700;
+                }
+                .dropdown-mega-menu li>ul>li {
+                    a{
+                        color: $gray-700;
+                    }
+                }
+            }
         }
+        
         .divider {
             margin-top: 15px;
         }
@@ -889,6 +900,7 @@ label.optional::after {
         }
         .dropdown-header {
             font-size: 1.5rem;
+            color: $white;
         }
     } //dropdown-mega-menu
     @media (max-width: 768px) {

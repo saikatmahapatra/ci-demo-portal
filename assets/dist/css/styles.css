@@ -9245,7 +9245,7 @@ label.optional::after {
   padding: 8px 20px;
   clear: both;
   font-weight: normal;
-  color: #495057;
+  color: #fff;
   white-space: normal;
 }
 
@@ -9262,6 +9262,14 @@ label.optional::after {
 .bs-mega-menu .dropdown-mega-menu .dropdown-item:active a:active {
   background-color: #0062cc;
   color: #fff;
+}
+
+.bs-mega-menu .dropdown-mega-menu .dropdown-item:hover .dropdown-header {
+  color: #495057;
+}
+
+.bs-mega-menu .dropdown-mega-menu .dropdown-item:hover .dropdown-mega-menu li > ul > li a {
+  color: #495057;
 }
 
 .bs-mega-menu .dropdown-mega-menu .divider {
@@ -9291,6 +9299,7 @@ label.optional::after {
 
 .bs-mega-menu .dropdown-mega-menu .dropdown-header {
   font-size: 1.5rem;
+  color: #fff;
 }
 
 @media (max-width: 768px) {
