@@ -87,8 +87,10 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card ci-card ci-dl">
-			<div class="card-header h6"><?php echo isset($row['user_emp_id']) ? 'Employee Code - UEIPL/'.$row['user_emp_id'] : ''; ?></div><!--/.card-header-->
+			<!-- <div class="card-header h6"></div> -->
+			<!--/.card-header-->
 			<div class="card-body">
+			<h5 class="card-title"><?php echo isset($row['user_emp_id']) ? 'Emp ID - UEIPL/'.$row['user_emp_id'] : ''; ?></h5>
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<div class="row">
 					<div class="col-lg-3 text-center mb-3">

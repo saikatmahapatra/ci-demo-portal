@@ -3,10 +3,11 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="card ci-card">
-            <div class="card-header h6">Add Emergency Contact</div>
+            <!-- <div class="card-header h6"></div> -->
             <!--/.card-header-->
 
             <div class="card-body">
+                <h5 class="card-title">Add Emergency Contact Details</h5>
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
 
                 <?php

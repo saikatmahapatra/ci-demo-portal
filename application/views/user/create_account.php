@@ -8,7 +8,7 @@
 			</div> -->
 			<!--/.card-header-->
 			<div class="card-body">
-			<h5 class="card-title">Create ESS Account</h5>
+			<h5 class="card-title">Create Account</h5>
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>
 				<?php echo form_hidden('form_action', 'create_account'); ?>        

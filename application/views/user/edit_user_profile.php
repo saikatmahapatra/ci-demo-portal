@@ -9,11 +9,8 @@
 <div class="row">
 	<div class="col-lg-6">
 		<div class="card ci-card">
-			<div class="card-header h6">
-				Form
-			</div><!--/.card-header-->
-
 			<div class="card-body">
+			<h5 class="card-title">Edit Profile</h5>
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<?php   
 					$img_src = "";
@@ -29,9 +26,6 @@
 						$img_src = $default_path;
 					}
 				?>
-		
-			
-
 				<div class="row text-center mb-3">
 					<div class="col-sm-12">
 						<img class="dp rounded mx-auto d-block img-thumbnail" src="<?php echo base_url($img_src);?>">

@@ -4,12 +4,10 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="card ci-card">
-            <div class="card-header h6">
-                Delete Account
-            </div>
+            <!-- <div class="card-header h6"></div> -->
             <!--/.card-header-->
-
             <div class="card-body">
+            <h5 class="card-title">Delete Account</h5>
                 <?php
 					echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
 					echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
