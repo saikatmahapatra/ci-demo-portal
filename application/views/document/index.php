@@ -46,9 +46,10 @@
 
     <div class="col-lg-7 mb-3">
         <div class="card ci-card">
-            <div class="card-header h6">Your Uploaded Files</div>
+            <!-- <div class="card-header h6"></div> -->
             <!--/.card-header-->
             <div class="card-body">
+                <h5 class="card-title">Uploaded Files</h5>
                 <div class="table-responsive">
                     <table class="table ci-table table-striped">
                         <thead class="thead-dark">
@@ -99,8 +100,8 @@
                 <!--/.table-responsive-->
             </div>
             <!--/.card-body-->
-            <div class="card-footer d-none">
-            </div>
+            <!-- <div class="card-footer d-none">
+            </div> -->
             <!--/.card-footer-->
         </div>
         <!--/.card ci-card-->

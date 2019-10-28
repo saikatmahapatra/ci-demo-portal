@@ -3,7 +3,12 @@
 <div class="row justify-content-center">
     <div class="col-lg-10">
         <?php echo isset($alert_message) ? $alert_message : ''; ?>
-        <div id="ci_full_calendar"></div>
+        <div class="card ci-card">
+            <div class="card-body">
+                <h5 class="card-title">Work Calender</h5>
+                <div id="ci_full_calendar"></div>
+            </div>
+        </div>
     </div>
     <!--/.col-->
 </div>
