@@ -3,9 +3,10 @@
 <div class="row">
     <div class="col-lg-4">
         <div class="card ci-card">
-            <div class="card-header h6">Update Leave Balance of Employees</div>
+            <!-- <div class="card-header h6"></div> -->
             <!--/.card-header-->
             <div class="card-body">
+                <h5 class="card-title">Update Leave Balance of Employees</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => 'ci-form-leavebalance',)); ?>
                 <?php echo form_hidden('form_action', 'leave_balance_update'); ?>
@@ -44,8 +45,8 @@
                 <?php echo form_close(); ?>
             </div>
             <!--/.card-body-->
-            <div class="card-footer d-none">
-            </div>
+            <!-- <div class="card-footer d-none">
+            </div> -->
             <!--/.card-footer-->
         </div>
         <!--/.card ci-card-->
@@ -54,9 +55,10 @@
     <!--/.col-->
     <div class="col-lg-5">
         <div class="card ci-card">
-            <div class="card-header h6">Leave Balance Update History</div>
+            <!-- <div class="card-header h6"></div> -->
             <!--/.card-header-->
             <div class="card-body">
+                <h5 class="card-title">Leave Balance Update History</h5>
                 <div>Leave balance added on : <span id="created_on"></span></div>
                 <div>Leave balance updated on : <span id="updated_on"></span></div>
                 <div>PL auto updated on : <span id="pl_updated_by_cron_on"></span></div>
@@ -64,8 +66,8 @@
                 <div>OL auto updated on : <span id="ol_updated_by_cron_on"></span></div>
             </div>
             <!--/.card-body-->
-            <div class="card-footer d-none">
-            </div>
+            <!-- <div class="card-footer d-none">
+            </div> -->
             <!--/.card-footer-->
         </div>
         <!--/.card ci-card-->
