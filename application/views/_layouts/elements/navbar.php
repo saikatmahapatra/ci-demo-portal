@@ -16,7 +16,7 @@
 				</a>
                 </li>
 
-                <li class="nav-item dropdown bs-mega-menu d-none"> <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Mega Menu Example </a>
+                <!-- <li class="nav-item dropdown bs-mega-menu d-none"> <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Mega Menu Example </a>
                     <ul class="dropdown-menu dropdown-mega-menu">
                         <div class="row">
                             <li class="col-lg-3 col-md-6 dropdown-item">
@@ -75,20 +75,20 @@
                             </li>
                         </div>
                     </ul>
-                </li>
+                </li> -->
 
                 <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
-                <li class="nav-item dropdown bs-mega-menu"> <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Administrator</a>
+                <li class="nav-item dropdown bs-mega-menu"> <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Admin</a>
                     <ul class="dropdown-menu dropdown-mega-menu">
                         <div class="row">
                             <li class="col-lg-3 col-md-6 dropdown-item">
                                 <ul>
-                                    <li class="dropdown-header">Global Calendar</li>
-                                    <li><a href="<?php echo base_url($this->router->directory.'calendar/index/view_timeline'); ?>">View Calendar</a></li>
-                                    <li class="divider"></li>
                                     <li class="dropdown-header">Employee</li>
-                                    <li><a href="<?php echo base_url($this->router->directory.'user/create_account'); ?>">Add or Onboard New Employee</a></li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'user/create_account'); ?>">Add New Employee</a></li>
                                     <li><a href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Manage Employees</a></li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header">Work Calendar</li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'calendar/index/view_timeline'); ?>">Employee's Calendar</a></li>
                                 </ul>
                             </li>
 
@@ -106,15 +106,15 @@
                                     <li class="dropdown-header">Leave</li>
                                     <li><a href="<?php echo base_url($this->router->directory.'leave/manage/all'); ?>">View All Leave Applications</a></li>
                                     <li><a href="<?php echo base_url($this->router->directory.'leave/leave_balance'); ?>">Leave Balance</a></li>
-                                    <li><a href="<?php echo base_url($this->router->directory.'leave/import_data'); ?>">Import/Export Balance Sheet</a></li>
+                                    <!-- <li><a href="<?php echo base_url($this->router->directory.'leave/import_data'); ?>">Import/Export Balance Sheet</a></li> -->
                                     <li><a href="<?php echo base_url($this->router->directory.'leave/manage/assigned_to_me'); ?>">Leave Applications to Approve</a></li>
                                 </ul>
                             </li>
 
                             <li class="col-lg-3 col-md-6 dropdown-item">
                                 <ul>
-                                    <li class="dropdown-header">Timesheet & Project</li>
-                                    <li><a href="<?php echo base_url($this->router->directory.'timesheet/report'); ?>">Timesheet Report</a></li>
+                                    <li class="dropdown-header">Timesheet</li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'timesheet/report'); ?>">Report</a></li>
                                     <li><a href="<?php echo base_url($this->router->directory.'project'); ?>">Projects</a></li>
                                     <li><a href="<?php echo base_url('project/activity'); ?>">Task Activities</a></li>
                                 </ul>
@@ -131,9 +131,17 @@
                         <div class="row">
                             <li class="col-lg-3 col-md-6 dropdown-item">
                                 <ul>
-                                    <li class="dropdown-header">Global Calendar</li>
+                                    <li class="dropdown-header">Organization</li>
+                                    <li><a href="<?php echo base_url('user/people');?>">Employee Directory</a></li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'home/policy'); ?>">HR Policies</a></li>
+                                    <li><a href="<?php echo base_url('holiday/view');?>">Holidays</a></li>
+                                </ul>
+                            </li>
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <!-- <li class="dropdown-header">Work Calendar</li>
                                     <li><a href="<?php echo base_url($this->router->directory.'calendar'); ?>">My Calendar</a></li>
-                                    <li class="divider"></li>
+                                    <li class="divider"></li> -->
                                     <li class="dropdown-header">Timesheet</li>
                                     <li><a href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Log Tasks</a></li>
                                 </ul>
@@ -147,22 +155,13 @@
                                     <li><a href="<?php echo base_url($this->router->directory.'leave/manage/assigned_to_me'); ?>">Leave Applications to Approve</a></li>
                                 </ul>
                             </li>
-                            
-                            <li class="col-lg-3 col-md-6 dropdown-item">
-                                <ul>
-                                    <li class="dropdown-header">Organization</li>
-                                    <li><a href="<?php echo base_url('user/people');?>">Employee Directory</a></li>
-                                    <li><a href="<?php echo base_url($this->router->directory.'home/policy'); ?>">HR Policies</a></li>
-                                    <li><a href="<?php echo base_url('holiday/view');?>">Holidays</a></li>
-                                    <li class="disabled"><a href="#">CSR Activities</a></li>
-                                </ul>
-                            </li>
                             <li class="col-lg-3 col-md-6 dropdown-item">
                                 <ul>
                                     <li class="dropdown-header">Profile</li>
-                                    <li><a href="#">My Profile</a></li>
-                                    <li><a href="#">Edit Basic Information</a></li>
-                                    <li><a href="#">Upload Documents</a></li>
+                                    <li><a href="<?php echo base_url('user/profile');?>">My Profile</a></li>
+                                    <li><a href="<?php echo base_url('user/edit_profile');?>">Edit Basic Information</a></li>
+                                    <li><a href="<?php echo base_url('documents');?>">Upload Documents</a></li>
+                                    <li><a href="<?php echo base_url('user/change_password');?>">Change Password</a></li>
                                 </ul>
                             </li>
                         </div>
