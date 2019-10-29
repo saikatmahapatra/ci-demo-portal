@@ -931,3 +931,46 @@ label.optional::after {
 }
 
 // End of Full Calendar Styling
+// Widget
+.bg-transparent {
+    background: transparent !important;
+}
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.widget-content {
+    padding: 1rem;
+    flex-direction: row;
+    align-items: center;
+    .widget-content-outer {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+    }
+    .widget-content-wrapper {
+        display: flex;
+        flex: 1;
+        position: relative;
+        align-items: center;
+    }
+    .widget-numbers {
+        font-weight: bold;
+        font-size: 1.8rem;
+        display: block;
+    }
+    .widget-content-left {
+        .widget-heading {
+            opacity: .8;
+            font-weight: bold;
+        }
+        .widget-subheading {
+            opacity: .5;
+        }
+    }
+    .widget-content-right {
+        margin-left: auto;
+    }
+}

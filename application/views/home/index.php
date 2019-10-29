@@ -15,41 +15,130 @@
 </div>
 <?php } ?>
 
-<div class="row">
-    <div class="col-lg-8 mb-3">
-        <div class="card ci-card">
-            <!-- <div class="card-header">
-            </div> -->            
-            <div class="card-body">
-                <h5 class="card-title">Work Calendar</h5>
-                <a href="<?php echo base_url('calendar/index'); ?>" class="btn btn-link btn-sm float-right"><i class="fa fa-fw fa-window-maximize" aria-hidden="true"></i> Full Screen</a>
-                <div id="ci_full_calendar"></div>
-            </div>
-            <!-- Button trigger modal -->
-            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fcEventDetailsModal">
-            Launch demo modal
-            </button> -->
 
-            <!-- Modal -->
-            <div class="modal fade" id="fcEventDetailsModal" tabindex="-1" role="dialog" aria-labelledby="fcEventDetailsModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="fcEventDetailsModalLabel">Title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" id="fcEventDetailsModalBody">Loading...</div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">More Details</button>
-                </div>
-                </div>
-            </div>
-            </div>
+
+
+
+
+<div class="card ci-card">
+    <div class="no-gutters row">
+        <div class="col-md-12 col-lg-4">
+            <ul class="list-group list-group-flush">
+                <li class="bg-transparent list-group-item">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-outer">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Total Orders</div>
+                                    <div class="widget-subheading">Last year expenses</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers text-success">1896</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="bg-transparent list-group-item">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-outer">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Clients</div>
+                                    <div class="widget-subheading">Total Clients Profit</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers text-primary">$12.6k</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
-    </div>
+        <div class="col-md-12 col-lg-4">
+            <ul class="list-group list-group-flush">
+                <li class="bg-transparent list-group-item">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-outer">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Followers</div>
+                                    <div class="widget-subheading">People Interested</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers text-danger">45,9%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="bg-transparent list-group-item">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-outer">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Products Sold</div>
+                                    <div class="widget-subheading">Total revenue streams</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers text-warning">$3M</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-12 col-lg-4">
+            <ul class="list-group list-group-flush">
+                <li class="bg-transparent list-group-item">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-outer">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Total Orders</div>
+                                    <div class="widget-subheading">Last year expenses</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers text-success">1896</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="bg-transparent list-group-item">
+                    <div class="widget-content p-0">
+                        <div class="widget-content-outer">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Clients</div>
+                                    <div class="widget-subheading">Total Clients Profit</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers text-primary">$12.6k</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div> <!--/.row-->
+</div> <!--/.card-->
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
     <div class="col-lg-4 mb-3">
         <div class="card news-card ci-card">
             <!-- <div class="card-header"></div> -->
@@ -154,5 +243,39 @@
                 <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i> Updated on <?php echo date('d-M-Y h:i:s a');?>
             </div> -->
         </div><!--/.card-->
+    </div>
+    <div class="col-lg-8 mb-3">
+        <div class="card ci-card">
+            <!-- <div class="card-header">
+            </div> -->            
+            <div class="card-body">
+                <h5 class="card-title">Work Calendar</h5>
+                <a href="<?php echo base_url('calendar/index'); ?>" class="btn btn-link btn-sm float-right"><i class="fa fa-fw fa-window-maximize" aria-hidden="true"></i> Full Screen</a>
+                <div id="ci_full_calendar"></div>
+            </div>
+            <!-- Button trigger modal -->
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fcEventDetailsModal">
+            Launch demo modal
+            </button> -->
+
+            <!-- Modal -->
+            <div class="modal fade" id="fcEventDetailsModal" tabindex="-1" role="dialog" aria-labelledby="fcEventDetailsModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="fcEventDetailsModalLabel">Title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="fcEventDetailsModalBody">Loading...</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">More Details</button>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
     </div>
 </div>

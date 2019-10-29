@@ -9331,3 +9331,50 @@ label.optional::after {
 #ci_full_calendar .fc-title {
   font-size: 13px;
 }
+
+.bg-transparent {
+  background: transparent !important;
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.widget-content {
+  padding: 1rem;
+  flex-direction: row;
+  align-items: center;
+}
+
+.widget-content .widget-content-outer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.widget-content .widget-content-wrapper {
+  display: flex;
+  flex: 1;
+  position: relative;
+  align-items: center;
+}
+
+.widget-content .widget-numbers {
+  font-weight: bold;
+  font-size: 1.8rem;
+  display: block;
+}
+
+.widget-content .widget-content-left .widget-heading {
+  opacity: .8;
+  font-weight: bold;
+}
+
+.widget-content .widget-content-left .widget-subheading {
+  opacity: .5;
+}
+
+.widget-content .widget-content-right {
+  margin-left: auto;
+}
