@@ -204,7 +204,6 @@
 <div class="row">
     <div class="col-lg-4 mb-3">
         <div class="card news-card ci-card">
-            <!-- <div class="card-header"></div> -->
             <div class="card-body">
                 <h5 class="card-title">Notice Board</h5>
                 <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>
@@ -229,13 +228,10 @@
                 <?php echo $pagination_link;?>
                 </div>
             </div>
-            <!-- <div class="card-footer text-center"></div> -->
         </div><!--/.card-->
     </div>
     <div class="col-lg-8 mb-3">
         <div class="card ci-card">
-            <!-- <div class="card-header">
-            </div> -->            
             <div class="card-body">
                 <h5 class="card-title">Work Calendar - Beta</h5>
                 <div class="alert alert-warning small">

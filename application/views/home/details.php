@@ -7,8 +7,6 @@ $row = $data_rows[0];
 <div class="row">
 	<div class="col-lg-6">
 		<div class="card ci-card">
-			<!-- <div class="card-header h6">
-			</div> -->
 			<div class="card-body">
 				<h5 class="card-title"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></h5>
 				<div class="text-muted mb-3 small">
@@ -20,8 +18,6 @@ $row = $data_rows[0];
 				<?php echo isset($row['content_text']) ? $row['content_text'] : '';?>
 				<a href="<?php echo $redirect_back_url; ?>" class="btn btn-outline-secondary btn-sm btn-back"><i class="fa fa-fw fa-chevron-left" aria-hidden="true"></i> Back</a>
 			</div><!--/.card-body-->
-			<!-- <div class="card-footer">
-			</div> -->
 		</div><!--/.card-->
 	</div>
 </div>

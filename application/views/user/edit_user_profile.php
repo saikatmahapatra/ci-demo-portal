@@ -180,8 +180,6 @@
 				<?php echo form_close(); ?>
 			
 			</div><!--./card-body-->
-			<!--<div class="card-footer"></div>--><!--/.card-footer-->
 		</div><!--/.card-->
-		
 	</div><!--/.col-->
 </div><!--/.row-->

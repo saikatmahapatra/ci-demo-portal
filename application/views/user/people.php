@@ -86,11 +86,7 @@
 				}
 				?>
 				<div class="col-lg-12"><?php echo $pagination_link;?></div>
-				
-			
 			</div><!--./card-body-->
-			<!--<div class="card-footer"></div>--><!--/.card-footer-->
 		</div><!--/.card-->
-		
 	</div><!--/.col-->
 </div><!--/.row-->

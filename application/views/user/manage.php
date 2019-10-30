@@ -33,8 +33,6 @@
 					</table>
 				</div><!--/.table-responsive-->
 			</div><!--./card-body-->
-			<!--<div class="card-footer"></div>--><!--/.card-footer-->
 		</div><!--/.card-->
-		
 	</div><!--/.col-->
 </div><!--/.row-->
