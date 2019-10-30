@@ -86,9 +86,9 @@
                                     <li class="dropdown-header">Employee</li>
                                     <li><a href="<?php echo base_url($this->router->directory.'user/create_account'); ?>">Add New Employee</a></li>
                                     <li><a href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Manage Employees</a></li>
-                                    <li class="divider"></li>
+                                    <!-- <li class="divider"></li>
                                     <li class="dropdown-header">Work Calendar</li>
-                                    <li><a href="<?php echo base_url($this->router->directory.'calendar/index/view_timeline'); ?>">Employee's Calendar</a></li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'calendar/index/view_timeline'); ?>">Employee's Calendar</a></li> -->
                                 </ul>
                             </li>
 
@@ -160,7 +160,7 @@
                                     <li class="dropdown-header">Profile</li>
                                     <li><a href="<?php echo base_url('user/profile');?>">My Profile</a></li>
                                     <li><a href="<?php echo base_url('user/edit_profile');?>">Edit Basic Information</a></li>
-                                    <li><a href="<?php echo base_url('documents');?>">Upload Documents</a></li>
+                                    <li><a href="<?php echo base_url('document');?>">Upload Documents</a></li>
                                     <li><a href="<?php echo base_url('user/change_password');?>">Change Password</a></li>
                                 </ul>
                             </li>

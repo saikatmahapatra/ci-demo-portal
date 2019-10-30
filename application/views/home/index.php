@@ -237,7 +237,10 @@
             <!-- <div class="card-header">
             </div> -->            
             <div class="card-body">
-                <h5 class="card-title">Work Calendar</h5>
+                <h5 class="card-title">Work Calendar - Beta</h5>
+                <div class="alert alert-warning small">
+                    This widget is a beta release on top of current application version. This is still under development & testing phase. In case if you find any dummy or irrelevant contents, you can ignore for the time being
+                </div>
                 <!-- <a href="<?php echo base_url('calendar/index'); ?>" class="btn btn-link btn-sm float-right"><i class="fa fa-fw fa-window-maximize" aria-hidden="true"></i> Full Screen</a> -->
                 <div id="ci_full_calendar"></div>
             </div>
