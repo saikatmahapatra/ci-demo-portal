@@ -829,7 +829,7 @@ label.optional::after {
 .bs-mega-menu {
     position: static !important;
     .dropdown-mega-menu {
-        background-color: #212529;
+        background-color: $bs_mega_menu_background_color;
         padding: 20px 20px;
         width: 100%;
         li>ul {
@@ -843,30 +843,34 @@ label.optional::after {
                 padding: 8px 20px;
                 clear: both;
                 font-weight: normal;
-                color: $white;
+                color: $bs_mega_menu_nav_link_color;
                 white-space: normal;
                 &:hover,
                 &:focus {
                     text-decoration: none;
-                    //color: $black;
-                    background-color: #6c757d;
+                    color: $bs_mega_menu_nav_link_hover_color;
+                    background-color: $bs_mega_menu_nav_link_hover_bg_color;
                 }
             }
         }
+        .dropdown-header {
+            font-size: 1.25rem;
+            color: $bs_mega_menu_dropdown_header_color;
+        }
         .dropdown-item {
             &:active {
-                background-color: #343a40;
+                background-color: $bs_mega_menu_dropdown_item_box_hover_bg_color;
                 a {
                     &:active {
-                        background-color: $primary-color;
-                        color: $white;
+                        background-color: $bs_mega_menu_nav_link_active_bg_color;
+                        color: $bs_mega_menu_nav_link_active_color;
                     }
                 }
             }
             &:hover {
-                background-color: #343a40;
+                background-color: $bs_mega_menu_dropdown_item_box_hover_bg_color;
                 .dropdown-header {
-                    color: $white;
+                    color: $bs_mega_menu_dropdown_header_hover_color;
                 }
             }
         }
@@ -891,18 +895,11 @@ label.optional::after {
                 cursor: not-allowed;
             }
         }
-        .dropdown-header {
-            font-size: 1.5rem;
-            color: $white;
-        }
     } //dropdown-mega-menu
     @media (max-width: 768px) {
         .dropdown-mega-menu {
             margin-left: 0;
             margin-right: 0;
-            .dropdown-header {
-                font-size: 1.25rem;
-            }
         }
         .dropdown-mega-menu>li {
             margin-bottom: 30px;
