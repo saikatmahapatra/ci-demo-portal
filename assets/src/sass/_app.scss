@@ -829,9 +829,20 @@ label.optional::after {
 .bs-mega-menu {
     position: static !important;
     .dropdown-mega-menu {
-        background-color: $bs_mega_menu_background_color;
+        @if $mega_menu_theme==dark {
+            background-color: $bs_mega_menu_dark_background_color;
+        }
+        @if $mega_menu_theme==light {
+            background-color: $bs_mega_menu_light_background_color;
+        }
         padding: 20px 20px;
         width: 100%;
+        box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03),
+        0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03),
+        0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05),
+        0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+        border-width: 0;
+        transition: all .2s;
         li>ul {
             padding: 0;
             margin: 0;
@@ -843,34 +854,75 @@ label.optional::after {
                 padding: 8px 20px;
                 clear: both;
                 font-weight: normal;
-                color: $bs_mega_menu_nav_link_color;
+                @if $mega_menu_theme==dark {
+                    color: $bs_mega_menu_dark_nav_link_color;
+                }
+                @if $mega_menu_theme==light {
+                    color: $bs_mega_menu_light_nav_link_color;
+                }
                 white-space: normal;
                 &:hover,
                 &:focus {
                     text-decoration: none;
-                    color: $bs_mega_menu_nav_link_hover_color;
-                    background-color: $bs_mega_menu_nav_link_hover_bg_color;
+                    @if $mega_menu_theme==dark {
+                        color: $bs_mega_menu_dark_nav_link_hover_color;
+                    }
+                    @if $mega_menu_theme==light {
+                        color: $bs_mega_menu_light_nav_link_hover_color;
+                    }
+                    @if $mega_menu_theme==dark {
+                        background-color: $bs_mega_menu_dark_nav_link_hover_bg_color;
+                    }
+                    @if $mega_menu_theme==light {
+                        background-color: $bs_mega_menu_light_nav_link_hover_bg_color;
+                    }
                 }
             }
         }
         .dropdown-header {
             font-size: 1.25rem;
-            color: $bs_mega_menu_dropdown_header_color;
+            @if $mega_menu_theme==dark {
+                color: $bs_mega_menu_dark_dropdown_header_color;
+            }
+            @if $mega_menu_theme==light {
+                color: $bs_mega_menu_light_dropdown_header_color;
+            }
         }
         .dropdown-item {
             &:active {
-                background-color: $bs_mega_menu_dropdown_item_box_hover_bg_color;
+                @if $mega_menu_theme==dark {
+                    background-color: $bs_mega_menu_dark_dropdown_item_box_hover_bg_color;
+                }
+                @if $mega_menu_theme==light {
+                    background-color: $bs_mega_menu_light_dropdown_item_box_hover_bg_color;
+                }
                 a {
                     &:active {
-                        background-color: $bs_mega_menu_nav_link_active_bg_color;
-                        color: $bs_mega_menu_nav_link_active_color;
+                        @if $mega_menu_theme==dark {
+                            background-color: $bs_mega_menu_dark_nav_link_active_bg_color;
+                            color: $bs_mega_menu_dark_nav_link_active_color;
+                        }
+                        @if $mega_menu_theme==light {
+                            background-color: $bs_mega_menu_light_nav_link_active_bg_color;
+                            color: $bs_mega_menu_light_nav_link_active_color;
+                        }
                     }
                 }
             }
             &:hover {
-                background-color: $bs_mega_menu_dropdown_item_box_hover_bg_color;
+                @if $mega_menu_theme==dark {
+                    background-color: $bs_mega_menu_dark_dropdown_item_box_hover_bg_color;
+                }
+                @if $mega_menu_theme==light {
+                    background-color: $bs_mega_menu_light_dropdown_item_box_hover_bg_color;
+                }
                 .dropdown-header {
-                    color: $bs_mega_menu_dropdown_header_hover_color;
+                    @if $mega_menu_theme==dark {
+                        color: $bs_mega_menu_dark_dropdown_header_hover_color;
+                    }
+                    @if $mega_menu_theme==light {
+                        color: $bs_mega_menu_light_dropdown_header_hover_color;
+                    }
                 }
             }
         }
