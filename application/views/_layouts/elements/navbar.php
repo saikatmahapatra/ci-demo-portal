@@ -87,7 +87,7 @@
                                     <li><a href="<?php echo base_url($this->router->directory.'user/create_account'); ?>">Add New Employee</a></li>
                                     <li><a href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Manage Employees</a></li>
                                     <!-- <li class="divider"></li>
-                                    <li class="dropdown-header">Work Calendar</li>
+                                    <li class="dropdown-header">Calendar</li>
                                     <li><a href="<?php echo base_url($this->router->directory.'calendar/index/view_timeline'); ?>">Employee's Calendar</a></li> -->
                                 </ul>
                             </li>
@@ -139,7 +139,7 @@
                             </li>
                             <li class="col-lg-3 col-md-6 dropdown-item">
                                 <ul>
-                                    <!-- <li class="dropdown-header">Work Calendar</li>
+                                    <!-- <li class="dropdown-header">Calendar</li>
                                     <li><a href="<?php echo base_url($this->router->directory.'calendar'); ?>">My Calendar</a></li>
                                     <li class="divider"></li> -->
                                     <li class="dropdown-header">Timesheet</li>

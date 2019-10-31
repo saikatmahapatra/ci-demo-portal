@@ -5,7 +5,7 @@
         <?php echo isset($alert_message) ? $alert_message : ''; ?>
         <div class="card ci-card">
             <div class="card-body">
-                <h5 class="card-title">Work Calender</h5>
+                <h5 class="card-title">Calendar</h5>
                 <div id="ci_full_calendar"></div>
             </div>
         </div>

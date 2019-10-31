@@ -20,7 +20,7 @@
 
 
 <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
-<div class="card ci-card">
+<div class="card ci-card ci-card-widget">
     <div class="no-gutters row">
         <div class="col-md-12 col-lg-4">
             <ul class="list-group list-group-flush">
@@ -233,7 +233,7 @@
     <div class="col-lg-8 mb-3">
         <div class="card ci-card">
             <div class="card-body">
-                <h5 class="card-title">Work Calendar - Beta</h5>
+                <h5 class="card-title">Calendar - Beta</h5>
                 <div class="alert alert-warning small">
                     This widget is a beta release on top of current application version. This is still under development & testing phase. In case if you find any dummy or irrelevant contents, you can ignore for the time being
                 </div>
