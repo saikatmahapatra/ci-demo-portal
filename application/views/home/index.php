@@ -212,8 +212,8 @@
                     <li class="list-group-item">
                         <div class="subject-title"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></a></div>
                         <div class="text-muted small">
-                            <?php echo $content_type[$row['content_type']]['text']; ?>
-                            <?php echo isset($row['user_firstname']) ? 'published by <a href="'.base_url('user/profile/'.$row['content_created_by']).'" target="_blank">'.$row['user_firstname'] : '';?>
+                            <?php //echo $content_type[$row['content_type']]['text']; ?>
+                            <?php echo isset($row['user_firstname']) ? 'By <a href="'.base_url('user/profile/'.$row['content_created_by']).'" target="_blank">'.$row['user_firstname'] : '';?>
                             <?php echo isset($row['user_lastname']) ? $row['user_lastname']."</a> on " : '';?>
                             <?php echo $this->common_lib->display_date($row['content_created_on'],true,null,'d-M-Y h:i:s a'); ?>
                         </div>
