@@ -977,6 +977,19 @@ label.optional::after {
     .fc-title {
         font-size: 13px;
     }
+    /* New CSS */
+    .fc-month-view .fc-row .fc-day {
+        /* Aligns the event dots at the bottom of the cell. */
+        vertical-align: bottom;
+    }
+    .fc-month-view .fc-day .fc-event-dot {
+        cursor: default;
+        /* Gives some spacing between the dots in a cell. */
+        margin-right: 2px;
+    }
+    .fc-month-view .hidden {
+        display: none;
+    }
 }
 
 // End of Full Calendar Styling

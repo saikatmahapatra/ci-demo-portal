@@ -202,34 +202,6 @@
 </div> <!--/.card-->
 <?php } ?>
 <div class="row">
-    <div class="col-lg-4 mb-3">
-        <div class="card news-card ci-card">
-            <div class="card-body">
-                <h5 class="card-title">Notice Board</h5>
-                <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>
-                <ul class="list-group list-group-flush">
-                <?php foreach($data_rows as $key=>$row) { ?>
-                    <li class="list-group-item">
-                        <div class="subject-title"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></a></div>
-                        <div class="text-muted small">
-                            <?php //echo $content_type[$row['content_type']]['text']; ?>
-                            <?php echo isset($row['user_firstname']) ? 'By <a href="'.base_url('user/profile/'.$row['content_created_by']).'" target="_blank">'.$row['user_firstname'] : '';?>
-                            <?php echo isset($row['user_lastname']) ? $row['user_lastname']."</a> on " : '';?>
-                            <?php echo $this->common_lib->display_date($row['content_created_on'],true,null,'d-M-Y h:i:s a'); ?>
-                        </div>
-                        <div class="mb-0 lh-125" style="max-height: 120px; overflow: hidden;">
-                            <?php echo isset($row['content_text']) ? ($this->common_lib->remove_empty_p($row['content_text'])) : '';?>
-                        </div>
-                    </li>
-                <?php }  ?>
-                </ul>
-                <?php } ?>
-                <div class="text-center mt-3">
-                <?php echo $pagination_link;?>
-                </div>
-            </div>
-        </div><!--/.card-->
-    </div>
     <div class="col-lg-8 mb-3">
         <div class="card ci-card">
             <div class="card-body">
@@ -264,5 +236,33 @@
             </div>
             </div>
         </div>
+    </div>
+    <div class="col-lg-4 mb-3">
+        <div class="card news-card ci-card">
+            <div class="card-body">
+                <h5 class="card-title">Notice Board</h5>
+                <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>
+                <ul class="list-group list-group-flush">
+                <?php foreach($data_rows as $key=>$row) { ?>
+                    <li class="list-group-item">
+                        <div class="subject-title"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></a></div>
+                        <div class="text-muted small">
+                            <?php //echo $content_type[$row['content_type']]['text']; ?>
+                            <?php echo isset($row['user_firstname']) ? 'By <a href="'.base_url('user/profile/'.$row['content_created_by']).'" target="_blank">'.$row['user_firstname'] : '';?>
+                            <?php echo isset($row['user_lastname']) ? $row['user_lastname']."</a> on " : '';?>
+                            <?php echo $this->common_lib->display_date($row['content_created_on'],true,null,'d-M-Y h:i:s a'); ?>
+                        </div>
+                        <div class="mb-0 lh-125" style="max-height: 120px; overflow: hidden;">
+                            <?php echo isset($row['content_text']) ? ($this->common_lib->remove_empty_p($row['content_text'])) : '';?>
+                        </div>
+                    </li>
+                <?php }  ?>
+                </ul>
+                <?php } ?>
+                <div class="text-center mt-3">
+                <?php echo $pagination_link;?>
+                </div>
+            </div>
+        </div><!--/.card-->
     </div>
 </div>

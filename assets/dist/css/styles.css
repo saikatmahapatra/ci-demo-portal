@@ -9324,12 +9324,31 @@ label.optional::after {
   }
 }
 
+#ci_full_calendar {
+  /* New CSS */
+}
+
 #ci_full_calendar .fc-header-toolbar h2 {
   font-size: 1.25rem;
 }
 
 #ci_full_calendar .fc-title {
   font-size: 13px;
+}
+
+#ci_full_calendar .fc-month-view .fc-row .fc-day {
+  /* Aligns the event dots at the bottom of the cell. */
+  vertical-align: bottom;
+}
+
+#ci_full_calendar .fc-month-view .fc-day .fc-event-dot {
+  cursor: default;
+  /* Gives some spacing between the dots in a cell. */
+  margin-right: 2px;
+}
+
+#ci_full_calendar .fc-month-view .hidden {
+  display: none;
 }
 
 .bg-transparent {
