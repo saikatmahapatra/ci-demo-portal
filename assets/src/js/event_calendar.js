@@ -31,15 +31,15 @@ function loadEventCalendarData() {
         themeSystem: 'standard', // bootstrap
         height: 'auto',
         header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+            left: 'title',
+            center: '',
+            right: 'prev,today,dayGridMonth,listMonth,next'
         },
         timeZone: 'local',
         defaultDate: new Date(),
         editable: true,
         navLinks: true, // can click day/week names to navigate views
-        eventLimit: false, // allow "more" link when too many events
+        eventLimit: true, // allow "more" link when too many events
         events: {
             url: SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/get_events',
             failure: function() {
@@ -49,11 +49,9 @@ function loadEventCalendarData() {
         eventClick: function(info) {
             info.jsEvent.preventDefault();
             console.log(info);
-            //info.el.style.borderColor = 'red'; // change the border color just for fun
-
             var modal_header_html = '';
             modal_header_html += info.event.start + ' - ' + info.event.end + '<br>';
-            modal_header_html += '<span class="small ' + info.event.extendedProps.event_type_css + '">' + info.event.extendedProps.event_type + '</span>'
+            modal_header_html += '<span class="small ' + info.event.extendedProps.event_type_css + '">' + info.event.extendedProps.event_type + '</span>';
 
             $('#fcEventDetailsModal #fcEventDetailsModalLabel').empty().html(modal_header_html);
             $('#fcEventDetailsModal #fcEventDetailsModalBody').empty().html(info.event.title);
@@ -64,44 +62,12 @@ function loadEventCalendarData() {
             console.log(info);
             info.jsEvent.preventDefault();
         },
-        // eventRender: function(info) {
-        //     console.log(info);
-        //     // if ('month' !== info.view.name) {
-        //     //     return;
-        //     // }
-        //     var a = moment(info.event.start).format('YYYY-MM-DD');
-        //     if (info.event.end) {
-        //         var b = moment(info.event.end).format('YYYY-MM-DD');
-        //     } else {
-        //         var b = a;
-        //     }
-        //     var duration = moment.duration(moment(b).diff(moment(a)));
-        //     var row = info.el.closest('tr');
-        //     var d = moment(a).clone();
-        //     var i;
-        //     var c;
-
-        //     var title = info.event.title;
-        //     if (moment(b).isValid()) {
-        //         title += ' (' + $.fullCalendar.formatRange(a, b, 'MMM D YYYY') + ')';
-        //     }
-        //     // Add the event's "dot", styled with the appropriate background color.
-        //     for (i = 0; i <= duration._data.days; i++) {
-        //         if (0 === 1) {
-        //             c = a;
-        //         } else {
-        //             d.add(1, 'days');
-        //             c = d;
-        //         }
-        //         row.find('.fc-day[data-date="' + c.format('YYYY-MM-DD') + '"]')
-        //             .append(
-        //                 '<a href="#" class="fc-event-dot" onclick="return false;" ' +
-        //                 'style="background-color: ' + event.backgroundColor + ';" ' +
-        //                 'title="' + title + '"></a>'
-        //             );
-        //     }
-        //     info.el.remove();
-        // }
+        eventRender: function(info) {
+            // if (info.event.extendedProps.icon) {
+            //     $(info.el).find(".fc-title").html(info.event.extendedProps.icon);
+            // }
+            //$(info.el).find(".fc-title").html('<span class="fc-event-dot" style="background-color: #5c81a9;"></span>');
+        }
     });
 
     calendar.render();
