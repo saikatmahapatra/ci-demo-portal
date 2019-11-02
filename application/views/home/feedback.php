@@ -73,7 +73,7 @@
 		echo form_submit(array(
 			'name' => 'submit',
 			'value' => 'Submit',
-			'class' => 'btn btn-primary',
+			'class' => 'btn ci-btn-primary btn-primary',
 		));
 		?>
 	<?php echo form_close(); ?>

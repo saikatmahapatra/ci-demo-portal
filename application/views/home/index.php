@@ -213,7 +213,7 @@
                 <div id="ci_full_calendar"></div>
             </div>
             <!-- Button trigger modal -->
-            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fcEventDetailsModal">
+            <!-- <button type="button" class="btn ci-btn-primary btn-primary" data-toggle="modal" data-target="#fcEventDetailsModal">
             Launch demo modal
             </button> -->
 
@@ -230,7 +230,7 @@
                 <div class="modal-body" id="fcEventDetailsModalBody">Loading...</div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">More Details</button>
+                    <button type="button" class="btn ci-btn-primary btn-primary">More Details</button>
                 </div>
                 </div>
             </div>

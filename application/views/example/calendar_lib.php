@@ -27,7 +27,7 @@
 			<div id="display_selected_date">no date selected</div>
 			<?php echo form_error('selected_date'); ?>
 		</div>			
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button type="submit" class="btn ci-btn-primary btn-primary">Submit</button>
 		<?php echo form_close(); ?>
 	</div>
 </div>

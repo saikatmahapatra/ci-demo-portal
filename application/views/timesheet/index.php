@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn ci-btn-primary btn-primary">Submit</button>
                             </div>
                             <!--/.col-lg-9-->
                         </div>

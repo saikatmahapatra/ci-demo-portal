@@ -72,7 +72,7 @@
                 </div>
 
                 <button type="submit" <?php echo ($system_msg_error_counter >0 ) ? 'disabled="disabled"' : '';  ?>
-                    class="btn btn-primary">Submit</button>
+                    class="btn ci-btn-primary btn-primary">Submit</button>
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>"
                     class="btn btn-link">Leave History</a>
                 <?php echo form_close(); ?>

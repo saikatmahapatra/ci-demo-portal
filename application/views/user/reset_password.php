@@ -31,7 +31,7 @@
 		<?php echo form_password(array( 'name' => 'confirm_user_new_password', 'value' => set_value('confirm_user_new_password'), 'id' => 'confirm_user_new_password', 'placeholder' => '', 'class' => 'form-control', 'maxlength' => '20', )); ?>
 		<?php echo form_error('confirm_user_new_password'); ?>
 	</div>
-	<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-lg btn-primary btn-block'));?>	
+	<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-lg ci-btn-primary btn-primary btn-block'));?>	
 	<?php form_close(); ?>
 	
 

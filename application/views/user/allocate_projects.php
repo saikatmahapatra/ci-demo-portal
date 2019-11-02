@@ -10,9 +10,9 @@
             <?php echo form_dropdown('project_id[]', $arr_projects, set_value('project_id'), array( 'class' => 'form-control ci-js-select-2', 'multiple' => 'multiple' )); ?>
             <?php echo form_error('project_id'); ?>
         </div>
-        <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
+        <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
         <a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>"
-            class="btn btn-light btn-cancel">Cancel</a>
+            class="btn btn-light ci-btn-cancel">Cancel</a>
         <?php echo form_close(); ?>
     </div>
 </div>
