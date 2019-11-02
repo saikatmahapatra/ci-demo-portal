@@ -9095,6 +9095,18 @@ label.optional::after {
   border: 1px solid #ced4da;
 }
 
+.ci-btn-primary::before {
+  font-family: FontAwesome;
+  content: "\f058";
+  vertical-align: middle;
+  margin-right: 5px;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
 .select2-selection {
   height: calc(2.0625rem + 2px) !important;
 }
