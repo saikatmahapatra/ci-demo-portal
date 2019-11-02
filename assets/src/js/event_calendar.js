@@ -64,51 +64,44 @@ function loadEventCalendarData() {
             console.log(info);
             info.jsEvent.preventDefault();
         },
-        eventRender: function(info) {
-            console.log(info);
-            // if ('month' !== info.view.name) {
-            //     return;
-            // }
-            var a = moment(info.event.start).format('YYYY-MM-DD');
-            if (info.event.end) {
-                var b = moment(info.event.end).format('YYYY-MM-DD');
-            } else {
-                var b = moment().format('YYYY-MM-DD');
-            }
-            var duration = moment.duration(moment(b).diff(moment(a)));
-            var row = info.el.closest('tr');
-            var d = moment(a).clone();
-            var i;
-            var c;
+        // eventRender: function(info) {
+        //     console.log(info);
+        //     // if ('month' !== info.view.name) {
+        //     //     return;
+        //     // }
+        //     var a = moment(info.event.start).format('YYYY-MM-DD');
+        //     if (info.event.end) {
+        //         var b = moment(info.event.end).format('YYYY-MM-DD');
+        //     } else {
+        //         var b = a;
+        //     }
+        //     var duration = moment.duration(moment(b).diff(moment(a)));
+        //     var row = info.el.closest('tr');
+        //     var d = moment(a).clone();
+        //     var i;
+        //     var c;
 
-            var title = info.event.title;
-            if (moment(b).isValid()) {
-                //title += ' (' + $.fullCalendar.formatRange(a, b, 'MMM D YYYY') + ')';
-                title += ' (end date)';
-            }
-
-            // Add the event's "dot", styled with the appropriate background color.
-            for (i = 0; i <= duration._data.days; i++) {
-                if (0 === 1) {
-                    c = a;
-                } else {
-                    d.add(1, 'days');
-                    c = d;
-                }
-
-                // row.find('.fc-day[data-date="' + c.format('YYYY-MM-DD') + '"]')
-                //     .append(
-                //         '<a href="#" class="fc-event-dot" onclick="return false;" ' +
-                //         'style="background-color: ' + event.backgroundColor + ';" ' +
-                //         'title="' + title + '"></a>'
-                //     );
-            }
-
-            // Here you can either completely remove the default element, or just
-            // hide it visually on screen.
-            info.el.remove();
-            //info.el.element.addClass( 'hidden' );
-        }
+        //     var title = info.event.title;
+        //     if (moment(b).isValid()) {
+        //         title += ' (' + $.fullCalendar.formatRange(a, b, 'MMM D YYYY') + ')';
+        //     }
+        //     // Add the event's "dot", styled with the appropriate background color.
+        //     for (i = 0; i <= duration._data.days; i++) {
+        //         if (0 === 1) {
+        //             c = a;
+        //         } else {
+        //             d.add(1, 'days');
+        //             c = d;
+        //         }
+        //         row.find('.fc-day[data-date="' + c.format('YYYY-MM-DD') + '"]')
+        //             .append(
+        //                 '<a href="#" class="fc-event-dot" onclick="return false;" ' +
+        //                 'style="background-color: ' + event.backgroundColor + ';" ' +
+        //                 'title="' + title + '"></a>'
+        //             );
+        //     }
+        //     info.el.remove();
+        // }
     });
 
     calendar.render();
