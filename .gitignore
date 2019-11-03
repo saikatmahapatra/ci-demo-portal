@@ -6,4 +6,3 @@ ci_sessions/
 bower_components/
 package-lock.json
 _docs/
-assets/dist/
