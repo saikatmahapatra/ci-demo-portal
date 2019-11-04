@@ -57,7 +57,9 @@
     "gulp-watch": "^5.0.1",
     "less": "^2.7.2",
     "select2": "^4.0.6-rc.1",
-    "select2-bootstrap-theme": "0.1.0-beta.10"
+    "select2-bootstrap-theme": "0.1.0-beta.10",
+    "webpack": "^4.41.2",
+    "webpack-stream": "^5.2.1"
   },
   "repository": {
     "type": "git",

@@ -18,6 +18,13 @@ const gulpif = require("gulp-if");
 const sourcemaps = require("gulp-sourcemaps");
 const util = require("gulp-util");
 const uglify = require("gulp-uglify");
+const webpack = require("webpack");
+const webpackstream = require("webpack-stream");
+
+const path = {
+    'sass_src' : './assets/src/sass',
+    'sass_dest' : './_site/assets/css/'
+};
 
 // BrowserSync
 function browserSync(done) {
@@ -66,14 +73,11 @@ function images() {
 
 // CSS task
 function css() {
-  return gulp
-    .src("./assets/src/sass/**/*.scss")
-    .pipe(plumber())
-    .pipe(sass({ outputStyle: "expanded" }))
-    .pipe(gulp.dest("./_site/assets/css/"))
-    .pipe(rename({ suffix: ".min" }))
-    .pipe(postcss([autoprefixer(), cssnano()]))
-    .pipe(gulp.dest("./_site/assets/css/"));
+  return gulp.src('./assets/src/sass/**/*.scss')
+  .pipe(sourcemaps.init())
+  .pipe(sass.sync({outputStyle: 'expanded'}).on('error', sass.logError))
+  .pipe(sourcemaps.write('.'))
+  .pipe(gulp.dest('./_site/assets/css/'));
 }
 
 // Lint scripts
