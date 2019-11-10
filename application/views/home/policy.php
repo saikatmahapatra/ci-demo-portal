@@ -8,7 +8,7 @@
                 <?php if(isset($data_rows) && sizeof($data_rows> 0)){ ?>
             <div class="accordion" id="accordion">
                 <?php foreach($data_rows as $key=>$row) { ?>
-                    <div class="card" style="border: none;">
+                    <div class="card my-2" style="border: none;">
                         <div class="card-header border collapsed"  data-toggle="collapse" data-target="#collapse_<?php echo isset($row['id']) ? $row['id'] : '';?>" aria-expanded="false" aria-controls="collapse_<?php echo isset($row['id']) ? $row['id'] : '';?>" id="heading_<?php echo isset($row['id']) ? $row['id'] : '';?>"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></div>
 
                         <div id="collapse_<?php echo isset($row['id']) ? $row['id'] : '';?>" class="collapse" aria-labelledby="heading_<?php echo isset($row['id']) ? $row['id'] : '';?>" data-parent="#accordion">
@@ -19,7 +19,7 @@
                                 <?php echo $this->common_lib->display_date($row['content_created_on'],true,null,'d-M-Y h:i:s a'); ?>
                             </div>
                                 <div>
-                                    <?php echo isset($row['content_text']) ? $row['content_text'] : '';?>
+                                    <?php echo isset($row['content_text']) ? trim($row['content_text']) : '';?>
                                 </div>
                             </div>
                         </div>
