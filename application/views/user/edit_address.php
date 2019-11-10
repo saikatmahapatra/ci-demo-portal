@@ -31,7 +31,7 @@
 					}*/
 					?>
                         <?php //echo form_error('address_type'); ?>
-                        <h6>Edit <?php echo $address_type[$row['address_type']];?></h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Edit <?php echo $address_type[$row['address_type']];?></h6>
                     </div>
                 </div>
 
