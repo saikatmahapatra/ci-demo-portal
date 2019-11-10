@@ -5,7 +5,7 @@
 	<div class="container">
 		<h1 class="display-3">Hello, world!</h1>
 		<p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-		<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
+		<p><a class="btn ci-btn-primary btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
 	</div><!--/.container-->
 </div><!--/.jumbotron-->
 
@@ -56,7 +56,7 @@
 	</div><!--/.row-->
 	<p>Primary color is the main color of the application which is used for navbar, active links and primary button.</p>		
 	<h2 class="h3 mb-3 font-weight-normal">Button</h2>       
-	<button type="button" class="btn btn-primary">.btn-primary</button>
+	<button type="button" class="btn ci-btn-primary btn-primary">.ci-btn-primary btn-primary</button>
 	<button type="button" class="btn btn-secondary">.btn-secondary</button>
 	<button type="button" class="btn btn-success">.btn-success</button>
 	<button type="button" class="btn btn-danger">.btn-danger</button>
@@ -88,7 +88,7 @@
 
 
 	<h2 class="h3 mb-3 font-weight-normal">Tooltip</h2>
-	<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+	<button type="button" class="btn ci-btn-primary btn-primary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
 	Tooltip on top
 	</button>
 	<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
@@ -114,7 +114,7 @@
 					<div class="card-news-time-auther">
 						<span class="text-muted small">Administrator, 20/09/2018 10.34am</span>
 					</div>
-					<div class="card-news-body">All the three Xiaomi phones come with face unlock support and run MIUI 9.6 on top of Android Oreo, but Xiaomi promises to upgrade all the Redmi 6 series phones to MIUI 10 very soon <a class="btn btn-sm btn-primary" href="#">View details</a></div>						
+					<div class="card-news-body">All the three Xiaomi phones come with face unlock support and run MIUI 9.6 on top of Android Oreo, but Xiaomi promises to upgrade all the Redmi 6 series phones to MIUI 10 very soon <a class="btn btn-sm ci-btn-primary btn-primary" href="#">View details</a></div>						
 			</div><!--/.card-news-->				
 		</div>
 		
@@ -124,7 +124,7 @@
 					<div class="card-news-time-auther">
 						<span class="text-muted small">Administrator, 20/09/2018 10.34am</span>
 					</div>
-					<div class="card-news-body">All the three Xiaomi phones come with face unlock support and run MIUI 9.6 on top of Android Oreo, but Xiaomi promises to upgrade all the Redmi 6 series phones to MIUI 10 very soon <a class="btn btn-sm btn-primary" href="#">View details</a></div>						
+					<div class="card-news-body">All the three Xiaomi phones come with face unlock support and run MIUI 9.6 on top of Android Oreo, but Xiaomi promises to upgrade all the Redmi 6 series phones to MIUI 10 very soon <a class="btn btn-sm ci-btn-primary btn-primary" href="#">View details</a></div>						
 			</div><!--/.card-news-->				
 		</div>
 		
@@ -152,7 +152,7 @@
 					<a href="#" class="btn btn-light">.btn-light</a>
 				</div>
 				<div class="card-footer">
-					<button class="btn btn-primary btn-sm">.btn-primary</button>
+					<button class="btn ci-btn-primary btn-primary btn-sm">.ci-btn-primary btn-primary</button>
 					<button class="btn btn-secondary btn-sm">.btn-secondary</button>
 				</div>
 			</div>
@@ -168,7 +168,7 @@
 						<input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
 						</div>
 					</div>						
-					<button class="btn btn-primary">Submit</button>
+					<button class="btn ci-btn-primary btn-primary">Submit</button>
 					<button class="btn btn-secondary">Cancel</button>
 				</div><!--./card-body-->
 			</div><!--./card-->
@@ -371,7 +371,7 @@
 		</div><!--/.form-row-->
 		
 		
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button type="submit" class="btn ci-btn-primary btn-primary">Submit</button>
 		<button class="btn btn-secondary">Cancel</button>
 	</form><!--/form-->
 
@@ -379,7 +379,7 @@
 
 	<h2 class="h3 mb-3 font-weight-normal">Modal</h2>
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Launch demo modal</button>
+	<button type="button" class="btn ci-btn-primary btn-primary" data-toggle="modal" data-target="#exampleModal">Launch demo modal</button>
 
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -396,7 +396,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
+					<button type="button" class="btn ci-btn-primary btn-primary">Save changes</button>
 				</div>
 			</div>
 		</div>

@@ -4,9 +4,8 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ci-card">
-            <div class="card-header h6">Timesheet Report</div>
-            <!--/.card-header-->
             <div class="card-body">
+            <h5 class="card-title">Timesheet Report</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
 
                 <?php echo form_open(current_url(), array( 'method' => 'get','class'=>'ci-form form-inline','name' => '','id' => 'timesheet-search-form')); ?>
@@ -39,7 +38,7 @@
                     <?php echo form_input(array('name' => 'to_date','value' => (isset($_REQUEST['to_date']) ? $_REQUEST['to_date'] : $last_day_this_month),'class' => 'form-control report-datepicker','id' => 'to_date','placeholder' => 'To Date','readonly'=>true));?>
                     <?php echo form_error('to_date'); ?>
                 </div>
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Search','class' => 'btn btn-primary mb-2 mr-2'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Search','class' => 'btn ci-btn-primary btn-primary mb-2 mr-2'));?>
                 <?php echo form_button(array('name' => 'reset_btn','type' => 'reset','content' => 'Reset','class' => 'btn btn-secondary mb-2','id'=>'reset_timesheet_form'));?>
                 <?php echo form_close(); ?>
 
@@ -118,12 +117,8 @@
                 </div>
             </div>
             <!--/.card-body-->
-            <div class="card-footer d-none">
-            </div>
-            <!--/.card-footer-->
         </div>
         <!--/.card ci-card-->
-
     </div>
     <!--/.col-->
 </div>

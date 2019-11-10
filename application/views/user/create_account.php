@@ -2,12 +2,10 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-lg-6">
+		
 		<div class="card ci-card">
-			<div class="card-header h6">
-				Add New Employee
-			</div><!--/.card-header-->
-
 			<div class="card-body">
+			<h5 class="card-title">Create Account</h5>
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>
 				<?php echo form_hidden('form_action', 'create_account'); ?>        
@@ -106,13 +104,11 @@
 					
 				<?php echo form_hidden('user_role', 3); ?>
 
-				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="btn btn-light btn-cancel">Cancel</a>
+				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="btn btn-light ci-btn-cancel">Cancel</a>
 				<?php echo form_close(); ?>
 			
 			</div><!--./card-body-->
-			<!--<div class="card-footer"></div>--><!--/.card-footer-->
 		</div><!--/.card-->
-		
 	</div><!--/.col-->
 </div><!--/.row-->

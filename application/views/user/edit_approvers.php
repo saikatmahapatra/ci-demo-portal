@@ -7,9 +7,8 @@ $approver = sizeof($approvers)>0 ? $approvers[0] : null;
 <div class="row">
 	<div class="col-lg-6">
 		<div class="card ci-card">
-			<div class="card-header h6">Leave Process Approvers</div><!--/.card-header-->
-
 			<div class="card-body">
+            <h5 class="card-title">Leave Approvers</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form',
                     'name' => 'approvers',
@@ -39,13 +38,11 @@ $approver = sizeof($approvers)>0 ? $approvers[0] : null;
                             <?php echo form_dropdown('user_finance_approver_id', $user_arr, isset($approver['user_finance_approver_id']) ? $approver['user_finance_approver_id'] : set_value('user_supervisor_id') ,array('class' => 'form-control select2-control', 'id'=>'user_finance_approver_id')); ?> 
                             <?php echo form_error('user_finance_approver_id'); ?>
                         </div>
-                    <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
-                    <a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="btn btn-light btn-cancel">Cancel</a>
+                    <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
+                    <a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="btn btn-light ci-btn-cancel">Cancel</a>
                 <?php echo form_close(); ?>
 			
 			</div><!--./card-body-->
-			<!--<div class="card-footer"></div>--><!--/.card-footer-->
 		</div><!--/.card-->
-		
 	</div><!--/.col-->
 </div><!--/.row-->

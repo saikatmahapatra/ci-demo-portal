@@ -3,10 +3,8 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="card ci-card">
-            <div class="card-header h6">Add Work Experience</div>
-            <!--/.card-header-->
-
             <div class="card-body">
+            <h5 class="card-title">Add Work Experience</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form', 'name' => 'address_add','id' => 'address_add')); ?>
                 <?php echo form_hidden('form_action', 'add'); ?>
@@ -44,17 +42,14 @@
                     </div>
                 </div>
 
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>"
-                    class="btn btn-light btn-cancel">Cancel</a>
+                    class="btn btn-light ci-btn-cancel">Cancel</a>
                 <?php echo form_close(); ?>
             </div>
             <!--./card-body-->
-            <!--<div class="card-footer"></div>-->
-            <!--/.card-footer-->
         </div>
         <!--/.card-->
-
     </div>
     <!--/.col-->
 </div>
@@ -77,7 +72,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="btnaddCompany" class="btn btn-primary">Save changes</button>
+                <button type="button" id="btnaddCompany" class="btn ci-btn-primary btn-primary">Save changes</button>
 
             </div>
         </div>
@@ -102,7 +97,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="btnaddDesignation" class="btn btn-primary">Save changes</button>
+                <button type="button" id="btnaddDesignation" class="btn ci-btn-primary btn-primary">Save changes</button>
 
             </div>
         </div>

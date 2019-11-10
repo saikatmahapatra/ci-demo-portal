@@ -75,7 +75,8 @@
     <!-- <script src="//cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script> -->
     <script src="<?php echo base_url('assets/vendors/ckeditor/ckeditor.js'); ?>"></script>
     
-	<!--Full Calendar-->
+    <!--Full Calendar-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/core/main.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/interaction/main.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/bootstrap/main.js');?>"></script>

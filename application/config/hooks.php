@@ -18,3 +18,10 @@ $hook['pre_controller'][] = array(
     'filename' => 'ExceptionHook.php',
     'filepath' => 'hooks'
 );
+
+$hook['pre_system'][] = array(
+  'class'     => 'maintenance_hook',
+  'function' => 'offline_check',
+  'filename' => 'maintenance_hook.php',
+  'filepath' => 'hooks'
+);

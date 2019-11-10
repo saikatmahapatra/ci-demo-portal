@@ -3,11 +3,8 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card ci-card">
-			<div class="card-header h6">
-				Search Employees
-			</div><!--/.card-header-->
-
 			<div class="card-body">
+			<h5 class="card-title">Search Employees</h5>
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'my-3','name' => '','id' => 'search-user-form',)); ?>
 					<?php echo form_hidden('form_action', 'search'); ?>
@@ -89,11 +86,7 @@
 				}
 				?>
 				<div class="col-lg-12"><?php echo $pagination_link;?></div>
-				
-			
 			</div><!--./card-body-->
-			<!--<div class="card-footer"></div>--><!--/.card-footer-->
 		</div><!--/.card-->
-		
 	</div><!--/.col-->
 </div><!--/.row-->

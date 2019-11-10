@@ -14,7 +14,7 @@
                 <div class="form-text ci-form-help-text text-muted">Only .xls, .xlxs formats are supported. Imporatable file should have specific format. Please follow the format while importing records.</div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn ci-btn-primary btn-primary">Submit</button>
         <?php echo form_close(); ?>
 
 

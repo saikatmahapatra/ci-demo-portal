@@ -3,9 +3,8 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card ci-card">
-			<div class="card-header h6">Employees</div><!--/.card-header-->
-
 			<div class="card-body">
+			<h5 class="card-title">Manage Employees</h5>
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<div class="ci-link-group">
 					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="btn btn-sm btn-outline-success mr-2" data-toggle="tooltip" title="Create new user account"> <i class="fa fa-fw fa-plus"></i> Add New</a>
@@ -34,8 +33,6 @@
 					</table>
 				</div><!--/.table-responsive-->
 			</div><!--./card-body-->
-			<!--<div class="card-footer"></div>--><!--/.card-footer-->
 		</div><!--/.card-->
-		
 	</div><!--/.col-->
 </div><!--/.row-->

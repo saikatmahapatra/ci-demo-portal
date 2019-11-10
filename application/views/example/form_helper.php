@@ -112,7 +112,7 @@
                 <?php echo form_error('terms'); ?>
             </div>
         </div>
-        <?php echo form_submit(array('name' => 'submit', 'value' => 'Submit', 'id' => 'btn_submit', 'class' => 'btn btn-primary')); ?>
+        <?php echo form_submit(array('name' => 'submit', 'value' => 'Submit', 'id' => 'btn_submit', 'class' => 'btn ci-btn-primary btn-primary')); ?>
         <?php echo form_close(); ?>
     </div>
 </div>
@@ -132,7 +132,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn ci-btn-primary btn-primary">Save changes</button>
             </div>
         </div>
     </div>

@@ -8435,11 +8435,12 @@ a.text-dark:hover, a.text-dark:focus {
 
 body {
   margin-top: 4.5rem;
-  margin-bottom: 1rem;
+  background-color: #ecf0f5;
 }
 
 body.login {
   margin-top: 0rem;
+  background-color: #ecf0f5;
 }
 
 .logo {
@@ -8931,8 +8932,42 @@ body.login {
   text-decoration: none;
 }
 
-.ci-card .card-header.h6 {
-  font-weight: 400;
+.ci-card {
+  box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+  border-width: 0;
+  transition: all .2s;
+  margin-bottom: 30px;
+}
+
+.ci-card .card-body {
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+
+.ci-card .card-body .card-title {
+  text-transform: uppercase;
+  color: rgba(13, 27, 62, 0.7);
+  font-weight: bold;
+  font-size: 0.88rem;
+}
+
+.ci-card .card-header,
+.ci-card .card-title {
+  text-transform: uppercase;
+  color: rgba(13, 27, 62, 0.7);
+  font-weight: bold;
+  font-size: 0.88rem;
+  background-color: none;
+  border-bottom: none;
+}
+
+.ci-card .card-title {
+  margin-bottom: 0.75rem;
+}
+
+.ci-card .card-footer {
+  background-color: rgba(0, 0, 0, 0);
+  border-top: none;
 }
 
 @media (max-width: 576px) {
@@ -9192,9 +9227,11 @@ label.optional::after {
 }
 
 .bs-mega-menu .dropdown-mega-menu {
-  background-color: #e9ecef;
+  background-color: #fff;
   padding: 20px 20px;
   width: 100%;
+  box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+  transition: all .2s;
 }
 
 .bs-mega-menu .dropdown-mega-menu li > ul {
@@ -9211,23 +9248,36 @@ label.optional::after {
   padding: 8px 20px;
   clear: both;
   font-weight: normal;
-  color: #495057;
+  color: #212529;
   white-space: normal;
 }
 
 .bs-mega-menu .dropdown-mega-menu li > ul > li a:hover, .bs-mega-menu .dropdown-mega-menu li > ul > li a:focus {
   text-decoration: none;
-  color: #000;
-  background-color: #f5f5f5;
+  color: #212529;
+  background-color: #e9ecef;
+}
+
+.bs-mega-menu .dropdown-mega-menu .dropdown-header {
+  font-size: 1.25rem;
+  color: #212529;
 }
 
 .bs-mega-menu .dropdown-mega-menu .dropdown-item:active {
-  background-color: #f5f5f5;
+  background-color: #f8f9fa;
 }
 
 .bs-mega-menu .dropdown-mega-menu .dropdown-item:active a:active {
   background-color: #0062cc;
   color: #fff;
+}
+
+.bs-mega-menu .dropdown-mega-menu .dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.bs-mega-menu .dropdown-mega-menu .dropdown-item:hover .dropdown-header {
+  color: #212529;
 }
 
 .bs-mega-menu .dropdown-mega-menu .divider {
@@ -9255,17 +9305,10 @@ label.optional::after {
   cursor: not-allowed;
 }
 
-.bs-mega-menu .dropdown-mega-menu .dropdown-header {
-  font-size: 1.5rem;
-}
-
 @media (max-width: 768px) {
   .bs-mega-menu .dropdown-mega-menu {
     margin-left: 0;
     margin-right: 0;
-  }
-  .bs-mega-menu .dropdown-mega-menu .dropdown-header {
-    font-size: 1.25rem;
   }
   .bs-mega-menu .dropdown-mega-menu > li {
     margin-bottom: 30px;
@@ -9287,4 +9330,77 @@ label.optional::after {
 
 #ci_full_calendar .fc-title {
   font-size: 13px;
+}
+
+#ci_full_calendar .fc-header-toolbar h2 {
+  font-size: 1rem;
+}
+
+#ci_full_calendar .fc-header-toolbar .fc-button {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+#ci_full_calendar .fc-widget-header {
+  font-size: .875rem;
+}
+
+.bg-transparent {
+  background: transparent !important;
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+@media (max-width: 991.98px) {
+  .ci-card-widget .bg-transparent.list-group-item {
+    border-color: transparent;
+  }
+}
+
+.widget-content {
+  padding: 1rem;
+  flex-direction: row;
+  align-items: center;
+}
+
+.widget-content .widget-content-outer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.widget-content .widget-content-wrapper {
+  display: flex;
+  flex: 1;
+  position: relative;
+  align-items: center;
+}
+
+.widget-content .widget-numbers {
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: block;
+}
+
+@media (max-width: 576px) {
+  .widget-content .widget-numbers {
+    font-size: 1.25rem;
+  }
+}
+
+.widget-content .widget-content-left .widget-heading {
+  opacity: .8;
+  font-weight: bold;
+}
+
+.widget-content .widget-content-left .widget-subheading {
+  opacity: .5;
+}
+
+.widget-content .widget-content-right {
+  margin-left: auto;
 }
