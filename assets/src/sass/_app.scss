@@ -1052,6 +1052,9 @@ label.optional::after {
         font-weight: bold;
         font-size: 1.5rem;
         display: block;
+        @media (max-width: 576px) {
+            font-size: 1.25rem;
+        }
     }
     .widget-content-left {
         .widget-heading {

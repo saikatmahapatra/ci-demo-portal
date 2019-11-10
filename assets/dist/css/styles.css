@@ -9386,6 +9386,12 @@ label.optional::after {
   display: block;
 }
 
+@media (max-width: 576px) {
+  .widget-content .widget-numbers {
+    font-size: 1.25rem;
+  }
+}
+
 .widget-content .widget-content-left .widget-heading {
   opacity: .8;
   font-weight: bold;
