@@ -35,7 +35,7 @@
             <?php echo form_input(array( 'name' => 'captcha', 'value' => set_value('captcha'), 'id' => 'captcha', 'class' => 'form-control', 'placeholder' => 'Enter the displayed characters', 'title' => '', 'minlength' => '', 'maxlength' => '15', )); ?>
             <?php echo form_error('captcha'); ?>
         </div>
-        <?php echo form_submit(array( 'name' => 'submit', 'value' => 'Submit', 'class' => 'btn btn-primary', )); ?>
+        <?php echo form_submit(array( 'name' => 'submit', 'value' => 'Submit', 'class' => 'btn ci-btn-primary btn-primary', )); ?>
         <?php echo form_close(); ?>
     </div>
 </div>

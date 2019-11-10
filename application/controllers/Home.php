@@ -33,7 +33,8 @@ class Home extends CI_Controller {
 
         // Load required js files for this controller
         $javascript_files = array(
-            'calendar'
+            'home',
+            'event_calendar'
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
 

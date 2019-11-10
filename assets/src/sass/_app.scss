@@ -1,10 +1,15 @@
 body {
     margin-top: 4.5rem;
-    margin-bottom: 1rem;
+    background-color: #ecf0f5;
 }
 
 body.login {
     margin-top: 0rem;
+    background-color: #ecf0f5;
+}
+
+main {
+    //background-color: #ecf0f5;
 }
 
 @mixin linear-gradient($from, $to) {
@@ -517,18 +522,38 @@ body.login {
 //     @include bg-variant(".bg-light-#{$color}", lighten($value, 30%));
 // }
 // CI card
+// Componant: Card
 .ci-card {
-    .card-header.h6 {
-        font-weight: 400;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+    border-width: 0;
+    transition: all .2s;
+    margin-bottom: 30px;
+    .card-body {
+        flex: 1 1 auto;
+        padding: 1.25rem;
+        .card-title {
+            text-transform: uppercase;
+            color: rgba(13, 27, 62, 0.7);
+            font-weight: bold;
+            font-size: 0.88rem;
+        }
     }
-    //border: none;
-    // .card-header {
-    //     background-color: inherit;
-    //     padding: 0.75rem 0rem;
-    // }
-    // .card-body {
-    //     padding: 1.25rem 0rem;
-    // }
+    .card-header,
+    .card-title {
+        text-transform: uppercase;
+        color: rgba(13, 27, 62, 0.7);
+        font-weight: bold;
+        font-size: 0.88rem;
+        background-color: none;
+        border-bottom: none;
+    }
+    .card-title {
+        margin-bottom: 0.75rem;
+    }
+    .card-footer {
+        background-color: rgba(0, 0, 0, 0);
+        border-top: none;
+    }
 }
 
 //Navbar
@@ -676,6 +701,20 @@ label.optional::after {
     }
 }
 
+// Primary , Secondary CTA
+// .ci-btn-primary {
+//     &::before {
+//         font-family: FontAwesome;
+//         content: "\f058";
+//         vertical-align: middle;
+//         margin-right: 5px;
+//         display: inline-block;
+//         font-style: normal;
+//         font-variant: normal;
+//         text-rendering: auto;
+//         -webkit-font-smoothing: antialiased;
+//     }
+// }
 // Select2 Style
 .select2-selection {
     height: calc(2.0625rem + 2px) !important;
@@ -804,9 +843,20 @@ label.optional::after {
 .bs-mega-menu {
     position: static !important;
     .dropdown-mega-menu {
-        background-color: $gray-200;
+        @if $mega_menu_theme==dark {
+            background-color: $bs_mega_menu_dark_background_color;
+        }
+        @if $mega_menu_theme==light {
+            background-color: $bs_mega_menu_light_background_color;
+        }
         padding: 20px 20px;
         width: 100%;
+        box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03),
+        0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03),
+        0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05),
+        0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+        //border-width: 0;
+        transition: all .2s;
         li>ul {
             padding: 0;
             margin: 0;
@@ -818,23 +868,74 @@ label.optional::after {
                 padding: 8px 20px;
                 clear: both;
                 font-weight: normal;
-                color: $gray-700;
+                @if $mega_menu_theme==dark {
+                    color: $bs_mega_menu_dark_nav_link_color;
+                }
+                @if $mega_menu_theme==light {
+                    color: $bs_mega_menu_light_nav_link_color;
+                }
                 white-space: normal;
                 &:hover,
                 &:focus {
                     text-decoration: none;
-                    color: $black;
-                    background-color: #f5f5f5;
+                    @if $mega_menu_theme==dark {
+                        color: $bs_mega_menu_dark_nav_link_hover_color;
+                    }
+                    @if $mega_menu_theme==light {
+                        color: $bs_mega_menu_light_nav_link_hover_color;
+                    }
+                    @if $mega_menu_theme==dark {
+                        background-color: $bs_mega_menu_dark_nav_link_hover_bg_color;
+                    }
+                    @if $mega_menu_theme==light {
+                        background-color: $bs_mega_menu_light_nav_link_hover_bg_color;
+                    }
                 }
+            }
+        }
+        .dropdown-header {
+            font-size: 1.25rem;
+            @if $mega_menu_theme==dark {
+                color: $bs_mega_menu_dark_dropdown_header_color;
+            }
+            @if $mega_menu_theme==light {
+                color: $bs_mega_menu_light_dropdown_header_color;
             }
         }
         .dropdown-item {
             &:active {
-                background-color: #f5f5f5;
+                @if $mega_menu_theme==dark {
+                    background-color: $bs_mega_menu_dark_dropdown_item_box_hover_bg_color;
+                }
+                @if $mega_menu_theme==light {
+                    background-color: $bs_mega_menu_light_dropdown_item_box_hover_bg_color;
+                }
                 a {
                     &:active {
-                        background-color: $primary-color;
-                        color: $white;
+                        @if $mega_menu_theme==dark {
+                            background-color: $bs_mega_menu_dark_nav_link_active_bg_color;
+                            color: $bs_mega_menu_dark_nav_link_active_color;
+                        }
+                        @if $mega_menu_theme==light {
+                            background-color: $bs_mega_menu_light_nav_link_active_bg_color;
+                            color: $bs_mega_menu_light_nav_link_active_color;
+                        }
+                    }
+                }
+            }
+            &:hover {
+                @if $mega_menu_theme==dark {
+                    background-color: $bs_mega_menu_dark_dropdown_item_box_hover_bg_color;
+                }
+                @if $mega_menu_theme==light {
+                    background-color: $bs_mega_menu_light_dropdown_item_box_hover_bg_color;
+                }
+                .dropdown-header {
+                    @if $mega_menu_theme==dark {
+                        color: $bs_mega_menu_dark_dropdown_header_hover_color;
+                    }
+                    @if $mega_menu_theme==light {
+                        color: $bs_mega_menu_light_dropdown_header_hover_color;
                     }
                 }
             }
@@ -860,17 +961,11 @@ label.optional::after {
                 cursor: not-allowed;
             }
         }
-        .dropdown-header {
-            font-size: 1.5rem;
-        }
     } //dropdown-mega-menu
     @media (max-width: 768px) {
         .dropdown-mega-menu {
             margin-left: 0;
             margin-right: 0;
-            .dropdown-header {
-                font-size: 1.25rem;
-            }
         }
         .dropdown-mega-menu>li {
             margin-bottom: 30px;
@@ -896,6 +991,81 @@ label.optional::after {
     .fc-title {
         font-size: 13px;
     }
+    .fc-header-toolbar {
+        h2 {
+            font-size: 1rem;
+        }
+        .fc-button {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+    }
+    .fc-widget-header {
+        font-size: .875rem;
+    }
+    // Worked
+    // .fc-event {
+    //     width: 17px;
+    //     border-radius: 11px;
+    // }
+    // .fc-content {
+    //     color: rgba(255, 0, 0, 0.01);
+    // }
 }
 
 // End of Full Calendar Styling
+// Widget
+.bg-transparent {
+    background: transparent !important;
+}
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.ci-card-widget {
+    @media (max-width: 991.98px) {
+        .bg-transparent.list-group-item {
+            border-color: transparent;
+        }
+    }
+}
+
+.widget-content {
+    padding: 1rem;
+    flex-direction: row;
+    align-items: center;
+    .widget-content-outer {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+    }
+    .widget-content-wrapper {
+        display: flex;
+        flex: 1;
+        position: relative;
+        align-items: center;
+    }
+    .widget-numbers {
+        font-weight: bold;
+        font-size: 1.5rem;
+        display: block;
+        @media (max-width: 576px) {
+            font-size: 1.25rem;
+        }
+    }
+    .widget-content-left {
+        .widget-heading {
+            opacity: .8;
+            font-weight: bold;
+        }
+        .widget-subheading {
+            opacity: .5;
+        }
+    }
+    .widget-content-right {
+        margin-left: auto;
+    }
+}

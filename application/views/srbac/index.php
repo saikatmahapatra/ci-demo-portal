@@ -3,9 +3,8 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ci-card">
-            <div class="card-header h6">SRBAC Roles</div>
-            <!--/.card-header-->
             <div class="card-body">
+                <h5 class="card-title">SRBAC Roles</h5>
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
 
                 <div class="table-responsive">
@@ -25,12 +24,8 @@
                 <!--/.table-responsive-->
             </div>
             <!--/.card-body-->
-            <div class="card-footer d-none">
-            </div>
-            <!--/.card-footer-->
         </div>
         <!--/.card ci-card-->
-
     </div>
 </div>
 </div>

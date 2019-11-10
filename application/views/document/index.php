@@ -3,9 +3,8 @@
 <div class="row">
     <div class="col-lg-4 mb-3">
         <div class="card ci-card">
-            <div class="card-header h6">Upload Files</div>
-            <!--/.card-header-->
             <div class="card-body">
+            <h5 class="card-title">Upload Files</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <?php echo form_open_multipart(current_url(), array('method' => 'post', 'class'=>'ci-form','name' => 'myform','id' => 'myform','role' => 'form'));?>
                 <?php echo form_hidden('form_action', 'file_upload'); ?>
@@ -30,13 +29,10 @@
                         <?php echo form_error('userfile'); ?>
                     </div>
                 </div>
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
                 <?php echo form_close(); ?>
             </div>
             <!--/.card-body-->
-            <div class="card-footer d-none">
-            </div>
-            <!--/.card-footer-->
         </div>
         <!--/.card ci-card-->
 
@@ -45,9 +41,8 @@
 
     <div class="col-lg-7 mb-3">
         <div class="card ci-card">
-            <div class="card-header h6">Your Uploaded Files</div>
-            <!--/.card-header-->
             <div class="card-body">
+                <h5 class="card-title">Uploaded Files</h5>
                 <div class="table-responsive">
                     <table class="table ci-table table-striped">
                         <thead class="thead-dark">
@@ -98,9 +93,6 @@
                 <!--/.table-responsive-->
             </div>
             <!--/.card-body-->
-            <div class="card-footer d-none">
-            </div>
-            <!--/.card-footer-->
         </div>
         <!--/.card ci-card-->
     </div>
@@ -138,7 +130,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                <!-- <button type="button" class="btn ci-btn-primary btn-primary">Save changes</button> -->
             </div>
         </div>
     </div>
