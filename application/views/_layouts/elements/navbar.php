@@ -104,7 +104,7 @@
                             <li class="col-lg-3 col-md-6 dropdown-item">
                                 <ul>
                                     <li class="dropdown-header">Leave</li>
-                                    <li><a href="<?php echo base_url($this->router->directory.'leave/manage/all'); ?>">View All Leave Applications</a></li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'leave/manage/all'); ?>">Leave Applications</a></li>
                                     <li><a href="<?php echo base_url($this->router->directory.'leave/leave_balance'); ?>">Leave Balance</a></li>
                                     <!-- <li><a href="<?php echo base_url($this->router->directory.'leave/import_data'); ?>">Import/Export Balance Sheet</a></li> -->
                                     <li><a href="<?php echo base_url($this->router->directory.'leave/manage/assigned_to_me'); ?>">Leave Applications to Approve</a></li>
