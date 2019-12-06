@@ -56,6 +56,9 @@
 
                 <?php if(isset($data_rows) && sizeof($data_rows)>0){ ?>
                 <?php echo form_open(current_url(), array('method' => 'GET', 'class' => 'mt-2', 'name' => 'download_data')); ?>
+                <?php if(($this->input->get('redirected_from')=='reportee_id') && ($this->input->get('q_emp') !='')){ ?>
+                    <input type="hidden" name="redirected_from" value="<?php echo $this->input->get('redirected_from'); ?>">
+                <?php } ?>
                 <input type="hidden" name="form_action" value="search">
                 <input type="hidden" name="form_action_primary" value="download">
                 <input type="hidden" name="q_emp" value="<?php echo $this->input->get('q_emp');?>">
