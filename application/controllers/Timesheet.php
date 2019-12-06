@@ -283,9 +283,6 @@ class Timesheet extends CI_Controller {
     }
     
     function edit() {
-        
-        
-        
         $year = $this->input->get_post('year') ? $this->input->get_post('year') : date('Y');
         $month = $this->input->get_post('month') ? $this->input->get_post('month') : date('m');
         $current_year = date('Y');
@@ -331,17 +328,27 @@ class Timesheet extends CI_Controller {
     }
 
     function report() {
-
         // Check user permission by permission name mapped to db
-        $is_authorized = $this->common_lib->is_auth(array(
+        if($this->input->get_post('redirected_from') != 'reportee_id'){
+            $is_authorized = $this->common_lib->is_auth(array(
             'view-employee-timesheet-report'
         ));
+        }
+        $this->data['user_arr'] = array();
         $this->data['project_arr'] = $this->timesheet_model->get_project_dropdown();		
-        $this->data['user_arr'] = $this->timesheet_model->get_user_dropdown();		
-				
-        
-        
-
+        $this->data['user_arr'] = $this->timesheet_model->get_user_dropdown();
+        //redirected_from=reportee_id
+        if($this->input->get('redirected_from') == 'reportee_id'){
+            $this->load->model('user_model');
+            $reportees = $this->user_model->get_reportee_employee($this->sess_user_id, NULL, NULL, NULL);
+            $user_arr = array(''=>'Select Employee');
+            if(isset($reportees['data_rows']) && sizeof($reportees['data_rows'])>0){
+                foreach ($reportees['data_rows'] as $r) {
+                    $user_arr[$r['user_id']] = $r['user_firstname'].' '.$r['user_lastname'].' ('.$r['user_emp_id'].')';
+                }
+            }
+            $this->data['user_arr'] = $user_arr;
+        }
         
 
         if($this->input->get_post('form_action') == 'search'){
@@ -384,7 +391,7 @@ class Timesheet extends CI_Controller {
 
     function validate_search_form_data($data) {        
         $this->form_validation->set_data($data);
-        //$this->form_validation->set_rules('q_emp', 'employee', 'required');
+        $this->form_validation->set_rules('q_emp', ' ', 'required');
         $this->form_validation->set_rules('from_date', ' ', 'required');
         $this->form_validation->set_rules('to_date', ' ', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');

@@ -854,6 +854,38 @@ class User_model extends CI_Model {
         $result = $query->result_array();
         return $result;
     }
+
+    function get_reportee_employee($reporting_to_user_id, $search_string = NULL, $limit = NULL, $offset = NULL) {
+        $this->db->select('
+        t1.user_id,
+        t2.user_firstname,
+        t2.user_lastname,
+        t2.user_emp_id,
+        t3.designation_name
+        ');
+        $this->db->where('t1.user_supervisor_id', $reporting_to_user_id);
+        $this->db->or_where('t1.user_hr_approver_id', $reporting_to_user_id);
+        $this->db->or_where('t1.user_director_approver_id', $reporting_to_user_id);
+        //$this->db->or_where('t1.user_finance_approver_id', $reporting_to_user_id);
+        $this->db->where('t2.user_type','U');
+        if(isset($search_keywords)){
+            $this->db->like('t2.user_firstname', $search_string);
+            $this->db->or_like('t2.user_lastname', $search_string);
+            $this->db->or_like('t2.user_emp_id', $search_string);
+        }
+        $this->db->where_not_in('t2.user_status',array('A','N'));
+        $this->db->where('t2.user_type','U');
+        $this->db->join('users t2', 't1.user_id = t2.id', 'left');
+        $this->db->join('designations t3', 't2.user_designation=t3.id', 'left');
+        if ($limit) {
+            $this->db->limit($limit, $offset);
+        }
+        $query = $this->db->get('user_approvers t1');
+        //print_r($this->db->last_query());
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return array('num_rows' => $num_rows, 'data_rows' => $result);
+    }
 }
 
 ?>
