@@ -132,7 +132,7 @@
                             <li class="col-lg-3 col-md-6 dropdown-item">
                                 <ul>
                                     <li class="dropdown-header">Organization</li>
-                                    <li><a href="<?php echo base_url('user/people');?>">Employee Directory</a></li>
+                                    <li><a href="<?php echo base_url('user/search_employee');?>">Employee Directory</a></li>
                                     <li><a href="<?php echo base_url($this->router->directory.'home/policy'); ?>">HR Policies</a></li>
                                     <li><a href="<?php echo base_url('holiday/view');?>">Holidays</a></li>
                                 </ul>
@@ -144,6 +144,9 @@
                                     <li class="divider"></li> -->
                                     <li class="dropdown-header">Timesheet</li>
                                     <li><a href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Log Tasks</a></li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'timesheet/report?redirected_from=reportee_id'); ?>">Timesheet Report</a></li>
+                                    <li class="dropdown-header">Team</li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'user/reportee_employee'); ?>">My Reportee</a></li>
                                 </ul>
                             </li>
                             <li class="col-lg-3 col-md-6 dropdown-item">
@@ -171,7 +174,7 @@
 
             <ul class="navbar-nav my-2 my-lg-0">
                 <li class="nav-item">
-                <?php echo form_open(base_url('user/people'), array( 'method' => 'get','class'=>'form-inline','name' => '','id' => 'ci-form-helper',)); ?>
+                <?php echo form_open(base_url('user/search_employee'), array( 'method' => 'get','class'=>'form-inline','name' => '','id' => 'ci-form-helper',)); ?>
 				    <?php echo form_hidden('form_action', 'search'); ?>
                         <div class="input-group">
                             <input type="text" name="q" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">

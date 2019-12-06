@@ -229,7 +229,7 @@ class Timesheet_model extends CI_Model {
     function get_user_dropdown() {
         $result = array();
         $this->db->select('id,user_firstname,user_lastname, user_emp_id');		
-        $this->db->where('user_status !=','A');
+        $this->db->where_not_in('user_status',array('A','N'));
         $this->db->where('user_type','U');
         $this->db->order_by('user_firstname');		
         $query = $this->db->get('users');
