@@ -8,26 +8,20 @@
             <h5 class="card-title">Timesheet Report</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
 
-                <?php echo form_open(current_url(), array( 'method' => 'get','class'=>'ci-form form-inline','name' => '','id' => 'timesheet-search-form')); ?>
+                <?php echo form_open(site_url('timesheet/report'), array( 'method' => 'get','class'=>'ci-form form-inline','name' => '','id' => 'timesheet-search-form')); ?>
                 <?php echo form_hidden('form_action', 'search'); ?>
                 <?php 
-                if(($this->input->get('redirected_from')=='reportee_id') && ($this->input->get('q_emp') !='')){
+                if(($this->input->get('redirected_from')=='reportee_id')){
                     ?>
-                    <input type="hidden" name="q_emp" value="<?php echo $this->input->get('q_emp'); ?>">
                     <input type="hidden" name="redirected_from" value="<?php echo $this->input->get('redirected_from'); ?>">
-
                     <?php
-                }else{
-                    ?>
+                }
+                ?>
                 <div class="form-group mb-2 mr-sm-2 ci-select2">
                     <label for="q_emp" class="sr-only">Employee </label>
                     <?php echo form_dropdown('q_emp', $user_arr, $this->input->get_post('q_emp'),array('class' => 'form-control select2-control', 'id'=>'q_emp')); ?>
                     <?php echo form_error('q_emp'); ?>
                 </div>
-                    <?php
-                }
-                ?>
-                
 
                 <div class="form-group mb-2 mr-sm-2 ci-select2">
                     <label for="q_project" class="sr-only">Project </label>
