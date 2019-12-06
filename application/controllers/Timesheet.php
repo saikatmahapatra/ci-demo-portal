@@ -391,7 +391,7 @@ class Timesheet extends CI_Controller {
 
     function validate_search_form_data($data) {        
         $this->form_validation->set_data($data);
-        //$this->form_validation->set_rules('q_emp', 'employee', 'required');
+        $this->form_validation->set_rules('q_emp', ' ', 'required');
         $this->form_validation->set_rules('from_date', ' ', 'required');
         $this->form_validation->set_rules('to_date', ' ', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
