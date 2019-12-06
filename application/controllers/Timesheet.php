@@ -333,12 +333,15 @@ class Timesheet extends CI_Controller {
     function report() {
 
         // Check user permission by permission name mapped to db
-        $is_authorized = $this->common_lib->is_auth(array(
+        if($this->input->get('redirected_from') != 'reportee_id'){
+            $is_authorized = $this->common_lib->is_auth(array(
             'view-employee-timesheet-report'
         ));
+        }
+        
         $this->data['project_arr'] = $this->timesheet_model->get_project_dropdown();		
         $this->data['user_arr'] = $this->timesheet_model->get_user_dropdown();
-        
+
         if($this->input->get_post('form_action') == 'search'){
             //print_r($_REQUEST); die();
             // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		

@@ -11,9 +11,11 @@
                 <?php echo form_open(current_url(), array( 'method' => 'get','class'=>'ci-form form-inline','name' => '','id' => 'timesheet-search-form')); ?>
                 <?php echo form_hidden('form_action', 'search'); ?>
                 <?php 
-                if(($this->uri->segment(3)=='reportee_id') && ($this->uri->segment(4) !='')){
+                if(($this->input->get('redirected_from')=='reportee_id') && ($this->input->get('q_emp') !='')){
                     ?>
-                    <input type="hidden" name="q_emp" value="<?php echo $this->uri->segment(4); ?>">
+                    <input type="hidden" name="q_emp" value="<?php echo $this->input->get('q_emp'); ?>">
+                    <input type="hidden" name="redirected_from" value="<?php echo $this->input->get('redirected_from'); ?>">
+
                     <?php
                 }else{
                     ?>
