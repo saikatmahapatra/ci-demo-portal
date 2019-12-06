@@ -144,6 +144,8 @@
                                     <li class="divider"></li> -->
                                     <li class="dropdown-header">Timesheet</li>
                                     <li><a href="<?php echo base_url($this->router->directory.'timesheet'); ?>">Log Tasks</a></li>
+                                    <li class="dropdown-header">Team</li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'user/reportee_employee'); ?>">My Reportee</a></li>
                                 </ul>
                             </li>
                             <li class="col-lg-3 col-md-6 dropdown-item">

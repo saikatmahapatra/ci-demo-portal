@@ -2096,5 +2096,45 @@ class User extends CI_Controller {
         }
         echo json_encode($json); die();
     }
+
+    function reportee_employee(){
+        $is_logged_in = $this->common_lib->is_logged_in();
+        if ($is_logged_in == FALSE) {
+			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
+            redirect($this->router->directory.$this->router->class.'/login');
+        }               
+		$this->breadcrumbs->push('Reportee', '/');		
+		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
+        
+        
+        $search_keywords = NULL;
+        if($this->input->get_post('form_action') == 'search'){
+            $search_keywords = $this->input->get_post('q');
+        }
+        // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition
+        $reporting_to_user_id = $this->sess_user_id;
+        $result_array = $this->user_model->get_reportee_employee($reporting_to_user_id, $search_keywords, NULL, NULL);
+        $total_num_rows = $result_array['num_rows'];
+        
+        //pagination config
+        $additional_segment = $this->router->class.'/'.$this->router->method;
+        $per_page = 10;
+        $config['uri_segment'] = 4;
+        $config['num_links'] = 1;
+        $config['use_page_numbers'] = TRUE;
+        //$this->pagination->initialize($config);
+        
+        $page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
+        $offset = ($page*$per_page);
+        $this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
+        //end of pagination config
+        // Data Rows - Refer to model method definition
+        $result_array = $this->user_model->get_reportee_employee($reporting_to_user_id, $search_keywords, $per_page, $offset);
+        $this->data['data_rows'] = $result_array['data_rows'];
+        //print_r($result_array);
+		$this->data['page_title'] = 'My Reportee';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/reportee_employee', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
 }
 ?>

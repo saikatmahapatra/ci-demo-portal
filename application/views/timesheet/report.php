@@ -10,12 +10,22 @@
 
                 <?php echo form_open(current_url(), array( 'method' => 'get','class'=>'ci-form form-inline','name' => '','id' => 'timesheet-search-form')); ?>
                 <?php echo form_hidden('form_action', 'search'); ?>
-
+                <?php 
+                if(($this->uri->segment(3)=='reportee_id') && ($this->uri->segment(4) !='')){
+                    ?>
+                    <input type="hidden" name="q_emp" value="<?php echo $this->uri->segment(4); ?>">
+                    <?php
+                }else{
+                    ?>
                 <div class="form-group mb-2 mr-sm-2 ci-select2">
                     <label for="q_emp" class="sr-only">Employee </label>
                     <?php echo form_dropdown('q_emp', $user_arr, $this->input->get_post('q_emp'),array('class' => 'form-control select2-control', 'id'=>'q_emp')); ?>
                     <?php echo form_error('q_emp'); ?>
                 </div>
+                    <?php
+                }
+                ?>
+                
 
                 <div class="form-group mb-2 mr-sm-2 ci-select2">
                     <label for="q_project" class="sr-only">Project </label>
