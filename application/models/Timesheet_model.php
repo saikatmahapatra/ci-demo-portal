@@ -267,15 +267,40 @@ class Timesheet_model extends CI_Model {
         }
         return $result;
     }
-	
-	function get_activity_dropdown() {
+    
+    function get_project_activity_tagging_dropdown($project_id=NULL) {
+        $result = array();
+        $this->db->select('t1.id, t2.task_activity_name');
+        if($project_id){
+            $this->db->where('t1.project_id',$project_id);
+        }
+        $this->db->join('task_activities as t2', 't2.id = t1.activity_id', 'right'); 
+        $query = $this->db->get('project_task_mapping t1');
+        //echo $this->db->last_query();
+        $result = array();
+        if ($query->num_rows()) {
+            $res = $query->result();
+            foreach ($res as $r) {
+                $result[$r->id] = $r->task_activity_name;
+            }
+        }
+        return $result;
+    }
+
+	function get_activity_dropdown($order=NULL, $parent_id = NULL) {
         $result = array();
         $this->db->select('id,task_activity_name');
         $this->db->where('task_activity_status','Y');		
-        $this->db->order_by('task_activity_name');		
+        $this->db->order_by('task_activity_name');
+        if($order){
+            $this->db->where('task_item_order_level', $order);
+        }
+        if($parent_id){
+            $this->db->where('task_activity_parent_id', $parent_id);
+        }		
         $query = $this->db->get('task_activities');
         #echo $this->db->last_query();
-        $result = array('' => 'Select');
+        $result = array();
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
