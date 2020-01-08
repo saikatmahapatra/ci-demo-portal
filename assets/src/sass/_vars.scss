@@ -51,7 +51,7 @@ $gray-dark: lighten($black, 20%);
 $gray-darker: lighten($black, 13.5%);
 //Override primary color (Nav, Button, Link)
 $brand-color: $blue;
-$primary-color: #0062cc;
+$primary-color: #0050a7;
 // Complementry color is used to indecate the loading bar on the top
 // of the page with pace.js plugin
 $complementry-color: adjust_hue($primary-color, 180);
@@ -93,3 +93,23 @@ $bs_mega_menu_light_nav_link_hover_color: $bs_mega_menu_light_nav_link_color;
 $bs_mega_menu_light_nav_link_hover_bg_color: $gray-200;
 $bs_mega_menu_light_nav_link_active_color: $white;
 $bs_mega_menu_light_nav_link_active_bg_color: $primary-color;
+$sidebar-width: 260px;
+// ------- Sidebar Colors --------
+// Background color of sidebar
+$sidebar-color: $gray-900;
+// -- Suggested sidebar background colors
+// dark  : #222d32
+// light : #f8f8f8
+// Sidebar accent varible is used to determine the color of the links
+// of the sidebar. The allowed values are 'light' or 'dark' only
+$sidebar-accent: dark;
+// The following varibles indecate sidebar link color
+// and link hover color when using a dark sidebar color
+$sidebar-dark-color: $white;
+$sidebar-dark-link-color: $white;
+// The following varibles indecate sidebar link color
+// and link hover color when using a light sidebar color
+$sidebar-light-color: $black;
+$sidebar-light-link-color: $gray-600;
+$navbar-dark-toggler-border-color: transparent;
+$navbar-light-toggler-border-color: transparent;
