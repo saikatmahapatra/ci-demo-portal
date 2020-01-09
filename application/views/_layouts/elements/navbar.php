@@ -1,8 +1,9 @@
 <header class="header-navbar">
     <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
-        <button class="navbar-toggler" type="button" data-toggle="sidebar" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="true" aria-label="Toggle navigation">
+        <a class="sidebar-toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+        <!-- <button class="navbar-toggler" type="button" data-toggle="sidebar" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="true" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> -->
 
         <a class="navbar-brand" href="<?php echo base_url($this->router->directory); ?>">
 		<img class="nav-logo" src="<?php echo base_url('assets/dist/img/logo-light.png');?>">

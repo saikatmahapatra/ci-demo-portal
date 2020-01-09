@@ -1206,6 +1206,7 @@ App with header, toggle side bar
         }
     }
     .navbar {
+        padding: 0px;
         .dropdown-toggle {
             &:after {
                 content: none;
@@ -1360,7 +1361,7 @@ App with header, toggle side bar
     @if $sidebar-accent==light {
         background-color: $sidebar-light-bg-color;
     }
-    box-shadow: 6px 0 6px rgba(0, 0, 0, .1);
+    //box-shadow: 6px 0 6px rgba(0, 0, 0, .1);
     transition: left 0.3s ease,
     width 0.3s ease;
     &::-webkit-scrollbar {

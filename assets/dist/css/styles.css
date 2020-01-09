@@ -9553,6 +9553,10 @@ App with header, toggle side bar
   font-weight: 700;
 }
 
+.header-navbar .navbar {
+  padding: 0px;
+}
+
 .header-navbar .navbar .dropdown-toggle:after {
   content: none;
 }
@@ -9711,7 +9715,6 @@ App with header, toggle side bar
   overflow: auto;
   z-index: 10;
   background-color: #212529;
-  box-shadow: 6px 0 6px rgba(0, 0, 0, 0.1);
   transition: left 0.3s ease, width 0.3s ease;
 }
 
