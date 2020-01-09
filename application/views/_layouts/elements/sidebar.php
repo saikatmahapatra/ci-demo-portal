@@ -49,19 +49,37 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
+                        <a class="treeview-item" href="<?php echo base_url('user/manage'); ?>">Manage Employees</a>
+                    </li>
+                    <li>
                         <a class="treeview-item" href="<?php echo base_url('user/create_account'); ?>">Add New Employee</a>
                     </li>
                     <li>
-                        <a class="treeview-item" href="<?php echo base_url('document'); ?>">Upload Documents</a>
+                        <a class="treeview-item" href="<?php echo base_url('cms'); ?>">Manage Contents</a>
                     </li>
                     <li>
-                        <a class="treeview-item" href="<?php echo base_url('user/edit_approvers'); ?>">Change Leave Approvers</a>
+                        <a class="treeview-item" href="<?php echo base_url('cms/add'); ?>">Add New Content</a>
                     </li>
                     <li>
-                        <a class="treeview-item" href="<?php echo base_url('leave/apply'); ?>">Apply Leave</a>
+                        <a class="treeview-item" href="<?php echo base_url('holiday'); ?>">Manage Holiday</a>
                     </li>
                     <li>
-                        <a class="treeview-item" href="<?php echo base_url('leave/history'); ?>">Leave History</a>
+                        <a class="treeview-item" href="<?php echo base_url('leave/manage/all'); ?>">Leave Requests</a>
+                    </li>
+                    <li>
+                        <a class="treeview-item" href="<?php echo base_url('leave/leave_balance'); ?>">Manage Leave Balance</a>
+                    </li>
+                    <li>
+                        <a class="treeview-item" href="<?php echo base_url('leave/manage/assigned_to_me'); ?>">Leave Requests to Approve</a>
+                    </li>
+                    <li>
+                        <a class="treeview-item" href="<?php echo base_url('timesheet/report'); ?>">Timesheet Report</a>
+                    </li>
+                    <li>
+                        <a class="treeview-item" href="<?php echo base_url('project'); ?>">Manage Projects</a>
+                    </li>
+                    <li>
+                        <a class="treeview-item" href="<?php echo base_url('project/activity'); ?>">Manage Task Activities</a>
                     </li>
                 </ul>
             </li>
