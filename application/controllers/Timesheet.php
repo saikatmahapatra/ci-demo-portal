@@ -46,7 +46,7 @@ class Timesheet extends CI_Controller {
 		//Dropdown
 		$this->data['project_arr'] = $this->timesheet_model->get_project_dropdown();
 		$this->data['task_task_activity_type_array'] = $this->timesheet_model->get_activity_dropdown();
-		$this->data['timesheet_hours'] = $this->timesheet_model->get_timesheet_hours_dropdown();
+		//$this->data['timesheet_hours'] = $this->timesheet_model->get_timesheet_hours_dropdown();
 		
 		//View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
@@ -551,6 +551,25 @@ class Timesheet extends CI_Controller {
         
     }
 
+    function get_project_task(){
+
+        $data_order=$this->input->get_post('data_order');
+        $id = $this->input->get_post('id');
+        $data_render_target=$this->input->get_post('data_render_target');
+        $current_control = $this->input->get_post('current_control');
+        //print_r(json_encode($_REQUEST));
+        $response = array();
+        if($current_control == 'project_id'){
+            $res = $this->timesheet_model->get_project_activity_tagging_dropdown($id);
+        }else{
+            $res = $this->timesheet_model->get_activity_dropdown($data_order, $id);
+        }
+        $response['req_param'] = $_REQUEST;
+        $response['resp_data'] = $res;
+
+        print_r(json_encode($response));
+        die();
+    }
 }
 
 ?>

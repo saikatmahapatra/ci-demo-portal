@@ -1,15 +1,11 @@
 body {
     margin-top: 4.5rem;
-    background-color: #ecf0f5;
+    //background-color: #E5E5E5;
 }
 
 body.login {
     margin-top: 0rem;
-    background-color: #ecf0f5;
-}
-
-main {
-    //background-color: #ecf0f5;
+    background-color: #E5E5E5;
 }
 
 @mixin linear-gradient($from, $to) {
@@ -29,6 +25,13 @@ main {
 
 .logo-login {
     width: 150px;
+}
+
+.nav-logo {
+    width: 180px;
+    @media (max-width: 576px) {
+        width: 130px;
+    }
 }
 
 // Breadcrumb
@@ -524,9 +527,10 @@ main {
 // CI card
 // Componant: Card
 .ci-card {
-    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+    //box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
     border-width: 0;
-    transition: all .2s;
+    transition: all 0.3s ease-in-out;
     margin-bottom: 30px;
     .card-body {
         flex: 1 1 auto;
@@ -558,13 +562,12 @@ main {
 
 //Navbar
 // Make nav bar scrolable in SM devices once menu items are many
-@media (max-width: 576px) {
-    .navbar-collapse {
-        max-height: 340px;
-        overflow-y: auto;
-    }
-}
-
+// @media (max-width: 576px) {
+//     .navbar-collapse {
+//         max-height: 340px;
+//         overflow-y: auto;
+//     }
+// }
 .no-toggle-icon {
     .dropdown-toggle::after {
         display: none;
@@ -1058,14 +1061,538 @@ label.optional::after {
     }
     .widget-content-left {
         .widget-heading {
-            opacity: .8;
-            font-weight: bold;
+            //opacity: .8;
+            //font-weight: bold;
         }
         .widget-subheading {
             opacity: .5;
+            font-size: .875rem;
         }
     }
     .widget-content-right {
         margin-left: auto;
     }
 }
+
+
+/*
+Sidebar Style
+App with header, toggle side bar
+*/
+
+.app {
+    // On large devices make sidebar visible by default
+    // adding sidenav-toggled class will close sidebar
+    @media(min-width: 768px) {
+        &.sidenav-toggled {
+            .main-content {
+                margin-left: 0;
+            }
+            .sidebar {
+                left: -$sidebar-width;
+            }
+            .sidebar-overlay {
+                visibility: hidden;
+            }
+        }
+    }
+    // On small devices make sidebar collapsed by default
+    // adding sidenav-toggled class will open sidebar
+    @media(max-width: 767px) {
+        overflow-x: hidden;
+        .sidebar {
+            left: -$sidebar-width;
+        }
+        .sidebar-overlay {
+            visibility: hidden;
+        }
+        &.sidenav-toggled {
+            .main-content {
+                margin-left: 0;
+            }
+            .sidebar {
+                left: 0;
+            }
+            .sidebar-overlay {
+                visibility: visible;
+            }
+        }
+    }
+}
+
+.main-content {
+    min-height: calc(100vh - 50px);
+    margin-top: 50px;
+    padding: 0px 30px 0px 30px;
+    transition: margin-left 0.3s ease;
+    // background-color: $gray-100;
+    @media(min-width: 768px) {
+        margin-left: $sidebar-width;
+    }
+    @media(max-width: 767px) {
+        margin-top: 0px;
+        min-width: 100%;
+    }
+    @media(max-width: 480px) {
+        padding: 15px;
+    }
+    @media print {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
+/*----- Componant: Navigation Bar ----- */
+
+.header-navbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    background-color: $primary-color;
+    z-index: 1030;
+    padding-right: 15px;
+    @media(min-width: 768px) {
+        padding-right: 30px
+    }
+    @media print {
+        display: none;
+    }
+    .navbar-toggler {
+        transition: background-color 0.3s ease;
+        line-height: 2px;
+        @media(max-width: 767px) {
+            order: -1;
+        }
+        @media (min-width: 576px) {
+            display: block;
+        }
+        &:focus,
+        &:hover {
+            color: #fff;
+            background-color: darken($primary-color, 10);
+        }
+    }
+    .navbar-brand {
+        flex: 1 0 auto;
+        text-align: center;
+        padding: 0 15px;
+        padding-right: 0;
+        margin: 0;
+        font-size: 1rem;
+        @media(max-width: 575px) {
+            text-align: left;
+        }
+        @media(min-width: 768px) {
+            flex: 0 0 auto;
+            display: block;
+            //width: $sidebar-width;
+        }
+        &:focus,
+        &:hover {
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+    .navbar-nav {
+        .show>.nav-link,
+        .active>.nav-link,
+        .nav-link.show,
+        .nav-link.active {
+            font-weight: 700;
+        }
+    }
+    .navbar {
+        .dropdown-toggle {
+            &:after {
+                content: none;
+            }
+        }
+    }
+    .search {
+        position: relative;
+        display: flex;
+        @media(max-width: 575px) {
+            display: none;
+        }
+    }
+    .search-input {
+        border: 0;
+        padding: 5px 10px;
+        padding-right: 30px;
+        border-radius: 2px;
+        background-color: rgba(255, 255, 255, 0.8);
+        transition: background-color 0.3s ease;
+        &::placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+    }
+    .search-button {
+        position: absolute;
+        right: 0;
+        top: 10px;
+        bottom: 10px;
+        padding: 0 10px;
+        border: 0;
+        color: rgba(0, 0, 0, 0.8);
+        background: none;
+        cursor: pointer;
+    }
+    .notification {
+        min-width: 270px;
+    }
+    .notification-title {
+        padding: 8px 20px;
+        text-align: center;
+        background-color: transparentize($primary-color, 0.6);
+        color: #333;
+    }
+    .notification-footer {
+        padding: 8px 20px;
+        text-align: center;
+        background-color: #eee;
+    }
+    .notification-content {
+        max-height: 220px;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+        }
+    }
+    .notification-item {
+        display: flex;
+        padding: 8px 20px;
+        color: inherit;
+        border-bottom: 1px solid #ddd;
+        transition: background-color 0.3s ease;
+        &:focus,
+        &:hover {
+            color: inherit;
+            text-decoration: none;
+            background-color: #e0e0e0;
+        }
+    }
+    .notification-message,
+    .notification-meta {
+        margin-bottom: 0;
+    }
+    .notification-icon {
+        padding-right: 10px;
+    }
+    .notification-message {
+        line-height: 1.2;
+    }
+    .notification-meta {
+        @extend .text-muted;
+    }
+    @media (max-width: 575px) {
+        .navbar-nav {
+            flex-direction: row;
+        }
+        .navbar-nav .dropdown-menu {
+            position: absolute;
+        }
+        .navbar-nav .nav-link {
+            padding-right: 0.5rem;
+            padding-left: 0.5rem;
+        }
+        .navbar-collapse {
+            display: flex !important;
+            flex-basis: auto;
+            margin-right: 1.5rem;
+            margin-left: 1rem;
+        }
+    }
+}
+
+// Componant: Sidebar 
+.sidebar-toggle {
+    padding: 0 15px;
+    font-family: fontAwesome;
+    color: #fff;
+    line-height: 2.4;
+    transition: background-color 0.3s ease;
+    @media(max-width: 767px) {
+        order: -1;
+    }
+    &:before {
+        content: "\f0c9";
+        font-size: 21px;
+    }
+    &:focus,
+    &:hover {
+        color: #fff;
+        background-color: darken($primary-color, 10);
+        text-decoration: none;
+    }
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 60px;
+    width: $sidebar-width;
+    overflow: auto;
+    z-index: 10;
+    background-color: $sidebar-color;
+    box-shadow: 6px 0 6px rgba(0, 0, 0, .1);
+    transition: left 0.3s ease, width 0.3s ease;
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.2);
+    }
+    @media print {
+        display: none;
+    }
+}
+
+.sidebar-overlay {
+    @media(max-width: 767px) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 9;
+    }
+}
+
+.sidebar-user {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: $white;
+}
+
+.sidebar-user-avatar {
+    @extend .rounded-circle;
+    flex: 0 0 auto;
+    margin-right: 15px;
+    height: 48px;
+    width: 48px;
+}
+
+.sidebar-user-name {
+    font-size: 1rem;
+    line-height: 1.3;
+}
+
+.sidebar-user-name,
+.sidebar-user-designation {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0;
+}
+
+.menu {
+    @extend .list-unstyled;
+    margin-bottom: 0;
+    padding-bottom: 40px;
+}
+
+.menu-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    //@debugfont-size: 1.08em;
+    border-left: 3px solid transparent;
+    transition: border-left-color 0.3s ease, background-color 0.3s ease;
+    @if $sidebar-accent==dark {
+        color: $sidebar-dark-link-color
+    }
+    @if $sidebar-accent==light {
+        color: $sidebar-light-link-color
+    }
+    &.active,
+    &:hover,
+    &:focus {
+        background: darken($sidebar-color, 10);
+        border-left-color: $primary-color;
+        text-decoration: none;
+        @if $sidebar-accent==dark {
+            color: $sidebar-dark-link-color
+        }
+        @if $sidebar-accent==light {
+            color: $primary-color
+        }
+    }
+}
+
+.menu-icon {
+    flex: 0 0 auto;
+    width: 25px;
+}
+
+.menu-label {
+    white-space: nowrap;
+    flex: 1 1 auto;
+}
+
+.treeview {
+    &.is-expanded {
+        [data-toggle='treeview'] {
+            border-left-color: $primary-color;
+            background: darken($sidebar-color, 10);
+        }
+        .treeview-menu {
+            max-height: 100vh;
+        }
+        .treeview-indicator {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+.treeview-menu {
+    @extend .list-unstyled;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    @if $sidebar-accent==dark {
+        background: lighten($sidebar-color, 4)
+    }
+    @if $sidebar-accent==light {
+        background: darken($sidebar-color, 4)
+    }
+}
+
+.treeview-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 5px 8px 20px;
+    font-size: .875rem;
+    @if $sidebar-accent==dark {
+        color: $sidebar-dark-link-color
+    }
+    @if $sidebar-accent==light {
+        color: $sidebar-light-link-color
+    }
+    &.active,
+    &:hover,
+    &:focus {
+        background: darken($sidebar-color, 10);
+        text-decoration: none;
+        @if $sidebar-accent==dark {
+            color: $sidebar-dark-link-color
+        }
+        @if $sidebar-accent==light {
+            color: $primary-color
+        }
+    }
+    .icon {
+        margin-right: 5px;
+    }
+}
+
+.treeview-indicator {
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+// Componant: Sidebar Mini
+@media (min-width: 768px) {
+    .sidebar-mini.sidenav-toggled {
+        .sidebar-user-name,
+        .sidebar-user-designation,
+        .treeview-indicator {
+            display: none;
+        }
+        .sidebar-user-avatar {
+            width: 30px;
+            height: 30px;
+        }
+        .main-content {
+            margin-left: 50px;
+        }
+        .sidebar {
+            left: 0;
+            width: 50px;
+            overflow: hidden;
+            &:hover {
+                overflow: visible;
+            }
+        }
+        .menu-item {
+            overflow: hidden;
+            &:hover {
+                overflow: visible;
+                .menu-label {
+                    opacity: 1;
+                }
+                &+.treeview-menu {
+                    visibility: visible;
+                }
+            }
+        }
+        .menu-label {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 50px;
+            min-width: 180px;
+            padding: 12px 5px 12px 20px;
+            margin-left: -3px;
+            line-height: 1;
+            opacity: 0;
+            background: darken($sidebar-color, 10);
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+        .treeview {
+            &:hover {
+                .menu-item {
+                    overflow: visible;
+                    background: darken($sidebar-color, 10);
+                    border-left-color: $primary-color;
+                    @if $sidebar-accent==dark {
+                        color: $sidebar-dark-link-color
+                    }
+                    @if $sidebar-accent==light {
+                        color: $primary-color
+                    }
+                }
+                .menu-label {
+                    opacity: 1;
+                }
+                .treeview-menu {
+                    max-height: 100vh;
+                    opacity: 1;
+                    visibility: visible;
+                    z-index: 10;
+                }
+            }
+            .menu-label {
+                border-bottom-right-radius: 0;
+            }
+        }
+        .treeview-menu {
+            position: absolute;
+            left: 50px;
+            min-width: 180px;
+            padding: 12px 0;
+            opacity: 0;
+            border-bottom-right-radius: 4px;
+            z-index: 9;
+            visibility: hidden;
+            transition: visibility 0.3s ease;
+        }
+    }
+}
+
+
+/*
+Sidebar Style
+App with header, toggle side bar
+*/

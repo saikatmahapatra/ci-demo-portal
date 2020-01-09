@@ -8,6 +8,14 @@
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <?php echo form_open(current_url(), array('method' => 'post', 'class'=>'ci-form','name' => 'myform','id' => 'myform','role' =>'form')); ?>
                 <?php echo form_hidden('form_action', 'insert'); ?>
+                
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <label for="task_activity_name" class="required">Select Parent</label>
+                        <?php echo form_dropdown('activity_parent', $nested_activities_dd, set_value('activity_parent'), array('class' => 'form-control')); ?>
+                        <?php echo form_error('activity_parent'); ?>
+                    </div>
+                </div>
 
                 <div class="form-row">
                     <div class="form-group col-12">

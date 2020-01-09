@@ -53,7 +53,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-12">
                                         <label for="project_id" class="required">Project</label>
-                                        <?php echo form_dropdown('project_id', $project_arr, set_value('project_id'), array('class' => 'form-control',)); ?>
+                                        <?php echo form_dropdown('project_id', $project_arr, set_value('project_id'), array('class' => 'form-control','data-render-target'=>'activity_id', 'data-order'=>'1')); ?>
                                         <?php echo form_error('project_id'); ?>
                                     </div>
                                 </div>
@@ -61,8 +61,22 @@
                                 <div class="form-row">
                                     <div class="form-group col-12">
                                         <label for="activity_id" class="required">Activity</label>
-                                        <?php echo form_dropdown('activity_id', $task_task_activity_type_array, set_value('activity_id'), array('class' => 'form-control',));?>
+                                        <?php echo form_dropdown('activity_id', array('' => '-Select-'), set_value('activity_id'), array('class' => 'form-control','data-render-target'=>'task_id', 'data-order'=>'2'));?>
                                         <?php echo form_error('activity_id'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-12">
+                                        <label id="task_id" for="task" class="required">Task</label>
+                                        <?php echo form_dropdown('task_id', array('' => '-Select-'), set_value('task_id'), array('class' => 'form-control','data-render-target'=>'sub_task_id', 'data-order'=>'3'));?>
+                                        <?php echo form_error('task_id'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-12">
+                                        <label id="sub_task_id" for="task" class="required">Sub-Task</label>
+                                        <?php echo form_dropdown('sub_task_id', array('' => '-Select-'), set_value('sub_task_id'), array('class' => 'form-control',));?>
+                                        <?php echo form_error('sub_task_id'); ?>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -75,8 +89,8 @@
 
                                 <div class="form-row">
                                     <div class="form-group col-12">
-                                        <label for="timesheet_description" class="required">Task Description</label>
-                                        <?php echo form_textarea(array('name' => 'timesheet_description','value' => set_value('timesheet_description'),'id' => 'timesheet_description','class' => 'form-control','rows' => '2','cols' => '4','maxlength' => '200','placeholder' => 'Briefly describe in 200 characters.')); ?>
+                                        <label for="timesheet_description" class="optional">Additional Note</label>
+                                        <?php echo form_input(array('name' => 'timesheet_description','value' => set_value('timesheet_description'),'id' => 'timesheet_description','class' => 'form-control', 'maxlength' => '200','placeholder' => 'Additional Note')); ?>
                                         <?php echo form_error('timesheet_description'); ?>
                                     </div>
                                 </div>
