@@ -1371,6 +1371,7 @@ App with header, toggle side bar
     display: flex;
     align-items: center;
     padding: 10px;
+    color: $white;
 }
 
 .sidebar-user-avatar {
@@ -1470,7 +1471,7 @@ App with header, toggle side bar
 .treeview-item {
     display: flex;
     align-items: center;
-    padding: 5px 5px 5px 20px;
+    padding: 8px 5px 8px 20px;
     font-size: .875rem;
     @if $sidebar-accent==dark {
         color: $sidebar-dark-link-color
