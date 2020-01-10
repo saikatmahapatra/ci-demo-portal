@@ -48,12 +48,14 @@
                     <span class="menu-label">Administrator</span><i class="treeview-indicator fa fa-lg fa-angle-right" aria-hidden="true"></i>
                 </a>
                 <ul class="treeview-menu">
+                    <div class="treeview-item-heading"><span>Employee</span></div>
                     <li>
                         <a class="treeview-item" href="<?php echo base_url('user/manage'); ?>">Manage Employees</a>
                     </li>
                     <li>
                         <a class="treeview-item" href="<?php echo base_url('user/create_account'); ?>">Add New Employee</a>
                     </li>
+                    <div class="treeview-item-heading"><span>Content Management</span></div>
                     <li>
                         <a class="treeview-item" href="<?php echo base_url('cms'); ?>">Manage Contents</a>
                     </li>
@@ -63,6 +65,7 @@
                     <li>
                         <a class="treeview-item" href="<?php echo base_url('holiday'); ?>">Manage Holiday</a>
                     </li>
+                    <div class="treeview-item-heading"><span>Leave</span></div>
                     <li>
                         <a class="treeview-item" href="<?php echo base_url('leave/manage/all'); ?>">Leave Requests</a>
                     </li>
@@ -72,9 +75,11 @@
                     <li>
                         <a class="treeview-item" href="<?php echo base_url('leave/manage/assigned_to_me'); ?>">Leave Requests to Approve</a>
                     </li>
+                    <div class="treeview-item-heading"><span>Timesheet</span></div>
                     <li>
                         <a class="treeview-item" href="<?php echo base_url('timesheet/report'); ?>">Timesheet Report</a>
                     </li>
+                    <div class="treeview-item-heading"><span>Project</span></div>
                     <li>
                         <a class="treeview-item" href="<?php echo base_url('project'); ?>">Manage Projects</a>
                     </li>

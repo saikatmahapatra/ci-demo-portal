@@ -1486,6 +1486,21 @@ App with header, toggle side bar
     }
 }
 
+.treeview-item-heading {
+    align-items: center;
+    padding: 5px 5px 0px 20px;
+    font-size: 80%;
+    color: $gray-200;
+    margin: 0px 5px 0px 20px;
+    span {
+        &:before {
+            font-family: 'FontAwesome';
+            content: "\f058";
+            margin-right: 10px;
+        }
+    }
+}
+
 .treeview-item {
     display: flex;
     align-items: center;
