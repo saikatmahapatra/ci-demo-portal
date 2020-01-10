@@ -1488,14 +1488,17 @@ App with header, toggle side bar
 
 .treeview-item-heading {
     align-items: center;
-    padding: 5px 5px 0px 20px;
+    //padding: 5px 5px 0px 20px;
     font-size: 80%;
     color: $gray-200;
-    margin: 0px 5px 0px 20px;
+    margin: 5px 5px 0px 20px;
+    &:not(:first-child) {
+        margin-top: 15px;
+    }
     span {
         &:before {
             font-family: 'FontAwesome';
-            content: "\f058";
+            content: "\f0d7";
             margin-right: 10px;
         }
     }

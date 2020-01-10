@@ -9824,15 +9824,18 @@ App with header, toggle side bar
 
 .treeview-item-heading {
   align-items: center;
-  padding: 5px 5px 0px 20px;
   font-size: 80%;
   color: #e9ecef;
-  margin: 0px 5px 0px 20px;
+  margin: 5px 5px 0px 20px;
+}
+
+.treeview-item-heading:not(:first-child) {
+  margin-top: 15px;
 }
 
 .treeview-item-heading span:before {
   font-family: 'FontAwesome';
-  content: "\f058";
+  content: "\f0d7";
   margin-right: 10px;
 }
 
