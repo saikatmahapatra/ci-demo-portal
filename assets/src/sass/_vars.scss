@@ -96,20 +96,20 @@ $bs_mega_menu_light_nav_link_active_bg_color: $primary-color;
 $sidebar-width: 260px;
 // ------- Sidebar --------
 $sidebar-accent: dark;
-$sidebar-border-left-color: none; // $primary-color
-$sidebar-active-hover-focus-bg-color: none;
 //Sidebar dark
 $sidebar-dark-bg-color: $gray-900;
 $sidebar-dark-link-color: $gray-500;
 $sidebar-dark-text-color: $sidebar-dark-link-color;
 $sidebar-dark-link-color-hover: $white;
-$sidebar-dark-nested-menu-bg: inherit; // lighten($sidebar-color, 4);
+$sidebar-dark-nested-menu-bg: $sidebar-dark-bg-color; // lighten($sidebar-color, 4);
 //Sidebar light
 $sidebar-light-bg-color: $gray-200;
 $sidebar-light-link-color: $gray-900;
 $sidebar-light-text-color: $sidebar-light-link-color;
 $sidebar-light-link-color-hover: $primary-color;
-$sidebar-light-nested-menu-bg: inherit; //darken($sidebar-color, 4);
+$sidebar-light-nested-menu-bg: $sidebar-light-bg-color; //darken($sidebar-color, 4);
+$sidebar-border-left-color: none; // $primary-color
+$sidebar-active-hover-focus-bg-color: $sidebar-dark-bg-color;
 // ------- Nav Toggle Button ------------
 $navbar-dark-toggler-border-color: transparent;
 $navbar-light-toggler-border-color: transparent;
