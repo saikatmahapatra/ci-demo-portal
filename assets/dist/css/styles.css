@@ -8435,11 +8435,12 @@ a.text-dark:hover, a.text-dark:focus {
 
 body {
   margin-top: 4.5rem;
+  background-color: #f8f9fa;
 }
 
 body.login {
   margin-top: 0rem;
-  background-color: #E5E5E5;
+  background-color: #212529;
 }
 
 .logo {
@@ -8956,14 +8957,14 @@ body.login {
 .ci-card .card-body .card-title {
   color: rgba(13, 27, 62, 0.7);
   font-weight: bold;
-  font-size: 0.88rem;
+  font-size: 0.9375rem;
 }
 
 .ci-card .card-header,
 .ci-card .card-title {
   color: rgba(13, 27, 62, 0.7);
   font-weight: bold;
-  font-size: 0.88rem;
+  font-size: 0.9375rem;
   background-color: none;
   border-bottom: none;
 }

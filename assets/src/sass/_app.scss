@@ -1,11 +1,11 @@
 body {
     margin-top: 4.5rem;
-    //background-color: #fafbfe;
+    background-color: $gray-100;
 }
 
 body.login {
     margin-top: 0rem;
-    background-color: #E5E5E5;
+    background-color: $gray-900;
 }
 
 @mixin linear-gradient($from, $to) {
@@ -539,7 +539,7 @@ body.login {
             //text-transform: uppercase;
             color: rgba(13, 27, 62, 0.7);
             font-weight: bold;
-            font-size: 0.88rem;
+            font-size: 0.9375rem
         }
     }
     .card-header,
@@ -547,7 +547,7 @@ body.login {
         //text-transform: uppercase;
         color: rgba(13, 27, 62, 0.7);
         font-weight: bold;
-        font-size: 0.88rem;
+        font-size: 0.9375rem;
         background-color: none;
         border-bottom: none;
     }
