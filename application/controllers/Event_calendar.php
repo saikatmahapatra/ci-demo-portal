@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Calendar extends CI_Controller {
+class Event_calendar extends CI_Controller {
 
     var $data;
     var $id;
@@ -36,7 +36,7 @@ class Calendar extends CI_Controller {
             $this->router->class
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
-        $this->load->model('calendar_model');
+        $this->load->model('event_calendar_model');
         $this->id = $this->uri->segment(3);
         
         //View Page Config
@@ -47,7 +47,7 @@ class Calendar extends CI_Controller {
 		$this->load->library('breadcrumbs');
 		// add breadcrumbs. push() - Append crumb to stack
 		$this->breadcrumbs->push('Home', '/');
-		$this->breadcrumbs->push('Calendar', '/cms');		
+		$this->breadcrumbs->push('Event Calendar', '/event_calendar');		
         $this->data['breadcrumbs'] = $this->breadcrumbs->show();        
         $this->data['arr_status_flag'] = array(
             'Y'=>array('text'=>'Active', 'css'=>''),
@@ -65,7 +65,7 @@ class Calendar extends CI_Controller {
 			
 		$this->breadcrumbs->push('View','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		$this->data['page_title'] = 'Calendar';
+		$this->data['page_title'] = 'Event Calendar';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -75,7 +75,7 @@ class Calendar extends CI_Controller {
         $start_date = $this->input->get_post('start');
         $end_date = $this->input->get_post('end');
 
-        $json_response = $this->calendar_model->get_events($start_date, $end_date, $user_id);
+        $json_response = $this->event_calendar_model->get_events($start_date, $end_date, $user_id);
         echo $json_response; die();
     }
 }

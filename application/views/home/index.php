@@ -205,9 +205,9 @@
     <div class="col-lg-8 mb-3">
         <div class="card ci-card">
             <div class="card-body">
-                <h5 class="card-title">Calendar - Beta</h5>
-                <div class="alert alert-warning small">
-                    This widget is a beta release on top of current application version. This is still under development & testing phase. In case if you find any dummy or irrelevant contents, you can ignore for the time being
+                <h5 class="card-title">Event Calendar</h5>
+                <div class="alert alert-danger small">
+                Event Calendar is a beta release & still under development phase.
                 </div>
                 <!-- <a href="<?php echo base_url('calendar/index'); ?>" class="btn btn-link btn-sm float-right"><i class="fa fa-fw fa-window-maximize" aria-hidden="true"></i> Full Screen</a> -->
                 <div id="ci_full_calendar"></div>
@@ -219,21 +219,21 @@
 
             <!-- Modal -->
             <div class="modal fade" id="fcEventDetailsModal" tabindex="-1" role="dialog" aria-labelledby="fcEventDetailsModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="fcEventDetailsModalLabel">Title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="fcEventDetailsModalLabel">Title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="fcEventDetailsModalBody">Loading...</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn ci-btn-primary btn-primary">More Details</button>
+                    </div>
+                    </div>
                 </div>
-                <div class="modal-body" id="fcEventDetailsModalBody">Loading...</div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn ci-btn-primary btn-primary">More Details</button>
-                </div>
-                </div>
-            </div>
             </div>
         </div>
     </div>
