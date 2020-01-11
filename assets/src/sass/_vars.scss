@@ -66,8 +66,8 @@ $holiday: lighten($color_red, 40%);
 $leave: lighten($orange, 20%);
 $has-data: lighten($color_green, 50%);
 // Validation Error Message Colors
-$validation-error-color: $red;
-$mandatory_field_star-color: $red;
+$validation-error-color: #ff0000;
+$mandatory_field_star-color: #ff0000;
 // Colorgraph
 $from_color: #a8ff1b;
 $to_color: #cf1180;
