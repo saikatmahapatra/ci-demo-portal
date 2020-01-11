@@ -100,7 +100,7 @@
             </a>
             <ul class="treeview-menu">
                 <li>
-                    <a class="treeview-item" href="<?php echo base_url('user/search_employee'); ?>">Employee Directory</a>
+                    <a class="treeview-item" href="<?php echo base_url('user/people'); ?>">Employee Directory</a>
                 </li>
                 <li>
                     <a class="treeview-item" href="<?php echo base_url('home/policy'); ?>">HR Policies</a>
