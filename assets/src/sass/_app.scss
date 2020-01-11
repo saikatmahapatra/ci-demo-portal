@@ -1490,17 +1490,18 @@ App with header, toggle side bar
     align-items: center;
     //padding: 5px 5px 0px 20px;
     font-size: 80%;
-    color: $gray-200;
+    color: $gray-600;
     margin: 5px 5px 0px 20px;
+    text-transform: uppercase;
     &:not(:first-child) {
         margin-top: 15px;
     }
     span {
-        &:before {
-            font-family: 'FontAwesome';
-            content: "\f0d7";
-            margin-right: 10px;
-        }
+        // &:before {
+        //     font-family: 'FontAwesome';
+        //     content: "\f105";
+        //     margin-right: 10px;
+        // }
     }
 }
 
