@@ -40,6 +40,7 @@ function loadEventCalendarData() {
         editable: true,
         navLinks: true, // can click day/week names to navigate views
         eventLimit: true, // allow "more" link when too many events
+        displayEventTime: true,
         events: {
             url: SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/get_events',
             failure: function() {
