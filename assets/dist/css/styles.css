@@ -9732,6 +9732,13 @@ App with header, toggle side bar
   }
 }
 
+.sidebar-footer {
+  bottom: 0px;
+  font-size: 80%;
+  margin: 5px 5px 0px 20px;
+  text-align: center;
+}
+
 @media (max-width: 767px) {
   .sidebar-overlay {
     position: fixed;
