@@ -31,21 +31,20 @@
     <![endif]-->
 </head>
 
-<body data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
-	
+<body class="app sidebar-mini" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
 	
     <?php echo $el_navbar; ?>
+    <?php echo $el_sidebar; ?>
     
-    <main role="main" class="container-fluid">
+    <main role="main" class="main-content">
         <?php echo $maincontent; ?>
-        <footer class="footer">
-            <?php echo $el_footer; ?>
-        </footer>
     </main>
-	
-	
 
-	<button class="btn btn-outline-secondary scrollup"><i aria-hidden="true" class="fa fa-arrow-up"></i></button>
+    <footer class="footer">
+        <?php echo $el_footer; ?>
+    </footer>
+
+	<button class="btn btn-outline-primary scrollup"><i aria-hidden="true" class="fa fa-arrow-up"></i></button>
 	<div class="ajax-loader-ui" id="ajax-loader" style="display:none;">
 		<img src="<?php echo base_url('assets/dist/img/ajax-loader.svg');?>" class="ajax-loader-img" alt="Loading...">
 	</div>

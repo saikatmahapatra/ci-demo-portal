@@ -117,6 +117,32 @@ $(function() {
         });
     }
 
+    $('select').on('change', function() {
+        var id = $(this).val();
+        var data_render_target = $(this).attr('data-render-target');
+        var data_order = $(this).attr('data-order');
+        var current_control = $(this).attr('name');
+
+        var xhr = new Ajax();
+        xhr.type = 'POST';
+        xhr.url = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/get_project_task';
+        xhr.beforeSend = function() {
+            showAjaxLoader();
+        };
+        xhr.data = { via: 'ajax', current_control: current_control, id: id, data_render_target: data_render_target, data_order: data_order };
+        var promise = xhr.init();
+        promise.done(function(response) {
+            console.log(response);
+            hideAjaxLoader();
+            $.each(response.resp_data, function(index, json) {
+                $('select[name="' + response.req_param.data_render_target + '"]').append($("<option></option>").attr("value", index).text(json));
+            });
+        });
+        promise.fail(function() {
+            alert("Failed");
+        });
+        promise.always(function() {});
+    });
 });
 
 //$(".allowed_m .day").on("click", function(e) {

@@ -290,7 +290,15 @@ class Project extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = 'Add Activity';
+        $this->data['page_title'] = 'Add Activity';
+        $x = $this->project_model->get_activity_nested_dropdown();
+        $this->data['nested_activities_dd'] = $x;
+        //print_r($x);
+
+
+
+
+
         $this->data['maincontent'] = $this->load->view($this->router->class.'/add_activity', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

@@ -51,7 +51,7 @@ $gray-dark: lighten($black, 20%);
 $gray-darker: lighten($black, 13.5%);
 //Override primary color (Nav, Button, Link)
 $brand-color: $blue;
-$primary-color: #0062cc;
+$primary-color: #0050a7;
 // Complementry color is used to indecate the loading bar on the top
 // of the page with pace.js plugin
 $complementry-color: adjust_hue($primary-color, 180);
@@ -66,8 +66,8 @@ $holiday: lighten($color_red, 40%);
 $leave: lighten($orange, 20%);
 $has-data: lighten($color_green, 50%);
 // Validation Error Message Colors
-$validation-error-color: $red;
-$mandatory_field_star-color: $red;
+$validation-error-color: #ff0000;
+$mandatory_field_star-color: #ff0000;
 // Colorgraph
 $from_color: #a8ff1b;
 $to_color: #cf1180;
@@ -93,3 +93,23 @@ $bs_mega_menu_light_nav_link_hover_color: $bs_mega_menu_light_nav_link_color;
 $bs_mega_menu_light_nav_link_hover_bg_color: $gray-200;
 $bs_mega_menu_light_nav_link_active_color: $white;
 $bs_mega_menu_light_nav_link_active_bg_color: $primary-color;
+$sidebar-width: 260px;
+// ------- Sidebar --------
+$sidebar-accent: dark;
+//Sidebar dark
+$sidebar-dark-bg-color: $gray-900;
+$sidebar-dark-link-color: $gray-500;
+$sidebar-dark-text-color: $sidebar-dark-link-color;
+$sidebar-dark-link-color-hover: $white;
+$sidebar-dark-nested-menu-bg: $sidebar-dark-bg-color; // lighten($sidebar-color, 4);
+//Sidebar light
+$sidebar-light-bg-color: $gray-200;
+$sidebar-light-link-color: $gray-900;
+$sidebar-light-text-color: $sidebar-light-link-color;
+$sidebar-light-link-color-hover: $primary-color;
+$sidebar-light-nested-menu-bg: $sidebar-light-bg-color; //darken($sidebar-color, 4);
+$sidebar-border-left-color: none; // $primary-color
+$sidebar-active-hover-focus-bg-color: $sidebar-dark-bg-color;
+// ------- Nav Toggle Button ------------
+$navbar-dark-toggler-border-color: transparent;
+$navbar-light-toggler-border-color: transparent;

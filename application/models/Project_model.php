@@ -192,4 +192,21 @@ class Project_model extends CI_Model {
         return array('num_rows' => $num_rows, 'data_rows' => $result);
     }
 
+    function get_activity_nested_dropdown() {
+        $result = array();
+        $this->db->select('id,task_activity_name, task_activity_parent_id, task_item_order_level, task_code');
+        $this->db->where('task_activity_status','Y');		
+        $this->db->order_by('task_activity_name');		
+        $query = $this->db->get('task_activities');
+        #echo $this->db->last_query();
+        $result = array('' => 'Select');
+        if ($query->num_rows()) {
+            $res = $query->result();
+            foreach ($res as $r) {
+                $result[$r->id] = $r->task_item_order_level.'-'.$r->task_activity_name;
+            }
+        }
+        return $result;
+    }
+
 }

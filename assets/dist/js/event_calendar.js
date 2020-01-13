@@ -40,6 +40,7 @@ function loadEventCalendarData() {
         editable: true,
         navLinks: true, // can click day/week names to navigate views
         eventLimit: true, // allow "more" link when too many events
+        displayEventTime: true,
         events: {
             url: SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/get_events',
             failure: function() {
@@ -49,13 +50,16 @@ function loadEventCalendarData() {
         eventClick: function(info) {
             info.jsEvent.preventDefault();
             console.log(info);
-            var modal_header_html = '';
-            modal_header_html += info.event.start + ' - ' + info.event.end + '<br>';
-            modal_header_html += '<span class="small ' + info.event.extendedProps.event_type_css + '">' + info.event.extendedProps.event_type + '</span>';
+            if(info.event.url.length>0){
+                window.open(info.event.url,'_blank');
+            }
+            // var modal_header_html = '';
+            // modal_header_html += info.event.start + ' - ' + info.event.end + '<br>';
+            // modal_header_html += '<span class="small ' + info.event.extendedProps.event_type_css + '">' + info.event.extendedProps.event_type + '</span>';
 
-            $('#fcEventDetailsModal #fcEventDetailsModalLabel').empty().html(modal_header_html);
-            $('#fcEventDetailsModal #fcEventDetailsModalBody').empty().html(info.event.title);
-            $('#fcEventDetailsModal').modal('show');
+            // $('#fcEventDetailsModal #fcEventDetailsModalLabel').empty().html(modal_header_html);
+            // $('#fcEventDetailsModal #fcEventDetailsModalBody').empty().html(info.event.title);
+            // $('#fcEventDetailsModal').modal('show');
 
         },
         dayClick: function(info) {
