@@ -14,7 +14,8 @@
 	<!--Select 2 CSS-->
 	<link href="<?php echo base_url('assets/vendors/select2/dist/css/select2.min.css');?>" rel="stylesheet" />
 	<!--Date Picker-->
-    <link href="<?php echo base_url('assets/vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css');?>" rel="stylesheet" />
+	<link href="<?php echo base_url('assets/vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css');?>" rel="stylesheet" />
+
     <!--Full calendar-->
     <link href="<?php echo base_url('assets/vendors/fullcalendar/packages/core/main.css');?>" rel="stylesheet" />
     <link href="<?php echo base_url('assets/vendors/fullcalendar/packages/bootstrap/main.css');?>" rel="stylesheet" />
@@ -30,21 +31,20 @@
     <![endif]-->
 </head>
 
-<body data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
-	
+<body class="app sidebar-mini" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
 	
     <?php echo $el_navbar; ?>
+    <?php echo $el_sidebar; ?>
     
-    <main role="main" class="container-fluid">
+    <main role="main" class="main-content">
         <?php echo $maincontent; ?>
-        <footer class="footer">
-            <?php echo $el_footer; ?>
-        </footer>
     </main>
-	
-	
 
-	<button class="btn btn-outline-secondary scrollup"><i aria-hidden="true" class="fa fa-arrow-up"></i></button>
+    <footer class="footer">
+        <?php echo $el_footer; ?>
+    </footer>
+
+	<button class="btn btn-outline-primary scrollup"><i aria-hidden="true" class="fa fa-arrow-up"></i></button>
 	<div class="ajax-loader-ui" id="ajax-loader" style="display:none;">
 		<img src="<?php echo base_url('assets/dist/img/ajax-loader.svg');?>" class="ajax-loader-img" alt="Loading...">
 	</div>
@@ -73,15 +73,15 @@
 	<!-- <script src="<?php echo base_url('assets/vendors/ckeditor5-build-classic/build/ckeditor.js'); ?>"></script> -->
     <!-- <script src="//cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script> -->
     <script src="<?php echo base_url('assets/vendors/ckeditor/ckeditor.js'); ?>"></script>
-
+    
     <!--Full Calendar-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/core/main.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/interaction/main.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/bootstrap/main.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/daygrid/main.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/timegrid/main.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/list/main.js');?>"></script>
-
 	<!--Application Specific JS Loading Through Controllers-->
     <?php echo isset($app_js) ? $app_js : ''; ?>
 </body>

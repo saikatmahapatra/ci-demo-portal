@@ -1,7 +1,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-6">
         <?php echo isset($alert_message) ? $alert_message : ''; ?>
         <?php echo form_open_multipart(current_url(), array('method' => 'post', 'class' => 'ci-form', 'name' => '','id' => '',));?>
         <?php echo form_hidden('form_action', 'send'); ?>

@@ -5,7 +5,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-9">
         <div class="card ci-card">
             <div class="card-body">
             <h5 class="card-title">Add Salary Account</h5>

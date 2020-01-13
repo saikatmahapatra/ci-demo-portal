@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Calendar_model extends CI_Model {
+class Event_calendar_model extends CI_Model {
 
     function __construct() {
         parent::__construct();
@@ -170,13 +170,15 @@ class Calendar_model extends CI_Model {
           if(isset($rs['data_rows']) && sizeof($rs['data_rows']) > 0){
             foreach($rs['data_rows'] as $key => $val){
               $data3[$key]['id'] = $val['id'];
-              $data3[$key]['title'] = 'Leave : '.$leave_status_arr[$val['leave_status']]['text'].' '.$val['leave_type'].'  '.$val['leave_req_id'].' : '.$val['leave_reason'];
-              $data3[$key]['start'] = date('c', strtotime($val['leave_from_date']));
-              $data3[$key]['end'] = date('c',strtotime($val['leave_to_date']));
+              $data3[$key]['title'] = $val['leave_type'].' '.$leave_status_arr[$val['leave_status']]['text'].' '.$val['leave_req_id'].' : '.$val['leave_reason'];
+              $data3[$key]['start'] = $val['leave_from_date'].'T00:00:00';
+              //$data3[$key]['end'] = $val['leave_to_date'].'T23:59:59';
+              $end_date_bug_fix = date('Y-m-d', strtotime('+1 day', strtotime($val['leave_to_date'])));
+              $data3[$key]['end'] = $end_date_bug_fix.'T23:59:59'; //to fix bug of
               $data3[$key]['borderColor'] = '#fecba1'; // orange
               $data3[$key]['backgroundColor'] = '#feebdb'; // 80% lighten of border
               $data3[$key]['textColor'] = '#212529';
-              $data3[$key]['allDay'] = TRUE;
+              $data3[$key]['allDay'] = true;
               $data3[$key]['url'] = base_url('leave/details/'.$val['id'].'/'.$val['leave_req_id'].'/calendar');
               $data3[$key]['extendedProps'] = array(
                 'event_type' => 'Leave',

@@ -66,8 +66,8 @@ $holiday: lighten($color_red, 40%);
 $leave: lighten($orange, 20%);
 $has-data: lighten($color_green, 50%);
 // Validation Error Message Colors
-$validation-error-color: $red;
-$mandatory_field_star-color: $red;
+$validation-error-color: #ff0000;
+$mandatory_field_star-color: #ff0000;
 // Colorgraph
 $from_color: #a8ff1b;
 $to_color: #cf1180;
@@ -94,22 +94,22 @@ $bs_mega_menu_light_nav_link_hover_bg_color: $gray-200;
 $bs_mega_menu_light_nav_link_active_color: $white;
 $bs_mega_menu_light_nav_link_active_bg_color: $primary-color;
 $sidebar-width: 260px;
-// ------- Sidebar Colors --------
-// Background color of sidebar
-$sidebar-color: $gray-900;
-// -- Suggested sidebar background colors
-// dark  : #222d32
-// light : #f8f8f8
-// Sidebar accent varible is used to determine the color of the links
-// of the sidebar. The allowed values are 'light' or 'dark' only
+// ------- Sidebar --------
 $sidebar-accent: dark;
-// The following varibles indecate sidebar link color
-// and link hover color when using a dark sidebar color
-$sidebar-dark-color: $white;
-$sidebar-dark-link-color: $white;
-// The following varibles indecate sidebar link color
-// and link hover color when using a light sidebar color
-$sidebar-light-color: $black;
-$sidebar-light-link-color: $gray-600;
+//Sidebar dark
+$sidebar-dark-bg-color: $gray-900;
+$sidebar-dark-link-color: $gray-500;
+$sidebar-dark-text-color: $sidebar-dark-link-color;
+$sidebar-dark-link-color-hover: $white;
+$sidebar-dark-nested-menu-bg: $sidebar-dark-bg-color; // lighten($sidebar-color, 4);
+//Sidebar light
+$sidebar-light-bg-color: $gray-200;
+$sidebar-light-link-color: $gray-900;
+$sidebar-light-text-color: $sidebar-light-link-color;
+$sidebar-light-link-color-hover: $primary-color;
+$sidebar-light-nested-menu-bg: $sidebar-light-bg-color; //darken($sidebar-color, 4);
+$sidebar-border-left-color: none; // $primary-color
+$sidebar-active-hover-focus-bg-color: $sidebar-dark-bg-color;
+// ------- Nav Toggle Button ------------
 $navbar-dark-toggler-border-color: transparent;
 $navbar-light-toggler-border-color: transparent;

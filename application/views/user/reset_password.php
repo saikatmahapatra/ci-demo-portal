@@ -1,6 +1,4 @@
-<div class="card card-login mx-auto mt-3">
-  <div class="card-header text-white bg-black"><?php echo isset($page_title) ? $page_title : 'Untitled Page'; ?></div>
-  <div class="colorgraph-2"></div>
+<div class="card card-login ci-card mx-auto mt-3">
   <div class="card-body">
 	<div class="text-center mb-4">
 		<img class="logo-login" src="<?php echo base_url('assets/dist/img/logo-dark.png');?>">

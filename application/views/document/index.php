@@ -1,7 +1,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
-    <div class="col-lg-4 mb-3">
+    <div class="col-lg-5 mb-3">
         <div class="card ci-card">
             <div class="card-body">
             <h5 class="card-title">Upload Files</h5>

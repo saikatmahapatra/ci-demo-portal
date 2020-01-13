@@ -1,11 +1,11 @@
 body {
     margin-top: 4.5rem;
-    //background-color: #E5E5E5;
+    background-color: $gray-100;
 }
 
 body.login {
     margin-top: 0rem;
-    background-color: #E5E5E5;
+    background-color: $gray-900;
 }
 
 @mixin linear-gradient($from, $to) {
@@ -30,7 +30,7 @@ body.login {
 .nav-logo {
     width: 180px;
     @media (max-width: 576px) {
-        width: 130px;
+        width: 160px;
     }
 }
 
@@ -536,18 +536,18 @@ body.login {
         flex: 1 1 auto;
         padding: 1.25rem;
         .card-title {
-            text-transform: uppercase;
+            //text-transform: uppercase;
             color: rgba(13, 27, 62, 0.7);
             font-weight: bold;
-            font-size: 0.88rem;
+            font-size: 0.9375rem
         }
     }
     .card-header,
     .card-title {
-        text-transform: uppercase;
+        //text-transform: uppercase;
         color: rgba(13, 27, 62, 0.7);
         font-weight: bold;
-        font-size: 0.88rem;
+        font-size: 0.9375rem;
         background-color: none;
         border-bottom: none;
     }
@@ -1206,6 +1206,7 @@ App with header, toggle side bar
         }
     }
     .navbar {
+        padding: 0px;
         .dropdown-toggle {
             &:after {
                 content: none;
@@ -1333,7 +1334,19 @@ App with header, toggle side bar
     }
 }
 
+.feather {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+}
+
 .sidebar {
+    @if $sidebar-accent==dark {
+        color: $sidebar-dark-text-color;
+    }
+    @if $sidebar-accent==light {
+        color: $sidebar-light-text-color;
+    }
     position: fixed;
     top: 0;
     bottom: 0;
@@ -1342,9 +1355,15 @@ App with header, toggle side bar
     width: $sidebar-width;
     overflow: auto;
     z-index: 10;
-    background-color: $sidebar-color;
-    box-shadow: 6px 0 6px rgba(0, 0, 0, .1);
-    transition: left 0.3s ease, width 0.3s ease;
+    @if $sidebar-accent==dark {
+        background-color: $sidebar-dark-bg-color;
+    }
+    @if $sidebar-accent==light {
+        background-color: $sidebar-light-bg-color;
+    }
+    //box-shadow: 6px 0 6px rgba(0, 0, 0, .1);
+    transition: left 0.3s ease,
+    width 0.3s ease;
     &::-webkit-scrollbar {
         width: 6px;
     }
@@ -1371,7 +1390,6 @@ App with header, toggle side bar
     display: flex;
     align-items: center;
     padding: 10px;
-    color: $white;
 }
 
 .sidebar-user-avatar {
@@ -1383,7 +1401,6 @@ App with header, toggle side bar
 }
 
 .sidebar-user-name {
-    font-size: 1rem;
     line-height: 1.3;
 }
 
@@ -1410,22 +1427,22 @@ App with header, toggle side bar
     border-left: 3px solid transparent;
     transition: border-left-color 0.3s ease, background-color 0.3s ease;
     @if $sidebar-accent==dark {
-        color: $sidebar-dark-link-color
+        color: $sidebar-dark-link-color;
     }
     @if $sidebar-accent==light {
-        color: $sidebar-light-link-color
+        color: $sidebar-light-link-color;
     }
     &.active,
     &:hover,
     &:focus {
-        background: darken($sidebar-color, 10);
-        border-left-color: $primary-color;
+        background: $sidebar-active-hover-focus-bg-color;
+        border-left-color: $sidebar-border-left-color;
         text-decoration: none;
         @if $sidebar-accent==dark {
-            color: $sidebar-dark-link-color
+            color: $sidebar-dark-link-color-hover;
         }
         @if $sidebar-accent==light {
-            color: $primary-color
+            color: $sidebar-light-link-color-hover;
         }
     }
 }
@@ -1438,13 +1455,14 @@ App with header, toggle side bar
 .menu-label {
     white-space: nowrap;
     flex: 1 1 auto;
+    margin-left: 10px;
 }
 
 .treeview {
     &.is-expanded {
         [data-toggle='treeview'] {
-            border-left-color: $primary-color;
-            background: darken($sidebar-color, 10);
+            border-left-color: $sidebar-border-left-color;
+            background: $sidebar-active-hover-focus-bg-color;
         }
         .treeview-menu {
             max-height: 100vh;
@@ -1461,10 +1479,29 @@ App with header, toggle side bar
     overflow: hidden;
     transition: max-height 0.3s ease;
     @if $sidebar-accent==dark {
-        background: lighten($sidebar-color, 4)
+        background: $sidebar-dark-nested-menu-bg;
     }
     @if $sidebar-accent==light {
-        background: darken($sidebar-color, 4)
+        background: $sidebar-light-nested-menu-bg;
+    }
+}
+
+.treeview-item-heading {
+    align-items: center;
+    //padding: 5px 5px 0px 20px;
+    font-size: 80%;
+    color: $gray-600;
+    margin: 5px 5px 0px 20px;
+    text-transform: uppercase;
+    &:not(:first-child) {
+        margin-top: 15px;
+    }
+    span {
+        // &:before {
+        //     font-family: 'FontAwesome';
+        //     content: "\f105";
+        //     margin-right: 10px;
+        // }
     }
 }
 
@@ -1482,13 +1519,13 @@ App with header, toggle side bar
     &.active,
     &:hover,
     &:focus {
-        background: darken($sidebar-color, 10);
+        background: $sidebar-active-hover-focus-bg-color;
         text-decoration: none;
         @if $sidebar-accent==dark {
-            color: $sidebar-dark-link-color
+            color: $sidebar-dark-link-color-hover;
         }
         @if $sidebar-accent==light {
-            color: $primary-color
+            color: $sidebar-light-link-color-hover;
         }
     }
     .icon {
@@ -1546,7 +1583,7 @@ App with header, toggle side bar
             margin-left: -3px;
             line-height: 1;
             opacity: 0;
-            background: darken($sidebar-color, 10);
+            background: $sidebar-active-hover-focus-bg-color;
             border-top-right-radius: 4px;
             border-bottom-right-radius: 4px;
         }
@@ -1554,13 +1591,13 @@ App with header, toggle side bar
             &:hover {
                 .menu-item {
                     overflow: visible;
-                    background: darken($sidebar-color, 10);
-                    border-left-color: $primary-color;
+                    background: $sidebar-active-hover-focus-bg-color;
+                    border-left-color: $sidebar-border-left-color;
                     @if $sidebar-accent==dark {
-                        color: $sidebar-dark-link-color
+                        color: $sidebar-dark-link-color-hover;
                     }
                     @if $sidebar-accent==light {
-                        color: $primary-color
+                        color: $sidebar-light-link-color-hover;
                     }
                 }
                 .menu-label {

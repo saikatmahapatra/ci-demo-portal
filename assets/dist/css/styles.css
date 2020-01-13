@@ -8435,11 +8435,12 @@ a.text-dark:hover, a.text-dark:focus {
 
 body {
   margin-top: 4.5rem;
+  background-color: #f8f9fa;
 }
 
 body.login {
   margin-top: 0rem;
-  background-color: #E5E5E5;
+  background-color: #212529;
 }
 
 .logo {
@@ -8456,7 +8457,7 @@ body.login {
 
 @media (max-width: 576px) {
   .nav-logo {
-    width: 130px;
+    width: 160px;
   }
 }
 
@@ -8482,7 +8483,7 @@ body.login {
 }
 
 .validation-error {
-  color: #dc3545;
+  color: #ff0000;
   font-size: 80%;
   margin-top: .25rem;
 }
@@ -8954,18 +8955,16 @@ body.login {
 }
 
 .ci-card .card-body .card-title {
-  text-transform: uppercase;
   color: rgba(13, 27, 62, 0.7);
   font-weight: bold;
-  font-size: 0.88rem;
+  font-size: 0.9375rem;
 }
 
 .ci-card .card-header,
 .ci-card .card-title {
-  text-transform: uppercase;
   color: rgba(13, 27, 62, 0.7);
   font-weight: bold;
-  font-size: 0.88rem;
+  font-size: 0.9375rem;
   background-color: none;
   border-bottom: none;
 }
@@ -9554,6 +9553,10 @@ App with header, toggle side bar
   font-weight: 700;
 }
 
+.header-navbar .navbar {
+  padding: 0px;
+}
+
 .header-navbar .navbar .dropdown-toggle:after {
   content: none;
 }
@@ -9695,7 +9698,14 @@ App with header, toggle side bar
   text-decoration: none;
 }
 
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
 .sidebar {
+  color: #adb5bd;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -9705,8 +9715,7 @@ App with header, toggle side bar
   overflow: auto;
   z-index: 10;
   background-color: #212529;
-  box-shadow: 6px 0 6px rgba(0, 0, 0, 0.1);
-  transition: left 0.3s ease, width 0.3s ease;
+  transition: left 0.3s ease, width 0.3s ease;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -9721,6 +9730,13 @@ App with header, toggle side bar
   .sidebar {
     display: none;
   }
+}
+
+.sidebar-footer {
+  bottom: 0px;
+  font-size: 80%;
+  margin: 5px 5px 0px 20px;
+  text-align: center;
 }
 
 @media (max-width: 767px) {
@@ -9738,7 +9754,6 @@ App with header, toggle side bar
   display: flex;
   align-items: center;
   padding: 10px;
-  color: #fff;
 }
 
 .sidebar-user-avatar {
@@ -9749,7 +9764,6 @@ App with header, toggle side bar
 }
 
 .sidebar-user-name {
-  font-size: 1rem;
   line-height: 1.3;
 }
 
@@ -9773,12 +9787,12 @@ App with header, toggle side bar
   padding: 12px 15px;
   border-left: 3px solid transparent;
   transition: border-left-color 0.3s ease, background-color 0.3s ease;
-  color: #fff;
+  color: #adb5bd;
 }
 
 .menu-item.active, .menu-item:hover, .menu-item:focus {
-  background: #0a0c0d;
-  border-left-color: #0050a7;
+  background: #212529;
+  border-left-color: none;
   text-decoration: none;
   color: #fff;
 }
@@ -9791,11 +9805,12 @@ App with header, toggle side bar
 .menu-label {
   white-space: nowrap;
   flex: 1 1 auto;
+  margin-left: 10px;
 }
 
 .treeview.is-expanded [data-toggle='treeview'] {
-  border-left-color: #0050a7;
-  background: #0a0c0d;
+  border-left-color: none;
+  background: #212529;
 }
 
 .treeview.is-expanded .treeview-menu {
@@ -9810,7 +9825,19 @@ App with header, toggle side bar
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
-  background: #2a2f34;
+  background: #212529;
+}
+
+.treeview-item-heading {
+  align-items: center;
+  font-size: 80%;
+  color: #6c757d;
+  margin: 5px 5px 0px 20px;
+  text-transform: uppercase;
+}
+
+.treeview-item-heading:not(:first-child) {
+  margin-top: 15px;
 }
 
 .treeview-item {
@@ -9818,11 +9845,11 @@ App with header, toggle side bar
   align-items: center;
   padding: 8px 5px 8px 20px;
   font-size: .875rem;
-  color: #fff;
+  color: #adb5bd;
 }
 
 .treeview-item.active, .treeview-item:hover, .treeview-item:focus {
-  background: #0a0c0d;
+  background: #212529;
   text-decoration: none;
   color: #fff;
 }
@@ -9879,14 +9906,14 @@ App with header, toggle side bar
     margin-left: -3px;
     line-height: 1;
     opacity: 0;
-    background: #0a0c0d;
+    background: #212529;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
   }
   .sidebar-mini.sidenav-toggled .treeview:hover .menu-item {
     overflow: visible;
-    background: #0a0c0d;
-    border-left-color: #0050a7;
+    background: #212529;
+    border-left-color: none;
     color: #fff;
   }
   .sidebar-mini.sidenav-toggled .treeview:hover .menu-label {
