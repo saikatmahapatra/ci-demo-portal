@@ -270,7 +270,7 @@ class Timesheet_model extends CI_Model {
     
     function get_project_task_tagging_dropdown($project_id=NULL) {
         $result = array();
-        $this->db->select('t1.id, t2.task_name');
+        $this->db->select('t1.id, t2.task_name, t2.id as task_id');
         if($project_id){
             $this->db->where('t1.project_id',$project_id);
         }
@@ -281,7 +281,7 @@ class Timesheet_model extends CI_Model {
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
-                $result[$r->id] = $r->task_name;
+                $result[$r->task_id] = $r->task_name;
             }
         }
         return $result;

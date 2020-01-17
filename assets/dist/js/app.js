@@ -378,21 +378,10 @@ function initPage() {
     var treeviewMenu = $('.menu');
 
     // Toggle Sidebar
-    var sidebar_toggled = 'N';
     $('[data-toggle="sidebar"]').click(function(event) {
         event.preventDefault();
         $('.app').toggleClass('sidenav-toggled');
-        // if ($('.app').hasClass('sidenav-toggled')) {
-        //     sidebar_toggled = 'Y';
-        // } else {
-        //     sidebar_toggled = 'N';
-        // }
-        // localStorage.setItem('sidebar_toggled', 'Y');
     });
-    // if (localStorage.getItem('sidebar_toggled') == 'Y') {
-    //     $('.app').addClass('sidenav-toggled');
-    // }
-
 
     // Activate sidebar treeview toggle
     $("[data-toggle='treeview']").click(function(event) {

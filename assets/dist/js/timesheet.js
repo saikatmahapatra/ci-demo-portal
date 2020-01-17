@@ -133,14 +133,15 @@ $(function() {
         xhr.data = { via: 'ajax', current_control: current_control, id: id, data_render_target: data_render_target, data_order: data_order };
         var promise = xhr.init();
         promise.done(function(response) {
-            console.log(response);
             hideAjaxLoader();
+            var option = '<option value="">-Select-</option>';
             $.each(response.resp_data, function(index, json) {
-                $('select[name="' + response.req_param.data_render_target + '"]').append($("<option></option>").attr("value", index).text(json));
+                option += '<option value="' + index + '">' + json + '</option>';
             });
+            $('select[name="' + response.req_param.data_render_target + '"]').html(option);
         });
         promise.fail(function() {
-            alert("Failed");
+            alert("Service call failed");
         });
         promise.always(function() {});
     });

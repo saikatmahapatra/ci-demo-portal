@@ -8730,7 +8730,7 @@ body.login {
 
 .table.ci-table thead th,
 .table.ci-table tfoot th {
-  font-weight: 700;
+  font-weight: 400;
   font-size: 80%;
 }
 
@@ -9730,13 +9730,6 @@ App with header, toggle side bar
   .sidebar {
     display: none;
   }
-}
-
-.sidebar-footer {
-  bottom: 0px;
-  font-size: 80%;
-  margin: 5px 5px 0px 20px;
-  text-align: center;
 }
 
 @media (max-width: 767px) {

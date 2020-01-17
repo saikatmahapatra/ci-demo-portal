@@ -119,8 +119,18 @@ class Timesheet extends CI_Controller {
 	function add() {
         //Check user permission by permission name mapped to db
         //$is_authorized = $this->common_lib->is_auth('timesheet-add');
+        $this->data['arr_task_id_1'] = array(''=>'-Select-');
+        $this->data['arr_task_id_2'] = array(''=>'-Select-');
         if ($this->input->post('form_action') == 'add') {
-			//$this->data['remaining_description_length'] = (200 - strlen($this->input->post('timesheet_description')));
+            //$this->data['remaining_description_length'] = (200 - strlen($this->input->post('timesheet_description')));
+            if($this->input->post('project_id')){
+                $this->data['arr_task_id_1'] = $this->timesheet_model->get_project_task_tagging_dropdown($this->input->post('project_id'));
+            }
+
+            if($this->input->post('task_id_1')){
+                $this->data['arr_task_id_2'] = $this->timesheet_model->get_task_dropdown('2', $this->input->post('task_id_1'));
+            }
+
             if ($this->validate_form_data('add') == true) {
 				$selected_date_arr = explode(',', $this->input->post('selected_date'));
 				//print_r($selected_date_arr); die();
@@ -149,12 +159,12 @@ class Timesheet extends CI_Controller {
 	
 	function validate_form_data($action = NULL) {
         if($action != 'edit'){
-            $this->form_validation->set_rules('selected_date', 'calendar date selection', 'required|callback_check_selected_days');
+            $this->form_validation->set_rules('selected_date', 'date selection', 'required|callback_check_selected_days');
         }
-        $this->form_validation->set_rules('project_id', 'project selection', 'required');
-        $this->form_validation->set_rules('task_id_1', 'activity selection', 'required');
+        $this->form_validation->set_rules('project_id', 'project', 'required');
+        $this->form_validation->set_rules('task_id_1', 'task', 'required');
         $this->form_validation->set_rules('timesheet_hours', 'hours', 'required|numeric|less_than[18]|greater_than[0]');
-        $this->form_validation->set_rules('timesheet_description', 'description', 'required|max_length[200]');
+        $this->form_validation->set_rules('timesheet_description', 'additional note', 'max_length[50]');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -239,9 +249,11 @@ class Timesheet extends CI_Controller {
             $no++;
             $row = array();
             $row[] = $this->common_lib->display_date($result['timesheet_date']);
-            $row[] = $result['project_name'].', '.$result['task_name'];
+            $row[] = $result['project_name'];
+            $row[] = $result['task_name'];
+            $row[] = $result['task_name'];
             $row[] = $result['timesheet_hours'];
-            //$row[] = $result['timesheet_description'];
+            //$row[] = $result['timesheet_hours'];
 			$html = '';
 			//$html.= '<div class="">'.$this->common_lib->display_date($result['timesheet_date']).' <span class="mx-3">'.$result['timesheet_hours'].' hrs</span></div>';			
 			//$html.= '<div class="">'.$result['project_number'].' '.$result['project_name'].'<span class="mx-3">'.$result['task_name'].'</span></div>';			
@@ -268,7 +280,7 @@ class Timesheet extends CI_Controller {
                 }
                 $action_html.='</div>';
 
-            $row[] = $result['timesheet_description'].$action_html;
+            $row[] = $action_html;
             $data[] = $row;
         }
 
