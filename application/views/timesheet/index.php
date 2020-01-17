@@ -48,49 +48,46 @@
                             </div>
                             <!--/.col-lg-3-->
 
-                            <div class="col-lg-4 offset-md-1">
+                            <div class="col-lg-8 offset-md-1">
 
                                 <div class="form-row">
                                     <div class="form-group col-12">
                                         <label for="project_id" class="required">Project</label>
-                                        <?php echo form_dropdown('project_id', $project_arr, set_value('project_id'), array('class' => 'form-control','data-render-target'=>'activity_id', 'data-order'=>'1')); ?>
+                                        <?php echo form_dropdown('project_id', $project_arr, set_value('project_id'), array('class' => 'form-control','data-render-target'=>'task_id_1', 'data-order'=>'1')); ?>
                                         <?php echo form_error('project_id'); ?>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
-                                    <div class="form-group col-12">
-                                        <label for="activity_id" class="required">Activity</label>
-                                        <?php echo form_dropdown('activity_id', array('' => '-Select-'), set_value('activity_id'), array('class' => 'form-control','data-render-target'=>'task_id', 'data-order'=>'2'));?>
-                                        <?php echo form_error('activity_id'); ?>
+                                    <div class="form-group col-lg-6">
+                                        <label for="task_id_1" class="required">Task</label>
+                                        <?php echo form_dropdown('task_id_1', array('' => '-Select-'), set_value('task_id_1'), array('class' => 'form-control','data-render-target'=>'task_id_2', 'data-order'=>'2'));?>
+                                        <?php echo form_error('task_id_1'); ?>
+                                    </div>
+
+                                    <div class="form-group col-lg-6">
+                                        <label id="task_id_2" for="task_id_2" class="required">Sub Task</label>
+                                        <?php echo form_dropdown('task_id_2', array('' => '-Select-'), set_value('task_id_2'), array('class' => 'form-control'));?>
+                                        <?php echo form_error('task_id_2'); ?>
                                     </div>
                                 </div>
-                                <div class="form-row">
+                                <!-- <div class="form-row">
                                     <div class="form-group col-12">
-                                        <label id="task_id" for="task" class="required">Task</label>
-                                        <?php echo form_dropdown('task_id', array('' => '-Select-'), set_value('task_id'), array('class' => 'form-control','data-render-target'=>'sub_task_id', 'data-order'=>'3'));?>
-                                        <?php echo form_error('task_id'); ?>
+                                        <label id="task_id_3" for="task" class="required">Sub-Task</label>
+                                        <?php echo form_dropdown('task_id_3', array('' => '-Select-'), set_value('task_id_3'), array('class' => 'form-control',));?>
+                                        <?php echo form_error('task_id_3'); ?>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-row">
-                                    <div class="form-group col-12">
-                                        <label id="sub_task_id" for="task" class="required">Sub-Task</label>
-                                        <?php echo form_dropdown('sub_task_id', array('' => '-Select-'), set_value('sub_task_id'), array('class' => 'form-control',));?>
-                                        <?php echo form_error('sub_task_id'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-12">
+                                    <div class="form-group col-lg-4">
                                         <label for="timesheet_hours" class="required">Hours</label>
-                                        <?php echo form_input(array('name' => 'timesheet_hours', 'value' => set_value('timesheet_hours'),'id' => 'timesheet_hours', 'class' => 'form-control w-25','maxlength' => '5','placeholder' => '0',)); ?>
+                                        <?php echo form_input(array('name' => 'timesheet_hours', 'value' => set_value('timesheet_hours'),'id' => 'timesheet_hours', 'class' => 'form-control w-50','maxlength' => '3','placeholder' => '0',)); ?>
                                         <?php echo form_error('timesheet_hours'); ?>
                                     </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-12">
+                                
+                                    <div class="form-group col-lg-8">
                                         <label for="timesheet_description" class="optional">Additional Note</label>
-                                        <?php echo form_input(array('name' => 'timesheet_description','value' => set_value('timesheet_description'),'id' => 'timesheet_description','class' => 'form-control', 'maxlength' => '200','placeholder' => 'Additional Note')); ?>
+                                        <?php echo form_input(array('name' => 'timesheet_description','value' => set_value('timesheet_description'),'id' => 'timesheet_description','class' => 'form-control', 'maxlength' => '50','placeholder' => 'additional note')); ?>
                                         <?php echo form_error('timesheet_description'); ?>
                                     </div>
                                 </div>

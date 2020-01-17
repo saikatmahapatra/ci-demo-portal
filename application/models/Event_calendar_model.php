@@ -216,12 +216,12 @@ class Event_calendar_model extends CI_Model {
         t1.timesheet_hours,
         t1.timesheet_description,
 		t2.project_name,
-		t3.task_activity_name,
+		t3.task_name,
 		t4.user_firstname,
 		t4.user_lastname
 		');
 		$this->db->join('projects as t2', 't2.id = t1.project_id', 'left');
-		$this->db->join('task_activities as t3', 't3.id = t1.activity_id', 'left');
+		$this->db->join('project_tasks as t3', 't3.id = t1.task_id_1', 'left');
 		$this->db->join('users as t4', 't4.id = t1.timesheet_created_by', 'left');
         if(isset($cond)){
             if($cond['user_id'] != ""){

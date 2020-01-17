@@ -26,9 +26,9 @@ $row = $rows[0];
                 </div>
                 <div class="form-row">
                     <div class="form-group col-12">
-                        <label for="activity_id" class="required">Activity</label>
-                        <?php echo form_dropdown('activity_id', $task_task_activity_type_array, (isset($_POST['activity_id']) ? set_value('activity_id') : $row['activity_id']), array('class' => 'form-control',));?>
-                        <?php echo form_error('activity_id'); ?>
+                        <label for="task_id_1" class="required">Activity</label>
+                        <?php echo form_dropdown('task_id_1', $task_task_task_type_array, (isset($_POST['task_id_1']) ? set_value('task_id_1') : $row['task_id_1']), array('class' => 'form-control',));?>
+                        <?php echo form_error('task_id_1'); ?>
                     </div>
                 </div>
                 <div class="form-row">

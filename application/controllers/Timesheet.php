@@ -45,7 +45,7 @@ class Timesheet extends CI_Controller {
 		
 		//Dropdown
 		$this->data['project_arr'] = $this->timesheet_model->get_project_dropdown();
-		$this->data['task_task_activity_type_array'] = $this->timesheet_model->get_activity_dropdown();
+		$this->data['task_task_task_type_array'] = $this->timesheet_model->get_task_dropdown();
 		//$this->data['timesheet_hours'] = $this->timesheet_model->get_timesheet_hours_dropdown();
 		
 		//View Page Config
@@ -130,7 +130,8 @@ class Timesheet extends CI_Controller {
 					$batch_post_data[$key] = array(
 						'timesheet_date' => $date,
 						'project_id' => $this->input->post('project_id'),
-						'activity_id' => $this->input->post('activity_id'),
+						'task_id_1' => $this->input->post('task_id_1'),
+						'task_id_2' => $this->input->post('task_id_2'),
 						'timesheet_hours' => $this->input->post('timesheet_hours'),
 						'timesheet_description' => $this->input->post('timesheet_description'),
 						'timesheet_created_by' => $this->sess_user_id,					
@@ -151,7 +152,7 @@ class Timesheet extends CI_Controller {
             $this->form_validation->set_rules('selected_date', 'calendar date selection', 'required|callback_check_selected_days');
         }
         $this->form_validation->set_rules('project_id', 'project selection', 'required');
-        $this->form_validation->set_rules('activity_id', 'activity selection', 'required');
+        $this->form_validation->set_rules('task_id_1', 'activity selection', 'required');
         $this->form_validation->set_rules('timesheet_hours', 'hours', 'required|numeric|less_than[18]|greater_than[0]');
         $this->form_validation->set_rules('timesheet_description', 'description', 'required|max_length[200]');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
@@ -238,12 +239,12 @@ class Timesheet extends CI_Controller {
             $no++;
             $row = array();
             $row[] = $this->common_lib->display_date($result['timesheet_date']);
-            $row[] = $result['project_name'].', '.$result['task_activity_name'];
+            $row[] = $result['project_name'].', '.$result['task_name'];
             $row[] = $result['timesheet_hours'];
             //$row[] = $result['timesheet_description'];
 			$html = '';
 			//$html.= '<div class="">'.$this->common_lib->display_date($result['timesheet_date']).' <span class="mx-3">'.$result['timesheet_hours'].' hrs</span></div>';			
-			//$html.= '<div class="">'.$result['project_number'].' '.$result['project_name'].'<span class="mx-3">'.$result['task_activity_name'].'</span></div>';			
+			//$html.= '<div class="">'.$result['project_number'].' '.$result['project_name'].'<span class="mx-3">'.$result['task_name'].'</span></div>';			
 			
             
                 //add html for action
@@ -292,7 +293,8 @@ class Timesheet extends CI_Controller {
             if ($this->validate_form_data('edit') == true) {
                 $postdata = array(
                     'project_id' => $this->input->post('project_id'),
-                    'activity_id' => $this->input->post('activity_id'),
+                    'task_id_1' => $this->input->post('task_id_1'),
+                    'task_id_2' => $this->input->post('task_id_2'),
                     'timesheet_hours' => $this->input->post('timesheet_hours'),
                     'timesheet_description' => $this->input->post('timesheet_description'),
                     'timesheet_updated_on' => date('Y-m-d H:i:s')
@@ -431,11 +433,12 @@ class Timesheet extends CI_Controller {
             'B' => 'Date',
             'C' => 'Employee',
             'D' => 'Project',
-            'E' => 'Activity',
-            'F' => 'Hours',
-            'G' => 'Task Description',
-            'H' => 'Added On',
-            'I' => 'Updated On',
+            'E' => 'Task',
+            'F' => 'Sub Task',
+            'G' => 'Hours',
+            'H' => 'Task Description',
+            'I' => 'Added On',
+            'J' => 'Updated On',
         );
         $this->data['xls_col'] = $excel_heading;
         //load our new PHPExcel library
@@ -475,11 +478,12 @@ class Timesheet extends CI_Controller {
             $sheet->setCellValue('B' . $excel_row, $this->common_lib->display_date($row['timesheet_date']));
             $sheet->setCellValue('C' . $excel_row, $row['user_firstname'].' '.$row['user_lastname']);
             $sheet->setCellValue('D' . $excel_row, $row['project_number'].'-'.$row['project_name']);
-            $sheet->setCellValue('E' . $excel_row, $row['task_activity_name']);
-            $sheet->setCellValue('F' . $excel_row, $row['timesheet_hours']);
-            $sheet->setCellValue('G' . $excel_row, $row['timesheet_description']);
-            $sheet->setCellValue('H' . $excel_row, $row['timesheet_created_on']);
-            $sheet->setCellValue('I' . $excel_row, $row['timesheet_updated_on']);
+            $sheet->setCellValue('E' . $excel_row, $row['task_name']);
+            $sheet->setCellValue('F' . $excel_row, $row['task_name']);
+            $sheet->setCellValue('G' . $excel_row, $row['timesheet_hours']);
+            $sheet->setCellValue('H' . $excel_row, $row['timesheet_description']);
+            $sheet->setCellValue('I' . $excel_row, $row['timesheet_created_on']);
+            $sheet->setCellValue('J' . $excel_row, $row['timesheet_updated_on']);
             $excel_row++;
             $serial_no++;
         }
@@ -560,9 +564,9 @@ class Timesheet extends CI_Controller {
         //print_r(json_encode($_REQUEST));
         $response = array();
         if($current_control == 'project_id'){
-            $res = $this->timesheet_model->get_project_activity_tagging_dropdown($id);
+            $res = $this->timesheet_model->get_project_task_tagging_dropdown($id);
         }else{
-            $res = $this->timesheet_model->get_activity_dropdown($data_order, $id);
+            $res = $this->timesheet_model->get_task_dropdown($data_order, $id);
         }
         $response['req_param'] = $_REQUEST;
         $response['resp_data'] = $res;

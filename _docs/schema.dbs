@@ -43,3 +43,4 @@ ALTER TABLE `leave_balance` CHANGE `leave_as_on_date` `balance_date` DATE NULL D
 ALTER TABLE `task_activities` ADD `task_activity_parent_id` INT NULL AFTER `task_activity_name`;
 ALTER TABLE `task_activities` ADD `task_item_order_level` INT(11) NULL DEFAULT '1' AFTER `id`;
 ALTER TABLE `task_activities` ADD `task_code` VARCHAR(10) NULL AFTER `task_item_order_level`;
+ALTER TABLE `project_tasks` CHANGE `task_item_order_level` `level` INT(11) NULL DEFAULT '1';

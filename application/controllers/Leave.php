@@ -415,12 +415,12 @@ class Leave extends CI_Controller {
             $row = array();
             //$row[] = $this->common_lib->display_date($result['timesheet_date']);
             //$row[] = $result['project_name'];
-            //$row[] = $result['task_activity_name'];
+            //$row[] = $result['task_name'];
             //$row[] = $result['timesheet_hours'];
             //$row[] = $result['timesheet_review_status'];
 			
 			$html = '<div class="font-weight-bold">'.$this->common_lib->display_date($result['timesheet_date']).' <span class="float-right">'.$result['timesheet_hours'].' hrs</span></div>';			
-			$html.= '<div class="small">'.$result['project_name'].'<span class="float-right">'.$result['task_activity_name'].'</span></div>';			
+			$html.= '<div class="small">'.$result['project_name'].'<span class="float-right">'.$result['task_name'].'</span></div>';			
 			
             
             //add html for action

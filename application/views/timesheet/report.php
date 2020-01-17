@@ -99,7 +99,7 @@
                                 <td><?php echo $this->common_lib->display_date($row['timesheet_date']);?></td>
                                 <td><?php echo $row['user_firstname'].' '.$row['user_lastname'];?></td>
                                 <td><?php echo $row['project_name'].'-'.$row['project_number'];?></td>
-                                <td><?php echo $row['task_activity_name'];?></td>
+                                <td><?php echo $row['task_name'];?></td>
                                 <td><?php echo $row['timesheet_hours'];?></td>
                                 <td><?php echo $row['timesheet_description'];?></td>
                             </tr>
