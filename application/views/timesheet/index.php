@@ -113,18 +113,17 @@
                     <div class="mt-3 tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
 
                         <div class="table-responsive">
-                            <table id="timesheet-datatable" class="table ci-table table-striped w-100">
+                            <table id="timesheet-datatable" class="table ci-table table-striped table-sm w-100">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">Date</th>
-                                        <th scope="col">Activity</th>
+                                        <th scope="col">Project</th>
+                                        <th scope="col">Task</th>
+                                        <th scope="col">Sub Task</th>
                                         <th scope="col">Hours</th>
-                                        <th scope="col">Description</th>
-                                        <!-- <th scope="col"></th> -->
+                                        <!-- <th scope="col">Description</th> -->
+                                        <th scope="col">Action</th>
                                     </tr>
-                                    <!-- <tr>
-								<th scope="col">Date & Tasks</th>
-							</tr> -->
                                 </thead>
                                 <tbody></tbody>
                             </table>

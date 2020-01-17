@@ -79,7 +79,7 @@
                     <?php echo form_close(); ?>
                     <?php } */ ?>
 
-                    <table class="table ci-table table-striped">
+                    <table class="table ci-table table-striped table-sm">
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col" style="width:10%;">Date</th>
