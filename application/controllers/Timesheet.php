@@ -300,8 +300,16 @@ class Timesheet extends CI_Controller {
         $month = $this->input->get_post('month') ? $this->input->get_post('month') : date('m');
         $current_year = date('Y');
         $current_month = date('m');
-
+        $this->data['arr_task_id_1'] = array(''=>'-Select-');
+        $this->data['arr_task_id_2'] = array(''=>'-Select-');
         if ($this->input->post('form_action') == 'update') {
+            if($this->input->post('project_id')){
+                $this->data['arr_task_id_1'] = $this->timesheet_model->get_project_task_tagging_dropdown($this->input->post('project_id'));
+            }
+
+            if($this->input->post('task_id_1')){
+                $this->data['arr_task_id_2'] = $this->timesheet_model->get_task_dropdown('2', $this->input->post('task_id_1'));
+            }
             if ($this->validate_form_data('edit') == true) {
                 $postdata = array(
                     'project_id' => $this->input->post('project_id'),
@@ -322,6 +330,15 @@ class Timesheet extends CI_Controller {
         }
         $result_array = $this->timesheet_model->get_rows($this->id, NULL, NULL, TRUE, TRUE, TRUE, $current_year, $current_month);
         $this->data['rows'] = $result_array['data_rows'];
+
+        if(isset($this->data['rows'][0]['project_id'])){
+            $this->data['arr_task_id_1'] = $this->timesheet_model->get_project_task_tagging_dropdown($this->data['rows'][0]['project_id']);
+        }
+
+        if(isset($this->data['rows'][0]['task_id_1'])){
+            $this->data['arr_task_id_2'] = $this->timesheet_model->get_task_dropdown('2', $this->data['rows'][0]['task_id_1']);
+        }
+
         if(sizeof($this->data['rows'])<=0){
             redirect($this->router->directory.$this->router->class);
         }
