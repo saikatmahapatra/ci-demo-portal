@@ -61,6 +61,7 @@
             }
         }
         .dropdown-item {
+            font-size: .875rem;
             &:active {
                 @if $mega_menu_theme==dark {
                     background-color: $bs_mega_menu_dark_dropdown_item_box_hover_bg_color;

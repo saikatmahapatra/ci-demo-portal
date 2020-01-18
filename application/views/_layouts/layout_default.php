@@ -31,7 +31,7 @@
     <![endif]-->
 </head>
 
-<body class="app sidebar-mini" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
+<body class="" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
 	
     <?php echo $el_navbar; ?>
     <?php //echo $el_sidebar; ?>
