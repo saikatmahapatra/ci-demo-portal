@@ -1,19 +1,62 @@
 <header class="header-navbar">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
-        <!-- <a class="sidebar-toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> -->
-        <button class="navbar-toggler" type="button" data-toggle="dropdown" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
+		<!-- <a class="sidebar-toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> -->
+		<button class="navbar-toggler" type="button" data-toggle="dropdown" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
-
+        
         <a class="navbar-brand" href="<?php echo base_url($this->router->directory); ?>"><img class="nav-logo" src="<?php echo base_url('assets/dist/img/logo-light.png');?>"></a>
 
-        <!-- .collapse .navbar-collapse removed -->
+
         <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
-        <div class="navbar-collapse justify-content-end" id="navbarsExampleDefault">
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown bs-mega-menu"> 
-                    <!-- <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Employee Self Services </a> -->
+                <li class="nav-item dropdown bs-mega-menu">
+                    <!-- <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Menu </a> -->
                     <ul class="dropdown-menu dropdown-mega-menu">
+                    <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
+                        <div class="row">
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <li class="dropdown-header">Employee</li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'user/create_account'); ?>">Add New Employee</a></li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'user/manage'); ?>">Manage Employees</a></li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header">Calendar</li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'calendar/index/view_timeline'); ?>">Employee's Calendar</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <li class="dropdown-header">CMS</li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'cms/add'); ?>">Add New Content</a></li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'cms'); ?>">Manage Contents</a></li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'holiday'); ?>">Manage Holidays</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <li class="dropdown-header">Leave</li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'leave/manage/all'); ?>">Leave Applications</a></li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'leave/leave_balance'); ?>">Leave Balance</a></li>
+                                    <!-- <li><a href="<?php echo base_url($this->router->directory.'leave/import_data'); ?>">Import/Export Balance Sheet</a></li> -->
+                                    <li><a href="<?php echo base_url($this->router->directory.'leave/manage/assigned_to_me'); ?>">Leave Applications to Approve</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="col-lg-3 col-md-6 dropdown-item">
+                                <ul>
+                                    <li class="dropdown-header">Timesheet</li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'timesheet/report'); ?>">Report</a></li>
+                                    <li><a href="<?php echo base_url($this->router->directory.'project'); ?>">Projects</a></li>
+                                    <li><a href="<?php echo base_url('project/activity'); ?>">Task Activities</a></li>
+                                </ul>
+                            </li>
+
+                        </div>
+                        <?php } ?>
                         <div class="row">
                             <li class="col-lg-3 col-md-6 dropdown-item">
                                 <ul>
@@ -59,19 +102,20 @@
             </ul>
 
             <ul class="navbar-nav my-2 my-lg-0">
-                <li class="nav-item dropdownW">
-                    <a class="nav-link dropdown-toggle" id="dropdown_notification" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o"></i></a>
+                <li class="nav-item dropdown no-toggle-icon">
+                    <a class="nav-link dropdown-toggle" id="dropdown_notification" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-fw fa-bell-o "></i></a>
                     <ul class="notification dropdown-menu dropdown-menu-right">
                         <li class="notification-title">You have 0 new notifications.</li>
-                        <div class="notification-content d-none">
-                            <li><a class="notification-item" href="<?php echo base_url();?>"><span class="notification-icon"><span class="fa-stack fa-lg"><i class="fa fa-circle-o-notch fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span><div><p class="notification-message">You have logged in</p><p class="notification-meta">2 min ago</p></div></a></li>
-                        </div>
+                            <div class="notification-content">
+                                <!-- <li><a class="notification-item" href="<?php echo base_url();?>"><span class="notification-icon"><span class="fa-stack "><i class="fa fa-fw fa-circle-o-notch fa-stack-2x text-primary"></i><i class="fa fa-fw fa-envelope fa-stack-1x fa-inverse"></i></span></span><div><p class="notification-message">Lisa sent you a mail</p><p class="notification-meta">2 min ago</p></div></a></li>-->
+                            </div>
                         <li class="notification-footer"><a href="<?php echo base_url();?>">See all notifications.</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown ml-3">
+
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown_5" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"><i class="fa fa-fw fa-user-circle " aria-hidden="true"></i></a>
+                        aria-expanded="false"><i class="fa fa-fw fa-user-circle " aria-hidden="true"></i> <?php //echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'] : 'Guest';?></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown_5">					
                         <div class="dropdown-item welcome-user-container">
                             <div class="mb-1"><?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></div>
@@ -90,6 +134,6 @@
                 </li>
             </ul>
         </div>
-        <?php } ?>
+        <?php } // end of session check ?>
     </nav>
 </header>
