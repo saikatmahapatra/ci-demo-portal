@@ -11,10 +11,10 @@
 	    </a>
 
         <!-- .collapse .navbar-collapse removed -->
+        <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
         <div class="navbar-collapse justify-content-end" id="navbarsExampleDefault">
             <ul class="navbar-nav">
-                <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
-                    <li class="nav-item dropdownW">
+                <li class="nav-item dropdownW">
                         <a class="nav-link dropdown-toggle" id="dropdown_notification" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o"></i></a>
                         <ul class="notification dropdown-menu dropdown-menu-right">
                             <li class="notification-title">You have 0 new notifications.</li>
@@ -32,8 +32,7 @@
                             <li class="notification-footer"><a href="<?php echo base_url();?>">See all notifications.</a></li>
                         </ul>
                     </li>
-
-                    <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown_5" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"><i class="fa fa-fw fa-user-circle " aria-hidden="true"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown_5">					
@@ -52,12 +51,8 @@
                         <a class="dropdown-item" href="<?php echo base_url($this->router->directory.'user/logout'); ?>">Logout</a>
                     </div>
                 </li>
-
-
-
-
-                <?php } ?>
             </ul>
         </div>
+        <?php } ?>
     </nav>
 </header>

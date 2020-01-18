@@ -34,9 +34,9 @@
 <body class="app sidebar-mini" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
 	
     <?php echo $el_navbar; ?>
-    <?php echo $el_sidebar; ?>
+    <?php //echo $el_sidebar; ?>
     
-    <main role="main" class="main-content">
+    <main role="main" class="container">
         <?php echo $maincontent; ?>
     </main>
 
