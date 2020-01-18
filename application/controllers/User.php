@@ -211,7 +211,8 @@ class User extends CI_Controller {
             $html_name='';
             $row[] = $result['user_firstname'] . ' ' . $result['user_lastname'];
             $row[] = $result['user_emp_id'];
-            $row[] = $result['user_email'];
+            $email_arr = explode('@',$result['user_email']);
+            $row[] = '<span data-toggle="tooltipmm" title="'.$result['user_email'].'">'.$email_arr[0].'</span>';
             $row[] = $result['user_phone1'];
             $row[] = $result['designation_name'];
             $row[] = '<span class="'.$this->data['user_status_arr'][$result['user_status']]['css'].'">'.$this->data['user_status_arr'][$result['user_status']]['text'].'</span>';
