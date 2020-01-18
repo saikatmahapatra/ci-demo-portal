@@ -5,4 +5,18 @@
 // Bootstrap 4 SCSS
 @import 'assets/vendors/bootstrap/scss/bootstrap';
 //Custom CSS - This App Specific CSS
-@import '_app.scss';
+@import '_app';
+@import '_nav';
+@import '_navbar';
+@import '_sidebar';
+@import '_notification';
+@import '_breadcrumb';
+@import '_bs_mega_menu';
+@import '_dropdown';
+@import '_pace_js';
+@import '_cards';
+@import '_forms';
+@import '_tables';
+@import '_ci_calendar';
+@import '_ci_wizards';
+@import '_full-calendar';
