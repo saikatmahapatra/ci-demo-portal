@@ -34,11 +34,10 @@
                                     </div>
                                     <div class="d-inline-block"><span class="i-selected pr-2 pl-2 m-1"></span>Selected
                                     </div>
-                                    <div class="d-inline-block"><span class="i-has-data pr-2 pl-2 m-1"></span>Task
-                                        Logged</div>
-                                    <div class="d-inline-block"><span class="i-leave pr-2 pl-2 m-1"></span>Leave</div>
+                                    <div class="d-inline-block"><span class="i-has-data pr-2 pl-2 m-1"></span>Logged</div>
+                                    <!-- <div class="d-inline-block"><span class="i-leave pr-2 pl-2 m-1"></span>Leave</div>
                                     <div class="d-inline-block"><span class="i-holiday pr-2 pl-2 m-1"></span>Holiday
-                                    </div>
+                                    </div> -->
                                     <div class="d-inline-block"><span class="i-disabled-date pr-2 pl-2 m-1"></span>Disabled
                                     </div>
                                 </div>
