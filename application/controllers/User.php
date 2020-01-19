@@ -287,7 +287,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = 'Employee Login';
+		$this->data['page_title'] = 'Please login to continue';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/login', $this->data, true);
         $this->load->view('_layouts/layout_login', $this->data);
     }
