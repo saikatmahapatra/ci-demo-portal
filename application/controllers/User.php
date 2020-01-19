@@ -212,7 +212,9 @@ class User extends CI_Controller {
             $row[] = $result['user_firstname'] . ' ' . $result['user_lastname'];
             $row[] = $result['user_emp_id'];
             $email_arr = explode('@',$result['user_email']);
-            $row[] = '<span data-toggle="tooltipmm" title="'.$result['user_email'].'">'.$email_arr[0].'</span>';
+            $masked_domain='';
+            //$masked_domain = '@'.substr($email_arr[1], 0, 3).'***'.substr($email_arr[1], -2, 2);
+            $row[] = '<span data-toggle="tooltip" title="'.$result['user_email'].'">'.$email_arr[0].$masked_domain.'</span>';
             $row[] = $result['user_phone1'];
             $row[] = $result['designation_name'];
             $row[] = '<span class="'.$this->data['user_status_arr'][$result['user_status']]['css'].'">'.$this->data['user_status_arr'][$result['user_status']]['text'].'</span>';

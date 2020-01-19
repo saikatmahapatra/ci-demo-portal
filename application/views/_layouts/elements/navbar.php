@@ -1,9 +1,10 @@
 <header class="header-navbar">
 <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
+        <a class="mega-menu-toggle" href="#" data-toggle="dropdown" aria-label="Show Menu"></a>
 		<!-- <a class="sidebar-toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> -->
-		<button class="navbar-toggler" type="button" data-toggle="dropdown" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+		<!-- <button class="navbar-toggler" type="button" data-toggle="dropdown" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> -->
         
         <a class="navbar-brand" href="<?php echo base_url($this->router->directory); ?>"><img class="nav-logo" src="<?php echo base_url('assets/dist/img/logo-light.png');?>"></a>
 
@@ -100,7 +101,7 @@
                         </ul>
                     </li>
                 </ul>
-                
+
                 <ul class="navbar-nav my-2 my-lg-0">
                     <li class="nav-item dropdown no-toggle-icon">
                         <a class="nav-link dropdown-toggle" id="dropdown_notification" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-fw fa-bell-o "></i></a>

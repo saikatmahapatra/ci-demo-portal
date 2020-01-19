@@ -8841,6 +8841,10 @@ body.login {
   .header-navbar .navbar-nav .dropdown-menu {
     position: absolute;
   }
+  .header-navbar .dropdown-mega-menu {
+    height: 100vh;
+    overflow-y: scroll;
+  }
   .header-navbar .navbar-nav .nav-link {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
@@ -8851,6 +8855,30 @@ body.login {
     margin-right: 1.5rem;
     margin-left: 1rem;
   }
+}
+
+.mega-menu-toggle {
+  padding: 0 1rem;
+  font-family: fontAwesome;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+@media (max-width: 767px) {
+  .mega-menu-toggle {
+    order: -1;
+  }
+}
+
+.mega-menu-toggle:before {
+  content: "\f0c9";
+  font-size: 21px;
+}
+
+.mega-menu-toggle:focus, .mega-menu-toggle:hover {
+  color: #fff;
+  background-color: #003e99;
+  text-decoration: none;
 }
 
 @media (min-width: 768px) {
