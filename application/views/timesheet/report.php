@@ -86,6 +86,7 @@
                                 <th scope="col">Employee</th>
                                 <th scope="col">Project</th>
                                 <th scope="col">Task</th>
+                                <th scope="col">Sub Task</th>
                                 <th scope="col">Hours</th>
                                 <th scope="col">Task Description</th>
 
@@ -100,6 +101,7 @@
                                 <td><?php echo $row['user_firstname'].' '.$row['user_lastname'];?></td>
                                 <td><?php echo $row['project_name'].'-'.$row['project_number'];?></td>
                                 <td><?php echo $row['task_name'];?></td>
+                                <td>-</td>
                                 <td><?php echo $row['timesheet_hours'];?></td>
                                 <td><?php echo $row['timesheet_description'];?></td>
                             </tr>
