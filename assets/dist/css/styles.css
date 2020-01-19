@@ -9312,10 +9312,6 @@ body.login {
   color: #fff;
 }
 
-.bs-mega-menu .dropdown-mega-menu .dropdown-item {
-  font-size: .875rem;
-}
-
 .bs-mega-menu .dropdown-mega-menu .dropdown-item:active {
   background-color: #495057;
 }
@@ -9356,6 +9352,10 @@ body.login {
   background-color: transparent;
   background-image: none;
   cursor: not-allowed;
+}
+
+.bs-mega-menu .bsmm-icon {
+  display: none;
 }
 
 @media (max-width: 768px) {
