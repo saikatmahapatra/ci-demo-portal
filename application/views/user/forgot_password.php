@@ -9,7 +9,7 @@
 		<?php echo isset($alert_message) ? $alert_message : ''; ?>
 		<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'mb-4')) ?>
 		<?php echo form_hidden('form_action', 'forgot_password'); ?>
-			<div class="form-group">
+			<div class="form-group mb-5">
 				<label for="user_email">Email address or Username</label>
 				<?php echo form_input(array('name' => 'user_email','value' => set_value('user_email'),'id' => 'user_email','class'=> 'form-control','placeholder' => 'name@address.com','maxlength' => '100','autofocus' => true,));?>	
 				<?php echo form_error('user_email'); ?>

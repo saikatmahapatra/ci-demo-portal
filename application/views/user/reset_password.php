@@ -21,7 +21,7 @@
 			<?php echo form_password(array( 'name' => 'user_new_password', 'value' => set_value('user_new_password'), 'id' => 'user_new_password', 'placeholder' => 'Enter new password', 'class' => 'form-control', 'maxlength' => '20', )); ?>
 			<?php echo form_error('user_new_password'); ?>
 		</div>
-		<div class="form-group mb-4">
+		<div class="form-group mb-5">
 			<label for="confirm_user_new_password">Confirm Password</label>
 			<?php echo form_password(array( 'name' => 'confirm_user_new_password', 'value' => set_value('confirm_user_new_password'), 'id' => 'confirm_user_new_password', 'placeholder' => 'Confirm new password', 'class' => 'form-control', 'maxlength' => '20', )); ?>
 			<?php echo form_error('confirm_user_new_password'); ?>
