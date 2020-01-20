@@ -73,7 +73,7 @@
                                 </li>
                                 <li class="col-lg-3 col-md-6 dropdown-item">
                                     <ul>
-                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-calendar-o" aria-hidden="true"></i> Timesheet</li>
+                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-calendar-check-o" aria-hidden="true"></i> Timesheet</li>
                                         <li><a href="<?php echo base_url('timesheet'); ?>">Log Tasks</a></li>
                                         <li><a href="<?php echo base_url('timesheet/report?redirected_from=reportee_id'); ?>">Report</a></li>
                                         <li class="divider"></li>
