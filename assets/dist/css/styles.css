@@ -9349,7 +9349,7 @@ body.login {
 }
 
 .bs-mega-menu .bsmm-icon {
-  display: none;
+  display: inline-block;
 }
 
 @media (max-width: 768px) {
