@@ -19,7 +19,7 @@
                             <div class="row">
                                 <li class="col-lg-3 col-md-6 dropdown-item">
                                     <ul>
-                                        <li class="dropdown-header">Employee Management</li>
+                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-user-plus" aria-hidden="true"></i> Employee Management</li>
                                         <li><a href="<?php echo base_url('user/create_account'); ?>">Add New Employee</a></li>
                                         <li><a href="<?php echo base_url('user/manage'); ?>">Manage Employees</a></li>
                                     </ul>
@@ -27,7 +27,7 @@
 
                                 <li class="col-lg-3 col-md-6 dropdown-item">
                                     <ul>
-                                        <li class="dropdown-header">Content Management</li>
+                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-leaf" aria-hidden="true"></i> Content Management</li>
                                         <li><a href="<?php echo base_url('cms/add'); ?>">Add New Content</a></li>
                                         <li><a href="<?php echo base_url('cms'); ?>">Manage Contents</a></li>
                                         <li><a href="<?php echo base_url('holiday'); ?>">Manage Holidays</a></li>
@@ -36,7 +36,7 @@
 
                                 <li class="col-lg-3 col-md-6 dropdown-item">
                                     <ul>
-                                        <li class="dropdown-header">Leave Management</li>
+                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-paper-plane-o" aria-hidden="true"></i> Leave Management</li>
                                         <li><a href="<?php echo base_url('leave/manage/all'); ?>">Leave Applications</a></li>
                                         <li><a href="<?php echo base_url('leave/leave_balance'); ?>">Leave Balance</a></li>
                                         <!-- <li><a href="<?php echo base_url('leave/import_data'); ?>">Import/Export Balance Sheet</a></li> -->
@@ -46,7 +46,7 @@
 
                                 <li class="col-lg-3 col-md-6 dropdown-item">
                                     <ul>
-                                        <li class="dropdown-header">Timesheet & Projects</li>
+                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-calendar-check-o" aria-hidden="true"></i> Timesheet & Projects</li>
                                         <li><a href="<?php echo base_url('timesheet/report'); ?>">Timesheet Report</a></li>
                                         <li><a href="<?php echo base_url('project'); ?>">Manage Projects</a></li>
                                         <li><a href="<?php echo base_url('project/tasks'); ?>">Manage Tasks</a></li>
@@ -77,7 +77,7 @@
                                         <li><a href="<?php echo base_url('timesheet'); ?>">Log Tasks</a></li>
                                         <li><a href="<?php echo base_url('timesheet/report?redirected_from=reportee_id'); ?>">Report</a></li>
                                         <li class="divider"></li>
-                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-puzzle-piece" aria-hidden="true"></i> Event Calendar</li>
+                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-calendar" aria-hidden="true"></i> Event Calendar</li>
                                         <li><a href="<?php echo base_url('event_calendar'); ?>">View Calendar</a></li>
                                     </ul>
                                 </li>
