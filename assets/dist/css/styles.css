@@ -8441,6 +8441,7 @@ body {
 body.login {
   margin-top: 4rem;
   background-color: #f8f9fa;
+  background-image: url("../img/illustration-2.png");
 }
 
 .logo {
@@ -8835,7 +8836,7 @@ body.login {
     position: absolute;
   }
   .header-navbar .dropdown-mega-menu {
-    height: 100vh;
+    height: calc(100vh - 50px);
     overflow-y: scroll;
   }
   .header-navbar .navbar-nav .nav-link {

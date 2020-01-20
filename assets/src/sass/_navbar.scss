@@ -155,7 +155,7 @@
             position: absolute;
         }
         .dropdown-mega-menu {
-            height: 100vh;
+            height: calc(100vh - 50px);
             overflow-y: scroll;
         }
         .navbar-nav .nav-link {
