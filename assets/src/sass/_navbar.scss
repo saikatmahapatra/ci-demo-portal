@@ -177,10 +177,14 @@
     }
 }
 
+.navbar.bg-dark {
+    background-color: $gray-900 !important;
+}
+
 .mega-menu-toggle {
     padding: 0 1rem;
     font-family: fontAwesome;
-    color: $white;
+    color: $gray-400;
     line-height: 2.4;
     transition: background-color 0.3s ease;
     @media(max-width: 767px) {
@@ -193,7 +197,7 @@
     &:focus,
     &:hover {
         color: $white;
-        background-color: darken($primary-color, 10);
+        //background-color: darken($primary-color, 10);
         text-decoration: none;
     }
 }
