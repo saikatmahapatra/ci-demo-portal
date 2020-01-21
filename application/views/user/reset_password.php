@@ -13,7 +13,7 @@
 		<?php echo form_error('user_email'); ?>
 		<div class="form-group">
 			<label for="password_reset_key">6-digit OTP (Received via email)</label>
-			<?php echo form_password(array( 'name' => 'password_reset_key', 'value' => set_value('password_reset_key'), 'id' => 'password_reset_key', 'placeholder' => '6-digit email OTP', 'class' => 'form-control', 'maxlength' => '6', 'autofocus' => '' )); ?>
+			<?php echo form_password(array( 'name' => 'password_reset_key', 'value' => set_value('password_reset_key'), 'id' => 'password_reset_key', 'placeholder' => '6-digit OTP', 'class' => 'form-control', 'maxlength' => '6', 'autofocus' => '' )); ?>
 			<?php echo form_error('password_reset_key'); ?>
 		</div>
 		<div class="form-group">
