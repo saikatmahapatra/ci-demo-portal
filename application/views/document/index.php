@@ -44,7 +44,7 @@
             <div class="card-body">
                 <h5 class="card-title">Uploaded Files</h5>
                 <div class="table-responsive">
-                    <table class="table ci-table table-striped">
+                    <table class="table ci-table table-striped table-sm">
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">Uploaded Document(s)</th>

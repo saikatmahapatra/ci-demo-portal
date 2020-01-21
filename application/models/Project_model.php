@@ -126,7 +126,7 @@ class Project_model extends CI_Model {
         return $result;
     }
 
-    function get_activity_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
+    function get_task_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
         $result = array();
         $this->db->select('t1.*');        
         if ($id) {
@@ -139,14 +139,14 @@ class Project_model extends CI_Model {
         if ($dataTable == TRUE) {
             //set column field database for datatable orderable
             $column_order = array(
-                't1.task_activity_name',
-                't1.task_activity_status',
+                't1.task_name',
+                't1.task_status',
                 NULL,
             );            
             //set column field database(table column name) for datatable searchable
             $column_search = array(
-                't1.task_activity_name',
-                't1.task_activity_status'
+                't1.task_name',
+                't1.task_status'
                 );
              // default order
             $order = array(
@@ -185,25 +185,28 @@ class Project_model extends CI_Model {
                 $this->db->limit($limit, $offset);
             }
         }
-        $query = $this->db->get('task_activities as t1');
+        $query = $this->db->get('project_tasks as t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();
         $result = $query->result_array();
         return array('num_rows' => $num_rows, 'data_rows' => $result);
     }
 
-    function get_activity_nested_dropdown() {
+    function get_task_nested_dropdown($level=NULL) {
         $result = array();
-        $this->db->select('id,task_activity_name, task_activity_parent_id, task_item_order_level, task_code');
-        $this->db->where('task_activity_status','Y');		
-        $this->db->order_by('task_activity_name');		
-        $query = $this->db->get('task_activities');
+        $this->db->select('id,task_name, task_parent_id, level, task_code');
+        $this->db->where('task_status','Y');	
+        if(isset($level)){
+            $this->db->where('level',$level);
+        }	
+        $this->db->order_by('task_name');		
+        $query = $this->db->get('project_tasks');
         #echo $this->db->last_query();
         $result = array('' => 'Select');
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
-                $result[$r->id] = $r->task_item_order_level.'-'.$r->task_activity_name;
+                $result[$r->id.':'.$r->level] = $r->task_name;
             }
         }
         return $result;

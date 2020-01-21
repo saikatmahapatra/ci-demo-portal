@@ -8,7 +8,7 @@
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
 
                 <div class="table-responsive">
-                    <table id="cms-datatable" class="table ci-table table-striped">
+                    <table id="cms-datatable" class="table ci-table table-striped table-sm">
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">Type</th>

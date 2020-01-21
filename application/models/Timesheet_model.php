@@ -59,10 +59,10 @@ class Timesheet_model extends CI_Model {
 		t1.*,
         t2.project_name,
         t2.project_number,
-		t3.task_activity_name
+		t3.task_name
 		');
 		$this->db->join('projects as t2', 't2.id = t1.project_id', 'left');        
-		$this->db->join('task_activities as t3', 't3.id = t1.activity_id', 'left');        
+		$this->db->join('project_tasks as t3', 't3.id = t1.task_id_1', 'left');        
         if ($id) {
             $this->db->where('t1.id', $id);
         }
@@ -86,14 +86,14 @@ class Timesheet_model extends CI_Model {
             $column_order = array(
                 't1.timesheet_date',
                 't2.project_name',
-                't3.task_activity_name',
+                't3.task_name',
                 't1.timesheet_hours'
             );            
             //set column field database(table column name) for datatable searchable
             $column_search = array(
                 't1.timesheet_date',
                 't2.project_name',
-                't3.task_activity_name',
+                't3.task_name',
                 't1.timesheet_hours',
 				't1.timesheet_description',
 				't1.timesheet_review_status'				
@@ -268,43 +268,43 @@ class Timesheet_model extends CI_Model {
         return $result;
     }
     
-    function get_project_activity_tagging_dropdown($project_id=NULL) {
+    function get_project_task_tagging_dropdown($project_id=NULL) {
         $result = array();
-        $this->db->select('t1.id, t2.task_activity_name');
+        $this->db->select('t1.id, t2.task_name, t2.id as task_id');
         if($project_id){
             $this->db->where('t1.project_id',$project_id);
         }
-        $this->db->join('task_activities as t2', 't2.id = t1.activity_id', 'right'); 
+        $this->db->join('project_tasks as t2', 't2.id = t1.task_id_1', 'right'); 
         $query = $this->db->get('project_task_mapping t1');
         //echo $this->db->last_query();
         $result = array();
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
-                $result[$r->id] = $r->task_activity_name;
+                $result[$r->task_id] = $r->task_name;
             }
         }
         return $result;
     }
 
-	function get_activity_dropdown($order=NULL, $parent_id = NULL) {
+	function get_task_dropdown($order=NULL, $parent_id = NULL) {
         $result = array();
-        $this->db->select('id,task_activity_name');
-        $this->db->where('task_activity_status','Y');		
-        $this->db->order_by('task_activity_name');
+        $this->db->select('id,task_name');
+        $this->db->where('task_status','Y');		
+        $this->db->order_by('task_name');
         if($order){
-            $this->db->where('task_item_order_level', $order);
+            $this->db->where('level', $order);
         }
         if($parent_id){
-            $this->db->where('task_activity_parent_id', $parent_id);
+            $this->db->where('task_parent_id', $parent_id);
         }		
-        $query = $this->db->get('task_activities');
+        $query = $this->db->get('project_tasks');
         #echo $this->db->last_query();
         $result = array();
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
-                $result[$r->id] = $r->task_activity_name;
+                $result[$r->id] = $r->task_name;
             }
         }
         return $result;
@@ -324,12 +324,12 @@ class Timesheet_model extends CI_Model {
         t1.timesheet_updated_on,
 		t2.project_number,
 		t2.project_name,
-		t3.task_activity_name,
+		t3.task_name,
 		t4.user_firstname,
 		t4.user_lastname
 		');
 		$this->db->join('projects as t2', 't2.id = t1.project_id', 'left');        
-		$this->db->join('task_activities as t3', 't3.id = t1.activity_id', 'left');        
+		$this->db->join('project_tasks as t3', 't3.id = t1.task_id_1', 'left');        
 		$this->db->join('users as t4', 't4.id = t1.timesheet_created_by', 'left');        
         if ($id) {
             $this->db->where('t1.id', $id);

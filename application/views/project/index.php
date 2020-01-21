@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table id="project-datatable" class="table ci-table table-striped">
+                    <table id="project-datatable" class="table ci-table table-striped table-sm">
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">Project</th>

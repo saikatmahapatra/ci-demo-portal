@@ -17,7 +17,7 @@
 
 				<div class="table-responsive">
 
-					<table id="user-datatable" class="table ci-table table-striped">
+					<table id="user-datatable" class="table ci-table table-striped table-sm">
 						<thead class="thead-dark">
 							<tr>
 								<th>Name</th>

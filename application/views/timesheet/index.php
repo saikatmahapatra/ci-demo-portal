@@ -34,11 +34,10 @@
                                     </div>
                                     <div class="d-inline-block"><span class="i-selected pr-2 pl-2 m-1"></span>Selected
                                     </div>
-                                    <div class="d-inline-block"><span class="i-has-data pr-2 pl-2 m-1"></span>Task
-                                        Logged</div>
-                                    <div class="d-inline-block"><span class="i-leave pr-2 pl-2 m-1"></span>Leave</div>
+                                    <div class="d-inline-block"><span class="i-has-data pr-2 pl-2 m-1"></span>Logged</div>
+                                    <!-- <div class="d-inline-block"><span class="i-leave pr-2 pl-2 m-1"></span>Leave</div>
                                     <div class="d-inline-block"><span class="i-holiday pr-2 pl-2 m-1"></span>Holiday
-                                    </div>
+                                    </div> -->
                                     <div class="d-inline-block"><span class="i-disabled-date pr-2 pl-2 m-1"></span>Disabled
                                     </div>
                                 </div>
@@ -48,49 +47,46 @@
                             </div>
                             <!--/.col-lg-3-->
 
-                            <div class="col-lg-4 offset-md-1">
+                            <div class="col-lg-8 offset-md-1">
 
                                 <div class="form-row">
                                     <div class="form-group col-12">
                                         <label for="project_id" class="required">Project</label>
-                                        <?php echo form_dropdown('project_id', $project_arr, set_value('project_id'), array('class' => 'form-control','data-render-target'=>'activity_id', 'data-order'=>'1')); ?>
+                                        <?php echo form_dropdown('project_id', $project_arr, set_value('project_id'), array('class' => 'form-control','data-render-target'=>'task_id_1', 'data-order'=>'1')); ?>
                                         <?php echo form_error('project_id'); ?>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
-                                    <div class="form-group col-12">
-                                        <label for="activity_id" class="required">Activity</label>
-                                        <?php echo form_dropdown('activity_id', array('' => '-Select-'), set_value('activity_id'), array('class' => 'form-control','data-render-target'=>'task_id', 'data-order'=>'2'));?>
-                                        <?php echo form_error('activity_id'); ?>
+                                    <div class="form-group col-lg-6">
+                                        <label for="task_id_1" class="required">Task</label>
+                                        <?php echo form_dropdown('task_id_1', $arr_task_id_1, set_value('task_id_1'), array('class' => 'form-control','data-render-target'=>'task_id_2', 'data-order'=>'2'));?>
+                                        <?php echo form_error('task_id_1'); ?>
+                                    </div>
+
+                                    <div class="form-group col-lg-6">
+                                        <label id="task_id_2" for="task_id_2" class="required">Sub Task</label>
+                                        <?php echo form_dropdown('task_id_2', $arr_task_id_2, set_value('task_id_2'), array('class' => 'form-control'));?>
+                                        <?php echo form_error('task_id_2'); ?>
                                     </div>
                                 </div>
-                                <div class="form-row">
+                                <!-- <div class="form-row">
                                     <div class="form-group col-12">
-                                        <label id="task_id" for="task" class="required">Task</label>
-                                        <?php echo form_dropdown('task_id', array('' => '-Select-'), set_value('task_id'), array('class' => 'form-control','data-render-target'=>'sub_task_id', 'data-order'=>'3'));?>
-                                        <?php echo form_error('task_id'); ?>
+                                        <label id="task_id_3" for="task" class="required">Sub-Task</label>
+                                        <?php echo form_dropdown('task_id_3', array('' => '-Select-'), set_value('task_id_3'), array('class' => 'form-control',));?>
+                                        <?php echo form_error('task_id_3'); ?>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-row">
-                                    <div class="form-group col-12">
-                                        <label id="sub_task_id" for="task" class="required">Sub-Task</label>
-                                        <?php echo form_dropdown('sub_task_id', array('' => '-Select-'), set_value('sub_task_id'), array('class' => 'form-control',));?>
-                                        <?php echo form_error('sub_task_id'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-12">
+                                    <div class="form-group col-lg-4">
                                         <label for="timesheet_hours" class="required">Hours</label>
-                                        <?php echo form_input(array('name' => 'timesheet_hours', 'value' => set_value('timesheet_hours'),'id' => 'timesheet_hours', 'class' => 'form-control w-25','maxlength' => '5','placeholder' => '0',)); ?>
+                                        <?php echo form_input(array('name' => 'timesheet_hours', 'value' => set_value('timesheet_hours'),'id' => 'timesheet_hours', 'class' => 'form-control w-50','maxlength' => '3','placeholder' => '0',)); ?>
                                         <?php echo form_error('timesheet_hours'); ?>
                                     </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-12">
+                                
+                                    <div class="form-group col-lg-8">
                                         <label for="timesheet_description" class="optional">Additional Note</label>
-                                        <?php echo form_input(array('name' => 'timesheet_description','value' => set_value('timesheet_description'),'id' => 'timesheet_description','class' => 'form-control', 'maxlength' => '200','placeholder' => 'Additional Note')); ?>
+                                        <?php echo form_input(array('name' => 'timesheet_description','value' => set_value('timesheet_description'),'id' => 'timesheet_description','class' => 'form-control', 'maxlength' => '50','placeholder' => 'additional note')); ?>
                                         <?php echo form_error('timesheet_description'); ?>
                                     </div>
                                 </div>
@@ -116,18 +112,17 @@
                     <div class="mt-3 tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
 
                         <div class="table-responsive">
-                            <table id="timesheet-datatable" class="table ci-table table-striped w-100">
+                            <table id="timesheet-datatable" class="table ci-table table-striped table-sm w-100">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">Date</th>
-                                        <th scope="col">Activity</th>
+                                        <th scope="col">Project</th>
+                                        <th scope="col">Task</th>
+                                        <th scope="col">Sub Task</th>
                                         <th scope="col">Hours</th>
-                                        <th scope="col">Description</th>
-                                        <!-- <th scope="col"></th> -->
+                                        <!-- <th scope="col">Description</th> -->
+                                        <th scope="col">Action</th>
                                     </tr>
-                                    <!-- <tr>
-								<th scope="col">Date & Tasks</th>
-							</tr> -->
                                 </thead>
                                 <tbody></tbody>
                             </table>

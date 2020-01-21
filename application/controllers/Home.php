@@ -106,9 +106,10 @@ class Home extends CI_Controller {
         // Dashboard Stats
         
         //User Profile Completion Status Check
-        $profile_completion = $this->home_model->get_user_profile_completion_status($this->sess_user_id);
-        $this->data['profile_msg'] = $profile_completion;
-        $this->data['display_reminder_modal'] = sizeof($profile_completion) > 0 ? 'true' : 'false';
+        //$profile_completion = $this->home_model->get_user_profile_completion_status($this->sess_user_id);
+        //$this->data['profile_msg'] = $profile_completion;
+        //$this->data['display_reminder_modal'] = sizeof($profile_completion) > 0 ? 'true' : 'false';
+        $this->data['display_reminder_modal'] = 'false';
         
 
 		//$this->data['page_title'] = 'Welcome to '.$this->config->item('app_company_product');
