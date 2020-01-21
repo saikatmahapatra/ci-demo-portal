@@ -7,7 +7,10 @@
         @if $mega_menu_theme==light {
             background-color: $bs_mega_menu_light_background_color;
         }
-        padding: 20px 20px;
+        padding: 20px 0px 20px 0px;
+        @media (min-width: 576px) {
+            padding: 20px 20px;
+        }
         width: 100%;
         box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03),
         0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03),
@@ -122,6 +125,8 @@
     } //dropdown-mega-menu
     .bsmm-icon {
         display: inline-block;
+        font-size: 1rem;
+        font-weight: 400;
     }
     @media (max-width: 768px) {
         .dropdown-mega-menu {
