@@ -8850,6 +8850,10 @@ body.login {
   }
 }
 
+.header-navbar.pre-auth .mega-menu-toggle {
+  visibility: hidden;
+}
+
 .mega-menu-toggle {
   padding: 0 1rem;
   font-family: fontAwesome;
