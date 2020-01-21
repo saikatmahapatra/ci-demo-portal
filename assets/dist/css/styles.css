@@ -8457,7 +8457,7 @@ body.login {
 
 @media (max-width: 576px) {
   .nav-logo {
-    width: 130px;
+    width: 180px;
   }
 }
 
@@ -8854,10 +8854,14 @@ body.login {
   visibility: hidden;
 }
 
+.navbar.bg-dark {
+  background-color: #212529 !important;
+}
+
 .mega-menu-toggle {
   padding: 0 1rem;
   font-family: fontAwesome;
-  color: #fff;
+  color: #ced4da;
   line-height: 2.4;
   transition: background-color 0.3s ease;
 }
@@ -8875,7 +8879,6 @@ body.login {
 
 .mega-menu-toggle:focus, .mega-menu-toggle:hover {
   color: #fff;
-  background-color: #003e99;
   text-decoration: none;
 }
 
@@ -9274,11 +9277,17 @@ body.login {
 }
 
 .bs-mega-menu .dropdown-mega-menu {
-  background-color: #343a40;
-  padding: 20px 20px;
+  background-color: #212529;
+  padding: 20px 0px 20px 0px;
   width: 100%;
   box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
   transition: all .2s;
+}
+
+@media (min-width: 576px) {
+  .bs-mega-menu .dropdown-mega-menu {
+    padding: 20px 20px;
+  }
 }
 
 .bs-mega-menu .dropdown-mega-menu li > ul {
@@ -9311,7 +9320,7 @@ body.login {
 }
 
 .bs-mega-menu .dropdown-mega-menu .dropdown-item:active {
-  background-color: #495057;
+  background-color: #343a40;
 }
 
 .bs-mega-menu .dropdown-mega-menu .dropdown-item:active a:active {
@@ -9320,7 +9329,7 @@ body.login {
 }
 
 .bs-mega-menu .dropdown-mega-menu .dropdown-item:hover {
-  background-color: #495057;
+  background-color: #343a40;
 }
 
 .bs-mega-menu .dropdown-mega-menu .dropdown-item:hover .dropdown-header {
@@ -9354,6 +9363,8 @@ body.login {
 
 .bs-mega-menu .bsmm-icon {
   display: inline-block;
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 @media (max-width: 768px) {
