@@ -84,7 +84,7 @@
                         <a class="treeview-item" href="<?php echo base_url('project'); ?>">Manage Projects</a>
                     </li>
                     <li>
-                        <a class="treeview-item" href="<?php echo base_url('project/activity'); ?>">Manage Task Activities</a>
+                        <a class="treeview-item" href="<?php echo base_url('project/tasks'); ?>">Manage Project Tasks</a>
                     </li>
                 </ul>
             </li>

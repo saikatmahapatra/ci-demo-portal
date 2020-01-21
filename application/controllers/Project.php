@@ -199,39 +199,40 @@ class Project extends CI_Controller {
         }
     }
 
-    function activity() {
+    function tasks() {
         // Check user permission by permission name mapped to db
         // $is_authorized = $this->common_lib->is_auth('cms-list-view');
 		$this->breadcrumbs->push('View','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		$this->data['page_title'] = 'Timesheet Activities';
-        $this->data['maincontent'] = $this->load->view($this->router->class.'/activity', $this->data, true);
+		$this->data['page_title'] = 'Project Tasks';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/tasks', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
 
-    function render_activity_datatable() {
+    function render_task_datatable() {
         //Total rows - Refer to model method definition
-        $result_array = $this->project_model->get_activity_rows();
+        $result_array = $this->project_model->get_task_rows();
         $total_rows = $result_array['num_rows'];
 
         // Total filtered rows - check without limit query. Refer to model method definition
-        $result_array = $this->project_model->get_activity_rows(NULL, NULL, NULL, TRUE, FALSE);
+        $result_array = $this->project_model->get_task_rows(NULL, NULL, NULL, TRUE, FALSE);
         $total_filtered = $result_array['num_rows'];
 
         // Data Rows - Refer to model method definition
-        $result_array = $this->project_model->get_activity_rows(NULL, NULL, NULL, TRUE);
+        $result_array = $this->project_model->get_task_rows(NULL, NULL, NULL, TRUE);
         $data_rows = $result_array['data_rows'];
         $data = array();
         $no = $_REQUEST['start'];
         foreach ($data_rows as $result) {
             $no++;
             $row = array();
-            $row[] = $result['task_activity_name'];
-            $row[] = '<span class="'.$this->data['arr_status_flag'][$result['task_activity_status']]['css'].'">'.$this->data['arr_status_flag'][$result['task_activity_status']]['text'].'</span>';
+            $row[] = $result['task_name'];
+            $row[] = $result['task_parent_id'];
+            $row[] = '<span class="'.$this->data['arr_status_flag'][$result['task_status']]['css'].'">'.$this->data['arr_status_flag'][$result['task_status']]['text'].'</span>';
             
             //add html for action
             $action_html = '';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_activity/' .$result['id']), '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_task/' .$result['id']), '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>', array(
                 'class' => 'btn btn-sm btn-outline-secondary',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit',
@@ -262,9 +263,9 @@ class Project extends CI_Controller {
         echo json_encode($output);
     }
 
-    function validate_activity_form_data($action = NULL) {		
-        $this->form_validation->set_rules('task_activity_name', ' ', 'required');			
-        $this->form_validation->set_rules('task_activity_status', ' ', 'required');
+    function validate_task_form_data($action = NULL) {		
+        $this->form_validation->set_rules('task_name', ' ', 'required');			
+        $this->form_validation->set_rules('task_status', ' ', 'required');
 		$this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -273,60 +274,65 @@ class Project extends CI_Controller {
         }
     }
 
-    function add_activity() {
+    function add_task() {
 		$this->breadcrumbs->push('Add','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
         if ($this->input->post('form_action') == 'insert') {
-            if ($this->validate_activity_form_data('add') == true) {
-
+            if ($this->validate_task_form_data('add') == true) {
+                $task_parent_id_dd = $this->input->post('task_parent_id');
+                $parent = explode(':', $task_parent_id_dd);
+                $task_parent_id = isset($task_parent_id_dd) ? $parent[0]: NULL;
+                $level = isset($task_parent_id_dd) ? ($parent[1]+1) : 1;
                 $postdata = array(
-                    'task_activity_name' => $this->input->post('task_activity_name'),
-                    'task_activity_status' => $this->input->post('task_activity_status')
+                    'task_parent_id' => $task_parent_id,
+                    'level' => $level,
+                    'task_name' => $this->input->post('task_name'),
+                    'task_status' => $this->input->post('task_status')
                 );
-                $insert_id = $this->project_model->insert($postdata,'task_activities');
+                $insert_id = $this->project_model->insert($postdata,'project_tasks');
                 if ($insert_id) {
                     $this->common_lib->set_flash_message('Data Added Successfully.','alert-success');
-                    redirect($this->router->directory.$this->router->class.'/add_activity');
+                    redirect($this->router->directory.$this->router->class.'/add_task');
                 }
             }
         }
-        $this->data['page_title'] = 'Add Activity';
-        $x = $this->project_model->get_activity_nested_dropdown();
-        $this->data['nested_activities_dd'] = $x;
-        //print_r($x);
-
-
-
-
-
-        $this->data['maincontent'] = $this->load->view($this->router->class.'/add_activity', $this->data, true);
+        $this->data['page_title'] = 'Add Task';
+        $this->data['task_parent_drop_down'] = $this->project_model->get_task_nested_dropdown(1);
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/add_task', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
 
-    function edit_activity() {
+    function edit_task() {
         //Check user permission by permission name mapped to db
         //$is_authorized = $this->common_lib->is_auth('cms-edit');
 		//$this->data['page_title'] = "Edit Page Content";
 		$this->breadcrumbs->push('Edit','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
         if ($this->input->post('form_action') == 'update') {
-            if ($this->validate_activity_form_data('edit') == true) {
+            if ($this->validate_task_form_data('edit') == true) {
+                $task_parent_id_dd = $this->input->post('task_parent_id');
+                $parent = explode(':', $task_parent_id_dd);
+                $task_parent_id = isset($task_parent_id_dd) ? $parent[0]: NULL;
+                $level = isset($task_parent_id_dd) ? ($parent[1]+1) : 1;
                 $postdata = array(
-                    'task_activity_name' => $this->input->post('task_activity_name'),
-                    'task_activity_status' => $this->input->post('task_activity_status')
+                    'task_parent_id' => $task_parent_id,
+                    'level' => $level,
+                    'task_name' => $this->input->post('task_name'),
+                    'task_status' => $this->input->post('task_status')
                 );
                 $where_array = array('id' => $this->input->post('id'));
-                $res = $this->project_model->update($postdata, $where_array, 'task_activities');
+                $res = $this->project_model->update($postdata, $where_array, 'project_tasks');
                 if ($res) {
                     $this->common_lib->set_flash_message('Data Updated Successfully.','alert-success');
                     redirect(current_url());
                 }
             }
         }
-        $result_array = $this->project_model->get_activity_rows($this->id);
+        $result_array = $this->project_model->get_task_rows($this->id);
         $this->data['rows'] = $result_array['data_rows'];
-		$this->data['page_title'] = 'Edit Activity';
-        $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_activity', $this->data, true);
+        $this->data['page_title'] = 'Edit Task';
+        $this->data['task_parent_drop_down'] = $this->project_model->get_task_nested_dropdown(1);
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_task', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
 

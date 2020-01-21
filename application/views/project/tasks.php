@@ -4,18 +4,19 @@
     <div class="col-lg-12">
         <div class="card ci-card">
             <div class="card-body">
-            <h5 class="card-title">Timesheet Activities</h5>
+            <h5 class="card-title">Project Tasks</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="ci-link-group">
-                    <a href="<?php echo base_url($this->router->directory.$this->router->class.'/add_activity');?>"
+                    <a href="<?php echo base_url($this->router->directory.$this->router->class.'/add_task');?>"
                         class="float-right btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-fw fa-plus"></i>
                         Add New</a>
                 </div>
                 <div class="table-responsive">
-                    <table id="activity-datatable" class="table ci-table table-striped">
+                    <table id="task-datatable" class="table ci-table table-striped table-sm">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Activity Name</th>
+                                <th scope="col">Task</th>
+                                <th scope="col">Parent Task</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>

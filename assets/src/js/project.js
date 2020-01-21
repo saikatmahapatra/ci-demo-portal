@@ -13,8 +13,8 @@ function domReady() {
     }
 
     //activity
-    if (ROUTER_METHOD == 'activity') {
-        renderActivityDataTable();
+    if (ROUTER_METHOD == 'tasks') {
+        renderTasksDataTable();
     }
     //Add, Edit View:
     if (ROUTER_METHOD == 'add' || ROUTER_METHOD == 'edit') {
@@ -53,8 +53,8 @@ function renderDataTable() {
 }
 
 
-function renderActivityDataTable() {
-    table = $('#activity-datatable').DataTable({
+function renderTasksDataTable() {
+    table = $('#task-datatable').DataTable({
         /*dom: 'Bfrtip',
         buttons: [
         	'copy', 'csv', 'excel', 'pdf', 'print'
@@ -65,7 +65,7 @@ function renderActivityDataTable() {
         order: [], //Initial no order.
         // Load data for the table's content from an Ajax source
         ajax: {
-            url: SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/render_activity_datatable',
+            url: SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/render_task_datatable',
         },
         //Set column definition initialisation properties.
         columnDefs: [{

@@ -79,15 +79,16 @@
                     <?php echo form_close(); ?>
                     <?php } */ ?>
 
-                    <table class="table ci-table table-striped">
+                    <table class="table ci-table table-striped table-sm">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col" style="width:10%;">Date</th>
-                                <th scope="col" style="width:15%;">Employee</th>
-                                <th scope="col" style="width:20%;">Project</th>
-                                <th scope="col" style="width:20%;">Activity</th>
-                                <th scope="col" style="width:5%;">Hrs</th>
-                                <th scope="col" style="width:30%;">Task Description</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Employee</th>
+                                <th scope="col">Project</th>
+                                <th scope="col">Task</th>
+                                <th scope="col">Sub Task</th>
+                                <th scope="col">Hours</th>
+                                <th scope="col">Task Description</th>
 
                             </tr>
                         </thead>
@@ -99,7 +100,8 @@
                                 <td><?php echo $this->common_lib->display_date($row['timesheet_date']);?></td>
                                 <td><?php echo $row['user_firstname'].' '.$row['user_lastname'];?></td>
                                 <td><?php echo $row['project_name'].'-'.$row['project_number'];?></td>
-                                <td><?php echo $row['task_activity_name'];?></td>
+                                <td><?php echo $row['task_name'];?></td>
+                                <td>-</td>
                                 <td><?php echo $row['timesheet_hours'];?></td>
                                 <td><?php echo $row['timesheet_description'];?></td>
                             </tr>

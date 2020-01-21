@@ -8,7 +8,7 @@
 		</div>	
 			
 		<th class="table-responsive">
-			<table class="table ci-table table-striped">
+			<table class="table ci-table table-striped table-sm">
 				<thead class="thead-dark">
 					<tr>
 						<th scope="col">Title</th>
