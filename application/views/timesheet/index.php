@@ -25,7 +25,7 @@
                         <?php echo form_hidden('form_action', 'add'); ?>
                         <?php echo form_hidden('selected_date',set_value('selected_date')); ?>
                         <div class="form-row">
-                            <div class="col-sm-3">
+                            <div class="col-lg-4">
                                 <label class="required">Select Date(s)</label>
                                 <?php echo $cal; ?>
                                 <div class="small">
@@ -47,7 +47,7 @@
                             </div>
                             <!--/.col-lg-3-->
 
-                            <div class="col-lg-8 offset-md-1">
+                            <div class="col-lg-8">
 
                                 <div class="form-row">
                                     <div class="form-group col-12">
