@@ -52,7 +52,10 @@ class Settings_model extends CI_Model {
         $num_rows = $query->num_rows();
         $res = $query->result_array();
         if(sizeof($num_rows)>0){
-            $result =  $res;
+            foreach ($res as $r) {
+                $result[$r['option_name']] = $r['option_value'];
+            }
+            //$result =  $res;
         }
         return $result;
     }
