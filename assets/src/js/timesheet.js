@@ -12,13 +12,7 @@ $(function() {
             selectedDate = selected_date_array;
             if (selected_date_array.length > 0) {
                 $.each(selected_date_array, function(index, date) {
-                    var clickedSelectedDate = date.split('-');
-                    $("#timesheet_calendar[data-cal-month='" + clickedSelectedDate[1] + "'][data-cal-year='" + clickedSelectedDate[0] + "'] .day").each(function() {
-                        var calDay = $(this).text();
-                        if (calDay == clickedSelectedDate[2]) {
-                            $(this).addClass("selected");
-                        }
-                    });
+                    $('#timesheet_calendar span.date_value[data-date="' + date + '"]').parents('td').addClass("selected");
                 });
             }
         }
@@ -47,7 +41,7 @@ $(function() {
             var calDay = $(this).text();
             if (calDay.trim().length > 0) {
                 if ((current_m == cal_m) && (parseInt(calDay) > parseInt(today_d[2])) || (parseInt(calDay) < (parseInt(today_d[2]) - 3))) {
-                    $(this).attr("data-calday", "disabled_day");
+                    //$(this).attr("data-calday", "disabled_day");
                 }
             }
         });
@@ -147,21 +141,15 @@ $(function() {
     });
 });
 
-//$(".allowed_m .day").on("click", function(e) {
 $("body").on("click", "td[data-calday='allowed_day']", function(e) {
-    //console.log(e);
-    var day = $(this).text();
-    var cal_m = $("#timesheet_calendar").attr('data-cal-month');
-    var cal_y = $("#timesheet_calendar").attr('data-cal-year');
-    var date = cal_y + '-' + cal_m + '-' + day;
-    if (day.trim().length > 0) {
+    var clicked_date = $(this).find('span.date_value').attr('data-date');
+    if (clicked_date) {
         if ($(this).hasClass("selected")) {
             $(this).removeClass("selected");
-            selectedDate.splice($.inArray(date, selectedDate), 1);
-
+            selectedDate.splice($.inArray(clicked_date, selectedDate), 1);
         } else {
             $(this).addClass("selected");
-            selectedDate.push(date);
+            selectedDate.push(clicked_date);
         }
     }
     $('input[name="selected_date"]').val(selectedDate.join());
@@ -195,17 +183,9 @@ function get_timesheet_stat() {
         if (response.data.stat_data.avg_hrs != 'undefined') {
             $('#average_worked_hrs').html(response.data.stat_data.avg_hrs);
         }
-
-
         $.each(response.data.data_rows, function(i, obj) {
             var timesheet_date = obj.timesheet_date;
-            timesheet_date = timesheet_date.split('-');
-            $("#timesheet_calendar[data-cal-month='" + timesheet_date[1] + "'][data-cal-year='" + timesheet_date[0] + "'] .day").each(function() {
-                var calDay = $(this).text();
-                if (calDay == Number(timesheet_date[2]).toString()) {
-                    $(this).addClass("filled");
-                }
-            });
+            $('#timesheet_calendar span.date_value[data-date="' + timesheet_date + '"]').parents('td').addClass("filled");
         });
     });
     promise.fail(function() {
