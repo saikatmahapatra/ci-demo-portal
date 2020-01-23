@@ -27,8 +27,23 @@ class Settings_model extends CI_Model {
         } else {
             $result = $this->db->update($table, $postdata);
         }
-        //echo $this->db->last_query(); die();
+        echo $this->db->last_query(); die();
         return $result;
+    }
+
+    function update_options($postdata_options) {
+        $result = true;
+        if(isset($postdata_options)){
+            foreach($postdata_options as $key=>$val){
+                //echo $key.'---'.$val;
+                echo $sql = "UPDATE `site_settings_options` SET `option_value` = '".$val."' WHERE `option_name` = '".$key."'";
+                $query = $this->db->query($sql);
+            }
+            //$result = $this->db->update('site_settings_options');
+        }
+        //echo $this->db->last_query(); die();
+        
+        //return $result;
     }
 
     function delete($where_array = NULL, $table = NULL) {

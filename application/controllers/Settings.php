@@ -49,9 +49,44 @@ class Settings extends CI_Controller {
             'timesheet_enable_prev_days',
             'timesheet_enable_next_days'
         );
+
+
+        if ($this->input->post('form_action') == 'update') {
+            if ($this->validate_form_data('update') == true) {
+                //option - key:value pair
+                $postdata = array(
+                    'timesheet_apply_settings' => $this->input->post('timesheet_apply_settings'),
+                    'timesheet_disable_prev_month' => $this->input->post('timesheet_disable_prev_month'),
+                    'timesheet_disable_next_month' => $this->input->post('timesheet_disable_next_month'),
+                    'timesheet_enable_prev_days' => $this->input->post('timesheet_enable_prev_days'),
+                    'timesheet_enable_next_days' => $this->input->post('timesheet_enable_next_days')
+                );
+                $db_res = $this->settings_model->update_options($postdata);
+               // if($db_res){
+                    $this->common_lib->set_flash_message('Options Updated Successfully.','alert-success');
+                    redirect(current_url());
+                //}
+            }
+        }
+
+
         $this->data['options'] = $this->settings_model->get_option($options);
         $this->data['maincontent'] = $this->load->view($this->router->class.'/timesheet_settings', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function validate_form_data($action = NULL) {
+        $this->form_validation->set_rules('timesheet_apply_settings', ' ', 'required');
+        $this->form_validation->set_rules('timesheet_disable_prev_month', ' ', 'required');
+        $this->form_validation->set_rules('timesheet_disable_next_month', ' ', 'required');
+        $this->form_validation->set_rules('timesheet_enable_prev_days', ' ', 'required');
+        $this->form_validation->set_rules('timesheet_enable_next_days', ' ', 'required');
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

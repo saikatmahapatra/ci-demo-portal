@@ -69,7 +69,7 @@ class Timesheet extends CI_Controller {
         $this->data['options'] = $this->settings_model->get_option($options);
         //print_r($this->data['options']);
 		$template='';
-		$template.='{table_open}<table id="timesheet_calendar" class="table ci-calendar table-sm" border="0" cellpadding="" cellspacing="" data-today="'.date('Y-m-d').'" data-current-year="'.date('Y').'" data-current-month="'.date('m').'" data-cal-year="'.$year.'" data-cal-month="'.$month.'" data-enable-prev-days="'.$this->data['options']['timesheet_enable_prev_days'].'" data-enable-next-days="'.$this->data['options']['timesheet_enable_next_days'].'">{/table_open}';
+		$template.='{table_open}<table id="timesheet_calendar" class="table ci-calendar table-sm" border="0" cellpadding="" cellspacing="" data-today="'.date('Y-m-d').'" data-current-year="'.date('Y').'" data-current-month="'.date('m').'" data-cal-year="'.$year.'" data-cal-month="'.$month.'" data-disable-prev-month="'.$this->data['options']['timesheet_disable_prev_month'].'" data-disable-next-month="'.$this->data['options']['timesheet_disable_next_month'].'" data-enable-prev-days="'.$this->data['options']['timesheet_enable_prev_days'].'" data-enable-next-days="'.$this->data['options']['timesheet_enable_next_days'].'">{/table_open}';
 		$template.='{heading_row_start}<tr class="mn">{/heading_row_start}';
 		$template.='{heading_previous_cell}<th class="prevcell"><a href="{previous_url}">&lt;&lt;</a></th>{/heading_previous_cell}';
 		$template.='{heading_title_cell}<th colspan="{colspan}">{heading}</th>{/heading_title_cell}';
