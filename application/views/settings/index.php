@@ -18,12 +18,12 @@
 				<tbody>
 				<?php
 					$count = 1;
-					foreach($rows as $key=>$row){
+					foreach($rows as $key=>$val){
 						?>
 						<tr>
 							<td scope="row"><?php echo $count;?></td>
-                            <td><?php echo $row['option_name']; ?></td>
-                            <td><?php echo $row['option_value']; ?></td>
+                            <td><?php echo $key; ?></td>
+                            <td><?php echo $val; ?></td>
 						</tr>
 						<?php
 						$count++;
