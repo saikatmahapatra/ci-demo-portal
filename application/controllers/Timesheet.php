@@ -80,7 +80,7 @@ class Timesheet extends CI_Controller {
 		$template.='{week_row_end}</tr>{/week_row_end}';
         
         $css_days_rows = '';
-        $day_css = 'disabled_day';
+        $day_css = 'allowed_day';
         
         if(isset($this->data['options']) && $this->data['options']['timesheet_disable_prev_month'] == 'true') {
             if(strtotime(date('Y-m')) > strtotime($year.'-'.$month)){

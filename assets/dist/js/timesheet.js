@@ -34,14 +34,16 @@ $(function() {
 
         //On cal dom load disable future dates
         var today_d = $("#timesheet_calendar").attr('data-today');
+        var enable_prev_days = $("#timesheet_calendar").attr('data-enable-prev-days');
+        var enable_next_days = $("#timesheet_calendar").attr('data-enable-next-days');
         today_d = today_d.split('-');
         var current_m = $("#timesheet_calendar").attr('data-current-month');
         var cal_m = $("#timesheet_calendar").attr('data-cal-month');
         $("#timesheet_calendar td.day").each(function() {
             var calDay = $(this).text();
             if (calDay.trim().length > 0) {
-                if ((current_m == cal_m) && (parseInt(calDay) > parseInt(today_d[2])) || (parseInt(calDay) < (parseInt(today_d[2]) - 3))) {
-                    //$(this).attr("data-calday", "disabled_day");
+                if ((current_m == cal_m) && (parseInt(calDay) > parseInt(today_d[2])) || (parseInt(calDay) < (parseInt(today_d[2]) - enable_prev_days))) {
+                    $(this).attr("data-calday", "disabled_day");
                 }
             }
         });
