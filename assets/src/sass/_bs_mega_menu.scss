@@ -26,6 +26,7 @@
             list-style: none;
             a {
                 display: block;
+                font-size: 0.875rem;
                 padding: 8px 20px;
                 clear: both;
                 font-weight: normal;
@@ -55,7 +56,7 @@
             }
         }
         .dropdown-header {
-            font-size: 1.25rem;
+            font-size: 1rem;
             @if $mega_menu_theme==dark {
                 color: $bs_mega_menu_dark_dropdown_header_color;
             }
@@ -125,7 +126,7 @@
     } //dropdown-mega-menu
     .bsmm-icon {
         display: inline-block;
-        font-size: 1rem;
+        font-size: .875rem;
         font-weight: 400;
     }
     @media (max-width: 768px) {
