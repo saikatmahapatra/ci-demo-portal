@@ -130,8 +130,9 @@ body.login {
     height: 100%;
     z-index: 1000;
     background-color: rgba(0, 0, 0, .5);
+    color: $gray-400;
     .ajax-loader-img {
-        width: 100px;
+        //width: 100px;
         height: 100px;
         position: fixed;
         left: 50%;

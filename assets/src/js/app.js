@@ -373,6 +373,11 @@ function initPage() {
         $('.app').toggleClass('sidenav-toggled');
     });
 
+    $('.mega-menu-toggle').click(function(event) {
+        event.preventDefault();
+        $(this).toggleClass('mm-toggled');
+    });
+
     // Activate sidebar treeview toggle
     $("[data-toggle='treeview']").click(function(event) {
         event.preventDefault();
