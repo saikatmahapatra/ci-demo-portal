@@ -212,4 +212,35 @@ class Project_model extends CI_Model {
         return $result;
     }
 
+    function insert_batch($postdata, $table = NULL) {
+        if ($table == NULL) {
+            $this->db->insert_batch('project_task_mapping', $postdata);
+        } else {
+            $this->db->insert_batch($table, $postdata);
+        }
+        //echo $this->db->last_query(); die();
+        $insert_id = $this->db->insert_id();
+        return $insert_id;
+    }
+
+    function get_task_dd($level = NULL) {
+        $result = array();
+        $this->db->select('id,task_name, task_parent_id, level, task_code');
+        $this->db->where('task_status','Y');	
+        if(isset($level)){
+            $this->db->where('level',$level);
+        }	
+        $this->db->order_by('task_name');
+        $query = $this->db->get('project_tasks');
+        #echo $this->db->last_query();
+        $result = array('' => 'Select');
+        if ($query->num_rows()) {
+            $res = $query->result();
+            foreach ($res as $r) {
+                $result[$r->id] = $r->task_name;
+            }
+        }
+        return $result;
+    }
+
 }
