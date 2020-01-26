@@ -58,9 +58,18 @@ class Timesheet extends CI_Controller {
 		$year = $this->uri->segment(3) ? $this->uri->segment(3) : date('Y');
 		$month = $this->uri->segment(4) ? $this->uri->segment(4) : date('m');
 		$day = date('d');
-		
+		$options = array(
+            'timesheet_apply_settings',
+            'timesheet_disable_prev_month',
+            'timesheet_disable_next_month',
+            'timesheet_enable_prev_days',
+            'timesheet_enable_next_days'
+        );
+        $this->load->model('settings_model');
+        $this->data['options'] = $this->settings_model->get_option($options);
+        //print_r($this->data['options']);
 		$template='';
-		$template.='{table_open}<table id="timesheet_calendar" class="table ci-calendar table-sm" border="0" cellpadding="" cellspacing="" data-today="'.date('Y-m-d').'" data-current-year="'.date('Y').'" data-current-month="'.date('m').'" data-cal-year="'.$year.'" data-cal-month="'.$month.'" >{/table_open}';
+		$template.='{table_open}<table id="timesheet_calendar" class="table ci-calendar table-sm" border="0" cellpadding="" cellspacing="" data-today="'.date('Y-m-d').'" data-current-year="'.date('Y').'" data-current-month="'.date('m').'" data-cal-year="'.$year.'" data-cal-month="'.$month.'" data-disable-prev-month="'.$this->data['options']['timesheet_disable_prev_month'].'" data-disable-next-month="'.$this->data['options']['timesheet_disable_next_month'].'" data-enable-prev-days="'.$this->data['options']['timesheet_enable_prev_days'].'" data-enable-next-days="'.$this->data['options']['timesheet_enable_next_days'].'">{/table_open}';
 		$template.='{heading_row_start}<tr class="mn">{/heading_row_start}';
 		$template.='{heading_previous_cell}<th class="prevcell"><a href="{previous_url}">&lt;&lt;</a></th>{/heading_previous_cell}';
 		$template.='{heading_title_cell}<th colspan="{colspan}">{heading}</th>{/heading_title_cell}';
@@ -71,21 +80,25 @@ class Timesheet extends CI_Controller {
 		$template.='{week_row_end}</tr>{/week_row_end}';
         
         $css_days_rows = '';
-        //$css_days_rows = ($month != date('m'))? 'disabled_m': 'allowed_m';
+        $day_css = 'allowed_day';
         
-        $day_css = 'disabled_day';
-        $prev_month = date('m', strtotime("last month"));
-        //if( ($month == date('m') && $year == date('Y')) || ($day <= '03' && $month == $prev_month) ){
-        if( ($month == date('m') && $year == date('Y')) ){
-            $day_css = 'allowed_day';
+        if(isset($this->data['options']) && $this->data['options']['timesheet_disable_prev_month'] == 'true') {
+            if(strtotime(date('Y-m')) > strtotime($year.'-'.$month)){
+                $day_css = 'disabled_day';
+            }
         }
-        
+        if(isset($this->data['options']) && $this->data['options']['timesheet_disable_next_month'] == 'true') {
+            if(strtotime(date('Y-m')) < strtotime($year.'-'.$month)){
+                $day_css = 'disabled_day';
+            }
+        }
+
 		$template.='{cal_row_start}<tr class="'.$css_days_rows.'">{/cal_row_start}';
         $template.='{cal_cell_start}<td data-calday="'.$day_css.'" class="day">{/cal_cell_start}';
-		$template.='{cal_cell_content}<a href="{content}">{day}</a>{/cal_cell_content}';
-		$template.='{cal_cell_content_today}<div class="highlight"><a href="{content}">{day}</a></div>{/cal_cell_content_today}';
-		$template.='{cal_cell_no_content}{day}{/cal_cell_no_content}';
-		$template.='{cal_cell_no_content_today}<div class="highlight">{day}</div>{/cal_cell_no_content_today}';
+		$template.='{cal_cell_content}<a href="{content}"><span class="date_value" data-date="'.$year.'-'.$month.'-{day}">{day}</span></a>{/cal_cell_content}';
+		$template.='{cal_cell_content_today}<div class="highlight"><a href="{content}"><span class="date_value" data-date="'.$year.'-'.$month.'-{day}">{day}</span></a></div>{/cal_cell_content_today}';
+		$template.='{cal_cell_no_content}<span class="date_value" data-date="'.$year.'-'.$month.'-{day}">{day}</span>{/cal_cell_no_content}';
+		$template.='{cal_cell_no_content_today}<div class="highlight"><span class="date_value" data-date="'.$year.'-'.$month.'-{day}">{day}</span></div>{/cal_cell_no_content_today}';
 		$template.='{cal_cell_blank}&nbsp;{/cal_cell_blank}';
 		$template.='{cal_cell_end}</td>{/cal_cell_end}';		
 		$template.='{cal_row_end}</tr>{/cal_row_end}';	

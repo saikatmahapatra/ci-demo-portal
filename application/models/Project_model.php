@@ -38,13 +38,13 @@ class Project_model extends CI_Model {
         } else {
             $result = $this->db->delete($table);
         }
-        //echo $this->db->last_query(); die();
+        echo $this->db->last_query(); die();
         return $result;
     }
 
     function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
         $result = array();
-        $this->db->select('t1.*');        
+        $this->db->select('t1.*');
         if ($id) {
             $this->db->where('t1.id', $id);
         }
@@ -103,6 +103,7 @@ class Project_model extends CI_Model {
                 $this->db->limit($limit, $offset);
             }
         }
+        //$this->db->join('project_task_mapping as t2', 't2.project_id = t1.id', 'right');
         $query = $this->db->get('projects as t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();
@@ -207,6 +208,56 @@ class Project_model extends CI_Model {
             $res = $query->result();
             foreach ($res as $r) {
                 $result[$r->id.':'.$r->level] = $r->task_name;
+            }
+        }
+        return $result;
+    }
+
+    function save_project_tasks($postdata, $pid) {
+        // first delete existing map for the pproject_id
+        if($pid){
+            $this->db->where('project_id', $pid);
+            $this->db->delete('project_task_mapping');
+        }
+        $this->db->insert_batch('project_task_mapping', $postdata);
+        //echo $this->db->last_query(); die();
+        $insert_id = $this->db->insert_id();
+        return $insert_id;
+    }
+
+    function get_task_dd($level = NULL) {
+        $result = array();
+        $this->db->select('id,task_name, task_parent_id, level, task_code');
+        $this->db->where('task_status','Y');	
+        if(isset($level)){
+            $this->db->where('level',$level);
+        }	
+        $this->db->order_by('task_name');
+        $query = $this->db->get('project_tasks');
+        #echo $this->db->last_query();
+        //$result = array('' => 'Select');
+        if ($query->num_rows()) {
+            $res = $query->result();
+            foreach ($res as $r) {
+                $result[$r->id] = $r->task_name;
+            }
+        }
+        return $result;
+    }
+
+    function get_tagged_tasks($project_id=NULL) {
+        $result = array();
+        $this->db->select('t1.task_id_1');
+        if($project_id){
+            $this->db->where('t1.project_id',$project_id);
+        }
+        $query = $this->db->get('project_task_mapping t1');
+        //echo $this->db->last_query();
+        $result = array();
+        if ($query->num_rows()) {
+            $result = $query->result_array();
+            foreach ($result as $key=>$r) {
+                $result[$key] = $r['task_id_1'];
             }
         }
         return $result;
