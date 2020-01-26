@@ -88,6 +88,7 @@ class Project extends CI_Controller {
             
             $row[] = $result['project_name'];
             $row[] = $result['project_number'];
+            //$row[] = $result['tc'];
             $row[] = '<span class="'.$this->data['arr_status_flag'][$result['project_status']]['css'].'">'.$this->data['arr_status_flag'][$result['project_status']]['text'].'</span>';
             //add html for action
             $action_html = '';
@@ -96,6 +97,13 @@ class Project extends CI_Controller {
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit',
                 'title' => 'Edit',
+            ));
+            $action_html.='&nbsp;';
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/project_tasks/pid/' .$result['id']), '<i class="fa fa-fw fa-list" aria-hidden="true"></i>', array(
+                'class' => 'btn btn-sm btn-outline-secondary',
+                'data-toggle' => 'tooltip',
+                'data-original-title' => 'Tasks',
+                'title' => 'Tasks',
             ));
             /*$action_html.='&nbsp;';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fa fa-fw fa-trash-o" aria-hidden="true"></i> Delete', array(
@@ -190,7 +198,7 @@ class Project extends CI_Controller {
     function validate_form_data($action = NULL) {		
         $this->form_validation->set_rules('project_number', 'project code', 'required');			
         $this->form_validation->set_rules('project_name', 'project name', 'required');			
-        $this->form_validation->set_rules('project_status', 'project status', 'required');					
+        $this->form_validation->set_rules('project_status', 'project status', 'required');				
 		$this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -334,6 +342,48 @@ class Project extends CI_Controller {
         $this->data['task_parent_drop_down'] = $this->project_model->get_task_nested_dropdown(1);
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_task', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function project_tasks() {
+		$this->breadcrumbs->push('Edit','/');
+		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
+        if ($this->input->post('form_action') == 'update') {
+            //print_r($_POST);
+            if ($this->validate_project_tasks_form_data('edit') == true) {
+                foreach($_POST['project_tasks'] as $key=>$val){
+                    //echo $val;
+                    $postdata[] = array(
+                        'project_id' => $this->input->post('project_id'),
+                        'task_id_1' => $val
+                    );
+                }
+                $res = $this->project_model->save_project_tasks($postdata, $this->input->post('project_id'));
+                if ($res) {
+                    $this->common_lib->set_flash_message('Data Updated Successfully.','alert-success');
+                    redirect(current_url());
+                }
+            }
+        }
+        $this->data['arr_project'] = $this->project_model->get_project_dropdown(1);
+        $this->data['arr_task_id_1'] = $this->project_model->get_task_dd(1);
+        $this->data['tagged_tasks'] = array();
+        if($this->uri->segment(4)){
+            $this->data['tagged_tasks'] = $this->project_model->get_tagged_tasks($this->uri->segment(4));
+        }
+		$this->data['page_title'] = 'Add or Modify Project Tasks';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/project_tasks', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function validate_project_tasks_form_data($action = NULL){
+        $this->form_validation->set_rules('project_id', 'project', 'required');
+        $this->form_validation->set_rules('project_tasks[]', 'tasks', 'required');
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

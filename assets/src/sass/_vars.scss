@@ -74,22 +74,22 @@ $to_color: #cf1180;
 // CI Bootstrap Mega Menu Style
 $mega_menu_theme: dark;
 // CI Bootstrap Mega Menu - Dark Theme
-$bs_mega_menu_dark_background_color: $gray-800;
-$bs_mega_menu_dark_dropdown_item_box_hover_bg_color: $gray-700;
+$bs_mega_menu_dark_background_color: $gray-900;
+$bs_mega_menu_dark_dropdown_item_box_hover_bg_color: $gray-900;
 $bs_mega_menu_dark_dropdown_header_color: $white;
 $bs_mega_menu_dark_dropdown_header_hover_color: $white;
-$bs_mega_menu_dark_nav_link_color: $white;
-$bs_mega_menu_dark_nav_link_hover_color: $bs_mega_menu_dark_nav_link_color;
-$bs_mega_menu_dark_nav_link_hover_bg_color: $primary-color;
-$bs_mega_menu_dark_nav_link_active_color: $white;
-$bs_mega_menu_dark_nav_link_active_bg_color: $primary-color;
+$bs_mega_menu_dark_nav_link_color: $gray-500;
+$bs_mega_menu_dark_nav_link_hover_color: $gray-300;
+$bs_mega_menu_dark_nav_link_hover_bg_color: $gray-700;
+$bs_mega_menu_dark_nav_link_active_color: $gray-100;
+$bs_mega_menu_dark_nav_link_active_bg_color: $gray-700;
 // CI Bootstrap Mega Menu - Light Theme
 $bs_mega_menu_light_background_color: $white;
 $bs_mega_menu_light_dropdown_item_box_hover_bg_color: $gray-100;
 $bs_mega_menu_light_dropdown_header_color: $gray-900;
 $bs_mega_menu_light_dropdown_header_hover_color: $gray-900;
 $bs_mega_menu_light_nav_link_color: $gray-900;
-$bs_mega_menu_light_nav_link_hover_color: $bs_mega_menu_light_nav_link_color;
+$bs_mega_menu_light_nav_link_hover_color: $gray-700;
 $bs_mega_menu_light_nav_link_hover_bg_color: $gray-200;
 $bs_mega_menu_light_nav_link_active_color: $white;
 $bs_mega_menu_light_nav_link_active_bg_color: $primary-color;

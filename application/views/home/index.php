@@ -205,11 +205,8 @@
     <div class="col-lg-8 mb-3">
         <div class="card ci-card">
             <div class="card-body">
+                <!-- <a href="#" class="btn btn-link btn-sm float-right"><i class="fa fa-fw fa-window-maximize" aria-hidden="true"></i> Full Screen</a> -->
                 <h5 class="card-title">Event Calendar</h5>
-                <div class="alert alert-danger small">
-                Event Calendar is a beta release & still under development phase.
-                </div>
-                <!-- <a href="<?php echo base_url('calendar/index'); ?>" class="btn btn-link btn-sm float-right"><i class="fa fa-fw fa-window-maximize" aria-hidden="true"></i> Full Screen</a> -->
                 <div id="ci_full_calendar"></div>
             </div>
             <!-- Button trigger modal -->
