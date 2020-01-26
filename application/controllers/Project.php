@@ -88,6 +88,7 @@ class Project extends CI_Controller {
             
             $row[] = $result['project_name'];
             $row[] = $result['project_number'];
+            //$row[] = $result['tc'];
             $row[] = '<span class="'.$this->data['arr_status_flag'][$result['project_status']]['css'].'">'.$this->data['arr_status_flag'][$result['project_status']]['text'].'</span>';
             //add html for action
             $action_html = '';
@@ -350,14 +351,13 @@ class Project extends CI_Controller {
             //print_r($_POST);
             if ($this->validate_project_tasks_form_data('edit') == true) {
                 foreach($_POST['project_tasks'] as $key=>$val){
-                    echo $val;
+                    //echo $val;
                     $postdata[] = array(
                         'project_id' => $this->input->post('project_id'),
                         'task_id_1' => $val
                     );
                 }
-
-                $res = $this->project_model->insert_batch($postdata);
+                $res = $this->project_model->save_project_tasks($postdata, $this->input->post('project_id'));
                 if ($res) {
                     $this->common_lib->set_flash_message('Data Updated Successfully.','alert-success');
                     redirect(current_url());

@@ -9582,6 +9582,11 @@ label.optional::after {
   height: calc(2.0625rem + 2px) !important;
 }
 
+.select2-container .select2-selection--multiple {
+  display: inline-table !important;
+  width: 100%;
+}
+
 .select2-container--default .select2-selection--single .select2-selection__rendered,
 .select2-container--default .select2-selection--single .select2-selection__arrow {
   height: 31px !important;

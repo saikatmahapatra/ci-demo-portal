@@ -38,13 +38,13 @@ class Project_model extends CI_Model {
         } else {
             $result = $this->db->delete($table);
         }
-        //echo $this->db->last_query(); die();
+        echo $this->db->last_query(); die();
         return $result;
     }
 
     function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
         $result = array();
-        $this->db->select('t1.*');        
+        $this->db->select('t1.*');
         if ($id) {
             $this->db->where('t1.id', $id);
         }
@@ -103,6 +103,7 @@ class Project_model extends CI_Model {
                 $this->db->limit($limit, $offset);
             }
         }
+        //$this->db->join('project_task_mapping as t2', 't2.project_id = t1.id', 'right');
         $query = $this->db->get('projects as t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();
@@ -212,12 +213,13 @@ class Project_model extends CI_Model {
         return $result;
     }
 
-    function insert_batch($postdata, $table = NULL) {
-        if ($table == NULL) {
-            $this->db->insert_batch('project_task_mapping', $postdata);
-        } else {
-            $this->db->insert_batch($table, $postdata);
+    function save_project_tasks($postdata, $pid) {
+        // first delete existing map for the pproject_id
+        if($pid){
+            $this->db->where('project_id', $pid);
+            $this->db->delete('project_task_mapping');
         }
+        $this->db->insert_batch('project_task_mapping', $postdata);
         //echo $this->db->last_query(); die();
         $insert_id = $this->db->insert_id();
         return $insert_id;
