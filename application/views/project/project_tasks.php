@@ -11,21 +11,22 @@
 
                 <div class="form-row">
                     <div class="form-group col-lg-12">
-                        <label for="project_id" class="required">Select Project</label>
-                        <?php echo form_dropdown('project_id', $arr_project, set_value('project_id'), array('class' => 'form-control select2-control')); ?>
+                        <label for="project_id" class="required">Project</label>
+                        <?php echo form_dropdown('project_id', $arr_project, $this->uri->segment(4) ? $this->uri->segment(4) : set_value('project_id'), array('class' => 'form-control select2-control')); ?>
                         <?php echo form_error('project_id'); ?>
                     </div>
                 </div>
-
+                <?php //print_r($tagged_tasks);?>
                 <div class="form-row">
                     <div class="form-group col-lg-12">
-                        <label for="project_tasks" class="required">Select Tasks</label>
-                        <?php echo form_multiselect('project_tasks[]', $arr_task_id_1, set_value('project_tasks'), array('class' => 'form-control select2-control')); ?>
+                        <label for="project_tasks" class="required">Tasks</label>
+                        <?php echo form_multiselect('project_tasks[]', $arr_task_id_1, sizeof($tagged_tasks) > 0 ? $tagged_tasks : set_value('project_tasks'), array('class' => 'form-control select2-control')); ?>
+                        <div id="project_tasks_help" class="form-text text-muted small">All sub-tasks of the above tasks will be automatically linked with the project. Sub-tasks will be displayed at timesheet on selecting the tasks from task drop down.</div>
                         <?php echo form_error('project_tasks[]'); ?>
                     </div>
                 </div>
 
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Save Changes','class' => 'btn ci-btn-primary btn-primary'));?>
 
                 <a href="<?php echo base_url($this->router->directory.$this->router->class);?>"
                     class="btn btn-link">Cancel</a>

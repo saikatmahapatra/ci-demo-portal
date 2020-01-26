@@ -233,11 +233,29 @@ class Project_model extends CI_Model {
         $this->db->order_by('task_name');
         $query = $this->db->get('project_tasks');
         #echo $this->db->last_query();
-        $result = array('' => 'Select');
+        //$result = array('' => 'Select');
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
                 $result[$r->id] = $r->task_name;
+            }
+        }
+        return $result;
+    }
+
+    function get_tagged_tasks($project_id=NULL) {
+        $result = array();
+        $this->db->select('t1.task_id_1');
+        if($project_id){
+            $this->db->where('t1.project_id',$project_id);
+        }
+        $query = $this->db->get('project_task_mapping t1');
+        //echo $this->db->last_query();
+        $result = array();
+        if ($query->num_rows()) {
+            $result = $query->result_array();
+            foreach ($result as $key=>$r) {
+                $result[$key] = $r['task_id_1'];
             }
         }
         return $result;

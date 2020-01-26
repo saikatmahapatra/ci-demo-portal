@@ -366,6 +366,10 @@ class Project extends CI_Controller {
         }
         $this->data['arr_project'] = $this->project_model->get_project_dropdown(1);
         $this->data['arr_task_id_1'] = $this->project_model->get_task_dd(1);
+        $this->data['tagged_tasks'] = array();
+        if($this->uri->segment(4)){
+            $this->data['tagged_tasks'] = $this->project_model->get_tagged_tasks($this->uri->segment(4));
+        }
 		$this->data['page_title'] = 'Add or Modify Project Tasks';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/project_tasks', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
