@@ -12,7 +12,7 @@
                 <div class="form-row">
                     <div class="form-group col-lg-12">
                         <label for="project_id" class="required">Project</label>
-                        <?php echo form_dropdown('project_id', $arr_project, $this->uri->segment(4) ? $this->uri->segment(4) : set_value('project_id'), array('class' => 'form-control select2-control')); ?>
+                        <?php echo form_dropdown('project_id', $arr_project, $this->uri->segment(4) ? $this->uri->segment(4) : set_value('project_id'), array('class' => 'form-control select2-control', 'id' => 'project_id_dd')); ?>
                         <?php echo form_error('project_id'); ?>
                     </div>
                 </div>

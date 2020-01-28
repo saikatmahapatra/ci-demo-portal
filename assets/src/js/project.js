@@ -20,6 +20,15 @@ function domReady() {
     if (ROUTER_METHOD == 'add' || ROUTER_METHOD == 'edit') {
 
     }
+
+    if (ROUTER_METHOD == 'project_tasks') {
+        $('#project_id_dd').on('change', function(e) {
+            var project_id = $(this).val();
+            if (project_id) {
+                window.location = SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/project_tasks/pid/' + project_id;
+            }
+        });
+    }
 }
 
 
