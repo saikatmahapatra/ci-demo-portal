@@ -4,6 +4,10 @@ $(function() {
         renderLeaveBalanceDataTable();
     }
 
+    if (ROUTER_METHOD == 'view_leave_balance') {
+        renderLeaveBalDataTable();
+    }
+
     //showAjaxLoader();
     $('#leave_from_date').datepicker({
         format: "dd-mm-yyyy",
@@ -50,6 +54,7 @@ $(function() {
             if (response.data != null) {
                 $(form_id + ' input[name="id"]').val(response.data.id);
                 $(form_id + ' input[name="cl"]').val(response.data.cl);
+                $(form_id + ' input[name="sl"]').val(response.data.sl);
                 $(form_id + ' input[name="pl"]').val(response.data.pl);
                 $(form_id + ' input[name="ol"]').val(response.data.ol);
 
@@ -62,6 +67,7 @@ $(function() {
             } else {
                 $(form_id + ' input[name="id"]').val('');
                 $(form_id + ' input[name="cl"]').val('');
+                $(form_id + ' input[name="sl"]').val('');
                 $(form_id + ' input[name="pl"]').val('');
                 $(form_id + ' input[name="ol"]').val('');
                 $('#created_on').html('');
@@ -118,6 +124,28 @@ $(function() {
         // });
     });
 });
+
+function renderLeaveBalDataTable() {
+    table = $('#view-leave-bal-datatable').DataTable({
+        /*dom: 'Bfrtip',
+        buttons: [
+        	'copy', 'csv', 'excel', 'pdf', 'print'
+        ],*/
+        iDisplayLength: 50,
+        processing: true, //Feature control the processing indicator.
+        serverSide: true, //Feature control DataTables' server-side processing mode.
+        order: [], //Initial no order.
+        // Load data for the table's content from an Ajax source
+        ajax: {
+            url: SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/render_leave_bal_datatable',
+        },
+        //Set column definition initialisation properties.
+        columnDefs: [{
+            targets: [-1], //last column
+            orderable: false, //set not orderable
+        }, ],
+    });
+}
 
 
 function manage_leave_req(e) {

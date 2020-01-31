@@ -489,13 +489,17 @@ class Leave extends CI_Controller {
         $is_authorized = $this->common_lib->is_auth(array(
             'crud-leave-balance'
         ));  
-        $this->data['page_title'] = 'Leave Balance Sheet';
+        $this->data['page_title'] = 'Leave Balance';
+        $record_exists = FALSE;
         if ($this->input->post('form_action') == 'leave_balance_update') {
             if ($this->validate_leave_balance_form_data() == true) {
-                if($this->input->post('id') != ''){
-                    $postdata = array(                    
-                        'user_id' => $this->input->post('user_id'),
+                $user_id = $this->input->post('user_id');
+                $record_exists = $this->leave_model->is_leave_balance_exists($user_id);
+                if($record_exists == TRUE){
+                    $postdata = array(
+                        'user_id' => $user_id,
                         'cl' => $this->input->post('cl'),
+                        'sl' => $this->input->post('sl'),
                         'pl' => $this->input->post('pl'),
                         'ol' => $this->input->post('ol'),
                         'updated_by' => $this->sess_user_id,
@@ -504,13 +508,14 @@ class Leave extends CI_Controller {
                     $where = array('id' => $this->input->post('id'));
                     $insert_id = $this->leave_model->update($postdata, $where, 'leave_balance');
                     if ($insert_id) {
-                        $this->common_lib->set_flash_message('Leave Balance Record Updated.','alert-success');
+                        $this->common_lib->set_flash_message('Leave Balance Updated Successfully.','alert-success');
                         redirect(current_url());
                     }
                 }else{
                     $postdata = array(
                         'user_id' => $this->input->post('user_id'),
                         'cl' => $this->input->post('cl'),
+                        'sl' => $this->input->post('sl'),
                         'pl' => $this->input->post('pl'),
                         'ol' => $this->input->post('ol'),
                         'created_by' => $this->sess_user_id,
@@ -518,7 +523,7 @@ class Leave extends CI_Controller {
                     );
                     $insert_id = $this->leave_model->insert($postdata, 'leave_balance');
                     if ($insert_id) {
-                        $this->common_lib->set_flash_message('Leave Balance Record Created.','alert-success');
+                        $this->common_lib->set_flash_message('Leave Balance Added Successfully.','alert-success');
                         redirect(current_url());
                     }
                 }
@@ -617,6 +622,8 @@ class Leave extends CI_Controller {
     function validate_leave_balance_form_data($action = NULL) {
         $this->form_validation->set_rules('user_id', ' ', 'required');
         $this->form_validation->set_rules('cl', ' ', 'required|max_length[6]|numeric|less_than_equal_to[10]
+        ');
+        $this->form_validation->set_rules('sl', ' ', 'required|max_length[6]|numeric|less_than_equal_to[10]
         ');
         $this->form_validation->set_rules('pl', ' ', 'required|max_length[6]|numeric|less_than_equal_to[100]');
         $this->form_validation->set_rules('ol', ' ', 'required|max_length[6]|numeric|less_than_equal_to[2]');
@@ -1045,6 +1052,56 @@ class Leave extends CI_Controller {
             $this->send_notification($L2_director_email, $from, $from_name, $subject, $email_message_body);
         }
         
+    }
+
+    function view_leave_balance() {
+        $is_authorized = $this->common_lib->is_auth(array(
+            'crud-leave-balance'
+        ));
+		
+		$this->data['page_title'] = 'Leave Balance Table';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/view_leave_balance', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function render_leave_bal_datatable() {
+        //Total rows - Refer to model method definition
+        $result_array = $this->leave_model->get_leave_bal_datatable();
+        $total_rows = $result_array['num_rows'];
+
+        // Total filtered rows - check without limit query. Refer to model method definition
+        $result_array = $this->leave_model->get_leave_bal_datatable(NULL, NULL, NULL, TRUE, FALSE);
+        $total_filtered = $result_array['num_rows'];
+
+        // Data Rows - Refer to model method definition
+        $result_array = $this->leave_model->get_leave_bal_datatable(NULL, NULL, NULL, TRUE);
+        $data_rows = $result_array['data_rows'];
+        $data = array();
+        $no = $_REQUEST['start'];
+        foreach ($data_rows as $result) {
+            $no++;
+            $row = array();
+            $row[] = $result['user_emp_id'];
+            $row[] = $result['user_firstname'].' '.$result['user_lastname'];
+            $row[] = ($result['cl'] == NULL) ? '--' : $result['cl'];
+            $row[] = ($result['sl'] == NULL) ? '--' : $result['sl'];
+            $row[] = ($result['pl'] == NULL) ? '--' : $result['pl'];
+            $row[] = ($result['ol'] == NULL) ? '--' : $result['ol'];
+            $row[] = $this->common_lib->display_date($result['balance_date'], true);
+            $row[] = $this->common_lib->display_date($result['created_on'], true);
+            $row[] = $this->common_lib->display_date($result['updated_on'], true);
+            $data[] = $row;
+        }
+
+        /* jQuery Data Table JSON format */
+        $output = array(
+            'draw' => isset($_REQUEST['draw']) ? $_REQUEST['draw'] : '',
+            'recordsTotal' => $total_rows,
+            'recordsFiltered' => $total_filtered,
+            'data' => $data,
+        );
+        //output to json format
+        echo json_encode($output);
     }
 }
 
