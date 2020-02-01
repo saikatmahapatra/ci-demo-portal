@@ -48,6 +48,7 @@ class Leave extends CI_Controller {
         $this->data['leave_type_arr'] = array(''=>'-Select-',
             'CL'=>'Casual Leave',
             'PL'=>'Privileged Leave',
+            'SL'=>'Sick Leave',
             //'OL'=>'Optional Leave',
             //'SP'=>'Special Leave'
         );
@@ -158,7 +159,8 @@ class Leave extends CI_Controller {
                     'hr_approver_status'=>'P',
                     'on_apply_cl_bal'=> isset($this->data['leave_balance'][0]['cl']) ? $this->data['leave_balance'][0]['cl'] : '',
                     'on_apply_pl_bal'=> isset($this->data['leave_balance'][0]['pl']) ? $this->data['leave_balance'][0]['pl'] : '',
-                    'on_apply_ol_bal'=> isset($this->data['leave_balance'][0]['ol']) ? $this->data['leave_balance'][0]['ol'] : ''
+                    'on_apply_ol_bal'=> isset($this->data['leave_balance'][0]['ol']) ? $this->data['leave_balance'][0]['ol'] : '',
+                    'on_apply_sl_bal'=> isset($this->data['leave_balance'][0]['sl']) ? $this->data['leave_balance'][0]['sl'] : ''
 
                 );
                 $insert_id = $this->leave_model->insert($postdata);
@@ -873,6 +875,9 @@ class Leave extends CI_Controller {
         if(strtolower($leave_type) == 'ol'){
             $postdata['debited_ol'] = $applied_for_days_count * $leave_term_multiplier;
         }
+        if(strtolower($leave_type) == 'sl'){
+            $postdata['debited_sl'] = $applied_for_days_count * $leave_term_multiplier;
+        }
         $where = array('id'=>$leave_id);
         $this->leave_model->update($postdata, $where, 'leave_applications');
 
@@ -904,6 +909,9 @@ class Leave extends CI_Controller {
         }
         if(isset($leave_data['debited_ol'])){
             $postdata['credited_ol'] = $leave_data['debited_ol'];
+        }
+        if(isset($leave_data['debited_sl'])){
+            $postdata['credited_sl'] = $leave_data['debited_sl'];
         }
         $where = array('id' => $leave_balance_id, 'user_id' => $applicant_user_id);
         $is_update_balance = $this->leave_model->adjust_leave_balance($postdata, $where);
