@@ -186,6 +186,8 @@ function get_timesheet_stat() {
         }
         $.each(response.data.data_rows, function(i, obj) {
             var timesheet_date = obj.timesheet_date;
+            var dt = timesheet_date.split("-");
+            var timesheet_date = dt[0] + "-" + dt[1] + "-" + dt[2].replace(/^0+/, '');
             $('#timesheet_calendar span.date_value[data-date="' + timesheet_date + '"]').parents('td').addClass("filled");
         });
     });
