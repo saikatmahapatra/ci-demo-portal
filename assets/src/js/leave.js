@@ -96,11 +96,15 @@ $(function() {
                 contentType: false,
                 cache: false,
                 processData: false,
+                beforeSend: function() {
+                    showAjaxLoader();
+                },
                 success: function(data) {
                     $('#userfile').val('');
+                    hideAjaxLoader();
                     //load_data();
                     console.log(data);
-                    leave_balance_datatable.ajax.reload();
+                    leave_bal_table.ajax.reload();
                 }
             })
             // var xhr = new Ajax();
@@ -126,7 +130,7 @@ $(function() {
 });
 
 function renderLeaveBalDataTable() {
-    table = $('#view-leave-bal-datatable').DataTable({
+    leave_bal_table = $('#view-leave-bal-datatable').DataTable({
         /*dom: 'Bfrtip',
         buttons: [
         	'copy', 'csv', 'excel', 'pdf', 'print'

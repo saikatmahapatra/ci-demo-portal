@@ -402,7 +402,7 @@ class Leave_model extends CI_Model {
 
     function get_leave_bal_datatable($user_id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
         $result = array();
-        $this->db->select('t1.user_firstname, t1.user_lastname,t1.user_emp_id, t2.balance_date, t2.cl, t2.sl, t2.ol, t2.pl, t2.co, t2.created_on, t2.updated_on');
+        $this->db->select('t1.user_firstname, t1.user_lastname,t1.user_emp_id, t2.balance_date, t1.id as user_id, t2.id as bal_pk_index, t2.cl, t2.sl, t2.ol, t2.pl, t2.co, t2.created_on, t2.updated_on');
         $this->db->join('leave_balance as t2', 't2.user_id = t1.id', 'left');
         if ($user_id) {
             $this->db->where('t2.user_id', $user_id);

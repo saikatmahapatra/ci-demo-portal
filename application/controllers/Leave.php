@@ -559,16 +559,14 @@ class Leave extends CI_Controller {
 				for($row=2; $row<=$highestRow; $row++){
 					$user_id = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
 					$cl_balance = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-					$sl_balance = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-					$pl_balance = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
-					$ol_balance = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
-					$balance_date = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
+					$sl_balance = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+					$pl_balance = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+					$balance_date = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
 					$data[] = array(
 						'user_id' =>	$user_id,
 						'cl' =>	$cl_balance,
 						'sl' =>	$sl_balance,
 						'pl' =>	$pl_balance,
-						'ol' =>	$ol_balance,
 						'balance_date' =>	date('Y-m-d H:i:s'),
 						'created_on' =>	date('Y-m-d H:i:s'),
 						'created_by' =>	$this->sess_user_id,
@@ -1066,7 +1064,9 @@ class Leave extends CI_Controller {
         $is_authorized = $this->common_lib->is_auth(array(
             'crud-leave-balance'
         ));
-		
+		if($this->input->post('form_action') == 'download'){
+            $this->download_to_excel();
+        }
 		$this->data['page_title'] = 'Leave Balance Table';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/view_leave_balance', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
@@ -1110,6 +1110,94 @@ class Leave extends CI_Controller {
         );
         //output to json format
         echo json_encode($output);
+    }
+
+    function download_to_excel(){
+        $excel_heading = array(
+            'A' => 'user_index',
+            'B' => 'employee_id',
+            'C' => 'employee_name',
+            'D' => 'casual_leave',
+            'E' => 'priviledge_leave',
+            'F' => 'sick_leave',
+            'G' => 'time_stamp',
+            'H' => 'bal_index'
+        );
+        $this->data['xls_col'] = $excel_heading;
+        //load our new PHPExcel library
+        $this->load->library('excel');
+        //activate worksheet number 1
+        $this->excel->setActiveSheetIndex(0);
+        $sheet = $this->excel->getActiveSheet();
+        //name the worksheet
+        $sheet->setTitle('Leave_Balance');
+
+        $result_array = $this->leave_model->get_leave_bal_datatable(NULL, NULL, NULL, TRUE, FALSE);
+        $data_rows = $result_array['data_rows'];
+
+        $range = range('A', 'Z');
+        $heading_row = 1;
+        $index = 0;
+        foreach ($excel_heading as $column => $heading_display) {
+            $sheet->setCellValue($range[$index] . $heading_row, $heading_display);
+            $index++;
+        }
+        $excel_row = 2;
+        foreach ($data_rows as $index => $row) {
+            $sheet->setCellValue('A' . $excel_row, $row['user_id']);
+            $sheet->setCellValue('B' . $excel_row, $row['user_emp_id']);
+            $sheet->setCellValue('C' . $excel_row, $row['user_firstname'].' '.$row['user_lastname']);
+            $sheet->setCellValue('D' . $excel_row, $row['cl']);
+            $sheet->setCellValue('E' . $excel_row, $row['pl']);
+            $sheet->setCellValue('F' . $excel_row, $row['sl']);
+            $sheet->setCellValue('G' . $excel_row, date('Y-m-d'));
+            $sheet->setCellValue('H' . $excel_row, $row['bal_pk_index']);
+            $excel_row++;
+        }
+
+
+        // Color Config
+        $default_border = array(
+            'style' => PHPExcel_Style_Border::BORDER_THIN,
+            'color' => array('rgb' => '0')
+        );
+        $style_header = array(
+            'borders' => array(
+                'bottom' => $default_border,
+                'left' => $default_border,
+                'top' => $default_border,
+                'right' => $default_border,
+            ),
+            'fill' => array(
+                'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                'color' => array('rgb' => '80bfff'),
+            ),
+            'font' => array(
+                'bold' => true
+            )
+        );
+        $styleArray = array(
+            'borders' => array(
+                'allborders' => array(
+                    'style' => PHPExcel_Style_Border::BORDER_THIN,
+                    'color' => array('rgb' => '4d4d4d')
+                )
+            )
+        );
+        //$sheet->getDefaultStyle()->applyFromArray($styleArray);
+        $sheet->getStyle('A1:H1')->applyFromArray($style_header);
+        //$sheet->getStyle('A1:G1')->getFont()->setSize(9);
+        //$sheet->getDefaultStyle()->getFont()->setSize(10);
+        $sheet->getDefaultColumnDimension()->setWidth('17');
+        $filename = 'Leave_Balance_' . date('d-m-Y_H:i:s') . '.xls'; //save our workbook as this file name
+        header('Content-Type: application/vnd.ms-excel'); //mime type
+        header('Content-Disposition: attachment;filename="' . $filename . '"'); //tell browser what's the file name
+        header('Cache-Control: max-age=0'); //no cache
+        //save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension, also the header mime type)
+        //if you want to save it as .XLSX Excel 2007 format
+        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
+        //force user to download the Excel file without writing it to server's HD
+        $objWriter->save('php://output');
     }
 }
 
