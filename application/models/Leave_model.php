@@ -33,33 +33,34 @@ class Leave_model extends CI_Model {
 
     function import_batch_leave_balance_data($postdata) {
         //print_r($postdata); die();
-        $batch_insert = array();
-        $batch_update = array();
-        foreach($postdata as $key=>$val){
-            if($val['id'] != "" || is_int($val['id'])){
-                echo "Update".$val['user_id'];
-                $this->db->where(array('id'=>$val['id']));
-                $batch_update = array(
-                    'user_id' =>	$val['user_id'],
-                    'cl' =>	$val['cl'],
-                    'sl' => $val['sl'],
-                    'pl' =>	$val['pl'],
-                    'balance_date' =>	$val['balance_date']
-                );
-                $this->db->update('leave_balance', $batch_update);
-            }else{
-                $batch_insert = array(
-                    'user_id' =>	$val['user_id'],
-                    'cl' =>	$val['cl'],
-                    'sl' => $val['sl'],
-                    'pl' =>	$val['pl'],
-                    'balance_date' =>	$val['balance_date']
-                );
-                $this->db->insert('leave_balance', $batch_insert);
+        $result = array('status'=>false, 'msg'=>'Importing Data at model', 'rows_afftected'=>'0', 'css'=>'alert alert-success');
+        if(isset($postdata) && sizeof($postdata) >0){
+            $sql_values = "";
+            $sql_duplicate_update = "";
+            $rows = sizeof($postdata);
+            foreach($postdata as $key=>$val){
+                $rows--;
+                $sql_values.="('".$val['id']."', '".$val['user_id']."', '".$val['balance_date']."', '".$val['cl']."', '".$val['sl']."', '".$val['pl']."', '".$val['created_on']."', '".$val['created_by']."')";
+                if($rows !=0){
+                    $sql_values.=",";
+                }
             }
+
+            $sql = "INSERT INTO `leave_balance` (`id`, `user_id`, `balance_date`, `cl`, `sl`, `pl`, `created_on`,`created_by`) VALUES";
+            $sql.= $sql_values;
+            $sql.= " ON DUPLICATE KEY UPDATE ";
+            //$sql.= $sql_duplicate_update;
+            $sql.= " `cl` = VALUES(`cl`), `sl` = VALUES(`sl`), `pl` = VALUES(`pl`), `updated_on` = '".date('Y-m-d H:i:s')."',  `updated_by` = VALUES(`updated_by`) "; 
+            $sql.=";";
+            $this->db->query($sql);
+            $affected_rows = $this->db->affected_rows();
+            $result = array('status'=>true, 'msg'=>$affected_rows.' : Data Imported Successfully.', 'rows_afftected'=>$affected_rows,'css'=>'alert alert-success');
+        }else{
+            $result = array('status'=>false, 'msg'=>'There are no rows to import. Kindly download or export data template first, update leave balance & import it.', 'rows_afftected'=>'0','css'=>'alert alert-info');
         }
-        $insert_id = $this->db->affected_rows();
-        return $insert_id;
+
+        return $result;
+        
     }
 
     function update($postdata, $where_array = NULL, $table = NULL) {

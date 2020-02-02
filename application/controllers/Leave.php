@@ -555,7 +555,8 @@ class Leave extends CI_Controller {
 			foreach($object->getWorksheetIterator() as $worksheet){
                 //print_r($worksheet); die();
 				$highestRow = $worksheet->getHighestRow();
-				$highestColumn = $worksheet->getHighestColumn();
+                $highestColumn = $worksheet->getHighestColumn();
+                $data = array();
 				for($row=2; $row<=$highestRow; $row++){
 					$user_id = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
 					$cl_balance = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
@@ -564,11 +565,11 @@ class Leave extends CI_Controller {
                     $balance_date = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
                     $balance_table_pk_index = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
 					$data[] = array(
-                        'id' => $balance_table_pk_index,
-						'user_id' =>	$user_id,
-						'cl' =>	$cl_balance,
-						'sl' =>	$sl_balance,
-						'pl' =>	$pl_balance,
+                        'id' => ($balance_table_pk_index!="") ? $balance_table_pk_index : NULL,
+						'user_id' => $user_id,
+						'cl' =>	($cl_balance != "") ? $cl_balance : NULL,
+						'sl' =>	($sl_balance != "") ? $sl_balance : NULL,
+						'pl' =>	($pl_balance != "") ? $pl_balance : NULL,
 						'balance_date' =>	date('Y-m-d H:i:s'),
 						'created_on' =>	date('Y-m-d H:i:s'),
 						'created_by' =>	$this->sess_user_id,
@@ -577,8 +578,7 @@ class Leave extends CI_Controller {
             }
             //print_r($data);
             $res = $this->leave_model->import_batch_leave_balance_data($data);
-            //die();
-			echo $res. ' Data Imported successfully'; die();
+			echo json_encode($res); die();
 		}	
     }
     
@@ -604,7 +604,7 @@ class Leave extends CI_Controller {
             $row[] = $result['cl'];
             $row[] = $result['pl'];
             $row[] = $result['sl'];
-            $row[] = $result['ol'];
+            //$row[] = $result['ol'];
             $row[] = $this->common_lib->display_date($result['created_on'], true);
             $data[] = $row;
         }
@@ -1094,9 +1094,9 @@ class Leave extends CI_Controller {
             $row[] = $result['user_emp_id'];
             $row[] = $result['user_firstname'].' '.$result['user_lastname'];
             $row[] = ($result['cl'] == NULL) ? '--' : $result['cl'];
-            $row[] = ($result['sl'] == NULL) ? '--' : $result['sl'];
             $row[] = ($result['pl'] == NULL) ? '--' : $result['pl'];
-            $row[] = ($result['ol'] == NULL) ? '--' : $result['ol'];
+            $row[] = ($result['sl'] == NULL) ? '--' : $result['sl'];
+            //$row[] = ($result['ol'] == NULL) ? '--' : $result['ol'];
             $row[] = $this->common_lib->display_date($result['balance_date'], true);
             $row[] = $this->common_lib->display_date($result['created_on'], true);
             $row[] = $this->common_lib->display_date($result['updated_on'], true);

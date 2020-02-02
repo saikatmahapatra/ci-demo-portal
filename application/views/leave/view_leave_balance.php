@@ -8,6 +8,7 @@
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 
             <div class="export-form ">
+                <div id="import_result_msg"></div>
                 <?php echo form_open_multipart(current_url(), array( 'method' => 'post','class'=>'form-inline','name' => '','id' => 'import_form',)); ?>
                     <?php echo form_hidden('form_action', 'leave_balance_import'); ?>
                     <?php echo form_hidden('id', ''); ?>
@@ -38,9 +39,9 @@
                                 <th scope="col">Emp ID</th>
                                 <th scope="col">Employee Name</th>
                                 <th scope="col">CL</th>
-                                <th scope="col">SL</th>
                                 <th scope="col">PL</th>
-                                <th scope="col">OL</th>
+                                <th scope="col">SL</th>
+                                <!-- <th scope="col">OL</th> -->
                                 <th scope="col">Imported On</th>
                                 <th scope="col">Created On</th>
                                 <th scope="col">Updated On</th>
