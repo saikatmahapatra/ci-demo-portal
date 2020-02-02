@@ -561,8 +561,10 @@ class Leave extends CI_Controller {
 					$cl_balance = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
 					$sl_balance = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
 					$pl_balance = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-					$balance_date = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+                    $balance_date = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+                    $balance_table_pk_index = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
 					$data[] = array(
+                        'id' => $balance_table_pk_index,
 						'user_id' =>	$user_id,
 						'cl' =>	$cl_balance,
 						'sl' =>	$sl_balance,
@@ -574,7 +576,7 @@ class Leave extends CI_Controller {
 				}
             }
             //print_r($data);
-            $res = $this->leave_model->import_batch_data($data,'leave_balance');
+            $res = $this->leave_model->import_batch_leave_balance_data($data);
             //die();
 			echo $res. ' Data Imported successfully'; die();
 		}	
@@ -626,7 +628,7 @@ class Leave extends CI_Controller {
         $this->form_validation->set_rules('sl', ' ', 'required|max_length[6]|numeric|less_than_equal_to[10]
         ');
         $this->form_validation->set_rules('pl', ' ', 'required|max_length[6]|numeric|less_than_equal_to[100]');
-        $this->form_validation->set_rules('ol', ' ', 'required|max_length[6]|numeric|less_than_equal_to[2]');
+        $this->form_validation->set_rules('ol', ' ', 'max_length[6]|numeric|less_than_equal_to[2]');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;

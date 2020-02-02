@@ -31,13 +31,33 @@ class Leave_model extends CI_Model {
         return $insert_id;
     }
 
-    function import_batch_data($postdata, $table = NULL) {
-        if ($table == NULL) {
-            $this->db->insert_batch('leave_balance', $postdata);
-        } else {
-            $this->db->insert_batch($table, $postdata);
+    function import_batch_leave_balance_data($postdata) {
+        //print_r($postdata); die();
+        $batch_insert = array();
+        $batch_update = array();
+        foreach($postdata as $key=>$val){
+            if($val['id'] != "" || is_int($val['id'])){
+                echo "Update".$val['user_id'];
+                $this->db->where(array('id'=>$val['id']));
+                $batch_update = array(
+                    'user_id' =>	$val['user_id'],
+                    'cl' =>	$val['cl'],
+                    'sl' => $val['sl'],
+                    'pl' =>	$val['pl'],
+                    'balance_date' =>	$val['balance_date']
+                );
+                $this->db->update('leave_balance', $batch_update);
+            }else{
+                $batch_insert = array(
+                    'user_id' =>	$val['user_id'],
+                    'cl' =>	$val['cl'],
+                    'sl' => $val['sl'],
+                    'pl' =>	$val['pl'],
+                    'balance_date' =>	$val['balance_date']
+                );
+                $this->db->insert('leave_balance', $batch_insert);
+            }
         }
-        //echo $this->db->last_query(); die();
         $insert_id = $this->db->affected_rows();
         return $insert_id;
     }
