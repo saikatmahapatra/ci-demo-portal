@@ -31,15 +31,36 @@ class Leave_model extends CI_Model {
         return $insert_id;
     }
 
-    function import_batch_data($postdata, $table = NULL) {
-        if ($table == NULL) {
-            $this->db->insert_batch('leave_balance', $postdata);
-        } else {
-            $this->db->insert_batch($table, $postdata);
+    function import_batch_leave_balance_data($postdata) {
+        //print_r($postdata); die();
+        $result = array('status'=>false, 'msg'=>'Importing Data at model', 'rows_afftected'=>'0', 'css'=>'alert alert-success');
+        if(isset($postdata) && sizeof($postdata) >0){
+            $sql_values = "";
+            $sql_duplicate_update = "";
+            $rows = sizeof($postdata);
+            foreach($postdata as $key=>$val){
+                $rows--;
+                $sql_values.="('".$val['id']."', '".$val['user_id']."', '".$val['balance_date']."', '".$val['cl']."', '".$val['sl']."', '".$val['pl']."', '".$val['created_on']."', '".$val['created_by']."')";
+                if($rows !=0){
+                    $sql_values.=",";
+                }
+            }
+
+            $sql = "INSERT INTO `leave_balance` (`id`, `user_id`, `balance_date`, `cl`, `sl`, `pl`, `created_on`,`created_by`) VALUES";
+            $sql.= $sql_values;
+            $sql.= " ON DUPLICATE KEY UPDATE ";
+            //$sql.= $sql_duplicate_update;
+            $sql.= " `cl` = VALUES(`cl`), `sl` = VALUES(`sl`), `pl` = VALUES(`pl`), `updated_on` = '".date('Y-m-d H:i:s')."',  `updated_by` = VALUES(`updated_by`) "; 
+            $sql.=";";
+            $this->db->query($sql);
+            $affected_rows = $this->db->affected_rows();
+            $result = array('status'=>true, 'msg'=>$affected_rows.' : Data Imported Successfully.', 'rows_afftected'=>$affected_rows,'css'=>'alert alert-success');
+        }else{
+            $result = array('status'=>false, 'msg'=>'There are no rows to import. Kindly download or export data template first, update leave balance & import it.', 'rows_afftected'=>'0','css'=>'alert alert-info');
         }
-        //echo $this->db->last_query(); die();
-        $insert_id = $this->db->affected_rows();
-        return $insert_id;
+
+        return $result;
+        
     }
 
     function update($postdata, $where_array = NULL, $table = NULL) {
@@ -398,5 +419,97 @@ class Leave_model extends CI_Model {
         $this->db->update('leave_balance');
         //echo $this->db->last_query(); die();
         return ($this->db->affected_rows() > 0);
+    }
+
+    function get_leave_bal_datatable($user_id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
+        $result = array();
+        $this->db->select('t1.user_firstname, t1.user_lastname,t1.user_emp_id, t2.balance_date, t1.id as user_id, t2.id as bal_pk_index, t2.cl, t2.sl, t2.ol, t2.pl, t2.co, t2.created_on, t2.updated_on');
+        $this->db->join('leave_balance as t2', 't2.user_id = t1.id', 'left');
+        if ($user_id) {
+            $this->db->where('t2.user_id', $user_id);
+        }
+        //$this->db->order_by('t1.user_firstname');
+        $this->db->where('t1.user_status !=', 'A');
+        $this->db->where('t1.user_type', 'U');
+        ####################################################################
+        ##################### Display using Data Table #####################
+        ####################################################################
+        if ($dataTable == TRUE) {
+            //set column field database for datatable orderable
+            $column_order = array(
+                't1.user_emp_id',
+                't1.user_firstname',
+                't2.cl',
+                't2.sl',
+                't2.pl',
+                't2.ol',
+                't2.balance_date',
+                't2.created_on',
+                't2.updated_on',
+                NULL,
+            );            
+            //set column field database(table column name) for datatable searchable
+            $column_search = array(
+                't1.user_firstname',
+                't1.user_lastname',
+                't1.user_emp_id'
+                );
+             // default order
+            $order = array(
+                't1.id' => 'desc'
+                );
+            $i = 0;
+            foreach ($column_search as $item) { // loop column
+                if (isset($_REQUEST['search']['value'])) { // if datatable send POST for search
+                    if ($i === 0) { // first loop
+                        $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
+                        $this->db->like($item, $_REQUEST['search']['value']);
+                    } else {
+                        $this->db->or_like($item, $_REQUEST['search']['value']);
+                    }
+                    if (count($column_search) - 1 == $i) { //last loop
+                        $this->db->group_end(); //close bracket
+                    }
+                }
+                $i++;
+            }
+            if (isset($_REQUEST['order'])) { // here order processing
+                $this->db->order_by($column_order[$_REQUEST['order']['0']['column']], $_REQUEST['order']['0']['dir']);
+            } else if (isset($order)) {
+                $this->db->order_by(key($order), $order[key($order)]);
+            }
+            //Paging, checkPaging flag added for counting filtered rows without limit offset
+            if (($checkPaging == TRUE) && (isset($_REQUEST['length']) && $_REQUEST['length'] != -1)) {
+                $this->db->limit($_REQUEST['length'], $_REQUEST['start']);
+            }//End of paging
+        }//if $dataTable
+        ####################################################################
+        ##################### Display using Data Table Ends ################
+        ####################################################################
+        else {
+            if ($limit) {
+                $this->db->limit($limit, $offset);
+            }
+        }
+        $query = $this->db->get('users as t1');
+        //print_r($this->db->last_query());
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return array('num_rows' => $num_rows, 'data_rows' => $result);
+    }
+
+    function is_leave_balance_exists($user_id = NULL) {
+        $exists = FALSE;
+        $result = array();
+        $this->db->select('t1.id');
+        $this->db->where('t1.user_id',$user_id);
+        $query = $this->db->get('leave_balance t1');
+        if ($query->num_rows() >= 1) {
+            //$result = $query->result_array();
+            $exists = TRUE;
+        }else{
+            $exists = FALSE;
+        }
+        return $exists;
     }
 }

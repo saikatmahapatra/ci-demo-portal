@@ -50,21 +50,24 @@ $row = $data_rows[0];
                         <span class="">Before apply
                             <?php echo isset($row['on_apply_cl_bal']) ? ' CL '.$row['on_apply_cl_bal'] : '' ;?>
                             <?php echo isset($row['on_apply_pl_bal']) ? ' PL '.$row['on_apply_pl_bal'] : '' ;?>
+                            <?php echo isset($row['on_apply_sl_bal']) ? ' SL '.$row['on_apply_sl_bal'] : '' ;?>
                         </span>
 
-                        <?php if( isset($row['debited_cl']) || isset($row['debited_pl']) ) {?>
+                        <?php if( isset($row['debited_cl']) || isset($row['debited_pl']) || isset($row['debited_sl'])) {?>
                         <span class="font-weight-bold"> | </span>
                         <span class="text-danger">Debited
                             <?php echo isset($row['debited_cl']) ? ' CL '.$row['debited_cl'] : '' ;?>
                             <?php echo isset($row['debited_pl']) ? ' PL '.$row['debited_pl'] : '' ;?>
+                            <?php echo isset($row['debited_sl']) ? ' SL '.$row['debited_sl'] : '' ;?>
                         </span>
                         <?php } ?>
 
-                        <?php if( isset($row['credited_cl']) || isset($row['credited_pl']) ) {?>
+                        <?php if( isset($row['credited_cl']) || isset($row['credited_pl']) || isset($row['credited_sl'])) {?>
                         <span class="font-weight-bold"> | </span>
                         <span class="text-info">Adjusted
                             <?php echo isset($row['credited_cl']) ? ' CL '.$row['credited_cl'] : '' ;?>
                             <?php echo isset($row['credited_pl']) ? ' PL '.$row['credited_pl'] : '' ;?>
+                            <?php echo isset($row['credited_sl']) ? ' SL '.$row['credited_sl'] : '' ;?>
                         </span>
                         <?php } ?>
                     </dd>

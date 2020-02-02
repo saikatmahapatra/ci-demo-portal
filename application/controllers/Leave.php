@@ -48,6 +48,7 @@ class Leave extends CI_Controller {
         $this->data['leave_type_arr'] = array(''=>'-Select-',
             'CL'=>'Casual Leave',
             'PL'=>'Privileged Leave',
+            'SL'=>'Sick Leave',
             //'OL'=>'Optional Leave',
             //'SP'=>'Special Leave'
         );
@@ -158,7 +159,8 @@ class Leave extends CI_Controller {
                     'hr_approver_status'=>'P',
                     'on_apply_cl_bal'=> isset($this->data['leave_balance'][0]['cl']) ? $this->data['leave_balance'][0]['cl'] : '',
                     'on_apply_pl_bal'=> isset($this->data['leave_balance'][0]['pl']) ? $this->data['leave_balance'][0]['pl'] : '',
-                    'on_apply_ol_bal'=> isset($this->data['leave_balance'][0]['ol']) ? $this->data['leave_balance'][0]['ol'] : ''
+                    'on_apply_ol_bal'=> isset($this->data['leave_balance'][0]['ol']) ? $this->data['leave_balance'][0]['ol'] : '',
+                    'on_apply_sl_bal'=> isset($this->data['leave_balance'][0]['sl']) ? $this->data['leave_balance'][0]['sl'] : ''
 
                 );
                 $insert_id = $this->leave_model->insert($postdata);
@@ -489,13 +491,17 @@ class Leave extends CI_Controller {
         $is_authorized = $this->common_lib->is_auth(array(
             'crud-leave-balance'
         ));  
-        $this->data['page_title'] = 'Leave Balance Sheet';
+        $this->data['page_title'] = 'Leave Balance';
+        $record_exists = FALSE;
         if ($this->input->post('form_action') == 'leave_balance_update') {
             if ($this->validate_leave_balance_form_data() == true) {
-                if($this->input->post('id') != ''){
-                    $postdata = array(                    
-                        'user_id' => $this->input->post('user_id'),
+                $user_id = $this->input->post('user_id');
+                $record_exists = $this->leave_model->is_leave_balance_exists($user_id);
+                if($record_exists == TRUE){
+                    $postdata = array(
+                        'user_id' => $user_id,
                         'cl' => $this->input->post('cl'),
+                        'sl' => $this->input->post('sl'),
                         'pl' => $this->input->post('pl'),
                         'ol' => $this->input->post('ol'),
                         'updated_by' => $this->sess_user_id,
@@ -504,13 +510,14 @@ class Leave extends CI_Controller {
                     $where = array('id' => $this->input->post('id'));
                     $insert_id = $this->leave_model->update($postdata, $where, 'leave_balance');
                     if ($insert_id) {
-                        $this->common_lib->set_flash_message('Leave Balance Record Updated.','alert-success');
+                        $this->common_lib->set_flash_message('Leave Balance Updated Successfully.','alert-success');
                         redirect(current_url());
                     }
                 }else{
                     $postdata = array(
                         'user_id' => $this->input->post('user_id'),
                         'cl' => $this->input->post('cl'),
+                        'sl' => $this->input->post('sl'),
                         'pl' => $this->input->post('pl'),
                         'ol' => $this->input->post('ol'),
                         'created_by' => $this->sess_user_id,
@@ -518,7 +525,7 @@ class Leave extends CI_Controller {
                     );
                     $insert_id = $this->leave_model->insert($postdata, 'leave_balance');
                     if ($insert_id) {
-                        $this->common_lib->set_flash_message('Leave Balance Record Created.','alert-success');
+                        $this->common_lib->set_flash_message('Leave Balance Added Successfully.','alert-success');
                         redirect(current_url());
                     }
                 }
@@ -548,20 +555,21 @@ class Leave extends CI_Controller {
 			foreach($object->getWorksheetIterator() as $worksheet){
                 //print_r($worksheet); die();
 				$highestRow = $worksheet->getHighestRow();
-				$highestColumn = $worksheet->getHighestColumn();
+                $highestColumn = $worksheet->getHighestColumn();
+                $data = array();
 				for($row=2; $row<=$highestRow; $row++){
 					$user_id = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
 					$cl_balance = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-					$sl_balance = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-					$pl_balance = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
-					$ol_balance = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
-					$balance_date = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
+					$sl_balance = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+					$pl_balance = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+                    $balance_date = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+                    $balance_table_pk_index = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
 					$data[] = array(
-						'user_id' =>	$user_id,
-						'cl' =>	$cl_balance,
-						'sl' =>	$sl_balance,
-						'pl' =>	$pl_balance,
-						'ol' =>	$ol_balance,
+                        'id' => ($balance_table_pk_index!="") ? $balance_table_pk_index : NULL,
+						'user_id' => $user_id,
+						'cl' =>	($cl_balance != "") ? $cl_balance : NULL,
+						'sl' =>	($sl_balance != "") ? $sl_balance : NULL,
+						'pl' =>	($pl_balance != "") ? $pl_balance : NULL,
 						'balance_date' =>	date('Y-m-d H:i:s'),
 						'created_on' =>	date('Y-m-d H:i:s'),
 						'created_by' =>	$this->sess_user_id,
@@ -569,9 +577,8 @@ class Leave extends CI_Controller {
 				}
             }
             //print_r($data);
-            $res = $this->leave_model->import_batch_data($data,'leave_balance');
-            //die();
-			echo $res. ' Data Imported successfully'; die();
+            $res = $this->leave_model->import_batch_leave_balance_data($data);
+			echo json_encode($res); die();
 		}	
     }
     
@@ -597,7 +604,7 @@ class Leave extends CI_Controller {
             $row[] = $result['cl'];
             $row[] = $result['pl'];
             $row[] = $result['sl'];
-            $row[] = $result['ol'];
+            //$row[] = $result['ol'];
             $row[] = $this->common_lib->display_date($result['created_on'], true);
             $data[] = $row;
         }
@@ -618,8 +625,10 @@ class Leave extends CI_Controller {
         $this->form_validation->set_rules('user_id', ' ', 'required');
         $this->form_validation->set_rules('cl', ' ', 'required|max_length[6]|numeric|less_than_equal_to[10]
         ');
+        $this->form_validation->set_rules('sl', ' ', 'required|max_length[6]|numeric|less_than_equal_to[10]
+        ');
         $this->form_validation->set_rules('pl', ' ', 'required|max_length[6]|numeric|less_than_equal_to[100]');
-        $this->form_validation->set_rules('ol', ' ', 'required|max_length[6]|numeric|less_than_equal_to[2]');
+        $this->form_validation->set_rules('ol', ' ', 'max_length[6]|numeric|less_than_equal_to[2]');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -866,6 +875,9 @@ class Leave extends CI_Controller {
         if(strtolower($leave_type) == 'ol'){
             $postdata['debited_ol'] = $applied_for_days_count * $leave_term_multiplier;
         }
+        if(strtolower($leave_type) == 'sl'){
+            $postdata['debited_sl'] = $applied_for_days_count * $leave_term_multiplier;
+        }
         $where = array('id'=>$leave_id);
         $this->leave_model->update($postdata, $where, 'leave_applications');
 
@@ -897,6 +909,9 @@ class Leave extends CI_Controller {
         }
         if(isset($leave_data['debited_ol'])){
             $postdata['credited_ol'] = $leave_data['debited_ol'];
+        }
+        if(isset($leave_data['debited_sl'])){
+            $postdata['credited_sl'] = $leave_data['debited_sl'];
         }
         $where = array('id' => $leave_balance_id, 'user_id' => $applicant_user_id);
         $is_update_balance = $this->leave_model->adjust_leave_balance($postdata, $where);
@@ -1045,6 +1060,146 @@ class Leave extends CI_Controller {
             $this->send_notification($L2_director_email, $from, $from_name, $subject, $email_message_body);
         }
         
+    }
+
+    function view_leave_balance() {
+        $is_authorized = $this->common_lib->is_auth(array(
+            'crud-leave-balance'
+        ));
+		if($this->input->post('form_action') == 'download'){
+            $this->download_to_excel();
+        }
+		$this->data['page_title'] = 'Leave Balance Table';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/view_leave_balance', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function render_leave_bal_datatable() {
+        //Total rows - Refer to model method definition
+        $result_array = $this->leave_model->get_leave_bal_datatable();
+        $total_rows = $result_array['num_rows'];
+
+        // Total filtered rows - check without limit query. Refer to model method definition
+        $result_array = $this->leave_model->get_leave_bal_datatable(NULL, NULL, NULL, TRUE, FALSE);
+        $total_filtered = $result_array['num_rows'];
+
+        // Data Rows - Refer to model method definition
+        $result_array = $this->leave_model->get_leave_bal_datatable(NULL, NULL, NULL, TRUE);
+        $data_rows = $result_array['data_rows'];
+        $data = array();
+        $no = $_REQUEST['start'];
+        foreach ($data_rows as $result) {
+            $no++;
+            $row = array();
+            $row[] = $result['user_emp_id'];
+            $row[] = $result['user_firstname'].' '.$result['user_lastname'];
+            $row[] = ($result['cl'] == NULL) ? '--' : $result['cl'];
+            $row[] = ($result['pl'] == NULL) ? '--' : $result['pl'];
+            $row[] = ($result['sl'] == NULL) ? '--' : $result['sl'];
+            //$row[] = ($result['ol'] == NULL) ? '--' : $result['ol'];
+            $row[] = $this->common_lib->display_date($result['balance_date'], true);
+            $row[] = $this->common_lib->display_date($result['created_on'], true);
+            $row[] = $this->common_lib->display_date($result['updated_on'], true);
+            $data[] = $row;
+        }
+
+        /* jQuery Data Table JSON format */
+        $output = array(
+            'draw' => isset($_REQUEST['draw']) ? $_REQUEST['draw'] : '',
+            'recordsTotal' => $total_rows,
+            'recordsFiltered' => $total_filtered,
+            'data' => $data,
+        );
+        //output to json format
+        echo json_encode($output);
+    }
+
+    function download_to_excel(){
+        $excel_heading = array(
+            'A' => 'user_index',
+            'B' => 'employee_id',
+            'C' => 'employee_name',
+            'D' => 'casual_leave',
+            'E' => 'priviledge_leave',
+            'F' => 'sick_leave',
+            'G' => 'time_stamp',
+            'H' => 'bal_index'
+        );
+        $this->data['xls_col'] = $excel_heading;
+        //load our new PHPExcel library
+        $this->load->library('excel');
+        //activate worksheet number 1
+        $this->excel->setActiveSheetIndex(0);
+        $sheet = $this->excel->getActiveSheet();
+        //name the worksheet
+        $sheet->setTitle('Leave_Balance');
+
+        $result_array = $this->leave_model->get_leave_bal_datatable(NULL, NULL, NULL, TRUE, FALSE);
+        $data_rows = $result_array['data_rows'];
+
+        $range = range('A', 'Z');
+        $heading_row = 1;
+        $index = 0;
+        foreach ($excel_heading as $column => $heading_display) {
+            $sheet->setCellValue($range[$index] . $heading_row, $heading_display);
+            $index++;
+        }
+        $excel_row = 2;
+        foreach ($data_rows as $index => $row) {
+            $sheet->setCellValue('A' . $excel_row, $row['user_id']);
+            $sheet->setCellValue('B' . $excel_row, $row['user_emp_id']);
+            $sheet->setCellValue('C' . $excel_row, $row['user_firstname'].' '.$row['user_lastname']);
+            $sheet->setCellValue('D' . $excel_row, $row['cl']);
+            $sheet->setCellValue('E' . $excel_row, $row['pl']);
+            $sheet->setCellValue('F' . $excel_row, $row['sl']);
+            $sheet->setCellValue('G' . $excel_row, date('Y-m-d'));
+            $sheet->setCellValue('H' . $excel_row, $row['bal_pk_index']);
+            $excel_row++;
+        }
+
+
+        // Color Config
+        $default_border = array(
+            'style' => PHPExcel_Style_Border::BORDER_THIN,
+            'color' => array('rgb' => '0')
+        );
+        $style_header = array(
+            'borders' => array(
+                'bottom' => $default_border,
+                'left' => $default_border,
+                'top' => $default_border,
+                'right' => $default_border,
+            ),
+            'fill' => array(
+                'type' => PHPExcel_Style_Fill::FILL_SOLID,
+                'color' => array('rgb' => '80bfff'),
+            ),
+            'font' => array(
+                'bold' => true
+            )
+        );
+        $styleArray = array(
+            'borders' => array(
+                'allborders' => array(
+                    'style' => PHPExcel_Style_Border::BORDER_THIN,
+                    'color' => array('rgb' => '4d4d4d')
+                )
+            )
+        );
+        //$sheet->getDefaultStyle()->applyFromArray($styleArray);
+        $sheet->getStyle('A1:H1')->applyFromArray($style_header);
+        //$sheet->getStyle('A1:G1')->getFont()->setSize(9);
+        //$sheet->getDefaultStyle()->getFont()->setSize(10);
+        $sheet->getDefaultColumnDimension()->setWidth('17');
+        $filename = 'Leave_Balance_' . date('d-m-Y_H:i:s') . '.xls'; //save our workbook as this file name
+        header('Content-Type: application/vnd.ms-excel'); //mime type
+        header('Content-Disposition: attachment;filename="' . $filename . '"'); //tell browser what's the file name
+        header('Cache-Control: max-age=0'); //no cache
+        //save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension, also the header mime type)
+        //if you want to save it as .XLSX Excel 2007 format
+        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
+        //force user to download the Excel file without writing it to server's HD
+        $objWriter->save('php://output');
     }
 }
 
