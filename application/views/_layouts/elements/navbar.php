@@ -40,7 +40,7 @@
                                     <ul>
                                         <li class="dropdown-header"><i class="bsmm-icon fa fa-paper-plane-o" aria-hidden="true"></i> Leave Management</li>
                                         <li><a href="<?php echo base_url('leave/manage/all'); ?>">Leave Applications</a></li>
-                                        <li><a href="<?php echo base_url('leave/leave_balance'); ?>">Leave Balance</a></li>
+                                        <li><a href="<?php echo base_url('leave/view_leave_balance'); ?>">Leave Balance</a></li>
                                         <!-- <li><a href="<?php echo base_url('leave/import_data'); ?>">Import/Export Balance Sheet</a></li> -->
                                         <li><a href="<?php echo base_url('leave/manage/assigned_to_me'); ?>">Leave Applications to Approve</a></li>
                                     </ul>

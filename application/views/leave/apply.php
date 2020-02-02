@@ -19,10 +19,12 @@
 
                         <li class="">
                             <span class="">Leave Balance : </span>
-                            <span class="font-weight-bold mr-3">CL :
-                                <?php echo isset($leave_balance[0]['cl']) ? $leave_balance[0]['cl'] : '0.0'; ?></span>
-                            <span class="font-weight-bold">PL :
-                                <?php echo isset($leave_balance[0]['pl']) ? $leave_balance[0]['pl'] : '0.0'; ?></span>
+                            <span class="">Casual Leave :
+                                <?php echo isset($leave_balance[0]['cl']) ? $leave_balance[0]['cl'] : '--'; ?></span>
+                            <span class="">, Privileged Leave :
+                                <?php echo isset($leave_balance[0]['pl']) ? $leave_balance[0]['pl'] : '--'; ?></span>
+                            <span class="">, Sick Leave :
+                                <?php echo isset($leave_balance[0]['sl']) ? $leave_balance[0]['sl'] : '--'; ?></span>
                             <!-- <span class="ml-3">OL : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></span> -->
                             <!-- <span class="ml-3"><a class="" href="#" id="view_leave_balance_update_details" data-toggle="modal" data-target="#leaveBalanceModal">Click here to view balance details</a></span> -->
                         </li>
@@ -53,14 +55,14 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-12">
+                    <div class="form-group col-lg-4">
                         <label for="leave_type" class="required">Type of Leave</label>
                         <?php echo form_dropdown('leave_type', $leave_type_arr, set_value('leave_type'), array('class' => 'form-control')); ?>
                         <?php echo form_error('leave_type'); ?>
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-12">
+                    <div class="form-group col-lg-12">
                         <div class="custom-control custom-checkbox my-1 mr-sm-2">
                             <?php $cb_is_checked = $this->input->post('leave_term') === 'H';
 							echo form_checkbox('leave_term', 'H', $cb_is_checked, array('id' => 'trems','class' => 'custom-control-input'));
