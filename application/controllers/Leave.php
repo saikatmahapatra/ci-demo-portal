@@ -54,12 +54,9 @@ class Leave extends CI_Controller {
         );
         // Leave Terms
         $this->data['leave_term_arr'] = array(
-            'F'=>'Full day',
-            'FD' => 'Full Day',
-            'H'=>'Half day',
-            'HD1' => 'Half Day - First Half',
-            'HD2' => 'Half Day - Second Half'
-
+            'FD' => 'Full Day (FD)',
+            'HD1' => 'Half Day - First Half (HD1)',
+            'HD2' => 'Half Day - Second Half (HD2)'
         );
 		$this->data['leave_status_arr'] = array(
             'B'=>array('text'=>'Applied', 'css'=>'text-primary'),
@@ -362,7 +359,7 @@ class Leave extends CI_Controller {
 
     function validate_leave_term(){
         if(($this->input->post('leave_term') == 'HD1' || $this->input->post('leave_term') == 'HD2') && $this->input->post('leave_type') != 'CL'){
-            $this->form_validation->set_message('validate_leave_term', 'This is applicable for CL only.');
+            $this->form_validation->set_message('validate_leave_term', 'Half Day is applicable for CL only.');
             return false;
         }else{
             return true;

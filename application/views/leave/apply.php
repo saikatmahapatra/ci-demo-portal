@@ -60,18 +60,24 @@
                         <?php echo form_dropdown('leave_type', $leave_type_arr, set_value('leave_type'), array('class' => 'form-control')); ?>
                         <?php echo form_error('leave_type'); ?>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-lg-12">
-                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                            <?php $cb_is_checked = $this->input->post('leave_term') === 'H';
-							echo form_checkbox('leave_term', 'H', $cb_is_checked, array('id' => 'trems','class' => 'custom-control-input'));
-							?>
-                            <label class="custom-control-label" for="trems">Apply half day leave.</label>
-                        </div>
+                    <div class="form-group col-lg-4">
+                        <label for="leave_term" class="required">Leave Slot / Term</label>
+                        <?php echo form_dropdown('leave_term', $leave_term_arr, set_value('leave_term'), array('class' => 'form-control')); ?>
                         <?php echo form_error('leave_term'); ?>
                     </div>
                 </div>
+
+                <!-- <div class="form-row">
+                    <div class="form-group col-lg-12">
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <?php //$cb_is_checked = $this->input->post('leave_term') === 'H';
+							//echo form_checkbox('leave_term', 'H', $cb_is_checked, array('id' => 'trems','class' => 'custom-control-input'));
+							?>
+                            <label class="custom-control-label" for="trems">Apply half day leave.</label>
+                        </div>
+                        <?php //echo form_error('leave_term'); ?>
+                    </div>
+                </div> -->
 
                 <button type="submit" <?php echo ($system_msg_error_counter >0 ) ? 'disabled="disabled"' : '';  ?>
                     class="btn ci-btn-primary btn-primary">Submit</button>
