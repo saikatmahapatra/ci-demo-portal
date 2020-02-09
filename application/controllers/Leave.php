@@ -55,7 +55,11 @@ class Leave extends CI_Controller {
         // Leave Terms
         $this->data['leave_term_arr'] = array(
             'F'=>'Full day',
-            'H'=>'Half day'
+            'FD' => 'Full Day',
+            'H'=>'Half day',
+            'HD1' => 'Half Day - First Half',
+            'HD2' => 'Half Day - Second Half'
+
         );
 		$this->data['leave_status_arr'] = array(
             'B'=>array('text'=>'Applied', 'css'=>'text-primary'),
@@ -150,7 +154,7 @@ class Leave extends CI_Controller {
                     'user_id' => $this->sess_user_id,
                     'leave_created_on' => date('Y-m-d H:i:s'),
                     'leave_status' => 'B',
-                    'leave_term' => $this->input->post('leave_term') ? $this->input->post('leave_term') : 'F',
+                    'leave_term' => $this->input->post('leave_term') ? $this->input->post('leave_term') : 'FD',
                     'supervisor_approver_id'=> $supervisor_approver_id,
                     'supervisor_approver_status'=>'P',
                     'director_approver_id'=>$director_approver_id,
@@ -357,7 +361,7 @@ class Leave extends CI_Controller {
     }
 
     function validate_leave_term(){
-        if($this->input->post('leave_term') == 'H' && $this->input->post('leave_type') != 'CL'){
+        if(($this->input->post('leave_term') == 'HD1' || $this->input->post('leave_term') == 'HD2') && $this->input->post('leave_type') != 'CL'){
             $this->form_validation->set_message('validate_leave_term', 'This is applicable for CL only.');
             return false;
         }else{
@@ -856,7 +860,7 @@ class Leave extends CI_Controller {
         $applied_for_days_count = $leave_data['applied_for_days_count'];
         $leave_type = $leave_data['leave_type'];
         $leave_term = $leave_data['leave_term'];
-        $leave_term_multiplier = ($leave_term == 'F') ? 1 : 0.5;
+        $leave_term_multiplier = ($leave_term == 'FD') ? 1 : 0.5;
         $leave_balance = $this->leave_model->get_leave_balance(NULL, NULL, NULL, FALSE, FALSE, $applicant_user_id);
         $leave_balance_id = $leave_balance[0]['id'];
         $available_leave_balance = $leave_balance[0][strtolower($leave_type)];
