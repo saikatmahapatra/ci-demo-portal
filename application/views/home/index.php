@@ -16,17 +16,25 @@
 <?php } ?>
 
 <div class="row dashboard-card-widgets">
-<?php foreach($dashboard_stat as $key=>$data) { ?>
-    <div class="col-sm-6 col-lg-3">
-        <div class="card mb-3 text-center <?php echo $data['bg_css']; echo $data['text_css'];?> ">
+    <div class="col-lg-12">
+        <div class="card ci-card">
             <div class="card-body">
-                <div class="digit <?php echo $data['digit_css'];?>"><?php echo $data['count'];?></div>
-                <div class="card-title"><?php echo $data['heading'];?></div>
-                <div class="card-text"><?php echo $data['info_text'];?></div>
+                <div class="row">
+                    <?php foreach($dashboard_stat as $key=>$data) { ?>
+                        <div class="col-sm-6 col-md-3 col-lg-3">
+                            <div class="mb-3 text-center <?php echo $data['bg_css']; echo $data['text_css'];?> ">
+                                <div class="">
+                                    <div class="digit <?php echo $data['digit_css'];?>"><?php echo $data['count'];?></div>
+                                    <div class=""><?php echo $data['heading'];?></div>
+                                    <div class=""><?php echo $data['info_text'];?></div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+            </div>
             </div>
         </div>
     </div>
-<?php } ?>
 </div>
 
 <div class="row">
