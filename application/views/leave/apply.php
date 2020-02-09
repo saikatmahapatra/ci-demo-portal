@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-12">
-                        <label for="leave_reason" class="required">Purpose of Leave</label>
+                        <label for="leave_reason" class="required">Reason</label>
                         <?php echo form_input(array('name' => 'leave_reason','value' => set_value('leave_reason'),'id' => 'leave_reason','class' => 'form-control','placeholder'=>'','maxlength' => '100'));?>
                         <?php echo form_error('leave_reason'); ?>
                     </div>
@@ -61,7 +61,7 @@
                         <?php echo form_error('leave_type'); ?>
                     </div>
                     <div class="form-group col-lg-4">
-                        <label for="leave_term" class="required">Leave Slot / Term</label>
+                        <label for="leave_term" class="required">Leave Slot</label>
                         <?php echo form_dropdown('leave_term', $leave_term_arr, set_value('leave_term'), array('class' => 'form-control')); ?>
                         <?php echo form_error('leave_term'); ?>
                     </div>

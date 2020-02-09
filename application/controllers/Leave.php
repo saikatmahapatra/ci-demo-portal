@@ -345,7 +345,7 @@ class Leave extends CI_Controller {
 	
 	function validate_form_data($action = NULL) {
         $this->form_validation->set_rules('leave_type', ' ', 'required');
-        $this->form_validation->set_rules('leave_term', ' ', 'callback_validate_leave_term');
+        $this->form_validation->set_rules('leave_term', ' ', 'required|callback_validate_leave_term');
         $this->form_validation->set_rules('leave_reason', ' ', 'required|max_length[100]');
         $this->form_validation->set_rules('leave_from_date', ' ', 'required');
         $this->form_validation->set_rules('leave_to_date', ' ', 'required|callback_validate_days_diff|callback_is_leave_exists_in_date_range');
