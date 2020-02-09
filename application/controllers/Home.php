@@ -95,14 +95,33 @@ class Home extends CI_Controller {
         $this->data['data_rows'] = $result_array['data_rows'];
 		
         // Dashboard Stats
+        $dashboard_stat = array();
         $this->load->model('timesheet_model');
-        $this->data['user_count'] = $this->home_model->get_user_count();
-        $this->data['projects_count'] = $this->home_model->get_user_projects();
-        $this->data['timesheet_user'] = $this->home_model->get_user_of_timesheet();
-        $this->data['user_applied_leave'] = $this->home_model->get_user_applied_leave_count();
-        $this->data['user_approved_leave'] = $this->home_model->get_user_approved_leave_count();
-        $this->data['pending_leave_action'] = $this->home_model->get_pending_leave_action_count($this->sess_user_id);
-        $this->data['user_timesheet_stat'] = $this->timesheet_model->get_timesheet_stats(date('Y'), date('m'), $this->sess_user_id);
+        $stat_user_count = $this->home_model->get_user_count();
+        $stat_projects_count = $this->home_model->get_user_projects();
+        $stat_timesheet_user = $this->home_model->get_user_of_timesheet();
+        $stat_user_applied_leave = $this->home_model->get_user_applied_leave_count();
+        $stat_user_approved_leave = $this->home_model->get_user_approved_leave_count();
+        $stat_pending_leave_action = $this->home_model->get_pending_leave_action_count($this->sess_user_id);
+        $stat_user_timesheet_stat = $this->timesheet_model->get_timesheet_stats(date('Y'), date('m'), $this->sess_user_id);
+
+        $dashboard_stat['user'] = array('heading'=>'Employees', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-primary', 'icon'=>'<i class="fa fa-user-circle-o" aria-hidden="true"></i>', 'count'=>$stat_user_count['data_rows'][0]['total']);
+
+        $dashboard_stat['project'] = array('heading'=>'Projects', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-secondary', 'icon'=>'', 'count'=>$stat_projects_count['data_rows'][0]['total']);
+
+        $dashboard_stat['timesheet_user'] = array('heading'=>'Employees Filled Timesheet', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-success', 'icon'=>'', 'count'=>$stat_timesheet_user['data_rows'][0]['total']);
+        
+        $dashboard_stat['user_applied_leave'] = array('heading'=>'Leave Approved', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-info', 'icon'=>'', 'count'=>$stat_user_approved_leave['data_rows'][0]['total'].'/'.$stat_user_applied_leave['data_rows'][0]['total']);
+
+        $dashboard_stat['leave_to_approve'] = array('heading'=>'Leave to Approve', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-warning', 'icon'=>'', 'count'=>$stat_pending_leave_action['data_rows'][0]['total']);
+
+        $dashboard_stat['timesheet_days'] = array('heading'=>'Days Task Logged', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-danger', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['total_days']);
+
+        $dashboard_stat['timesheet_hrs'] = array('heading'=>'Hours Task Logged', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-primary', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['total_hrs']);
+
+        $dashboard_stat['timesheet_avg_hrs'] = array('heading'=>'Average Working Hours', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-secondary', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['avg_hrs']);
+
+        $this->data['dashboard_stat'] = $dashboard_stat;
         // Dashboard Stats
         
         //User Profile Completion Status Check
