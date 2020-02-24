@@ -551,7 +551,8 @@ class Leave extends CI_Controller {
 
     function import(){
 		if(isset($_FILES["userfile"]["name"])){
-			$path = $_FILES["userfile"]["tmp_name"];
+            $path = $_FILES["userfile"]["tmp_name"];
+            @PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 			$object = PHPExcel_IOFactory::load($path);
 			foreach($object->getWorksheetIterator() as $worksheet){
                 //print_r($worksheet); die();
@@ -1098,7 +1099,7 @@ class Leave extends CI_Controller {
             $row[] = ($result['pl'] == NULL) ? '--' : $result['pl'];
             $row[] = ($result['sl'] == NULL) ? '--' : $result['sl'];
             //$row[] = ($result['ol'] == NULL) ? '--' : $result['ol'];
-            $row[] = $this->common_lib->display_date($result['balance_date'], true);
+            $row[] = $this->common_lib->display_date($result['balance_date'], false);
             $row[] = $this->common_lib->display_date($result['created_on'], true);
             $row[] = $this->common_lib->display_date($result['updated_on'], true);
             $data[] = $row;

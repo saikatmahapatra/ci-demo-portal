@@ -26,7 +26,7 @@
                             <div class="mb-3 text-center <?php echo $data['bg_css']; echo $data['text_css'];?> ">
                                 <div class="">
                                     <div class="digit <?php echo $data['digit_css'];?>"><?php echo $data['count'];?></div>
-                                    <div class=""><?php echo $data['heading'];?></div>
+                                    <div class=""><a href="<?php echo isset($data['url']) ? $data['url'] : '#';?>"><?php echo $data['heading'];?></a></div>
                                     <div class=""><?php echo $data['info_text'];?></div>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                                     <div class="mb-3 text-center <?php echo $data['bg_css']; echo $data['text_css'];?> ">
                                         <div class="">
                                             <div class="digit <?php echo $data['digit_css'];?>"><?php echo $data['count'];?></div>
-                                            <div class=""><?php echo $data['heading'];?></div>
+                                            <div class=""><a href="<?php echo isset($data['url']) ? $data['url'] : '#';?>"><?php echo $data['heading'];?></a></div>
                                             <div class=""><?php echo $data['info_text'];?></div>
                                         </div>
                                     </div>

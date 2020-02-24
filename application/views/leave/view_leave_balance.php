@@ -42,7 +42,7 @@
                                 <th scope="col">PL</th>
                                 <th scope="col">SL</th>
                                 <!-- <th scope="col">OL</th> -->
-                                <th scope="col">Imported On</th>
+                                <th scope="col">Import Date</th>
                                 <th scope="col">Created On</th>
                                 <th scope="col">Updated On</th>
                             </tr>

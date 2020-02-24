@@ -105,6 +105,7 @@ $(function() {
                     $('#userfile').val('');
                     hideAjaxLoader();
                     //load_data();
+                    window.location.reload();
                     console.log(data);
                     data = JSON.parse(data);
                     $('#import_result_msg').empty().html('<div class="' + data.css + '">' + data.msg + '</div>');

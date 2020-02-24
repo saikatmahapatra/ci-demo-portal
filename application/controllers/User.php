@@ -397,10 +397,10 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_phone2', 'mobile (office)', 'trim|min_length[10]|max_length[10]|numeric|differs[user_phone1]');
         //$this->form_validation->set_rules('user_password_confirm', 'confirm password', 'required|matches[user_password]');
         $this->form_validation->set_rules('user_dob', 'date of birth', 'required');
-        //$this->form_validation->set_rules('user_doj', 'date of joining', 'required');
+        $this->form_validation->set_rules('user_doj', 'date of joining', 'required');
         $this->form_validation->set_rules('user_role', 'access group', 'required');
-        //$this->form_validation->set_rules('user_designation', 'designation', 'required');
-        //$this->form_validation->set_rules('user_department', 'department', 'required');
+        $this->form_validation->set_rules('user_designation', 'designation', 'required');
+        $this->form_validation->set_rules('user_department', 'department', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
