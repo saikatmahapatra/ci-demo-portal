@@ -365,7 +365,7 @@ class Leave extends CI_Controller {
 
     function validate_comp_off_eligibility(){
         if($this->input->post('leave_type') == 'CO'){
-            $this->form_validation->set_message('validate_comp_off_eligibility', 'Applying comp off is not allowed by system currently.');
+            $this->form_validation->set_message('validate_comp_off_eligibility', 'Applying comp off is currently not allowed by system.');
             return false;
         }else{
             return true;
