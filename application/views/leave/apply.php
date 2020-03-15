@@ -25,6 +25,8 @@
                                 <?php echo isset($leave_balance[0]['pl']) ? $leave_balance[0]['pl'] : '--'; ?></span>
                             <span class="">, Sick Leave :
                                 <?php echo isset($leave_balance[0]['sl']) ? $leave_balance[0]['sl'] : '--'; ?></span>
+                            <span class="">, Compensatory Off :
+                                <?php echo isset($leave_balance[0]['co']) ? $leave_balance[0]['co'] : '--'; ?></span>
                             <!-- <span class="ml-3">OL : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></span> -->
                             <!-- <span class="ml-3"><a class="" href="#" id="view_leave_balance_update_details" data-toggle="modal" data-target="#leaveBalanceModal">Click here to view balance details</a></span> -->
                         </li>

@@ -41,6 +41,7 @@
                                 <th scope="col">CL</th>
                                 <th scope="col">PL</th>
                                 <th scope="col">SL</th>
+                                <th scope="col">CO</th>
                                 <!-- <th scope="col">OL</th> -->
                                 <th scope="col">Import Date</th>
                                 <th scope="col">Created On</th>
