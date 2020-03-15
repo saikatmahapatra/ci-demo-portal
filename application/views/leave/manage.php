@@ -80,7 +80,7 @@
                                     <?php echo isset($row['leave_term']) ? '- '.$row['leave_term'] : '' ;?>
                                 </td>
                                 <td>
-                                    <span title="<?php echo isset($row['user_emp_id']) ? '('.$row['user_emp_id'].')' : ''?>">
+                                    <span title="<?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''?>">
                                     <?php echo isset($row['user_firstname']) ? $row['user_firstname'] : ''?>
                                     <?php echo isset($row['user_lastname']) ? $row['user_lastname'] : ''?>
                                     </span>
@@ -99,7 +99,7 @@
                                     }
                                     ?>
                                     
-                                    <span title="<?php echo isset($row['supervisor_approver_emp_id']) ? '('.$row['supervisor_approver_emp_id'].')' : ''?>">
+                                    <span title="<?php echo isset($row['supervisor_approver_emp_id']) ? $row['supervisor_approver_emp_id'] : ''?>">
                                     <?php echo isset($row['supervisor_approver_firstname']) ? $row['supervisor_approver_firstname'] : ''?>
                                     <?php echo isset($row['supervisor_approver_lastname']) ? $row['supervisor_approver_lastname'] : ''?>
                                     </span>
@@ -119,7 +119,7 @@
                                             $fa_icon = 'fa-close';
                                         }
                                     ?>
-                                    <span title="<?php echo isset($row['director_approver_emp_id']) ? '('.$row['director_approver_emp_id'].')' : ''?>">
+                                    <span title="<?php echo isset($row['director_approver_emp_id']) ? $row['director_approver_emp_id'] : ''?>">
                                     <?php echo isset($row['director_approver_firstname']) ? $row['director_approver_firstname'] : ''?>
                                     <?php echo isset($row['director_approver_lastname']) ? $row['director_approver_lastname'] : ''?>
                                     </span>
