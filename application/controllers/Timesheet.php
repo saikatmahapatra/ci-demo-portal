@@ -435,9 +435,9 @@ class Timesheet extends CI_Controller {
 
     function validate_search_form_data($data) {        
         $this->form_validation->set_data($data);
-        $this->form_validation->set_rules('q_emp', ' ', 'required');
         $this->form_validation->set_rules('from_date', ' ', 'required');
-        $this->form_validation->set_rules('to_date', ' ', 'required');
+        $this->form_validation->set_rules('to_date', ' ', 'required|callback_validate_days_diff');
+        //$this->form_validation->set_rules('q_emp', ' ', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -447,16 +447,33 @@ class Timesheet extends CI_Controller {
     }
 
     function validate_days_diff(){
-        $from_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('from_date'))); // or your date as well
-        $to_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('to_date')));
-        $datediff = ($to_date - $from_date);
-        $no_day = round($datediff / (60 * 60 * 24));
-        if($no_day >= 0 ){
-            return true;
+        $options = array(
+            'timesheet_report_max_date_range'
+        );
+        $this->load->model('settings_model');
+        $settings = $this->settings_model->get_option($options);
+        if(isset($settings['timesheet_report_max_date_range'])){
+            $from_date = strtotime($this->common_lib->convert_to_mysql($this->input->get_post('from_date')));
+            $to_date = strtotime($this->common_lib->convert_to_mysql($this->input->get_post('to_date')));
+            $datediff = ($to_date - $from_date);
+            $no_day = round($datediff / (60 * 60 * 24))+1;
+            if($no_day >= 1 ){
+                if($no_day > $settings['timesheet_report_max_date_range']){
+                    $this->form_validation->set_message('validate_days_diff', 'Only '. $settings['timesheet_report_max_date_range'].' days are allowed');
+                    return false;
+                }else{
+                    return true;
+                }
+                
+            }else{
+                $this->form_validation->set_message('validate_days_diff', 'Invalid date range.');
+                return false;
+            }
         }else{
-            $this->form_validation->set_message('validate_days_diff', 'Invalid date range.');
+            $this->form_validation->set_message('validate_days_diff', 'Filter range not found in DB');
             return false;
         }
+        
     }
 
 
@@ -560,8 +577,8 @@ class Timesheet extends CI_Controller {
             )
         );
         $sheet->getDefaultStyle()->applyFromArray($styleArray);
-        $sheet->getStyle('A1:I1')->applyFromArray($style_header);
-        $sheet->getStyle('A1:I1')->getFont()->setSize(9);
+        $sheet->getStyle('A1:J1')->applyFromArray($style_header);
+        $sheet->getStyle('A1:J1')->getFont()->setSize(9);
         $sheet->getDefaultStyle()->getFont()->setSize(10);
         $sheet->getDefaultColumnDimension()->setWidth('17');
 
