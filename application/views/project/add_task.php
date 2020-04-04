@@ -22,27 +22,7 @@
                         <?php echo form_error('task_name'); ?>
                     </div>
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group col-12">
-                        <label for="task_status" class="required">Status</label>
-                        <div class="">
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <?php $radio_is_checked = $this->input->post('task_status') == 'Y';
-							echo form_radio(array('name' => 'task_status','value' => 'Y','id' => 'Y','checked' => $radio_is_checked,'class' => 'custom-control-input'), set_radio('task_status', 'Y')); ?>
-                                <label class="custom-control-label" for="Y">Active</span></label>
-                            </div>
-
-                            <div class="custom-control custom-radio custom-control-inline">
-                            <?php $radio_is_checked = $this->input->post('task_status') == 'N';
-							echo form_radio(array('name' => 'task_status', 'value' => 'N', 'id' => 'N', 'checked' => $radio_is_checked, 'class' => 'custom-control-input'), set_radio('task_status', 'N')); ?>
-                                <label class="custom-control-label" for="N">Inactive</span></label>
-                            </div>
-                        </div>
-                        <?php echo form_error('task_status'); ?>
-                    </div>
-                </div>
-
+                
                 <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/tasks');?>"
                     class="btn btn-light ci-btn-cancel">Cancel</a>

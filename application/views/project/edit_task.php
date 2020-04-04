@@ -16,7 +16,7 @@ $row = $rows[0];
                 <div class="form-row">
                     <div class="form-group col-lg-6">
                         <label for="task_name" class="required">Task Parent</label>
-                        <?php echo form_dropdown('task_parent_id', $task_parent_drop_down, isset($_POST['task_parent_id']) ? set_value('task_parent_id') : $row['task_parent_id'].':'.$row['level'], array('class' => 'form-control')); ?>
+                        <?php echo form_dropdown('task_parent_id', $task_parent_drop_down, isset($_POST['task_parent_id']) ? set_value('task_parent_id') : $row['task_parent_id'] , array('class' => 'form-control')); ?>
                         <?php echo form_error('task_parent_id'); ?>
                     </div>
                     <div class="form-group col-lg-6">

@@ -204,7 +204,7 @@ function renderDataTable() {
         	'copy', 'csv', 'excel', 'pdf', 'print'
         ],
         iDisplayLength: 10,*/
-        iDisplayLength: 25,
+        iDisplayLength: 50,
         processing: true, //Feature control the processing indicator.
         serverSide: true, //Feature control DataTables' server-side processing mode.
         order: [], //Initial no order.

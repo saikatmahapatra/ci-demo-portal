@@ -9535,6 +9535,24 @@ body.login {
   border-top: none;
 }
 
+.dashboard-card-widgets .card .card-body {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+.dashboard-card-widgets .card .card-title {
+  margin-bottom: 0px;
+}
+
+.dashboard-card-widgets .card .card-text {
+  font-size: 80%;
+}
+
+.dashboard-card-widgets .card .digit {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 .validation-error {
   color: #ff0000;
   font-size: 80%;

@@ -397,10 +397,10 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_phone2', 'mobile (office)', 'trim|min_length[10]|max_length[10]|numeric|differs[user_phone1]');
         //$this->form_validation->set_rules('user_password_confirm', 'confirm password', 'required|matches[user_password]');
         $this->form_validation->set_rules('user_dob', 'date of birth', 'required');
-        //$this->form_validation->set_rules('user_doj', 'date of joining', 'required');
+        $this->form_validation->set_rules('user_doj', 'date of joining', 'required');
         $this->form_validation->set_rules('user_role', 'access group', 'required');
-        //$this->form_validation->set_rules('user_designation', 'designation', 'required');
-        //$this->form_validation->set_rules('user_department', 'department', 'required');
+        $this->form_validation->set_rules('user_designation', 'designation', 'required');
+        $this->form_validation->set_rules('user_department', 'department', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -2139,5 +2139,45 @@ class User extends CI_Controller {
         $this->data['maincontent'] = $this->load->view($this->router->class.'/reportee_employee', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
+
+    function get_personalized_username() {
+        if ($this->input->post('form_action') == 'set_username') {
+            if ($this->validate_username_create_form() == true) {
+                $postdata = array(
+                    'username' => $this->input->post('user_name')
+                );
+                $where = array('id' => $this->sess_user_id);
+                $res = $this->user_model->update($postdata, $where);
+                if ($res) {
+                    $this->common_lib->set_flash_message('You have created login username successfully.','alert-success');
+                    redirect(current_url());
+                }
+            }
+        }
+		$this->data['page_title'] = 'Get Your Personalized Username';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/get_personalized_username', $this->data, true);
+        $this->load->view('_layouts/layout_login', $this->data);
+    }
+
+    function validate_username_create_form() {
+        $this->form_validation->set_rules('user_name', 'user name', 'required|is_unique[users.username]|min_length[5]|max_length[32]|callback_is_valid_username');
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function is_valid_username($str){
+		if($str){
+			if (preg_match('/^[0-9\sA-Za-z\!@$%^*()_\+\{\}\?\-\[\]\\,.]{5,32}$/', $str) == true){
+				return true;
+			}else{
+				$this->form_validation->set_message('is_valid_username', 'Please enter a valid or correctly formatted username.');
+				return false;
+			}
+		}
+	}
 }
 ?>

@@ -25,6 +25,8 @@
                                 <?php echo isset($leave_balance[0]['pl']) ? $leave_balance[0]['pl'] : '--'; ?></span>
                             <span class="">, Sick Leave :
                                 <?php echo isset($leave_balance[0]['sl']) ? $leave_balance[0]['sl'] : '--'; ?></span>
+                            <span class="">, Compensatory Off :
+                                <?php echo isset($leave_balance[0]['co']) ? $leave_balance[0]['co'] : '--'; ?></span>
                             <!-- <span class="ml-3">OL : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></span> -->
                             <!-- <span class="ml-3"><a class="" href="#" id="view_leave_balance_update_details" data-toggle="modal" data-target="#leaveBalanceModal">Click here to view balance details</a></span> -->
                         </li>
@@ -49,7 +51,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-12">
-                        <label for="leave_reason" class="required">Purpose of Leave</label>
+                        <label for="leave_reason" class="required">Reason</label>
                         <?php echo form_input(array('name' => 'leave_reason','value' => set_value('leave_reason'),'id' => 'leave_reason','class' => 'form-control','placeholder'=>'','maxlength' => '100'));?>
                         <?php echo form_error('leave_reason'); ?>
                     </div>
@@ -60,18 +62,24 @@
                         <?php echo form_dropdown('leave_type', $leave_type_arr, set_value('leave_type'), array('class' => 'form-control')); ?>
                         <?php echo form_error('leave_type'); ?>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-lg-12">
-                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                            <?php $cb_is_checked = $this->input->post('leave_term') === 'H';
-							echo form_checkbox('leave_term', 'H', $cb_is_checked, array('id' => 'trems','class' => 'custom-control-input'));
-							?>
-                            <label class="custom-control-label" for="trems">Apply half day leave.</label>
-                        </div>
+                    <div class="form-group col-lg-4">
+                        <label for="leave_term" class="required">Leave Slot</label>
+                        <?php echo form_dropdown('leave_term', $leave_term_arr, set_value('leave_term'), array('class' => 'form-control')); ?>
                         <?php echo form_error('leave_term'); ?>
                     </div>
                 </div>
+
+                <!-- <div class="form-row">
+                    <div class="form-group col-lg-12">
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <?php //$cb_is_checked = $this->input->post('leave_term') === 'H';
+							//echo form_checkbox('leave_term', 'H', $cb_is_checked, array('id' => 'trems','class' => 'custom-control-input'));
+							?>
+                            <label class="custom-control-label" for="trems">Apply half day leave.</label>
+                        </div>
+                        <?php //echo form_error('leave_term'); ?>
+                    </div>
+                </div> -->
 
                 <button type="submit" <?php echo ($system_msg_error_counter >0 ) ? 'disabled="disabled"' : '';  ?>
                     class="btn ci-btn-primary btn-primary">Submit</button>

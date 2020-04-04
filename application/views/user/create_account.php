@@ -78,12 +78,12 @@
 				</div>
 				<div class="form-row">
 					<div class="form-group col-lg-6">
-					<label for="user_designation" class="optional">Designation </label>
+					<label for="user_designation" class="required">Designation </label>
 					<?php echo form_dropdown('user_designation', $arr_designations, set_value('user_designation'), array( 'class' => 'form-control', )); ?> 
 						<?php echo form_error('user_designation'); ?>
 					</div>
 					<div class="form-group col-lg-6">
-					<label for="user_department" class="optional">Department </label>
+					<label for="user_department" class="required">Department </label>
 						<?php
 						echo form_dropdown('user_department', $arr_departments, set_value('user_department'), array(
 							'class' => 'form-control'
@@ -96,7 +96,7 @@
 					
 				<div class="form-row">
 					<div class="form-group col-lg-6">
-						<label for="user_doj" class="optional">Date of Joining </label>
+						<label for="user_doj" class="required">Date of Joining </label>
 						<?php echo form_input(array( 'name' => 'user_doj', 'value' => set_value('user_doj'), 'id' => 'user_doj', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => 'dd-mm-yyyy', 'autocomplete'=>'off', 'readonly'=>true )); ?>
 						<?php echo form_error('user_doj'); ?>
 					</div>

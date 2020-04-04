@@ -40,17 +40,17 @@ class Leave_model extends CI_Model {
             $rows = sizeof($postdata);
             foreach($postdata as $key=>$val){
                 $rows--;
-                $sql_values.="('".$val['id']."', '".$val['user_id']."', '".$val['balance_date']."', '".$val['cl']."', '".$val['sl']."', '".$val['pl']."', '".$val['created_on']."', '".$val['created_by']."')";
+                $sql_values.="('".$val['id']."', '".$val['user_id']."', '".$val['balance_date']."', '".$val['cl']."', '".$val['sl']."', '".$val['pl']."', '".$val['co']."', '".$val['created_on']."', '".$val['created_by']."')";
                 if($rows !=0){
                     $sql_values.=",";
                 }
             }
 
-            $sql = "INSERT INTO `leave_balance` (`id`, `user_id`, `balance_date`, `cl`, `sl`, `pl`, `created_on`,`created_by`) VALUES";
+            $sql = "INSERT INTO `leave_balance` (`id`, `user_id`, `balance_date`, `cl`, `sl`, `pl`, `co`, `created_on`,`created_by`) VALUES";
             $sql.= $sql_values;
             $sql.= " ON DUPLICATE KEY UPDATE ";
             //$sql.= $sql_duplicate_update;
-            $sql.= " `cl` = VALUES(`cl`), `sl` = VALUES(`sl`), `pl` = VALUES(`pl`), `updated_on` = '".date('Y-m-d H:i:s')."',  `updated_by` = VALUES(`updated_by`) "; 
+            $sql.= " `cl` = VALUES(`cl`), `sl` = VALUES(`sl`), `pl` = VALUES(`pl`), `co` = VALUES(`co`), `updated_on` = '".date('Y-m-d H:i:s')."',  `updated_by` = VALUES(`updated_by`) "; 
             $sql.=";";
             $this->db->query($sql);
             $affected_rows = $this->db->affected_rows();
@@ -456,7 +456,7 @@ class Leave_model extends CI_Model {
                 );
              // default order
             $order = array(
-                't1.id' => 'desc'
+                't1.user_firstname' => 'asc'
                 );
             $i = 0;
             foreach ($column_search as $item) { // loop column

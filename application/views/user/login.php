@@ -13,7 +13,7 @@
 		<?php echo form_hidden('form_action', 'login'); ?>
 		<div class="form-group">
 			<label for="user_email">Email or Username</label>
-			<?php echo form_input(array('name' => 'user_email', 'value' => set_value('user_email'),'id' => 'user_email','class' => 'form-control','placeholder' => 'name@address.com','maxlength' => '100','autofocus' => true,));?>
+			<?php echo form_input(array('name' => 'user_email', 'value' => set_value('user_email'),'id' => 'user_email','class' => 'form-control','placeholder' => 'name@domain.com','maxlength' => '100','autofocus' => true,));?>
 			<?php echo form_error('user_email'); ?>
 		</div>
 		<div class="form-group mb-5">
