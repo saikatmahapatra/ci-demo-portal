@@ -20,8 +20,8 @@ $config['admin_view_dir'] = 'admin/'; //application/views/admin/
 $config['app_admin_email'] = 'portal@unitedexploration.co.in';
 $config['app_admin_email_cc'] = '';
 $config['app_admin_email_bcc'] = '';
-$config['app_admin_email_name'] = 'UEIPL Portal';
-$config['app_email_subject_prefix'] = 'ePortal -';
+$config['app_admin_email_name'] = 'UEIPL ESS Portal';
+$config['app_email_subject_prefix'] = 'ESS Portal -';
 
 $html_email_header = '';
 $config['app_email_header'] = $html_email_header;

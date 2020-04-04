@@ -88,7 +88,7 @@ $(function() {
 
     $('#import_form').on('submit', function(event) {
         event.preventDefault();
-        var confirmed = confirm("Are you sure you want import bulk data?\n If balance record exists it will be updated else new data will be created. It's recommended to update individual employees leave balance.");
+        var confirmed = confirm("Are you sure you want import bulk data?\nAll employees leave balance will be updated as per this excel sheet data.");
         if (confirmed == true) {
             var formData = new FormData(this);
             $.ajax({
@@ -105,6 +105,7 @@ $(function() {
                     $('#userfile').val('');
                     hideAjaxLoader();
                     //load_data();
+                    window.location.reload();
                     console.log(data);
                     data = JSON.parse(data);
                     $('#import_result_msg').empty().html('<div class="' + data.css + '">' + data.msg + '</div>');

@@ -272,8 +272,10 @@ class Project extends CI_Controller {
     }
 
     function validate_task_form_data($action = NULL) {		
-        $this->form_validation->set_rules('task_name', ' ', 'required');			
-        $this->form_validation->set_rules('task_status', ' ', 'required');
+        $this->form_validation->set_rules('task_name', ' ', 'required');
+        if($action == 'edit'){
+            $this->form_validation->set_rules('task_status', ' ', 'required');
+        }
 		$this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -288,14 +290,20 @@ class Project extends CI_Controller {
         if ($this->input->post('form_action') == 'insert') {
             if ($this->validate_task_form_data('add') == true) {
                 $task_parent_id_dd = $this->input->post('task_parent_id');
-                $parent = explode(':', $task_parent_id_dd);
-                $task_parent_id = isset($task_parent_id_dd) ? $parent[0]: NULL;
-                $level = isset($task_parent_id_dd) ? ($parent[1]+1) : 1;
+                $level = 1;
+                $level_data = array();
+                if($task_parent_id_dd){
+                    $level_data = $this->project_model->get_task_level($task_parent_id_dd);
+                }
+                if(isset($level_data) && sizeof($level_data)>0){
+                    $level = $level_data[0]['level']+1;
+                }
+                //die();
                 $postdata = array(
-                    'task_parent_id' => $task_parent_id,
+                    'task_parent_id' => $task_parent_id_dd,
                     'level' => $level,
                     'task_name' => $this->input->post('task_name'),
-                    'task_status' => $this->input->post('task_status')
+                    'task_status' => 'Y'
                 );
                 $insert_id = $this->project_model->insert($postdata,'project_tasks');
                 if ($insert_id) {

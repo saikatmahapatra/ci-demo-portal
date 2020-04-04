@@ -31,7 +31,7 @@ $row = $options;
                 <div class="form-group row">
                     <label for="timesheet_enable_prev_days" class="col-sm-4 col-form-label">Enable Previous Days</label>
                     <div class="col-sm-5">
-                    <?php echo form_input(array('name' => 'timesheet_enable_prev_days', 'value' => (isset($_POST['timesheet_enable_prev_days']) ? set_value('timesheet_enable_prev_days') : $row['timesheet_enable_prev_days']),'id' => 'timesheet_enable_prev_days','class' => 'form-control')); ?>
+                    <?php echo form_input(array('name' => 'timesheet_enable_prev_days', 'value' => (isset($_POST['timesheet_enable_prev_days']) ? set_value('timesheet_enable_prev_days') : $row['timesheet_enable_prev_days']),'id' => 'timesheet_enable_prev_days','placeholder'=>'Default: 3', 'class' => 'form-control')); ?>
                     <?php echo form_error('timesheet_enable_prev_days'); ?>
                     </div>
                 </div>
@@ -39,8 +39,16 @@ $row = $options;
                 <div class="form-group row">
                     <label for="timesheet_enable_next_days" class="col-sm-4 col-form-label">Enable Next Days</label>
                     <div class="col-sm-5">
-                    <?php echo form_input(array('name' => 'timesheet_enable_next_days', 'value' => (isset($_POST['timesheet_enable_next_days']) ? set_value('timesheet_enable_next_days') : $row['timesheet_enable_next_days']),'id' => 'timesheet_enable_next_days','class' => 'form-control')); ?>
+                    <?php echo form_input(array('name' => 'timesheet_enable_next_days', 'value' => (isset($_POST['timesheet_enable_next_days']) ? set_value('timesheet_enable_next_days') : $row['timesheet_enable_next_days']),'id' => 'timesheet_enable_next_days','placeholder'=>'Default: 0', 'class' => 'form-control')); ?>
                     <?php echo form_error('timesheet_enable_next_days'); ?>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="timesheet_report_max_date_range" class="col-sm-4 col-form-label">Report allowed of max days</label>
+                    <div class="col-sm-5">
+                    <?php echo form_input(array('name' => 'timesheet_report_max_date_range', 'value' => (isset($_POST['timesheet_report_max_date_range']) ? set_value('timesheet_report_max_date_range') : $row['timesheet_report_max_date_range']),'id' => 'timesheet_report_max_date_range','placeholder'=>'Default: 30', 'class' => 'form-control')); ?>
+                    <?php echo form_error('timesheet_report_max_date_range'); ?>
                     </div>
                 </div>
 

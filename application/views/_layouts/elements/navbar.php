@@ -65,9 +65,9 @@
                                         <li><a href="<?php echo base_url();?>">Dashboard</a></li>
                                         <li class="divider"></li> -->
                                         <li class="dropdown-header"><i class="bsmm-icon fa fa-institution" aria-hidden="true"></i> Organization</li>
-                                        <li><a href="<?php echo base_url('user/people');?>">Employee Directory</a></li>
+                                        <li><a href="<?php echo base_url('user/people');?>">Employees</a></li>
                                         <li><a href="<?php echo base_url('home/policy'); ?>">HR Policies</a></li>
-                                        <li><a href="<?php echo base_url('holiday/view');?>">Calendar Holidays</a></li>
+                                        <li><a href="<?php echo base_url('holiday/view');?>">Holidays</a></li>
                                         <li class="divider"></li>
                                         <li class="dropdown-header"><i class="bsmm-icon fa fa-puzzle-piece" aria-hidden="true"></i> Team</li>
                                         <li><a href="<?php echo base_url('user/reportee_employee'); ?>">My Reportee</a></li>

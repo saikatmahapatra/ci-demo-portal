@@ -196,18 +196,18 @@ class Project_model extends CI_Model {
     function get_task_nested_dropdown($level=NULL) {
         $result = array();
         $this->db->select('id,task_name, task_parent_id, level, task_code');
-        $this->db->where('task_status','Y');	
+        $this->db->where('task_status','Y');
         if(isset($level)){
             $this->db->where('level',$level);
         }	
-        $this->db->order_by('task_name');		
+        $this->db->order_by('task_name');
         $query = $this->db->get('project_tasks');
         #echo $this->db->last_query();
-        $result = array('' => 'Select');
+        $result = array('' => '-Select-');
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
-                $result[$r->id.':'.$r->level] = $r->task_name;
+                $result[$r->id] = $r->task_name;
             }
         }
         return $result;
@@ -259,6 +259,19 @@ class Project_model extends CI_Model {
             foreach ($result as $key=>$r) {
                 $result[$key] = $r['task_id_1'];
             }
+        }
+        return $result;
+    }
+
+    function get_task_level($task_id) {
+        $result = array();
+        $this->db->select('level');
+        if(isset($task_id)){
+            $this->db->where('id',$task_id);
+        }
+        $query = $this->db->get('project_tasks');
+        if ($query->num_rows()) {
+            $result = $query->result_array();
         }
         return $result;
     }

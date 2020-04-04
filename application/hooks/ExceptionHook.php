@@ -16,8 +16,8 @@ class ExceptionHook {
         $msg = 'Exception of type \'' . get_class($exception) . '\' occurred with Message: ' . $exception->getMessage() . ' in File ' . $exception->getFile() . ' at Line ' . $exception->getLine();
         $msg .="\r\n Backtrace \r\n";
         $msg .=$exception->getTraceAsString();
-        log_message('error', $msg, TRUE);        
-        mail('mahapatra.saikat@gmail.com', 'Web App - An Exception Occurred', $msg, 'From: automation@example.com');
+        log_message('error', $msg, TRUE);
+        mail('mahapatra.saikat@gmail.com', 'UEIPL Portal - An Exception Occurred', $msg, 'From: webuidevs@gmail.com');
     }
 
 }

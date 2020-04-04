@@ -54,11 +54,12 @@
                     <table class="table ci-table table-striped table-sm">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Request No</th>
+                                <th scope="col">Application No</th>
+                                <th scope="col">Leave Type</th>
                                 <th scope="col">Applicant</th>
                                 <th scope="col">L1 Approver</th>
                                 <th scope="col">L2 Approver</th>
-                                <th scope="col">Leave Summary</th>
+                                <th scope="col">Duration</th>
                                 <th scope="col">Status</th>
                                 <th scope="col"></th>
                             </tr>
@@ -75,49 +76,58 @@
                                         title="Click here to view details"><?php echo $row['leave_req_id'];?></a>
                                 </td>
                                 <td>
+                                    <?php echo isset($row['leave_type']) ? $row['leave_type'] : '' ;?>
+                                    <?php echo isset($row['leave_term']) ? '- '.$row['leave_term'] : '' ;?>
+                                </td>
+                                <td>
+                                    <span title="<?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''?>">
                                     <?php echo isset($row['user_firstname']) ? $row['user_firstname'] : ''?>
                                     <?php echo isset($row['user_lastname']) ? $row['user_lastname'] : ''?>
-                                    <?php echo isset($row['user_emp_id']) ? '('.$row['user_emp_id'].')' : ''?>
+                                    </span>
                                 </td>
                                 <td>
                                     <?php 
-							$fa_icon = '';
-							if($row['supervisor_approver_status'] == 'A'){
-								$fa_icon = 'fa-check';
-							}
-							if($row['supervisor_approver_status'] == 'R'){
-								$fa_icon = 'fa-close';
-							}
-							if($row['supervisor_approver_status'] == 'C'){
-								$fa_icon = 'fa-close';
-							}
-							?>
-                                    <?php echo isset($row['supervisor_approver_status']) ? '<span class="'.$leave_status_arr[$row['supervisor_approver_status']]['css'].'"><i class="fa fa-fw '.$fa_icon.'" aria-hidden="true"></i></span>' : ''; ?>
+                                    $fa_icon = '';
+                                    if($row['supervisor_approver_status'] == 'A'){
+                                        $fa_icon = 'fa-check';
+                                    }
+                                    if($row['supervisor_approver_status'] == 'R'){
+                                        $fa_icon = 'fa-close';
+                                    }
+                                    if($row['supervisor_approver_status'] == 'C'){
+                                        $fa_icon = 'fa-close';
+                                    }
+                                    ?>
+                                    
+                                    <span title="<?php echo isset($row['supervisor_approver_emp_id']) ? $row['supervisor_approver_emp_id'] : ''?>">
                                     <?php echo isset($row['supervisor_approver_firstname']) ? $row['supervisor_approver_firstname'] : ''?>
                                     <?php echo isset($row['supervisor_approver_lastname']) ? $row['supervisor_approver_lastname'] : ''?>
-                                    <?php echo isset($row['supervisor_approver_emp_id']) ? '('.$row['supervisor_approver_emp_id'].')' : ''?>
+                                    </span>
+
+                                    <?php echo isset($row['supervisor_approver_status']) ? '<span class="'.$leave_status_arr[$row['supervisor_approver_status']]['css'].'"><i class="fa fa-fw '.$fa_icon.'" aria-hidden="true"></i></span>' : ''; ?>
                                 </td>
                                 <td>
                                     <?php 
-							$fa_icon = '';
-							if($row['director_approver_status'] == 'A'){
-								$fa_icon = 'fa-check';
-							}
-							if($row['director_approver_status'] == 'R'){
-								$fa_icon = 'fa-close';
-							}
-							if($row['director_approver_status'] == 'C'){
-								$fa_icon = 'fa-close';
-							}
-							?>
-                                    <?php echo isset($row['director_approver_status']) ? '<span class="'.$leave_status_arr[$row['director_approver_status']]['css'].'"><i class="fa fa-fw '.$fa_icon.'" aria-hidden="true"></i></span>': ''; ?>
+                                        $fa_icon = '';
+                                        if($row['director_approver_status'] == 'A'){
+                                            $fa_icon = 'fa-check';
+                                        }
+                                        if($row['director_approver_status'] == 'R'){
+                                            $fa_icon = 'fa-close';
+                                        }
+                                        if($row['director_approver_status'] == 'C'){
+                                            $fa_icon = 'fa-close';
+                                        }
+                                    ?>
+                                    <span title="<?php echo isset($row['director_approver_emp_id']) ? $row['director_approver_emp_id'] : ''?>">
                                     <?php echo isset($row['director_approver_firstname']) ? $row['director_approver_firstname'] : ''?>
                                     <?php echo isset($row['director_approver_lastname']) ? $row['director_approver_lastname'] : ''?>
-                                    <?php echo isset($row['director_approver_emp_id']) ? '('.$row['director_approver_emp_id'].')' : ''?>
+                                    </span>
+
+                                    <?php echo isset($row['director_approver_status']) ? '<span class="'.$leave_status_arr[$row['director_approver_status']]['css'].'"><i class="fa fa-fw '.$fa_icon.'" aria-hidden="true"></i></span>': ''; ?>
 
                                 </td>
                                 <td>
-                                    <?php echo $row['leave_type'];?>
                                     <?php echo $this->common_lib->display_date($row['leave_from_date']);?>
                                     <?php echo ' to '.$this->common_lib->display_date($row['leave_to_date']);?>
                                     <?php //echo ', '.$row['applied_for_days_count'].' day(s)';?></td>

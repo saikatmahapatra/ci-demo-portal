@@ -49,13 +49,15 @@ class Leave extends CI_Controller {
             'CL'=>'Casual Leave',
             'PL'=>'Privileged Leave',
             'SL'=>'Sick Leave',
+            'CO'=>'Compensatory Off',
             //'OL'=>'Optional Leave',
             //'SP'=>'Special Leave'
         );
         // Leave Terms
         $this->data['leave_term_arr'] = array(
-            'F'=>'Full day',
-            'H'=>'Half day'
+            'FD' => 'Full Day (FD)',
+            'HD1' => 'Half Day - First Half (HD1)',
+            'HD2' => 'Half Day - Second Half (HD2)'
         );
 		$this->data['leave_status_arr'] = array(
             'B'=>array('text'=>'Applied', 'css'=>'text-primary'),
@@ -150,7 +152,7 @@ class Leave extends CI_Controller {
                     'user_id' => $this->sess_user_id,
                     'leave_created_on' => date('Y-m-d H:i:s'),
                     'leave_status' => 'B',
-                    'leave_term' => $this->input->post('leave_term') ? $this->input->post('leave_term') : 'F',
+                    'leave_term' => $this->input->post('leave_term') ? $this->input->post('leave_term') : 'FD',
                     'supervisor_approver_id'=> $supervisor_approver_id,
                     'supervisor_approver_status'=>'P',
                     'director_approver_id'=>$director_approver_id,
@@ -160,7 +162,8 @@ class Leave extends CI_Controller {
                     'on_apply_cl_bal'=> isset($this->data['leave_balance'][0]['cl']) ? $this->data['leave_balance'][0]['cl'] : '',
                     'on_apply_pl_bal'=> isset($this->data['leave_balance'][0]['pl']) ? $this->data['leave_balance'][0]['pl'] : '',
                     'on_apply_ol_bal'=> isset($this->data['leave_balance'][0]['ol']) ? $this->data['leave_balance'][0]['ol'] : '',
-                    'on_apply_sl_bal'=> isset($this->data['leave_balance'][0]['sl']) ? $this->data['leave_balance'][0]['sl'] : ''
+                    'on_apply_sl_bal'=> isset($this->data['leave_balance'][0]['sl']) ? $this->data['leave_balance'][0]['sl'] : '',
+                    'on_apply_co_bal'=> isset($this->data['leave_balance'][0]['co']) ? $this->data['leave_balance'][0]['co'] : ''
 
                 );
                 $insert_id = $this->leave_model->insert($postdata);
@@ -343,8 +346,12 @@ class Leave extends CI_Controller {
     }
 	
 	function validate_form_data($action = NULL) {
-        $this->form_validation->set_rules('leave_type', ' ', 'required');
-        $this->form_validation->set_rules('leave_term', ' ', 'callback_validate_leave_term');
+        if($this->input->post('leave_type') == 'CO'){
+            $this->form_validation->set_rules('leave_type', ' ', 'required|callback_validate_comp_off_eligibility');
+        }else{
+            $this->form_validation->set_rules('leave_type', ' ', 'required');
+        }
+        $this->form_validation->set_rules('leave_term', ' ', 'required|callback_validate_leave_term');
         $this->form_validation->set_rules('leave_reason', ' ', 'required|max_length[100]');
         $this->form_validation->set_rules('leave_from_date', ' ', 'required');
         $this->form_validation->set_rules('leave_to_date', ' ', 'required|callback_validate_days_diff|callback_is_leave_exists_in_date_range');
@@ -356,9 +363,18 @@ class Leave extends CI_Controller {
         }
     }
 
+    function validate_comp_off_eligibility(){
+        if($this->input->post('leave_type') == 'CO'){
+            $this->form_validation->set_message('validate_comp_off_eligibility', 'Applying comp off is currently not allowed by system.');
+            return false;
+        }else{
+            return true;
+        }
+    }
+
     function validate_leave_term(){
-        if($this->input->post('leave_term') == 'H' && $this->input->post('leave_type') != 'CL'){
-            $this->form_validation->set_message('validate_leave_term', 'This is applicable for CL only.');
+        if(($this->input->post('leave_term') == 'HD1' || $this->input->post('leave_term') == 'HD2') && $this->input->post('leave_type') != 'CL'){
+            $this->form_validation->set_message('validate_leave_term', 'Half Day is applicable for CL only.');
             return false;
         }else{
             return true;
@@ -504,6 +520,7 @@ class Leave extends CI_Controller {
                         'sl' => $this->input->post('sl'),
                         'pl' => $this->input->post('pl'),
                         'ol' => $this->input->post('ol'),
+                        'co' => $this->input->post('co'),
                         'updated_by' => $this->sess_user_id,
                         'updated_on' => date('Y-m-d H:i:s')
                     );
@@ -520,6 +537,7 @@ class Leave extends CI_Controller {
                         'sl' => $this->input->post('sl'),
                         'pl' => $this->input->post('pl'),
                         'ol' => $this->input->post('ol'),
+                        'co' => $this->input->post('co'),
                         'created_by' => $this->sess_user_id,
                         'created_on' => date('Y-m-d H:i:s')
                     );
@@ -550,7 +568,8 @@ class Leave extends CI_Controller {
 
     function import(){
 		if(isset($_FILES["userfile"]["name"])){
-			$path = $_FILES["userfile"]["tmp_name"];
+            $path = $_FILES["userfile"]["tmp_name"];
+            @PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 			$object = PHPExcel_IOFactory::load($path);
 			foreach($object->getWorksheetIterator() as $worksheet){
                 //print_r($worksheet); die();
@@ -560,16 +579,18 @@ class Leave extends CI_Controller {
 				for($row=2; $row<=$highestRow; $row++){
 					$user_id = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
 					$cl_balance = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-					$sl_balance = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
-					$pl_balance = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-                    $balance_date = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
-                    $balance_table_pk_index = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
+                    $pl_balance = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+                    $sl_balance = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+                    $co_balance = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+                    $balance_date = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
+                    $balance_table_pk_index = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
 					$data[] = array(
                         'id' => ($balance_table_pk_index!="") ? $balance_table_pk_index : NULL,
 						'user_id' => $user_id,
 						'cl' =>	($cl_balance != "") ? $cl_balance : NULL,
 						'sl' =>	($sl_balance != "") ? $sl_balance : NULL,
-						'pl' =>	($pl_balance != "") ? $pl_balance : NULL,
+                        'pl' =>	($pl_balance != "") ? $pl_balance : NULL,
+                        'co' =>	($pl_balance != "") ? $co_balance : NULL,
 						'balance_date' =>	date('Y-m-d H:i:s'),
 						'created_on' =>	date('Y-m-d H:i:s'),
 						'created_by' =>	$this->sess_user_id,
@@ -582,45 +603,6 @@ class Leave extends CI_Controller {
 		}	
     }
     
-    function render_leave_balance_datatable() {
-        //Total rows - Refer to model method definition
-        $result_array = $this->leave_model->get_leave_balance_master();
-        $total_rows = $result_array['num_rows'];
-
-        // Total filtered rows - check without limit query. Refer to model method definition
-        $result_array = $this->leave_model->get_leave_balance_master(NULL, NULL, NULL, TRUE, FALSE);
-        $total_filtered = $result_array['num_rows'];
-
-        // Data Rows - Refer to model method definition
-        $result_array = $this->leave_model->get_leave_balance_master(NULL, NULL, NULL, TRUE);
-        $data_rows = $result_array['data_rows'];
-        $data = array();
-        $no = $_REQUEST['start'];
-        foreach ($data_rows as $result) {
-            $no++;
-            $row = array();
-            $row[] = (isset($result['user_firstname']) ? $result['user_firstname'] : '').' '.(isset($result['user_lastname']) ? $result['user_lastname'] : '');
-            $row[] = $this->common_lib->display_date($result['balance_date'], false);
-            $row[] = $result['cl'];
-            $row[] = $result['pl'];
-            $row[] = $result['sl'];
-            //$row[] = $result['ol'];
-            $row[] = $this->common_lib->display_date($result['created_on'], true);
-            $data[] = $row;
-        }
-
-        /* jQuery Data Table JSON format */
-        $output = array(
-            'draw' => isset($_REQUEST['draw']) ? $_REQUEST['draw'] : '',
-            'recordsTotal' => $total_rows,
-            'recordsFiltered' => $total_filtered,
-            'data' => $data,
-        );
-        //output to json format
-        echo json_encode($output);
-    }
-
-
     function validate_leave_balance_form_data($action = NULL) {
         $this->form_validation->set_rules('user_id', ' ', 'required');
         $this->form_validation->set_rules('cl', ' ', 'required|max_length[6]|numeric|less_than_equal_to[10]
@@ -856,7 +838,7 @@ class Leave extends CI_Controller {
         $applied_for_days_count = $leave_data['applied_for_days_count'];
         $leave_type = $leave_data['leave_type'];
         $leave_term = $leave_data['leave_term'];
-        $leave_term_multiplier = ($leave_term == 'F') ? 1 : 0.5;
+        $leave_term_multiplier = ($leave_term == 'FD') ? 1 : 0.5;
         $leave_balance = $this->leave_model->get_leave_balance(NULL, NULL, NULL, FALSE, FALSE, $applicant_user_id);
         $leave_balance_id = $leave_balance[0]['id'];
         $available_leave_balance = $leave_balance[0][strtolower($leave_type)];
@@ -877,6 +859,9 @@ class Leave extends CI_Controller {
         }
         if(strtolower($leave_type) == 'sl'){
             $postdata['debited_sl'] = $applied_for_days_count * $leave_term_multiplier;
+        }
+        if(strtolower($leave_type) == 'co'){
+            $postdata['debited_co'] = $applied_for_days_count * $leave_term_multiplier;
         }
         $where = array('id'=>$leave_id);
         $this->leave_model->update($postdata, $where, 'leave_applications');
@@ -912,6 +897,9 @@ class Leave extends CI_Controller {
         }
         if(isset($leave_data['debited_sl'])){
             $postdata['credited_sl'] = $leave_data['debited_sl'];
+        }
+        if(isset($leave_data['debited_co'])){
+            $postdata['credited_co'] = $leave_data['debited_co'];
         }
         $where = array('id' => $leave_balance_id, 'user_id' => $applicant_user_id);
         $is_update_balance = $this->leave_model->adjust_leave_balance($postdata, $where);
@@ -1096,8 +1084,9 @@ class Leave extends CI_Controller {
             $row[] = ($result['cl'] == NULL) ? '--' : $result['cl'];
             $row[] = ($result['pl'] == NULL) ? '--' : $result['pl'];
             $row[] = ($result['sl'] == NULL) ? '--' : $result['sl'];
+            $row[] = ($result['co'] == NULL) ? '--' : $result['co'];
             //$row[] = ($result['ol'] == NULL) ? '--' : $result['ol'];
-            $row[] = $this->common_lib->display_date($result['balance_date'], true);
+            $row[] = $this->common_lib->display_date($result['balance_date'], false);
             $row[] = $this->common_lib->display_date($result['created_on'], true);
             $row[] = $this->common_lib->display_date($result['updated_on'], true);
             $data[] = $row;
@@ -1122,8 +1111,9 @@ class Leave extends CI_Controller {
             'D' => 'casual_leave',
             'E' => 'priviledge_leave',
             'F' => 'sick_leave',
-            'G' => 'time_stamp',
-            'H' => 'bal_index'
+            'G' => 'comp_off',
+            'H' => 'time_stamp',
+            'I' => 'bal_index'
         );
         $this->data['xls_col'] = $excel_heading;
         //load our new PHPExcel library
@@ -1152,8 +1142,9 @@ class Leave extends CI_Controller {
             $sheet->setCellValue('D' . $excel_row, $row['cl']);
             $sheet->setCellValue('E' . $excel_row, $row['pl']);
             $sheet->setCellValue('F' . $excel_row, $row['sl']);
-            $sheet->setCellValue('G' . $excel_row, date('Y-m-d'));
-            $sheet->setCellValue('H' . $excel_row, $row['bal_pk_index']);
+            $sheet->setCellValue('G' . $excel_row, $row['co']);
+            $sheet->setCellValue('H' . $excel_row, date('Y-m-d'));
+            $sheet->setCellValue('I' . $excel_row, $row['bal_pk_index']);
             $excel_row++;
         }
 
@@ -1187,7 +1178,7 @@ class Leave extends CI_Controller {
             )
         );
         //$sheet->getDefaultStyle()->applyFromArray($styleArray);
-        $sheet->getStyle('A1:H1')->applyFromArray($style_header);
+        $sheet->getStyle('A1:I1')->applyFromArray($style_header);
         //$sheet->getStyle('A1:G1')->getFont()->setSize(9);
         //$sheet->getDefaultStyle()->getFont()->setSize(10);
         $sheet->getDefaultColumnDimension()->setWidth('17');

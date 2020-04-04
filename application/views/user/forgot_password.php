@@ -11,7 +11,7 @@
 		<?php echo form_hidden('form_action', 'forgot_password'); ?>
 			<div class="form-group mb-5">
 				<label for="user_email">Registered Email or Username</label>
-				<?php echo form_input(array('name' => 'user_email','value' => set_value('user_email'),'id' => 'user_email','class'=> 'form-control','placeholder' => 'name@address.com','maxlength' => '100','autofocus' => true,));?>	
+				<?php echo form_input(array('name' => 'user_email','value' => set_value('user_email'),'id' => 'user_email','class'=> 'form-control','placeholder' => 'name@domain.com','maxlength' => '100','autofocus' => true,));?>	
 				<?php echo form_error('user_email'); ?>
 			</div>
 			<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-lg ci-btn-primary btn-primary btn-block'));?>			

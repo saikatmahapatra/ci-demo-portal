@@ -13,7 +13,7 @@ $row = $data_rows[0];
                 <h5 class="card-title">Leave Details</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <dl class="row">
-                    <dt class="col-lg-2">Reference No</dt>
+                    <dt class="col-lg-2">Application No</dt>
                     <dd class="col-lg-10"><?php echo $row['leave_req_id'];?></dd>
                     <dt class="col-lg-2">Status</dt>
                     <dd class="col-lg-10">
@@ -43,7 +43,7 @@ $row = $data_rows[0];
                         <?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : '';?>
                     </dd>
 
-                    <dt class="col-lg-2">Purpose of Leave</dt>
+                    <dt class="col-lg-2">Reason</dt>
                     <dd class="col-lg-10"><?php echo isset($row['leave_reason']) ? $row['leave_reason'] : '';?></dd>
                     <dt class="col-lg-2">Leave Balance</dt>
                     <dd class="col-lg-10">
