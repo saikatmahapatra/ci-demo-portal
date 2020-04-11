@@ -304,7 +304,22 @@ class User_model extends CI_Model {
         }
         return $result;
     }
-	
+
+    function get_employment_type_dropdown() {
+        $result = array();
+        $this->db->select('id,employment_type_name, employment_type_code');
+        $this->db->where('employment_type_status','Y');
+        $this->db->order_by('employment_type_name');
+        $query = $this->db->get('employment_types');
+        $result = array('' => 'Employment Type');
+        if ($query->num_rows()) {
+            $res = $query->result();
+            foreach ($res as $r) {
+                $result[$r->id] = $r->employment_type_name;
+            }
+        }
+        return $result;
+    }	
 	
 	function get_designation_dropdown($status=NULL) {
         $result = array();

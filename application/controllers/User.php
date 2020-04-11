@@ -40,7 +40,8 @@ class User extends CI_Controller {
 		//User Roles drop down
 		$this->data['arr_roles'] = $this->user_model->get_user_role_dropdown();
 		$this->data['arr_designations'] = $this->user_model->get_designation_dropdown('Y');
-		$this->data['arr_departments'] = $this->user_model->get_department_dropdown();
+        $this->data['arr_departments'] = $this->user_model->get_department_dropdown();
+        $this->data['arr_employment_types'] = $this->user_model->get_employment_type_dropdown();
 		$this->data['arr_user_title'] = array(''=>'Select Title','Mr.'=>'Mr.','Mrs.'=>'Mrs.','Dr.'=>'Dr.','Ms.'=>'Ms.');
         $this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-', 'NA'=>'Unknown');
         $this->data['bank_ac_type'] = array('SB'=>'Savings Account','CU'=>'Current Account');
