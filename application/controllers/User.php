@@ -344,6 +344,7 @@ class User extends CI_Controller {
                     'user_role' => $this->input->post('user_role'),
                     'user_department' => $this->input->post('user_department'),
                     'user_designation' => $this->input->post('user_designation'),
+                    'user_employment_type' => $this->input->post('user_employment_type'),
                     'user_phone1' => $this->input->post('user_phone1'),
                     'user_phone2' => $this->input->post('user_phone2'),
                     'user_password' => md5($password),
@@ -402,6 +403,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_role', 'access group', 'required');
         $this->form_validation->set_rules('user_designation', 'designation', 'required');
         $this->form_validation->set_rules('user_department', 'department', 'required');
+        $this->form_validation->set_rules('user_employment_type', 'employment type', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -1136,7 +1138,8 @@ class User extends CI_Controller {
                     //'user_role' => $this->input->post('user_role'),
                     'user_department' => $this->input->post('user_department'),
                     'user_designation' => $this->input->post('user_designation'),
-                    'user_status' => $this->input->post('user_status')
+                    'user_status' => $this->input->post('user_status'),
+                    'user_employment_type' => $this->input->post('user_employment_type')
                 );
                 $where = array('id' => $user_id);
                 $res = $this->user_model->update($postdata, $where);
@@ -1221,6 +1224,7 @@ class User extends CI_Controller {
         //$this->form_validation->set_rules('user_designation', 'designation', 'required');
         //$this->form_validation->set_rules('user_department', 'department', 'required');
         //$this->form_validation->set_rules('user_status', 'account status', 'required');
+        //$this->form_validation->set_rules('user_employment_type', 'employment type', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
