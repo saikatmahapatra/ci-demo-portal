@@ -310,9 +310,9 @@ class User_model extends CI_Model {
         $result = array();
         $this->db->select('id,employment_type_name, employment_type_code');
         $this->db->where('employment_type_status','Y');
-        $this->db->order_by('employment_type_name');
+        $this->db->order_by('employment_type_code');
         $query = $this->db->get('employment_types');
-        $result = array('' => 'Employment Type');
+        $result = array('' => 'Select');
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
