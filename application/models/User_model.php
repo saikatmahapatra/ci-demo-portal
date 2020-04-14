@@ -50,7 +50,7 @@ class User_model extends CI_Model {
         if ($dataTable == TRUE){
             $this->db->select('t1.id, t1.user_emp_id, t1.user_firstname, t1.user_lastname, t1.user_email, t1.user_phone1,t1.user_status,t4.designation_name,t1.user_status');
         }else{
-            $this->db->select('t1.*,t2.role_name, t2.role_weight,t3.department_name, t4.designation_name');
+            $this->db->select('t1.*,t2.role_name, t2.role_weight,t3.department_name, t4.designation_name, t5.employment_type_name');
         }
         $this->db->where('t1.user_status !=', 'A');
         if ($id) {
@@ -62,6 +62,7 @@ class User_model extends CI_Model {
         $this->db->join('roles t2', 't1.user_role=t2.id', 'left');
         $this->db->join('departments t3', 't1.user_department=t3.id', 'left');
         $this->db->join('designations t4', 't1.user_designation=t4.id', 'left');
+        $this->db->join('employment_types t5', 't1.user_employment_type=t5.id', 'left');
         ####################################################################
         ##################### Display using Data Table #####################
         ####################################################################
@@ -304,7 +305,22 @@ class User_model extends CI_Model {
         }
         return $result;
     }
-	
+
+    function get_employment_type_dropdown() {
+        $result = array();
+        $this->db->select('id,employment_type_name, employment_type_code');
+        $this->db->where('employment_type_status','Y');
+        $this->db->order_by('employment_type_code');
+        $query = $this->db->get('employment_types');
+        $result = array('' => 'Select');
+        if ($query->num_rows()) {
+            $res = $query->result();
+            foreach ($res as $r) {
+                $result[$r->id] = $r->employment_type_name;
+            }
+        }
+        return $result;
+    }	
 	
 	function get_designation_dropdown($status=NULL) {
         $result = array();
@@ -485,7 +501,7 @@ class User_model extends CI_Model {
     }
 
 	function get_users($id = NULL, $limit = NULL, $offset = NULL, $search_keywords=NULL, $user_type = NULL) {
-        $this->db->select('t1.id, t1.user_emp_id, t1.user_firstname, t1.user_lastname, t1.user_email, t1.user_phone1, t1.user_profile_pic, t4.designation_name');
+        $this->db->select('t1.id, t1.user_emp_id, t1.user_firstname, t1.user_lastname, t1.user_email, t1.user_phone1, t1.user_profile_pic, t4.designation_name, t5.employment_type_name');
         if ($id) {
             $this->db->where('t1.id', $id);
         }
@@ -509,6 +525,7 @@ class User_model extends CI_Model {
         $this->db->join('roles t2', 't1.user_role=t2.id', 'left');
 		$this->db->join('departments t3', 't1.user_department=t3.id', 'left');
         $this->db->join('designations t4', 't1.user_designation=t4.id', 'left');
+        $this->db->join('employment_types t5', 't1.user_employment_type=t5.id', 'left');
         
         if ($limit) {
             $this->db->limit($limit, $offset);

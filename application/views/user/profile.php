@@ -110,7 +110,7 @@
 						<?php if($is_self_account == true) { ?>
 						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>" data-toggle="tooltip" title="Change or remove this photo"><i class="fa fa-fw fa-camera"></i> Change</a>
 						<?php } ?>
-						<div class="h5 my-2">
+						<div class="font-weight-bold">
 							<?php
 								//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 								echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
@@ -125,9 +125,10 @@
 							<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
 							<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>
 						</div>
-						<div class="">Employee ID - <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
-						<div class="">Designation - <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
-						<div class="">Department - <?php echo isset($row['department_name']) ? $row['department_name'] : ''; ?></div>
+						<div class="small">Emp ID - <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
+						<div class="small"><?php echo isset($row['employment_type_name']) ? $row['employment_type_name'] : ''; ?></div>
+						<div class="small">Designation - <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
+						<div class="small">Department - <?php echo isset($row['department_name']) ? $row['department_name'] : ''; ?></div>
 
 						<?php if($is_self_account == true) { ?>
 							<a class="btn btn-sm btn-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i> Edit Basic Information</a>
@@ -188,9 +189,14 @@
 										
 											<dt class="col-lg-2">Date of Joining</dt>
 											<dd class="col-lg-4"><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></dd>
-											<dt class="col-lg-2">Designation</dt>
+											<dt class="col-lg-2">Desg.</dt>
 											<dd class="col-lg-4"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
-										
+
+											<dt class="col-lg-2">Emp Type</dt>
+											<dd class="col-lg-4"><?php echo isset($row['employment_type_name']) ? $row['employment_type_name'] : '-'; ?></dd>
+											<dt class="col-lg-2">Dept.</dt>
+											<dd class="col-lg-4"><?php echo isset($row['department_name']) ? $row['department_name'] : '-'; ?></dd>
+
 											<dt class="col-lg-2">Email (office)</dt>
 											<dd class="col-lg-4"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?></a></dd>
 											<dt class="col-lg-2">Mobile (office)</dt>

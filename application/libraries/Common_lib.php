@@ -55,7 +55,7 @@ class Common_lib {
      */
     function add_javascript($files = array()) {
 		$file_path = 'assets/dist/js/';
-		$ext = '.js'; // .js | .min.js
+		$ext = '.min.js'; // .js | .min.js
         $common_files = array(
             'ajax',
             'app'

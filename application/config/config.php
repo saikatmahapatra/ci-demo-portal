@@ -17,7 +17,7 @@ date_default_timezone_set('Asia/Kolkata');
 | environments.
 |
 */
-$config['base_url'] = 'http://192.168.43.16/united-emp-portal/';
+$config['base_url'] = 'http://localhost/united-emp-portal/';
 
 /*
 |--------------------------------------------------------------------------

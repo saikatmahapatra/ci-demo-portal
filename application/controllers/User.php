@@ -40,7 +40,8 @@ class User extends CI_Controller {
 		//User Roles drop down
 		$this->data['arr_roles'] = $this->user_model->get_user_role_dropdown();
 		$this->data['arr_designations'] = $this->user_model->get_designation_dropdown('Y');
-		$this->data['arr_departments'] = $this->user_model->get_department_dropdown();
+        $this->data['arr_departments'] = $this->user_model->get_department_dropdown();
+        $this->data['arr_employment_types'] = $this->user_model->get_employment_type_dropdown();
 		$this->data['arr_user_title'] = array(''=>'Select Title','Mr.'=>'Mr.','Mrs.'=>'Mrs.','Dr.'=>'Dr.','Ms.'=>'Ms.');
         $this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-', 'NA'=>'Unknown');
         $this->data['bank_ac_type'] = array('SB'=>'Savings Account','CU'=>'Current Account');
@@ -343,6 +344,7 @@ class User extends CI_Controller {
                     'user_role' => $this->input->post('user_role'),
                     'user_department' => $this->input->post('user_department'),
                     'user_designation' => $this->input->post('user_designation'),
+                    'user_employment_type' => $this->input->post('user_employment_type'),
                     'user_phone1' => $this->input->post('user_phone1'),
                     'user_phone2' => $this->input->post('user_phone2'),
                     'user_password' => md5($password),
@@ -401,6 +403,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_role', 'access group', 'required');
         $this->form_validation->set_rules('user_designation', 'designation', 'required');
         $this->form_validation->set_rules('user_department', 'department', 'required');
+        $this->form_validation->set_rules('user_employment_type', 'employment type', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -1135,7 +1138,8 @@ class User extends CI_Controller {
                     //'user_role' => $this->input->post('user_role'),
                     'user_department' => $this->input->post('user_department'),
                     'user_designation' => $this->input->post('user_designation'),
-                    'user_status' => $this->input->post('user_status')
+                    'user_status' => $this->input->post('user_status'),
+                    'user_employment_type' => $this->input->post('user_employment_type')
                 );
                 $where = array('id' => $user_id);
                 $res = $this->user_model->update($postdata, $where);
@@ -1220,6 +1224,7 @@ class User extends CI_Controller {
         //$this->form_validation->set_rules('user_designation', 'designation', 'required');
         //$this->form_validation->set_rules('user_department', 'department', 'required');
         //$this->form_validation->set_rules('user_status', 'account status', 'required');
+        //$this->form_validation->set_rules('user_employment_type', 'employment type', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;

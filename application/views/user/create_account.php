@@ -100,6 +100,11 @@
 						<?php echo form_input(array( 'name' => 'user_doj', 'value' => set_value('user_doj'), 'id' => 'user_doj', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => 'dd-mm-yyyy', 'autocomplete'=>'off', 'readonly'=>true )); ?>
 						<?php echo form_error('user_doj'); ?>
 					</div>
+					<div class="form-group col-lg-6">
+					<label for="user_employment_type" class="required">Employment Type </label>
+					<?php echo form_dropdown('user_employment_type', $arr_employment_types, set_value('user_employment_type'), array( 'class' => 'form-control', )); ?> 
+						<?php echo form_error('user_employment_type'); ?>
+					</div>
 				</div>
 					
 				<?php echo form_hidden('user_role', 3); ?>

@@ -6,10 +6,10 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 
-<div class="row">
-	<div class="col-lg-9">
-		<div class="card ci-card">
-			<div class="card-body">
+<label class="row">
+	<label class="col-lg-9">
+		<label class="card ci-card">
+			<label class="card-body">
 			<h5 class="card-title">Edit Profile</h5>
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<?php   
@@ -147,8 +147,17 @@
 						<?php echo form_input(array( 'name' => 'user_doj', 'value' => isset($_POST['user_doj']) ? set_value('user_doj') : $this->common_lib->display_date($row['user_doj']), 'id' => 'user_doj', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => '', 'autocomplete'=>'off', 'readonly'=>true )); ?>
 						<?php echo form_error('user_doj'); ?>
 					</div>
-					<?php if($row['id'] != $this->common_lib->get_sess_user('id')){?>
-						<div class="form-group col-lg-6">
+
+					<div class="form-group col-lg-6">
+						<label for="user_employment_type" class="optional">Employment Type </label>
+						<?php echo form_dropdown('user_employment_type', $arr_employment_types, isset($_POST['user_employment_type']) ? set_value('user_employment_type') : $row['user_employment_type'] , array( 'class' => 'form-control' )); ?>
+						<?php echo form_error('user_employment_type'); ?>
+					</div>
+				</div>
+
+				<div class="form-group">
+				<?php if($row['id'] != $this->common_lib->get_sess_user('id')){?>
+						<label class="form-group col-lg-6">
 							<label for="user_status" class="required">Account Status</label>
 							<div class="">
 								<div class="custom-control custom-radio custom-control-inline">
@@ -168,7 +177,7 @@
 								</div>
 							</div>
 							<?php echo form_error('user_status'); ?>
-						</div>
+						</label>
 						<?php } else{
 							echo form_hidden('user_status', $row['user_status']);
 						} ?>
@@ -179,7 +188,7 @@
 				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn btn-link text-danger">Delete Account</a>
 				<?php echo form_close(); ?>
 			
-			</div><!--./card-body-->
-		</div><!--/.card-->
-	</div><!--/.col-->
-</div><!--/.row-->
+			</label><!--./card-body-->
+		</label><!--/.card-->
+	</label><!--/.col-->
+</label><!--/.row-->
