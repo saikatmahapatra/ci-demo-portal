@@ -1,5 +1,5 @@
 <header class="header-navbar <?php echo (isset($this->session->userdata['sess_user']['id'])) ? 'post-auth' : 'pre-auth'; ?>">
-<nav class="navbar navbar-expand-sm navbar-dark bg-primary bg-dark fixed-top">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
         <a class="mega-menu-toggle" href="#" data-toggle="dropdown" aria-label="Show Menu"></a>
 		<!-- <a class="sidebar-toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> -->
 		<!-- <button class="navbar-toggler" type="button" data-toggle="dropdown" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">

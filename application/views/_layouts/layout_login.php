@@ -26,7 +26,7 @@
 
 <body class="login" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
     <?php echo $el_navbar; ?>
-    <main role="main" class="container-fluid d-flex flex-column">
+    <main role="main" class="container d-flex flex-column">
         <?php echo $maincontent; ?>
     </main>
     <footer class="footer">
