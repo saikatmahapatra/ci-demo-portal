@@ -1,9 +1,11 @@
 body {
     margin-top: 4rem;
+    background-color: #ebedef;
 }
 
 body.login {
     margin-top: 4rem;
+    background-color: #ebedef;
 }
 
 @mixin linear-gradient($from, $to) {
