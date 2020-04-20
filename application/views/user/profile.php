@@ -318,8 +318,8 @@
 													United Exploration India Pvt. Ltd.
 												</div>
 												<div class="text-muted">
-													<?php echo isset($row['user_doj']) ? ' '.$this->common_lib->display_date($row['user_doj'],NULL, NULL, 'd/m/Y').' to ' : '-'; ?>
-													<?php echo isset($row['user_dor']) ? ' '.$this->common_lib->display_date($row['user_dor'],NULL, NULL, 'd/m/Y') : 'till date'; ?>
+													<?php echo isset($row['user_doj']) ? ' '.$this->common_lib->display_date($row['user_doj'],NULL, NULL).' to ' : '-'; ?>
+													<?php echo isset($row['user_dor']) ? ' '.$this->common_lib->display_date($row['user_dor'],NULL, NULL) : 'till date'; ?>
 												</div>
 											</div>
 											
@@ -337,8 +337,8 @@
 															<?php echo isset($row['company_name'])? $row['company_name']: ' ';?>
 														</div>
 														<div class="text-muted">
-															<?php echo isset($row['from_date']) ? ' '.$this->common_lib->display_date($row['from_date'],NULL, NULL, 'd/m/Y').' to ' : '-'; ?>
-															<?php echo isset($row['to_date']) ? ' '.$this->common_lib->display_date($row['to_date'], NULL, NULL, 'd/m/Y') : 'till date'; ?>
+															<?php echo isset($row['from_date']) ? ' '.$this->common_lib->display_date($row['from_date'],NULL, NULL).' to ' : '-'; ?>
+															<?php echo isset($row['to_date']) ? ' '.$this->common_lib->display_date($row['to_date'], NULL, NULL) : 'till date'; ?>
 														</div>
 													</div>
 												<?php

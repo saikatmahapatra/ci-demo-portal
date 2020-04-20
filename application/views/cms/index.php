@@ -4,7 +4,7 @@
     <div class="col-lg-12">
         <div class="card ci-card">
             <div class="card-body">
-            <h5 class="card-title">Contents</h5>
+            <h5 class="card-title">Data Table</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="ci-link-group">
                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>"
@@ -18,6 +18,7 @@
                                 <th scope="col">Title</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Created on</th>
+                                <th scope="col">Created by</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>

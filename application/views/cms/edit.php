@@ -8,29 +8,29 @@ $row = $rows[0];
     <div class="col-lg-9">
         <div class="card ci-card">
             <div class="card-body">
-            <h5 class="card-title">Edit Content</h5>
+            <h5 class="card-title">Edit this post</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <?php echo form_open(current_url(), array('method' => 'post', 'class'=>'ci-form','name' => 'myform','id' => 'myform','role' =>'form')); ?>
                 <?php echo form_hidden('form_action', 'update'); ?>
                 <?php echo form_hidden('id', $row['id']); ?>
 
                 <div class="form-row">
-                    <div class="form-group col-12">
-                        <label for="content_type" class="required">Content Type</label>
+                    <div class="form-group col-lg-6">
+                        <label for="content_type" class="required">Type</label>
                         <?php echo form_dropdown('content_type', $arr_content_type, (isset($_POST['content_type']) ? set_value('content_type') : $row['content_type']), array('class' => 'form-control',));?>
                         <?php echo form_error('content_type'); ?>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-12">
-                        <label for="content_title" class="required">Content Title</label>
+                        <label for="content_title" class="required">Title</label>
                         <?php echo form_input(array('name' => 'content_title', 'value' => (isset($_POST['content_title']) ? set_value('content_title') : $row['content_title']), 'id' => 'content_title', 'class' => 'form-control', 'placeholder' => ''));?>
                         <?php echo form_error('content_title'); ?>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-12">
-                        <label for="content_text" class="required">Content Description</label>
+                        <label for="content_text" class="required">Description</label>
                         <?php echo form_textarea(array('name' => 'content_text','value' => (isset($_POST['content_text']) ? set_value('content_text') : $row['content_text']),'class' => 'form-control textarea','id' => 'content_text','rows' => '2','cols' => '50','placeholder' => '')); ?>
                         <?php echo form_error('content_text'); ?>
                     </div>
@@ -39,7 +39,7 @@ $row = $rows[0];
 
                 <div class="form-row">
                     <div class="form-group col-12">
-                        <label for="content_status" class="required">Status</label>
+                        <label for="content_status" class="required">Display Status</label>
                         <div class="custom-control custom-radio custom-control-inline">
                             <?php
 								$radio_is_checked = isset($_POST['content_status']) ? $_POST['content_status'] == 'Y' : ($row['content_status'] == 'Y');

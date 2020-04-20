@@ -10,7 +10,7 @@ $row = $rows[0];
     <div class="col-lg-9">
         <div class="card ci-card">
             <div class="card-body">
-            <h5 class="card-title">Edit Task of <?php echo $this->common_lib->display_date($row['timesheet_date'], NULL, NULL, 'd/m/Y'); ?></h5>
+            <h5 class="card-title">Edit Task of <?php echo $this->common_lib->display_date($row['timesheet_date'], NULL, NULL); ?></h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <?php echo form_open(current_url(), array('method' => 'post', 'class'=>'ci-form','name' => 'myform','id' => 'myform','role' =>'form')); ?>
                 <?php echo form_hidden('form_action', 'update'); ?>

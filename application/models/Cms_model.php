@@ -44,7 +44,7 @@ class Cms_model extends CI_Model {
 
     function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
         $result = array();
-        $this->db->select('t1.*,t2.user_email');
+        $this->db->select('t1.*,t2.user_email, t2.user_emp_id, t2.user_firstname, t2.user_lastname');
         $this->db->join('users as t2', 't2.id = t1.content_created_by', 'left');
         if ($id) {
             $this->db->where('t1.id', $id);

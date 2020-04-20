@@ -71,7 +71,7 @@ class Cms extends CI_Controller {
 			
 		$this->breadcrumbs->push('View','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		$this->data['page_title'] = 'Manage Contents';
+		$this->data['page_title'] = 'Posts';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -123,9 +123,10 @@ class Cms extends CI_Controller {
         foreach ($data_rows as $result) {
             $no++;
             $row = array();
-            $row[] = $result['content_title'];
+            $row[] = character_limiter($result['content_title'], 45);
             $row[] = $result['content_type'];
             $row[] = $this->common_lib->display_date($result['content_created_on'], true);
+            $row[] = '<span title="'.$result['user_firstname'].' '.$result['user_lastname'].'">'.$result['user_emp_id'].'</span>';
             $row[] = '<span class="'.$this->data['arr_status_flag'][$result['content_status']]['css'].'"> '.$this->data['arr_status_flag'][$result['content_status']]['text'].'</span>';
             //add html for action
             $action_html = '';
@@ -194,7 +195,7 @@ class Cms extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = 'Add New Content';
+		$this->data['page_title'] = 'New Post';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/add', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -236,7 +237,7 @@ class Cms extends CI_Controller {
         }
         $result_array = $this->cms_model->get_rows($this->id);
         $this->data['rows'] = $result_array['data_rows'];
-		$this->data['page_title'] = 'Edit Content';
+		$this->data['page_title'] = 'Edit Post';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -254,10 +255,10 @@ class Cms extends CI_Controller {
     }
 
     function validate_form_data($action = NULL) {
-        $this->form_validation->set_rules('content_type', 'content type', 'required');
-        $this->form_validation->set_rules('content_title', 'title', 'required');
-        $this->form_validation->set_rules('content_text', 'description', 'required');
-        $this->form_validation->set_rules('content_status', 'status', 'required');
+        $this->form_validation->set_rules('content_type', ' ', 'required');
+        $this->form_validation->set_rules('content_title', ' ', 'required');
+        $this->form_validation->set_rules('content_text', ' ', 'required');
+        $this->form_validation->set_rules('content_status', ' ', 'required');
 
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {

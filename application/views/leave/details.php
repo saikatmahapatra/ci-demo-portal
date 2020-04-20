@@ -21,15 +21,15 @@ $row = $data_rows[0];
                     </dd>
                     <dt class="col-lg-2">Applied on</dt>
                     <dd class="col-lg-10">
-                        <?php echo $this->common_lib->display_date($row['leave_created_on'], TRUE, NULL, 'd/m/Y h:i:s a');?>
+                        <?php echo $this->common_lib->display_date($row['leave_created_on'], TRUE, NULL);?>
                     </dd>
                     <dt class="col-lg-2">Type of Leave</dt>
                     <dd class="col-lg-10"><?php echo $leave_type_arr[$row['leave_type']];?> -
                         <?php echo $leave_term_arr[$row['leave_term']];?></dd>
                     <dt class="col-lg-2">From - To</dt>
                     <dd class="col-lg-10">
-                        <?php echo $this->common_lib->display_date($row['leave_from_date'], NULL, NULL, 'd/m/Y');?> to
-                        <?php echo $this->common_lib->display_date($row['leave_to_date'], NULL, NULL, 'd/m/Y');?></dd>
+                        <?php echo $this->common_lib->display_date($row['leave_from_date'], NULL, NULL);?> to
+                        <?php echo $this->common_lib->display_date($row['leave_to_date'], NULL, NULL);?></dd>
                     <dt class="col-lg-2">No of day(s)</dt>
                     <dd class="col-lg-10"><?php echo $row['applied_for_days_count'].' day(s)';?></dd>
 

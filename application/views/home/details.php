@@ -13,7 +13,7 @@ $row = $data_rows[0];
 						
 						<?php echo isset($row['user_firstname']) ? 'Published by <a href="'.base_url('user/profile/'.$row['content_created_by']).'" target="_blank">'.$row['user_firstname'] : '';?>
 						<?php echo isset($row['user_lastname']) ? $row['user_lastname']."</a> on " : '';?>
-						<?php echo $this->common_lib->display_date($row['content_created_on'],true,null,'d-M-Y h:i:s a'); ?>
+						<?php echo $this->common_lib->display_date($row['content_created_on'],true,null); ?>
 				</div>
 				<?php echo isset($row['content_text']) ? $row['content_text'] : '';?>
 				<a href="<?php echo $redirect_back_url; ?>" class="btn btn-outline-secondary btn-sm btn-back"><i class="fa fa-fw fa-chevron-left" aria-hidden="true"></i> Back</a>

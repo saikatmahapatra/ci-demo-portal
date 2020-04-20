@@ -99,7 +99,7 @@
                             <?php //echo $content_type[$row['content_type']]['text']; ?>
                             <?php echo isset($row['user_firstname']) ? 'By <a href="'.base_url('user/profile/'.$row['content_created_by']).'" target="_blank">'.$row['user_firstname'] : '';?>
                             <?php echo isset($row['user_lastname']) ? $row['user_lastname']."</a> on " : '';?>
-                            <?php echo $this->common_lib->display_date($row['content_created_on'],true,null,'d-M-Y h:i:s a'); ?>
+                            <?php echo $this->common_lib->display_date($row['content_created_on'],true,null); ?>
                         </div>
                         <div class="mb-0 lh-125" style="max-height: 120px; overflow: hidden;">
                             <?php echo isset($row['content_text']) ? ($this->common_lib->remove_empty_p($row['content_text'])) : '';?>
