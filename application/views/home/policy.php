@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ci-card">
-            <div class="card-header"><?php echo isset($row['content_type']) ? ucwords($row['content_type']) : '';?></div>
+            <div class="card-header">Policy</div>
             <div class="card-body">
                 <?php if(isset($data_rows) && sizeof($data_rows> 0)){ ?>
                 <?php foreach($data_rows as $key=>$row) { ?>
