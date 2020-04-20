@@ -3,7 +3,7 @@
 <head>
     <?php echo $el_html_head; ?>
     <!-- Core Bootstrap CSS with customized (theme) style should be loaded first -->
-    <link href="<?php echo base_url('assets/dist/css/styles.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/dist/css/styles.min.css?time='.time()); ?>" rel="stylesheet">
 	
     <!-- Font Awesome Icons -->
     <link href="<?php echo base_url('assets/vendors/font-awesome/css/font-awesome.min.css');?>" rel="stylesheet">    

@@ -66,11 +66,9 @@
                                         <li class="divider"></li> -->
                                         <li class="dropdown-header"><i class="bsmm-icon fa fa-institution" aria-hidden="true"></i> Organization</li>
                                         <li><a href="<?php echo base_url('user/people');?>">Employees</a></li>
+                                        <li><a href="<?php echo base_url('user/reportee_employee'); ?>">My Reportees</a></li>
                                         <li><a href="<?php echo base_url('home/policy'); ?>">HR Policies</a></li>
-                                        <li><a href="<?php echo base_url('holiday/view');?>">Holidays</a></li>
-                                        <li class="divider"></li>
-                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-puzzle-piece" aria-hidden="true"></i> Team</li>
-                                        <li><a href="<?php echo base_url('user/reportee_employee'); ?>">My Reportee</a></li>
+                                        <li><a href="<?php echo base_url('holiday/view');?>">Holiday Calendar</a></li>
                                     </ul>
                                 </li>
                                 <li class="col-lg-3 col-md-6 dropdown-item">
@@ -96,8 +94,8 @@
                                     <ul>
                                         <li class="dropdown-header"><i class="bsmm-icon fa fa-user-circle" aria-hidden="true"></i> Profile</li>
                                         <li><a href="<?php echo base_url('user/profile');?>">My Profile</a></li>
-                                        <li><a href="<?php echo base_url('user/edit_profile');?>">Edit Basic Information</a></li>
-                                        <li><a href="<?php echo base_url('user/profile_pic');?>">Change Profile Photo</a></li>
+                                        <!-- <li><a href="<?php echo base_url('user/edit_profile');?>">Edit Basic Information</a></li>
+                                        <li><a href="<?php echo base_url('user/profile_pic');?>">Change Profile Photo</a></li> -->
                                         <li><a href="<?php echo base_url('document');?>">My Documents</a></li>
                                         <li><a href="<?php echo base_url('user/change_password');?>">Change Password</a></li>
                                         <li><a href="<?php echo base_url('user/logout');?>">Logout</a></li>

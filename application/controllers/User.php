@@ -288,7 +288,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = 'Please login to continue';
+		$this->data['page_title'] = 'Login';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/login', $this->data, true);
         $this->load->view('_layouts/layout_login', $this->data);
     }
@@ -304,8 +304,8 @@ class User extends CI_Controller {
     }
 
     function validate_login_form_data() {
-        $this->form_validation->set_rules('user_email', 'email', 'trim|required|valid_email');
-        $this->form_validation->set_rules('user_password', 'password', 'required');
+        $this->form_validation->set_rules('user_email', ' ', 'trim|required|valid_email');
+        $this->form_validation->set_rules('user_password', ' ', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -630,12 +630,12 @@ class User extends CI_Controller {
                         redirect($this->router->directory.$this->router->class.'/login');
                     }
                 } else {
-                    $this->common_lib->set_flash_message('The OTP is either invalid or expired.','alert-danger');
+                    $this->common_lib->set_flash_message('Invalid email OTP. Please try again.','alert-danger');
                     redirect(current_url());
                 }
             }
         }
-		$this->data['page_title'] = 'Create New Password';
+		$this->data['page_title'] = 'Set New Password';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/reset_password', $this->data, true);
         $this->load->view('_layouts/layout_login', $this->data);
     }
