@@ -66,7 +66,8 @@
 							<div class="media border rounded my-2 p-2">
 								<img class="align-self-center mr-3 rounded dp-sm" src="<?php echo base_url($img_src);?>">
 								<div class="media-body">
-									<div class=""><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?><?php echo ' ('.$row['user_emp_id'].')'; ?></div>
+									<div class=""><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></div>
+									<div class="small">Employee ID <?php echo  $row['user_emp_id']; ?></div>
 									<div class="small"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '' ; ?></div>
 									<?php
 									$email_id = explode('@',$row['user_email']);
