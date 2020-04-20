@@ -3,8 +3,8 @@
 <div class="row">
 	<div class="col-lg-9">
 		<div class="card ci-card">
+			<div class="card-header">List of Holidays</div>
 			<div class="card-body">
-				<h5 class="card-title">List of Holidays</h5>
 				<div class="table-responsive">
 			<table class="table ci-table table-sm table-bordered text-center">
 				<thead class="thead-dark">

@@ -9,8 +9,9 @@
 <label class="row">
 	<label class="col-lg-9">
 		<label class="card ci-card">
+			<div class="card-header">Edit Profile</div>
 			<label class="card-body">
-			<h5 class="card-title">Edit Profile</h5>
+			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<?php   
 					$img_src = "";
@@ -184,7 +185,7 @@
 				</div>
 
 				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="btn btn-light ci-btn-cancel">Cancel</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="btn btn-outline-secondary ci-btn-cancel">Cancel</a>
 				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn btn-link text-danger">Delete Account</a>
 				<?php echo form_close(); ?>
 			

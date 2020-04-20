@@ -3,11 +3,12 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ci-card">
+            <div class="card-header"><?php echo isset($row['content_type']) ? ucwords($row['content_type']) : '';?></div>
             <div class="card-body">
                 <?php if(isset($data_rows) && sizeof($data_rows> 0)){ ?>
                 <?php foreach($data_rows as $key=>$row) { ?>
-                    <h5 class="card-title"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></h5>
-                    <div class="small text-muted">Published on <?php echo $this->common_lib->display_date($row['content_created_on'],true,null); ?></div>
+                    <h6 class="card-title mb-0"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></h6>
+                    <div class="text-muted small mb-3">Published on <?php echo $this->common_lib->display_date($row['content_created_on'],true,null); ?></div>
                     <div class="mt-3">
                         <?php echo isset($row['content_text']) ? trim($row['content_text']) : '';?>
                     </div>

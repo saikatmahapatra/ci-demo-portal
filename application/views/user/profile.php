@@ -87,8 +87,9 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card ci-card ci-dl">
+			<div class="card-header">Profile Card</div>
 			<div class="card-body">
-			<h5 class="card-title"><?php echo isset($row['user_emp_id']) ? 'Emp ID - UEIPL/'.$row['user_emp_id'] : ''; ?></h5>
+			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<div class="row">
 					<div class="col-lg-3 text-center mb-3">
@@ -110,7 +111,7 @@
 						<?php if($is_self_account == true) { ?>
 						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>" data-toggle="tooltip" title="Change or remove this photo"><i class="fa fa-fw fa-camera"></i> Change</a>
 						<?php } ?>
-						<div class="font-weight-bold">
+						<div class="h6 mt-3 mb-0">
 							<?php
 								//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 								echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
@@ -122,8 +123,8 @@
 							<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
 						</div>
 						<div class="">
-							<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
-							<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>
+							<?php echo isset($row['user_phone1']) && strlen($row['user_phone1']) > 0 ? $row['user_phone1'] : ''; ?>
+							<?php echo isset($row['user_phone2']) && strlen($row['user_phone2']) > 0 ? ' / '.$row['user_phone2'] : ''; ?>
 						</div>
 						<div class="small">Emp ID - <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
 						<div class="small"><?php echo isset($row['employment_type_name']) ? $row['employment_type_name'] : ''; ?></div>
@@ -131,7 +132,7 @@
 						<div class="small">Department - <?php echo isset($row['department_name']) ? $row['department_name'] : ''; ?></div>
 
 						<?php if($is_self_account == true) { ?>
-							<a class="btn btn-sm btn-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i> Edit Basic Information</a>
+							<a class="btn btn-sm btn-outline-primary mt-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i> Edit Basic Information</a>
 						<?php } ?>
 						
 					</div><!--/.col-lg-3-->
@@ -401,7 +402,7 @@
 									<div class="row mt-3">
 										<div class="col-lg-12">
 											<dl class="row">
-												<dt class="col-sm-3">Portal Account Status</dt>
+												<dt class="col-sm-3">Account status</dt>
 												<dd class="col-sm-3">
 													<?php echo isset($user_row['user_status']) ? $user_status_arr[$user_row['user_status']]['text'] : '-'; ?>
 												</dd>
@@ -410,7 +411,7 @@
 											
 												<dt class="col-sm-3">Registered from IP</dt>
 												<dd class="col-sm-3"><?php echo isset($user_row['user_registration_ip']) ? $user_row['user_registration_ip'] : '-'; ?></dd>
-												<dt class="col-sm-3">Last Login Date Time</dt>
+												<dt class="col-sm-3">Last login</dt>
 												<dd class="col-sm-3"><?php echo isset($user_row['user_login_date_time']) ? $this->common_lib->display_date($user_row['user_login_date_time'],true) : '-'; ?></dd>									
 											</dl>
 										</div>

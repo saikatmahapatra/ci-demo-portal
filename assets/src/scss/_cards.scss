@@ -73,27 +73,19 @@
     .card-body {
         flex: 1 1 auto;
         padding: 1.25rem;
-        .card-title {
-            //text-transform: uppercase;
-            color: rgba(13, 27, 62, 0.7);
-            font-weight: bold;
-            font-size: 0.9375rem
+    }
+    .card-header {
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 0;
+        border-bottom: 1px solid;
+        border-color: #d8dbe0;
+        background-color: $white;
+        &:first-child {
+            border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
         }
     }
-    .card-header,
-    .card-title {
-        //text-transform: uppercase;
-        color: rgba(13, 27, 62, 0.7);
-        font-weight: bold;
-        font-size: 0.9375rem;
-        background-color: none;
-        border-bottom: none;
-    }
-    .card-title {
-        margin-bottom: 0.75rem;
-    }
     .card-footer {
-        background-color: rgba(0, 0, 0, 0);
+        background-color: $white;
         border-top: none;
     }
 }
@@ -111,8 +103,7 @@
             font-size: 80%;
         }
         .digit {
-            //margin-top: .5rem;
-            font-weight: 700;
+            font-size: 1.25rem;
         }
     }
 }

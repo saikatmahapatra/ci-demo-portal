@@ -2,9 +2,10 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
     <div class="col-lg-12">
-        <div class="card ci-card">
+        <div class="card ci-card"> 
+            <div class="card-header">Projects</div>
             <div class="card-body">
-            <h5 class="card-title">Projects</h5>
+           
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="ci-link-group">
                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>"

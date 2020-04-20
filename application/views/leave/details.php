@@ -9,8 +9,8 @@ $row = $data_rows[0];
 <div class="row">
     <div class="col-lg-12 ci-dl">
         <div class="card ci-card">
+            <div class="card-header">Leave Details #<?php echo $row['leave_req_id'];?></div>
             <div class="card-body">
-                <h5 class="card-title">Leave Details</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <dl class="row">
                     <dt class="col-lg-2">Application No</dt>
