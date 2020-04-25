@@ -28,7 +28,7 @@
                     
                         <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ml-2', 'name' => 'download_data')); ?>
 						<input type="hidden" name="form_action" value="download">
-						<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download data as excel"> <i class="fa fa-fw fa-download" aria-hidden="true"></i> Export Data</button>
+						<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download data as excel"> <i class="fas fa-download" aria-hidden="true"></i> Export Data</button>
 					<?php echo form_close(); ?>
                 </div>
 

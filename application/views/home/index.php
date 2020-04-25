@@ -58,7 +58,6 @@
         <div class="card ci-card">
             <div class="card-header">Event Calendar</div>
             <div class="card-body">
-                <!-- <a href="#" class="btn btn-link btn-sm float-right"><i class="fa fa-fw fa-window-maximize" aria-hidden="true"></i> Full Screen</a> -->
                 <div id="ci_full_calendar"></div>
             </div>
             <!-- Button trigger modal -->

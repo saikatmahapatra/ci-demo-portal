@@ -99,14 +99,14 @@ class Project extends CI_Controller {
                 'title' => 'Edit',
             ));
             $action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/project_tasks/pid/' .$result['id']), '<i class="fa fa-fw fa-list" aria-hidden="true"></i>', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/project_tasks/pid/' .$result['id']), '<i class="fas fa-list" aria-hidden="true"></i>', array(
                 'class' => 'btn btn-sm btn-outline-secondary',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Tasks',
                 'title' => 'Tasks',
             ));
             /*$action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fas fa-trash-alt-o" aria-hidden="true"></i> Delete', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fas fa-trash-alt" aria-hidden="true"></i> Delete', array(
                 'class' => 'btn btn-sm btn-outline-danger btn-delete',
 				'data-confirmation'=>true,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',
@@ -247,7 +247,7 @@ class Project extends CI_Controller {
                 'title' => 'Edit',
             ));
             /*$action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fas fa-trash-alt-o" aria-hidden="true"></i> Delete', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fas fa-trash-alt" aria-hidden="true"></i> Delete', array(
                 'class' => 'btn btn-sm btn-outline-danger btn-delete',
 				'data-confirmation'=>true,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',

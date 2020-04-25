@@ -109,7 +109,7 @@
 						?>
 						<img class="dp rounded mx-auto d-block img-thumbnail" src="<?php echo base_url($img_src);?>">
 						<?php if($is_self_account == true) { ?>
-						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>" data-toggle="tooltip" title="Change or remove this photo"><i class="fa fa-fw fa-camera"></i> Change</a>
+						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>" data-toggle="tooltip" title="Change or remove this photo"><i class="fas fa-camera"></i> Change</a>
 						<?php } ?>
 						<div class="h6 mt-3 mb-0">
 							<?php
@@ -132,41 +132,41 @@
 						<div class="small">Department - <?php echo isset($row['department_name']) ? $row['department_name'] : ''; ?></div>
 
 						<?php if($is_self_account == true) { ?>
-							<a class="btn btn-sm btn-outline-primary mt-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i> Edit Basic Information</a>
+							<a class="btn btn-sm btn-outline-primary mt-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Edit Basic Information</a>
 						<?php } ?>
 						
 					</div><!--/.col-lg-3-->
 					<div class="col-lg-9">
 						<nav>
 							<div class="nav nav-tabs ci-nav-tab small" id="nav-tab" role="tablist">
-								<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><i class="fa fa-fw fa-info-circle" aria-hidden="true"></i> Basic Info</a>
+								<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><i class="fas fa-info-circle" aria-hidden="true"></i> Basic Info</a>
 
 								<?php if($display_address == true){  ?>
-								<a class="nav-item nav-link" id="nav-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Address</a>
+								<a class="nav-item nav-link" id="nav-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><i class="fas fa-map-marker" aria-hidden="true"></i> Address</a>
 								<?php } ?>
 
 								<?php if($display_education == true){  ?>
-								<a class="nav-item nav-link" id="nav-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><i class="fa fa-fw fa-certificate" aria-hidden="true"></i> Education</a>
+								<a class="nav-item nav-link" id="nav-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><i class="fas fa-certificate" aria-hidden="true"></i> Education</a>
 								<?php } ?>
 
 								<?php if($display_experience == true){  ?>
-								<a class="nav-item nav-link" id="nav-4" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false"><i class="fa fa-fw fa-briefcase" aria-hidden="true"></i> Experiences</a>
+								<a class="nav-item nav-link" id="nav-4" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false"><i class="fas fa-briefcase" aria-hidden="true"></i> Experiences</a>
 								<?php } ?>
 								
 								<?php if($display_salary_ac == true){  ?>
-								<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="false"><i class="fa fa-fw fa-credit-card" aria-hidden="true"></i> Salary A/C</a>
+								<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="false"><i class="fas fa-credit-card" aria-hidden="true"></i> Salary A/C</a>
 								<?php } ?>
 
 								<?php if($display_emergency_contact == true){  ?>
-								<a class="nav-item nav-link" id="nav-7" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fa fa-fw fa-medkit" aria-hidden="true"></i> Emergency Contacts</a>
+								<a class="nav-item nav-link" id="nav-7" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fas fa-medkit" aria-hidden="true"></i> Emergency Contacts</a>
 								<?php } ?>
 
 								<?php if($display_uploaded_files == true){  ?>
-								<a class="nav-item nav-link" id="nav-8" data-toggle="tab" href="#tab-8" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fa fa-fw fa-cloud-download" aria-hidden="true"></i> Docs</a>
+								<a class="nav-item nav-link" id="nav-8" data-toggle="tab" href="#tab-8" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fas fa-file-alt" aria-hidden="true"></i> Docs</a>
 								<?php } ?>
 
 								<?php if($display_others == true){  ?>
-								<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false"><i class="fa fa-fw fa-pie-chart" aria-hidden="true"></i> Others</a>
+								<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false"><i class="fas fa-list-ul" aria-hidden="true"></i> Others</a>
 								<?php } ?>
 							</div>
 						</nav>
@@ -242,8 +242,8 @@
 													<?php echo isset($address_type[$addr['address_type']]) ? $address_type[$addr['address_type']] : 'Address'; ?>
 
 													<?php if($is_self_account == true) { ?>
-														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fa fa-fw  fa-pencil" aria-hidden="true"></i> Edit</a>
-														<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-link btn-sm"><i class="fa fa-fw fa-trash-o" aria-hidden="true"></i> Delete</a> -->
+														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Edit</a>
+														<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-link btn-sm"><i class="fas fa-trash-o" aria-hidden="true"></i> Delete</a> -->
 													<?php } ?>
 												</div>
 												<div>
@@ -281,7 +281,7 @@
 												<?php echo isset($edu['qualification_name'])?$edu['qualification_name']: ' ';?> - <?php echo isset($edu['degree_name'])?$edu['degree_name']:'';?>
 												<?php echo isset($edu['academic_from_year']) ? '('.$edu['academic_from_year'].'-'.$edu['academic_to_year'].')':'';?>
 												<?php if($is_self_account == true) { ?>
-													<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fa fa-fw  fa-pencil" aria-hidden="true"></i> Edit</a>
+													<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Edit</a>
 												<?php } ?>
 												</div>
 												<div>
@@ -331,7 +331,7 @@
 														<div class="section-heading">
 															<?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?>
 															<?php if($is_self_account == true) { ?>		
-															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fa fa-fw  fa-pencil" aria-hidden="true"></i> Edit</a>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Edit</a>
 															<?php } ?>
 														</div>
 														<div class="">
@@ -377,7 +377,7 @@
 													<div class="section-heading">
 														<?php echo isset($row['bank_name'])? $row['bank_name']: ' ';?>
 														<?php echo isset($row['ifsc_code']) ? '('.$row['ifsc_code'].')' : '-'; ?>
-														<?php if($is_self_account == true) { ?>	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i> Edit</a>	<?php } ?>
+														<?php if($is_self_account == true) { ?>	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Edit</a>	<?php } ?>
 													</div>
 													<div class="text-muted small">
 													<?php echo isset($row['account_uses'])? $account_uses[$row['account_uses']]: ' ';?>
@@ -438,8 +438,8 @@
 													<div class="section-heading">
 														<?php echo isset($con['contact_person_name'])?$con['contact_person_name']: ' ';?>
 														<?php if($is_self_account == true) { ?>
-															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_emergency_contact/'.$con["id"]);?>" class="btn-action"><i class="fa fa-fw  fa-pencil" aria-hidden="true"></i> Edit</a>
-															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_emergency_contact/'.$con["id"]);?>" class="btn-action"><i class="fa fa-fw  fa-trash-o" aria-hidden="true"></i> Delete</a>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_emergency_contact/'.$con["id"]);?>" class="btn-action"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Edit</a>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_emergency_contact/'.$con["id"]);?>" class="btn-action"><i class="fas fa-times" aria-hidden="true"></i> Delete</a>
 														<?php } ?>
 													</div>
 													<div class="text-muted small"><?php echo isset($con['relationship']) ? $con['relationship']: '';?></div>													
@@ -496,7 +496,7 @@
 														}
 													?>
 													
-													<a data-target="window" target="_new" href="<?php echo $file_src;?>" title="<?php echo $upload['upload_file_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><i class="fa fa-fw fa-download"></i> View</a>
+													<a data-target="window" target="_new" href="<?php echo $file_src;?>" title="<?php echo $upload['upload_file_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><i class="fas fa-download"></i> View</a>
 												</div>
 											</div>
 											<?php } //foreach ?>

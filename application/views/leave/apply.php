@@ -1,7 +1,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-<p><i class="fa fa-fw fa-question-circle-o" aria-hidden="true"></i> Looking for help or information? Click <a class=""
+<p><i class="fas fa-question" aria-hidden="true"></i> Looking for help or information? Click <a class=""
         href="#" data-toggle="modal" id="view_leave_balance_update_details" data-target="#leaveBalanceModal">here to
         read.</a></p>
 

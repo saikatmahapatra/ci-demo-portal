@@ -65,7 +65,7 @@
                 <input type="hidden" name="from_date" value="<?php echo $this->input->get('from_date');?>">
                 <input type="hidden" name="to_date" value="<?php echo $this->input->get('to_date');?>">
                 <button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip"
-                    title="Download the data as excel"> <i class="fa fa-fw fa-download" aria-hidden="true"></i>
+                    title="Download the data as excel"> <i class="fas fa-download" aria-hidden="true"></i>
                     Download</button>
                 <?php echo form_close(); ?>
                 <?php } ?>
@@ -80,7 +80,7 @@
                     <input type="hidden" name="from_date" value="<?php echo $this->input->get('from_date');?>">
                     <input type="hidden" name="to_date" value="<?php echo $this->input->get('to_date');?>">
                     <button type="submit" class="btn btn-sm btn-outline-secondary" title="Download"> <i
-                            class="fa fa-fw fa-download" aria-hidden="true"></i> Download as Excel</button>
+                            class="fas fa-download" aria-hidden="true"></i> Download as Excel</button>
                     <?php echo form_close(); ?>
                     <?php } */ ?>
 

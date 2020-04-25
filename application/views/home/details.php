@@ -16,7 +16,7 @@ $row = $data_rows[0];
 						<?php echo $this->common_lib->display_date($row['content_created_on'],true,null); ?>
 				</div>
 				<?php echo isset($row['content_text']) ? $row['content_text'] : '';?>
-				<a href="<?php echo $redirect_back_url; ?>" class="btn btn-outline-secondary btn-sm"><i class="fa fa-fw fa-chevron-left" aria-hidden="true"></i> Go to dashboard</a>
+				<a href="<?php echo $redirect_back_url; ?>" class="btn btn-outline-secondary btn-sm"><i class="fas fa-chevron-left" aria-hidden="true"></i> Go to dashboard</a>
 			</div><!--/.card-body-->
 		</div><!--/.card-->
 	</div>

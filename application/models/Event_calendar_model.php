@@ -126,7 +126,7 @@ class Event_calendar_model extends CI_Model {
             $data1[$key]['extendedProps'] = array(
                 'event_type' => ($val['holiday_type'] == 'C' ? 'Holiday' : 'Optional Holiday'),
                 'event_type_css' => 'badge badge-danger',
-                'icon' => '<i class="fa fa-calendar-times-o" aria-hidden="true"></i> '
+                'icon' => '<i class="fas fa-calendar-alt" aria-hidden="true"></i> '
             );
           }
         }
@@ -151,7 +151,7 @@ class Event_calendar_model extends CI_Model {
               $data2[$key]['extendedProps'] = array(
                 'event_type' => 'Timesheet',
                 'event_type_css' => 'badge badge-primary',
-                'icon' => '<i class="fa fa-clock-o" aria-hidden="true"></i> '
+                'icon' => '<i class="fas fa-clock-o" aria-hidden="true"></i> '
             );
             }
           }
@@ -183,7 +183,7 @@ class Event_calendar_model extends CI_Model {
               $data3[$key]['extendedProps'] = array(
                 'event_type' => 'Leave',
                 'event_type_css' => 'badge badge-warning',
-                'icon' => '<i class="fa fa-paper-plane-o" aria-hidden="true"></i> '
+                'icon' => '<i class="fas fa-paper-plane-o" aria-hidden="true"></i> '
             );
             }
           }

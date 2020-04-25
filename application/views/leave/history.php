@@ -8,8 +8,7 @@
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="ci-link-group">
                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>"
-                        class="btn btn-sm btn-outline-secondary" title="Apply Leave"> <i class="fa fa-fw fa-send-o"></i>
-                        Apply Leave</a>
+                        class="btn btn-sm btn-outline-secondary" title="Apply Leave">Apply Leave</a>
                 </div>
 
                 <div class="table-responsive">
@@ -21,7 +20,7 @@
                                 <th scope="col">From Date</th>
                                 <th scope="col">To Date</th>
                                 <th scope="col">Days</th>
-                                <th scope="col">Leave Status</th>
+                                <th scope="col">Status</th>
                                 <!-- <th scope="col">Reason</th>-->
                                 <th scope="col"></th>
                             </tr>
@@ -48,7 +47,7 @@
                                 <td>
                                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/history');?>"
                                         class="btn btn-outline-info btn-sm" data-toggle="tooltip"
-                                        title="View Details"><i class="fa fa-fw  fa-info-circle"
+                                        title="View Details"><i class="fas fa-info-circle"
                                             aria-hidden="true"></i></a>
                                 </td>
                             </tr>
