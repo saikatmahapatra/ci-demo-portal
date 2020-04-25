@@ -60,7 +60,7 @@
             <li><a href="<?php echo base_url('user/profile');?>">My Profile</a></li>
             <li><a href="<?php echo base_url('document');?>">My Documents</a></li>
             <li><a href="<?php echo base_url('user/change_password');?>">Change Password</a></li>
-            <!-- <li><a href="<?php echo base_url('user/logout');?>">Sign out</a></li> -->
+            <li><a href="<?php echo base_url('user/logout');?>">Sign out</a></li>
             </ul>
         </li>
     </ul>
