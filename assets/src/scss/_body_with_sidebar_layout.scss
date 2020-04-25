@@ -3,7 +3,6 @@
     font-family: 'Poppins', sans-serif;
     background-color: #ebedef;
     a:not(.btn) {
-        color: inherit;
         text-decoration: none;
         transition: all 0.3s;
     }
@@ -31,6 +30,11 @@
         width: 100%;
     }
     #sidebar {
+        a:not(.btn) {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
         width: 250px;
         position: fixed;
         top: 0;

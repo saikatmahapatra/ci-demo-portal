@@ -83,6 +83,9 @@
 
 .dashboard-card-widgets {
     .card {
+        a:not(.btn) {
+            color: inherit;
+        }
         .card-body {
             padding-top: .5rem;
             padding-bottom: .5rem;
