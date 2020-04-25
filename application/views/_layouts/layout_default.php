@@ -6,7 +6,7 @@
     <link href="<?php echo base_url('assets/dist/css/styles.min.css?time='.time()); ?>" rel="stylesheet">
 	
     <!-- Font Awesome Icons -->
-    <link href="<?php echo base_url('assets/vendors/font-awesome/css/font-awesome.min.css');?>" rel="stylesheet">    
+    <link href="<?php echo base_url('assets/vendors/font-awesome-free/css/fontawesome.min.css');?>" rel="stylesheet">    
     <!-- jQuery DataTables Core CSS -->    
     <link href="<?php //echo base_url('assets/vendors/datatables.net-dt/css/jquery.dataTables.css');?>" rel="stylesheet">
     <!-- Bootstrap 4 DataTables CSS -->    
@@ -67,7 +67,7 @@
                         <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown_5" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false"><i class="fa fa-fw fa-user-circle " aria-hidden="true"></i> My Account</a>
+                                aria-expanded="false"><i class="fas fa-user-circle " aria-hidden="true"></i> My Account</a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown_5">					
                                 <div class="dropdown-item welcome-user-container">
                                     <div class="mb-1"><?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></div>
@@ -132,8 +132,8 @@
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/timegrid/main.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/list/main.js');?>"></script>
     <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/solid.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/fontawesome.min.js');?>"></script>
     <!-- jQuery Custom Scroller CDN -->
     <script src="<?php echo base_url('assets/vendors/malihu-custom-scrollbar-plugin/js/jquery.mCustomScrollbar.concat.min.js');?>"></script>
 	<!--Application Specific JS Loading Through Controllers-->
