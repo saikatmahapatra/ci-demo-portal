@@ -25,8 +25,8 @@
             <li><a href="<?php echo base_url('holiday'); ?>">Manage Holiday Calendar</a></li>
             <li><a href="<?php echo base_url('user/create_account'); ?>">Add New Employee</a></li>
             <li><a href="<?php echo base_url('user/manage'); ?>">Employee Management</a></li>
-            <li><a href="<?php echo base_url('leave/manage/all'); ?>">Track Leave Application</a></li>
-            <li><a href="<?php echo base_url('leave/view_leave_balance'); ?>">Leave Balance</a></li>
+            <li><a href="<?php echo base_url('leave/manage/all'); ?>">Leave Applications</a></li>
+            <li><a href="<?php echo base_url('leave/view_leave_balance'); ?>">Leave Balance Management</a></li>
             <li><a href="<?php echo base_url('leave/manage/assigned_to_me'); ?>">Leave to Approve</a></li>
             <li><a href="<?php echo base_url('timesheet/report'); ?>">Timesheet Report</a></li>
             <li><a href="<?php echo base_url('project'); ?>">Projects</a></li>
