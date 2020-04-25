@@ -3,9 +3,10 @@
 // Import variables to override bootstrap 4 built in variables
 @import 'customize-bootstrap';
 // Bootstrap 4 SCSS
-@import 'assets/vendors/bootstrap/scss/bootstrap';
+@import '../../../node_modules/bootstrap/scss/bootstrap';
 //Custom CSS - This App Specific CSS
 @import '_app';
+@import '_body_with_sidebar_layout';
 @import '_nav';
 @import '_navbar';
 @import '_sidebar';

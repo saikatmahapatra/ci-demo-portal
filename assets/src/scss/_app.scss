@@ -1,5 +1,5 @@
 body {
-    margin-top: 4rem;
+    //margin-top: 4rem;
     background-color: #ebedef;
 }
 
@@ -30,6 +30,16 @@ body.login {
     width: 180px;
     @media (max-width: 576px) {
         width: 130px;
+    }
+}
+
+.navbar-brand-centered-logo {
+    padding: 0;
+    img {
+        width: 150px;
+        @media (max-width: 576px) {
+            width: 150px;
+        }
     }
 }
 
@@ -239,5 +249,4 @@ body.login {
 .footer {
     height: 50px;
     padding: 1rem;
-    margin-bottom: 15px;
 }

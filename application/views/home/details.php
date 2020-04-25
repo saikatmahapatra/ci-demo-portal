@@ -9,7 +9,7 @@ $row = $data_rows[0];
 		<div class="card ci-card">
 		<div class="card-header"><?php echo isset($row['content_type']) ? ucwords($row['content_type']) : '';?></div>
 			<div class="card-body">
-			<h6 class="card-title mb-0"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></h6>
+			<div class="card-title mb-2"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></div>
 				<div class="text-muted small mb-3">
 						<?php echo isset($row['user_firstname']) ? 'Published by <a href="'.base_url('user/profile/'.$row['content_created_by']).'" target="_blank">'.$row['user_firstname'] : '';?>
 						<?php echo isset($row['user_lastname']) ? $row['user_lastname']."</a> on " : '';?>
