@@ -232,7 +232,7 @@
 								<div class="row mt-3">
 									<div class="col-lg-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><i class="fas fa-plus" aria-hidden="true"></i> Add New</a>
 										<?php } ?>
 										<?php if(isset($address)){
 											foreach($address as $key=>$addr){
@@ -270,7 +270,7 @@
 								<div class="row mt-3">
 									<div class="col-lg-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><i class="fas fa-plus" aria-hidden="true"></i> Add New</a>
 										<?php } ?>
 										
 										<?php if(isset($education)){
@@ -307,7 +307,7 @@
 								<div class="row mt-3">
 									<div class="col-lg-12">
 									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><i class="fas fa-plus" aria-hidden="true"></i> Add New</a>
 									<?php } ?>
 
 											<div class="user-profile-section">
@@ -355,7 +355,7 @@
 								<div class="row mt-3">
 									<div class="col-lg-12">
 									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><i class="fas fa-plus" aria-hidden="true"></i> Add New</a>
 									<?php } ?>
 										<?php //print_r($bank_details);?>
 										<?php $uni = isset($user_national_identifiers) ? $user_national_identifiers[0] : ''; ?>
@@ -424,7 +424,7 @@
 								<div class="row mt-3">
 									<div class="col-lg-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><i class="fas fa-plus" aria-hidden="true"></i> Add New</a>
 										<?php } ?>
 
 
