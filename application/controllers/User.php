@@ -1118,7 +1118,7 @@ class User extends CI_Controller {
         $rows = $this->user_model->get_rows($user_id);
         $this->data['row'] = $rows['data_rows'];
         if(isset($this->data['row'][0]) && $this->data['row'][0]['user_status']=='A'){
-            $this->common_lib->set_flash_message('<i class="fas fa-exclamation-circle" aria-hidden="true"></i> You can\'t edit the selected user as the user account has already been archived.','alert-danger');
+            $this->common_lib->set_flash_message('<i class="fas fa-exclamation-triangle" aria-hidden="true"></i> You can\'t edit the selected user as the user account has already been archived.','alert-danger');
             redirect($this->router->directory.$this->router->class.'/manage');
         }
         $res_pic = $this->user_model->get_user_profile_pic($user_id);

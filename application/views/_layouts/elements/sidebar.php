@@ -2,16 +2,12 @@
     <div class="sidebar-header">
         <h3>Self Service Portal</h3>
     </div>
-
-    <ul class="list-unstyled components">
     <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
+    <ul class="list-unstyled components">
         <p class="">
-            <?php //echo $this->common_lib->get_greetings().'!'; ?>
-            Welcome, 
+            <?php echo $this->common_lib->get_greetings().'!'; ?>
             <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'] :'';?>
         </p>
-    <?php } ?>
-        
         <li class=""><!--/.active-->
             <a href="<?php echo base_url($this->router->directory); ?>"><i class="fas fa-home"></i> Dashboard</a>
         </li>
@@ -64,7 +60,7 @@
             <li><a href="<?php echo base_url('user/profile');?>">My Profile</a></li>
             <li><a href="<?php echo base_url('document');?>">My Documents</a></li>
             <li><a href="<?php echo base_url('user/change_password');?>">Change Password</a></li>
-            <!-- <li><a href="<?php echo base_url('user/logout');?>">Logout</a></li> -->
+            <!-- <li><a href="<?php echo base_url('user/logout');?>">Sign out</a></li> -->
             </ul>
         </li>
     </ul>
@@ -77,4 +73,5 @@
             <a href="#" class="article"><?php echo $this->config->item('app_version');?></a>
         </li>
     </ul>
+    <?php } ?>
 </nav>

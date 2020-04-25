@@ -27,7 +27,7 @@
 				<?php
 				if(isset($data_rows) && sizeof($data_rows)<=0){
 					?>
-					<div class="text-danger"><i class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></i> Oops! No results found.</div>
+					<div class="text-danger"><i class="fa fa-fw fas fa-exclamation-triangle" aria-hidden="true"></i> Oops! No results found.</div>
 					<?php
 				}
 				?>

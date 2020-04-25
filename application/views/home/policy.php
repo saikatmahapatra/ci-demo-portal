@@ -7,7 +7,7 @@
             <div class="card-body">
                 <?php if(isset($data_rows) && sizeof($data_rows> 0)){ ?>
                 <?php foreach($data_rows as $key=>$row) { ?>
-                    <h6 class="card-title mb-0"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></h6>
+                    <div class="card-title mb-2 font-weight-bold"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></div>
                     <div class="text-muted small mb-3">Published on <?php echo $this->common_lib->display_date($row['content_created_on'],true,null); ?></div>
                     <div class="mt-3">
                         <?php echo isset($row['content_text']) ? trim($row['content_text']) : '';?>
