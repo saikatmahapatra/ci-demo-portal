@@ -243,7 +243,7 @@
 
 													<?php if($is_self_account == true) { ?>
 														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Edit</a>
-														<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-link btn-sm"><i class="fas fa-trash-o" aria-hidden="true"></i> Delete</a> -->
+														<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-link btn-sm"><i class="fas fa-times" aria-hidden="true"></i> Delete</a> -->
 													<?php } ?>
 												</div>
 												<div>

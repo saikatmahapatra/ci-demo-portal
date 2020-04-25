@@ -72,7 +72,7 @@
                                         data-confirmation-message="Are you sure, you want to delete this?"
                                         data-upload_id="<?php echo $upload['id'];?>"
                                         title="Delete <?php echo $upload['upload_file_type_name']; ?>"
-                                        data-path="<?php echo $file_path;?>"><i class="fas fa-trash-alt"></i></a>
+                                        data-path="<?php echo $file_path;?>"><i class="fas fa-times"></i></a>
                                     <a href="<?php echo $file_src;?>"
                                         title="<?php echo $upload['upload_file_type_name'];?>"
                                         data-file-name="<?php echo $upload['upload_file_name']; ?>"

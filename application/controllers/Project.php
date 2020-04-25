@@ -106,7 +106,7 @@ class Project extends CI_Controller {
                 'title' => 'Tasks',
             ));
             /*$action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fas fa-trash-alt" aria-hidden="true"></i> Delete', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fas fa-times" aria-hidden="true"></i> Delete', array(
                 'class' => 'btn btn-sm btn-outline-danger btn-delete',
 				'data-confirmation'=>true,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',
@@ -247,7 +247,7 @@ class Project extends CI_Controller {
                 'title' => 'Edit',
             ));
             /*$action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fas fa-trash-alt" aria-hidden="true"></i> Delete', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fas fa-times" aria-hidden="true"></i> Delete', array(
                 'class' => 'btn btn-sm btn-outline-danger btn-delete',
 				'data-confirmation'=>true,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',

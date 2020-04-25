@@ -449,7 +449,7 @@ class Leave extends CI_Controller {
                 'data-original-title' => 'Edit',
                 'title' => 'Edit',
             ));*/            
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fas fa-trash-alt" aria-hidden="true"></i>', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fas fa-times" aria-hidden="true"></i>', array(
                 'class' => 'text-danger btn-delete',
 				'data-confirmation'=>false,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',
