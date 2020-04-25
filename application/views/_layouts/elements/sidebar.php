@@ -15,7 +15,7 @@
         <li class=""><!--/.active-->
             <a href="<?php echo base_url($this->router->directory); ?>"><i class="fas fa-home"></i> Dashboard</a>
         </li>
-        <li><a href="<?php echo base_url('event_calendar'); ?>"><i class="fas fa-calendar-alt"></i> Event Calendar</a></li>
+        <!-- <li><a href="<?php echo base_url('event_calendar'); ?>"><i class="fas fa-calendar-alt"></i> Event Calendar</a></li> -->
         <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
         <li class="">
             <a href="#adminSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-lock"></i> Admin or HRMS</a>
@@ -38,10 +38,11 @@
         <li class="">
             <a href="#organizationSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-bookmark"></i> Organization</a>
             <ul class="collapse list-unstyled" id="organizationSubmenu">
+                <li><a href="<?php echo base_url('event_calendar'); ?>">Event Calendar</a></li>
                 <li><a href="<?php echo base_url('user/people');?>">Employees</a></li>
                 <li><a href="<?php echo base_url('user/reportee_employee'); ?>">My Reportees</a></li>
                 <li><a href="<?php echo base_url('home/policy'); ?>">HR Policies</a></li>
-                <li><a href="<?php echo base_url('holiday/view');?>">Holidays List [<?php echo date('Y');?>]</a></li>
+                <li><a href="<?php echo base_url('holiday/view');?>">Holidays List </a></li>
             </ul>
         </li>
 

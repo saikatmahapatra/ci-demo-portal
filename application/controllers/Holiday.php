@@ -252,7 +252,7 @@ class Holiday extends CI_Controller {
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		$result_array = $this->holiday_model->get_holidays(NULL, NULL, NULL, FALSE, FALSE);
         $this->data['data_rows'] = $result_array['data_rows'];
-		$this->data['page_title'] = date('Y').' Holidays';
+		$this->data['page_title'] = 'Holidays List';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/view', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

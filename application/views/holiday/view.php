@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-9">
 		<div class="card ci-card">
-			<div class="card-header">List of Holidays</div>
+			<div class="card-header">Holidays <?php echo date('Y');?></div>
 			<div class="card-body">
 				<div class="table-responsive">
 			<table class="table ci-table table-sm table-bordered text-center">
