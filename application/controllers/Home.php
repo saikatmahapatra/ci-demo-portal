@@ -105,7 +105,7 @@ class Home extends CI_Controller {
         $stat_pending_leave_action = $this->home_model->get_pending_leave_action_count($this->sess_user_id);
         $stat_user_timesheet_stat = $this->timesheet_model->get_timesheet_stats(date('Y'), date('m'), $this->sess_user_id);
 
-        $dashboard_stat['user'] = array('target_role' => '1', 'heading'=>'Employees', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-primary', 'icon'=>'<i class="fa fa-user-circle-o" aria-hidden="true"></i>', 'count'=>$stat_user_count['data_rows'][0]['total'], 'url' => base_url('user/manage'));
+        $dashboard_stat['user'] = array('target_role' => '1', 'heading'=>'Employees', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-primary', 'icon'=>'<i class="fas fa-user" aria-hidden="true"></i>', 'count'=>$stat_user_count['data_rows'][0]['total'], 'url' => base_url('user/manage'));
 
         $dashboard_stat['project'] = array('target_role' => '1', 'heading'=>'Projects', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-secondary', 'icon'=>'', 'count'=>$stat_projects_count['data_rows'][0]['total'], 'url' => base_url('project'));
 
