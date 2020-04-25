@@ -41,7 +41,7 @@
 					<i class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></i> You are either L1 or L2 approver for Leave request management for the below associates. If you find any irrelevant information please get in touch with HR for further process and clarification.
 					</div>
 					<table class="table ci-table table-sm table-bordered text-center">
-						<thead class="thead-dark">
+						<thead class="thead-light">
 						<tr>
 							<th scope="col">Emp ID</th>
 							<th scope="col">Emploee Name</th>

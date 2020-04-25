@@ -33,8 +33,8 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table id="view-leave-bal-datatable" class="table ci-table table-striped table-sm">
-                        <thead class="thead-dark">
+                    <table id="view-leave-bal-datatable" class="table ci-table table-sm table-bordered text-center">
+                        <thead class="thead-light">
                             <tr>
                                 <th scope="col">Emp ID</th>
                                 <th scope="col">Employee Name</th>

@@ -8,8 +8,8 @@
 		</div>	
 			
 		<th class="table-responsive">
-			<table class="table ci-table table-striped table-sm">
-				<thead class="thead-dark">
+			<table class="table ci-table table-sm table-bordered text-center">
+				<thead class="thead-light">
 					<tr>
 						<th scope="col">Title</th>
 						<th scope="col">Content Type</th>

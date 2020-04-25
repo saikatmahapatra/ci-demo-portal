@@ -9,7 +9,7 @@
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="table-responsive">
 			<table class="table ci-table table-sm table-bordered text-center">
-				<thead class="thead-dark">
+				<thead class="thead-light">
 				<tr>
 					<th scope="col">#</th>
 					<th scope="col">Option</th>

@@ -120,8 +120,8 @@
                         <li>For leave balance debit, credit related issues or information please contact to your HR.
                         </li>
                     </ul>
-                    <table class="table table-sm ci-table table-bordered text-center">
-                        <thead class="thead-dark">
+                    <table class="table ci-table table-sm table-bordered text-center">
+                        <thead class="thead-light">
                             <tr>
                                 <th scope="col">Casual Leave (CL)</th>
                                 <th scope="col">Privileged Leave (PL)</th>

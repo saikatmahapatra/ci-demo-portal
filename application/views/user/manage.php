@@ -18,8 +18,8 @@
 
 				<div class="table-responsive">
 
-					<table id="user-datatable" class="table ci-table table-striped table-sm">
-						<thead class="thead-dark">
+					<table id="user-datatable" class="table ci-table table-sm table-bordered text-center">
+						<thead class="thead-light">
 							<tr>
 								<th>Name</th>
 								<th>Emp ID</th>

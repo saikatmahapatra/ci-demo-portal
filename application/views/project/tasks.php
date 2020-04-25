@@ -13,8 +13,8 @@
                         Add New</a>
                 </div>
                 <div class="table-responsive">
-                    <table id="task-datatable" class="table ci-table table-striped table-sm">
-                        <thead class="thead-dark">
+                    <table id="task-datatable" class="table ci-table table-sm table-bordered text-center">
+                        <thead class="thead-light">
                             <tr>
                                 <th scope="col">Task</th>
                                 <th scope="col">Parent Task</th>
