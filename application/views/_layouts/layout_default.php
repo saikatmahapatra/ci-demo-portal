@@ -67,7 +67,7 @@
                         <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown_5" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false"><i class="fas fa-user-circle " aria-hidden="true"></i> My Account</a>
+                                aria-expanded="false"><i class="fas fa-user" aria-hidden="true"></i> My Account</a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown_5">					
                                 <div class="dropdown-item welcome-user-container">
                                     <div class="mb-1"><?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></div>
