@@ -102,7 +102,7 @@
                             <?php echo $this->common_lib->display_date($row['content_created_on'],true,null); ?>
                         </div>
                         <div class="mb-0 lh-125" style="max-height: 120px; overflow: hidden;">
-                            <?php echo isset($row['content_text']) ? ($this->common_lib->remove_empty_p($row['content_text'])) : '';?>
+                            <?php echo isset($row['content_text']) ? character_limiter(($this->common_lib->remove_empty_p($row['content_text'])), 100) : '';?>
                         </div>
                     </li>
                 <?php }  ?>
