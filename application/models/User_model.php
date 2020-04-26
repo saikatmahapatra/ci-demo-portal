@@ -46,13 +46,16 @@ class User_model extends CI_Model {
         return $result;
     }
 
-    function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE, $userType = NULL) {
+    function get_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE, $userType = NULL, $show_archived = NULL) {
         if ($dataTable == TRUE){
             $this->db->select('t1.id, t1.user_emp_id, t1.user_firstname, t1.user_lastname, t1.user_email, t1.user_phone1,t1.user_status,t4.designation_name,t1.user_status');
         }else{
             $this->db->select('t1.*,t2.role_name, t2.role_weight,t3.department_name, t4.designation_name, t5.employment_type_name');
         }
-        $this->db->where('t1.user_status !=', 'A');
+        if($show_archived == FALSE || $show_archived == NULL) {
+            $this->db->where('t1.user_status !=', 'A');
+        }
+
         if ($id) {
             $this->db->where('t1.id', $id);
         }

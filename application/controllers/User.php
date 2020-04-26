@@ -43,7 +43,7 @@ class User extends CI_Controller {
         $this->data['arr_departments'] = $this->user_model->get_department_dropdown();
         $this->data['arr_employment_types'] = $this->user_model->get_employment_type_dropdown();
 		$this->data['arr_user_title'] = array(''=>'Select Title','Mr.'=>'Mr.','Mrs.'=>'Mrs.','Dr.'=>'Dr.','Ms.'=>'Ms.');
-        $this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-', 'NA'=>'Unknown');
+        $this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-', 'NA'=>'Not Known');
         $this->data['bank_ac_type'] = array('SB'=>'Savings Account','CU'=>'Current Account');
         $this->data['account_uses'] = array('SAL'=>'Salary Credit Account','REI'=>'Reimbursement Account');
         $this->data['arr_gender'] = array('M'=>'Male','F'=>'Female');
@@ -76,8 +76,8 @@ class User extends CI_Controller {
         );
 
         $this->data['user_status_arr'] = array(
-            'N'=>array('text'=>'Inactive', 'css'=>''),
-            'A'=>array('text'=>'Archived', 'css'=>''),
+            'N'=>array('text'=>'Inactive', 'css'=>'text-warning'),
+            'A'=>array('text'=>'Closed', 'css'=>'text-danger'),
             'Y'=>array('text'=>'Active', 'css'=>'')
         );
     }
@@ -194,15 +194,15 @@ class User extends CI_Controller {
 
     function render_datatable() {
         //Total rows - Refer to model method definition
-        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, FALSE, TRUE, 'U');
+        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, FALSE, TRUE, 'U', TRUE);
         $total_rows = $result_array['num_rows'];
 
         // Total filtered rows - check without limit query. Refer to model method definition
-        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, TRUE, FALSE, 'U');
+        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, TRUE, FALSE, 'U', TRUE);
         $total_filtered = $result_array['num_rows'];
 
         // Data Rows - Refer to model method definition
-        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, TRUE, TRUE, 'U');
+        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, TRUE, TRUE, 'U', TRUE);
         $data_rows = $result_array['data_rows'];
         $data = array();
         $no = $_REQUEST['start'];
@@ -750,7 +750,7 @@ class User extends CI_Controller {
         $this->breadcrumbs->push('Profile','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		$user_id = $this->uri->segment(3) ? $this->uri->segment(3) : $this->sess_user_id;
-        $rows = $this->user_model->get_rows($user_id);		
+        $rows = $this->user_model->get_rows($user_id, NULL, NULL, FALSE, TRUE, NULL, TRUE);		
 		$res_pic = $this->user_model->get_user_profile_pic($user_id);
 		$this->data['profile_pic'] = $res_pic[0]['user_profile_pic'];
         $this->data['row'] = $rows['data_rows'];
@@ -1116,10 +1116,10 @@ class User extends CI_Controller {
         ));
         ########### Validate User Auth End #############
         $user_id = $this->uri->segment(3);
-        $rows = $this->user_model->get_rows($user_id);
+        $rows = $this->user_model->get_rows($user_id, NULL, NULL, FALSE, TRUE, NULL, TRUE);
         $this->data['row'] = $rows['data_rows'];
         if(isset($this->data['row'][0]) && $this->data['row'][0]['user_status']=='A'){
-            $this->common_lib->set_flash_message('<i class="fas fa-fw fa-exclamation-triangle" aria-hidden="true"></i> You can\'t edit the selected user as the user account has already been archived.','alert-danger');
+            $this->common_lib->set_flash_message('<i class="fas fa-fw fa-exclamation-triangle" aria-hidden="true"></i> You can\'t edit the selected user as account has already been archived.','alert-danger');
             redirect($this->router->directory.$this->router->class.'/manage');
         }
         $res_pic = $this->user_model->get_user_profile_pic($user_id);
