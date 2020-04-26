@@ -158,12 +158,12 @@ class User_model extends CI_Model {
             $row = $result[0];            
             if (isset($row) && ($row['user_status'] == 'N')) {
                 $login_status = 'error';
-                $message = 'Please activate your account to login.';
+                $message = 'Your account has been deactivated. Please contact to administrator.';
                 $auth_result = array('status' => $login_status,'message' => $message, 'data' => $loggedin_data);
                 return $auth_result;
             } else if (isset($row) && ($row['user_status'] == 'A')) {
                 $login_status = 'error';
-                $message = 'Your account has been deleted permanently.' ;
+                $message = 'Your account has been archived permanently.' ;
                 $auth_result = array('status' => $login_status, 'message' => $message, 'data' => $loggedin_data);
                 return $auth_result;
             } else {
@@ -190,7 +190,7 @@ class User_model extends CI_Model {
             }
         } else {
             $login_status = 'error';
-            $message = 'Login failed. Please try again.';
+            $message = 'The information you entered is incorrect. Please try again.';
             $auth_result = array('status' => $login_status, 'message' => $message, 'data' => $loggedin_data);
             return $auth_result;
         }
