@@ -7,8 +7,8 @@
     <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
     <ul class="list-unstyled components">
         <p class="">
-            <?php echo $this->common_lib->get_greetings().'!'; ?>
-            <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'] :'';?>
+            <?php echo $this->common_lib->get_greetings().', '; ?>
+            <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' !' :'';?>
         </p>
         <li class=""><!--/.active-->
             <a href="<?php echo base_url($this->router->directory); ?>"><i class="fas fa-fw fa-home"></i> Dashboard</a>
