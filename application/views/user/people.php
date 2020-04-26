@@ -18,7 +18,7 @@
 						)); ?>
 						<?php echo form_error('q'); ?>
 						<div class="input-group-append">
-							<button class="btn" type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
+							<button class="btn" type="submit"><i class="fas fa-fw fa-search" aria-hidden="true"></i></button>
 						</div>
 					</div>
 				<?php echo form_close(); ?>
@@ -27,7 +27,7 @@
 				<?php
 				if(isset($data_rows) && sizeof($data_rows)<=0){
 					?>
-					<div class="text-danger"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Oops! No results found.</div>
+					<div class="text-danger"><i class="fas fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Oops! No results found.</div>
 					<?php
 				}
 				?>

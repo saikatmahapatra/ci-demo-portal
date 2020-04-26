@@ -45,9 +45,9 @@
 
                 <div class="table-responsive mt-3">
                     <div class="status-icon-group status-icon-justify mb-3">
-                        <span class=""><i class="fas fa-check text-success" aria-hidden="true"></i> Approved</span>
-                        <span class=""><i class="fas fa-times text-danger" aria-hidden="true"></i> Rejected</span>
-                        <span class=""><i class="fas fa-times text-warning" aria-hidden="true"></i>
+                        <span class=""><i class="fas fa-fw fa-check text-success" aria-hidden="true"></i> Approved</span>
+                        <span class=""><i class="fas fa-fw fa-times text-danger" aria-hidden="true"></i> Rejected</span>
+                        <span class=""><i class="fas fa-fw fa-times text-warning" aria-hidden="true"></i>
                             Cancelled</span>
                     </div>
                     <!--/.status-icon-group status-icon-justify-->
@@ -104,7 +104,7 @@
                                     <?php echo isset($row['supervisor_approver_lastname']) ? $row['supervisor_approver_lastname'] : ''?>
                                     </span>
 
-                                    <?php echo isset($row['supervisor_approver_status']) ? '<span class="'.$leave_status_arr[$row['supervisor_approver_status']]['css'].'"><i class="fas '.$fa_icon.'" aria-hidden="true"></i></span>' : ''; ?>
+                                    <?php echo isset($row['supervisor_approver_status']) ? '<span class="'.$leave_status_arr[$row['supervisor_approver_status']]['css'].'"><i class="fas fa-fw '.$fa_icon.'" aria-hidden="true"></i></span>' : ''; ?>
                                 </td>
                                 <td>
                                     <?php 
@@ -124,7 +124,7 @@
                                     <?php echo isset($row['director_approver_lastname']) ? $row['director_approver_lastname'] : ''?>
                                     </span>
 
-                                    <?php echo isset($row['director_approver_status']) ? '<span class="'.$leave_status_arr[$row['director_approver_status']]['css'].'"><i class="fas '.$fa_icon.'" aria-hidden="true"></i></span>': ''; ?>
+                                    <?php echo isset($row['director_approver_status']) ? '<span class="'.$leave_status_arr[$row['director_approver_status']]['css'].'"><i class="fas fa-fw '.$fa_icon.'" aria-hidden="true"></i></span>': ''; ?>
 
                                 </td>
                                 <td>
@@ -137,7 +137,7 @@
                                 <td>
                                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));?>"
                                         class="btn btn-outline-info btn-sm" data-toggle="tooltip"
-                                        title="View Details"><i class="fas fa-info-circle"
+                                        title="View Details"><i class="fas fa-fw fa-info-circle"
                                             aria-hidden="true"></i></a>
 
                                 </td>

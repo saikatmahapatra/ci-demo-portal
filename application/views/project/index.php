@@ -9,7 +9,7 @@
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="ci-link-group">
                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>"
-                        class="float-right btn btn-sm btn-outline-success" title="Add"> <i class="fas fa-plus"></i>
+                        class="float-right btn btn-sm btn-outline-success" title="Add"> <i class="fas fa-fw fa-plus"></i>
                         Add New</a>
                 </div>
 

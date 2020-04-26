@@ -24,11 +24,11 @@
 
                 <div class="ci-link-group">
                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/leave_balance');?>"
-                        class="btn btn-sm btn-outline-success" title="Add"> <i class="fas fa-plus"></i> Add or Update Balance</a>
+                        class="btn btn-sm btn-outline-success" title="Add"> <i class="fas fa-fw fa-plus"></i> Add or Update Balance</a>
                     
                         <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ml-2', 'name' => 'download_data')); ?>
 						<input type="hidden" name="form_action" value="download">
-						<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download data as excel"> <i class="fas fa-download" aria-hidden="true"></i> Export Data</button>
+						<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download data as excel"> <i class="fas fa-fw fa-download" aria-hidden="true"></i> Export Data</button>
 					<?php echo form_close(); ?>
                 </div>
 

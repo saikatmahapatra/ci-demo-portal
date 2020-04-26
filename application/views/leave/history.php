@@ -47,7 +47,7 @@
                                 <td>
                                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/history');?>"
                                         class="btn btn-outline-info btn-sm" data-toggle="tooltip"
-                                        title="View Details"><i class="fas fa-info-circle"
+                                        title="View Details"><i class="fas fa-fw fa-info-circle"
                                             aria-hidden="true"></i></a>
                                 </td>
                             </tr>
