@@ -161,7 +161,8 @@ label.optional::after {
 }
 
 form.ci-form {
-    .btn-sm-block .btn-primary {
+    .btn-sm-block,
+    .btn-primary {
         @media (max-width: 576px) {
             display: block;
             width: 100%;
