@@ -43,7 +43,7 @@ class User extends CI_Controller {
         $this->data['arr_departments'] = $this->user_model->get_department_dropdown();
         $this->data['arr_employment_types'] = $this->user_model->get_employment_type_dropdown();
 		$this->data['arr_user_title'] = array(''=>'Select Title','Mr.'=>'Mr.','Mrs.'=>'Mrs.','Dr.'=>'Dr.','Ms.'=>'Ms.');
-        $this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-', 'NA'=>'Unknown');
+        $this->data['blood_group'] = array(''=>'Select','O+'=>'O+','O-'=>'O-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','AB+'=>'AB+','AB-'=>'AB-', 'NA'=>'Not Known');
         $this->data['bank_ac_type'] = array('SB'=>'Savings Account','CU'=>'Current Account');
         $this->data['account_uses'] = array('SAL'=>'Salary Credit Account','REI'=>'Reimbursement Account');
         $this->data['arr_gender'] = array('M'=>'Male','F'=>'Female');
@@ -76,8 +76,8 @@ class User extends CI_Controller {
         );
 
         $this->data['user_status_arr'] = array(
-            'N'=>array('text'=>'Inactive', 'css'=>''),
-            'A'=>array('text'=>'Archived', 'css'=>''),
+            'N'=>array('text'=>'Inactive', 'css'=>'text-warning'),
+            'A'=>array('text'=>'Closed', 'css'=>'text-danger'),
             'Y'=>array('text'=>'Active', 'css'=>'')
         );
     }
@@ -194,15 +194,15 @@ class User extends CI_Controller {
 
     function render_datatable() {
         //Total rows - Refer to model method definition
-        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, FALSE, TRUE, 'U');
+        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, FALSE, TRUE, 'U', TRUE);
         $total_rows = $result_array['num_rows'];
 
         // Total filtered rows - check without limit query. Refer to model method definition
-        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, TRUE, FALSE, 'U');
+        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, TRUE, FALSE, 'U', TRUE);
         $total_filtered = $result_array['num_rows'];
 
         // Data Rows - Refer to model method definition
-        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, TRUE, TRUE, 'U');
+        $result_array = $this->user_model->get_rows(NULL, NULL, NULL, TRUE, TRUE, 'U', TRUE);
         $data_rows = $result_array['data_rows'];
         $data = array();
         $no = $_REQUEST['start'];
@@ -222,14 +222,14 @@ class User extends CI_Controller {
             $action_html = '';
             
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fas fa-fw fa-pencil-alt" aria-hidden="true"></i>', array(
-                'class' => 'btn btn-sm btn-outline-secondary',
+                'class' => 'btn btn-sm btn-light',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit Profile',
                 'title' => 'Edit Profile'
             ));
             $action_html.='&nbsp;';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fas fa-fw fa-info-circle" aria-hidden="true"></i>', array(
-                'class' => 'btn btn-sm btn-outline-info',
+                'class' => 'btn btn-sm btn-light text-info',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'View Profile',
                 'title' => 'View Profile'
@@ -719,6 +719,7 @@ class User extends CI_Controller {
         if (isset($this->session->userdata['sess_user'])) {
             $this->session->unset_userdata('sess_user');
             $this->session->unset_userdata('sess_post_login_redirect_url');
+            $this->session->unset_userdata('sess_hide_sidebar_md');
             $this->common_lib->set_flash_message('You have been logged out successfully.','alert-success');
             redirect($this->router->directory.$this->router->class.'/login');
         } else {
@@ -749,7 +750,7 @@ class User extends CI_Controller {
         $this->breadcrumbs->push('Profile','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		$user_id = $this->uri->segment(3) ? $this->uri->segment(3) : $this->sess_user_id;
-        $rows = $this->user_model->get_rows($user_id);		
+        $rows = $this->user_model->get_rows($user_id, NULL, NULL, FALSE, TRUE, NULL, TRUE);		
 		$res_pic = $this->user_model->get_user_profile_pic($user_id);
 		$this->data['profile_pic'] = $res_pic[0]['user_profile_pic'];
         $this->data['row'] = $rows['data_rows'];
@@ -1115,10 +1116,10 @@ class User extends CI_Controller {
         ));
         ########### Validate User Auth End #############
         $user_id = $this->uri->segment(3);
-        $rows = $this->user_model->get_rows($user_id);
+        $rows = $this->user_model->get_rows($user_id, NULL, NULL, FALSE, TRUE, NULL, TRUE);
         $this->data['row'] = $rows['data_rows'];
         if(isset($this->data['row'][0]) && $this->data['row'][0]['user_status']=='A'){
-            $this->common_lib->set_flash_message('<i class="fas fa-fw fa-exclamation-triangle" aria-hidden="true"></i> You can\'t edit the selected user as the user account has already been archived.','alert-danger');
+            $this->common_lib->set_flash_message('<i class="fas fa-fw fa-exclamation-triangle" aria-hidden="true"></i> You can\'t edit the selected user as account has already been archived.','alert-danger');
             redirect($this->router->directory.$this->router->class.'/manage');
         }
         $res_pic = $this->user_model->get_user_profile_pic($user_id);
@@ -1950,15 +1951,22 @@ class User extends CI_Controller {
         ));
         ########### Validate User Auth End #############
 
+        $this->data['row'] = array();
         $user_id = @$this->encrypt->decode($this->uri->segment(3));
-        $rows = $this->user_model->get_rows($user_id);
-        $this->data['row'] = $rows['data_rows'];
-
-        if(isset($this->data['row'][0]) && $this->data['row'][0]['user_status'] == 'A'){
-            $this->common_lib->set_flash_message('Unable to process your request.','alert-danger');
-            redirect($this->router->directory.$this->router->class.'/manage');
+        if($user_id){
+            $rows = $this->user_model->get_rows($user_id);
+            $this->data['row'] = $rows['data_rows'];
+            if($user_id == $this->sess_user_id){
+                $this->common_lib->set_flash_message('You are not allowed to close this account.','alert-danger');
+                redirect($this->router->directory.$this->router->class.'/edit_user_profile/'.$user_id);
+            }
+    
+            if(isset($this->data['row'][0]) && $this->data['row'][0]['user_status'] == 'A'){
+                $this->common_lib->set_flash_message('Unable to process your request.','alert-danger');
+                redirect($this->router->directory.$this->router->class.'/manage');
+            }
         }
-        
+
         if ($this->input->post('form_action') == 'close_account') {
             if ($this->validate_close_account_form_data() == true) {
                 $postdata = array(
@@ -1972,7 +1980,7 @@ class User extends CI_Controller {
                 $where = array('id' => $this->input->post('user_id'));
                 $res = $this->user_model->update($postdata, $where);
                 if ($res) {
-                    $this->common_lib->set_flash_message('Portal account has been closed successfully.','alert-success');
+                    $this->common_lib->set_flash_message('Emploee Portal account has been closed successfully.','alert-success');
                     redirect($this->router->directory.$this->router->class.'/manage');
                 }
             }
@@ -1983,6 +1991,7 @@ class User extends CI_Controller {
     }
 
     function validate_close_account_form_data() {
+        $this->form_validation->set_rules('user_id', 'employee', 'required');
         $this->form_validation->set_rules('user_dor', 'date of release', 'required');
         $this->form_validation->set_rules('account_close_comments', ' ', 'required');
         $this->form_validation->set_rules('terms', ' ', 'required');

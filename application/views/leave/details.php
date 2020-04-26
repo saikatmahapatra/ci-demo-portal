@@ -252,7 +252,7 @@ $row = $data_rows[0];
                 </div>
                 <!--/.row .ci-wizard-->
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->uri->segment(5).'/'.$this->uri->segment(6));?>"
-                    class="btn btn-link btn-sm btn-back"><i class="fas fa-fw fa-chevron-left"></i> Back</a>
+                    class="btn btn-light btn-back"><i class="fas fa-fw fa-chevron-left"></i> Back</a>
             </div>
         </div>
         <!--/.card-body-->

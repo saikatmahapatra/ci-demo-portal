@@ -81,7 +81,7 @@
                                 <div class="dropdown-divider"></div>			
                                 <a class="dropdown-item"  href="<?php echo base_url('user/profile/'); ?>">My Profile</a>
                                 <a class="dropdown-item" href="<?php echo base_url('user/change_password'); ?>">Change Password</a>
-                                <a class="dropdown-item" href="<?php echo base_url('user/logout'); ?>">Logout</a>
+                                <a class="dropdown-item" href="<?php echo base_url('user/logout'); ?>">Sign out</a>
                             </div>
                         </li>
                         <?php } ?>
@@ -167,6 +167,18 @@
             //     $('.collapse.in').toggleClass('in');
             //     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             // });
+            $('#locksidebar').on('click', function(){
+                var xhr = new Ajax();
+                xhr.url = SITE_URL + ROUTER_DIRECTORY + 'home' + '/sidebar_toggle';
+                xhr.data = {active: true};
+                var promise = xhr.init();
+                promise.done(function(response) {
+                    window.location.reload(); 
+                });
+                promise.always(function() {
+                    //window.location.reload();
+                });
+            });
         });
     </script>
 </body>

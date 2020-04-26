@@ -6,6 +6,11 @@
     border-collapse: collapse !important;
 }
 
+.dataTables_wrapper {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 .table.ci-table {
     thead th,
     tfoot th {

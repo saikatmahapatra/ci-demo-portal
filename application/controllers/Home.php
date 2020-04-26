@@ -215,6 +215,19 @@ class Home extends CI_Controller {
         echo $json_response; die();
     }
 
+    function sidebar_toggle(){
+        $result = array('result'=>'error');
+        if(isset($this->session->userdata['sess_hide_sidebar_md'])) {
+            $this->session->unset_userdata('sess_hide_sidebar_md');
+            $result = array('result'=>'session_destroyed');
+        } else {
+            $this->session->set_userdata('sess_hide_sidebar_md', true);
+            $result = array('result'=>'session_started');
+        }
+        print_r(json_encode($result)); 
+        die();
+    }
+
 }
 
 ?>

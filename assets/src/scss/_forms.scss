@@ -152,3 +152,27 @@ label.optional::after {
         height: auto;
     }
 }
+
+.btn-sm-block {
+    @media (max-width: 576px) {
+        display: block;
+        width: 100%;
+    }
+}
+
+form.ci-form {
+    .btn-sm-block,
+    .btn-primary {
+        @media (max-width: 576px) {
+            display: block;
+            width: 100%;
+        }
+    }
+    .ci-btn-cancel {
+        @media (max-width: 576px) {
+            margin-top: 15px;
+            display: block;
+            width: 100%;
+        }
+    }
+}
