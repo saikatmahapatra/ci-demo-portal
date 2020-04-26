@@ -276,14 +276,14 @@ class Timesheet extends CI_Controller {
                 $action_html = '<div class="mt-2">';
                 if(($year == $current_year) && ($month == $current_month)){
                     $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), '<i class="fas fa-fw fa-pencil-alt" aria-hidden="true"></i>', array(
-                        'class' => 'btn btn-sm btn-outline-secondary',
+                        'class' => 'btn btn-sm btn-light',
                         'data-toggle' => 'tooltip',
                         'data-original-title' => 'Edit',
                         'title' => 'Edit',
                     ));
                     $action_html.='&nbsp;';
                     $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fas fa-fw fa-times" aria-hidden="true"></i>', array(
-                        'class' => 'btn btn-sm btn-outline-danger btn-delete',
+                        'class' => 'btn btn-sm btn-light text-danger btn-delete',
                         'data-confirmation'=>false,
                         'data-confirmation-message'=>'Are you sure, you want to delete this?',
                         'data-toggle' => 'tooltip',

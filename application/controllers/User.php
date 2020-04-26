@@ -222,14 +222,14 @@ class User extends CI_Controller {
             $action_html = '';
             
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fas fa-fw fa-pencil-alt" aria-hidden="true"></i>', array(
-                'class' => 'btn btn-sm btn-outline-secondary',
+                'class' => 'btn btn-sm btn-light',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit Profile',
                 'title' => 'Edit Profile'
             ));
             $action_html.='&nbsp;';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fas fa-fw fa-info-circle" aria-hidden="true"></i>', array(
-                'class' => 'btn btn-sm btn-outline-info',
+                'class' => 'btn btn-sm btn-light text-info',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'View Profile',
                 'title' => 'View Profile'
