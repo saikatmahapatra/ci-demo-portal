@@ -1,4 +1,5 @@
 <nav id="sidebar">
+    <!-- <div id="locksidebar"><i class="fas fa-arrow-left"></i></div> -->
     <div class="sidebar-header">
         <h3>Self Service Portal</h3>
     </div>
@@ -14,15 +15,15 @@
         <!-- <li><a href="<?php echo base_url('event_calendar'); ?>"><i class="fas fa-fw fa-calendar-alt"></i> Event Calendar</a></li> -->
         <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
         <li class="">
-            <a href="#adminSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fw fa-user-lock"></i> Admin or HRMS</a>
+            <a href="#adminSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fw fa-user-lock"></i> Admin HR Portal</a>
             <ul class="collapse list-unstyled" id="adminSubmenu">
-            <li><a href="<?php echo base_url('cms/add'); ?>">Add New Content</a></li>
-            <li><a href="<?php echo base_url('cms'); ?>">Manage Contents</a></li>
-            <li><a href="<?php echo base_url('holiday'); ?>">Manage Holiday Calendar</a></li>
-            <li><a href="<?php echo base_url('user/create_account'); ?>">Add New Employee</a></li>
-            <li><a href="<?php echo base_url('user/manage'); ?>">Employee Management</a></li>
+            <li><a href="<?php echo base_url('cms/add'); ?>">New Content</a></li>
+            <li><a href="<?php echo base_url('cms'); ?>">Contents</a></li>
+            <li><a href="<?php echo base_url('holiday'); ?>">Holiday Calendar</a></li>
+            <li><a href="<?php echo base_url('user/create_account'); ?>">New Employee</a></li>
+            <li><a href="<?php echo base_url('user/manage'); ?>">Employees</a></li>
             <li><a href="<?php echo base_url('leave/manage/all'); ?>">Leave Applications</a></li>
-            <li><a href="<?php echo base_url('leave/view_leave_balance'); ?>">Leave Balance Management</a></li>
+            <li><a href="<?php echo base_url('leave/view_leave_balance'); ?>">Leave Balance</a></li>
             <li><a href="<?php echo base_url('leave/manage/assigned_to_me'); ?>">Leave to Approve</a></li>
             <li><a href="<?php echo base_url('timesheet/report'); ?>">Timesheet Report</a></li>
             <li><a href="<?php echo base_url('project'); ?>">Projects</a></li>
@@ -73,5 +74,6 @@
             <a href="#" class="article"><?php echo $this->config->item('app_version');?></a>
         </li>
     </ul>
+    <div class="px-3"><?php echo $this->config->item('app_admin_copy_right');?></div>
     <?php } ?>
 </nav>
