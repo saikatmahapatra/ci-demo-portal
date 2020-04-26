@@ -43,8 +43,8 @@
                                     </div>
                                 </div>
                                 <?php echo form_error('selected_date'); ?>
-                                <div class="mt-2"><a id="clear_selected_days" class="btn btn-outline-secondary btn-sm"
-                                        href="#">Clear selection</a></div>
+                                <div class="mt-2"><a id="clear_selected_days" class="btn btn-light"
+                                        href="#">Clear date selection</a></div>
                             </div>
                             <!--/.col-lg-3-->
 
@@ -81,7 +81,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-lg-4">
                                         <label for="timesheet_hours" class="required">Hours</label>
-                                        <?php echo form_input(array('name' => 'timesheet_hours', 'value' => set_value('timesheet_hours'),'id' => 'timesheet_hours', 'class' => 'form-control w-50','maxlength' => '3','placeholder' => '0',)); ?>
+                                        <?php echo form_input(array('name' => 'timesheet_hours', 'value' => set_value('timesheet_hours'),'id' => 'timesheet_hours', 'class' => 'form-control','maxlength' => '3','placeholder' => '0.0',)); ?>
                                         <?php echo form_error('timesheet_hours'); ?>
                                     </div>
                                 

@@ -84,7 +84,7 @@
                 <button type="submit" <?php echo ($system_msg_error_counter >0 ) ? 'disabled="disabled"' : '';  ?>
                     class="btn ci-btn-primary btn-primary">Submit</button>
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>"
-                    class="btn btn-link">Leave History</a>
+                    class="btn btn-light">View Leave History</a>
                 <?php echo form_close(); ?>
             </div>
             <!--/.card-body-->
