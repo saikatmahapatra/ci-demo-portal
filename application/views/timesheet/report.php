@@ -4,8 +4,9 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ci-card">
+            <div class="card-header">Timesheet Report</div>
             <div class="card-body">
-            <h5 class="card-title">Timesheet Report</h5>
+            
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
 
                 <?php echo form_open(site_url('timesheet/report'), array( 'method' => 'get','class'=>'ci-form','name' => '','id' => 'timesheet-search-form')); ?>
@@ -64,7 +65,7 @@
                 <input type="hidden" name="from_date" value="<?php echo $this->input->get('from_date');?>">
                 <input type="hidden" name="to_date" value="<?php echo $this->input->get('to_date');?>">
                 <button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip"
-                    title="Download the data as excel"> <i class="fa fa-fw fa-download" aria-hidden="true"></i>
+                    title="Download the data as excel"> <i class="fas fa-fw fa-download" aria-hidden="true"></i>
                     Download</button>
                 <?php echo form_close(); ?>
                 <?php } ?>
@@ -79,12 +80,12 @@
                     <input type="hidden" name="from_date" value="<?php echo $this->input->get('from_date');?>">
                     <input type="hidden" name="to_date" value="<?php echo $this->input->get('to_date');?>">
                     <button type="submit" class="btn btn-sm btn-outline-secondary" title="Download"> <i
-                            class="fa fa-fw fa-download" aria-hidden="true"></i> Download as Excel</button>
+                            class="fas fa-fw fa-download" aria-hidden="true"></i> Download as Excel</button>
                     <?php echo form_close(); ?>
                     <?php } */ ?>
 
-                    <table class="table ci-table table-striped table-sm">
-                        <thead class="thead-dark">
+                    <table class="table ci-table table-sm table-bordered text-center w-100">
+                        <thead class="thead-light">
                             <tr>
                                 <th scope="col">Date</th>
                                 <th scope="col">Employee</th>

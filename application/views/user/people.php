@@ -3,8 +3,9 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card ci-card">
+			<div class="card-header">Employees</div>
 			<div class="card-body">
-			<h5 class="card-title">Search Employees</h5>
+			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'my-3','name' => '','id' => 'search-user-form',)); ?>
 					<?php echo form_hidden('form_action', 'search'); ?>
@@ -17,7 +18,7 @@
 						)); ?>
 						<?php echo form_error('q'); ?>
 						<div class="input-group-append">
-							<button class="btn" type="submit"><i class="fa fa-fw fa-search" aria-hidden="true"></i></button>
+							<button class="btn" type="submit"><i class="fas fa-fw fa-search" aria-hidden="true"></i></button>
 						</div>
 					</div>
 				<?php echo form_close(); ?>
@@ -26,7 +27,7 @@
 				<?php
 				if(isset($data_rows) && sizeof($data_rows)<=0){
 					?>
-					<div class="text-danger"><i class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></i> Oops! No results found.</div>
+					<div class="text-danger"><i class="fas fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Oops! No results found.</div>
 					<?php
 				}
 				?>
@@ -65,7 +66,8 @@
 							<div class="media border rounded my-2 p-2">
 								<img class="align-self-center mr-3 rounded dp-sm" src="<?php echo base_url($img_src);?>">
 								<div class="media-body">
-									<div class=""><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?><?php echo ' ('.$row['user_emp_id'].')'; ?></div>
+									<div class=""><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></div>
+									<div class="small">Employee ID <?php echo  $row['user_emp_id']; ?></div>
 									<div class="small"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '' ; ?></div>
 									<?php
 									$email_id = explode('@',$row['user_email']);

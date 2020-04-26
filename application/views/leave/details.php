@@ -9,8 +9,8 @@ $row = $data_rows[0];
 <div class="row">
     <div class="col-lg-12 ci-dl">
         <div class="card ci-card">
+            <div class="card-header">Leave Details # <?php echo $row['leave_req_id'];?></div>
             <div class="card-body">
-                <h5 class="card-title">Leave Details</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <dl class="row">
                     <dt class="col-lg-2">Application No</dt>
@@ -21,15 +21,15 @@ $row = $data_rows[0];
                     </dd>
                     <dt class="col-lg-2">Applied on</dt>
                     <dd class="col-lg-10">
-                        <?php echo $this->common_lib->display_date($row['leave_created_on'], TRUE, NULL, 'd/m/Y h:i:s a');?>
+                        <?php echo $this->common_lib->display_date($row['leave_created_on'], TRUE, NULL);?>
                     </dd>
                     <dt class="col-lg-2">Type of Leave</dt>
                     <dd class="col-lg-10"><?php echo $leave_type_arr[$row['leave_type']];?> -
                         <?php echo $leave_term_arr[$row['leave_term']];?></dd>
                     <dt class="col-lg-2">From - To</dt>
                     <dd class="col-lg-10">
-                        <?php echo $this->common_lib->display_date($row['leave_from_date'], NULL, NULL, 'd/m/Y');?> to
-                        <?php echo $this->common_lib->display_date($row['leave_to_date'], NULL, NULL, 'd/m/Y');?></dd>
+                        <?php echo $this->common_lib->display_date($row['leave_from_date'], NULL, NULL);?> to
+                        <?php echo $this->common_lib->display_date($row['leave_to_date'], NULL, NULL);?></dd>
                     <dt class="col-lg-2">No of day(s)</dt>
                     <dd class="col-lg-10"><?php echo $row['applied_for_days_count'].' day(s)';?></dd>
 
@@ -91,7 +91,7 @@ $row = $data_rows[0];
 							$edit_icon = '';						
 							if($this->common_lib->get_sess_user('id') == $row['user_id']){
 								$set_attributes = 'data-action-by="applicant" data-action-by-userid="'.$row['user_id'].'"';
-								$edit_icon = '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>';
+								$edit_icon = '<i class="fas fa-fw fa-pencil-alt" aria-hidden="true"></i>';
 							}
 							if($row['leave_status'] == 'R' || $row['leave_status'] == 'C'){
 								$set_attributes ='';	
@@ -168,7 +168,7 @@ $row = $data_rows[0];
 							$edit_icon = '';
 							if($this->common_lib->get_sess_user('id') == $row['supervisor_approver_id']){
 								$set_attributes = 'data-action-by="supervisor" data-action-by-userid="'.$row['supervisor_approver_id'].'"';
-								$edit_icon = '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>';
+								$edit_icon = '<i class="fas fa-fw fa-pencil-alt" aria-hidden="true"></i>';
 							}
 							if(($row['leave_status'] == 'R' || $row['leave_status'] == 'C' || $row['director_approver_status']=='A')){
 								//&&  $row['cancel_requested']!='Y'
@@ -223,7 +223,7 @@ $row = $data_rows[0];
 							$set_attributes ='';
 							$edit_icon = '';
 							if(($this->common_lib->get_sess_user('id') == $row['director_approver_id']) && ($row['supervisor_approver_status']=='A' || ( $row['leave_status'] == 'A' && $row['cancel_requested'] == 'Y' ))) {
-								$edit_icon = '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>';
+								$edit_icon = '<i class="fas fa-fw fa-pencil-alt" aria-hidden="true"></i>';
 								$set_attributes = 'data-action-by="director" data-action-by-userid="'.$row['director_approver_id'].'"';
 							}
 							if($row['leave_status'] == 'R' || $row['leave_status'] == 'C' || ( $row['leave_status'] == 'A' && $row['cancel_requested'] == 'N' )){
@@ -252,7 +252,7 @@ $row = $data_rows[0];
                 </div>
                 <!--/.row .ci-wizard-->
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->uri->segment(5).'/'.$this->uri->segment(6));?>"
-                    class="btn btn-link btn-sm btn-back"><i class="fa fa-fw fa-chevron-left"></i> Back</a>
+                    class="btn btn-link btn-sm btn-back"><i class="fas fa-fw fa-chevron-left"></i> Back</a>
             </div>
         </div>
         <!--/.card-body-->

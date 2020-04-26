@@ -4,8 +4,9 @@
 <div class="row">
 	<div class="col-lg-9">
 		<div class="card ci-card">
+      <div class="card-header">Edit Education</div>
 			<div class="card-body">
-			<h5 class="card-title">Edit Education</h5>
+			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'edit_education', 'id' => 'edit_education'));?>
 				<?php echo form_hidden('form_action', 'edit'); ?>
@@ -53,7 +54,7 @@
 			</div>
 			
 			<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
-			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="btn btn-light ci-btn-cancel">Cancel</a>
+			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="btn btn-outline-secondary ci-btn-cancel">Cancel</a>
         <?php echo form_close(); ?>
 			
 			</div><!--./card-body-->

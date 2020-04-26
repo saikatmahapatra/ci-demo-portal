@@ -3,8 +3,9 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card ci-card">
+			<div class="card-header">Data Table</div>
 			<div class="card-body">
-			<h5 class="card-title">Employees</h5>
+			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<!-- <?php echo form_open(current_url(), array( 'method' => 'get','class'=>'my-3','name' => 'search_employee_form','id' => 'search-user-form',)); ?>
 					<?php echo form_hidden('form_action', 'search'); ?>
@@ -26,7 +27,7 @@
 				<?php
 				if(isset($data_rows) && sizeof($data_rows)<=0){
 					?>
-					<div class="alert alert-info"><i class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></i> There are no reportees currently reporting you. If you find any irrelevant information please get in touch with HR for further process and clarification.</div>
+					<div class="alert alert-info"><i class="fa fa-fw fas fa-fw fa-exclamation-triangle" aria-hidden="true"></i> There are no reportees currently reporting you. If you find any irrelevant information please get in touch with HR for further process and clarification.</div>
 					<?php
 				}
 				?> 
@@ -37,13 +38,13 @@
 					
 				<div class="table-responsive">
 					<div class="alert alert-info">
-					<i class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></i> You are either L1 or L2 approver for Leave request management for the below associates. If you find any irrelevant information please get in touch with HR for further process and clarification.
+					<i class="fa fa-fw fas fa-fw fa-exclamation-triangle" aria-hidden="true"></i> You are either L1 or L2 approver for Leave request management for the below associates. If you find any irrelevant information please get in touch with HR for further process and clarification.
 					</div>
-					<table class="table ci-table table-sm table-bordered text-center">
-						<thead class="thead-dark">
+					<table class="table ci-table table-sm table-bordered text-center w-100">
+						<thead class="thead-light">
 						<tr>
 							<th scope="col">Emp ID</th>
-							<th scope="col">Emploee Name</th>
+							<th scope="col">Name</th>
 							<th scope="col">Designation</th>
 							<th scope="col">Action</th>
 						</tr>
@@ -63,7 +64,7 @@
 										<?php echo isset($row['designation_name']) ? $row['designation_name'] : '-';?>
 									</td>
 									<td>
-										<a target="_blank" href="<?php echo base_url($this->router->directory.'timesheet/report?redirected_from=reportee_id&q_emp='.$row['user_id']); ?>" class="btn btn-primary btn-sm">Timesheet Report</a>
+										<a target="_blank" href="<?php echo base_url($this->router->directory.'timesheet/report?redirected_from=reportee_id&q_emp='.$row['user_id']); ?>" class="btn btn-outline-info">Timesheet Report</a>
 									</td>
 								</tr>
 								<?php

@@ -3,12 +3,13 @@
 <div class="row">
     <div class="col-lg-9">
         <div class="card ci-card">
+			<div class="card-header">Options</div>
             <div class="card-body">
-                <h5 class="card-title">Options</h5>
+                
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="table-responsive">
-			<table class="table ci-table table-sm table-bordered text-center">
-				<thead class="thead-dark">
+			<table class="table ci-table table-sm table-bordered text-center w-100">
+				<thead class="thead-light">
 				<tr>
 					<th scope="col">#</th>
 					<th scope="col">Option</th>

@@ -411,14 +411,14 @@ class Common_lib {
 	function display_date($date, $time=null, $birthday=null,$format=null){
         if($date != NULL){
             if($time == true){
-                $output_format = 'd-m-Y h:i:s a';
+                $output_format = 'd-m-Y h:i:sa';
                 if($format){
                     $output_format = $format;
                 }
                 return date($output_format, strtotime($date));
             }
             if($birthday == true){
-                $dob = explode('-',$date);            
+                $dob = explode('-',$date);
                 return $this->display_ordinal_suffix($dob[2]).' '.date('F',strtotime($date));
             }
             else{

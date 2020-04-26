@@ -73,6 +73,16 @@ $from_color: #a8ff1b;
 $to_color: #cf1180;
 // CI Bootstrap Mega Menu Style
 $mega_menu_theme: dark;
+// CI Bootstrap Mega Menu - Primary Theme
+$bs_mega_menu_default_background_color: darken($primary-color, 10%);
+$bs_mega_menu_default_dropdown_item_box_hover_bg_color: darken($primary-color, 10%);
+$bs_mega_menu_default_dropdown_header_color: $white;
+$bs_mega_menu_default_dropdown_header_hover_color: $white;
+$bs_mega_menu_default_nav_link_color: $gray-500;
+$bs_mega_menu_default_nav_link_hover_color: $gray-300;
+$bs_mega_menu_default_nav_link_hover_bg_color: darken($primary-color, 8%);
+$bs_mega_menu_default_nav_link_active_color: $gray-100;
+$bs_mega_menu_default_nav_link_active_bg_color: darken($primary-color, 8%);
 // CI Bootstrap Mega Menu - Dark Theme
 $bs_mega_menu_dark_background_color: $gray-900;
 $bs_mega_menu_dark_dropdown_item_box_hover_bg_color: $gray-900;
@@ -114,3 +124,4 @@ $sidebar-active-hover-focus-bg-color: $sidebar-dark-bg-color;
 $navbar-dark-toggler-border-color: transparent;
 $navbar-light-toggler-border-color: transparent;
 $table-cell-padding-sm :.3rem;
+$navbar-bg-primary: darken($primary-color, 5%);

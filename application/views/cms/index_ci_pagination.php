@@ -4,12 +4,12 @@
 	<th class="col-lg-12">
 	<?php echo isset($alert_message) ? $alert_message : ''; ?>
 		<div class="ci-link-group">
-			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-fw fa-plus"></i> Add New</a>
+			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="btn btn-sm btn-outline-success" title="Add"> <i class="fas fa-fw fa-plus"></i> Add New</a>
 		</div>	
 			
 		<th class="table-responsive">
-			<table class="table ci-table table-striped table-sm">
-				<thead class="thead-dark">
+			<table class="table ci-table table-sm table-bordered text-center w-100">
+				<thead class="thead-light">
 					<tr>
 						<th scope="col">Title</th>
 						<th scope="col">Content Type</th>

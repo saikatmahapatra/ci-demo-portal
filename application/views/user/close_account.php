@@ -4,8 +4,9 @@
 <div class="row">
     <div class="col-lg-9">
         <div class="card ci-card">
+            <div class="card-header">Delete Account</div>
             <div class="card-body">
-            <h5 class="card-title">Delete Account</h5>
+            
                 <?php
 					echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
 					echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
@@ -44,7 +45,7 @@
 
                 <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_user_profile/'.$row['id']);?>"
-                    class="btn btn-light ci-btn-cancel">Cancel</a>
+                    class="btn btn-outline-secondary ci-btn-cancel">Cancel</a>
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>"
                     class="btn btn-link" data-toggle="tooltip" title="">Manage Employees</a>
                 <?php echo form_close(); ?>

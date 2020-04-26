@@ -36,7 +36,7 @@ $config['app_logo_name_admin_dashboard'] = 'Portal Admin';
 $config['app_logo_name_dashboard'] = '<b>eP</b>ortal';
 $config['app_logo_name_dashboard_xs'] = '<b>U</b>Aadmin';
 
-$config['app_html_title'] = 'ESS Portal :: UEIPL';
+$config['app_html_title'] = 'ESS Portal - United Exploration India Pvt. Ltd.';
 $config['app_admin_html_title'] = 'United Exploration India Pvt. Ltd.';
 
 $config['app_meta_keywords'] = 'UEIPL, United Exploration Kolkata, GIS Company Kolkata, Coal Mining Consultancy Kolkata, Web GIS company Kolkata, Mining Company';
@@ -52,7 +52,7 @@ $config['app_faq'] = array(
 );
 
 $config['app_copy_right'] = '&copy; '.date('Y').' United Exploration India Private Limited. All Rights Reserved.';
-$config['app_admin_copy_right'] = '&copy; '.date('Y').' <a href="http://unitedexploration.co.in" target="_blank">United Exploration India Private Limited.</a> All Rights Reserved.';
-$config['app_version'] = 'App Version 7.0'; // Recommended format CIVerMajor.RelVer.UIVer
+$config['app_admin_copy_right'] = '&copy; '.date('Y').' <a href="http://unitedexploration.co.in" target="_blank">United Exploration</a>';
+$config['app_version'] = 'App Version 8.0'; // Recommended format CIVerMajor.RelVer.UIVer
 
 

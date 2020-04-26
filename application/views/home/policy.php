@@ -3,11 +3,12 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ci-card">
+            <div class="card-header">Policy</div>
             <div class="card-body">
                 <?php if(isset($data_rows) && sizeof($data_rows> 0)){ ?>
                 <?php foreach($data_rows as $key=>$row) { ?>
-                    <h5 class="card-title"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></h5>
-                    <div class="small text-muted">Published on <?php echo $this->common_lib->display_date($row['content_created_on'],true,null,'d-M-Y h:i:s a'); ?></div>
+                    <div class="card-title mb-2 font-weight-bold"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></div>
+                    <div class="text-muted small mb-3">Published on <?php echo $this->common_lib->display_date($row['content_created_on'],true,null); ?></div>
                     <div class="mt-3">
                         <?php echo isset($row['content_text']) ? trim($row['content_text']) : '';?>
                     </div>

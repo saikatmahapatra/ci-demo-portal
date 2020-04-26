@@ -3,8 +3,8 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ci-card">
+            <div class="card-header">Leave Requests</div>
             <div class="card-body">
-                <h5 class="card-title">Leave Requests</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <?php echo form_open(current_url(), array( 'method' => 'get','class'=>'ci-form form-inline','name' => '','id' => 'leave-search-form')); ?>
                 <?php echo form_hidden('form_action', 'search'); ?>
@@ -45,14 +45,14 @@
 
                 <div class="table-responsive mt-3">
                     <div class="status-icon-group status-icon-justify mb-3">
-                        <span class=""><i class="fa fa-fw fa-check text-success" aria-hidden="true"></i> Approved</span>
-                        <span class=""><i class="fa fa-fw fa-close text-danger" aria-hidden="true"></i> Rejected</span>
-                        <span class=""><i class="fa fa-fw fa-close text-warning" aria-hidden="true"></i>
+                        <span class=""><i class="fas fa-fw fa-check text-success" aria-hidden="true"></i> Approved</span>
+                        <span class=""><i class="fas fa-fw fa-times text-danger" aria-hidden="true"></i> Rejected</span>
+                        <span class=""><i class="fas fa-fw fa-times text-warning" aria-hidden="true"></i>
                             Cancelled</span>
                     </div>
                     <!--/.status-icon-group status-icon-justify-->
-                    <table class="table ci-table table-striped table-sm">
-                        <thead class="thead-dark">
+                    <table class="table ci-table table-sm table-bordered text-center w-100">
+                        <thead class="thead-light">
                             <tr>
                                 <th scope="col">Application No</th>
                                 <th scope="col">Leave Type</th>
@@ -92,10 +92,10 @@
                                         $fa_icon = 'fa-check';
                                     }
                                     if($row['supervisor_approver_status'] == 'R'){
-                                        $fa_icon = 'fa-close';
+                                        $fa_icon = 'fa-times';
                                     }
                                     if($row['supervisor_approver_status'] == 'C'){
-                                        $fa_icon = 'fa-close';
+                                        $fa_icon = 'fa-times';
                                     }
                                     ?>
                                     
@@ -104,7 +104,7 @@
                                     <?php echo isset($row['supervisor_approver_lastname']) ? $row['supervisor_approver_lastname'] : ''?>
                                     </span>
 
-                                    <?php echo isset($row['supervisor_approver_status']) ? '<span class="'.$leave_status_arr[$row['supervisor_approver_status']]['css'].'"><i class="fa fa-fw '.$fa_icon.'" aria-hidden="true"></i></span>' : ''; ?>
+                                    <?php echo isset($row['supervisor_approver_status']) ? '<span class="'.$leave_status_arr[$row['supervisor_approver_status']]['css'].'"><i class="fas fa-fw '.$fa_icon.'" aria-hidden="true"></i></span>' : ''; ?>
                                 </td>
                                 <td>
                                     <?php 
@@ -113,10 +113,10 @@
                                             $fa_icon = 'fa-check';
                                         }
                                         if($row['director_approver_status'] == 'R'){
-                                            $fa_icon = 'fa-close';
+                                            $fa_icon = 'fa-times';
                                         }
                                         if($row['director_approver_status'] == 'C'){
-                                            $fa_icon = 'fa-close';
+                                            $fa_icon = 'fa-times';
                                         }
                                     ?>
                                     <span title="<?php echo isset($row['director_approver_emp_id']) ? $row['director_approver_emp_id'] : ''?>">
@@ -124,7 +124,7 @@
                                     <?php echo isset($row['director_approver_lastname']) ? $row['director_approver_lastname'] : ''?>
                                     </span>
 
-                                    <?php echo isset($row['director_approver_status']) ? '<span class="'.$leave_status_arr[$row['director_approver_status']]['css'].'"><i class="fa fa-fw '.$fa_icon.'" aria-hidden="true"></i></span>': ''; ?>
+                                    <?php echo isset($row['director_approver_status']) ? '<span class="'.$leave_status_arr[$row['director_approver_status']]['css'].'"><i class="fas fa-fw '.$fa_icon.'" aria-hidden="true"></i></span>': ''; ?>
 
                                 </td>
                                 <td>
@@ -137,7 +137,7 @@
                                 <td>
                                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));?>"
                                         class="btn btn-outline-info btn-sm" data-toggle="tooltip"
-                                        title="View Details"><i class="fa fa-fw  fa-info-circle"
+                                        title="View Details"><i class="fas fa-fw fa-info-circle"
                                             aria-hidden="true"></i></a>
 
                                 </td>

@@ -3,11 +3,11 @@
 <div class="row">
 	<div class="col-lg-9">
 		<div class="card ci-card">
+			<div class="card-header">Holidays <?php echo date('Y');?></div>
 			<div class="card-body">
-				<h5 class="card-title">List of Holidays</h5>
 				<div class="table-responsive">
-			<table class="table ci-table table-sm table-bordered text-center">
-				<thead class="thead-dark">
+			<table class="table ci-table table-sm table-bordered text-center w-100">
+				<thead class="thead-light">
 				<tr>
 					<th scope="col">#</th>
 					<th scope="col">Date</th>

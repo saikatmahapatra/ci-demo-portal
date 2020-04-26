@@ -1,15 +1,15 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-<p><i class="fa fa-fw fa-question-circle-o" aria-hidden="true"></i> Looking for help or information? Click <a class=""
+<p><i class="fas fa-fw fa-question" aria-hidden="true"></i> Looking for help or information? Click <a class=""
         href="#" data-toggle="modal" id="view_leave_balance_update_details" data-target="#leaveBalanceModal">here to
         read.</a></p>
 
 <div class="row">
     <div class="col-lg-9">
         <div class="card ci-card">
+            <div class="card-header">Leave Application Form</div>
             <div class="card-body">
-                <h5 class="card-title">Leave Application Form</h5>
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="form-text mb-4 text-muted">
                     <ul>
@@ -120,8 +120,8 @@
                         <li>For leave balance debit, credit related issues or information please contact to your HR.
                         </li>
                     </ul>
-                    <table class="table table-sm ci-table table-bordered text-center">
-                        <thead class="thead-dark">
+                    <table class="table ci-table table-sm table-bordered text-center w-100">
+                        <thead class="thead-light">
                             <tr>
                                 <th scope="col">Casual Leave (CL)</th>
                                 <th scope="col">Privileged Leave (PL)</th>

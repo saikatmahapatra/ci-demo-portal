@@ -1,13 +1,14 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-<p><i class="fa fa-fw fa-question-circle-o" aria-hidden="true"></i> Looking for help or information? Click <a class=""
+<p><i class="fas fa-fw fa-question" aria-hidden="true"></i> Looking for help or information? Click <a class=""
         href="#" data-toggle="modal" data-target="#timesheetCalModal">here to read.</a></p>
 
 <div class="row">
     <div class="col-lg-12">
         <div class="card ci-card">
+            <div class="card-header">Log Tasks</div>
             <div class="card-body">
-            <h5 class="card-title">Log Tasks</h5>
+            
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <nav>
                     <div class="nav nav-tabs ci-nav-tab" id="nav-tab" role="tablist">
@@ -112,8 +113,8 @@
                     <div class="mt-3 tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
 
                         <div class="table-responsive">
-                            <table id="timesheet-datatable" class="table ci-table table-striped table-sm w-100">
-                                <thead class="thead-dark">
+                            <table id="timesheet-datatable" class="table ci-table table-sm table-bordered text-center w-100">
+                                <thead class="thead-light">
                                     <tr>
                                         <th scope="col">Date</th>
                                         <th scope="col">Project</th>

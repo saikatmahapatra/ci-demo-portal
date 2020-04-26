@@ -2,9 +2,9 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
     <div class="col-lg-12">
-        <div class="card ci-card">
-            <div class="card-body">
-            <h5 class="card-title">Data Table</h5>
+        <div class="card ci-card"> 
+            <div class="card-header">Data Table</div>
+            <div class="card-body">           
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 
             <div class="export-form ">
@@ -24,17 +24,17 @@
 
                 <div class="ci-link-group">
                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/leave_balance');?>"
-                        class="btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-fw fa-plus"></i> Add or Update Balance</a>
+                        class="btn btn-sm btn-outline-success" title="Add"> <i class="fas fa-fw fa-plus"></i> Add or Update Balance</a>
                     
                         <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ml-2', 'name' => 'download_data')); ?>
 						<input type="hidden" name="form_action" value="download">
-						<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download data as excel"> <i class="fa fa-fw fa-download" aria-hidden="true"></i> Export Data</button>
+						<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download data as excel"> <i class="fas fa-fw fa-download" aria-hidden="true"></i> Export Data</button>
 					<?php echo form_close(); ?>
                 </div>
 
                 <div class="table-responsive">
-                    <table id="view-leave-bal-datatable" class="table ci-table table-striped table-sm">
-                        <thead class="thead-dark">
+                    <table id="view-leave-bal-datatable" class="table ci-table table-sm table-bordered text-center w-100">
+                        <thead class="thead-light">
                             <tr>
                                 <th scope="col">Emp ID</th>
                                 <th scope="col">Employee Name</th>

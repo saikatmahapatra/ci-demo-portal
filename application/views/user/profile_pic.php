@@ -3,8 +3,9 @@
 <div class="row">
 	<div class="col-lg-9">
 		<div class="card ci-card">
+			<div class="card-header">Change/Remove Profile Photo</div>
 			<div class="card-body">
-			<h5 class="card-title">Change or Remove your profile photo</h5>
+			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<div class="row">
 					<div class="col-lg-4 profile-pic">
@@ -24,7 +25,7 @@
 						?>
 						<img class="dp rounded mx-auto d-block img-thumbnail" src="<?php echo base_url($img_src);?>" alt="">
 						<?php if(isset($profile_pic) && sizeof($profile_pic)>0){ ?>
-							<div class="edit"><a class="btn btn-sm btn-outline-danger my-2" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><i class="fa fa-fw fa-remove"></i> Remove</a></div>
+							<div class="edit"><a class="btn btn-sm btn-outline-danger my-2" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><i class="fas fa-fw fa-times"></i> Remove</a></div>
 						<?php } ?>
 					</div>
 					<div class="col-lg-8">
@@ -46,7 +47,7 @@
 							<?php echo isset($upload_error_message) ? $upload_error_message : ''; ?>
 						</div>
 						<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Upload','class' => 'btn ci-btn-primary btn-primary'));?>
-						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="btn btn-light ci-btn-cancel">Cancel</a>
+						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="btn btn-outline-secondary ci-btn-cancel">Cancel</a>
 						<?php echo form_close(); ?>
 					</div>
 				</div>

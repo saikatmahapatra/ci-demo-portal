@@ -87,8 +87,9 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card ci-card ci-dl">
+			<div class="card-header">Profile Card</div>
 			<div class="card-body">
-			<h5 class="card-title"><?php echo isset($row['user_emp_id']) ? 'Emp ID - UEIPL/'.$row['user_emp_id'] : ''; ?></h5>
+			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<div class="row">
 					<div class="col-lg-3 text-center mb-3">
@@ -108,9 +109,9 @@
 						?>
 						<img class="dp rounded mx-auto d-block img-thumbnail" src="<?php echo base_url($img_src);?>">
 						<?php if($is_self_account == true) { ?>
-						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>" data-toggle="tooltip" title="Change or remove this photo"><i class="fa fa-fw fa-camera"></i> Change</a>
+						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>" data-toggle="tooltip" title="Change or remove this photo"><i class="fas fa-fw fa-camera"></i> Change</a>
 						<?php } ?>
-						<div class="font-weight-bold">
+						<div class="h6 mt-3 mb-0">
 							<?php
 								//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 								echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
@@ -122,8 +123,8 @@
 							<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
 						</div>
 						<div class="">
-							<a class="" href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a>
-							<a href="tel:<?php echo isset($row['user_phone2']) ? $row['user_phone2'] : ''; ?>"><?php echo isset($row['user_phone2']) ? ' / '.$row['user_phone2'] : ''; ?></a>
+							<?php echo isset($row['user_phone1']) && strlen($row['user_phone1']) > 0 ? $row['user_phone1'] : ''; ?>
+							<?php echo isset($row['user_phone2']) && strlen($row['user_phone2']) > 0 ? ' / '.$row['user_phone2'] : ''; ?>
 						</div>
 						<div class="small">Emp ID - <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
 						<div class="small"><?php echo isset($row['employment_type_name']) ? $row['employment_type_name'] : ''; ?></div>
@@ -131,41 +132,41 @@
 						<div class="small">Department - <?php echo isset($row['department_name']) ? $row['department_name'] : ''; ?></div>
 
 						<?php if($is_self_account == true) { ?>
-							<a class="btn btn-sm btn-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i> Edit Basic Information</a>
+							<a class="btn btn-sm btn-outline-primary mt-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><i class="fas fa-fw fa-pencil-alt" aria-hidden="true"></i> Edit Basic Information</a>
 						<?php } ?>
 						
 					</div><!--/.col-lg-3-->
 					<div class="col-lg-9">
 						<nav>
 							<div class="nav nav-tabs ci-nav-tab small" id="nav-tab" role="tablist">
-								<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><i class="fa fa-fw fa-info-circle" aria-hidden="true"></i> Basic Info</a>
+								<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><i class="fas fa-fw fa-info-circle" aria-hidden="true"></i> Basic Info</a>
 
 								<?php if($display_address == true){  ?>
-								<a class="nav-item nav-link" id="nav-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Address</a>
+								<a class="nav-item nav-link" id="nav-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><i class="fas fa-fw fa-map-marker" aria-hidden="true"></i> Address</a>
 								<?php } ?>
 
 								<?php if($display_education == true){  ?>
-								<a class="nav-item nav-link" id="nav-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><i class="fa fa-fw fa-certificate" aria-hidden="true"></i> Education</a>
+								<a class="nav-item nav-link" id="nav-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><i class="fas fa-fw fa-certificate" aria-hidden="true"></i> Education</a>
 								<?php } ?>
 
 								<?php if($display_experience == true){  ?>
-								<a class="nav-item nav-link" id="nav-4" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false"><i class="fa fa-fw fa-briefcase" aria-hidden="true"></i> Experiences</a>
+								<a class="nav-item nav-link" id="nav-4" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false"><i class="fas fa-fw fa-briefcase" aria-hidden="true"></i> Experiences</a>
 								<?php } ?>
 								
 								<?php if($display_salary_ac == true){  ?>
-								<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="false"><i class="fa fa-fw fa-credit-card" aria-hidden="true"></i> Salary A/C</a>
+								<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="false"><i class="fas fa-fw fa-credit-card" aria-hidden="true"></i> Salary A/C</a>
 								<?php } ?>
 
 								<?php if($display_emergency_contact == true){  ?>
-								<a class="nav-item nav-link" id="nav-7" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fa fa-fw fa-medkit" aria-hidden="true"></i> Emergency Contacts</a>
+								<a class="nav-item nav-link" id="nav-7" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fas fa-fw fa-medkit" aria-hidden="true"></i> Emergency Contacts</a>
 								<?php } ?>
 
 								<?php if($display_uploaded_files == true){  ?>
-								<a class="nav-item nav-link" id="nav-8" data-toggle="tab" href="#tab-8" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fa fa-fw fa-cloud-download" aria-hidden="true"></i> Docs</a>
+								<a class="nav-item nav-link" id="nav-8" data-toggle="tab" href="#tab-8" role="tab" aria-controls="tab-7" aria-selected="false"><i class="fas fa-fw fa-file-alt" aria-hidden="true"></i> Docs</a>
 								<?php } ?>
 
 								<?php if($display_others == true){  ?>
-								<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false"><i class="fa fa-fw fa-pie-chart" aria-hidden="true"></i> Others</a>
+								<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false"><i class="fas fa-fw fa-list-ul" aria-hidden="true"></i> Others</a>
 								<?php } ?>
 							</div>
 						</nav>
@@ -231,7 +232,7 @@
 								<div class="row mt-3">
 									<div class="col-lg-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><i class="fas fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 										<?php } ?>
 										<?php if(isset($address)){
 											foreach($address as $key=>$addr){
@@ -241,8 +242,8 @@
 													<?php echo isset($address_type[$addr['address_type']]) ? $address_type[$addr['address_type']] : 'Address'; ?>
 
 													<?php if($is_self_account == true) { ?>
-														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fa fa-fw  fa-pencil" aria-hidden="true"></i> Edit</a>
-														<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-link btn-sm"><i class="fa fa-fw fa-trash-o" aria-hidden="true"></i> Delete</a> -->
+														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-fw fa-pencil-alt" aria-hidden="true"></i> Edit</a>
+														<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-link btn-sm"><i class="fas fa-fw fa-times" aria-hidden="true"></i> Delete</a> -->
 													<?php } ?>
 												</div>
 												<div>
@@ -269,7 +270,7 @@
 								<div class="row mt-3">
 									<div class="col-lg-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><i class="fas fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 										<?php } ?>
 										
 										<?php if(isset($education)){
@@ -280,7 +281,7 @@
 												<?php echo isset($edu['qualification_name'])?$edu['qualification_name']: ' ';?> - <?php echo isset($edu['degree_name'])?$edu['degree_name']:'';?>
 												<?php echo isset($edu['academic_from_year']) ? '('.$edu['academic_from_year'].'-'.$edu['academic_to_year'].')':'';?>
 												<?php if($is_self_account == true) { ?>
-													<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fa fa-fw  fa-pencil" aria-hidden="true"></i> Edit</a>
+													<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-fw fa-pencil-alt" aria-hidden="true"></i> Edit</a>
 												<?php } ?>
 												</div>
 												<div>
@@ -306,7 +307,7 @@
 								<div class="row mt-3">
 									<div class="col-lg-12">
 									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><i class="fas fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 									<?php } ?>
 
 											<div class="user-profile-section">
@@ -318,8 +319,8 @@
 													United Exploration India Pvt. Ltd.
 												</div>
 												<div class="text-muted">
-													<?php echo isset($row['user_doj']) ? ' '.$this->common_lib->display_date($row['user_doj'],NULL, NULL, 'd/m/Y').' to ' : '-'; ?>
-													<?php echo isset($row['user_dor']) ? ' '.$this->common_lib->display_date($row['user_dor'],NULL, NULL, 'd/m/Y') : 'till date'; ?>
+													<?php echo isset($row['user_doj']) ? ' '.$this->common_lib->display_date($row['user_doj'],NULL, NULL).' to ' : '-'; ?>
+													<?php echo isset($row['user_dor']) ? ' '.$this->common_lib->display_date($row['user_dor'],NULL, NULL) : 'till date'; ?>
 												</div>
 											</div>
 											
@@ -330,15 +331,15 @@
 														<div class="section-heading">
 															<?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?>
 															<?php if($is_self_account == true) { ?>		
-															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fa fa-fw  fa-pencil" aria-hidden="true"></i> Edit</a>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-fw fa-pencil-alt" aria-hidden="true"></i> Edit</a>
 															<?php } ?>
 														</div>
 														<div class="">
 															<?php echo isset($row['company_name'])? $row['company_name']: ' ';?>
 														</div>
 														<div class="text-muted">
-															<?php echo isset($row['from_date']) ? ' '.$this->common_lib->display_date($row['from_date'],NULL, NULL, 'd/m/Y').' to ' : '-'; ?>
-															<?php echo isset($row['to_date']) ? ' '.$this->common_lib->display_date($row['to_date'], NULL, NULL, 'd/m/Y') : 'till date'; ?>
+															<?php echo isset($row['from_date']) ? ' '.$this->common_lib->display_date($row['from_date'],NULL, NULL).' to ' : '-'; ?>
+															<?php echo isset($row['to_date']) ? ' '.$this->common_lib->display_date($row['to_date'], NULL, NULL) : 'till date'; ?>
 														</div>
 													</div>
 												<?php
@@ -354,7 +355,7 @@
 								<div class="row mt-3">
 									<div class="col-lg-12">
 									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><i class="fas fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 									<?php } ?>
 										<?php //print_r($bank_details);?>
 										<?php $uni = isset($user_national_identifiers) ? $user_national_identifiers[0] : ''; ?>
@@ -376,7 +377,7 @@
 													<div class="section-heading">
 														<?php echo isset($row['bank_name'])? $row['bank_name']: ' ';?>
 														<?php echo isset($row['ifsc_code']) ? '('.$row['ifsc_code'].')' : '-'; ?>
-														<?php if($is_self_account == true) { ?>	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i> Edit</a>	<?php } ?>
+														<?php if($is_self_account == true) { ?>	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-fw fa-pencil-alt" aria-hidden="true"></i> Edit</a>	<?php } ?>
 													</div>
 													<div class="text-muted small">
 													<?php echo isset($row['account_uses'])? $account_uses[$row['account_uses']]: ' ';?>
@@ -401,7 +402,7 @@
 									<div class="row mt-3">
 										<div class="col-lg-12">
 											<dl class="row">
-												<dt class="col-sm-3">Portal Account Status</dt>
+												<dt class="col-sm-3">Account status</dt>
 												<dd class="col-sm-3">
 													<?php echo isset($user_row['user_status']) ? $user_status_arr[$user_row['user_status']]['text'] : '-'; ?>
 												</dd>
@@ -410,7 +411,7 @@
 											
 												<dt class="col-sm-3">Registered from IP</dt>
 												<dd class="col-sm-3"><?php echo isset($user_row['user_registration_ip']) ? $user_row['user_registration_ip'] : '-'; ?></dd>
-												<dt class="col-sm-3">Last Login Date Time</dt>
+												<dt class="col-sm-3">Last login</dt>
 												<dd class="col-sm-3"><?php echo isset($user_row['user_login_date_time']) ? $this->common_lib->display_date($user_row['user_login_date_time'],true) : '-'; ?></dd>									
 											</dl>
 										</div>
@@ -423,7 +424,7 @@
 								<div class="row mt-3">
 									<div class="col-lg-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
+										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><i class="fas fa-fw fa-plus" aria-hidden="true"></i> Add New</a>
 										<?php } ?>
 
 
@@ -437,8 +438,8 @@
 													<div class="section-heading">
 														<?php echo isset($con['contact_person_name'])?$con['contact_person_name']: ' ';?>
 														<?php if($is_self_account == true) { ?>
-															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_emergency_contact/'.$con["id"]);?>" class="btn-action"><i class="fa fa-fw  fa-pencil" aria-hidden="true"></i> Edit</a>
-															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_emergency_contact/'.$con["id"]);?>" class="btn-action"><i class="fa fa-fw  fa-trash-o" aria-hidden="true"></i> Delete</a>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_emergency_contact/'.$con["id"]);?>" class="btn-action"><i class="fas fa-fw fa-pencil-alt" aria-hidden="true"></i> Edit</a>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_emergency_contact/'.$con["id"]);?>" class="btn-action"><i class="fas fa-fw fa-times" aria-hidden="true"></i> Delete</a>
 														<?php } ?>
 													</div>
 													<div class="text-muted small"><?php echo isset($con['relationship']) ? $con['relationship']: '';?></div>													
@@ -495,7 +496,7 @@
 														}
 													?>
 													
-													<a data-target="window" target="_new" href="<?php echo $file_src;?>" title="<?php echo $upload['upload_file_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><i class="fa fa-fw fa-download"></i> View</a>
+													<a data-target="window" target="_new" href="<?php echo $file_src;?>" title="<?php echo $upload['upload_file_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><i class="fas fa-fw fa-download"></i> View</a>
 												</div>
 											</div>
 											<?php } //foreach ?>

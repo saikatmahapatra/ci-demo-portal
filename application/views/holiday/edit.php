@@ -6,8 +6,8 @@ $row = $rows[0];
 <div class="row">
     <div class="col-lg-9">
         <div class="card ci-card">
+            <div class="card-header">Edit Holiday</div>
             <div class="card-body">
-                <h5 class="card-title">Edit Holiday</h5>
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
 
                 <?php echo form_open(current_url(), array('method' => 'post', 'class'=>'ci-form','name' => 'myform','id' => 'myform','role' =>'form')); ?>
@@ -39,7 +39,7 @@ $row = $rows[0];
                 <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
 
                 <a href="<?php echo base_url($this->router->directory.$this->router->class);?>"
-                    class="btn btn-light ci-btn-cancel">Cancel</a>
+                    class="btn btn-outline-secondary ci-btn-cancel">Cancel</a>
                 <?php echo form_close(); ?>
             </div>
             <!--/.card-body-->

@@ -10,10 +10,12 @@
     thead th,
     tfoot th {
         font-weight: 400;
-        font-size: 80%;
     }
     // th,
     // td {
     //     padding: $table-cell-padding-sm;
     // }
+    .thead-dark {
+        background-color: $gray-400;
+    }
 }

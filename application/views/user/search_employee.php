@@ -3,8 +3,9 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card ci-card">
+			<div class="card-header">Search</div>
 			<div class="card-body">
-			<h5 class="card-title">Search</h5>
+			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'my-3','name' => 'search_employee_form','id' => 'search-user-form',)); ?>
 					<?php echo form_hidden('form_action', 'search'); ?>
@@ -26,7 +27,7 @@
 				<?php
 				if(isset($data_rows) && sizeof($data_rows)<=0){
 					?>
-					<div class="text-danger"><i class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></i> Oops! No results found.</div>
+					<div class="text-danger"><i class="fa fa-fw fas fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Oops! No results found.</div>
 					<?php
 				}
 				?>

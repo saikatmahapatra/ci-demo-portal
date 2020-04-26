@@ -221,14 +221,14 @@ class User extends CI_Controller {
             $row[] = '<span class="'.$this->data['user_status_arr'][$result['user_status']]['css'].'">'.$this->data['user_status_arr'][$result['user_status']]['text'].'</span>';
             $action_html = '';
             
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fas fa-fw fa-pencil-alt" aria-hidden="true"></i>', array(
                 'class' => 'btn btn-sm btn-outline-secondary',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit Profile',
                 'title' => 'Edit Profile'
             ));
             $action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fa fa-fw fa-info-circle" aria-hidden="true"></i>', array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fas fa-fw fa-info-circle" aria-hidden="true"></i>', array(
                 'class' => 'btn btn-sm btn-outline-info',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'View Profile',
@@ -288,7 +288,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = 'Please login to continue';
+		$this->data['page_title'] = 'Login';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/login', $this->data, true);
         $this->load->view('_layouts/layout_login', $this->data);
     }
@@ -304,8 +304,8 @@ class User extends CI_Controller {
     }
 
     function validate_login_form_data() {
-        $this->form_validation->set_rules('user_email', 'email', 'trim|required|valid_email');
-        $this->form_validation->set_rules('user_password', 'password', 'required');
+        $this->form_validation->set_rules('user_email', ' ', 'trim|required|valid_email');
+        $this->form_validation->set_rules('user_password', ' ', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -630,12 +630,12 @@ class User extends CI_Controller {
                         redirect($this->router->directory.$this->router->class.'/login');
                     }
                 } else {
-                    $this->common_lib->set_flash_message('The OTP is either invalid or expired.','alert-danger');
+                    $this->common_lib->set_flash_message('Invalid email OTP. Please try again.','alert-danger');
                     redirect(current_url());
                 }
             }
         }
-		$this->data['page_title'] = 'Create New Password';
+		$this->data['page_title'] = 'Set New Password';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/reset_password', $this->data, true);
         $this->load->view('_layouts/layout_login', $this->data);
     }
@@ -1118,7 +1118,7 @@ class User extends CI_Controller {
         $rows = $this->user_model->get_rows($user_id);
         $this->data['row'] = $rows['data_rows'];
         if(isset($this->data['row'][0]) && $this->data['row'][0]['user_status']=='A'){
-            $this->common_lib->set_flash_message('<i class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></i> You can\'t edit the selected user as the user account has already been archived.','alert-danger');
+            $this->common_lib->set_flash_message('<i class="fas fa-fw fa-exclamation-triangle" aria-hidden="true"></i> You can\'t edit the selected user as the user account has already been archived.','alert-danger');
             redirect($this->router->directory.$this->router->class.'/manage');
         }
         $res_pic = $this->user_model->get_user_profile_pic($user_id);

@@ -3,17 +3,17 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ci-card">
+            <div class="card-header">Holidays</div>
             <div class="card-body">
-            <h5 class="card-title">Holidays</h5>
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="ci-link-group">
                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>"
-                        class="btn btn-sm btn-outline-success" title="Add"> <i class="fa fa-fw fa-plus"></i> Add New</a>
+                        class="btn btn-sm btn-outline-success" title="Add"> <i class="fas fa-fw fa-plus"></i> Add New</a>
                 </div>
 
                 <div class="table-responsive">
-                    <table id="holiday-datatable" class="table ci-table table-striped table-sm">
-                        <thead class="thead-dark">
+                    <table id="holiday-datatable" class="table ci-table table-sm table-bordered text-center w-100">
+                        <thead class="thead-light">
                             <tr>
                                 <th scope="col">Date</th>
                                 <th scope="col">Day</th>

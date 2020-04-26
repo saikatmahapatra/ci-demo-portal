@@ -1,7 +1,6 @@
 .validation-error {
     color: $validation-error-color;
-    font-size: 80%;
-    margin-top: .25rem;
+    font-size: 13px;
 }
 
 .form-signin {
@@ -53,7 +52,7 @@ label.optional::after {
 //     &::before {
 //         font-family: FontAwesome;
 //         content: "\f058";
-//         vertical-align: middle;
+//         //vertical-align: middle;
 //         margin-right: 5px;
 //         display: inline-block;
 //         font-style: normal;
