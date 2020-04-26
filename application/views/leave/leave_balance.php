@@ -42,7 +42,7 @@
                 </div>
                 <button type="submit" class="btn ci-btn-primary btn-primary">Save Changes</button>
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/view_leave_balance');?>"
-                    class="btn btn-link">View Leave Balance</a>
+                    class="btn btn-light">View Leave Balance</a>
                 <?php echo form_close(); ?>
             </div>
             <!--/.card-body-->

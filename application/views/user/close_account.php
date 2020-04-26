@@ -47,7 +47,7 @@
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_user_profile/'.$row['id']);?>"
                     class="btn btn-light ci-btn-cancel">Cancel</a>
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>"
-                    class="btn btn-link" data-toggle="tooltip" title="">Manage Employees</a>
+                    class="btn btn-light" data-toggle="tooltip" title="">Manage Employees</a>
                 <?php echo form_close(); ?>
 
             </div>
