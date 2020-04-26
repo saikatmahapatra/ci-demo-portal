@@ -23,7 +23,7 @@
     <link href="<?php echo base_url('assets/vendors/fullcalendar/packages/timegrid/main.css');?>" rel="stylesheet" />
     <link href="<?php echo base_url('assets/vendors/fullcalendar/packages/list/main.css');?>" rel="stylesheet" />
     <!-- Sidebar-->
-    <link rel="stylesheet" href="<?php echo base_url('assets/vendors/malihu-custom-scrollbar-plugin/css/jquery.mCustomScrollbar.min.css');?>">
+    <!-- <link rel="stylesheet" href="<?php echo base_url('assets/vendors/malihu-custom-scrollbar-plugin/css/jquery.mCustomScrollbar.min.css');?>"> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -135,14 +135,14 @@
     <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/solid.min.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/fontawesome.min.js');?>"></script>
     <!-- jQuery Custom Scroller CDN -->
-    <script src="<?php echo base_url('assets/vendors/malihu-custom-scrollbar-plugin/js/jquery.mCustomScrollbar.concat.min.js');?>"></script>
+    <!-- <script src="<?php echo base_url('assets/vendors/malihu-custom-scrollbar-plugin/js/jquery.mCustomScrollbar.concat.min.js');?>"></script> -->
 	<!--Application Specific JS Loading Through Controllers-->
     <?php echo isset($app_js) ? $app_js : ''; ?>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
+            // $("#sidebar").mCustomScrollbar({
+            //     theme: "minimal"
+            // });
             // static nav
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
