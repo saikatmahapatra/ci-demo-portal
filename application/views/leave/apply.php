@@ -120,7 +120,7 @@
                         <li>For leave balance debit, credit related issues or information please contact to your HR.
                         </li>
                     </ul>
-                    <table class="table ci-table table-sm table-bordered text-center">
+                    <table class="table ci-table table-sm table-bordered text-center w-100">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Casual Leave (CL)</th>

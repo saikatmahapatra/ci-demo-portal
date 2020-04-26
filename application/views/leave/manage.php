@@ -51,7 +51,7 @@
                             Cancelled</span>
                     </div>
                     <!--/.status-icon-group status-icon-justify-->
-                    <table class="table ci-table table-sm table-bordered text-center">
+                    <table class="table ci-table table-sm table-bordered text-center w-100">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Application No</th>

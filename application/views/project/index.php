@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table id="project-datatable" class="table ci-table table-sm table-bordered text-center">
+                    <table id="project-datatable" class="table ci-table table-sm table-bordered text-center w-100">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Project</th>
