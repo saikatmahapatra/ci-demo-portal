@@ -1,4 +1,5 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+$sidebar-type: staticnav;
 .body-with-sidebar-layout {
     font-family: 'Poppins', sans-serif;
     background-color: #ebedef;
@@ -35,15 +36,21 @@
             text-decoration: none;
             transition: all 0.3s;
         }
-        width: 250px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        z-index: 999;
+        @if $sidebar-type==fixednav {
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            z-index: 999;
+        }
         background: #7386D5;
         color: $white;
         transition: all 0.3s;
+        @if $sidebar-type==staticnav {
+            min-width: 250px;
+            max-width: 250px;
+        }
         &.active {
             margin-left: -250px;
         }
@@ -111,20 +118,31 @@
                 }
             }
         }
+        svg[data-icon] {
+            margin-right: 5px;
+        }
     }
     #content {
-        width: calc(100% - 250px);
-        padding: 30px;
+        @if $sidebar-type==fixednav {
+            width: calc(100% - 250px);
+            padding: 30px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        @if $sidebar-type==staticnav {
+            width: 100%;
+            padding: 20px;
+        }
         @media (max-width: 576px) {
             padding: 15px;
         }
         min-height: 100vh;
         transition: all 0.3s;
-        position: absolute;
-        top: 0;
-        right: 0;
         &.active {
-            width: 100%;
+            @if $sidebar-type==fixednav {
+                width: 100%;
+            }
         }
     }
     @media (max-width: 768px) {
@@ -134,10 +152,12 @@
                 margin-left: 0;
             }
         }
-        #content {
-            width: 100%;
-            &.active {
-                width: calc(100% - 250px);
+        @if $sidebar-type==fixednav {
+            #content {
+                width: 100%;
+                &.active {
+                    width: calc(100% - 250px);
+                }
             }
         }
         #sidebarCollapse span {
