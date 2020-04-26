@@ -1,8 +1,9 @@
-<nav id="sidebar">
-    <!-- <div id="locksidebar"><i class="fas fa-arrow-left"></i></div> -->
+<nav id="sidebar" class="<?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? 'active' : ''; ?>">
     <div class="sidebar-header">
         <h3>Self Service Portal</h3>
+        <div id="locksidebar" class="d-none d-md-block float-right"><i class="fas <?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? 'fa-arrow-right' : 'fa-arrow-left'; ?> "></i></div>
     </div>
+    
     <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
     <ul class="list-unstyled components">
         <p class="">
@@ -74,6 +75,6 @@
             <a href="#" class="article"><?php echo $this->config->item('app_version');?></a>
         </li>
     </ul>
-    <div class="px-3"><?php echo $this->config->item('app_admin_copy_right');?></div>
+    <div class="small text-center px-3"><?php echo $this->config->item('app_admin_copy_right');?></div>
     <?php } ?>
 </nav>

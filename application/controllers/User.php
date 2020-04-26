@@ -719,6 +719,7 @@ class User extends CI_Controller {
         if (isset($this->session->userdata['sess_user'])) {
             $this->session->unset_userdata('sess_user');
             $this->session->unset_userdata('sess_post_login_redirect_url');
+            $this->session->unset_userdata('sess_hide_sidebar_md');
             $this->common_lib->set_flash_message('You have been logged out successfully.','alert-success');
             redirect($this->router->directory.$this->router->class.'/login');
         } else {
