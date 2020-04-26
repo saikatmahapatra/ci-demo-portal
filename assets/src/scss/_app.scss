@@ -312,6 +312,7 @@ $sidebar-type: staticnav;
         .sidebar-header {
             padding: 20px;
             background: #6d7fcc;
+            position: relative;
             h3 {
                 font-weight: 400;
             }
@@ -388,6 +389,7 @@ $sidebar-type: staticnav;
             -webkit-transition: all 0.3s;
             -o-transition: all 0.3s;
             transition: all 0.3s;
+            position: absolute;
             &:hover {
                 background: $white;
                 color: #7386D5;
