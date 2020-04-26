@@ -1951,15 +1951,22 @@ class User extends CI_Controller {
         ));
         ########### Validate User Auth End #############
 
+        $this->data['row'] = array();
         $user_id = @$this->encrypt->decode($this->uri->segment(3));
-        $rows = $this->user_model->get_rows($user_id);
-        $this->data['row'] = $rows['data_rows'];
-
-        if(isset($this->data['row'][0]) && $this->data['row'][0]['user_status'] == 'A'){
-            $this->common_lib->set_flash_message('Unable to process your request.','alert-danger');
-            redirect($this->router->directory.$this->router->class.'/manage');
+        if($user_id){
+            $rows = $this->user_model->get_rows($user_id);
+            $this->data['row'] = $rows['data_rows'];
+            if($user_id == $this->sess_user_id){
+                $this->common_lib->set_flash_message('You are not allowed to close this account.','alert-danger');
+                redirect($this->router->directory.$this->router->class.'/edit_user_profile/'.$user_id);
+            }
+    
+            if(isset($this->data['row'][0]) && $this->data['row'][0]['user_status'] == 'A'){
+                $this->common_lib->set_flash_message('Unable to process your request.','alert-danger');
+                redirect($this->router->directory.$this->router->class.'/manage');
+            }
         }
-        
+
         if ($this->input->post('form_action') == 'close_account') {
             if ($this->validate_close_account_form_data() == true) {
                 $postdata = array(
@@ -1973,7 +1980,7 @@ class User extends CI_Controller {
                 $where = array('id' => $this->input->post('user_id'));
                 $res = $this->user_model->update($postdata, $where);
                 if ($res) {
-                    $this->common_lib->set_flash_message('Portal account has been closed successfully.','alert-success');
+                    $this->common_lib->set_flash_message('Emploee Portal account has been closed successfully.','alert-success');
                     redirect($this->router->directory.$this->router->class.'/manage');
                 }
             }
@@ -1984,6 +1991,7 @@ class User extends CI_Controller {
     }
 
     function validate_close_account_form_data() {
+        $this->form_validation->set_rules('user_id', 'employee', 'required');
         $this->form_validation->set_rules('user_dor', 'date of release', 'required');
         $this->form_validation->set_rules('account_close_comments', ' ', 'required');
         $this->form_validation->set_rules('terms', ' ', 'required');

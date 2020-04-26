@@ -1,4 +1,4 @@
-<?php $row = $row[0]; ?>
+<?php $row = isset($row[0]) ? $row[0] : NULL; ?>
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
@@ -6,18 +6,24 @@
         <div class="card ci-card">
             <div class="card-header">Delete Account</div>
             <div class="card-body">
-            
-                <?php
-					echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
-					echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
-					echo isset($row['user_lastname']) ? $row['user_lastname'] : '';
-					echo isset($row['user_emp_id']) ? ' (Emp ID '.$row['user_emp_id'].') ': '';
-					echo isset($row['user_email']) ? '; '.$row['user_email']: '';
-				?>
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>
                 <?php echo form_hidden('form_action', 'close_account'); ?>
                 <?php echo form_hidden('user_id', $row['id']); ?>
+
+                <div class="form-group">
+                    <label for="user_dor" class="required">Employee Details</label>
+                    <div class="text-muted">
+                        <?php
+                        echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
+                        echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
+                        echo isset($row['user_lastname']) ? $row['user_lastname'] : '';
+                        echo isset($row['user_emp_id']) ? ' (Emp ID '.$row['user_emp_id'].') ': '';
+                        echo isset($row['user_email']) ? '; '.$row['user_email']: '';
+                        ?>
+                    </div>
+                    <?php echo form_error('user_id'); ?>
+                </div>
 
                 <div class="form-group">
                     <label for="user_dor" class="required">Date of Release</label>

@@ -166,7 +166,7 @@ class User_model extends CI_Model {
                 return $auth_result;
             } else if (isset($row) && ($row['user_status'] == 'A')) {
                 $login_status = 'error';
-                $message = 'Your account has been archived permanently.' ;
+                $message = 'Your account has been deactivated permanently.' ;
                 $auth_result = array('status' => $login_status, 'message' => $message, 'data' => $loggedin_data);
                 return $auth_result;
             } else {
