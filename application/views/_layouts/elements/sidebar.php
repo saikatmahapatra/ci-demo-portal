@@ -69,7 +69,7 @@
 
     <ul class="list-unstyled CTAs">
         <li>
-            <a href="<?php echo base_url('user/logout');?>" class="download"><i class="fas fa-fw fa-power-off"></i> Sign out</a>
+            <a href="<?php echo base_url('user/logout');?>" class="download">Sign out</a>
         </li>
         <li>
             <a href="#" class="article"><?php echo $this->config->item('app_version');?></a>
