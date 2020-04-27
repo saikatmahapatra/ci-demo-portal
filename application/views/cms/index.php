@@ -6,7 +6,7 @@
             <div class="card-header">Data Table</div>
             <div class="card-body">
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
-                <div class="ci-link-group">
+                <div class="action-btn-group">
                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>"
                         class="btn btn-sm btn-outline-success" title="Add"> <i class="fas fa-fw fa-plus"></i> Add New</a>
                 </div>

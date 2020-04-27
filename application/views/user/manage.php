@@ -7,7 +7,7 @@
 			<div class="card-body">
 			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
-				<div class="ci-link-group">
+				<div class="action-btn-group">
 					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="btn btn-sm btn-outline-success mr-2" data-toggle="tooltip" title="Create new user account"> <i class="fas fa-fw fa-plus"></i> Add New</a>
 				
 					<?php echo form_open(current_url(), array('method' => 'post', 'class' => '', 'name' => 'download_data')); ?>

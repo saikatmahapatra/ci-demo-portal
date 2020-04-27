@@ -44,7 +44,7 @@
                                 </div>
                                 <?php echo form_error('selected_date'); ?>
                                 <div class="mt-2"><a id="clear_selected_days" class="btn btn-light"
-                                        href="#">Clear date selection</a></div>
+                                        href="#">Clear selected dates</a></div>
                             </div>
                             <!--/.col-lg-3-->
 

@@ -24,7 +24,7 @@
     <![endif]-->
 </head>
 
-<body class="login body-with-sidebar-layout" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
+<body class="login body-with-sidebar-layout" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>" onloadstart="">
     <?php //echo $el_navbar; ?>
     <main role="main" class="container d-flex flex-column">
         <?php echo $maincontent; ?>
@@ -33,9 +33,7 @@
         <?php echo $el_footer; ?>
     </footer>
     <button class="btn btn-outline-info scrollup"><i class="fas fa-arrow-up"></i></button>
-	<div class="ajax-loader-ui" id="ajax-loader" style="display:none;">
-        <div class="ajax-loader-img"><img src="<?php echo base_url('assets/dist/img/rolling.gif');?>" alt="Loading"></div>
-	</div>
+	<span id="loader-wrapper"><span class="loader"></span></span>
 
     <!-- jQuery -->    
 	<script type="text/javascript" src="<?php echo base_url('assets/vendors/jquery/dist/jquery.min.js'); ?>"></script>	

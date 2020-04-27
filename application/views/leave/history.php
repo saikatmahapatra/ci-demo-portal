@@ -6,7 +6,7 @@
             <div class="card-header">Leave History</div>
             <div class="card-body">
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
-                <div class="ci-link-group">
+                <div class="action-btn-group">
                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>"
                         class="btn btn-sm btn-outline-secondary" title="Apply Leave">Apply Leave</a>
                 </div>
