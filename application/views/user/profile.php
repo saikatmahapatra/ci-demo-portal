@@ -176,8 +176,8 @@
 									<div class="col-lg-12">
 										
 										<dl class="row">
-											<dt class="col-lg-2">Name</dt>
-											<dd class="col-lg-4">
+											<dt class="col-lg-3">Name</dt>
+											<dd class="col-lg-9">
 												<?php
 												echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 												echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
@@ -185,31 +185,34 @@
 												echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
 												?>
 											</dd>
-											<dt class="col-lg-2">Employee ID</dt>
-											<dd class="col-lg-4"><?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : '-'; ?></dd>
-										
-											<dt class="col-lg-2">Date of Joining</dt>
-											<dd class="col-lg-4"><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></dd>
-											<dt class="col-lg-2">Desg.</dt>
-											<dd class="col-lg-4"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
 
-											<dt class="col-lg-2">Emp Type</dt>
-											<dd class="col-lg-4"><?php echo isset($row['employment_type_name']) ? $row['employment_type_name'] : '-'; ?></dd>
-											<dt class="col-lg-2">Dept.</dt>
-											<dd class="col-lg-4"><?php echo isset($row['department_name']) ? $row['department_name'] : '-'; ?></dd>
+											<dt class="col-lg-3">Employee ID</dt>
+											<dd class="col-lg-9"><?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : '-'; ?></dd>
 
-											<dt class="col-lg-2">Email (office)</dt>
-											<dd class="col-lg-4"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?></a></dd>
-											<dt class="col-lg-2">Mobile (office)</dt>
-											<dd class="col-lg-4"><?php echo isset($row['user_phone2']) ? $row['user_phone2'] : '-'; ?></dd>
+											<dt class="col-lg-3">Designation</dt>
+											<dd class="col-lg-9"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
+
+											<dt class="col-lg-3">Employment Type</dt>
+											<dd class="col-lg-9"><?php echo isset($row['employment_type_name']) ? $row['employment_type_name'] : '-'; ?></dd>
+
+											<dt class="col-lg-3">Department</dt>
+											<dd class="col-lg-9"><?php echo isset($row['department_name']) ? $row['department_name'] : '-'; ?></dd>
 										
-											<dt class="col-lg-2">Email (personal)</dt>
-											<dd class="col-lg-4"><a href="mailto:<?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?>"><?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?></a></dd>			
-											<dt class="col-lg-2">Mobile (personal)</dt>
-											<dd class="col-lg-4"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : '-'; ?></dd>						
+											<dt class="col-lg-3">Date of Joining</dt>
+											<dd class="col-lg-9"><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></dd>
+
+											<dt class="col-lg-3">Work Email</dt>
+											<dd class="col-lg-9"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?></a></dd>
+											<dt class="col-lg-3">Work Phone</dt>
+											<dd class="col-lg-9"><?php echo isset($row['user_phone2']) && strlen($row['user_phone2']) > 0 ? $row['user_phone2'] : '-'; ?></dd>
+										
+											<dt class="col-lg-3">Personal Email</dt>
+											<dd class="col-lg-9"><a href="mailto:<?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?>"><?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?></a></dd>			
+											<dt class="col-lg-3">Personal Phone</dt>
+											<dd class="col-lg-9"><?php echo isset($row['user_phone1']) && strlen(isset($row['user_phone1'])) > 0 ? $row['user_phone1'] : '-'; ?></dd>
 											
-											<dt class="col-lg-2"><?php echo ($is_self_account == true) ? "Date of Birth" : "Birth Day";?></dt>
-											<dd class="col-lg-4">
+											<dt class="col-lg-3"><?php echo ($is_self_account == true) ? "Date of Birth" : "Birth Day";?></dt>
+											<dd class="col-lg-9">
 											<?php if($is_self_account == true) {?>	
 											<?php echo isset($row['user_dob']) ? $this->common_lib->display_date($row['user_dob']) : '-'; ?>
 											<?php } else{?>
@@ -217,12 +220,15 @@
 											<?php } ?>
 											</dd>
 
-											<dt class="col-lg-2">Gender</dt>
-											<dd class="col-lg-4"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : ''; ?></dd>
+											<dt class="col-lg-3">Gender</dt>
+											<dd class="col-lg-9"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : '-'; ?></dd>
 										
-											<dt class="col-lg-2">Blood Group</dt>
-											<dd class="col-lg-4"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : ''; ?></dd>								
+											<dt class="col-lg-3">Blood Group</dt>
+											<dd class="col-lg-9"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : '-'; ?></dd>
 										</dl><!--/dl.row-->
+										<?php if($is_self_account == true) {?>
+											<div class="text-muted small">* If you find any incorrect information, please contact to your HR or admin person for updating.</div>
+										<?php } ?>
 									</div>
 								</div>
 							</div> <!--/#tab-1-->
@@ -361,12 +367,12 @@
 										<?php $uni = isset($user_national_identifiers) ? $user_national_identifiers[0] : ''; ?>
 										
 										<dl class="row">
-											<dt class="col-lg-2">PAN No</dt>
-											<dd class="col-lg-4">
+											<dt class="col-lg-3">PAN No</dt>
+											<dd class="col-lg-9">
 												<?php echo isset($uni['user_pan_no']) ? $uni['user_pan_no'] : '-';?>
 											</dd>
-											<dt class="col-lg-2">UAN No (PF)</dt>
-											<dd class="col-lg-4">
+											<dt class="col-lg-3">UAN No (PF)</dt>
+											<dd class="col-lg-9">
 												<?php echo isset($uni['user_uan_no']) ? $uni['user_uan_no'] : '-';?>
 											</dd>
 										</dl>
@@ -402,17 +408,18 @@
 									<div class="row mt-3">
 										<div class="col-lg-12">
 											<dl class="row">
-												<dt class="col-sm-3">Account status</dt>
-												<dd class="col-sm-3">
+												<dt class="col-lg-3">Account status</dt>
+												<dd class="col-lg-9">
 													<?php echo isset($user_row['user_status']) ? $user_status_arr[$user_row['user_status']]['text'] : '-'; ?>
 												</dd>
-												<dt class="col-sm-3">Registered on</dt>
-												<dd class="col-sm-3"><?php echo isset($user_row['user_registration_date']) ? $this->common_lib->display_date($user_row['user_registration_date'],true) : '-'; ?></dd>									
+												<dt class="col-lg-3">Registered on</dt>
+												<dd class="col-lg-9"><?php echo isset($user_row['user_registration_date']) ? $this->common_lib->display_date($user_row['user_registration_date'],true) : '-'; ?></dd>
 											
-												<dt class="col-sm-3">Registered from IP</dt>
-												<dd class="col-sm-3"><?php echo isset($user_row['user_registration_ip']) ? $user_row['user_registration_ip'] : '-'; ?></dd>
-												<dt class="col-sm-3">Last login</dt>
-												<dd class="col-sm-3"><?php echo isset($user_row['user_login_date_time']) ? $this->common_lib->display_date($user_row['user_login_date_time'],true) : '-'; ?></dd>									
+												<dt class="col-lg-3">Registered from IP</dt>
+												<dd class="col-lg-9"><?php echo isset($user_row['user_registration_ip']) ? $user_row['user_registration_ip'] : '-'; ?></dd>
+
+												<dt class="col-lg-3">Last login</dt>
+												<dd class="col-lg-9"><?php echo isset($user_row['user_login_date_time']) ? $this->common_lib->display_date($user_row['user_login_date_time'],true) : '-'; ?></dd>									
 											</dl>
 										</div>
 									</div>

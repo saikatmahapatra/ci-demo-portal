@@ -395,8 +395,8 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_email', 'email', 'trim|required|valid_email|callback_valid_email_domain|callback_is_email_registered');
         $this->form_validation->set_rules('user_email_secondary', 'personal email', 'valid_email|differs[user_email]');
         //$this->form_validation->set_rules('user_password', 'password', 'required|trim|min_length[6]');
-        $this->form_validation->set_rules('user_phone1', 'mobile (personal)', 'required|trim|min_length[10]|max_length[10]|numeric');
-        $this->form_validation->set_rules('user_phone2', 'mobile (office)', 'trim|min_length[10]|max_length[10]|numeric|differs[user_phone1]');
+        $this->form_validation->set_rules('user_phone1', 'personal phone', 'required|trim|min_length[10]|max_length[10]|numeric');
+        $this->form_validation->set_rules('user_phone2', 'work phone', 'trim|min_length[10]|max_length[10]|numeric|differs[user_phone1]');
         //$this->form_validation->set_rules('user_password_confirm', 'confirm password', 'required|matches[user_password]');
         $this->form_validation->set_rules('user_dob', 'date of birth', 'required');
         $this->form_validation->set_rules('user_doj', 'date of joining', 'required');
@@ -776,7 +776,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_phone2', 'office mobile', 'trim|min_length[10]|max_length[10]|numeric|differs[user_phone1]
 ');
         $this->form_validation->set_rules('user_bio', 'about you', 'max_length[100]');
-        $this->form_validation->set_rules('user_email', 'registered email (office)', 'required|valid_email');
+        $this->form_validation->set_rules('user_email', 'registered work email', 'required|valid_email');
         $this->form_validation->set_rules('user_email_secondary', 'personal email', 'required|valid_email|differs[user_email]');
         //$this->form_validation->set_rules('user_blood_group', 'blood group', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
@@ -1768,10 +1768,10 @@ class User extends CI_Controller {
             'A' => 'Sr No.',
             'B' => 'Employee ID',
             'C' => 'Name',
-            'D' => 'Email (Office)',
-            'E' => 'Email (Personal)',
-            'F' => 'Mobile (Office)',
-            'G' => 'Mobile (Personal)',
+            'D' => 'Work Email',
+            'E' => 'Personal Email',
+            'F' => 'Work Phone',
+            'G' => 'Personal Phone',
             'H' => 'DOB',
             'I' => 'Gender',
             'J' => 'Blood Group',
