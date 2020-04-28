@@ -62,14 +62,14 @@
             <li><a href="<?php echo base_url('user/profile');?>">My Profile</a></li>
             <li><a href="<?php echo base_url('document');?>">My Documents</a></li>
             <li><a href="<?php echo base_url('user/change_password');?>">Change Password</a></li>
-            <li><a href="<?php echo base_url('user/logout');?>">Sign out</a></li>
+            <li><a href="<?php echo base_url('user/logout');?>">Sign Out</a></li>
             </ul>
         </li>
     </ul>
 
     <ul class="list-unstyled CTAs">
         <li>
-            <a href="<?php echo base_url('user/logout');?>" class="download">Sign out</a>
+            <a href="<?php echo base_url('user/logout');?>" class="download">Sign Out</a>
         </li>
         <li>
             <a href="#" class="article"><?php echo $this->config->item('app_version');?></a>
