@@ -76,8 +76,8 @@ class User extends CI_Controller {
         );
 
         $this->data['user_status_arr'] = array(
-            'N'=>array('text'=>'Inactive', 'css'=>'text-warning'),
-            'A'=>array('text'=>'Closed', 'css'=>'text-danger'),
+            'N'=>array('text'=>'Inactive', 'css'=>''),
+            'A'=>array('text'=>'Closed', 'css'=>''),
             'Y'=>array('text'=>'Active', 'css'=>'')
         );
     }
