@@ -136,7 +136,7 @@
                                 </td>
                                 <td>
                                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));?>"
-                                        class="btn btn-sm btn-light" data-toggle="tooltip"
+                                        class="btn btn-sm btn-light text-secondary" data-toggle="tooltip"
                                         title="View Details"><?php echo $this->common_lib->get_icon('info', 'dt_action_icon');?></a>
 
                                 </td>
