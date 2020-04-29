@@ -600,6 +600,32 @@ class Common_lib {
         }
     }
 
+    function get_icon($name, $css_class = NULL, $style  = NULL){
+        $icon_style = 'fas';
+        if($style) {
+            $icon_style = $style;
+        }
+        $icon_name_arr = array(
+            'plus' => 'fa-plus',
+            'minus' => 'fa-minus',
+            'edit' => 'fa-pencil-alt',
+            'close' => 'fa-times',
+            'tick' => 'fa-check',
+            'delete' => 'fa-trash-alt',
+            'home' => 'fa-home',
+            'user_account' => 'fa-user',
+            'user_admin' => 'fa-user-lock',
+            'organization' => 'fa-bookmark',
+            'leave' => 'fa-paper-plane',
+            'leave_status' => 'fa-circle',
+            'table_status' => 'fa-circle',
+            'timesheet' => 'fa-calendar-check',
+            'help' => 'fa-question'
+        );
+        $icon_name = isset($icon_name_arr[$name]) ? $icon_name_arr[$name] : '';
+        return '<i class="'.$icon_style.' fa-fw '.$icon_name.' '.$css_class.'" aria-hidden="true"></i>';
+    }
+
 }
 
 ?>
