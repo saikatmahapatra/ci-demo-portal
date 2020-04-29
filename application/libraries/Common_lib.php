@@ -600,7 +600,7 @@ class Common_lib {
         }
     }
 
-    function get_icon($name, $css_class = NULL, $style  = NULL){
+    function get_icon($name, $css_class = 'text-danger', $style  = NULL){
         $icon_style = 'fas';
         if($style) {
             $icon_style = $style;
@@ -610,9 +610,10 @@ class Common_lib {
             'minus' => 'fa-minus',
             'edit' => 'fa-pencil-alt',
             'close' => 'fa-times',
-            'dt_edit' = 'fa-pencil-alt',
-            'dt_delete' = 'fa-times',
-            'dt_info' = 'fa-info',
+            'dt_edit' => 'fa-pencil-alt dt-fa-icon',
+            'dt_delete' => 'fa-times dt-fa-icon',
+            'dt_info' => 'fa-info dt-fa-icon',
+            'dt_list' => 'fa-list',
             'dt_status' => 'fa-circle',
             'tick' => 'fa-check',
             'delete' => 'fa-trash-alt',
@@ -624,6 +625,11 @@ class Common_lib {
             'leave_status' => 'fa-circle',
             'timesheet' => 'fa-calendar-check',
             'help' => 'fa-question',
+            'warning' => 'fa-exclamation-triangle',
+            'sidebar_toggle' => 'fa-align-left',
+            'sidebar_push_left' => 'fa-align-left',
+            'sidebar_push_right' => 'fa-align-right',
+            'scroll_up' => 'fa-arrow-up',
         );
         $icon_name = isset($icon_name_arr[$name]) ? $icon_name_arr[$name] : '';
         return '<i class="'.$icon_style.' fa-fw '.$icon_name.' '.$css_class.'" aria-hidden="true"></i>';
