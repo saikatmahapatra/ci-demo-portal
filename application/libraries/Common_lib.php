@@ -627,7 +627,7 @@ class Common_lib {
             'admin_user' => 'fa-user-shield',
             'organization' => 'fa-bookmark',
             'leave' => 'fa-paper-plane',
-            'leave_status' => 'fa-circle-notch',
+            'leave_status' => 'fa-circle-notch fa-xs',
             'timesheet' => 'fa-calendar-check',
             'question' => 'fa-question',
             'warning' => 'fa-exclamation-triangle',
