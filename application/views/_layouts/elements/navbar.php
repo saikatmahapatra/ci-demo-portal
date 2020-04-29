@@ -21,7 +21,7 @@
                             <div class="row">
                                 <li class="col-lg-3 col-md-6 dropdown-item">
                                     <ul>
-                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-user-plus" aria-hidden="true"></i> Employee Management</li>
+                                        <li class="dropdown-header">Employee Management</li>
                                         <li><a href="<?php echo base_url('user/create_account'); ?>">Add New Employee</a></li>
                                         <li><a href="<?php echo base_url('user/manage'); ?>">Manage Employees</a></li>
                                     </ul>
@@ -29,7 +29,7 @@
 
                                 <li class="col-lg-3 col-md-6 dropdown-item">
                                     <ul>
-                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-leaf" aria-hidden="true"></i> Content Management</li>
+                                        <li class="dropdown-header">Content Management</li>
                                         <li><a href="<?php echo base_url('cms/add'); ?>">Add New Content</a></li>
                                         <li><a href="<?php echo base_url('cms'); ?>">Manage Contents</a></li>
                                         <li><a href="<?php echo base_url('holiday'); ?>">Manage Holidays</a></li>
@@ -38,7 +38,7 @@
 
                                 <li class="col-lg-3 col-md-6 dropdown-item">
                                     <ul>
-                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-paper-plane-o" aria-hidden="true"></i> Leave Management</li>
+                                        <li class="dropdown-header">Leave Management</li>
                                         <li><a href="<?php echo base_url('leave/manage/all'); ?>">Leave Applications</a></li>
                                         <li><a href="<?php echo base_url('leave/view_leave_balance'); ?>">Leave Balance</a></li>
                                         <!-- <li><a href="<?php echo base_url('leave/import_data'); ?>">Import/Export Balance Sheet</a></li> -->
@@ -48,7 +48,7 @@
 
                                 <li class="col-lg-3 col-md-6 dropdown-item">
                                     <ul>
-                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-calendar-check-o" aria-hidden="true"></i> Timesheet & Projects</li>
+                                        <li class="dropdown-header">Timesheet & Projects</li>
                                         <li><a href="<?php echo base_url('timesheet/report'); ?>">Timesheet Report</a></li>
                                         <li><a href="<?php echo base_url('project'); ?>">Manage Projects</a></li>
                                         <li><a href="<?php echo base_url('project/tasks'); ?>">Manage Tasks</a></li>
@@ -61,10 +61,10 @@
                                 
                                 <li class="col-lg-3 col-md-6 dropdown-item">
                                     <ul>
-                                        <!-- <li class="dropdown-header"><i class="bsmm-icon fa fa-home" aria-hidden="true"></i> Home</li>
+                                        <!-- <li class="dropdown-header">Home</li>
                                         <li><a href="<?php echo base_url();?>">Dashboard</a></li>
                                         <li class="divider"></li> -->
-                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-institution" aria-hidden="true"></i> Organization</li>
+                                        <li class="dropdown-header">Organization</li>
                                         <li><a href="<?php echo base_url('user/people');?>">Employees</a></li>
                                         <li><a href="<?php echo base_url('user/reportee_employee'); ?>">My Reportees</a></li>
                                         <li><a href="<?php echo base_url('home/policy'); ?>">HR Policies</a></li>
@@ -73,17 +73,17 @@
                                 </li>
                                 <li class="col-lg-3 col-md-6 dropdown-item">
                                     <ul>
-                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-calendar-check-o" aria-hidden="true"></i> Timesheet</li>
+                                        <li class="dropdown-header">Timesheet</li>
                                         <li><a href="<?php echo base_url('timesheet'); ?>">Log Tasks</a></li>
                                         <li><a href="<?php echo base_url('timesheet/report?redirected_from=reportee_id'); ?>">Report</a></li>
                                         <li class="divider"></li>
-                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-calendar" aria-hidden="true"></i> Event Calendar</li>
+                                        <li class="dropdown-header">Event Calendar</li>
                                         <li><a href="<?php echo base_url('event_calendar'); ?>">View Calendar</a></li>
                                     </ul>
                                 </li>
                                 <li class="col-lg-3 col-md-6 dropdown-item">
                                     <ul>
-                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-plane" aria-hidden="true"></i> Leave</li>
+                                        <li class="dropdown-header">Leave</li>
                                         <li><a href="<?php echo base_url('leave/apply'); ?>">Apply</a></li>
                                         <li><a href="<?php echo base_url('leave/history'); ?>">History</a></li>
                                         <li><a href="<?php echo base_url('user/edit_approvers'); ?>">Change Approvers</a></li>
@@ -92,7 +92,7 @@
                                 </li>
                                 <li class="col-lg-3 col-md-6 dropdown-item">
                                     <ul>
-                                        <li class="dropdown-header"><i class="bsmm-icon fa fa-user-circle" aria-hidden="true"></i> Profile</li>
+                                        <li class="dropdown-header">Profile</li>
                                         <li><a href="<?php echo base_url('user/profile');?>">My Profile</a></li>
                                         <!-- <li><a href="<?php echo base_url('user/edit_profile');?>">Edit Basic Information</a></li>
                                         <li><a href="<?php echo base_url('user/profile_pic');?>">Change Profile Photo</a></li> -->
@@ -108,11 +108,11 @@
 
                 <ul class="navbar-nav my-2 my-lg-0">
                     <li class="nav-item dropdown no-toggle-icon">
-                        <a class="nav-link dropdown-toggle" id="dropdown_notification" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-fw fa-bell-o "></i></a>
+                        <a class="nav-link dropdown-toggle" id="dropdown_notification" href="#" data-toggle="dropdown" aria-label="Show notifications"></a>
                         <ul class="notification dropdown-menu dropdown-menu-right">
                             <li class="notification-title">You have 0 new notifications.</li>
                                 <div class="notification-content">
-                                    <!-- <li><a class="notification-item" href="<?php echo base_url();?>"><span class="notification-icon"><span class="fa-stack "><i class="fa fa-fw fa-circle-o-notch fa-stack-2x text-primary"></i><i class="fa fa-fw fa-envelope fa-stack-1x fa-inverse"></i></span></span><div><p class="notification-message">Lisa sent you a mail</p><p class="notification-meta">2 min ago</p></div></a></li>-->
+                                    <!-- <li><a class="notification-item" href="<?php echo base_url();?>"><span class="notification-icon"><span class="fa-stack "></span></span><div><p class="notification-message">Lisa sent you a mail</p><p class="notification-meta">2 min ago</p></div></a></li>-->
                                 </div>
                             <li class="notification-footer"><a href="<?php echo base_url();?>">See all notifications.</a></li>
                         </ul>
@@ -120,7 +120,7 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown_5" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"><i class="fa fa-fw fa-user-circle " aria-hidden="true"></i> <?php //echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'] : 'Guest';?></a>
+                            aria-expanded="false"><?php //echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'] : 'Guest';?></a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown_5">					
                             <div class="dropdown-item welcome-user-container">
                                 <div class="mb-1"><?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></div>

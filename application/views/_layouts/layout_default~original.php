@@ -44,7 +44,7 @@
         <?php echo $el_footer; ?>
     </footer>
 
-	<button class="btn btn-outline-primary scrollup"><i aria-hidden="true" class="fa fa-arrow-up"></i></button>
+	<button class="btn btn-outline-primary scrollup"><i aria-hidden="true" class="fas fa-arrow-up"></i></button>
 	<div class="ajax-loader-ui" id="ajax-loader" style="display:none;">
         <div class="ajax-loader-img"><img src="<?php echo base_url('assets/dist/img/rolling.gif');?>" alt="Loading"></div>
 	</div>

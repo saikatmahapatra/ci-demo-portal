@@ -39,16 +39,14 @@
                                 <td><?php echo $this->common_lib->display_date($row['leave_to_date']);?></td>
                                 <td><?php echo $row['applied_for_days_count'].' day(s)';?></td>
                                 <td>
-                                    <!-- <span class="small"><i class="fa fa-fw fa-circle-o-notch <?php echo $leave_status_arr[$row['leave_status']]['css'];?>" aria-hidden="true"></i></span>  -->
                                     <span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>">
                                         <?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
                                 </td>
                                 <!-- <td><?php echo isset($row['leave_reason']) ? word_limiter($row['leave_reason'], 5) : '';?></td> -->
                                 <td>
                                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/history');?>"
-                                        class="btn btn-sm btn-light text-info" data-toggle="tooltip"
-                                        title="View Details"><i class="fas fa-fw fa-info-circle"
-                                            aria-hidden="true"></i></a>
+                                        class="btn btn-sm btn-light" data-toggle="tooltip"
+                                        title="View Details"><?php echo $this->common_lib->get_icon('info'); ?></a>
                                 </td>
                             </tr>
                             <?php

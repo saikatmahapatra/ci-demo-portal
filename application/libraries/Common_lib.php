@@ -600,38 +600,52 @@ class Common_lib {
         }
     }
 
-    function get_icon($name, $css_class = 'text-danger', $style  = NULL){
+    function get_icon($name, $css_class = NULL, $style  = NULL){
         $icon_style = 'fas';
         if($style) {
             $icon_style = $style;
         }
         $icon_name_arr = array(
+            'email' => 'fa-envelope',
+            'username' => 'fa-user',
+            'password' => 'fa-lock',
+            'otp' => 'fa-key',
+            'search' => 'fa-search',
             'plus' => 'fa-plus',
             'minus' => 'fa-minus',
             'edit' => 'fa-pencil-alt',
+            'delete' => 'fa-times',
             'close' => 'fa-times',
-            'dt_edit' => 'fa-pencil-alt dt-fa-icon',
-            'dt_delete' => 'fa-times dt-fa-icon',
-            'dt_info' => 'fa-info dt-fa-icon',
-            'dt_list' => 'fa-list',
-            'dt_status' => 'fa-circle',
+            'download' => 'fa-download',
+            'info' => 'fa-info',
+            'list' => 'fa-list',
+            'status' => 'fa-circle',
             'tick' => 'fa-check',
-            'delete' => 'fa-trash-alt',
             'home' => 'fa-home',
+            'calendar' => 'fa-calendar',
             'user_account' => 'fa-user',
-            'admin_user' => 'fa-user-lock',
+            'admin_user' => 'fa-user-shield',
             'organization' => 'fa-bookmark',
             'leave' => 'fa-paper-plane',
-            'leave_status' => 'fa-circle',
+            'leave_status' => 'fa-circle-notch',
             'timesheet' => 'fa-calendar-check',
-            'help' => 'fa-question',
+            'question' => 'fa-question',
             'warning' => 'fa-exclamation-triangle',
             'sidebar_toggle' => 'fa-align-left',
-            'sidebar_push_left' => 'fa-align-left',
-            'sidebar_push_right' => 'fa-align-right',
+            'left_arrow' => 'fa-arrow-left',
+            'right_arrow' => 'fa-arrow-right',
             'scroll_up' => 'fa-arrow-up',
+            'left_back' => 'fa-chevron-left',
+            'camera' => 'fa-camera',
+            'address' => 'fa-map-marker',
+            'education' => 'fa-certificate',
+            'work_exp' => 'fa-briefcase',
+            'card' => 'fa-credit-card',
+            'docs' => 'fa-file-alt',
+            'medical' => 'fa-medkit',
+            'other_info' => 'fa-list-ul',
         );
-        $icon_name = isset($icon_name_arr[$name]) ? $icon_name_arr[$name] : '';
+        $icon_name = isset($icon_name_arr[$name]) ? $icon_name_arr[$name] : 'not-found';
         return '<i class="'.$icon_style.' fa-fw '.$icon_name.' '.$css_class.'" aria-hidden="true"></i>';
     }
 

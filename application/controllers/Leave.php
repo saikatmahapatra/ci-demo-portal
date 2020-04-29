@@ -443,14 +443,14 @@ class Leave extends CI_Controller {
             
             //add html for action
             $action_html = '<span class="float-right">';
-            /*$action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), '<i class="fas fa-fw fa-pencil-alt" aria-hidden="true"></i>', array(
+            /*$action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), $this->common_lib->get_icon('edit'), array(
                 'class' => 'text-dark',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit',
                 'title' => 'Edit',
             ));*/            
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), '<i class="fas fa-fw fa-times" aria-hidden="true"></i>', array(
-                'class' => 'text-danger btn-delete',
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), $this->common_lib->get_icon('delete'), array(
+                'class' => 'text-danger',
 				'data-confirmation'=>false,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',
                 'data-toggle' => 'tooltip',

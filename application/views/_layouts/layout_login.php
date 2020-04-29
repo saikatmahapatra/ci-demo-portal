@@ -32,7 +32,7 @@
     <footer class="footer">
         <?php echo $el_footer; ?>
     </footer>
-    <button class="btn btn-outline-info scrollup"><i class="fas fa-arrow-up"></i></button>
+    <button class="btn btn-outline-info scrollup"><?php echo $this->common_lib->get_icon('scroll_up'); ?></button>
 	<span id="loader-wrapper"><span class="loader"></span></span>
 
     <!-- jQuery -->    
