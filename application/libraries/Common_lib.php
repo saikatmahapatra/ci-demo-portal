@@ -610,17 +610,20 @@ class Common_lib {
             'minus' => 'fa-minus',
             'edit' => 'fa-pencil-alt',
             'close' => 'fa-times',
+            'dt_edit' = 'fa-pencil-alt',
+            'dt_delete' = 'fa-times',
+            'dt_info' = 'fa-info',
+            'dt_status' => 'fa-circle',
             'tick' => 'fa-check',
             'delete' => 'fa-trash-alt',
             'home' => 'fa-home',
             'user_account' => 'fa-user',
-            'user_admin' => 'fa-user-lock',
+            'admin_user' => 'fa-user-lock',
             'organization' => 'fa-bookmark',
             'leave' => 'fa-paper-plane',
             'leave_status' => 'fa-circle',
-            'table_status' => 'fa-circle',
             'timesheet' => 'fa-calendar-check',
-            'help' => 'fa-question'
+            'help' => 'fa-question',
         );
         $icon_name = isset($icon_name_arr[$name]) ? $icon_name_arr[$name] : '';
         return '<i class="'.$icon_style.' fa-fw '.$icon_name.' '.$css_class.'" aria-hidden="true"></i>';
