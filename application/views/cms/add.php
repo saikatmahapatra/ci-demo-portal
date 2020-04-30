@@ -11,15 +11,13 @@
                 <?php echo form_hidden('form_action', 'insert'); ?>
 
                 <div class="form-row">
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-4">
                         <label for="content_type" class="required">Type</label>
                         <?php echo form_dropdown('content_type', $arr_content_type, set_value('content_type'), array('class' => 'form-control',));?>
                         <?php echo form_error('content_type'); ?>
                     </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-12">
+                
+                    <div class="form-group col-lg-8">
                         <label for="content_title" class="required">Title</label>
                         <?php echo form_input(array('name' => 'content_title', 'value' => set_value('content_title'), 'id' => 'content_title', 'class' => 'form-control', 'placeholder' => ''));?>
                         <?php echo form_error('content_title'); ?>

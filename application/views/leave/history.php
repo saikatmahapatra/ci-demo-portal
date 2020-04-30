@@ -45,7 +45,7 @@
                                 <!-- <td><?php echo isset($row['leave_reason']) ? word_limiter($row['leave_reason'], 5) : '';?></td> -->
                                 <td>
                                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/history');?>"
-                                        class="btn btn-sm btn-light" data-toggle="tooltip"
+                                        class="btn btn-sm btn-light text-secondary" data-toggle="tooltip"
                                         title="View Details"><?php echo $this->common_lib->get_icon('info'); ?></a>
                                 </td>
                             </tr>
