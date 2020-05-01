@@ -166,3 +166,34 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="timesheetDetailsInfoModal" tabindex="-1" role="dialog" aria-labelledby="timesheetDetailsInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="timesheetDetailsInfoModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <dl class="row">
+            <dt class="col-lg-3">Employee</dt>
+            <dd class="col-lg-9" id="ts_emp_name"></dd>
+            <dt class="col-lg-3">Project</dt>
+            <dd class="col-lg-9" id="ts_project"></dd>
+            <dt class="col-lg-3">Task</dt>
+            <dd class="col-lg-9" id="ts_task"></dd>
+            <dt class="col-lg-3">Hours</dt>
+            <dd class="col-lg-9" id="ts_hours"></dd>
+            <dt class="col-lg-3">Description</dt>
+            <dd class="col-lg-9" id="ts_desc"></dd>
+        </dl>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Send message</button> -->
+      </div>
+    </div>
+  </div>
+</div>
