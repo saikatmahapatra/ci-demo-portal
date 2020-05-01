@@ -194,7 +194,7 @@ class Timesheet_model extends CI_Model {
         $this->db->order_by('project_name');		
         $query = $this->db->get('projects');
         #echo $this->db->last_query();
-        $result = array('' => 'Select Project');
+        $result = array('' => '-Select-');
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
@@ -277,7 +277,8 @@ class Timesheet_model extends CI_Model {
         $this->db->join('project_tasks as t2', 't2.id = t1.task_id_1', 'right'); 
         $query = $this->db->get('project_task_mapping t1');
         //echo $this->db->last_query();
-        $result = array();
+        //$result = array();
+        $result = array('' => '-Select-');
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
@@ -300,7 +301,7 @@ class Timesheet_model extends CI_Model {
         }		
         $query = $this->db->get('project_tasks');
         #echo $this->db->last_query();
-        $result = array();
+        $result = array('' => '-Select-');
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {

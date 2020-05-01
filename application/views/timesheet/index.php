@@ -29,7 +29,7 @@
                             <div class="col-lg-4">
                                 <label class="required">Select Date(s)</label>
                                 <?php echo $cal; ?>
-                                <div class="small">
+                                <div class="small my-2">
                                     <div class="d-inline-block"><span
                                             class="i-today pr-2 pl-2 m-1 text-white"></span>Today
                                     </div>
@@ -42,18 +42,18 @@
                                     <div class="d-inline-block"><span class="i-disabled-date pr-2 pl-2 m-1"></span>Disabled
                                     </div>
                                 </div>
-                                <?php echo form_error('selected_date'); ?>
-                                <div class="mt-2"><a id="clear_selected_days" class="btn btn-light"
+                                <div class="mb-2"><a id="clear_selected_days" class="btn btn-light btn-sm"
                                         href="#">Clear selected dates</a></div>
+                                <?php echo form_error('selected_date'); ?>
                             </div>
                             <!--/.col-lg-3-->
 
-                            <div class="col-lg-8">
+                            <div class="col-lg-6 offset-lg-1">
 
                                 <div class="form-row">
                                     <div class="form-group col-12">
                                         <label for="project_id" class="required">Project</label>
-                                        <?php echo form_dropdown('project_id', $project_arr, set_value('project_id'), array('class' => 'form-control','data-render-target'=>'task_id_1', 'data-order'=>'1')); ?>
+                                        <?php echo form_dropdown('project_id', $project_arr, set_value('project_id'), array('class' => 'form-control', 'id' => 'dd_projects')); ?>
                                         <?php echo form_error('project_id'); ?>
                                     </div>
                                 </div>
@@ -61,40 +61,34 @@
                                 <div class="form-row">
                                     <div class="form-group col-lg-6">
                                         <label for="task_id_1" class="required">Task</label>
-                                        <?php echo form_dropdown('task_id_1', $arr_task_id_1, set_value('task_id_1'), array('class' => 'form-control','data-render-target'=>'task_id_2', 'data-order'=>'2'));?>
+                                        <?php echo form_dropdown('task_id_1', $arr_task_id_1, set_value('task_id_1'), array('class' => 'form-control', 'id' => 'dd_tasks', 'data-render-target'=>'task_id_2', 'data-order'=>'2'));?>
                                         <?php echo form_error('task_id_1'); ?>
                                     </div>
 
                                     <div class="form-group col-lg-6">
-                                        <label id="task_id_2" for="task_id_2" class="required">Sub Task</label>
-                                        <?php echo form_dropdown('task_id_2', $arr_task_id_2, set_value('task_id_2'), array('class' => 'form-control'));?>
+                                        <label id="task_id_2" for="task_id_2" class="optional">Sub Task</label>
+                                        <?php echo form_dropdown('task_id_2', $arr_task_id_2, set_value('task_id_2'), array('class' => 'form-control', 'id' => 'dd_sub_tasks'));?>
                                         <?php echo form_error('task_id_2'); ?>
                                     </div>
                                 </div>
-                                <!-- <div class="form-row">
-                                    <div class="form-group col-12">
-                                        <label id="task_id_3" for="task" class="required">Sub-Task</label>
-                                        <?php echo form_dropdown('task_id_3', array('' => '-Select-'), set_value('task_id_3'), array('class' => 'form-control',));?>
-                                        <?php echo form_error('task_id_3'); ?>
-                                    </div>
-                                </div> -->
                                 <div class="form-row">
-                                    <div class="form-group col-lg-4">
+                                    <div class="form-group col-lg-6">
                                         <label for="timesheet_hours" class="required">Hours</label>
                                         <?php echo form_input(array('name' => 'timesheet_hours', 'value' => set_value('timesheet_hours'),'id' => 'timesheet_hours', 'class' => 'form-control','maxlength' => '3','placeholder' => '0.0',)); ?>
                                         <?php echo form_error('timesheet_hours'); ?>
                                     </div>
-                                
-                                    <div class="form-group col-lg-8">
-                                        <label for="timesheet_description" class="optional">Additional Note</label>
-                                        <?php echo form_input(array('name' => 'timesheet_description','value' => set_value('timesheet_description'),'id' => 'timesheet_description','class' => 'form-control', 'maxlength' => '50','placeholder' => 'additional note')); ?>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-12">
+                                        <label for="timesheet_description" class="">Additional Note</label>
+                                        <?php echo form_input(array('name' => 'timesheet_description','value' => set_value('timesheet_description'),'id' => 'timesheet_description','class' => 'form-control', 'maxlength' => '200','placeholder' => 'briefly describe in 200 characters')); ?>
                                         <?php echo form_error('timesheet_description'); ?>
                                     </div>
                                 </div>
 
                                 <button type="submit" class="btn ci-btn-primary btn-primary">Submit</button>
                             </div>
-                            <!--/.col-lg-9-->
+                            <!--/.col-lg-6-->
                         </div>
 
                         <div class="mt-3 d-none">
@@ -113,15 +107,14 @@
                     <div class="mt-3 tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
 
                         <div class="table-responsive">
-                            <table id="timesheet-datatable" class="table ci-table table-sm table-bordered text-center w-100">
-                                <thead class="thead-light">
+                            <table id="timesheet-datatable" class="table ci-table table-sm table-striped w-100">
+                                <thead class="">
                                     <tr>
                                         <th scope="col">Date</th>
                                         <th scope="col">Project</th>
                                         <th scope="col">Task</th>
-                                        <th scope="col">Sub Task</th>
                                         <th scope="col">Hours</th>
-                                        <!-- <th scope="col">Description</th> -->
+                                        <th scope="col">Description</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -172,4 +165,35 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="timesheetDetailsInfoModal" tabindex="-1" role="dialog" aria-labelledby="timesheetDetailsInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="timesheetDetailsInfoModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <dl class="row">
+            <dt class="col-lg-3">Employee</dt>
+            <dd class="col-lg-9" id="ts_emp_name"></dd>
+            <dt class="col-lg-3">Project</dt>
+            <dd class="col-lg-9" id="ts_project"></dd>
+            <dt class="col-lg-3">Task</dt>
+            <dd class="col-lg-9" id="ts_task"></dd>
+            <dt class="col-lg-3">Hours</dt>
+            <dd class="col-lg-9" id="ts_hours"></dd>
+            <dt class="col-lg-3">Description</dt>
+            <dd class="col-lg-9" id="ts_desc"></dd>
+        </dl>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Send message</button> -->
+      </div>
+    </div>
+  </div>
 </div>

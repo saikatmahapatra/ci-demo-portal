@@ -18,6 +18,7 @@
 <div class="row dashboard-card-widgets">
     <div class="col-lg-12">
         <div class="card ci-card">
+            <div class="card-header">Organization Statistics</div>
             <div class="card-body">
                 <div class="row">
                     <?php foreach($dashboard_stat as $key=>$data) { ?>

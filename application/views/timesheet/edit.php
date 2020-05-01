@@ -21,30 +21,23 @@ $row = $rows[0];
                 <div class="form-row">
                     <div class="form-group col-lg-12">
                         <label for="project_id" class="required">Project</label>
-                        <?php echo form_dropdown('project_id', $project_arr, (isset($_POST['project_id']) ? set_value('project_id') : $row['project_id']), array('class' => 'form-control',));?>
+                        <?php echo form_dropdown('project_id', $project_arr, (isset($_POST['project_id']) ? set_value('project_id') : $row['project_id']), array('class' => 'form-control', 'id' => 'dd_projects'));?>
                         <?php echo form_error('project_id'); ?>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-lg-6">
                         <label for="task_id_1" class="required">Task</label>
-                        <?php echo form_dropdown('task_id_1', $arr_task_id_1, (isset($_POST['task_id_1']) ? set_value('task_id_1') : $row['task_id_1']), array('class' => 'form-control','data-render-target'=>'task_id_2', 'data-order'=>'2'));?>
+                        <?php echo form_dropdown('task_id_1', $arr_task_id_1, (isset($_POST['task_id_1']) ? set_value('task_id_1') : $row['task_id_1']), array('class' => 'form-control', 'id' => 'dd_tasks', 'data-render-target'=>'task_id_2', 'data-order'=>'2'));?>
                         <?php echo form_error('task_id_1'); ?>
                     </div>
 
                     <div class="form-group col-lg-6">
                         <label id="task_id_2" for="task_id_2" class="required">Sub Task</label>
-                        <?php echo form_dropdown('task_id_2', $arr_task_id_2, (isset($_POST['task_id_2']) ? set_value('task_id_2') : $row['task_id_2']), array('class' => 'form-control'));?>
+                        <?php echo form_dropdown('task_id_2', $arr_task_id_2, (isset($_POST['task_id_2']) ? set_value('task_id_2') : $row['task_id_2']), array('class' => 'form-control', 'id' => 'dd_sub_tasks'));?>
                         <?php echo form_error('task_id_2'); ?>
                     </div>
                 </div>
-                <!-- <div class="form-row">
-                    <div class="form-group col-12">
-                        <label id="task_id_3" for="task" class="required">Sub-Task</label>
-                        <?php echo form_dropdown('task_id_3', array('' => '-Select-'), set_value('task_id_3'), array('class' => 'form-control',));?>
-                        <?php echo form_error('task_id_3'); ?>
-                    </div>
-                </div> -->
                 
                 <div class="form-row">
                     <div class="form-group col-lg-4">
@@ -52,10 +45,13 @@ $row = $rows[0];
                         <?php echo form_input(array('name' => 'timesheet_hours','value' => (isset($_POST['timesheet_hours']) ? set_value('timesheet_hours') : $row['timesheet_hours']),'id' => 'timesheet_hours','class' => 'form-control','maxlength' => '5','placeholder' => '0',));?>
                         <?php echo form_error('timesheet_hours'); ?>
                     </div>
-               
-                    <div class="form-group col-lg-8">
-                        <label for="timesheet_description" class="optional">Additional Note</label>
-                        <?php echo form_input(array('name' => 'timesheet_description','value' => (isset($_POST['timesheet_description']) ? set_value('timesheet_description') : $row['timesheet_description']),'id' => 'timesheet_description','class' => 'form-control', 'maxlength' => '50','placeholder' => 'additional note')); ?>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-lg-12">
+                        <label for="timesheet_description" class="required">Additional Note</label>
+                        <?php echo form_input(array('name' => 'timesheet_description','value' => (isset($_POST['timesheet_description']) ? set_value('timesheet_description') : $row['timesheet_description']),'id' => 'timesheet_description','class' => 'form-control', 'maxlength' => '200','placeholder' => 'briefly describe in 200 characters')); ?>
+                        <?php echo form_error('timesheet_description'); ?>
                     </div>
                 </div>
 

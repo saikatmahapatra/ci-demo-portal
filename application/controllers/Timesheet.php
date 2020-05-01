@@ -132,13 +132,14 @@ class Timesheet extends CI_Controller {
 	function add() {
         //Check user permission by permission name mapped to db
         //$is_authorized = $this->common_lib->is_auth('timesheet-add');
-        $this->data['arr_task_id_1'] = array(''=>'-Select-');
+        //$this->data['arr_task_id_1'] = array(''=>'-Select-');
+        $this->data['arr_task_id_1'] = $this->timesheet_model->get_task_dropdown('1');
         $this->data['arr_task_id_2'] = array(''=>'-Select-');
         if ($this->input->post('form_action') == 'add') {
             //$this->data['remaining_description_length'] = (200 - strlen($this->input->post('timesheet_description')));
-            if($this->input->post('project_id')){
-                $this->data['arr_task_id_1'] = $this->timesheet_model->get_project_task_tagging_dropdown($this->input->post('project_id'));
-            }
+            // if($this->input->post('project_id')){
+            //     $this->data['arr_task_id_1'] = $this->timesheet_model->get_project_task_tagging_dropdown($this->input->post('project_id'));
+            // }
 
             if($this->input->post('task_id_1')){
                 $this->data['arr_task_id_2'] = $this->timesheet_model->get_task_dropdown('2', $this->input->post('task_id_1'));
@@ -176,8 +177,8 @@ class Timesheet extends CI_Controller {
         }
         $this->form_validation->set_rules('project_id', 'project', 'required');
         $this->form_validation->set_rules('task_id_1', 'task', 'required');
-        $this->form_validation->set_rules('timesheet_hours', 'hours', 'required|numeric|less_than[18]|greater_than[0]');
-        $this->form_validation->set_rules('timesheet_description', 'additional note', 'max_length[50]');
+        $this->form_validation->set_rules('timesheet_hours', 'hours', 'required|numeric|less_than_equal_to[9]|greater_than[0]');
+        $this->form_validation->set_rules('timesheet_description', 'additional note', 'required|max_length[200]');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
@@ -263,36 +264,30 @@ class Timesheet extends CI_Controller {
             $row = array();
             $row[] = $this->common_lib->display_date($result['timesheet_date']);
             $row[] = $result['project_name'];
-            $row[] = $result['task_name'];
-            $row[] = '-';
+            $row[] = '<span>'.$result['task_name'].'</span>';
             $row[] = $result['timesheet_hours'];
-            //$row[] = $result['timesheet_hours'];
+            $row[] = character_limiter($result['timesheet_description'], 30);
 			$html = '';
-			//$html.= '<div class="">'.$this->common_lib->display_date($result['timesheet_date']).' <span class="mx-3">'.$result['timesheet_hours'].' hrs</span></div>';			
-			//$html.= '<div class="">'.$result['project_number'].' '.$result['project_name'].'<span class="mx-3">'.$result['task_name'].'</span></div>';			
-			
-            
-                //add html for action
-                $action_html = '<div class="mt-2">';
-                if(($year == $current_year) && ($month == $current_month)){
-                    $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
-                        'class' => 'btn btn-sm btn-light text-secondary',
-                        'data-toggle' => 'tooltip',
-                        'data-original-title' => 'Edit',
-                        'title' => 'Edit',
-                    ));
-                    $action_html.='&nbsp;';
-                    $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), $this->common_lib->get_icon('delete','dt_action_icon'), array(
-                        'class' => 'btn btn-sm btn-light text-secondary btn-delete',
-                        'data-confirmation'=>false,
-                        'data-confirmation-message'=>'Are you sure, you want to delete this?',
-                        'data-toggle' => 'tooltip',
-                        'data-original-title' => 'Delete',
-                        'title' => 'Delete',
-                    ));
-                }
-                $action_html.='</div>';
+			//add html for action
+            $action_html = '';
+            $action_html.= '<button class="btn btn-sm btn-light mr-1 text-secondary" data-toggle="modal" data-target="#timesheetDetailsInfoModal" data-date="'.$this->common_lib->display_date($result['timesheet_date']).'" data-emp="'.$this->common_lib->get_sess_user('user_firstname').' '.$this->common_lib->get_sess_user('user_lastname').'" data-project="'.$result['project_name'].'-'.$result['project_number'].'" data-task="'.$result['task_name'].'" data-hour="'.$result['timesheet_hours'].'" data-desc="'.$result['timesheet_description'].'">'.$this->common_lib->get_icon('info', 'dt_action_icon').'</button>';
 
+            if(($year == $current_year) && ($month == $current_month)){
+                $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
+                    'class' => 'btn btn-sm btn-light mr-1 text-secondary',
+                    'data-toggle' => 'tooltip',
+                    'data-original-title' => 'Edit',
+                    'title' => 'Edit',
+                ));
+                $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), $this->common_lib->get_icon('delete','dt_action_icon'), array(
+                    'class' => 'btn btn-sm btn-light mr-1 text-secondary btn-delete',
+                    'data-confirmation'=>false,
+                    'data-confirmation-message'=>'Are you sure, you want to delete this?',
+                    'data-toggle' => 'tooltip',
+                    'data-original-title' => 'Delete',
+                    'title' => 'Delete',
+                ));
+            }
             $row[] = $action_html;
             $data[] = $row;
         }
@@ -307,18 +302,43 @@ class Timesheet extends CI_Controller {
         //output to json format
         echo json_encode($output);
     }
-    
-    function edit() {
-        $year = $this->input->get_post('year') ? $this->input->get_post('year') : date('Y');
-        $month = $this->input->get_post('month') ? $this->input->get_post('month') : date('m');
+
+    function get_data($id) {
         $current_year = date('Y');
         $current_month = date('m');
-        $this->data['arr_task_id_1'] = array(''=>'-Select-');
-        $this->data['arr_task_id_2'] = array(''=>'-Select-');
-        if ($this->input->post('form_action') == 'update') {
-            if($this->input->post('project_id')){
-                $this->data['arr_task_id_1'] = $this->timesheet_model->get_project_task_tagging_dropdown($this->input->post('project_id'));
+        //$row = array('is_editable'=> true, 'data'=>array());
+        $row['is_editable'] = false;
+        $row['data'] = array();
+        $result_array = $this->timesheet_model->get_rows($id, NULL, NULL, TRUE, TRUE, FALSE, NULL, NULL);
+        $this->data['rows'] = $result_array['data_rows'];
+        //print_r($this->data['rows']); die();
+        if(sizeof($this->data['rows']) > 0 ) {
+            $timesheet_month = date('m', strtotime($this->data['rows'][0]['timesheet_date']));
+            $timesheet_year = date('Y', strtotime($this->data['rows'][0]['timesheet_date']));
+            if(($timesheet_month == $current_month) && ($timesheet_year == $current_year)) {
+                $row['is_editable'] = true;
+            }else {
+                $row['is_editable'] = false;
             }
+            $row['data'] = $this->data['rows'];
+        }
+        return $row;
+    }
+    
+    function edit() {
+        //$this->data['arr_task_id_1'] = array(''=>'-Select-');
+        $this->data['arr_task_id_1'] = $this->timesheet_model->get_task_dropdown('1');
+        $this->data['arr_task_id_2'] = array(''=>'-Select-');
+        
+        $data = $this->get_data($this->id);
+        //print_r($data);
+        $this->data['rows'] = $data['data'];
+        $is_editable = $data['is_editable'];
+
+        if ($is_editable == true && $this->input->post('form_action') == 'update') {
+            // if($this->input->post('project_id')){
+            //     $this->data['arr_task_id_1'] = $this->timesheet_model->get_project_task_tagging_dropdown($this->input->post('project_id'));
+            // }
 
             if($this->input->post('task_id_1')){
                 $this->data['arr_task_id_2'] = $this->timesheet_model->get_task_dropdown('2', $this->input->post('task_id_1'));
@@ -341,19 +361,17 @@ class Timesheet extends CI_Controller {
                 }
             }
         }
-        $result_array = $this->timesheet_model->get_rows($this->id, NULL, NULL, TRUE, TRUE, TRUE, $current_year, $current_month);
-        $this->data['rows'] = $result_array['data_rows'];
 
-        if(isset($this->data['rows'][0]['project_id'])){
-            $this->data['arr_task_id_1'] = $this->timesheet_model->get_project_task_tagging_dropdown($this->data['rows'][0]['project_id']);
-        }
+        // if(isset($this->data['rows'][0]['project_id'])){
+        //     $this->data['arr_task_id_1'] = $this->timesheet_model->get_project_task_tagging_dropdown($this->data['rows'][0]['project_id']);
+        // }
 
         if(isset($this->data['rows'][0]['task_id_1'])){
             $this->data['arr_task_id_2'] = $this->timesheet_model->get_task_dropdown('2', $this->data['rows'][0]['task_id_1']);
         }
-
-        if(sizeof($this->data['rows'])<=0){
-            redirect($this->router->directory.$this->router->class);
+        if($is_editable == false) {
+            $this->common_lib->set_flash_message('You will not be able to edit the selected work log.','alert-danger');
+            redirect($this->router->directory.$this->router->class.'');
         }
 		$this->data['page_title'] = 'Edit Timesheet';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit', $this->data, true);
@@ -362,12 +380,19 @@ class Timesheet extends CI_Controller {
 
 
 	function delete() {
-		$this->id= $this->uri->segment(3);
-        $where_array = array('id' => $this->id);
-        $res = $this->timesheet_model->delete($where_array);
-        if ($res) {
-            $this->common_lib->set_flash_message('Timesheet Entry Deleted Successfully.','alert-success');
+        $this->id = $this->uri->segment(3);
+        $data = $this->get_data($this->id);
+        $is_editable = $data['is_editable'];
+        if($is_editable == false) {
+            $this->common_lib->set_flash_message('You will not be able to delete the selected work log.','alert-danger');
             redirect($this->router->directory.$this->router->class.'');
+        } else{
+            $where_array = array('id' => $this->id);
+            $res = $this->timesheet_model->delete($where_array);
+            if ($res) {
+                $this->common_lib->set_flash_message('Timesheet Entry Deleted Successfully.','alert-success');
+                redirect($this->router->directory.$this->router->class.'');
+            }
         }
     }
 
@@ -615,7 +640,6 @@ class Timesheet extends CI_Controller {
     }
 
     function get_project_task(){
-
         $data_order=$this->input->get_post('data_order');
         $id = $this->input->get_post('id');
         $data_render_target=$this->input->get_post('data_render_target');
@@ -629,7 +653,7 @@ class Timesheet extends CI_Controller {
         }
         $response['req_param'] = $_REQUEST;
         $response['resp_data'] = $res;
-
+        sort($response['resp_data']);
         print_r(json_encode($response));
         die();
     }

@@ -113,7 +113,7 @@ $(function() {
         });
     }
 
-    $('select').on('change', function() {
+    $('select#dd_tasks').on('change', function() {
         var id = $(this).val();
         var data_render_target = $(this).attr('data-render-target');
         var data_order = $(this).attr('data-order');
@@ -129,7 +129,7 @@ $(function() {
         var promise = xhr.init();
         promise.done(function(response) {
             hideAjaxLoader();
-            var option = '<option value="">-Select-</option>';
+            var option = '';
             $.each(response.resp_data, function(index, json) {
                 option += '<option value="' + index + '">' + json + '</option>';
             });
@@ -139,6 +139,25 @@ $(function() {
             alert("Service call failed");
         });
         promise.always(function() {});
+    });
+
+    $('#timesheetDetailsInfoModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var date = button.data('date'); // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var emp = button.data('emp');
+        var project = button.data('project');
+        var task = button.data('task');
+        var hour = button.data('hour');
+        var desc = button.data('desc');
+        var modal = $(this);
+        modal.find('.modal-title').html(date);
+        modal.find('#ts_emp_name').html(emp);
+        modal.find('#ts_project').html(project);
+        modal.find('#ts_task').html(task);
+        modal.find('#ts_hours').html(hour);
+        modal.find('#ts_desc').html(desc);
     });
 });
 

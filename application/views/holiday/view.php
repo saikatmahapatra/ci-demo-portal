@@ -6,8 +6,8 @@
 			<div class="card-header">Holidays <?php echo date('Y');?></div>
 			<div class="card-body">
 				<div class="table-responsive">
-			<table class="table ci-table table-sm table-bordered text-center w-100">
-				<thead class="thead-light">
+			<table class="table ci-table table-sm table-striped w-100">
+				<thead class="">
 				<tr>
 					<th scope="col">#</th>
 					<th scope="col">Date</th>

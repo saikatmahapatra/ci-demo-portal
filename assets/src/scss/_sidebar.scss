@@ -72,9 +72,10 @@ $sidebar-type: staticnav;
                 padding: 20px 0;
                 border-bottom: 1px solid #47748b;
             }
-            p {
+            p.user-info {
                 color: $white;
-                padding: 10px;
+                padding: 15px;
+                margin-bottom: 0px;
             }
             li a {
                 padding: 10px;
@@ -177,8 +178,11 @@ $sidebar-type: staticnav;
                 }
             }
         }
-        #sidebarCollapse span {
-            display: none;
+    }
+    @media (min-width: 992px) {
+        .navbar-toggler {
+            display: block;
+            margin-left: 0px;
         }
     }
 }

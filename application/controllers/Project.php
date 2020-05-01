@@ -98,13 +98,13 @@ class Project extends CI_Controller {
                 'data-original-title' => 'Edit',
                 'title' => 'Edit',
             ));
-            $action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/project_tasks/pid/' .$result['id']), $this->common_lib->get_icon('list', 'dt_action_icon'), array(
-                'class' => 'btn btn-sm btn-light text-secondary',
-                'data-toggle' => 'tooltip',
-                'data-original-title' => 'Tasks',
-                'title' => 'Tasks',
-            ));
+            // $action_html.='&nbsp;';
+            // $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/project_tasks/pid/' .$result['id']), $this->common_lib->get_icon('list', 'dt_action_icon'), array(
+            //     'class' => 'btn btn-sm btn-light text-secondary',
+            //     'data-toggle' => 'tooltip',
+            //     'data-original-title' => 'Tasks',
+            //     'title' => 'Tasks',
+            // ));
             /*$action_html.='&nbsp;';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), $this->common_lib->get_icon('delete','dt_action_icon') Delete', array(
                 'class' => 'btn btn-sm btn-light text-secondary btn-delete',

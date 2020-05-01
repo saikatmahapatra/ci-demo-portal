@@ -32,8 +32,10 @@
     <footer class="footer">
         <?php echo $el_footer; ?>
     </footer>
-    <button class="btn btn-outline-info scrollup"><?php echo $this->common_lib->get_icon('scroll_up'); ?></button>
-	<span id="loader-wrapper"><span class="loader"></span></span>
+    
+    <?php echo $el_scroll_to_top; ?>
+    <?php echo $el_loader; ?>
+    <?php echo $el_confirmation_modal; ?>
 
     <!-- jQuery -->    
 	<script type="text/javascript" src="<?php echo base_url('assets/vendors/jquery/dist/jquery.min.js'); ?>"></script>	

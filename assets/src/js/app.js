@@ -357,6 +357,8 @@ function initPage() {
 
     //Bootstrap tooltip
     $('[data-toggle="tooltip"]').tooltip();
+    // Bootstrap popover
+    $('[data-toggle="popover"]').popover();
 
     //Add random CSS class using JS
     /*var classes = ["badge badge-primary", "badge badge-success", "badge badge-info", "badge badge-warning", "badge badge-dark", "badge badge-dark", "badge badge-danger"];
@@ -365,30 +367,27 @@ function initPage() {
     });*/
 
 
-    var treeviewMenu = $('.menu');
+    // var treeviewMenu = $('.menu');
 
-    // Toggle Sidebar
-    $('[data-toggle="sidebar"]').click(function(event) {
-        event.preventDefault();
-        $('.app').toggleClass('sidenav-toggled');
-    });
+    // // Toggle Sidebar
+    // $('[data-toggle="sidebar"]').click(function(event) {
+    //     event.preventDefault();
+    //     $('.app').toggleClass('sidenav-toggled');
+    // });
 
-    $('.mega-menu-toggle').click(function(event) {
-        event.preventDefault();
-        $(this).toggleClass('mm-toggled');
-    });
+    // $('.mega-menu-toggle').click(function(event) {
+    //     event.preventDefault();
+    //     $(this).toggleClass('mm-toggled');
+    // });
 
-    // Activate sidebar treeview toggle
-    $("[data-toggle='treeview']").click(function(event) {
-        event.preventDefault();
-        if (!$(this).parent().hasClass('is-expanded')) {
-            treeviewMenu.find("[data-toggle='treeview']").parent().removeClass('is-expanded');
-        }
-        $(this).parent().toggleClass('is-expanded');
-    });
-
-    // Set initial active toggle
-    $("[data-toggle='treeview.'].is-expanded").parent().toggleClass('is-expanded');
+    // // Activate sidebar treeview toggle
+    // $("[data-toggle='treeview']").click(function(event) {
+    //     event.preventDefault();
+    //     if (!$(this).parent().hasClass('is-expanded')) {
+    //         treeviewMenu.find("[data-toggle='treeview']").parent().removeClass('is-expanded');
+    //     }
+    //     $(this).parent().toggleClass('is-expanded');
+    // });
 
     // User Reminder Modal
     reminderModal();
@@ -467,4 +466,17 @@ function initDatePicker() {
         weekStart: 1,
         autoclose: true,
     });
+}
+
+function openCommonConfirmationModal(messageBody, link) {
+    var $modal = $('#commonConfirmationModal');
+    var $modalBody = $('#commonConfirmationModalBody');
+    var $modalPrimaryCTA = $('#btnCommonConfirmationModalPrimaryCTA');
+    if (messageBody.length > 0) {
+        $modalBody.empty().html(messageBody);
+    }
+    if (link.length > 0) {
+        $modalPrimaryCTA.attr('href', link_href);
+    }
+    $modal.modal('show');
 }

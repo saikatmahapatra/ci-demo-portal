@@ -38,13 +38,16 @@ class Common_lib {
         //Public, Common, Site Template
         $this->CI->data['el_html_tag_title'] = isset($html_title) ? $html_title : $this->CI->config->item('app_html_title');			
         //$this->CI->data['el_user_profile_pic'] = isset($this->CI->session->userdata['sess_user']['id'])? $this->get_user_profile_img(): null;
-        $this->CI->data['el_html_tag_meta_keywords'] = isset($meta_keyword) ? $meta_keyword : $this->CI->config->item('app_meta_keywords');
+        $this->CI->data['el_html_tag_meta_keywords'] = isset($meta_keywords) ? $meta_keywords : $this->CI->config->item('app_meta_keywords');
         $this->CI->data['el_html_tag_meta_description'] = isset($meta_desc) ? $meta_desc : $this->CI->config->item('app_meta_description');
         $this->CI->data['el_html_tag_meta_author'] = isset($meta_author) ? $meta_author : $this->CI->config->item('app_meta_author');
         $this->CI->data['el_html_head'] = $this->CI->load->view('_layouts/elements/html_head', $this->CI->data, true);
         $this->CI->data['el_navbar'] = $this->CI->load->view('_layouts/elements/navbar', $this->CI->data, true);
         $this->CI->data['el_footer'] = $this->CI->load->view('_layouts/elements/footer', $this->CI->data, true);
         $this->CI->data['el_sidebar'] = $this->CI->load->view('_layouts/elements/sidebar', $this->CI->data, true);
+        $this->CI->data['el_scroll_to_top'] = $this->CI->load->view('_layouts/elements/scroll_to_top', '', true);
+        $this->CI->data['el_loader'] = $this->CI->load->view('_layouts/elements/loader', '', true);
+        $this->CI->data['el_confirmation_modal'] = $this->CI->load->view('_layouts/elements/confirmation_modal', '', true);
         return $this->CI->data;
     }
 
@@ -306,7 +309,7 @@ class Common_lib {
         $css = $this->CI->session->flashdata('flash_message_css');
         $msg_html = NULL;
         if(isset($msg)){
-         $msg_html = '<div class="alert ' . $css . ' alert-dismissable auto-closable-alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$msg.'</div>';
+         $msg_html = '<div class="alert '.$css.' alert-dismissible fade show" role="alert"> '.$msg.' <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div>';
         }else{
             $msg_html = NULL; 
         }
