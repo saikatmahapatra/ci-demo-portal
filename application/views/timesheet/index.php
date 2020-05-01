@@ -48,7 +48,7 @@
                             </div>
                             <!--/.col-lg-3-->
 
-                            <div class="col-lg-8">
+                            <div class="col-lg-6 offset-lg-1">
 
                                 <div class="form-row">
                                     <div class="form-group col-12">
@@ -94,7 +94,7 @@
 
                                 <button type="submit" class="btn ci-btn-primary btn-primary">Submit</button>
                             </div>
-                            <!--/.col-lg-9-->
+                            <!--/.col-lg-6-->
                         </div>
 
                         <div class="mt-3 d-none">
