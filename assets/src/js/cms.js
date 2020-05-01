@@ -13,7 +13,14 @@ function domReady() {
     }
     //Add, Edit View:
     if (ROUTER_METHOD == 'add' || ROUTER_METHOD == 'edit') {
-
+        // Classic CK Editor
+        CKEDITOR.replace('content_text', {
+            filebrowserBrowseUrl: SITE_URL + 'assets/vendors/ckfinder/ckfinder.html',
+            filebrowserImageBrowseUrl: SITE_URL + 'assets/vendors/ckfinder/ckfinder.html?type=Images',
+            filebrowserUploadUrl: SITE_URL + 'assets/vendors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+            filebrowserImageUploadUrl: SITE_URL + 'assets/vendors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
+        });
+        //CKEDITOR.replace('content_text');
     }
 
     //Display Start end date picker 
@@ -23,16 +30,6 @@ function domReady() {
         startDate: '0d',
         autoclose: true
     });
-
-    // Classic CK Editor
-    CKEDITOR.replace('content_text', {
-        filebrowserBrowseUrl: SITE_URL + 'assets/vendors/ckfinder/ckfinder.html',
-        filebrowserImageBrowseUrl: SITE_URL + 'assets/vendors/ckfinder/ckfinder.html?type=Images',
-        filebrowserUploadUrl: SITE_URL + 'assets/vendors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-        filebrowserImageUploadUrl: SITE_URL + 'assets/vendors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
-    });
-
-    //CKEDITOR.replace('content_text');
 
 }
 

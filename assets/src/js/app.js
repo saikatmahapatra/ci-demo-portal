@@ -468,3 +468,16 @@ function initDatePicker() {
         autoclose: true,
     });
 }
+
+function openCommonConfirmationModal(messageBody, link) {
+    var $modal = $('#commonConfirmationModal');
+    var $modalBody = $('#commonConfirmationModalBody');
+    var $modalPrimaryCTA = $('#btnCommonConfirmationModalPrimaryCTA');
+    if (messageBody.length > 0) {
+        $modalBody.empty().html(messageBody);
+    }
+    if (link.length > 0) {
+        $modalPrimaryCTA.attr('href', link_href);
+    }
+    $modal.modal('show');
+}

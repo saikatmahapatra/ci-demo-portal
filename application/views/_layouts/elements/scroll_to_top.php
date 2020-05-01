@@ -1,0 +1,1 @@
+<button class="btn btn-outline-primary scrollup"><?php echo $this->common_lib->get_icon('scroll_up'); ?></button>
