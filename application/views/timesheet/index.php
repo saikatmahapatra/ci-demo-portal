@@ -107,8 +107,8 @@
                     <div class="mt-3 tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
 
                         <div class="table-responsive">
-                            <table id="timesheet-datatable" class="table ci-table table-sm table-bordered w-100">
-                                <thead class="thead-light">
+                            <table id="timesheet-datatable" class="table ci-table table-sm table-striped w-100">
+                                <thead class="">
                                     <tr>
                                         <th scope="col">Date</th>
                                         <th scope="col">Project</th>

@@ -12,8 +12,8 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table ci-table table-sm table-bordered w-100">
-                        <thead class="thead-light">
+                    <table class="table ci-table table-sm table-striped w-100">
+                        <thead class="">
                             <tr>
                                 <th scope="col">Application No</th>
                                 <th scope="col">Leave Type</th>

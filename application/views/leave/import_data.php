@@ -20,8 +20,8 @@
 
         <div class="table-responsive mt-3">
             <h2>Leave Balance Master</h2>
-            <table id="leave_balance_datatable" class="table ci-table table-sm table-bordered w-100">
-                <thead class="thead-light">
+            <table id="leave_balance_datatable" class="table ci-table table-sm table-striped w-100">
+                <thead class="">
                     <tr>
                         <th scope="col">Employee</th>
                         <th scope="col">Balance for month</th>

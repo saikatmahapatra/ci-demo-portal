@@ -40,8 +40,8 @@
 					<div class="alert alert-info">
 					<?php echo $this->common_lib->get_icon('info'); ?> You are either L1 or L2 approver for Leave request management for the below associates. If you find any irrelevant information please get in touch with HR for further process and clarification.
 					</div>
-					<table class="table ci-table table-sm table-bordered w-100">
-						<thead class="thead-light">
+					<table class="table ci-table table-sm table-striped w-100">
+						<thead class="">
 						<tr>
 							<th scope="col">Emp ID</th>
 							<th scope="col">Name</th>

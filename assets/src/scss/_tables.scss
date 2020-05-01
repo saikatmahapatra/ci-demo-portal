@@ -14,13 +14,12 @@
 .table.ci-table {
     thead th,
     tfoot th {
-        font-weight: 400;
+        //font-weight: 400;
+        //font-size: 80%;
+        //background-color: inherit;
     }
     // th,
     // td {
     //     padding: $table-cell-padding-sm;
     // }
-    .thead-dark {
-        background-color: $gray-400;
-    }
 }

@@ -84,8 +84,8 @@
                     <?php echo form_close(); ?>
                     <?php } */ ?>
 
-                    <table class="table ci-table table-sm table-bordered w-100">
-                        <thead class="thead-light">
+                    <table class="table ci-table table-sm table-striped w-100">
+                        <thead class="">
                             <tr>
                                 <th scope="col">Date</th>
                                 <th scope="col">Employee</th>
