@@ -18,7 +18,7 @@
 
 				<div class="table-responsive">
 
-					<table id="user-datatable" class="table ci-table table-sm table-bordered text-center w-100">
+					<table id="user-datatable" class="table ci-table table-sm table-bordered w-100">
 						<thead class="thead-light">
 							<tr>
 								<th>Name</th>
