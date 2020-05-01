@@ -140,6 +140,25 @@ $(function() {
         });
         promise.always(function() {});
     });
+
+    $('#timesheetDetailsInfoModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var date = button.data('date'); // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var emp = button.data('emp');
+        var project = button.data('project');
+        var task = button.data('task');
+        var hour = button.data('hour');
+        var desc = button.data('desc');
+        var modal = $(this);
+        modal.find('.modal-title').html(date);
+        modal.find('#ts_emp_name').html(emp);
+        modal.find('#ts_project').html(project);
+        modal.find('#ts_task').html(task);
+        modal.find('#ts_hours').html(hour);
+        modal.find('#ts_desc').html(desc);
+    });
 });
 
 $("body").on("click", "td[data-calday='allowed_day']", function(e) {

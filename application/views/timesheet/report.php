@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ci-card">
-            <div class="card-header">Timesheet Report</div>
+            <div class="card-header">Search Records</div>
             <div class="card-body">
             
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="form-group col-md-2">
                     <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Search','class' => 'btn ci-btn-primary btn-primary mb-2 mr-2'));?>
-                    <?php echo form_button(array('name' => 'reset_btn','type' => 'reset','content' => 'Reset','class' => 'btn btn-secondary mb-2','id'=>'reset_timesheet_form'));?>
+                    <?php echo form_button(array('name' => 'reset_btn','type' => 'reset','content' => 'Reset','class' => 'btn btn-light mb-2','id'=>'reset_timesheet_form'));?>
                     </div>
                 </div>
                     
@@ -91,10 +91,9 @@
                                 <th scope="col">Employee</th>
                                 <th scope="col">Project</th>
                                 <th scope="col">Task</th>
-                                <th scope="col">Sub Task</th>
                                 <th scope="col">Hours</th>
                                 <th scope="col">Task Description</th>
-
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -104,11 +103,15 @@
                             <tr>
                                 <td><?php echo $this->common_lib->display_date($row['timesheet_date']);?></td>
                                 <td><?php echo $row['user_firstname'].' '.$row['user_lastname'];?></td>
-                                <td><?php echo $row['project_name'].'-'.$row['project_number'];?></td>
+                                <td><?php echo $row['project_name'];?></td>
                                 <td><?php echo $row['task_name'];?></td>
-                                <td>-</td>
                                 <td><?php echo $row['timesheet_hours'];?></td>
-                                <td><?php echo $row['timesheet_description'];?></td>
+                                <td><?php echo character_limiter($row['timesheet_description'], 30);?></td>
+                                <td>
+                                    <button class="btn btn-sm btn-light text-secondary" data-toggle="modal" data-target="#timesheetDetailsInfoModal" data-date="<?php echo $this->common_lib->display_date($row['timesheet_date']);?>" data-emp="<?php echo $row['user_firstname'].' '.$row['user_lastname'];?>" data-project="<?php echo $row['project_name'].'-'.$row['project_number'];?>" data-task="<?php echo $row['task_name'];?>" data-hour="<?php echo $row['timesheet_hours'];?>" data-desc="<?php echo $row['timesheet_description'];?>">
+                                        <?php echo $this->common_lib->get_icon('info', 'dt_action_icon');?>
+                                    </button>
+                                </td>
                             </tr>
                             <?php } // end foreach?>
                             <?php } else{ ?>
@@ -121,7 +124,7 @@
                             <?php } else {?>
                             <tr>
                                 <td colspan="7" class="">
-                                    Please search selecting employee, project and date range.
+                                    Please search
                                 </td>
                             </tr>
                             <?php
@@ -139,3 +142,35 @@
     <!--/.col-->
 </div>
 <!--/.row-->
+
+
+<div class="modal fade" id="timesheetDetailsInfoModal" tabindex="-1" role="dialog" aria-labelledby="timesheetDetailsInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="timesheetDetailsInfoModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <dl class="row">
+            <dt class="col-lg-3">Employee</dt>
+            <dd class="col-lg-9" id="ts_emp_name"></dd>
+            <dt class="col-lg-3">Project</dt>
+            <dd class="col-lg-9" id="ts_project"></dd>
+            <dt class="col-lg-3">Task</dt>
+            <dd class="col-lg-9" id="ts_task"></dd>
+            <dt class="col-lg-3">Hours</dt>
+            <dd class="col-lg-9" id="ts_hours"></dd>
+            <dt class="col-lg-3">Description</dt>
+            <dd class="col-lg-9" id="ts_desc"></dd>
+        </dl>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Send message</button> -->
+      </div>
+    </div>
+  </div>
+</div>
