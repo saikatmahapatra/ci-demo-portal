@@ -617,7 +617,6 @@ class Timesheet extends CI_Controller {
     }
 
     function get_project_task(){
-
         $data_order=$this->input->get_post('data_order');
         $id = $this->input->get_post('id');
         $data_render_target=$this->input->get_post('data_render_target');
@@ -631,7 +630,7 @@ class Timesheet extends CI_Controller {
         }
         $response['req_param'] = $_REQUEST;
         $response['resp_data'] = $res;
-
+        sort($response['resp_data']);
         print_r(json_encode($response));
         die();
     }

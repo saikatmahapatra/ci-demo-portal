@@ -129,7 +129,7 @@ $(function() {
         var promise = xhr.init();
         promise.done(function(response) {
             hideAjaxLoader();
-            var option = '<option value="">-Select-</option>';
+            var option = '';
             $.each(response.resp_data, function(index, json) {
                 option += '<option value="' + index + '">' + json + '</option>';
             });
