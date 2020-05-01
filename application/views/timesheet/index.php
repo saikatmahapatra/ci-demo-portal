@@ -29,7 +29,7 @@
                             <div class="col-lg-4">
                                 <label class="required">Select Date(s)</label>
                                 <?php echo $cal; ?>
-                                <div class="small">
+                                <div class="small my-2">
                                     <div class="d-inline-block"><span
                                             class="i-today pr-2 pl-2 m-1 text-white"></span>Today
                                     </div>
@@ -42,9 +42,9 @@
                                     <div class="d-inline-block"><span class="i-disabled-date pr-2 pl-2 m-1"></span>Disabled
                                     </div>
                                 </div>
-                                <?php echo form_error('selected_date'); ?>
-                                <div class="mt-2"><a id="clear_selected_days" class="btn btn-light btn-sm"
+                                <div class="mb-2"><a id="clear_selected_days" class="btn btn-light btn-sm"
                                         href="#">Clear selected dates</a></div>
+                                <?php echo form_error('selected_date'); ?>
                             </div>
                             <!--/.col-lg-3-->
 
