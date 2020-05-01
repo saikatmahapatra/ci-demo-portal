@@ -101,3 +101,19 @@
         }
     }
 }
+
+.profile-card-conntainer {
+    margin-bottom: 15px;
+    .show-pointer {
+        cursor: pointer;
+    }
+    .ci-card,
+    .card {
+        .card-body {
+            padding: 15px;
+            .other-info {
+                font-size: 80%;
+            }
+        }
+    }
+}
