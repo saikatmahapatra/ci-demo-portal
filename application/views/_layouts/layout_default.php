@@ -42,15 +42,10 @@
         <div id="content" class="">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                <button type="button" id="sidebarCollapse" class="btn btn-info"><?php echo $this->common_lib->get_icon('sidebar_toggle'); ?><span> Toggle Sidebar</span></button>
+                <button type="button" id="sidebarCollapse" class="btn btn-light navbar-toggler" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <!--  Show this only on mobile to medium screens  -->
                 <a class="navbar-brand-centered-logo navbar-brand d-lg-none" href="<?php echo base_url($this->router->directory); ?>"><img class="nav-logo" src="<?php echo base_url('assets/dist/img/logo-dark.png');?>"></a>
-                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button> -->
-                <!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                            <?php //echo $this->common_lib->get_icon('sidebar_toggle'); ?>
-                        </button> -->
+                
                 <!--  Use flexbox utility classes to change how the child elements are justified  -->
                 <div class="collapse navbar-collapse justify-content-between" id="navbarToggle">
                     <ul class="navbar-nav">
