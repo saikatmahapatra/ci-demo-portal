@@ -76,8 +76,8 @@ class User extends CI_Controller {
         );
 
         $this->data['user_status_arr'] = array(
-            'N'=>array('text'=>'Inactive', 'css'=>'text-warning'),
-            'A'=>array('text'=>'Closed', 'css'=>'text-danger'),
+            'N'=>array('text'=>'Inactive', 'css'=>''),
+            'A'=>array('text'=>'Closed', 'css'=>''),
             'Y'=>array('text'=>'Active', 'css'=>'')
         );
     }
@@ -221,15 +221,15 @@ class User extends CI_Controller {
             $row[] = '<span class="'.$this->data['user_status_arr'][$result['user_status']]['css'].'">'.$this->data['user_status_arr'][$result['user_status']]['text'].'</span>';
             $action_html = '';
             
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), '<i class="fas fa-fw fa-pencil-alt" aria-hidden="true"></i>', array(
-                'class' => 'btn btn-sm btn-light',
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
+                'class' => 'btn btn-sm btn-light text-secondary',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'Edit Profile',
                 'title' => 'Edit Profile'
             ));
             $action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), '<i class="fas fa-fw fa-info-circle" aria-hidden="true"></i>', array(
-                'class' => 'btn btn-sm btn-light text-info',
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), $this->common_lib->get_icon('info','dt_action_icon'), array(
+                'class' => 'btn btn-sm btn-light text-secondary',
                 'data-toggle' => 'tooltip',
                 'data-original-title' => 'View Profile',
                 'title' => 'View Profile'
@@ -395,8 +395,8 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_email', 'email', 'trim|required|valid_email|callback_valid_email_domain|callback_is_email_registered');
         $this->form_validation->set_rules('user_email_secondary', 'personal email', 'valid_email|differs[user_email]');
         //$this->form_validation->set_rules('user_password', 'password', 'required|trim|min_length[6]');
-        $this->form_validation->set_rules('user_phone1', 'mobile (personal)', 'required|trim|min_length[10]|max_length[10]|numeric');
-        $this->form_validation->set_rules('user_phone2', 'mobile (office)', 'trim|min_length[10]|max_length[10]|numeric|differs[user_phone1]');
+        $this->form_validation->set_rules('user_phone1', 'personal phone', 'required|trim|min_length[10]|max_length[10]|numeric');
+        $this->form_validation->set_rules('user_phone2', 'work phone', 'trim|min_length[10]|max_length[10]|numeric|differs[user_phone1]');
         //$this->form_validation->set_rules('user_password_confirm', 'confirm password', 'required|matches[user_password]');
         $this->form_validation->set_rules('user_dob', 'date of birth', 'required');
         $this->form_validation->set_rules('user_doj', 'date of joining', 'required');
@@ -776,7 +776,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('user_phone2', 'office mobile', 'trim|min_length[10]|max_length[10]|numeric|differs[user_phone1]
 ');
         $this->form_validation->set_rules('user_bio', 'about you', 'max_length[100]');
-        $this->form_validation->set_rules('user_email', 'registered email (office)', 'required|valid_email');
+        $this->form_validation->set_rules('user_email', 'registered work email', 'required|valid_email');
         $this->form_validation->set_rules('user_email_secondary', 'personal email', 'required|valid_email|differs[user_email]');
         //$this->form_validation->set_rules('user_blood_group', 'blood group', 'required');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
@@ -1119,7 +1119,7 @@ class User extends CI_Controller {
         $rows = $this->user_model->get_rows($user_id, NULL, NULL, FALSE, TRUE, NULL, TRUE);
         $this->data['row'] = $rows['data_rows'];
         if(isset($this->data['row'][0]) && $this->data['row'][0]['user_status']=='A'){
-            $this->common_lib->set_flash_message('<i class="fas fa-fw fa-exclamation-triangle" aria-hidden="true"></i> You can\'t edit the selected user as account has already been archived.','alert-danger');
+            $this->common_lib->set_flash_message($this->common_lib->get_icon('warning').' You can\'t edit the selected user as account has already been archived.','alert-danger');
             redirect($this->router->directory.$this->router->class.'/manage');
         }
         $res_pic = $this->user_model->get_user_profile_pic($user_id);
@@ -1768,10 +1768,10 @@ class User extends CI_Controller {
             'A' => 'Sr No.',
             'B' => 'Employee ID',
             'C' => 'Name',
-            'D' => 'Email (Office)',
-            'E' => 'Email (Personal)',
-            'F' => 'Mobile (Office)',
-            'G' => 'Mobile (Personal)',
+            'D' => 'Work Email',
+            'E' => 'Personal Email',
+            'F' => 'Work Phone',
+            'G' => 'Personal Phone',
             'H' => 'DOB',
             'I' => 'Gender',
             'J' => 'Blood Group',

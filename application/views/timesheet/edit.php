@@ -49,7 +49,7 @@ $row = $rows[0];
                 <div class="form-row">
                     <div class="form-group col-lg-4">
                         <label for="timesheet_hours" class="required">Hours</label>
-                        <?php echo form_input(array('name' => 'timesheet_hours','value' => (isset($_POST['timesheet_hours']) ? set_value('timesheet_hours') : $row['timesheet_hours']),'id' => 'timesheet_hours','class' => 'form-control w-50','maxlength' => '5','placeholder' => '0',));?>
+                        <?php echo form_input(array('name' => 'timesheet_hours','value' => (isset($_POST['timesheet_hours']) ? set_value('timesheet_hours') : $row['timesheet_hours']),'id' => 'timesheet_hours','class' => 'form-control','maxlength' => '5','placeholder' => '0',));?>
                         <?php echo form_error('timesheet_hours'); ?>
                     </div>
                

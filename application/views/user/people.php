@@ -6,28 +6,42 @@
 			<div class="card-header">Employees</div>
 			<div class="card-body">
 			
-			<?php echo isset($alert_message) ? $alert_message : ''; ?>
-				<?php echo form_open(current_url(), array( 'method' => 'get','class'=>'my-3','name' => '','id' => 'search-user-form',)); ?>
-					<?php echo form_hidden('form_action', 'search'); ?>
-					<div class="input-group">
-						<?php echo form_input(array(
-							'name' => 'q',
-							'id' => 'q',
-							'class' => 'form-control',
-							'placeholder' => 'Search employee by name, email, phone, designation',
-						)); ?>
-						<?php echo form_error('q'); ?>
-						<div class="input-group-append">
-							<button class="btn" type="submit"><i class="fas fa-fw fa-search" aria-hidden="true"></i></button>
+				<?php echo isset($alert_message) ? $alert_message : ''; ?>
+				
+				<div class="row justify-content-center mb-3 mt-0">
+					<div class="col-lg-6 col-md-8">
+						<?php echo form_open(base_url('user/people'), array( 'method' => 'get','class'=>'my-3','name' => '','id' => 'search-user-form',)); ?>
+						<?php echo form_hidden('form_action', 'search'); ?>
+						<div class="form-row">
+							<div class="input-group">
+								<?php echo form_input(array(
+									'name' => 'q',
+									'id' => 'q',
+									'class' => 'form-control',
+									'placeholder' => 'Search by name, email, phone, designation',
+								)); ?>
+								<?php echo form_error('q'); ?>
+								<div class="input-group-append">
+									<button class="btn" type="submit"><?php echo $this->common_lib->get_icon('search'); ?></button>
+								</div>
+								<?php 
+								if($this->input->get('form_action') == 'search') {
+									?>
+									<a href="<?php echo base_url('user/people'); ?>" class="btn btn-light text-secondary mx-2">Reset</a>
+									<?php
+								}
+								?>
+							</div>
 						</div>
+					<?php echo form_close(); ?>
 					</div>
-				<?php echo form_close(); ?>
+				</div>
 
 
 				<?php
 				if(isset($data_rows) && sizeof($data_rows)<=0){
 					?>
-					<div class="text-danger"><i class="fas fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Oops! No results found.</div>
+					<div class="text-muted"><?php echo $this->common_lib->get_icon('warning'); ?> No results found.</div>
 					<?php
 				}
 				?>
@@ -59,28 +73,26 @@
 						?>
 						
 						<?php if ($count%3 == 1){ echo '<div class="row">'; } ?>
-						
-
 						<div class="col-lg-4">
-							<a target="_blank" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile/'.$row['id']);?>" class="user-profile-card-people">
-							<div class="media border rounded my-2 p-2">
-								<img class="align-self-center mr-3 rounded dp-sm" src="<?php echo base_url($img_src);?>">
-								<div class="media-body">
-									<div class=""><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?></div>
-									<div class="small">Employee ID <?php echo  $row['user_emp_id']; ?></div>
-									<div class="small"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '' ; ?></div>
-									<?php
-									$email_id = explode('@',$row['user_email']);
-									?>
-									<div class="small" style="word-break: break-all;"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>" title="<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
-									<div class="small"><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
+							<div class="card-deck profile-card-conntainer">
+								<div class="ci-card card">
+									<img class="show-pointer card-img-top rounded mx-auto d-block mt-2 dp-sm" src="<?php echo base_url($img_src);?>" alt="<?php echo substr($row['user_firstname'], 0, 1).substr($row['user_lastname'], 0, 1); ?>" onclick="window.open('<?php echo base_url('user/profile/'.$row['id']);?>');">
+									<div class="card-body text-center">
+										<div class="show-pointer card-text" onclick="window.open('<?php echo base_url('user/profile/'.$row['id']);?>');" data-first-name>
+											<?php echo $row['user_firstname'].' '.$row['user_lastname']; ?>
+										</div>
+										<div class="other-info">Employee ID <?php echo  $row['user_emp_id']; ?></div>
+										<div class="other-info"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '' ; ?></div>
+										<?php
+										$email_id = explode('@',$row['user_email']);
+										?>
+										<div class="other-info"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
+										<div class="other-info"><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
+									</div>
 								</div>
 							</div>
-							</a>
 						</div>
-
 						<?php if ($count%3 == 0){ echo '</div>'; } ?>
-						
 						<?php
 						$count++;
 					}

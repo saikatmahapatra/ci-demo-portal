@@ -42,14 +42,14 @@
         <div id="content" class="">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                <button type="button" id="sidebarCollapse" class="btn btn-info"><i class="fas fa-fw fa-align-left"></i><span> Toggle Sidebar</span></button>
+                <button type="button" id="sidebarCollapse" class="btn btn-info"><?php echo $this->common_lib->get_icon('sidebar_toggle'); ?><span> Toggle Sidebar</span></button>
                 <!--  Show this only on mobile to medium screens  -->
                 <a class="navbar-brand-centered-logo navbar-brand d-lg-none" href="<?php echo base_url($this->router->directory); ?>"><img class="nav-logo" src="<?php echo base_url('assets/dist/img/logo-dark.png');?>"></a>
                 <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button> -->
                 <!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                            <i class="fas fa-fw fa-align-justify"></i>
+                            <?php //echo $this->common_lib->get_icon('sidebar_toggle'); ?>
                         </button> -->
                 <!--  Use flexbox utility classes to change how the child elements are justified  -->
                 <div class="collapse navbar-collapse justify-content-between" id="navbarToggle">
@@ -67,7 +67,7 @@
                         <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown_5" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false"><i class="fas fa-fw fa-user" aria-hidden="true"></i> My Account</a>
+                                aria-expanded="false"><?php echo $this->common_lib->get_icon('user_account'); ?> My Account</a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown_5">					
                                 <div class="dropdown-item welcome-user-container">
                                     <div class="mb-1"><?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?></div>
@@ -81,7 +81,7 @@
                                 <div class="dropdown-divider"></div>			
                                 <a class="dropdown-item"  href="<?php echo base_url('user/profile/'); ?>">My Profile</a>
                                 <a class="dropdown-item" href="<?php echo base_url('user/change_password'); ?>">Change Password</a>
-                                <a class="dropdown-item" href="<?php echo base_url('user/logout'); ?>">Sign out</a>
+                                <a class="dropdown-item" href="<?php echo base_url('user/logout'); ?>">Sign Out</a>
                             </div>
                         </li>
                         <?php } ?>
@@ -93,12 +93,8 @@
         </div> <!--/#content-->
     </div>
     <div class="overlay"></div>
-	<button class="btn btn-outline-info scrollup"><i class="fas fa-arrow-up"></i></button>
-	<div class="ajax-loader-ui" id="ajax-loader" style="display:none;">
-        <div class="ajax-loader-img"><img src="<?php echo base_url('assets/dist/img/rolling.gif');?>" alt="Loading"></div>
-	</div>
-
-    
+	<button class="btn btn-outline-info scrollup"><?php echo $this->common_lib->get_icon('scroll_up'); ?></button>
+	<span id="loader-wrapper"><span class="loader"></span></span>
 	<!-- jQuery -->    
 	<script type="text/javascript" src="<?php echo base_url('assets/vendors/jquery/dist/jquery.min.js'); ?>"></script>	
     <!-- Bootstrap dependency popper.js -->

@@ -1,6 +1,6 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-<p><i class="fas fa-fw fa-question" aria-hidden="true"></i> Looking for help or information? Click <a class=""
+<p><?php echo $this->common_lib->get_icon('question'); ?> Looking for help or information? Click <a class=""
         href="#" data-toggle="modal" data-target="#timesheetCalModal">here to read.</a></p>
 
 <div class="row">
@@ -44,7 +44,7 @@
                                 </div>
                                 <?php echo form_error('selected_date'); ?>
                                 <div class="mt-2"><a id="clear_selected_days" class="btn btn-light"
-                                        href="#">Clear date selection</a></div>
+                                        href="#">Clear selected dates</a></div>
                             </div>
                             <!--/.col-lg-3-->
 

@@ -14,7 +14,7 @@
 					<div class="mb-3">
 						<div class="input-group">
 							<!-- <label for="user_email">Email ID or Username</label> -->
-							<div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">@</span></div>
+							<div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><?php echo $this->common_lib->get_icon('email'); ?></span></div>
 							<?php echo form_input(array('name' => 'user_email', 'value' => set_value('user_email'),'id' => 'user_email','class' => 'form-control','placeholder' => 'Please enter your email','maxlength' => '100','autofocus' => true,));?>
 						</div>
 						<?php echo form_error('user_email'); ?>

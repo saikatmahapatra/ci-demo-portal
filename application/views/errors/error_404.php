@@ -1,5 +1,11 @@
-<?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-<p><i class="fas fa-fw fa-exclamation-triangle fa-3x text-danger" aria-hidden="true"></i></p>
-<p class="">Sorry! The requested page could not found.</p>
-<a href="<?php echo base_url();?>" class="btn btn-outline-primary"><i class="fas fa-fw fa-home" aria-hidden="true"></i> Go to home</a>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card ci-card">
+			<div class="card-body">
+            <div class="alert alert-danger"><?php echo $this->common_lib->get_icon('warning'); ?> Sorry! The requested page could not found.</div>
+            <a href="<?php echo base_url();?>" class="btn btn-outline-primary">Go to home to contine</a>
+			</div><!--/.card-body-->
+		</div><!--/.card-->
+	</div>
+</div>

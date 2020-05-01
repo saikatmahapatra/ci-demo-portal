@@ -30,14 +30,14 @@ class Errors extends CI_Controller {
 
     function page_not_found() {
         $data = array();
-		$this->data['page_title'] = "Oops! 404 Not Found";
+		$this->data['page_title'] = "Error - 404 Not Found";
         $this->data['maincontent'] = $this->load->view('errors/error_404', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
 	
 	function auth() {
 		$data = array();
-		$this->data['page_title'] = "Oops! Authorization Error";
+		$this->data['page_title'] = "Error - Authorization";
         $this->data['maincontent'] = $this->load->view('errors/auth_error', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

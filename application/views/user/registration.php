@@ -24,13 +24,13 @@
             <?php echo form_error('user_lastname'); ?>
         </div>
         <div class="form-group">
-            <label for="user_email" class="required">Email ID (office)</label>
+            <label for="user_email" class="required">Work Email</label>
             <?php echo form_input(array( 'name' => 'user_email', 'value' => set_value('user_email'), 'id' => 'user_email', 'class' => 'form-control', 'maxlength' => '255', 'placeholder' => '', )); ?>
             <?php echo form_error('user_email'); ?>
         </div>
 
         <div class="form-group">
-            <label for="user_phone1" class="required">10-digit Mobile Number (personal)</label>
+            <label for="user_phone1" class="required">Personal Phone</label>
             <?php echo form_input(array( 'name' => 'user_phone1', 'value' => set_value('user_phone1'), 'id' => 'user_phone1', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => '', )); ?>
             <?php echo form_error('user_phone1'); ?>
         </div>

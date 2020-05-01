@@ -15,7 +15,7 @@
 				<?php echo form_error('user_email'); ?>
 				<div class="mb-3">
 					<div class="input-group">
-						<div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-fw fa-key" aria-hidden="true"></i></span></div>
+						<div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><?php echo $this->common_lib->get_icon('otp'); ?></span></div>
 						<?php echo form_password(array( 'name' => 'password_reset_key', 'value' => set_value('password_reset_key'), 'id' => 'password_reset_key', 'placeholder' => '6-digit email OTP', 'class' => 'form-control', 'maxlength' => '6', 'autofocus' => '' )); ?>
 					</div>
 					<?php echo form_error('password_reset_key'); ?>
@@ -23,7 +23,7 @@
 
 				<div class="mb-3">
 					<div class="input-group">
-						<div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-fw fa-lock" aria-hidden="true"></i></span></div>
+						<div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><?php echo $this->common_lib->get_icon('password'); ?></span></div>
 						<?php echo form_password(array( 'name' => 'user_new_password', 'value' => set_value('user_new_password'), 'id' => 'user_new_password', 'placeholder' => 'New password', 'class' => 'form-control', 'maxlength' => '20', )); ?>
 					</div>
 					<?php echo form_error('user_new_password'); ?>
@@ -32,7 +32,7 @@
 
 				<div class="mb-3">
 					<div class="input-group">
-						<div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-fw fa-lock" aria-hidden="true"></i></span></div>
+						<div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><?php echo $this->common_lib->get_icon('password'); ?></span></div>
 						<?php echo form_password(array( 'name' => 'confirm_user_new_password', 'value' => set_value('confirm_user_new_password'), 'id' => 'confirm_user_new_password', 'placeholder' => 'Confirm new password', 'class' => 'form-control', 'maxlength' => '20', )); ?>
 					</div>
 					<?php echo form_error('confirm_user_new_password'); ?>

@@ -18,7 +18,7 @@
 						)); ?>
 						<?php echo form_error('q'); ?>
 						<div class="input-group-append">
-							<button class="btn" type="submit"><i class="fa fa-fw fa-search" aria-hidden="true"></i></button>
+							<button class="btn" type="submit"><?php echo $this->common_lib->get_icon('search'); ?></button>
 						</div>
 					</div>
 				<?php echo form_close(); ?>-->
@@ -27,7 +27,7 @@
 				<?php
 				if(isset($data_rows) && sizeof($data_rows)<=0){
 					?>
-					<div class="alert alert-info"><i class="fa fa-fw fas fa-fw fa-exclamation-triangle" aria-hidden="true"></i> There are no reportees currently reporting you. If you find any irrelevant information please get in touch with HR for further process and clarification.</div>
+					<div class="alert alert-info"><?php echo $this->common_lib->get_icon('info'); ?> There are no reportees currently reporting you. If you find any irrelevant information please get in touch with HR for further process and clarification.</div>
 					<?php
 				}
 				?> 
@@ -38,7 +38,7 @@
 					
 				<div class="table-responsive">
 					<div class="alert alert-info">
-					<i class="fa fa-fw fas fa-fw fa-exclamation-triangle" aria-hidden="true"></i> You are either L1 or L2 approver for Leave request management for the below associates. If you find any irrelevant information please get in touch with HR for further process and clarification.
+					<?php echo $this->common_lib->get_icon('info'); ?> You are either L1 or L2 approver for Leave request management for the below associates. If you find any irrelevant information please get in touch with HR for further process and clarification.
 					</div>
 					<table class="table ci-table table-sm table-bordered text-center w-100">
 						<thead class="thead-light">

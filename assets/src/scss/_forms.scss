@@ -31,7 +31,7 @@
 //     color: $mandatory_field_star-color;
 // }
 label.optional::after {
-    content: ' (optional)';
+    content: ' optional';
     font-size: 90%;
     color: $gray-500;
 }
@@ -150,29 +150,5 @@ label.optional::after {
     }
     .form-control {
         height: auto;
-    }
-}
-
-.btn-sm-block {
-    @media (max-width: 576px) {
-        display: block;
-        width: 100%;
-    }
-}
-
-form.ci-form {
-    .btn-sm-block,
-    .btn-primary {
-        @media (max-width: 576px) {
-            display: block;
-            width: 100%;
-        }
-    }
-    .ci-btn-cancel {
-        @media (max-width: 576px) {
-            margin-top: 15px;
-            display: block;
-            width: 100%;
-        }
     }
 }

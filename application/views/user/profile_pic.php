@@ -23,9 +23,9 @@
 							$img_src = $default_path;
 						}
 						?>
-						<img class="dp rounded mx-auto d-block img-thumbnail" src="<?php echo base_url($img_src);?>" alt="">
+						<img class="dp rounded  d-block img-thumbnail" src="<?php echo base_url($img_src);?>" alt="">
 						<?php if(isset($profile_pic) && sizeof($profile_pic)>0){ ?>
-							<div class="edit"><a class="btn btn-sm btn-outline-danger my-2" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><i class="fas fa-fw fa-times"></i> Remove</a></div>
+							<div class="edit"><a class="btn btn-sm btn-light my-2" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><?php echo $this->common_lib->get_icon('delete'); ?> Remove</a></div>
 						<?php } ?>
 					</div>
 					<div class="col-lg-8">

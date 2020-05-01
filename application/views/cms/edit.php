@@ -15,14 +15,13 @@ $row = $rows[0];
                 <?php echo form_hidden('id', $row['id']); ?>
 
                 <div class="form-row">
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-4">
                         <label for="content_type" class="required">Type</label>
                         <?php echo form_dropdown('content_type', $arr_content_type, (isset($_POST['content_type']) ? set_value('content_type') : $row['content_type']), array('class' => 'form-control',));?>
                         <?php echo form_error('content_type'); ?>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-12">
+                
+                    <div class="form-group col-lg-8">
                         <label for="content_title" class="required">Title</label>
                         <?php echo form_input(array('name' => 'content_title', 'value' => (isset($_POST['content_title']) ? set_value('content_title') : $row['content_title']), 'id' => 'content_title', 'class' => 'form-control', 'placeholder' => ''));?>
                         <?php echo form_error('content_title'); ?>

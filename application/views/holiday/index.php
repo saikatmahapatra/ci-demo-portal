@@ -6,9 +6,9 @@
             <div class="card-header">Holidays</div>
             <div class="card-body">
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
-                <div class="ci-link-group">
+                <div class="action-btn-group">
                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>"
-                        class="btn btn-sm btn-outline-success" title="Add"> <i class="fas fa-fw fa-plus"></i> Add New</a>
+                        class="btn btn-sm btn-outline-success" title="Add"> <?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
                 </div>
 
                 <div class="table-responsive">

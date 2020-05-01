@@ -26,12 +26,12 @@
 				
 				<div class="form-row">
 					<div class="form-group col-lg-6">
-						<label for="user_email" class="required">Email (office)</label>
+						<label for="user_email" class="required">Work Email</label>
 						<?php echo form_input(array( 'name' => 'user_email', 'value' => set_value('user_email'), 'id' => 'user_email', 'class' => 'form-control', 'maxlength' => '255', 'placeholder' => '', )); ?> 
 						<?php echo form_error('user_email'); ?>
 					</div>
 					<div class="form-group col-lg-6">
-						<label for="user_phone1" class="required">Mobile (personal)</label>
+						<label for="user_phone1" class="required">Personal Mobile</label>
 						<?php echo form_input(array( 'name' => 'user_phone1', 'value' => set_value('user_phone1'), 'id' => 'user_phone1', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => '', )); ?>
 						<?php echo form_error('user_phone1'); ?>
 					</div>
@@ -67,12 +67,12 @@
 				</div>
 				<div class="form-row">
 					<div class="form-group col-lg-6">
-						<label for="user_email_secondary" class="optional">Email (personal) </label>
+						<label for="user_email_secondary" class="optional">Personal Email</label>
 						<?php echo form_input(array( 'name' => 'user_email_secondary', 'value' => set_value('user_email_secondary'), 'id' => 'user_email_secondary', 'class' => 'form-control', 'maxlength' => '255', 'placeholder' => '', )); ?> 
 						<?php echo form_error('user_email_secondary'); ?>
 					</div>
 					<div class="form-group col-lg-6">
-							<label for="user_phone2" class="optional">Mobile (office) </label>
+							<label for="user_phone2" class="optional">Work Phone</label>
 							<?php echo form_input(array( 'name' => 'user_phone2', 'value' => set_value('user_phone2'), 'id' => 'user_phone2', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => '', )); ?>
 							<?php echo form_error('user_phone2'); ?>
 					</div>

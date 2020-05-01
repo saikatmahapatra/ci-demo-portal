@@ -425,11 +425,11 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
  */
 
 function showAjaxLoader() {
-    $("#ajax-loader").css("display", "block");
+    $("#loader-wrapper").css("display", "block");
 }
 
 function hideAjaxLoader() {
-    $("#ajax-loader").css("display", "none");
+    $("#loader-wrapper").css("display", "none");
 }
 
 function openInWindow() {

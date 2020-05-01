@@ -14,7 +14,7 @@
 					<div class="mb-3">
 						<div class="input-group">
 							<!-- <label for="user_email">Email ID or Username</label> -->
-							<div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-fw fa-user" aria-hidden="true"></i></span></div>
+							<div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><?php echo $this->common_lib->get_icon('username'); ?></span></div>
 							<?php echo form_input(array('name' => 'user_email', 'value' => set_value('user_email'),'id' => 'user_email','class' => 'form-control','placeholder' => 'Username','maxlength' => '100','autofocus' => true,));?>
 						</div>
 						<?php echo form_error('user_email'); ?>
@@ -22,7 +22,7 @@
 					
 					<div class="my-3">
 						<div class="input-group">
-							<div class="input-group-prepend"><span class="input-group-text" id="basic-addon2"><i class="fas fa-fw fa-lock" aria-hidden="true"></i></span></div>
+							<div class="input-group-prepend"><span class="input-group-text" id="basic-addon2"><?php echo $this->common_lib->get_icon('password'); ?></span></div>
 							<?php echo form_password(array('name' => 'user_password','value' => set_value('user_password'),'id' =>'user_password','placeholder' => 'Password','class' => 'form-control','maxlength' => '16'));?>
 						</div>
 						<?php echo form_error('user_password'); ?>
