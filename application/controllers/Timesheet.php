@@ -264,35 +264,30 @@ class Timesheet extends CI_Controller {
             $row = array();
             $row[] = $this->common_lib->display_date($result['timesheet_date']);
             $row[] = $result['project_name'];
-            $row[] = $result['task_name'];
-            $row[] = '-';
+            $row[] = '<span>'.$result['task_name'].'</span>';
             $row[] = $result['timesheet_hours'];
-            //$row[] = $result['timesheet_hours'];
+            $row[] = '<span title="">'.character_limiter($result['timesheet_description'], 30).'</span>';
 			$html = '';
-			//$html.= '<div class="">'.$this->common_lib->display_date($result['timesheet_date']).' <span class="mx-3">'.$result['timesheet_hours'].' hrs</span></div>';			
-			//$html.= '<div class="">'.$result['project_number'].' '.$result['project_name'].'<span class="mx-3">'.$result['task_name'].'</span></div>';			
-			
-            
-                //add html for action
-                $action_html = '<div class="mt-2">';
-                if(($year == $current_year) && ($month == $current_month)){
-                    $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
-                        'class' => 'btn btn-sm btn-light text-secondary',
-                        'data-toggle' => 'tooltip',
-                        'data-original-title' => 'Edit',
-                        'title' => 'Edit',
-                    ));
-                    $action_html.='&nbsp;';
-                    $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), $this->common_lib->get_icon('delete','dt_action_icon'), array(
-                        'class' => 'btn btn-sm btn-light text-secondary btn-delete',
-                        'data-confirmation'=>false,
-                        'data-confirmation-message'=>'Are you sure, you want to delete this?',
-                        'data-toggle' => 'tooltip',
-                        'data-original-title' => 'Delete',
-                        'title' => 'Delete',
-                    ));
-                }
-                $action_html.='</div>';
+			//add html for action
+            $action_html = '<div class="mt-2">';
+            if(($year == $current_year) && ($month == $current_month)){
+                $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
+                    'class' => 'btn btn-sm btn-light text-secondary',
+                    'data-toggle' => 'tooltip',
+                    'data-original-title' => 'Edit',
+                    'title' => 'Edit',
+                ));
+                $action_html.='&nbsp;';
+                $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), $this->common_lib->get_icon('delete','dt_action_icon'), array(
+                    'class' => 'btn btn-sm btn-light text-secondary btn-delete',
+                    'data-confirmation'=>false,
+                    'data-confirmation-message'=>'Are you sure, you want to delete this?',
+                    'data-toggle' => 'tooltip',
+                    'data-original-title' => 'Delete',
+                    'title' => 'Delete',
+                ));
+            }
+            $action_html.='</div>';
 
             $row[] = $action_html;
             $data[] = $row;
