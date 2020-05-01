@@ -81,7 +81,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-12">
                                         <label for="timesheet_description" class="">Additional Note</label>
-                                        <?php echo form_input(array('name' => 'timesheet_description','value' => set_value('timesheet_description'),'id' => 'timesheet_description','class' => 'form-control', 'maxlength' => '50','placeholder' => 'brief description of your tasks or activities')); ?>
+                                        <?php echo form_input(array('name' => 'timesheet_description','value' => set_value('timesheet_description'),'id' => 'timesheet_description','class' => 'form-control', 'maxlength' => '200','placeholder' => 'briefly describe in 200 characters')); ?>
                                         <?php echo form_error('timesheet_description'); ?>
                                     </div>
                                 </div>

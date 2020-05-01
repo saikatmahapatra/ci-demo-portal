@@ -54,8 +54,8 @@ $row = $rows[0];
                     </div>
                
                     <div class="form-group col-lg-8">
-                        <label for="timesheet_description" class="optional">Additional Note</label>
-                        <?php echo form_input(array('name' => 'timesheet_description','value' => (isset($_POST['timesheet_description']) ? set_value('timesheet_description') : $row['timesheet_description']),'id' => 'timesheet_description','class' => 'form-control', 'maxlength' => '50','placeholder' => 'additional note')); ?>
+                        <label for="timesheet_description" class="required">Additional Note</label>
+                        <?php echo form_input(array('name' => 'timesheet_description','value' => (isset($_POST['timesheet_description']) ? set_value('timesheet_description') : $row['timesheet_description']),'id' => 'timesheet_description','class' => 'form-control', 'maxlength' => '200','placeholder' => 'briefly describe in 200 characters')); ?>
                     </div>
                 </div>
 

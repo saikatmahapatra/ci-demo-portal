@@ -301,7 +301,7 @@ class Timesheet_model extends CI_Model {
         }		
         $query = $this->db->get('project_tasks');
         #echo $this->db->last_query();
-        $result = array();
+        $result = array('' => '-Select-');
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
