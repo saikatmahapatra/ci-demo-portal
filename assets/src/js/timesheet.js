@@ -113,7 +113,7 @@ $(function() {
         });
     }
 
-    $('select').on('change', function() {
+    $('select#dd_tasks').on('change', function() {
         var id = $(this).val();
         var data_render_target = $(this).attr('data-render-target');
         var data_order = $(this).attr('data-order');

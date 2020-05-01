@@ -132,13 +132,14 @@ class Timesheet extends CI_Controller {
 	function add() {
         //Check user permission by permission name mapped to db
         //$is_authorized = $this->common_lib->is_auth('timesheet-add');
-        $this->data['arr_task_id_1'] = array(''=>'-Select-');
+        //$this->data['arr_task_id_1'] = array(''=>'-Select-');
+        $this->data['arr_task_id_1'] = $this->timesheet_model->get_task_dropdown('1');
         $this->data['arr_task_id_2'] = array(''=>'-Select-');
         if ($this->input->post('form_action') == 'add') {
             //$this->data['remaining_description_length'] = (200 - strlen($this->input->post('timesheet_description')));
-            if($this->input->post('project_id')){
-                $this->data['arr_task_id_1'] = $this->timesheet_model->get_project_task_tagging_dropdown($this->input->post('project_id'));
-            }
+            // if($this->input->post('project_id')){
+            //     $this->data['arr_task_id_1'] = $this->timesheet_model->get_project_task_tagging_dropdown($this->input->post('project_id'));
+            // }
 
             if($this->input->post('task_id_1')){
                 $this->data['arr_task_id_2'] = $this->timesheet_model->get_task_dropdown('2', $this->input->post('task_id_1'));
@@ -176,8 +177,8 @@ class Timesheet extends CI_Controller {
         }
         $this->form_validation->set_rules('project_id', 'project', 'required');
         $this->form_validation->set_rules('task_id_1', 'task', 'required');
-        $this->form_validation->set_rules('timesheet_hours', 'hours', 'required|numeric|less_than[18]|greater_than[0]');
-        $this->form_validation->set_rules('timesheet_description', 'additional note', 'max_length[50]');
+        $this->form_validation->set_rules('timesheet_hours', 'hours', 'required|numeric|less_than_equal_to[9]|greater_than[0]');
+        $this->form_validation->set_rules('timesheet_description', 'additional note', 'required|max_length[200]');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
