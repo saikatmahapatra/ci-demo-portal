@@ -309,7 +309,7 @@ class Common_lib {
         $css = $this->CI->session->flashdata('flash_message_css');
         $msg_html = NULL;
         if(isset($msg)){
-         $msg_html = '<div class="alert ' . $css . ' alert-dismissable auto-closable-alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.$msg.'</div>';
+         $msg_html = '<div class="alert '.$css.' alert-dismissible fade show" role="alert"> '.$msg.' <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button> </div>';
         }else{
             $msg_html = NULL; 
         }
