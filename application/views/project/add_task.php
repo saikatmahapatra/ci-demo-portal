@@ -13,10 +13,11 @@
                     <div class="form-group col-lg-6">
                         <label for="task_name" class="required">Task Name</label>
                         <?php echo form_input(array('name' => 'task_name', 'value' => set_value('task_name'), 'id' => 'task_name', 'class' => 'form-control', 'placeholder' => ''));?>
+                        <small id="task_parent_idHelp" class="form-text text-muted">To add a sub task please select a parent task from dropdown.</small>
                         <?php echo form_error('task_name'); ?>
                     </div>
                     <div class="form-group col-lg-6">
-                        <label for="task_name" class="optional">Task Parent</label>
+                        <label for="task_name" class="optional">Parent Task</label>
                         <?php echo form_dropdown('task_parent_id', $task_parent_drop_down, set_value('task_parent_id'), array('class' => 'form-control')); ?>
                         <?php echo form_error('task_parent_id'); ?>
                     </div>
