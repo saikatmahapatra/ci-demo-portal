@@ -195,60 +195,9 @@ $to) {
     }
 }
 
-// Widget
-.bg-transparent {
-    background: transparent !important;
-}
-
 .no-gutters {
     margin-right: 0;
     margin-left: 0;
-}
-
-.ci-card-widget {
-    @media (max-width: 991.98px) {
-        .bg-transparent.list-group-item {
-            border-color: transparent;
-        }
-    }
-}
-
-.widget-content {
-    padding: 1rem;
-    flex-direction: row;
-    align-items: center;
-    .widget-content-outer {
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-    }
-    .widget-content-wrapper {
-        display: flex;
-        flex: 1;
-        position: relative;
-        align-items: center;
-    }
-    .widget-numbers {
-        font-weight: bold;
-        font-size: 1.5rem;
-        display: block;
-        @media (max-width: 576px) {
-            font-size: 1.25rem;
-        }
-    }
-    .widget-content-left {
-        .widget-heading {
-            //opacity: .8;
-            //font-weight: bold;
-        }
-        .widget-subheading {
-            opacity: .5;
-            font-size: .875rem;
-        }
-    }
-    .widget-content-right {
-        margin-left: auto;
-    }
 }
 
 .footer {
