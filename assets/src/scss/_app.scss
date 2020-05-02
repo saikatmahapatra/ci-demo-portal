@@ -128,25 +128,16 @@ $to) {
     border-radius: 0px;
 }
 
-.dp {
+.dp,
+.name-dp {
     //transition: all 0.2s ease-in-out;
-    height: 110px;
-    width: 110px;
+    height: 150px;
+    width: 150px;
 }
 
-.dp-sm {
+.people-dp {
     height: 70px;
     width: 70px;
-}
-
-.dp-xs {
-    height: 50px;
-    width: 50px;
-}
-
-.dp-xxs {
-    height: 32px;
-    width: 32px;
 }
 
 .more-less {

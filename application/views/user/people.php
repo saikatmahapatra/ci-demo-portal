@@ -76,7 +76,7 @@
 						<div class="col-lg-4">
 							<div class="card-deck profile-card-conntainer">
 								<div class="ci-card card">
-									<img class="show-pointer card-img-top rounded mx-auto d-block mt-2 dp-sm" src="<?php echo base_url($img_src);?>" alt="<?php echo substr($row['user_firstname'], 0, 1).substr($row['user_lastname'], 0, 1); ?>" onclick="window.open('<?php echo base_url('user/profile/'.$row['id']);?>');">
+									<img class="show-pointer card-img-top rounded mx-auto d-block mt-2 people-dp" src="<?php echo base_url($img_src);?>" alt="<?php echo substr($row['user_firstname'], 0, 1).substr($row['user_lastname'], 0, 1); ?>" onclick="window.open('<?php echo base_url('user/profile/'.$row['id']);?>');">
 									<div class="card-body text-center">
 										<div class="show-pointer card-text" onclick="window.open('<?php echo base_url('user/profile/'.$row['id']);?>');" data-first-name>
 											<?php echo $row['user_firstname'].' '.$row['user_lastname']; ?>

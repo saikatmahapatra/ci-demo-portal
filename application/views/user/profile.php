@@ -86,13 +86,13 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-lg-12">
-		<div class="card ci-card ci-dl">
+		<div class="card ci-card ci-dl user-profile-page-card">
 			<div class="card-header">Profile Card</div>
 			<div class="card-body">
 			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<div class="row">
-					<div class="col-lg-3 text-center mb-3">
+					<div class="col-lg-3 dp-section">
 						<?php   
 							$img_src = "";
 							$default_path = "assets/dist/img/default_user.jpg";
@@ -109,30 +109,30 @@
 						?>
 						<img class="dp rounded mx-auto d-block img-thumbnail" src="<?php echo base_url($img_src);?>">
 						<?php if($is_self_account == true) { ?>
-						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><?php echo $this->common_lib->get_icon('camera'); ?> Change</a>
+						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><?php //echo $this->common_lib->get_icon('camera'); ?> Change Photo</a>
 						<?php } ?>
-						<div class="h6 mt-3 mb-0">
+						<div class="emp-name">
 							<?php
 								//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 								echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
-								echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
-								echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
+								echo isset($row['user_lastname']) ? $row['user_lastname'] : '';
 							?>
 						</div>
-						<div class="">
+						
+						<!-- <div class="info"><?php //echo isset($row['employment_type_name']) ? $row['employment_type_name'] : ''; ?></div> -->
+						<div class="info"><?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
+						<!-- <div class="info">Department - <?php //echo isset($row['department_name']) ? $row['department_name'] : ''; ?></div> -->
+						<div class="info">Employee ID - <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
+						<div class="info">
 							<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
 						</div>
-						<div class="">
+						<div class="info">
 							<?php echo isset($row['user_phone1']) && strlen($row['user_phone1']) > 0 ? $row['user_phone1'] : ''; ?>
 							<?php echo isset($row['user_phone2']) && strlen($row['user_phone2']) > 0 ? ' / '.$row['user_phone2'] : ''; ?>
 						</div>
-						<div class="small">Emp ID - <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
-						<div class="small"><?php echo isset($row['employment_type_name']) ? $row['employment_type_name'] : ''; ?></div>
-						<div class="small">Designation - <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
-						<div class="small">Department - <?php echo isset($row['department_name']) ? $row['department_name'] : ''; ?></div>
 
 						<?php if($is_self_account == true) { ?>
-							<a class="btn btn-sm btn-light mt-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><?php echo $this->common_lib->get_icon('edit'); ?> Edit Basic Information</a>
+							<a class="btn btn-sm btn-light my-2" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><?php echo $this->common_lib->get_icon('edit'); ?> Edit Basic Info</a>
 						<?php } ?>
 						
 					</div><!--/.col-lg-3-->
