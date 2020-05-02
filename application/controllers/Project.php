@@ -228,8 +228,8 @@ class Project extends CI_Controller {
         foreach ($data_rows as $result) {
             $no++;
             $row = array();
-            $row[] = $result['task_name'];
-            $row[] = $result['task_parent_id'];
+            $row[] = (isset($result['subtask_parent_name']) ? $result['subtask_parent_name'].' > ' : '').$result['task_name'];
+            $row[] = ($result['level'] == '1') ? 'Task' : 'Subtask';
             $row[] = '<span class="'.$this->data['arr_status_flag'][$result['task_status']]['css'].'">'.$this->data['arr_status_flag'][$result['task_status']]['text'].'</span>';
             
             //add html for action
@@ -265,6 +265,7 @@ class Project extends CI_Controller {
         $this->form_validation->set_rules('task_name', ' ', 'required');
         if($action == 'edit'){
             $this->form_validation->set_rules('task_status', ' ', 'required');
+            $this->form_validation->set_rules('task_parent_id', ' ', 'callback_parent_must_not_same_as_child');
         }
 		$this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
@@ -273,6 +274,18 @@ class Project extends CI_Controller {
             return false;
         }
     }
+
+    function parent_must_not_same_as_child($str){
+        $task_id = $this->input->post('id');
+		if($str){
+			if($task_id == $str){
+                $this->form_validation->set_message('parent_must_not_same_as_child', 'Same task can\'t be a parent task. Please select a different task.');
+				return false;
+			}else{
+				return true;
+			}
+		}
+	}
 
     function add_task() {
 		$this->breadcrumbs->push('Add','/');
@@ -298,7 +311,7 @@ class Project extends CI_Controller {
                 $insert_id = $this->project_model->insert($postdata,'project_tasks');
                 if ($insert_id) {
                     $this->common_lib->set_flash_message('Data Added Successfully.','alert-success');
-                    redirect($this->router->directory.$this->router->class.'/add_task');
+                    redirect($this->router->directory.$this->router->class.'/tasks');
                 }
             }
         }
@@ -316,12 +329,11 @@ class Project extends CI_Controller {
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
         if ($this->input->post('form_action') == 'update') {
             if ($this->validate_task_form_data('edit') == true) {
+                //print_r($_POST);die();
                 $task_parent_id_dd = $this->input->post('task_parent_id');
-                $parent = explode(':', $task_parent_id_dd);
-                $task_parent_id = isset($task_parent_id_dd) ? $parent[0]: NULL;
-                $level = isset($task_parent_id_dd) ? ($parent[1]+1) : 1;
+                $level = $task_parent_id_dd ? 2 : 1;
                 $postdata = array(
-                    'task_parent_id' => $task_parent_id,
+                    'task_parent_id' => $task_parent_id_dd,
                     'level' => $level,
                     'task_name' => $this->input->post('task_name'),
                     'task_status' => $this->input->post('task_status')
@@ -330,7 +342,7 @@ class Project extends CI_Controller {
                 $res = $this->project_model->update($postdata, $where_array, 'project_tasks');
                 if ($res) {
                     $this->common_lib->set_flash_message('Data Updated Successfully.','alert-success');
-                    redirect(current_url());
+                    redirect($this->router->directory.$this->router->class.'/tasks');
                 }
             }
         }

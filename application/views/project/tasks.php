@@ -17,7 +17,7 @@
                         <thead class="">
                             <tr>
                                 <th scope="col">Task</th>
-                                <th scope="col">Parent Task</th>
+                                <th scope="col">Type</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
