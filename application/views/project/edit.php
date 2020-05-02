@@ -22,7 +22,7 @@ $row = $rows[0];
                     </div>
                 
                     <div class="form-group col-lg-8">
-                        <label for="project_name" class="required">Name</label>
+                        <label for="project_name" class="required">Project Name</label>
                         <?php echo form_input(array('name' => 'project_name', 'value' => (isset($_POST['project_name']) ? set_value('project_name') : $row['project_name']), 'id' => 'project_name', 'class' => 'form-control', 'placeholder' => ''));?>
                         <?php echo form_error('project_name'); ?>
                     </div>
