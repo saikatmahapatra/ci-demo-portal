@@ -262,7 +262,7 @@ class Project extends CI_Controller {
     }
 
     function validate_task_form_data($action = NULL) {		
-        $this->form_validation->set_rules('task_name', ' ', 'required');
+        $this->form_validation->set_rules('task_name', ' ', 'required|callback_validate_unique_task_name');
         if($action == 'edit'){
             $this->form_validation->set_rules('task_status', ' ', 'required');
             $this->form_validation->set_rules('task_parent_id', ' ', 'callback_parent_must_not_same_as_child');
@@ -273,6 +273,19 @@ class Project extends CI_Controller {
         } else {
             return false;
         }
+    }
+
+    function validate_unique_task_name($str){
+        $task_id = $this->input->post('id');
+		if($str){
+            $is_unique = $this->project_model->is_unique_value($str, $task_id);
+			if($is_unique == false){
+                $this->form_validation->set_message('validate_unique_task_name', 'This is already exists.');
+				return false;
+			}else{
+				return true;
+			}
+		}
     }
 
     function parent_must_not_same_as_child($str){

@@ -283,4 +283,20 @@ class Project_model extends CI_Model {
         return $result;
     }
 
+    function is_unique_value($value, $id=NULL) {
+        $result = false;
+        $this->db->select('id');
+        if(isset($id)){
+            $this->db->where_not_in('id',$id);
+        }
+        $this->db->where('task_name', $value);
+        $query = $this->db->get('project_tasks');
+        if ($query->num_rows()) {
+            $result = false;
+        } else {
+            $result = true;
+        }
+        return $result;
+    }
+
 }
