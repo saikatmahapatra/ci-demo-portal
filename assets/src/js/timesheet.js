@@ -115,8 +115,8 @@ $(function() {
 
     $('select#dd_tasks').on('change', function() {
         var id = $(this).val();
-        var data_render_target = $(this).attr('data-render-target');
-        var data_order = $(this).attr('data-order');
+        var data_render_target = $(this).data('render-target');
+        var data_order = $(this).data('order');
         var current_control = $(this).attr('name');
 
         var xhr = new Ajax();
@@ -129,8 +129,9 @@ $(function() {
         var promise = xhr.init();
         promise.done(function(response) {
             hideAjaxLoader();
-            var option = '';
+            var option = '<option value="">-Select-</option>';
             $.each(response.resp_data, function(index, json) {
+                console.log(response.resp_data);
                 option += '<option value="' + index + '">' + json + '</option>';
             });
             $('select[name="' + response.req_param.data_render_target + '"]').html(option);
