@@ -73,18 +73,15 @@
 					?>
                             <tr>
                                 <td>
-                                    <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));?>"
-                                        title="Click here to view details"><?php echo $row['leave_req_id'];?></a>
+                                    <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));?>"><?php echo $row['leave_req_id'];?></a>
                                 </td>
                                 <td>
                                     <?php echo isset($row['leave_type']) ? $row['leave_type'] : '' ;?>
                                     <?php echo isset($row['leave_term']) ? '- '.$row['leave_term'] : '' ;?>
                                 </td>
                                 <td>
-                                    <span title="<?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''?>">
                                     <?php echo isset($row['user_firstname']) ? $row['user_firstname'] : ''?>
                                     <?php echo isset($row['user_lastname']) ? $row['user_lastname'] : ''?>
-                                    </span>
                                 </td>
                                 <td>
                                     <?php 
@@ -100,10 +97,8 @@
                                     }
                                     ?>
                                     <?php echo isset($row['supervisor_approver_status']) ? '<span class="'.$leave_status_arr[$row['supervisor_approver_status']]['css'].'">'.$fa_icon.'</span>' : ''; ?>
-                                    <span title="<?php echo isset($row['supervisor_approver_emp_id']) ? $row['supervisor_approver_emp_id'] : ''?>">
                                     <?php echo isset($row['supervisor_approver_firstname']) ? $row['supervisor_approver_firstname'] : ''?>
                                     <?php echo isset($row['supervisor_approver_lastname']) ? $row['supervisor_approver_lastname'] : ''?>
-                                    </span>
                                 </td>
                                 <td>
                                     <?php 
@@ -119,13 +114,8 @@
                                         }
                                     ?>
                                     <?php echo isset($row['director_approver_status']) ? '<span class="'.$leave_status_arr[$row['director_approver_status']]['css'].'">'.$fa_icon.'</span>': ''; ?>
-                                    
-                                    <span title="<?php echo isset($row['director_approver_emp_id']) ? $row['director_approver_emp_id'] : ''?>">
                                     <?php echo isset($row['director_approver_firstname']) ? $row['director_approver_firstname'] : ''?>
                                     <?php echo isset($row['director_approver_lastname']) ? $row['director_approver_lastname'] : ''?>
-                                    </span>
-
-
                                 </td>
                                 <td>
                                     <?php echo $this->common_lib->display_date($row['leave_from_date']);?>
@@ -136,8 +126,8 @@
                                 </td>
                                 <td>
                                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));?>"
-                                        class="btn btn-sm btn-light text-secondary" data-toggle="tooltip"
-                                        title="View Details"><?php echo $this->common_lib->get_icon('info', 'dt_action_icon');?></a>
+                                        class="btn btn-sm btn-light text-secondary" 
+                                        title="Details"><?php echo $this->common_lib->get_icon('info', 'dt_action_icon');?></a>
 
                                 </td>
                             </tr>

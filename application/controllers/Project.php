@@ -94,15 +94,11 @@ class Project extends CI_Controller {
             $action_html = '';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' .$result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
                 'class' => 'btn btn-sm btn-light text-secondary',
-                'data-toggle' => 'tooltip',
-                'data-original-title' => 'Edit',
                 'title' => 'Edit',
             ));
             // $action_html.='&nbsp;';
             // $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/project_tasks/pid/' .$result['id']), $this->common_lib->get_icon('list', 'dt_action_icon'), array(
             //     'class' => 'btn btn-sm btn-light text-secondary',
-            //     'data-toggle' => 'tooltip',
-            //     'data-original-title' => 'Tasks',
             //     'title' => 'Tasks',
             // ));
             /*$action_html.='&nbsp;';
@@ -110,8 +106,6 @@ class Project extends CI_Controller {
                 'class' => 'btn btn-sm btn-light text-secondary btn-delete',
 				'data-confirmation'=>true,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',
-                'data-toggle' => 'tooltip',
-                'data-original-title' => 'Delete',
                 'title' => 'Delete',
             ));*/
 
@@ -242,8 +236,6 @@ class Project extends CI_Controller {
             $action_html = '';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_task/' .$result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
                 'class' => 'btn btn-sm btn-light text-secondary',
-                'data-toggle' => 'tooltip',
-                'data-original-title' => 'Edit',
                 'title' => 'Edit',
             ));
             /*$action_html.='&nbsp;';
@@ -251,8 +243,6 @@ class Project extends CI_Controller {
                 'class' => 'btn btn-sm btn-light text-secondary btn-delete',
 				'data-confirmation'=>true,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',
-                'data-toggle' => 'tooltip',
-                'data-original-title' => 'Delete',
                 'title' => 'Delete',
             ));*/
 

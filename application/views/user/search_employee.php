@@ -71,7 +71,7 @@
 									<?php
 									$email_id = explode('@',$row['user_email']);
 									?>
-									<div class="small" style="word-break: break-all;"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>" title="<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
+									<div class="small" style="word-break: break-all;"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a></div>
 									<div class="small"><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
 								</div>
 							</div>

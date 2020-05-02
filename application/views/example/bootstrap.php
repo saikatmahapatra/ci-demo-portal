@@ -88,19 +88,19 @@
 
 
 	<h2 class="h3 mb-3 font-weight-normal">Tooltip</h2>
-	<button type="button" class="btn ci-btn-primary btn-primary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+	<button type="button" class="btn ci-btn-primary btn-primary"  data-placement="top" title="Tooltip on top">
 	Tooltip on top
 	</button>
-	<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
+	<button type="button" class="btn btn-secondary"  data-placement="right" title="Tooltip on right">
 	Tooltip on right
 	</button>
-	<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+	<button type="button" class="btn btn-secondary"  data-placement="bottom" title="Tooltip on bottom">
 	Tooltip on bottom
 	</button>
-	<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+	<button type="button" class="btn btn-secondary"  data-placement="left" title="Tooltip on left">
 	Tooltip on left
 	</button>
-	<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>. To open modal <span style='cursor: pointer;' data-toggle='modal' data-target='#exampleModal'><u>click here</u></span>">
+	<button type="button" class="btn btn-secondary"  data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>. To open modal <span style='cursor: pointer;' data-toggle='modal' data-target='#exampleModal'><u>click here</u></span>">
 	Tooltip with HTML
 	</button>
 

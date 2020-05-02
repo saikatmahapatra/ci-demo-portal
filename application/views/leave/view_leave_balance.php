@@ -24,11 +24,11 @@
 
                 <div class="action-btn-group">
                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/leave_balance');?>"
-                        class="btn btn-sm btn-outline-success" title="Add"> <?php echo $this->common_lib->get_icon('plus'); ?> Add or Update Balance</a>
+                        class="btn btn-sm btn-outline-success"> <?php echo $this->common_lib->get_icon('plus'); ?> Add or Update Balance</a>
                     
                         <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ml-2', 'name' => 'download_data')); ?>
 						<input type="hidden" name="form_action" value="download">
-						<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download data as excel"> <?php echo $this->common_lib->get_icon('download'); ?> Export Data</button>
+						<button type="submit" class="btn btn-sm btn-outline-secondary"> <?php echo $this->common_lib->get_icon('download'); ?> Export Data</button>
 					<?php echo form_close(); ?>
                 </div>
 

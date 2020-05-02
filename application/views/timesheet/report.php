@@ -64,26 +64,11 @@
                 <input type="hidden" name="q_project" value="<?php echo $this->input->get('q_project');?>">
                 <input type="hidden" name="from_date" value="<?php echo $this->input->get('from_date');?>">
                 <input type="hidden" name="to_date" value="<?php echo $this->input->get('to_date');?>">
-                <button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip"
-                    title="Download as excel"> <?php echo $this->common_lib->get_icon('download'); ?>
-                    Download</button>
+                <button type="submit" class="btn btn-sm btn-outline-secondary"> <?php echo $this->common_lib->get_icon('download'); ?> Download</button>
                 <?php echo form_close(); ?>
                 <?php } ?>
 
                 <div class="table-responsive mt-3">
-                    <?php /*if(isset($data_rows) && sizeof($data_rows)>0){ ?>
-                    <?php echo form_open(current_url(), array('method' => 'GET', 'class' => 'form-inline my-3 ml-2', 'name' => 'download_data')); ?>
-                    <input type="hidden" name="form_action" value="search">
-                    <input type="hidden" name="form_action_primary" value="download">
-                    <input type="hidden" name="q_emp" value="<?php echo $this->input->get('q_emp');?>">
-                    <input type="hidden" name="q_project" value="<?php echo $this->input->get('q_project');?>">
-                    <input type="hidden" name="from_date" value="<?php echo $this->input->get('from_date');?>">
-                    <input type="hidden" name="to_date" value="<?php echo $this->input->get('to_date');?>">
-                    <button type="submit" class="btn btn-sm btn-outline-secondary" title="Download"> <i
-                            class="fas fa-fw fa-download" aria-hidden="true"></i> Download as Excel</button>
-                    <?php echo form_close(); ?>
-                    <?php } */ ?>
-
                     <table class="table ci-table table-sm table-striped w-100">
                         <thead class="">
                             <tr>

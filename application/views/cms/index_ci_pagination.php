@@ -4,7 +4,7 @@
 	<th class="col-lg-12">
 	<?php echo isset($alert_message) ? $alert_message : ''; ?>
 		<div class="action-btn-group">
-			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="btn btn-sm btn-outline-success" title="Add"> <?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
+			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="btn btn-sm btn-outline-success"> <?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
 		</div>	
 			
 		<th class="table-responsive">
