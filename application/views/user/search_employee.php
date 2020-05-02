@@ -39,16 +39,20 @@
 						?>
 						<?php
 						$img_src = "";
-						$default_path = "assets/src/img/default_user.jpg";
+						$default_path = "";
+						$show_name_dp = true;
 						if(isset($row['user_profile_pic'])){					
 							$user_dp = "assets/uploads/user/profile_pic/".$row['user_profile_pic'];					
 							if (file_exists(FCPATH . $user_dp)) {
 								$img_src = $user_dp;
+								$show_name_dp = false;
 							}else{
 								$img_src = $default_path;
+								$show_name_dp = true;
 							}
 						}else{
 							$img_src = $default_path;
+							$show_name_dp = true;
 						}
 						?>
 						<?php 
@@ -64,7 +68,23 @@
 						<div class="col-lg-12">
 							<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile/'.$row['id']);?>" class="user-profile-card-people">
 							<div class="media border rounded my-2 p-2">
-								<img class="align-self-center mr-3 rounded people-dp" src="<?php echo base_url($img_src);?>">
+									<?php 
+										if($show_name_dp === true) {
+											?>
+											<div class="people-dp mx-auto d-block mt-2">
+											<?php
+												//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
+												echo isset($row['user_firstname']) ? substr($row['user_firstname'], 0, 1) : 'NO';
+												echo isset($row['user_lastname']) ? substr($row['user_lastname'], 0, 1) : 'IMG';
+											?>
+											</div>
+											<?php
+										} else {
+											?>
+											<img class="people-dp rounded mx-auto d-block mt-2" src="<?php echo base_url($img_src);?>" onclick="window.open('<?php echo base_url('user/profile/'.$row['id']);?>');">
+											<?php
+										}
+									?>
 								<div class="media-body">
 									<div class=""><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?><?php echo ' ('.$row['user_emp_id'].')'; ?></div>
 									<div class="small"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '' ; ?></div>

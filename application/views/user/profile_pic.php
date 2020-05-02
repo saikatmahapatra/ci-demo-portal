@@ -11,19 +11,39 @@
 					<div class="col-lg-4 profile-pic">
 						<?php
 						$img_src = "";
-						$default_path = "assets/src/img/default_user.jpg";
-						if(isset($profile_pic)){					
+						$default_path = "";
+						$show_name_dp = true;
+						if(isset($profile_pic)){
 							$user_dp = "assets/uploads/user/profile_pic/".$profile_pic;					
 							if (file_exists(FCPATH . $user_dp)) {
 								$img_src = $user_dp;
+								$show_name_dp = false;
 							}else{
 								$img_src = $default_path;
+								$show_name_dp = true;
 							}
 						}else{
 							$img_src = $default_path;
+							$show_name_dp = true;
 						}
 						?>
-						<img class="dp rounded  d-block img-thumbnail" src="<?php echo base_url($img_src);?>" alt="">
+						<?php 
+						if($show_name_dp === true) {
+							?>
+							<div class="dp mx-auto d-block">
+							<?php
+								echo substr($this->common_lib->get_sess_user('user_firstname'), 0, 1);
+								echo substr($this->common_lib->get_sess_user('user_lastname'), 0, 1);
+							?>
+							</div>
+							<?php
+						} else {
+							?>
+							<img class="dp rounded  d-block" src="<?php echo base_url($img_src);?>" alt="">
+							<?php
+						}
+						?>
+
 						<?php if(isset($profile_pic) && sizeof($profile_pic)>0){ ?>
 							<div class="edit"><a class="btn btn-sm btn-light my-2" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><?php echo $this->common_lib->get_icon('delete'); ?> Remove</a></div>
 						<?php } ?>

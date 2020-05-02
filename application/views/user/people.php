@@ -53,16 +53,20 @@
 						?>
 						<?php
 						$img_src = "";
-						$default_path = "assets/src/img/default_user.jpg";
+						$default_path = "";
+						$show_name_dp = true;
 						if(isset($row['user_profile_pic'])){					
 							$user_dp = "assets/uploads/user/profile_pic/".$row['user_profile_pic'];					
 							if (file_exists(FCPATH . $user_dp)) {
 								$img_src = $user_dp;
+								$show_name_dp = false;
 							}else{
 								$img_src = $default_path;
+								$show_name_dp = true;
 							}
 						}else{
 							$img_src = $default_path;
+							$show_name_dp = true;
 						}
 						?>
 						<?php 
@@ -76,7 +80,24 @@
 						<div class="col-lg-4">
 							<div class="card-deck profile-card-conntainer">
 								<div class="ci-card card">
-									<img class="show-pointer card-img-top rounded mx-auto d-block mt-2 people-dp" src="<?php echo base_url($img_src);?>" alt="<?php echo substr($row['user_firstname'], 0, 1).substr($row['user_lastname'], 0, 1); ?>" onclick="window.open('<?php echo base_url('user/profile/'.$row['id']);?>');">
+									<?php 
+										if($show_name_dp === true) {
+											?>
+											<div class="people-dp mx-auto d-block mt-2">
+											<?php
+												//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
+												echo isset($row['user_firstname']) ? substr($row['user_firstname'], 0, 1) : 'NO';
+												echo isset($row['user_lastname']) ? substr($row['user_lastname'], 0, 1) : 'IMG';
+											?>
+											</div>
+											<?php
+										} else {
+											?>
+											<img class="people-dp rounded mx-auto d-block mt-2" src="<?php echo base_url($img_src);?>" onclick="window.open('<?php echo base_url('user/profile/'.$row['id']);?>');">
+											<?php
+										}
+									?>
+
 									<div class="card-body text-center">
 										<div class="show-pointer card-text" onclick="window.open('<?php echo base_url('user/profile/'.$row['id']);?>');" data-first-name>
 											<?php echo $row['user_firstname'].' '.$row['user_lastname']; ?>

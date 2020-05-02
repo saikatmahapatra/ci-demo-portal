@@ -95,19 +95,39 @@
 					<div class="col-lg-3 dp-section">
 						<?php   
 							$img_src = "";
-							$default_path = "assets/dist/img/default_user.jpg";
+							$default_path = "";
+							$show_name_dp = true;
 							if(isset($profile_pic)){					
 								$user_dp = "assets/uploads/user/profile_pic/".$profile_pic;					
 								if (file_exists(FCPATH . $user_dp)) {
 									$img_src = $user_dp;
+									$show_name_dp = false;
 								}else{
 									$img_src = $default_path;
+									$show_name_dp = true;
 								}
 							}else{
 								$img_src = $default_path;
+								$show_name_dp = true;
 							}
 						?>
-						<img class="dp rounded mx-auto d-block img-thumbnail" src="<?php echo base_url($img_src);?>">
+						<?php 
+						if($show_name_dp === true) {
+							?>
+							<div class="dp mx-auto d-block">
+							<?php
+								//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
+								echo isset($row['user_firstname']) ? substr($row['user_firstname'], 0, 1) : 'NO';
+								echo isset($row['user_lastname']) ? substr($row['user_lastname'], 0, 1) : 'IMG';
+							?>
+							</div>
+							<?php
+						} else {
+							?>
+							<img class="dp rounded mx-auto d-block" src="<?php echo base_url($img_src);?>">
+							<?php
+						}
+						?>
 						<?php if($is_self_account == true) { ?>
 						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><?php //echo $this->common_lib->get_icon('camera'); ?> Change Photo</a>
 						<?php } ?>
