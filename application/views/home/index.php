@@ -50,7 +50,7 @@
                     <?php } ?>
 
                     <?php if($data['target_role'] !== '1'){ ?>
-                        <div class="col small text-right text-muted">* Calculated based on your timesheet data of current month.</div>
+                        <div class="col small text-sm-center text-lg-right text-muted">* Calculated based on your timesheet data of current month.</div>
                     <?php }?>
             </div>
             </div>

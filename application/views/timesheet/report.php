@@ -52,21 +52,25 @@
                 </div>
                     
                 <?php echo form_close(); ?>
-
-                <?php if(isset($data_rows) && sizeof($data_rows)>0){ ?>
-                <?php echo form_open(current_url(), array('method' => 'GET', 'class' => 'mt-2', 'name' => 'download_data')); ?>
-                <?php if(($this->input->get('redirected_from')=='reportee_id') && ($this->input->get('q_emp') !='')){ ?>
-                    <input type="hidden" name="redirected_from" value="<?php echo $this->input->get('redirected_from'); ?>">
-                <?php } ?>
-                <input type="hidden" name="form_action" value="search">
-                <input type="hidden" name="form_action_primary" value="download">
-                <input type="hidden" name="q_emp" value="<?php echo $this->input->get('q_emp');?>">
-                <input type="hidden" name="q_project" value="<?php echo $this->input->get('q_project');?>">
-                <input type="hidden" name="from_date" value="<?php echo $this->input->get('from_date');?>">
-                <input type="hidden" name="to_date" value="<?php echo $this->input->get('to_date');?>">
-                <button type="submit" class="btn btn-sm btn-outline-secondary"> <?php echo $this->common_lib->get_icon('download'); ?> Download</button>
-                <?php echo form_close(); ?>
-                <?php } ?>
+                
+                <div class="d-flex h-100 mb-2">
+                    <div class="align-self-end ml-auto"> 
+                    <?php if(isset($data_rows) && sizeof($data_rows)>0){ ?>
+                        <?php echo form_open(current_url(), array('method' => 'GET', 'class' => 'd-inline-block', 'name' => 'download_data')); ?>
+                        <?php if(($this->input->get('redirected_from')=='reportee_id') && ($this->input->get('q_emp') !='')){ ?>
+                            <input type="hidden" name="redirected_from" value="<?php echo $this->input->get('redirected_from'); ?>">
+                        <?php } ?>
+                        <input type="hidden" name="form_action" value="search">
+                        <input type="hidden" name="form_action_primary" value="download">
+                        <input type="hidden" name="q_emp" value="<?php echo $this->input->get('q_emp');?>">
+                        <input type="hidden" name="q_project" value="<?php echo $this->input->get('q_project');?>">
+                        <input type="hidden" name="from_date" value="<?php echo $this->input->get('from_date');?>">
+                        <input type="hidden" name="to_date" value="<?php echo $this->input->get('to_date');?>">
+                        <button type="submit" class="btn btn-outline-secondary"> <?php echo $this->common_lib->get_icon('download'); ?> Download</button>
+                        <?php echo form_close(); ?>
+                        <?php } ?>
+                    </div>
+                </div>
 
                 <div class="table-responsive mt-3">
                     <table class="table ci-table table-sm table-striped w-100">
