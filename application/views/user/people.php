@@ -83,7 +83,7 @@
 									<?php 
 										if($show_name_dp === true) {
 											?>
-											<div class="people-dp mx-auto d-block mt-2">
+											<div class="people-dp mx-auto d-block mt-2" onclick="window.open('<?php echo base_url('user/profile/'.$row['id']);?>');">
 											<?php
 												//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 												echo isset($row['user_firstname']) ? substr($row['user_firstname'], 0, 1) : 'NO';
