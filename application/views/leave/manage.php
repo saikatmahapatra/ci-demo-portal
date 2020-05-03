@@ -3,44 +3,45 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ci-card">
-            <div class="card-header">Leave Requests</div>
+            <div class="card-header">Search Leave Records</div>
             <div class="card-body">
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
-                <?php echo form_open(current_url(), array( 'method' => 'get','class'=>'ci-form form-inline','name' => '','id' => 'leave-search-form')); ?>
+                <ul><?php echo validation_errors(); ?></ul>
+                <?php echo form_open(base_url('leave/manage'), array( 'method' => 'get','class'=>'ci-form form-inline','name' => '','id' => 'leave-search-form')); ?>
                 <?php echo form_hidden('form_action', 'search'); ?>
 
                 <div class="form-group mb-2 mr-sm-2">
-                    <label for="leave_status" class="sr-only">Leave Status</label>
-                    <?php 
-				$leave_status = array();
-				$leave_status[''] = 'All Leave Status';
-				foreach($leave_status_arr as $key=>$val){
-					$leave_status[$key] = $val['text'];
-				}
-			?>
-                    <?php echo form_dropdown('leave_status', $leave_status, $this->input->get_post('leave_status'),array('class' => 'form-control','id'=>'leave_status')); ?>
-                    <?php echo form_error('leave_status'); ?>
-                </div>
-
-                <div class="form-group mb-2 mr-sm-2">
-                    <label for="leave_from_date" class="sr-only">Leave From Date</label>
+                    <label for="leave_from_date" class="sr-only required">From</label>
                     <?php 
 				$first_day_this_month = '';
 				$last_day_this_month  = '';
 			?>
                     <?php echo form_input(array('name' => 'leave_from_date','value' => (isset($_REQUEST['leave_from_date']) ? $_REQUEST['leave_from_date'] : $first_day_this_month),'id' => 'leave_from_date','class' => 'form-control form-control-datepicker', 'placeholder' => 'From Date','readonly'=>true));?>
-                    <?php echo form_error('leave_from_date'); ?>
+                    <?php //echo form_error('leave_from_date'); ?>
                 </div>
 
                 <div class="form-group mb-2 mr-sm-2">
-                    <label for="leave_to_date" class="sr-only">Leave To Date </label>
+                    <label for="leave_to_date" class="sr-only required">To</label>
                     <?php echo form_input(array('name' => 'leave_to_date','value' => (isset($_REQUEST['leave_to_date']) ? $_REQUEST['leave_to_date'] : $last_day_this_month),'class' => 'form-control form-control-datepicker','id' => 'leave_to_date','placeholder' => 'To Date','readonly'=>true));?>
-                    <?php echo form_error('leave_to_date'); ?>
+                    <?php //echo form_error('leave_to_date'); ?>
+                </div>
+
+                <div class="form-group mb-2 mr-sm-2">
+                    <label for="leave_status" class="sr-only required">Leave Status</label>
+                    <?php 
+				$leave_status = array();
+				$leave_status[''] = 'Leave Status';
+				foreach($leave_status_arr as $key=>$val){
+					$leave_status[$key] = $val['text'];
+				}
+			?>
+                    <?php echo form_dropdown('leave_status', $leave_status, $this->input->get_post('leave_status'),array('class' => 'form-control','id'=>'leave_status')); ?>
+                    <?php //echo form_error('leave_status'); ?>
                 </div>
 
                 <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Search','class' => 'btn ci-btn-primary btn-primary mb-2 mr-2'));?>
                 <?php //echo form_input(array('name' => 'reset_btn','type' => 'reset','value' => 'Reset','class' => 'btn btn-secondary', 'id' => 'reset_leave_search_form'));?>
-                <a href="<?php echo current_url();?>" class="btn btn-light mb-2">Reset</a>
+                <a href="<?php echo base_url('leave/manage');?>" class="btn btn-light mb-2">Reset</a>
                 <?php echo form_close(); ?>
 
                 <div class="table-responsive mt-3">
@@ -137,7 +138,16 @@
 			else{
 				?>
                             <tr>
-                                <td colspan="7">No results found</td>
+                                <td colspan="7">
+                                    <?php if($this->input->get_post('form_action') === 'search') {
+                                        ?>
+                                        <p class="alert alert-danger"><?php echo $this->common_lib->get_icon('warning'); ?> No result found based on your search criteria. Please search again.</p>
+                                        <?php
+                                        } else {?>
+                                        <p class="alert alert-info"><?php echo $this->common_lib->get_icon('warning'); ?> There are no leave requests pending for your approval. You can search previous leave records.</p>
+                                        <?php
+                                    }?>
+                                </td>
                             </tr>
                             <?php
 			}

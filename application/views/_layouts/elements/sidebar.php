@@ -23,9 +23,8 @@
             <li><a href="<?php echo base_url('holiday'); ?>">Holiday Calendar</a></li>
             <!-- <li><a href="<?php echo base_url('user/create_account'); ?>">New Employee</a></li> -->
             
-            <li><a href="<?php echo base_url('leave/manage/all'); ?>">Leave Applications</a></li>
+            <li><a href="<?php echo base_url('leave/manage'); ?>">Leave Applications</a></li>
             <li><a href="<?php echo base_url('leave/view_leave_balance'); ?>">Leave Balance</a></li>
-            <li><a href="<?php echo base_url('leave/manage/assigned_to_me'); ?>">Leave to Approve</a></li>
             <li><a href="<?php echo base_url('timesheet/report'); ?>">Timesheet Report</a></li>
             <li><a href="<?php echo base_url('project'); ?>">Projects</a></li>
             <li><a href="<?php echo base_url('project/tasks'); ?>">Tasks</a></li>
@@ -52,7 +51,7 @@
             <li><a href="<?php echo base_url('leave/apply'); ?>">Apply</a></li>
             <li><a href="<?php echo base_url('leave/history'); ?>">History</a></li>
             <li><a href="<?php echo base_url('user/edit_approvers'); ?>">Change Approvers</a></li>
-            <li><a href="<?php echo base_url('leave/manage/assigned_to_me'); ?>">Leave to Approve</a></li>
+            <li><a href="<?php echo base_url('leave/manage'); ?>">Leave to Approve</a></li>
             </ul>
         </li>
         

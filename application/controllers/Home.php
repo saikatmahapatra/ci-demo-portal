@@ -113,7 +113,7 @@ class Home extends CI_Controller {
         
         $dashboard_stat['user_applied_leave'] = array('target_role' => '1', 'heading'=>'Leave Approved', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-info', 'icon'=>'', 'count'=>$stat_user_approved_leave['data_rows'][0]['total'].'/'.$stat_user_applied_leave['data_rows'][0]['total'], 'url' => base_url('leave/manage/all'));
 
-        $dashboard_stat['leave_to_approve'] = array('target_role' => '', 'heading'=>'Leave to Approve', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-warning', 'icon'=>'', 'count'=>$stat_pending_leave_action['data_rows'][0]['total'], 'url' => base_url('leave/manage/assigned_to_me'));
+        $dashboard_stat['leave_to_approve'] = array('target_role' => '', 'heading'=>'Leave to Approve', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-warning', 'icon'=>'', 'count'=>$stat_pending_leave_action['data_rows'][0]['total'], 'url' => base_url('leave/manage'));
 
         $dashboard_stat['timesheet_days'] = array('target_role' => '', 'heading'=>'Days You Logged *', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-danger', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['total_days'], 'url' => base_url('timesheet'));
 

@@ -186,17 +186,25 @@ class Leave_model extends CI_Model {
             //$this->db->where('t1.supervisor_approver_status', 'P');
             //$this->db->or_where('t1.director_approver_status', 'P');
         }
+
+        if(isset($cond['show_supervisor_director_pending_leave']) && $cond['show_supervisor_director_pending_leave'] === true) {
+            $this->db->where('((t1.supervisor_approver_id = "'.$cond['assigned_to_user_id'].'" AND t1.supervisor_approver_status = "P") OR (t1.director_approver_id = "'.$cond['assigned_to_user_id'].'" AND t1.director_approver_status = "P"))');
+            $this->db->where_not_in('t1.leave_status', array('R', 'C'));
+        }
+
         if(isset($cond['leave_status']) && !empty($cond['leave_status'])){
             $this->db->where_in('t1.leave_status', $cond['leave_status']);
         }
 
-        if(isset($cond['leave_from_date']) && !empty($cond['leave_from_date'])){
-            $this->db->where('t1.leave_from_date >=', $this->common_lib->convert_to_mysql($cond['leave_from_date']));
+        if( (isset($cond['leave_from_date']) && !empty($cond['leave_from_date'])) && (isset($cond['leave_to_date']) && !empty($cond['leave_to_date'])) ){
+            //$this->db->where('t1.leave_from_date >=', $this->common_lib->convert_to_mysql($cond['leave_from_date']));
+
+            $this->db->where('((t1.leave_from_date BETWEEN "'.$this->common_lib->convert_to_mysql($cond['leave_from_date']).'" AND "'.$this->common_lib->convert_to_mysql($cond['leave_to_date']).'") OR (t1.leave_to_date BETWEEN "'.$this->common_lib->convert_to_mysql($cond['leave_from_date']).'" AND "'.$this->common_lib->convert_to_mysql($cond['leave_to_date']).'"))');
         }
 
-        if(isset($cond['leave_to_date']) && !empty($cond['leave_to_date'])){
-            $this->db->where('t1.leave_to_date <=', $this->common_lib->convert_to_mysql($cond['leave_to_date']));
-        }
+        // if(isset($cond['leave_to_date']) && !empty($cond['leave_to_date'])){
+        //     $this->db->where('t1.leave_to_date <=', $this->common_lib->convert_to_mysql($cond['leave_to_date']));
+        // }
 
         $query = $this->db->get('leave_applications as t1');
         //print_r($this->db->last_query());

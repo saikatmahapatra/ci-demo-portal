@@ -277,74 +277,65 @@ class Leave extends CI_Controller {
     }
 
     function manage() {
-        $this->data['page_title'] = 'Leave Requests Management';
-        // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition
+        // on page load display pending leave of the current user
         $cond = array();
         $cond['assigned_to_user_id'] = $this->sess_user_id;
-        
-        if($this->uri->segment(3) == 'pending'){
-            $this->data['page_title'] = 'Leave Requests Management - Pending Leave';
-            $cond['leave_status'] = array('B');
-            $cond['assigned_to_user_id'] = $this->sess_user_id;
-        }
+        //$cond['leave_status'] = array('B');
+        $cond['show_supervisor_director_pending_leave'] = true;
 
-        if($this->uri->segment(3) == 'approved'){
-            $cond['leave_status'] = array('A');
-            $cond['assigned_to_user_id'] = $this->sess_user_id;
-        }
-
-        if($this->uri->segment(3) == 'cancelled'){
-            $cond['leave_status'] = array('C');
-            $cond['assigned_to_user_id'] = $this->sess_user_id;
-        }
-
-        if($this->uri->segment(3) == 'rejected'){
-            $cond['leave_status'] = array('R');
-            $cond['assigned_to_user_id'] = $this->sess_user_id;
-        }
-
-        if($this->uri->segment(3) == 'all'){
-            $is_authorized = $this->common_lib->is_auth(array(
-                'crud-leave-balance'
-            ));
-            $cond['leave_status'] = NULL;
-            $cond['assigned_to_user_id'] = NULL;
-        }
-
-        if($this->uri->segment(3)== ''){
-            redirect($this->router->directory.$this->router->class.'/'.$this->router->method.'/assigned_to_me');
-        }
-        
         if($this->input->get_post('form_action') == 'search'){
-            $cond['leave_status'] = $this->input->get_post('leave_status');
-            $cond['leave_from_date'] = $this->input->get_post('leave_from_date');
-            $cond['leave_to_date'] = $this->input->get_post('leave_to_date');
+            if ($this->validate_leave_search_form_data($_REQUEST) == true) {
+                //print_r($_REQUEST); die();
+                $cond['leave_status'] = $this->input->get_post('leave_status');
+                $cond['leave_from_date'] = $this->input->get_post('leave_from_date');
+                $cond['leave_to_date'] = $this->input->get_post('leave_to_date');
+                $cond['show_supervisor_director_pending_leave'] = false;
+                // if admin then search assigned to any users leave, else current user only
+                if ($this->session->userdata['sess_user']['user_role'] == 1) {
+                    $cond['assigned_to_user_id'] = NULL;
+                } else {
+                    $cond['assigned_to_user_id'] = $this->sess_user_id;
+                }
+            }
         }
-
-        
-
+        //print_r($cond);
 		$result_array = $this->leave_model->get_rows(NULL, NULL, NULL, FALSE, FALSE, $cond);
 		$total_num_rows = $result_array['num_rows'];
 		
 		//Pagination config starts here		
         $per_page = 30;
-        $config['uri_segment'] = 5; //which segment of your URI contains the page number
+        $config['uri_segment'] = 4; //which segment of your URI contains the page number
         $config['num_links'] = 2;
         $page = ($this->uri->segment($config['uri_segment'])) ? ($this->uri->segment($config['uri_segment'])-1) : 0;
         $offset = ($page*$per_page);
-        $additional_segment = $this->router->directory.$this->router->class.'/'.$this->router->method.'/'.$this->uri->segment(3);
+        $additional_segment = $this->router->directory.$this->router->class.'/'.$this->router->method;
         $this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
         //Pagination config ends here
-        
 
         // Data Rows - Refer to model method definition
         $result_array = $this->leave_model->get_rows(NULL, $per_page, $offset, FALSE, TRUE, $cond);
         $this->data['data_rows'] = $result_array['data_rows'];
 
+        $this->data['page_title'] = 'Leave Requests Management';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/manage', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
-	
+    
+    function validate_leave_search_form_data($data) {
+        //print_r($_REQUEST); die();
+        $this->form_validation->set_data($data);
+        $this->form_validation->set_rules('leave_from_date', 'from date', 'required');
+        $this->form_validation->set_rules('leave_to_date', 'to date', 'required');
+        //$this->form_validation->set_rules('leave_status', 'leave status', 'required');
+        $this->form_validation->set_error_delimiters('<li class="validation-error">', '</li>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 	function validate_form_data($action = NULL) {
         if($this->input->post('leave_type') == 'CO'){
             $this->form_validation->set_rules('leave_type', ' ', 'required|callback_validate_comp_off_eligibility');
