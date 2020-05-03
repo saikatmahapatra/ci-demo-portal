@@ -61,15 +61,14 @@ class Leave extends CI_Controller {
         );
 		$this->data['leave_status_arr'] = array(
             'B'=>array('text'=>'Applied', 'css'=>'text-primary'),
+            'O'=>array('text'=>'Processing', 'css'=>'text-info'),
+            'A'=>array('text'=>'Approved', 'css'=>'text-success'),
+            'R'=>array('text'=>'Rejected', 'css'=>'text-danger'),
             'P'=>array('text'=>'Pending', 'css'=>'text-secondary'),
             'C'=>array('text'=>'Cancelled', 'css'=>'text-warning'),
-            'R'=>array('text'=>'Rejected', 'css'=>'text-danger'),
-            'A'=>array('text'=>'Approved', 'css'=>'text-success'),
-            'O'=>array('text'=>'Processing', 'css'=>'text-info'),
             'X'=>array('text'=>'Cancel Requested', 'css'=>'text-warning'),
         );
-		
-		
+        
 		//View Page Config
 		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
 		$this->data['page_title'] = $this->router->class.' : '.$this->router->method;

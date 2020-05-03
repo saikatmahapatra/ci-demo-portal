@@ -12,17 +12,13 @@
 
                 <div class="form-group mb-2 mr-sm-2">
                     <label for="leave_from_date" class="sr-only required">From</label>
-                    <?php 
-				$first_day_this_month = '';
-				$last_day_this_month  = '';
-			?>
-                    <?php echo form_input(array('name' => 'leave_from_date','value' => (isset($_REQUEST['leave_from_date']) ? $_REQUEST['leave_from_date'] : $first_day_this_month),'id' => 'leave_from_date','class' => 'form-control form-control-datepicker', 'placeholder' => 'From Date','readonly'=>true));?>
+                    <?php echo form_input(array('name' => 'leave_from_date','value' => (isset($_REQUEST['leave_from_date']) ? $_REQUEST['leave_from_date'] : ''),'id' => 'leave_from_date','class' => 'form-control form-control-datepicker', 'placeholder' => 'From Date','readonly'=>true));?>
                     <?php //echo form_error('leave_from_date'); ?>
                 </div>
 
                 <div class="form-group mb-2 mr-sm-2">
                     <label for="leave_to_date" class="sr-only required">To</label>
-                    <?php echo form_input(array('name' => 'leave_to_date','value' => (isset($_REQUEST['leave_to_date']) ? $_REQUEST['leave_to_date'] : $last_day_this_month),'class' => 'form-control form-control-datepicker','id' => 'leave_to_date','placeholder' => 'To Date','readonly'=>true));?>
+                    <?php echo form_input(array('name' => 'leave_to_date','value' => (isset($_REQUEST['leave_to_date']) ? $_REQUEST['leave_to_date'] : ''),'class' => 'form-control form-control-datepicker','id' => 'leave_to_date','placeholder' => 'To Date','readonly'=>true));?>
                     <?php //echo form_error('leave_to_date'); ?>
                 </div>
 
@@ -32,7 +28,9 @@
 				$leave_status = array();
 				$leave_status[''] = 'Leave Status';
 				foreach($leave_status_arr as $key=>$val){
-					$leave_status[$key] = $val['text'];
+                    if($key != 'P'){
+                        $leave_status[$key] = $val['text'];
+                    }
 				}
 			?>
                     <?php echo form_dropdown('leave_status', $leave_status, $this->input->get_post('leave_status'),array('class' => 'form-control','id'=>'leave_status')); ?>
