@@ -11,6 +11,13 @@
 		<label class="card ci-card">
 			<div class="card-header">Edit Profile</div>
 			<label class="card-body">
+				<?php if($this->session->userdata['sess_user']['user_role'] == 1) {?>
+				<div class="d-flex h-100 mb-2">
+                    <div class="align-self-end ml-auto">
+                        <a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('left_arrow'); ?> Back to Employee List</a>
+                    </div>
+				</div>
+				<?php } ?>
 			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<?php   
@@ -206,7 +213,7 @@
 
 				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
 				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="btn btn-light ci-btn-cancel">Cancel</a>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn btn-light text-danger">Delete Account</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn btn-outline-danger">Delete Account</a>
 				<?php echo form_close(); ?>
 			
 			</label><!--./card-body-->

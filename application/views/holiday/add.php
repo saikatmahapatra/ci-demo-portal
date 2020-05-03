@@ -6,24 +6,28 @@
             <div class="card-header">Add Holiday</div>
             <div class="card-body">
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
+                <div class="d-flex h-100 mb-2">
+                    <div class="align-self-end ml-auto"> 
+                        <a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('left_arrow'); ?> Back to List</a>
+                    </div>
+                </div>
                 <?php echo form_open(current_url(), array('method' => 'post', 'class'=>'ci-form','name' => 'myform','id' => 'myform','role' =>'form')); ?>
                 <?php echo form_hidden('form_action', 'insert'); ?>
                 <div class="form-row">
-                    <div class="form-group col-12">
+                    <div class="form-group col-lg-4">
                         <label for="holiday_date" class="required">Holiday Date</label>
                         <?php echo form_input(array('name' => 'holiday_date', 'value' => set_value('holiday_date'), 'id' => 'holiday_date', 'class' => 'form-control holiday-datepicker', 'placeholder' => '', 'readonly'=>true));?>
                         <?php echo form_error('holiday_date'); ?>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-12">
+                
+                    <div class="form-group col-lg-8">
                         <label for="holiday_description" class="required">Holiday Occasion</label>
                         <?php echo form_input(array('name' => 'holiday_description', 'value' => set_value('holiday_description'), 'id' => 'holiday_description', 'class' => 'form-control', 'placeholder' => ''));?>
                         <?php echo form_error('holiday_description'); ?>
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-12">
+                    <div class="form-group col-lg-4">
                         <label for="holiday_type" class="required">Holiday Type</label>
                         <?php echo form_dropdown('holiday_type', $arr_holiday_type, set_value('holiday_type'), array('class' => 'form-control')); ?>
                         <?php echo form_error('holiday_type'); ?>

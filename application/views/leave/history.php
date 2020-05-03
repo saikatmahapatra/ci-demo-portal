@@ -6,9 +6,13 @@
             <div class="card-header">Leave History</div>
             <div class="card-body">
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
-                <div class="action-btn-group">
-                    <a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>"
-                        class="btn btn-sm btn-outline-secondary">Apply Leave</a>
+        
+                <div class="d-flex h-100 mb-2">
+                    <div class="align-self-end ml-auto"> 
+                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>" class="btn btn-outline-success"><?php echo $this->common_lib->get_icon('leave'); ?> Apply Leave</a>
+
+                        <a href="<?php echo base_url($this->router->directory.'user/edit_approvers');?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('user_settings'); ?> Change Leave Approvers</a>
+                    </div>
                 </div>
 
                 <div class="table-responsive">

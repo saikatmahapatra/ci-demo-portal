@@ -1,14 +1,16 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-lg-12">
         <div class="card ci-card">
             <div class="card-header">Data Table</div>
             <div class="card-body">
-            <?php echo isset($alert_message) ? $alert_message : ''; ?>
-                <div class="action-btn-group">
-                    <a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>"
-                        class="btn btn-sm btn-outline-success"> <?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
+                <?php echo isset($alert_message) ? $alert_message : ''; ?>
+                
+                <div class="d-flex h-100 mb-2">
+                    <div class="align-self-end ml-auto"> 
+                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="btn btn-outline-success"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
+                    </div>
                 </div>
 
                 <div class="table-responsive">

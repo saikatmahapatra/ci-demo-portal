@@ -42,7 +42,7 @@
                                     <div class="d-inline-block"><span class="i-disabled-date pr-2 pl-2 m-1"></span>Disabled
                                     </div>
                                 </div>
-                                <div class="mb-2"><a id="clear_selected_days" class="btn btn-light btn-sm"
+                                <div class="mb-2"><a id="clear_selected_days" class="btn btn-outline-secondary btn-sm"
                                         href="#">Clear selected dates</a></div>
                                 <?php echo form_error('selected_date'); ?>
                             </div>
