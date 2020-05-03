@@ -1,7 +1,7 @@
 <div class="row align-items-center justify-content-center no-gutters min-vh-100">
 	<div class="card ci-card col-lg-7">
 		<div class="card-body">
-			<h1 class="page-title my-0"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
+			<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 			<div class="text-muted mb-2">Sign in to your account to continue</div>
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 			<div class="row justify-content-center mt-4">

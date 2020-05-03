@@ -5,7 +5,12 @@
         <div class="card ci-card">
             <div class="card-header">Add or Update Leave Balance</div>
             <div class="card-body">
-            <?php echo isset($alert_message) ? $alert_message : ''; ?>
+                <?php echo isset($alert_message) ? $alert_message : ''; ?>
+                <div class="d-flex h-100 mb-2">
+                    <div class="align-self-end ml-auto"> 
+                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/view_leave_balance');?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('left_arrow'); ?> Back to List</a>
+                    </div>
+                </div>
                 <?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => 'ci-form-leavebalance',)); ?>
                 <?php echo form_hidden('form_action', 'leave_balance_update'); ?>
                 <?php echo form_hidden('id', set_value('id')); ?>
@@ -41,8 +46,6 @@
                     </div>
                 </div>
                 <button type="submit" class="btn ci-btn-primary btn-primary">Save Changes</button>
-                <a href="<?php echo base_url($this->router->directory.$this->router->class.'/view_leave_balance');?>"
-                    class="btn btn-light">View Leave Balance</a>
                 <?php echo form_close(); ?>
             </div>
             <!--/.card-body-->

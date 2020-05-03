@@ -7,6 +7,11 @@
             <div class="card-header">Delete Account</div>
             <div class="card-body">
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
+                <div class="d-flex h-100 mb-2">
+                    <div class="align-self-end ml-auto">
+                        <a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('left_arrow'); ?> Back to Employee List</a>
+                    </div>
+				</div>
                 <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>
                 <?php echo form_hidden('form_action', 'close_account'); ?>
                 <?php echo form_hidden('user_id', $row['id']); ?>
@@ -50,10 +55,7 @@
                 </div>
 
                 <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
-                <a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_user_profile/'.$row['id']);?>"
-                    class="btn btn-light ci-btn-cancel">Cancel</a>
-                <a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>"
-                    class="btn btn-light" data-toggle="tooltip" title="">Manage Employees</a>
+                <a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_user_profile/'.$row['id']);?>" class="btn btn-light ci-btn-cancel">Cancel</a>
                 <?php echo form_close(); ?>
 
             </div>

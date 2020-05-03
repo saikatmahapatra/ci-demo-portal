@@ -288,7 +288,7 @@ class Timesheet_model extends CI_Model {
         return $result;
     }
 
-	function get_task_dropdown($order=NULL, $parent_id = NULL) {
+	function get_task_dropdown($order=NULL, $parent_id = NULL, $req_empty_opt = TRUE) {
         $result = array();
         $this->db->select('id,task_name');
         $this->db->where('task_status','Y');		
@@ -301,7 +301,9 @@ class Timesheet_model extends CI_Model {
         }		
         $query = $this->db->get('project_tasks');
         #echo $this->db->last_query();
-        $result = array('' => '-Select-');
+        if($req_empty_opt === true){
+            $result = array('' => '-Select-');
+        }
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {

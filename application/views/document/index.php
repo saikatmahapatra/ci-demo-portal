@@ -67,11 +67,11 @@
 								}
 							?>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-outline-danger btn-delete-file mr-3"
+                                    <a href="#" class="btn btn-sm btn-light btn-delete-file mr-3"
                                         data-confirmation="1"
                                         data-confirmation-message="Are you sure, you want to delete this?"
                                         data-upload_id="<?php echo $upload['id'];?>"
-                                        title="Delete <?php echo $upload['upload_file_type_name']; ?>"
+                                        title="Delete"
                                         data-path="<?php echo $file_path;?>"><?php echo $this->common_lib->get_icon('delete'); ?></a>
                                     <a href="<?php echo $file_src;?>"
                                         title="<?php echo $upload['upload_file_type_name'];?>"

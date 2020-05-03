@@ -18,13 +18,13 @@
 <div class="row dashboard-card-widgets">
     <div class="col-lg-12">
         <div class="card ci-card">
-            <div class="card-header">Organization Statistics</div>
+            <div class="card-header">Statistics</div>
             <div class="card-body">
                 <div class="row">
                     <?php foreach($dashboard_stat as $key=>$data) { ?>
                         <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
                         <div class="col-sm-6 col-md-3 col-lg-3">
-                            <div class="mb-3 text-center <?php echo $data['bg_css']; echo $data['text_css'];?> ">
+                            <div class="mb-3 text-center<?php echo $data['bg_css']; echo $data['text_css'];?> ">
                                 <div class="">
                                     <div class="digit <?php echo $data['digit_css'];?>"><?php echo $data['count'];?></div>
                                     <div class=""><a href="<?php echo isset($data['url']) ? $data['url'] : '#';?>"><?php echo $data['heading'];?></a></div>
@@ -48,6 +48,10 @@
                             }?>
                         <?php } ?>
                     <?php } ?>
+
+                    <?php if($data['target_role'] !== '1'){ ?>
+                        <div class="col small text-right text-muted">* Calculated based on your timesheet data of current month.</div>
+                    <?php }?>
             </div>
             </div>
         </div>

@@ -7,13 +7,15 @@
 			<div class="card-body">
 			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
-				<div class="action-btn-group">
-					<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="btn btn-sm btn-outline-success mr-2" data-toggle="tooltip" title="Create new account"> <?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
-				
-					<?php echo form_open(current_url(), array('method' => 'post', 'class' => '', 'name' => 'download_data')); ?>
+				<div class="d-flex h-100 mb-2">
+					<div class="align-self-end ml-auto"> 
+						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="btn btn-outline-success"> <?php echo $this->common_lib->get_icon('plus'); ?> Add New Employee</a>
+
+						<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'd-inline-block', 'name' => 'download_data')); ?>
 						<input type="hidden" name="form_action" value="download">
-						<button type="submit" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Download data as excel"> <?php echo $this->common_lib->get_icon('download'); ?> Download</button>
+						<button type="submit" class="btn btn-outline-secondary"> <?php echo $this->common_lib->get_icon('download'); ?> Download</button>
 					<?php echo form_close(); ?>
+					</div>
 				</div>
 
 				<div class="table-responsive">

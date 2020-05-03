@@ -144,6 +144,7 @@ class Timesheet extends CI_Controller {
             if($this->input->post('task_id_1')){
                 $this->data['arr_task_id_2'] = $this->timesheet_model->get_task_dropdown('2', $this->input->post('task_id_1'));
             }
+            //print_r($this->data['arr_task_id_2']);
 
             if ($this->validate_form_data('add') == true) {
 				$selected_date_arr = explode(',', $this->input->post('selected_date'));
@@ -172,11 +173,19 @@ class Timesheet extends CI_Controller {
     }
 	
 	function validate_form_data($action = NULL) {
+        //print_r($this->data['arr_task_id_2']);
         if($action != 'edit'){
             $this->form_validation->set_rules('selected_date', 'date selection', 'required|callback_check_selected_days');
         }
         $this->form_validation->set_rules('project_id', 'project', 'required');
         $this->form_validation->set_rules('task_id_1', 'task', 'required');
+
+        // gt 2 as -Select- also treating as array
+        //print_r(array_filter( $this->data['arr_task_id_2'], 'strlen' ));
+        if(sizeof($this->data['arr_task_id_2']) >= 2 ){
+            $this->form_validation->set_rules('task_id_2', 'sub task', 'required'); // subtask required
+        }
+
         $this->form_validation->set_rules('timesheet_hours', 'hours', 'required|numeric|less_than_equal_to[9]|greater_than[0]');
         $this->form_validation->set_rules('timesheet_description', 'additional note', 'required|max_length[200]');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
@@ -270,21 +279,17 @@ class Timesheet extends CI_Controller {
 			$html = '';
 			//add html for action
             $action_html = '';
-            $action_html.= '<button class="btn btn-sm btn-light mr-1 text-secondary" data-toggle="modal" data-target="#timesheetDetailsInfoModal" data-date="'.$this->common_lib->display_date($result['timesheet_date']).'" data-emp="'.$this->common_lib->get_sess_user('user_firstname').' '.$this->common_lib->get_sess_user('user_lastname').'" data-project="'.$result['project_name'].'-'.$result['project_number'].'" data-task="'.$result['task_name'].'" data-hour="'.$result['timesheet_hours'].'" data-desc="'.$result['timesheet_description'].'">'.$this->common_lib->get_icon('info', 'dt_action_icon').'</button>';
+            $action_html.= '<a href="#" title="Details" class="btn btn-sm btn-light mr-1 text-secondary" data-toggle="modal" data-target="#timesheetDetailsInfoModal" data-date="'.$this->common_lib->display_date($result['timesheet_date']).'" data-emp="'.$this->common_lib->get_sess_user('user_firstname').' '.$this->common_lib->get_sess_user('user_lastname').'" data-project="'.$result['project_name'].'-'.$result['project_number'].'" data-task="'.$result['task_name'].'" data-hour="'.$result['timesheet_hours'].'" data-desc="'.$result['timesheet_description'].'">'.$this->common_lib->get_icon('info', 'dt_action_icon').'</a>';
 
             if(($year == $current_year) && ($month == $current_month)){
                 $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
                     'class' => 'btn btn-sm btn-light mr-1 text-secondary',
-                    'data-toggle' => 'tooltip',
-                    'data-original-title' => 'Edit',
                     'title' => 'Edit',
                 ));
                 $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), $this->common_lib->get_icon('delete','dt_action_icon'), array(
                     'class' => 'btn btn-sm btn-light mr-1 text-secondary btn-delete',
                     'data-confirmation'=>false,
                     'data-confirmation-message'=>'Are you sure, you want to delete this?',
-                    'data-toggle' => 'tooltip',
-                    'data-original-title' => 'Delete',
                     'title' => 'Delete',
                 ));
             }
@@ -331,10 +336,8 @@ class Timesheet extends CI_Controller {
         $this->data['arr_task_id_2'] = array(''=>'-Select-');
         
         $data = $this->get_data($this->id);
-        //print_r($data);
         $this->data['rows'] = $data['data'];
         $is_editable = $data['is_editable'];
-
         if ($is_editable == true && $this->input->post('form_action') == 'update') {
             // if($this->input->post('project_id')){
             //     $this->data['arr_task_id_1'] = $this->timesheet_model->get_project_task_tagging_dropdown($this->input->post('project_id'));
@@ -365,10 +368,11 @@ class Timesheet extends CI_Controller {
         // if(isset($this->data['rows'][0]['project_id'])){
         //     $this->data['arr_task_id_1'] = $this->timesheet_model->get_project_task_tagging_dropdown($this->data['rows'][0]['project_id']);
         // }
-
-        if(isset($this->data['rows'][0]['task_id_1'])){
+        
+        if(!$this->input->post('form_action') && isset($this->data['rows'][0]['task_id_1'])){
             $this->data['arr_task_id_2'] = $this->timesheet_model->get_task_dropdown('2', $this->data['rows'][0]['task_id_1']);
         }
+
         if($is_editable == false) {
             $this->common_lib->set_flash_message('You will not be able to edit the selected work log.','alert-danger');
             redirect($this->router->directory.$this->router->class.'');
@@ -644,16 +648,19 @@ class Timesheet extends CI_Controller {
         $id = $this->input->get_post('id');
         $data_render_target=$this->input->get_post('data_render_target');
         $current_control = $this->input->get_post('current_control');
+        $via = $this->input->get_post('via');
+        $req_empty_opt = (isset($via) && $via === 'ajax') ?  false :  true;
         //print_r(json_encode($_REQUEST));
         $response = array();
         if($current_control == 'project_id'){
             $res = $this->timesheet_model->get_project_task_tagging_dropdown($id);
         }else{
-            $res = $this->timesheet_model->get_task_dropdown($data_order, $id);
+            $res = $this->timesheet_model->get_task_dropdown($data_order, $id, $req_empty_opt);
         }
+        //print_r($res);
         $response['req_param'] = $_REQUEST;
         $response['resp_data'] = $res;
-        sort($response['resp_data']);
+        //sort($response['resp_data']);
         print_r(json_encode($response));
         die();
     }

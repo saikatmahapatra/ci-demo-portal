@@ -308,7 +308,7 @@ $config['cache_query_string'] = FALSE;
 | http://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = 'a1z3-d5rt-6k4n';
+$config['encryption_key'] = 'c7a7bbc6-1a1d-42a5-9883-fe7f33e234ed';
 
 /*
 |--------------------------------------------------------------------------
@@ -360,7 +360,7 @@ $config['encryption_key'] = 'a1z3-d5rt-6k4n';
 */
 $config['sess_driver'] = 'database';
 $config['sess_cookie_name'] = 'ci_sessions';
-$config['sess_expiration'] = 0;
+$config['sess_expiration'] = 1800;
 $config['sess_save_path'] = 'ci_sessions';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;

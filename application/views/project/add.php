@@ -11,15 +11,14 @@
                 <?php echo form_hidden('form_action', 'insert'); ?>
 
                 <div class="form-row">
-                    <div class="form-group col-12">
-                        <label for="project_number" class="required">Project Number/Code</label>
+                    <div class="form-group col-lg-4">
+                        <label for="project_number" class="required">Project Number</label>
                         <?php echo form_input(array('name' => 'project_number', 'value' => set_value('project_number'), 'id' => 'project_number', 'class' => 'form-control', 'placeholder' => '', 'maxlength'=>'15'));?>
                         <?php echo form_error('project_number'); ?>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-12">
-                        <label for="project_name" class="required">Name of Project</label>
+                
+                    <div class="form-group col-lg-8">
+                        <label for="project_name" class="required">Project Name</label>
                         <?php echo form_input(array('name' => 'project_name', 'value' => set_value('project_name'), 'id' => 'project_name', 'class' => 'form-control', 'placeholder' => ''));?>
                         <?php echo form_error('project_name'); ?>
                     </div>
@@ -27,8 +26,8 @@
 
                 <div class="form-row">
                     <div class="form-group col-12">
-                        <label for="project_desc" class="optional">Description of Project</label>
-                        <?php echo form_textarea(array('name' => 'project_desc','value' => set_value('project_desc'),'class' => 'form-control textarea','id' => 'project_desc','rows' => '2','cols' => '50','placeholder' => '')); ?>
+                        <label for="project_desc" class="optional">Description</label>
+                        <?php echo form_textarea(array('name' => 'project_desc','value' => set_value('project_desc'),'class' => 'form-control textarea', 'maxlength'=> '150', 'id' => 'project_desc','rows' => '2','cols' => '50','placeholder' => 'briefly describe in 150 characters')); ?>
                         <?php echo form_error('project_desc'); ?>
                     </div>
                 </div>

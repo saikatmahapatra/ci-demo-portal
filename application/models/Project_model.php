@@ -129,7 +129,13 @@ class Project_model extends CI_Model {
 
     function get_task_rows($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE) {
         $result = array();
-        $this->db->select('t1.*');        
+        $this->db->select('t1.*, 
+            tbl_subtask.level as subtask_level, 
+            tbl_subtask.id as subtask_id, 
+            tbl_subtask.task_name as subtask_parent_name,
+            tbl_subtask.task_parent_id as subtask_parent_id,
+            tbl_subtask.task_status as subtask_status
+        ');
         if ($id) {
             $this->db->where('t1.id', $id);
         }
@@ -186,6 +192,7 @@ class Project_model extends CI_Model {
                 $this->db->limit($limit, $offset);
             }
         }
+        $this->db->join('project_tasks as tbl_subtask', 'tbl_subtask.id = t1.task_parent_id', 'left');
         $query = $this->db->get('project_tasks as t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();
@@ -272,6 +279,22 @@ class Project_model extends CI_Model {
         $query = $this->db->get('project_tasks');
         if ($query->num_rows()) {
             $result = $query->result_array();
+        }
+        return $result;
+    }
+
+    function is_unique_value($value, $id=NULL) {
+        $result = false;
+        $this->db->select('id');
+        if(isset($id)){
+            $this->db->where_not_in('id',$id);
+        }
+        $this->db->where('task_name', $value);
+        $query = $this->db->get('project_tasks');
+        if ($query->num_rows()) {
+            $result = false;
+        } else {
+            $result = true;
         }
         return $result;
     }

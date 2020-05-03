@@ -86,87 +86,116 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-lg-12">
-		<div class="card ci-card ci-dl">
+		<div class="card ci-card ci-dl user-profile-page-card">
 			<div class="card-header">Profile Card</div>
 			<div class="card-body">
+				
+				<?php if($this->session->userdata['sess_user']['user_role'] == 1) {?>
+				<div class="d-flex h-100 mb-2">
+					<div class="align-self-end ml-auto">
+						<a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('left_arrow'); ?> Back to Employee List</a>
+					</div>
+				</div>
+				<?php } ?>
+				
 			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<div class="row">
-					<div class="col-lg-3 text-center mb-3">
+					<div class="col-lg-3 dp-section">
 						<?php   
 							$img_src = "";
-							$default_path = "assets/dist/img/default_user.jpg";
+							$default_path = "";
+							$show_name_dp = true;
 							if(isset($profile_pic)){					
 								$user_dp = "assets/uploads/user/profile_pic/".$profile_pic;					
 								if (file_exists(FCPATH . $user_dp)) {
 									$img_src = $user_dp;
+									$show_name_dp = false;
 								}else{
 									$img_src = $default_path;
+									$show_name_dp = true;
 								}
 							}else{
 								$img_src = $default_path;
+								$show_name_dp = true;
 							}
 						?>
-						<img class="dp rounded mx-auto d-block img-thumbnail" src="<?php echo base_url($img_src);?>">
+						<?php 
+						if($show_name_dp === true) {
+							?>
+							<div class="dp mx-auto d-block">
+							<?php
+								//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
+								echo isset($row['user_firstname']) ? substr($row['user_firstname'], 0, 1) : 'NO';
+								echo isset($row['user_lastname']) ? substr($row['user_lastname'], 0, 1) : 'IMG';
+							?>
+							</div>
+							<?php
+						} else {
+							?>
+							<img class="dp rounded mx-auto d-block" src="<?php echo base_url($img_src);?>">
+							<?php
+						}
+						?>
 						<?php if($is_self_account == true) { ?>
-						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>" data-toggle="tooltip" title="Change or remove this photo"><?php echo $this->common_lib->get_icon('camera'); ?> Change</a>
+						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><?php //echo $this->common_lib->get_icon('camera'); ?> Change Photo</a>
 						<?php } ?>
-						<div class="h6 mt-3 mb-0">
+						<div class="emp-name">
 							<?php
 								//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 								echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
-								echo isset($row['user_midname']) ? $row['user_midname'] . '&nbsp;' : '';
-								echo isset($row['user_lastname']) ? $row['user_lastname'] . '&nbsp;' : '';
+								echo isset($row['user_lastname']) ? $row['user_lastname'] : '';
 							?>
 						</div>
-						<div class="">
+						
+						<!-- <div class="info"><?php //echo isset($row['employment_type_name']) ? $row['employment_type_name'] : ''; ?></div> -->
+						<div class="info"><?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
+						<!-- <div class="info">Department - <?php //echo isset($row['department_name']) ? $row['department_name'] : ''; ?></div> -->
+						<div class="info">Employee ID - <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
+						<div class="info">
 							<a class="" href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : ''; ?></a>
 						</div>
-						<div class="">
+						<div class="info">
 							<?php echo isset($row['user_phone1']) && strlen($row['user_phone1']) > 0 ? $row['user_phone1'] : ''; ?>
 							<?php echo isset($row['user_phone2']) && strlen($row['user_phone2']) > 0 ? ' / '.$row['user_phone2'] : ''; ?>
 						</div>
-						<div class="small">Emp ID - <?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : ''; ?></div>
-						<div class="small"><?php echo isset($row['employment_type_name']) ? $row['employment_type_name'] : ''; ?></div>
-						<div class="small">Designation - <?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>
-						<div class="small">Department - <?php echo isset($row['department_name']) ? $row['department_name'] : ''; ?></div>
 
 						<?php if($is_self_account == true) { ?>
-							<a class="btn btn-sm btn-light mt-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><?php echo $this->common_lib->get_icon('edit'); ?> Edit Basic Information</a>
+							<a class="btn btn-sm btn-light my-2" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><?php echo $this->common_lib->get_icon('edit'); ?> Edit Basic Info</a>
 						<?php } ?>
 						
 					</div><!--/.col-lg-3-->
 					<div class="col-lg-9">
 						<nav>
-							<div class="nav nav-tabs ci-nav-tab small" id="nav-tab" role="tablist">
-								<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><?php echo $this->common_lib->get_icon('info'); ?> Basic Info</a>
+							<div class="nav nav-tabs ci-nav-tab" id="nav-tab" role="tablist">
+								<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><?php //echo $this->common_lib->get_icon('info'); ?> Basic Info</a>
 
 								<?php if($display_address == true){  ?>
-								<a class="nav-item nav-link" id="nav-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><?php echo $this->common_lib->get_icon('address'); ?> Address</a>
+								<a class="nav-item nav-link" id="nav-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><?php //echo $this->common_lib->get_icon('address'); ?> Address</a>
 								<?php } ?>
 
 								<?php if($display_education == true){  ?>
-								<a class="nav-item nav-link" id="nav-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><?php echo $this->common_lib->get_icon('education'); ?> Education</a>
+								<a class="nav-item nav-link" id="nav-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><?php //echo $this->common_lib->get_icon('education'); ?> Education</a>
 								<?php } ?>
 
 								<?php if($display_experience == true){  ?>
-								<a class="nav-item nav-link" id="nav-4" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false"><?php echo $this->common_lib->get_icon('work_exp'); ?> Experiences</a>
+								<a class="nav-item nav-link" id="nav-4" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false"><?php //echo $this->common_lib->get_icon('work_exp'); ?> Experiences</a>
 								<?php } ?>
 								
 								<?php if($display_salary_ac == true){  ?>
-								<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="false"><?php echo $this->common_lib->get_icon('card'); ?> Salary A/C</a>
+								<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="false"><?php //echo $this->common_lib->get_icon('card'); ?> Salary A/C</a>
 								<?php } ?>
 
 								<?php if($display_emergency_contact == true){  ?>
-								<a class="nav-item nav-link" id="nav-7" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false"><?php echo $this->common_lib->get_icon('medical'); ?> Emergency Contacts</a>
+								<a class="nav-item nav-link" id="nav-7" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false"><?php //echo $this->common_lib->get_icon('medical'); ?> Emergency Contacts</a>
 								<?php } ?>
 
 								<?php if($display_uploaded_files == true){  ?>
-								<a class="nav-item nav-link" id="nav-8" data-toggle="tab" href="#tab-8" role="tab" aria-controls="tab-7" aria-selected="false"><?php echo $this->common_lib->get_icon('docs'); ?> Docs</a>
+								<a class="nav-item nav-link" id="nav-8" data-toggle="tab" href="#tab-8" role="tab" aria-controls="tab-7" aria-selected="false"><?php //echo $this->common_lib->get_icon('docs'); ?> Docs</a>
 								<?php } ?>
 
 								<?php if($display_others == true){  ?>
-								<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false"><?php echo $this->common_lib->get_icon('other_info'); ?> Others</a>
+								<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false"><?php //echo $this->common_lib->get_icon('other_info'); ?> Others</a>
 								<?php } ?>
 							</div>
 						</nav>
@@ -227,7 +256,7 @@
 											<dd class="col-lg-9"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : '-'; ?></dd>
 										</dl><!--/dl.row-->
 										<?php if($is_self_account == true) {?>
-											<div class="text-muted small">* If you find any incorrect information, please contact to your HR or admin person for updating.</div>
+											<div class="text-muted small">* If you see any incorrect information, please contact to your HR for further help.</div>
 										<?php } ?>
 									</div>
 								</div>
@@ -248,7 +277,7 @@
 													<?php echo isset($address_type[$addr['address_type']]) ? $address_type[$addr['address_type']] : 'Address'; ?>
 
 													<?php if($is_self_account == true) { ?>
-														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn btn-sm btn-light" data-toggle="tooltip" title="Edit"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
+														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="btn btn-sm btn-light"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
 														<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-light btn-sm"><?php echo $this->common_lib->get_icon('delete'); ?> Delete</a> -->
 													<?php } ?>
 												</div>
@@ -287,7 +316,7 @@
 												<?php echo isset($edu['qualification_name'])?$edu['qualification_name']: ' ';?> - <?php echo isset($edu['degree_name'])?$edu['degree_name']:'';?>
 												<?php echo isset($edu['academic_from_year']) ? '('.$edu['academic_from_year'].'-'.$edu['academic_to_year'].')':'';?>
 												<?php if($is_self_account == true) { ?>
-													<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn btn-sm btn-light" data-toggle="tooltip" title="Edit"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
+													<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="btn btn-sm btn-light"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
 												<?php } ?>
 												</div>
 												<div>
@@ -337,7 +366,7 @@
 														<div class="section-heading">
 															<?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?>
 															<?php if($is_self_account == true) { ?>		
-															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="btn btn-sm btn-light" data-toggle="tooltip" title="Edit"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="btn btn-sm btn-light"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
 															<?php } ?>
 														</div>
 														<div class="">
@@ -383,7 +412,7 @@
 													<div class="section-heading">
 														<?php echo isset($row['bank_name'])? $row['bank_name']: ' ';?>
 														<?php echo isset($row['ifsc_code']) ? '('.$row['ifsc_code'].')' : '-'; ?>
-														<?php if($is_self_account == true) { ?>	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="btn btn-sm btn-light" data-toggle="tooltip" title="Edit"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>	<?php } ?>
+														<?php if($is_self_account == true) { ?>	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="btn btn-sm btn-light"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>	<?php } ?>
 													</div>
 													<div class="text-muted small">
 													<?php echo isset($row['account_uses'])? $account_uses[$row['account_uses']]: ' ';?>
@@ -503,7 +532,7 @@
 														}
 													?>
 													
-													<a data-target="window" target="_new" href="<?php echo $file_src;?>" title="<?php echo $upload['upload_file_type_name'];?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><?php echo $this->common_lib->get_icon('download'); ?> View</a>
+													<a data-target="window" target="_new" href="<?php echo $file_src;?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><?php echo $this->common_lib->get_icon('download'); ?> View</a>
 												</div>
 											</div>
 											<?php } //foreach ?>

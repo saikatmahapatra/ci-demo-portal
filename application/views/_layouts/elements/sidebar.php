@@ -15,13 +15,14 @@
         <!-- <li><a href="<?php echo base_url('event_calendar'); ?>"><?php //echo $this->common_lib->get_icon('calendar'); ?> Event Calendar</a></li> -->
         <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
         <li class="">
-            <a href="#adminSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><?php echo $this->common_lib->get_icon('admin_user'); ?> Admin HR Portal</a>
+            <a href="#adminSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><?php echo $this->common_lib->get_icon('admin_user'); ?> Administrator</a>
             <ul class="collapse list-unstyled" id="adminSubmenu">
-            <li><a href="<?php echo base_url('cms/add'); ?>">New Content</a></li>
+            <li><a href="<?php echo base_url('user/manage'); ?>">Employees</a></li>
+            <!-- <li><a href="<?php echo base_url('cms/add'); ?>">New Content</a></li> -->
             <li><a href="<?php echo base_url('cms'); ?>">Contents</a></li>
             <li><a href="<?php echo base_url('holiday'); ?>">Holiday Calendar</a></li>
-            <li><a href="<?php echo base_url('user/create_account'); ?>">New Employee</a></li>
-            <li><a href="<?php echo base_url('user/manage'); ?>">Employees</a></li>
+            <!-- <li><a href="<?php echo base_url('user/create_account'); ?>">New Employee</a></li> -->
+            
             <li><a href="<?php echo base_url('leave/manage/all'); ?>">Leave Applications</a></li>
             <li><a href="<?php echo base_url('leave/view_leave_balance'); ?>">Leave Balance</a></li>
             <li><a href="<?php echo base_url('leave/manage/assigned_to_me'); ?>">Leave to Approve</a></li>

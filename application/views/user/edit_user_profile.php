@@ -11,25 +11,52 @@
 		<label class="card ci-card">
 			<div class="card-header">Edit Profile</div>
 			<label class="card-body">
+				<?php if($this->session->userdata['sess_user']['user_role'] == 1) {?>
+				<div class="d-flex h-100 mb-2">
+                    <div class="align-self-end ml-auto">
+                        <a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('left_arrow'); ?> Back to Employee List</a>
+                    </div>
+				</div>
+				<?php } ?>
 			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<?php   
 					$img_src = "";
-					$default_path = "assets/dist/img/default_user.jpg";
+					$default_path = "";
+					$show_name_dp = true;
 					if(isset($profile_pic)){					
 						$user_dp = "assets/uploads/user/profile_pic/".$profile_pic;					
 						if (file_exists(FCPATH . $user_dp)) {
 							$img_src = $user_dp;
+							$show_name_dp = false;
 						}else{
 							$img_src = $default_path;
+							$show_name_dp = true;
 						}
 					}else{
 						$img_src = $default_path;
+						$show_name_dp = true;
 					}
 				?>
 				<div class="row text-center mb-3">
 					<div class="col-sm-12">
-						<img class="dp rounded mx-auto d-block img-thumbnail" src="<?php echo base_url($img_src);?>">
+						<?php 
+							if($show_name_dp === true) {
+								?>
+								<div class="dp mx-auto d-block">
+								<?php
+									echo isset($row['user_firstname']) ? substr($row['user_firstname'], 0, 1) : 'NO';
+									echo isset($row['user_lastname']) ? substr($row['user_lastname'], 0, 1) : 'IMG';
+								?>
+								</div>
+								<?php
+							} else {
+								?>
+								<img class="dp rounded mx-auto d-block" src="<?php echo base_url($img_src);?>">
+								<?php
+							}
+						?>
+						
 						<div class="h5 my-2">
 							<?php
 								echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
@@ -186,7 +213,7 @@
 
 				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
 				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="btn btn-light ci-btn-cancel">Cancel</a>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn btn-light">Delete Account</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn btn-outline-danger">Delete Account</a>
 				<?php echo form_close(); ?>
 			
 			</label><!--./card-body-->

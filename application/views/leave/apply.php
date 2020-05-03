@@ -11,13 +11,22 @@
             <div class="card-header">Leave Application Form</div>
             <div class="card-body">
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
-                <div class="form-text mb-4 text-muted">
-                    <ul>
+
+                <div class="d-flex h-100 mb-2">
+                    <div class="align-self-end ml-auto"> 
+                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('history'); ?> Leave History</a>
+
+                        <a href="<?php echo base_url($this->router->directory.'user/edit_approvers');?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('user_settings'); ?> Change Approvers</a>
+                    </div>
+                </div>
+
+                <div class="form-text my-4 text-muted">
+                    <div class="">
                         <?php foreach($system_msg as $key=>$val){?>
-                        <li class="<?php echo $val['css'];?>"><?php echo $val['txt'];?></li>
+                            <div class="<?php echo $val['css'];?>"><?php echo $val['txt'];?></div>
                         <?php } ?>
 
-                        <li class="">
+                        <div class="">
                             <span class="">Leave Balance : </span>
                             <span class="">Casual Leave :
                                 <?php echo isset($leave_balance[0]['cl']) ? $leave_balance[0]['cl'] : '--'; ?></span>
@@ -29,8 +38,8 @@
                                 <?php echo isset($leave_balance[0]['co']) ? $leave_balance[0]['co'] : '--'; ?></span>
                             <!-- <span class="ml-3">OL : <?php echo isset($leave_balance[0]['ol']) ? $leave_balance[0]['ol'] : '0.0'; ?></span> -->
                             <!-- <span class="ml-3"><a class="" href="#" id="view_leave_balance_update_details" data-toggle="modal" data-target="#leaveBalanceModal">Click here to view balance details</a></span> -->
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -58,7 +67,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-lg-4">
-                        <label for="leave_type" class="required">Type of Leave</label>
+                        <label for="leave_type" class="required">Leave Type</label>
                         <?php echo form_dropdown('leave_type', $leave_type_arr, set_value('leave_type'), array('class' => 'form-control')); ?>
                         <?php echo form_error('leave_type'); ?>
                     </div>

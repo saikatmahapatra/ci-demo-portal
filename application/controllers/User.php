@@ -215,7 +215,7 @@ class User extends CI_Controller {
             $email_arr = explode('@',$result['user_email']);
             $masked_domain='';
             //$masked_domain = '@'.substr($email_arr[1], 0, 3).'***'.substr($email_arr[1], -2, 2);
-            $row[] = '<span data-toggle="tooltip" title="'.$result['user_email'].'">'.$email_arr[0].$masked_domain.'</span>';
+            $row[] = '<span title="'.$result['user_email'].'">'.$email_arr[0].$masked_domain.'</span>';
             $row[] = $result['user_phone1'];
             $row[] = $result['designation_name'];
             $row[] = '<span class="'.$this->data['user_status_arr'][$result['user_status']]['css'].'">'.$this->data['user_status_arr'][$result['user_status']]['text'].'</span>';
@@ -223,16 +223,12 @@ class User extends CI_Controller {
             
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
                 'class' => 'btn btn-sm btn-light text-secondary',
-                'data-toggle' => 'tooltip',
-                'data-original-title' => 'Edit Profile',
-                'title' => 'Edit Profile'
+                'title' => 'Edit'
             ));
             $action_html.='&nbsp;';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), $this->common_lib->get_icon('info','dt_action_icon'), array(
                 'class' => 'btn btn-sm btn-light text-secondary',
-                'data-toggle' => 'tooltip',
-                'data-original-title' => 'View Profile',
-                'title' => 'View Profile'
+                'title' => 'Details'
                 
             ));
             $row[] = $action_html;
