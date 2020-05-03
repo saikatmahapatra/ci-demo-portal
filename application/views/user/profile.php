@@ -161,7 +161,7 @@
 						</div>
 
 						<?php if($is_self_account == true) { ?>
-							<a class="btn btn-sm btn-light my-2" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><?php echo $this->common_lib->get_icon('edit'); ?> Edit Basic Info</a>
+							<a class="btn btn-sm btn-light my-2" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
 						<?php } ?>
 						
 					</div><!--/.col-lg-3-->
