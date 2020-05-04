@@ -23,7 +23,7 @@
             <li><a href="<?php echo base_url('holiday'); ?>">Holiday Calendar</a></li>
             <!-- <li><a href="<?php echo base_url('user/create_account'); ?>">New Employee</a></li> -->
             
-            <li><a href="<?php echo base_url('leave/manage'); ?>">Leave Applications</a></li>
+            <li><a href="<?php echo base_url('leave/manage'); ?>">Leave Management</a></li>
             <li><a href="<?php echo base_url('leave/view_leave_balance'); ?>">Leave Balance</a></li>
             <li><a href="<?php echo base_url('timesheet/report'); ?>">Timesheet Report</a></li>
             <li><a href="<?php echo base_url('project'); ?>">Projects</a></li>
