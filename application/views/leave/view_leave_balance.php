@@ -22,7 +22,7 @@
                     <div class="form-text ci-form-help-text text-muted">Note: Only xls file is allowed with maximum 2MB of size. To import leave balance data you need to "Export Data" first & modify the excel file to import it.</div>
                 </div>
                 
-                <div class="d-flex h-100 mb-2">
+                <div class="d-flex mb-2">
                     <div class="align-self-end ml-auto">
                         <a href="<?php echo base_url($this->router->directory.$this->router->class.'/leave_balance');?>" class="btn btn-outline-success"> <?php echo $this->common_lib->get_icon('plus'); ?> Add or Update</a>
 
