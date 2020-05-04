@@ -90,7 +90,7 @@
 			<div class="card-header">Profile Card</div>
 			<div class="card-body">
 				
-				<?php if($this->session->userdata['sess_user']['user_role'] == 1) {?>
+				<?php if($this->session->userdata['sess_user']['user_role'] == 1 && !$is_self_account) {?>
 				<div class="d-flex mb-2">
 					<div class="align-self-end ml-auto">
 						<a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('left_arrow'); ?> Back to Employee List</a>
