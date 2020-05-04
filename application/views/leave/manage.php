@@ -139,10 +139,10 @@
                                 <td colspan="7">
                                     <?php if($this->input->get_post('form_action') === 'search') {
                                         ?>
-                                        <p class="alert alert-danger"><?php echo $this->common_lib->get_icon('warning'); ?> No result found based on your search criteria. Please search again.</p>
+                                        <div class="mt-3 alert alert-danger"><?php echo $this->common_lib->get_icon('warning'); ?> No result found based on your search criteria. Please search again.</div>
                                         <?php
                                         } else {?>
-                                        <p class="alert alert-info"><?php echo $this->common_lib->get_icon('warning'); ?> There are no leave requests pending for your approval. You can search previous leave records.</p>
+                                        <div class="mt-3 alert alert-info"><?php echo $this->common_lib->get_icon('warning'); ?> There are no leave requests awaiting for your approval. You can search leave records.</div>
                                         <?php
                                     }?>
                                 </td>

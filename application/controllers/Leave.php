@@ -325,7 +325,7 @@ class Leave extends CI_Controller {
         $this->form_validation->set_data($data);
         $this->form_validation->set_rules('leave_from_date', 'from date', 'required');
         $this->form_validation->set_rules('leave_to_date', 'to date', 'required');
-        //$this->form_validation->set_rules('leave_status', 'leave status', 'required');
+        $this->form_validation->set_rules('leave_status', 'leave status', 'required');
         $this->form_validation->set_error_delimiters('<li class="validation-error">', '</li>');
         if ($this->form_validation->run() == true) {
             return true;
