@@ -12,7 +12,7 @@
 			<div class="card-header">Edit Profile</div>
 			<label class="card-body">
 				<?php if($this->session->userdata['sess_user']['user_role'] == 1) {?>
-				<div class="d-flex h-100 mb-2">
+				<div class="d-flex mb-2">
                     <div class="align-self-end ml-auto">
                         <a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('left_arrow'); ?> Back to Employee List</a>
                     </div>

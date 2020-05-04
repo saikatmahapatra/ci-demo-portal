@@ -53,7 +53,7 @@
                     
                 <?php echo form_close(); ?>
                 
-                <div class="d-flex h-100 mb-2">
+                <div class="d-flex mb-2">
                     <div class="align-self-end ml-auto"> 
                     <?php if(isset($data_rows) && sizeof($data_rows)>0){ ?>
                         <?php echo form_open(current_url(), array('method' => 'GET', 'class' => 'd-inline-block', 'name' => 'download_data')); ?>
