@@ -251,7 +251,7 @@ $row = $data_rows[0];
                     </div>
                 </div>
                 <!--/.row .ci-wizard-->
-                <a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->uri->segment(5).'/'.$this->uri->segment(6));?>"
+                <a href="<?php echo base_url($this->router->directory.$this->router->class.'/'.$this->uri->segment(5));?>"
                     class="btn btn-light btn-back"><?php echo $this->common_lib->get_icon('left_back'); ?> Back</a>
             </div>
         </div>
