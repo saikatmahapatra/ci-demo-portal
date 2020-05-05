@@ -53,11 +53,22 @@ $sidebar-type: staticnav;
             margin-left: -250px;
         }
         .sidebar-header {
-            padding: 20px;
+            padding: 15px;
             background: #6d7fcc;
             position: relative;
             h3 {
                 font-weight: 400;
+            }
+            .sidebar-user-dp {
+                height: 50px;
+                width: 50px;
+                cursor: pointer; // as link is there
+                // name initial dp
+                border-radius: 50% !important;
+                background: $name-dp-background-color;
+                color: $name-dp-text-color;
+                line-height: 50px;
+                text-align: center;
             }
         }
         .dropdown-toggle::after {
