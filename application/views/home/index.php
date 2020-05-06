@@ -21,7 +21,60 @@
             <div class="card-header">Statistics</div>
             <div class="card-body">
                 <div class="row">
-                    <?php foreach($dashboard_stat as $key=>$data) { ?>
+                    <div class="col-md-6">
+                        <div class="list-group list-group-flush">
+                            <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
+                            <a target="_blank" href="<?php echo $dashboard_stat['user']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Employees
+                                <span class="badge badge-primary badge-pill"><?php echo $dashboard_stat['user']['count'];?></span>
+                            </a>
+                            <?php } ?>
+                            <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
+                            <a target="_blank" href="<?php echo $dashboard_stat['timesheet_user']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Employees logged task current month
+                                <span class="badge badge-dark badge-pill"><?php echo $dashboard_stat['timesheet_user']['count'];?></span>
+                            </a>
+                            <?php } ?>
+                            <a target="_blank" href="<?php echo $dashboard_stat['timesheet_days']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Days you logged tasks in current month *
+                                <span class="badge badge-info badge-pill"><?php echo $dashboard_stat['timesheet_days']['count'];?></span>
+                            </a>
+                            <a target="_blank" href="<?php echo $dashboard_stat['leave_to_approve']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Leave awaiting for your aproval
+                                <span class="badge badge-danger badge-pill"><?php echo $dashboard_stat['leave_to_approve']['count'];?></span>
+                            </a>
+                        </div>
+                        <div></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="list-group list-group-flush">
+                            <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
+                            <a target="_blank" href="<?php echo $dashboard_stat['project']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Projects
+                                <span class="badge badge-secondary badge-pill"><?php echo $dashboard_stat['project']['count'];?></span>
+                            </a>
+                            <?php } ?>
+                            <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
+                            <a target="_blank" href="<?php echo $dashboard_stat['user_applied_leave']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Leave approved in current month
+                                <span class="badge badge-info badge-pill"><?php echo $dashboard_stat['user_applied_leave']['count'];?></span>
+                            </a>
+                            <?php } ?>
+                            <a target="_blank" href="<?php echo $dashboard_stat['timesheet_hrs']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Your logged hours *
+                                <span class="badge badge-warning badge-pill"><?php echo $dashboard_stat['timesheet_hrs']['count'];?></span>
+                            </a>
+                            <a target="_blank" href="<?php echo $dashboard_stat['timesheet_avg_hrs']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Your average logged hours *
+                                <span class="badge badge-success badge-pill"><?php echo $dashboard_stat['timesheet_avg_hrs']['count'];?></span>
+                            </a>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="col-12 my-2 small text-sm-center text-lg-right text-muted">* Calculated based on your timesheet data of current month.</div>
+
+                    <?php /* foreach($dashboard_stat as $key=>$data) { ?>
                         <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
                         <div class="col-sm-6 col-md-3 col-lg-3">
                             <div class="mb-3 text-center<?php echo $data['bg_css']; echo $data['text_css'];?> ">
@@ -51,7 +104,7 @@
 
                     <?php if($data['target_role'] !== '1'){ ?>
                         <div class="col small text-sm-center text-lg-right text-muted">* Calculated based on your timesheet data of current month.</div>
-                    <?php }?>
+                    <?php } */ ?>
             </div>
             </div>
         </div>

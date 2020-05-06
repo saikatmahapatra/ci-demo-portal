@@ -1,10 +1,6 @@
 <nav id="sidebar" class="<?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? 'active' : ''; ?>">
     <div class="sidebar-header">
-        <div class="sidebar-user-dp mx-auto d-block">
-            AB
-        </div>
-        <!-- <h3><a href="<?php echo base_url($this->router->directory); ?>">Self Service Portal</a></h3> -->
-        <div class="text-center my-2">Antony A Broadmanistia P</div>
+        <h3><a href="<?php echo base_url($this->router->directory); ?>">Self Service Portal</a></h3>
         <div id="locksidebar" class="d-none d-md-block float-right"><?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? $this->common_lib->get_icon('right_arrow') : $this->common_lib->get_icon('left_arrow'); ?></div>
     </div>
     

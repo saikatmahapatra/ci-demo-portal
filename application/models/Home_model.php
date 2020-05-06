@@ -104,7 +104,7 @@ class Home_model extends CI_Model {
 			array(
 			'YEAR(`timesheet_date`)' => date('Y'),
             'MONTH(`timesheet_date`)' => date('m'),
-            'DAY(`timesheet_date`)' => date('d')
+            //'DAY(`timesheet_date`)' => date('d')
 			)
 		);     
 		//$this->db->where('t1.project_status', 'N');

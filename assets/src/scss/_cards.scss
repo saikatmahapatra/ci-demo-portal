@@ -82,6 +82,19 @@
 }
 
 .dashboard-card-widgets {
+    // .list-group-item {
+    //     padding-left: 0px;
+    //     padding-right: 0px;
+    // }
+    .list-group-flush {
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+    .badge {
+        font-size: 80%;
+        //font-weight: 400;
+    }
     .card {
         a:not(.btn) {
             color: inherit;

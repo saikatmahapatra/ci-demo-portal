@@ -109,9 +109,9 @@ class Home extends CI_Controller {
 
         $dashboard_stat['project'] = array('target_role' => '1', 'heading'=>'Projects', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-secondary', 'icon'=>'', 'count'=>$stat_projects_count['data_rows'][0]['total'], 'url' => base_url('project'));
 
-        $dashboard_stat['timesheet_user'] = array('target_role' => '1', 'heading'=>'Employees Logged Task Today', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-success', 'icon'=>'', 'count'=>$stat_timesheet_user['data_rows'][0]['total'], 'url' => base_url('timesheet/report'));
+        $dashboard_stat['timesheet_user'] = array('target_role' => '1', 'heading'=>'Logged Task Current Month', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-success', 'icon'=>'', 'count'=>$stat_timesheet_user['data_rows'][0]['total'], 'url' => base_url('timesheet/report'));
         
-        $dashboard_stat['user_applied_leave'] = array('target_role' => '1', 'heading'=>'Leave Approved', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-info', 'icon'=>'', 'count'=>$stat_user_approved_leave['data_rows'][0]['total'].'/'.$stat_user_applied_leave['data_rows'][0]['total'], 'url' => base_url('leave/manage/all'));
+        $dashboard_stat['user_applied_leave'] = array('target_role' => '1', 'heading'=>'Leave Approved', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-info', 'icon'=>'', 'count'=>$stat_user_approved_leave['data_rows'][0]['total'].'/'.$stat_user_applied_leave['data_rows'][0]['total'], 'url' => base_url('leave/manage'));
 
         $dashboard_stat['leave_to_approve'] = array('target_role' => '', 'heading'=>'Leave to Approve', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-warning', 'icon'=>'', 'count'=>$stat_pending_leave_action['data_rows'][0]['total'], 'url' => base_url('leave/manage'));
 
