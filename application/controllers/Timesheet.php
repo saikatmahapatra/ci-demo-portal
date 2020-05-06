@@ -415,8 +415,10 @@ class Timesheet extends CI_Controller {
             $this->load->model('user_model');
             $reportees = $this->user_model->get_reportee_employee($this->sess_user_id, NULL, NULL, NULL);
             $user_arr = array(''=>'Select Employee');
+            $reportess_emp_id_array = array();
             if(isset($reportees['data_rows']) && sizeof($reportees['data_rows'])>0){
                 foreach ($reportees['data_rows'] as $r) {
+                    $reportess_emp_id_array[] = $r['user_id'];
                     $user_arr[$r['user_id']] = $r['user_firstname'].' '.$r['user_lastname'].' ('.$r['user_emp_id'].')';
                 }
             }
@@ -433,6 +435,13 @@ class Timesheet extends CI_Controller {
                 'from_date' => $this->input->get_post('from_date'),
                 'to_date' => $this->input->get_post('to_date')
             );
+
+            if($this->input->get_post('redirected_from') == 'reportee_id'){
+                if(isset($filter_by_condition['q_emp']) && $filter_by_condition['q_emp'] == '') {
+                    $filter_by_condition['q_emp'] = $reportess_emp_id_array;
+                }
+            }
+
             if ($this->validate_search_form_data($filter_by_condition) == true) {
                 $result_array = $this->timesheet_model->get_report_data(NULL, NULL, NULL, $filter_by_condition);
                 $total_num_rows = $result_array['num_rows'];
