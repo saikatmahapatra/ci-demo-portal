@@ -473,8 +473,8 @@ class Timesheet extends CI_Controller {
 
     function validate_search_form_data($data) {        
         $this->form_validation->set_data($data);
-        $this->form_validation->set_rules('from_date', ' ', 'required');
-        $this->form_validation->set_rules('to_date', ' ', 'required|callback_validate_days_diff');
+        $this->form_validation->set_rules('from_date', 'from date', 'required');
+        $this->form_validation->set_rules('to_date', 'to date', 'required|callback_validate_days_diff');
         //$this->form_validation->set_rules('q_emp', ' ', 'required');
         $this->form_validation->set_error_delimiters('<li class="validation-error">', '</li>');
         if ($this->form_validation->run() == true) {
@@ -497,7 +497,7 @@ class Timesheet extends CI_Controller {
             $no_day = round($datediff / (60 * 60 * 24))+1;
             if($no_day >= 1 ){
                 if($no_day > $settings['timesheet_report_max_date_range']){
-                    $this->form_validation->set_message('validate_days_diff', 'Only '. $settings['timesheet_report_max_date_range'].' days are allowed');
+                    $this->form_validation->set_message('validate_days_diff', 'Date range should be less than '. $settings['timesheet_report_max_date_range'].' days.');
                     return false;
                 }else{
                     return true;
