@@ -41,7 +41,7 @@
                                 <td><?php echo $leave_type_arr[$row['leave_type']];?> <?php echo ' - '.$row['leave_term'];?></td>
                                 <td><?php echo $this->common_lib->display_date($row['leave_from_date']);?></td>
                                 <td><?php echo $this->common_lib->display_date($row['leave_to_date']);?></td>
-                                <td><?php echo $row['applied_for_days_count'].' day(s)';?></td>
+                                <td><?php echo $row['applied_for_days_count'];?></td>
                                 <td>
                                     <span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>">
                                         <?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>

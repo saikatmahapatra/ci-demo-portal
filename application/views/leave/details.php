@@ -31,7 +31,7 @@ $row = $data_rows[0];
                         <?php echo $this->common_lib->display_date($row['leave_from_date'], NULL, NULL);?> to
                         <?php echo $this->common_lib->display_date($row['leave_to_date'], NULL, NULL);?></dd>
                     <dt class="col-lg-2">No of day(s)</dt>
-                    <dd class="col-lg-10"><?php echo $row['applied_for_days_count'].' day(s)';?></dd>
+                    <dd class="col-lg-10"><?php echo $row['applied_for_days_count'];?></dd>
 
                     <dt class="col-lg-2">Applied by</dt>
                     <dd class="col-lg-10">
