@@ -476,7 +476,7 @@ class Timesheet extends CI_Controller {
         $this->form_validation->set_rules('from_date', ' ', 'required');
         $this->form_validation->set_rules('to_date', ' ', 'required|callback_validate_days_diff');
         //$this->form_validation->set_rules('q_emp', ' ', 'required');
-        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        $this->form_validation->set_error_delimiters('<li class="validation-error">', '</li>');
         if ($this->form_validation->run() == true) {
             return true;
         } else {
