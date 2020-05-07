@@ -23,6 +23,7 @@
                     $show_name_dp = true;
                 }
             ?>
+        <a href="<?php echo base_url('user/profile');?>">
         <?php if($show_name_dp === true) { ?>
         <div class="sidebar-user-dp mx-auto d-block">
             <?php
@@ -39,8 +40,11 @@
             </div>
         <?php } ?>
         <div class="text-center mt-2"><?php echo $sess_user_firstname.' '.$sess_user_lastname; ?></div>
-        <?php } ?>
+        </a>
         <div id="locksidebar" class="d-none d-md-block float-right"><?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? $this->common_lib->get_icon('right_arrow') : $this->common_lib->get_icon('left_arrow'); ?></div>
+
+        <?php } ?>
+        
     </div>
     
     <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
