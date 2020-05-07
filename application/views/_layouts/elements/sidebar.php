@@ -112,6 +112,7 @@
             <a href="#" class="article"><?php echo $this->config->item('app_version');?></a>
         </li>
     </ul>
-    <div class="small text-center px-3"><?php echo $this->config->item('app_admin_copy_right');?></div>
+        <div class="small text-center px-3">Self Service Portal</div>
+        <div class="small text-center px-3"><?php echo $this->config->item('app_admin_copy_right');?></div>
     <?php } ?>
 </nav>
