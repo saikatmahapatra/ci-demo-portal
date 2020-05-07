@@ -38,7 +38,7 @@
             ?>
             </div>
         <?php } ?>
-        <div class="text-center my-2"><?php echo $sess_user_firstname.' '.$sess_user_lastname; ?></div>
+        <div class="text-center mt-2"><?php echo $sess_user_firstname.' '.$sess_user_lastname; ?></div>
         <?php } ?>
         <div id="locksidebar" class="d-none d-md-block float-right"><?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? $this->common_lib->get_icon('right_arrow') : $this->common_lib->get_icon('left_arrow'); ?></div>
     </div>
