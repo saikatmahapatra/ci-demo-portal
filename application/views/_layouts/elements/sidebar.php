@@ -32,6 +32,7 @@
             ?>
         </div>
         <?php } else {?>
+            <!-- <img class="sidebar-user-dp rounded mx-auto d-block" src="<?php echo base_url($img_src);?>"> -->
             <div class="sidebar-user-dp mx-auto d-block">
             <?php
                 echo isset($sess_user_firstname) ? substr($sess_user_firstname, 0, 1) : '-';
