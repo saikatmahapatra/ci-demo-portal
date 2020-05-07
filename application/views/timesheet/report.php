@@ -7,7 +7,8 @@
             <div class="card-header">Search Records</div>
             <div class="card-body">
             
-            <?php echo isset($alert_message) ? $alert_message : ''; ?>
+                <?php echo isset($alert_message) ? $alert_message : ''; ?>
+                <ul><?php echo validation_errors(); ?></ul>
 
                 <?php echo form_open(site_url('timesheet/report'), array( 'method' => 'get','class'=>'ci-form','name' => '','id' => 'timesheet-search-form')); ?>
                 <?php echo form_hidden('form_action', 'search'); ?>
@@ -26,24 +27,24 @@
                         $last_day_this_month  = date('t-m-Y');
                     ?>
                         <?php echo form_input(array('name' => 'from_date','value' => (isset($_REQUEST['from_date']) ? $_REQUEST['from_date'] : $first_day_this_month),'id' => 'from_date','class' => 'form-control report-datepicker', 'placeholder' => 'From Date','readonly'=>true));?>
-                        <?php echo form_error('from_date'); ?>
+                        <?php //echo form_error('from_date'); ?>
                     </div>
 
                     <div class="form-group col-md-2">
                         <label for="to_date" class="sr-only required">To Date</label>
                         <?php echo form_input(array('name' => 'to_date','value' => (isset($_REQUEST['to_date']) ? $_REQUEST['to_date'] : $last_day_this_month),'class' => 'form-control report-datepicker','id' => 'to_date','placeholder' => 'To Date','readonly'=>true));?>
-                        <?php echo form_error('to_date'); ?>
+                        <?php //echo form_error('to_date'); ?>
                     </div>
                     <div class="form-group col-md-3 ci-select2">
                         <label for="q_emp" class="sr-only">Employee </label>
                         <?php echo form_dropdown('q_emp', $user_arr, $this->input->get_post('q_emp'),array('class' => 'form-control select2-control', 'id'=>'q_emp')); ?>
-                        <?php echo form_error('q_emp'); ?>
+                        <?php //echo form_error('q_emp'); ?>
                     </div>
 
                     <div class="form-group col-md-3 ci-select2">
                         <label for="q_project" class="sr-only">Project </label>
                         <?php echo form_dropdown('q_project', $project_arr, $this->input->get_post('q_project'),array('class' => 'form-control select2-control','id'=>'q_project')); ?>
-                        <?php echo form_error('q_project'); ?>
+                        <?php //echo form_error('q_project'); ?>
                     </div>
                     <div class="form-group col-md-2">
                     <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Search','class' => 'btn ci-btn-primary btn-primary mb-2 mr-2'));?>

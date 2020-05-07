@@ -21,7 +21,60 @@
             <div class="card-header">Statistics</div>
             <div class="card-body">
                 <div class="row">
-                    <?php foreach($dashboard_stat as $key=>$data) { ?>
+                    <div class="col-md-6">
+                        <div class="list-group list-group-flush">
+                            <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
+                            <a target="_blank" href="<?php echo $dashboard_stat['user']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Employees
+                                <span class="badge badge-primary badge-pill"><?php echo $dashboard_stat['user']['count'];?></span>
+                            </a>
+                            <?php } ?>
+                            <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
+                            <a target="_blank" href="<?php echo $dashboard_stat['timesheet_user']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Employees logged task current month
+                                <span class="badge badge-dark badge-pill"><?php echo $dashboard_stat['timesheet_user']['count'];?></span>
+                            </a>
+                            <?php } ?>
+                            <a target="_blank" href="<?php echo $dashboard_stat['timesheet_days']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Days you logged tasks in current month *
+                                <span class="badge badge-info badge-pill"><?php echo $dashboard_stat['timesheet_days']['count'];?></span>
+                            </a>
+                            <a target="_blank" href="<?php echo $dashboard_stat['leave_to_approve']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Leave awaiting for your aproval
+                                <span class="badge badge-danger badge-pill"><?php echo $dashboard_stat['leave_to_approve']['count'];?></span>
+                            </a>
+                        </div>
+                        <div></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="list-group list-group-flush">
+                            <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
+                            <a target="_blank" href="<?php echo $dashboard_stat['project']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Projects
+                                <span class="badge badge-secondary badge-pill"><?php echo $dashboard_stat['project']['count'];?></span>
+                            </a>
+                            <?php } ?>
+                            <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
+                            <a target="_blank" href="<?php echo $dashboard_stat['user_applied_leave']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Leave approved in current month
+                                <span class="badge badge-info badge-pill"><?php echo $dashboard_stat['user_applied_leave']['count'];?></span>
+                            </a>
+                            <?php } ?>
+                            <a target="_blank" href="<?php echo $dashboard_stat['timesheet_hrs']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Your logged hours *
+                                <span class="badge badge-warning badge-pill"><?php echo $dashboard_stat['timesheet_hrs']['count'];?></span>
+                            </a>
+                            <a target="_blank" href="<?php echo $dashboard_stat['timesheet_avg_hrs']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Your average logged hours *
+                                <span class="badge badge-success badge-pill"><?php echo $dashboard_stat['timesheet_avg_hrs']['count'];?></span>
+                            </a>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="col-12 my-2 small text-sm-center text-lg-right text-muted">* Calculated based on your timesheet data of current month.</div>
+
+                    <?php /* foreach($dashboard_stat as $key=>$data) { ?>
                         <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
                         <div class="col-sm-6 col-md-3 col-lg-3">
                             <div class="mb-3 text-center<?php echo $data['bg_css']; echo $data['text_css'];?> ">
@@ -51,7 +104,7 @@
 
                     <?php if($data['target_role'] !== '1'){ ?>
                         <div class="col small text-sm-center text-lg-right text-muted">* Calculated based on your timesheet data of current month.</div>
-                    <?php }?>
+                    <?php } */ ?>
             </div>
             </div>
         </div>
@@ -93,28 +146,24 @@
     <div class="col-lg-4 mb-3">
         <div class="card news-card ci-card">
             <div class="card-header">Notice Board</div>
-            <div class="card-body">
+            <div class="card-body p-0">
                 <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>
-                <ul class="list-group list-group-flush">
+                <div class="list-group list-group-flush px-0">
                 <?php foreach($data_rows as $key=>$row) { ?>
-                    <li class="list-group-item pl-0 pr-0">
-                        <div class="subject-title"><a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></a></div>
-                        <div class="text-muted small">
-                            <?php //echo $content_type[$row['content_type']]['text']; ?>
-                            <?php echo isset($row['user_firstname']) ? 'By <a href="'.base_url('user/profile/'.$row['content_created_by']).'" target="_blank">'.$row['user_firstname'] : '';?>
-                            <?php echo isset($row['user_lastname']) ? $row['user_lastname']."</a> on " : '';?>
-                            <?php echo $this->common_lib->display_date($row['content_created_on'],true,null); ?>
+                    <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                        <div class="mb-1 h6"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></div>
                         </div>
-                        <div class="mb-0 lh-125" style="max-height: 120px; overflow: hidden;">
-                            <?php echo isset($row['content_text']) ? character_limiter(($this->common_lib->remove_empty_p($row['content_text'])), 100) : '';?>
-                        </div>
-                    </li>
+                        <div class="mb-1"><?php echo isset($row['content_text']) ? character_limiter(($this->common_lib->remove_empty_p($row['content_text'])), 80) : '';?></div>
+                        <small class="text-muted"><?php echo $this->common_lib->relative_time($row['content_created_on'],true,null); ?></small>
+                        <small class="text-muted">by <?php echo isset($row['user_firstname']) ? $row['user_firstname'].' '.$row['user_lastname'] : '';?></small>
+                    </a>
                 <?php }  ?>
-                </ul>
-                <?php } ?>
-                <div class="text-center mt-3">
-                <?php echo $pagination_link;?>
                 </div>
+                <?php } ?>
+            </div>
+            <div class="card-footer">
+                <?php echo $pagination_link;?>
             </div>
         </div><!--/.card-->
     </div>

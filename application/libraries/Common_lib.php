@@ -638,7 +638,7 @@ class Common_lib {
             'left_arrow' => 'fa-arrow-left',
             'right_arrow' => 'fa-arrow-right',
             'scroll_up' => 'fa-arrow-up',
-            'left_back' => 'fa-arrow-left',
+            'left_back' => 'fa-chevron-left',
             'camera' => 'fa-camera',
             'address' => 'fa-map-marker',
             'education' => 'fa-certificate',
@@ -654,6 +654,59 @@ class Common_lib {
         );
         $icon_name = isset($icon_name_arr[$name]) ? $icon_name_arr[$name] : 'not-found';
         return '<i class="'.$icon_style.' fa-fw '.$icon_name.' '.$css_class.'" aria-hidden="true"></i>';
+    }
+
+    // function get_time_ago( $time ) {
+    //     $time_difference = time() - strtotime($time);
+    //     if( $time_difference < 1 ) { return 'about 1 second ago'; }
+    //     $condition = array( 12 * 30 * 24 * 60 * 60 =>  'year',
+    //                 30 * 24 * 60 * 60       =>  'month',
+    //                 24 * 60 * 60            =>  'day',
+    //                 60 * 60                 =>  'hour',
+    //                 60                      =>  'minute',
+    //                 1                       =>  'second'
+    //     );
+    //     foreach( $condition as $secs => $str ) {
+    //         $d = $time_difference / $secs;
+    //         if( $d >= 1 ) {
+    //             $t = round( $d );
+    //             return 'about '.$t . ' ' . $str . ( $t > 1 ? 's' : '' ) . ' ago';
+    //         }
+    //     }
+    // }
+
+    function relative_time($datetime) {
+        $this->CI->lang->load('date');
+        //$this->CI->load->helper('language');
+        if(!is_numeric($datetime)) {
+            $val = explode(" ",$datetime);
+            $date = explode("-",$val[0]);
+            $time = explode(":",$val[1]);
+            $datetime = mktime($time[0],$time[1],$time[2],$date[1],$date[2],$date[0]);
+        }
+        $difference = time() - $datetime;
+        $periods = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
+        $lengths = array("60","60","24","7","4.35","12","10");
+
+        if ($difference > 0) { 
+            //$ending = $this->CI->lang->line('date_ago');
+            $ending = 'ago';
+        } 
+        else { 
+            $difference = -$difference;
+            //$ending = $this->CI->lang->line('date_to_go');
+            $ending = 'to go';
+        }
+        for($j = 0; $difference >= $lengths[$j]; $j++) {
+            $difference /= $lengths[$j];
+        } 
+        $difference = round($difference);
+        if($difference != 1) { 
+            $period = strtolower($this->CI->lang->line('date_'.$periods[$j].'s'));
+        } else {
+            $period = strtolower($this->CI->lang->line('date_'.$periods[$j]));
+        }
+        return "$difference $period $ending";
     }
 
 }

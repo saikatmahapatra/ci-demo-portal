@@ -339,7 +339,7 @@ class Timesheet_model extends CI_Model {
         }
         if(isset($cond)){
             if($cond['q_emp'] != ""){
-                $this->db->where('t1.timesheet_created_by', $cond['q_emp']);
+                $this->db->where_in('t1.timesheet_created_by', $cond['q_emp']);
             }
             if($cond['q_project'] != ""){
                 $this->db->where('t1.project_id', $cond['q_project']);

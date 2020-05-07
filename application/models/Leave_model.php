@@ -205,7 +205,7 @@ class Leave_model extends CI_Model {
         // if(isset($cond['leave_to_date']) && !empty($cond['leave_to_date'])){
         //     $this->db->where('t1.leave_to_date <=', $this->common_lib->convert_to_mysql($cond['leave_to_date']));
         // }
-
+        $this->db->where_not_in('t5.user_status', array('N', 'A')); // dont show leave of ex, inactive usr
         $query = $this->db->get('leave_applications as t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();

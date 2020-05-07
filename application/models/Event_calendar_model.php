@@ -179,7 +179,7 @@ class Event_calendar_model extends CI_Model {
               $data3[$key]['backgroundColor'] = '#feebdb'; // 80% lighten of border
               $data3[$key]['textColor'] = '#212529';
               $data3[$key]['allDay'] = true;
-              $data3[$key]['url'] = base_url('leave/details/'.$val['id'].'/'.$val['leave_req_id'].'/calendar');
+              $data3[$key]['url'] = base_url('leave/details/'.$val['id'].'/'.$val['leave_req_id']);
               $data3[$key]['extendedProps'] = array(
                 'event_type' => 'Leave',
                 'event_type_css' => 'badge badge-warning',

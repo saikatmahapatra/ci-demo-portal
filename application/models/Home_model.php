@@ -73,17 +73,23 @@ class Home_model extends CI_Model {
     function get_pending_leave_action_count($user_id) {
         $result = array();
         $this->db->select('count(*) as total');
-        $this->db->where(
-			array(
-                'YEAR(`leave_from_date`) >=' => date('Y'),
-                'MONTH(`leave_from_date`) >=' => date('m'),
-                'YEAR(`leave_to_date`) <=' => date('Y'),
-                'MONTH(`leave_to_date`) <=' => date('m')
-			)
-        );
-        $this->db->where('t1.leave_status !=', 'C');
-        $this->db->where('((t1.supervisor_approver_id = "'.$user_id.'" AND t1.supervisor_approver_status = "P")');
-        $this->db->or_where('(t1.director_approver_id = "'.$user_id.'" AND t1.director_approver_status = "P" ))');
+        // $this->db->where(
+		// 	array(
+        //         'YEAR(`leave_from_date`) >=' => date('Y'),
+        //         'MONTH(`leave_from_date`) >=' => date('m'),
+        //         'YEAR(`leave_to_date`) <=' => date('Y'),
+        //         'MONTH(`leave_to_date`) <=' => date('m')
+		// 	)
+        // );
+        //$this->db->where('t1.leave_status !=', 'C');
+        // $this->db->where('((t1.supervisor_approver_id = "'.$user_id.'" AND t1.supervisor_approver_status = "P")');
+        // $this->db->or_where('(t1.director_approver_id = "'.$user_id.'" AND t1.director_approver_status = "P" ))');
+
+        $this->db->where('((t1.supervisor_approver_id = "'.$user_id.'" AND t1.supervisor_approver_status = "P") OR (t1.director_approver_id = "'.$user_id.'" AND t1.director_approver_status = "P"))');
+        $this->db->where_not_in('t1.leave_status', array('R', 'C'));
+        $this->db->where_not_in('t5.user_status', array('N', 'A'));
+
+        $this->db->join('users t5', 't5.id = t1.user_id', 'left');
         $query = $this->db->get('leave_applications t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();
@@ -98,7 +104,7 @@ class Home_model extends CI_Model {
 			array(
 			'YEAR(`timesheet_date`)' => date('Y'),
             'MONTH(`timesheet_date`)' => date('m'),
-            'DAY(`timesheet_date`)' => date('d')
+            //'DAY(`timesheet_date`)' => date('d')
 			)
 		);     
 		//$this->db->where('t1.project_status', 'N');
