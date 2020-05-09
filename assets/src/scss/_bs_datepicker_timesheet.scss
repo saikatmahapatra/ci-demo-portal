@@ -1,0 +1,14 @@
+.bs-datepicker-timesheet {
+    .datepicker-inline {
+        //width: 100%;
+        table {
+            //width: 100%;
+        }
+    }
+    .datepicker table tr td.highlighted {
+        background: #ffcbd0;
+    }
+    .datepicker table tr td.green {
+        background: #c0f5b0;
+    }
+}
