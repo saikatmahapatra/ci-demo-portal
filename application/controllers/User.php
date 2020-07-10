@@ -1126,24 +1126,28 @@ class User extends CI_Controller {
 
         if ($this->input->post('form_action') == 'update_profile') {
             if ($this->validate_edit_user_profile_form() == true) {
-                $postdata = array(
-                    'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),
-                    'user_lastname' => ucwords(strtolower($this->input->post('user_lastname'))),
-                    'user_gender' => $this->input->post('user_gender'),
-                    'user_dob' => $this->common_lib->convert_to_mysql($this->input->post('user_dob')),
-                    'user_doj' => $this->common_lib->convert_to_mysql($this->input->post('user_doj')),
-                    //'user_role' => $this->input->post('user_role'),
-                    'user_department' => $this->input->post('user_department'),
-                    'user_designation' => $this->input->post('user_designation'),
-                    'user_status' => $this->input->post('user_status'),
-                    'user_employment_type' => $this->input->post('user_employment_type')
-                );
-                $where = array('id' => $user_id);
-                $res = $this->user_model->update($postdata, $where);
-                $this->update_user_approvers($user_id);
-                if ($res) {
-                    $this->common_lib->set_flash_message('Employee information has been updated successfully.','alert-success');
-                    redirect(current_url());
+                if( ($this->input->post('user_status') == 'N') && ($this->input->post('status_reason') == 'D') ) {
+                    redirect($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($user_id));
+                } else{
+                    $postdata = array(
+                        'user_firstname' => ucwords(strtolower($this->input->post('user_firstname'))),
+                        'user_lastname' => ucwords(strtolower($this->input->post('user_lastname'))),
+                        'user_gender' => $this->input->post('user_gender'),
+                        'user_dob' => $this->common_lib->convert_to_mysql($this->input->post('user_dob')),
+                        'user_doj' => $this->common_lib->convert_to_mysql($this->input->post('user_doj')),
+                        //'user_role' => $this->input->post('user_role'),
+                        'user_department' => $this->input->post('user_department'),
+                        'user_designation' => $this->input->post('user_designation'),
+                        'user_status' => $this->input->post('user_status'),
+                        'user_employment_type' => $this->input->post('user_employment_type')
+                    );
+                    $where = array('id' => $user_id);
+                    $res = $this->user_model->update($postdata, $where);
+                    $this->update_user_approvers($user_id);
+                    if ($res) {
+                        $this->common_lib->set_flash_message('Employee information has been updated successfully.','alert-success');
+                        redirect(current_url());
+                    }
                 }
             }
         }
@@ -1222,6 +1226,9 @@ class User extends CI_Controller {
         //$this->form_validation->set_rules('user_department', 'department', 'required');
         //$this->form_validation->set_rules('user_status', 'account status', 'required');
         //$this->form_validation->set_rules('user_employment_type', 'employment type', 'required');
+        if($this->input->post('user_status') === 'N') {
+            $this->form_validation->set_rules('status_reason', 'Reason for inactive account status', 'required');
+        }
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
