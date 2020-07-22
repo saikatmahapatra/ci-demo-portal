@@ -5,11 +5,11 @@
     </div>
     <div class="card-body">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div data-format="yyyy-mm-dd" class="bs-datepicker-timesheet" id="timesheet_calendar"></div>
                 <?php echo form_error('selected_date'); ?>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 offset-md-1">
                 <h6>Selected Dates</h6>
                 <div class="bg-light small text-muted" id="selected_dates"></div>
                 

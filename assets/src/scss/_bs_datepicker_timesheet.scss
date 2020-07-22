@@ -1,8 +1,23 @@
 .bs-datepicker-timesheet {
     .datepicker-inline {
-        //width: 100%;
-        table {
-            //width: 100%;
+        .table-condensed {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: $spacer;
+            background-color: $table-bg; // Reset for nesting within parents with `background-color`.
+            th,
+            td {
+                padding: .5rem;
+                vertical-align: top;
+                border-top: 0;
+            }
+            thead th {
+                vertical-align: bottom;
+                border-bottom: (2 * $table-border-width) solid $table-border-color;
+            }
+            tbody+tbody {
+                border-top: 0;
+            }
         }
     }
     .datepicker table tr td.highlighted {

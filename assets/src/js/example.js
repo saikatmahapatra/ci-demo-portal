@@ -48,7 +48,7 @@ $(function() {
         todayBtn: "linked",
         changeMonth: true,
         //startDate: "-0m",
-        title: "Title",
+        //title: "Title",
         endDate: "today",
         clearBtn: true,
         multidate: true,
@@ -56,9 +56,9 @@ $(function() {
         daysOfWeekHighlighted: "0",
         calendarWeeks: false,
         todayHighlight: true,
-        beforeShowDay: function(date) {
-            return dpBeforeShowday(date);
-        },
+        // beforeShowDay: function(date) {
+        //     return dpBeforeShowday(date);
+        // },
         // beforeShowMonth: function(date) {
         //     console.log(date.getMonth());
         //     console.log(date.getFullYear());
@@ -77,6 +77,7 @@ $(function() {
     dp.on("show", dpOnShow);
     dp.on("changeDate", dpChangeDate);
     dp.on("changeMonth", dpChangeMonth);
+    getTimesheetCalendarData((new Date().getMonth() + 1), new Date().getFullYear());
 
     function dpChangeDate(e) {
         var dates = dp.datepicker("getFormattedDate");
@@ -85,12 +86,11 @@ $(function() {
     }
 
     function dpChangeMonth(e) {
-        //showAjaxLoader();
         console.log("dpChangeMonth called");
         var month = new Date(e.date).getMonth() + 1;
         var year = new Date(e.date).getFullYear();
         console.log("Month", month, year);
-        //hideAjaxLoader();
+        getTimesheetCalendarData(month, year);
     }
 
     function dpOnShow(e) {
@@ -117,6 +117,32 @@ $(function() {
     // End Timesheet Implementation - Using Bootstrap datepicker
 
 });
+
+function getTimesheetCalendarData(month, year) {
+    var xhr = new Ajax();
+    xhr.type = 'POST';
+    xhr.url = SITE_URL + ROUTER_DIRECTORY + 'timesheet/timesheet_stats';
+    xhr.beforeSend = function() {
+        showAjaxLoader();
+    };
+    xhr.data = { via: 'ajax', month: month, year: year };
+    var promise = xhr.init();
+    promise.done(function(response) {
+        hideAjaxLoader();
+        console.log(response);
+        $.each(response.data.data_rows, function(i, obj) {
+            var timesheet_date = obj.timesheet_date;
+            var date_str = new Date(timesheet_date).getTime().toString();
+            $("#timesheet_calendar").find('td.day[data-date="' + date_str + '"]').addClass('green');
+        });
+    });
+    promise.fail(function(data) {
+        console.log(data);
+        hideAjaxLoader();
+        alert("We encountered a problem while processing your request.");
+    });
+    promise.always(function() {});
+}
 
 $(".allowed_m .day").on("click", function(e) {
     //console.log(e);
@@ -153,9 +179,9 @@ $("#clear_selected_days").on("click", function(e) {
 
 function get_timesheet_stat() {
     var response = [
-        { "id": "1", "timesheet_date": "2018-10-17", "timesheet_year": "2018", "timesheet_month": "10", "timesheet_day": "03", "timesheet_hours": "7.00", "timesheet_review_status": "pending" },
-        { "id": "2", "timesheet_date": "2018-10-19", "timesheet_year": "2018", "timesheet_month": "10", "timesheet_day": "19", "timesheet_hours": "6.00", "timesheet_review_status": "pending" },
-        { "id": "2", "timesheet_date": "2018-10-20", "timesheet_year": "2018", "timesheet_month": "10", "timesheet_day": "20", "timesheet_hours": "9.00", "timesheet_review_status": "pending" }
+        { "id": "1", "timesheet_date": "2020-07-17", "timesheet_year": "2020", "timesheet_month": "10", "timesheet_day": "03", "timesheet_hours": "7.00", "timesheet_review_status": "pending" },
+        { "id": "2", "timesheet_date": "2020-07-19", "timesheet_year": "2020", "timesheet_month": "10", "timesheet_day": "19", "timesheet_hours": "6.00", "timesheet_review_status": "pending" },
+        { "id": "2", "timesheet_date": "2020-07-20", "timesheet_year": "2020", "timesheet_month": "10", "timesheet_day": "20", "timesheet_hours": "9.00", "timesheet_review_status": "pending" }
     ];
     $.each(response, function(i, obj) {
         $(".day").each(function() {
