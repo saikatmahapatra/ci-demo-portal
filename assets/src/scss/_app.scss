@@ -143,15 +143,15 @@ $to) {
 }
 
 .people-dp {
-    height: 70px;
-    width: 70px;
+    height: 50px;
+    width: 50px;
     cursor: pointer; // as link is there
     // name initial dp
     border-radius: 50% !important;
     background: $name-dp-background-color;
     color: $name-dp-text-color;
-    line-height: 70px;
-    font-size: 1.25rem;
+    line-height: 50px;
+    font-size: .975rem;
     text-align: center;
 }
 

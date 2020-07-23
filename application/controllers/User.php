@@ -117,40 +117,103 @@ class User extends CI_Controller {
             redirect($this->router->directory.$this->router->class.'/login');
         }               
 		$this->breadcrumbs->push('People', '/');		
-		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
+		// $this->data['breadcrumbs'] = $this->breadcrumbs->show();
         
         
-        $search_keywords = NULL;
-        if($this->input->get_post('form_action') == 'search'){
-            $search_keywords = $this->input->get_post('q');
-        }
-        //die($search_keywords);
+        // $search_keywords = NULL;
+        // if($this->input->get_post('form_action') == 'search'){
+        //     $search_keywords = $this->input->get_post('q');
+        // }
+        // //die($search_keywords);
 
-		// Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
-		$result_array = $this->user_model->get_users(NULL, NULL, NULL, $search_keywords, 'U');
-		$total_num_rows = $result_array['num_rows'];
+		// // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
+		// $result_array = $this->user_model->get_users(NULL, NULL, NULL, $search_keywords, 'U');
+		// $total_num_rows = $result_array['num_rows'];
 		
-		//pagination config
-		$additional_segment = $this->router->class.'/'.$this->router->method;
-		$per_page = 30;
-		$config['uri_segment'] = 4;
-		$config['num_links'] = 1;
-		$config['use_page_numbers'] = TRUE;
-		//$this->pagination->initialize($config);
+		// //pagination config
+		// $additional_segment = $this->router->class.'/'.$this->router->method;
+		// $per_page = 30;
+		// $config['uri_segment'] = 4;
+		// $config['num_links'] = 1;
+		// $config['use_page_numbers'] = TRUE;
+		// //$this->pagination->initialize($config);
 		
-		$page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
-		$offset = ($page*$per_page);
-		$this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
-		//end of pagination config
+		// $page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
+		// $offset = ($page*$per_page);
+		// $this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
+		// //end of pagination config
         
 
-        // Data Rows - Refer to model method definition
-        $result_array = $this->user_model->get_users(NULL, $per_page, $offset, $search_keywords, 'U');
-        $this->data['data_rows'] = $result_array['data_rows'];
+        // // Data Rows - Refer to model method definition
+        // $result_array = $this->user_model->get_users(NULL, $per_page, $offset, $search_keywords, 'U');
+        // $this->data['data_rows'] = $result_array['data_rows'];
 		
-		$this->data['page_title'] = 'Employee Directory';
+		$this->data['page_title'] = 'Employees';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/people', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function get_employees() {
+        //Total rows - Refer to model method definition
+        $result_array = $this->user_model->get_employees(NULL, NULL, NULL, FALSE, TRUE, 'U', TRUE);
+        $total_rows = $result_array['num_rows'];
+
+        // Total filtered rows - check without limit query. Refer to model method definition
+        $result_array = $this->user_model->get_employees(NULL, NULL, NULL, TRUE, FALSE, 'U', TRUE);
+        $total_filtered = $result_array['num_rows'];
+
+        // Data Rows - Refer to model method definition
+        $result_array = $this->user_model->get_employees(NULL, NULL, NULL, TRUE, TRUE, 'U', TRUE);
+        $data_rows = $result_array['data_rows'];
+        $data = array();
+        $no = $_REQUEST['start'];
+        foreach ($data_rows as $result) {
+            $no++;
+            $row = array();
+
+            $img_src = "";
+            $default_path = "";
+            $show_name_dp = true;
+            
+            if(isset($result['user_profile_pic'])){
+                $user_dp = "assets/uploads/user/profile_pic/".$result['user_profile_pic'];	
+                if (file_exists(FCPATH . $user_dp)) {
+                    $img_src = $user_dp;
+                    $show_name_dp = false;
+                }else{
+                    $img_src = $default_path;
+                    $show_name_dp = true;
+                }
+            }else{
+                $img_src = $default_path;
+                $show_name_dp = true;
+            }
+            $img = '';
+            $img = '<img class="align-self-center people-dp mr-3" src="'.base_url($img_src).'">';
+            if($show_name_dp === true){
+                $img = '<div class="align-self-center people-dp mr-3">'.substr($result['user_firstname'], 0, 1).substr($result['user_lastname'], 0, 1).'</div>';
+            }
+
+            //$row[] = '<div>'.$img. $result['user_firstname'] . ' ' . $result['user_lastname'].'</div>';
+            $row[] = '<div><div class="media"><a href="'.base_url('user/profile/'.$result['id']).'">'.$img.'</a><div class="media-body"><div><a href="'.base_url('user/profile/'.$result['id']).'">'.$result['user_firstname'] . ' ' . $result['user_lastname'].'</a></div><div class="small">'.$result['designation_name'].'</div></div></div></div>';
+            //$row[] = $result['designation_name'];
+            $row[] = $result['user_emp_id'];
+            $email_arr = explode('@',$result['user_email']);
+            $masked_domain = '@'.substr($email_arr[1], 0, 3).'****'.substr($email_arr[1], -3, 3);
+            $row[] = '<div title="'.$result['user_email'].'">'.$result['user_email'].'</div>';
+            $row[] = '<a href="tel:'.$result['user_phone1'].'">'.$result['user_phone1'].'</a>';
+            $data[] = $row;
+        }
+
+        /* jQuery Data Table JSON format */
+        $output = array(
+            'draw' => isset($_REQUEST['draw']) ? $_REQUEST['draw'] : '',
+            'recordsTotal' => $total_rows,
+            'recordsFiltered' => $total_filtered,
+            'data' => $data,
+        );
+        //output to json format
+        echo json_encode($output);
     }
 
     function search_employee() {        
