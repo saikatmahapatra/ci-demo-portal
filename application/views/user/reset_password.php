@@ -9,7 +9,7 @@
 				</div>
 				<?php echo isset($alert_message) ? $alert_message : ''; ?>
 
-				<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'mb-4')) ?>
+				<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'')) ?>
 				<?php echo form_hidden('form_action', 'reset_password'); ?>
 				<?php echo form_hidden('user_email', isset($_POST['user_email']) ? set_value('user_email') : $this->session->userdata('sess_forgot_password_username')); ?>
 				<?php echo form_error('user_email'); ?>
@@ -30,9 +30,11 @@
 				</div>
 				
 				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary btn-block'));?>	
-				<?php echo form_close(); ?>					
-				<a class="d-block" href="<?php echo base_url($this->router->class.'/forgot_password');?>">Resend email OTP</a>
-				<a class="d-block" href="<?php echo base_url($this->router->class.'/login');?>">Go to login</a>
+				<?php echo form_close(); ?>
+
+				<p class="mb-0 mt-2 text-center"><a href="<?php echo base_url($this->router->class.'/forgot_password');?>">Resend email OTP</a></p>
+
+				<p class="my-0 text-center"><a href="<?php echo base_url($this->router->class.'/login');?>">Go to login</a></p>
 			</div>
 		</div>
 	</div>

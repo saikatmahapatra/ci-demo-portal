@@ -20,9 +20,9 @@
 						<?php echo form_password(array('name' => 'user_password','value' => set_value('user_password'),'id' =>'user_password','placeholder' => 'Password','class' => 'form-control','maxlength' => '16'));?>
 						<?php echo form_error('user_password'); ?>
 					</div>
-					<p class="my-4 text-muted text-right"><a href="<?php echo base_url($this->router->class.'/forgot_password');?>">Forgot password?</a></p>
 					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Sign In','class' => 'btn ci-btn-primary btn-primary btn-block'));?>
 					<?php echo form_close(); ?>
+					<p class="my-2 text-center"><a href="<?php echo base_url($this->router->class.'/forgot_password');?>">Forgot password?</a></p>
 			</div>
 		</div>
 	</div>

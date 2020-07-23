@@ -8,7 +8,7 @@
 					<div class="text-muted mt-2"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></div>
 				</div>
 				<?php echo isset($alert_message) ? $alert_message : ''; ?>
-				<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'mb-4')) ?>
+				<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'')) ?>
 				<?php echo form_hidden('form_action', 'forgot_password'); ?>
 				<p class="">We'll send an OTP to your email to reset your password.</p>
 				<div class="form-group">
@@ -19,7 +19,7 @@
 				<p class="small">Don't remember your email? <a href="mailto:admin@unitedexploration.com">Contact Administrator.</a></p>
 				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary btn-block'));?>			
 				<?php echo form_close(); ?>
-				<a class="btn-link" href="<?php echo base_url($this->router->class.'/login');?>">Go to login</a>
+				<p class="my-2 text-center"><a class="" href="<?php echo base_url($this->router->class.'/login');?>">Go to login</a></p>
 			</div>
 		</div>
 	</div>
