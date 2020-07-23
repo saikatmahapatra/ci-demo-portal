@@ -195,7 +195,7 @@ class User extends CI_Controller {
             }
 
             //$row[] = '<div>'.$img. $result['user_firstname'] . ' ' . $result['user_lastname'].'</div>';
-            $row[] = '<div><div class="media"><a href="'.base_url('user/profile/'.$result['id']).'">'.$img.'</a><div class="media-body"><div><a href="'.base_url('user/profile/'.$result['id']).'">'.$result['user_firstname'] . ' ' . $result['user_lastname'].'</a></div><div class="small">'.$result['designation_name'].'</div></div></div></div>';
+            $row[] = '<div><div class="media"><a target="_blank" href="'.base_url('user/profile/'.$result['id']).'">'.$img.'</a><div class="media-body"><div><a target="_blank" href="'.base_url('user/profile/'.$result['id']).'">'.$result['user_firstname'] . ' ' . $result['user_lastname'].'</a></div><div class="small">'.$result['designation_name'].'</div></div></div></div>';
             //$row[] = $result['designation_name'];
             $row[] = $result['user_emp_id'];
             $email_arr = explode('@',$result['user_email']);
