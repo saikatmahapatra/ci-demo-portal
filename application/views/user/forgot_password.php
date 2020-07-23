@@ -10,7 +10,7 @@
 				<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'mb-4')) ?>
 				<?php echo form_hidden('form_action', 'forgot_password'); ?>
-				<p class="">Don't worry, we'll send you an OTP to your email ID to reset your password.</p>
+				<p class="">We'll send an OTP to your email to reset your password.</p>
 				<div class="form-group">
 					<!-- <label for="user_email">Email ID or Username</label> -->
 					<?php echo form_input(array('name' => 'user_email', 'value' => set_value('user_email'),'id' => 'user_email','class' => 'form-control','placeholder' => 'Please enter your email','maxlength' => '100','autofocus' => true,));?>
