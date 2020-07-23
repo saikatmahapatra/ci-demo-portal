@@ -12,6 +12,10 @@ function domReady() {
         renderDataTable();
     }
 
+    if (ROUTER_METHOD == 'people') {
+        renderEmployeesDataTable();
+    }
+
     //Date of Birth Date Picker
     $('#user_dob').datepicker({
         format: "dd-mm-yyyy",
@@ -107,6 +111,27 @@ function renderDataTable() {
         // Load data for the table's content from an Ajax source
         ajax: {
             url: SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/render_datatable',
+        },
+        //Set column definition initialisation properties.
+        columnDefs: [{
+            targets: [-1], //last column
+            orderable: false, //set not orderable
+        }, ],
+        initComplete: function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        }
+    });
+}
+
+function renderEmployeesDataTable() {
+    table = $('#employees-datatable').DataTable({
+        processing: true, //Feature control the processing indicator.
+        serverSide: true, //Feature control DataTables' server-side processing mode.
+        pageLength: 50,
+        order: [], //Initial no order.
+        // Load data for the table's content from an Ajax source
+        ajax: {
+            url: SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/get_employees',
         },
         //Set column definition initialisation properties.
         columnDefs: [{
