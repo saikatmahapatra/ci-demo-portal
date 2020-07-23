@@ -284,7 +284,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = 'Login';
+		$this->data['page_title'] = 'Sign in to your account to continue.';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/login', $this->data, true);
         $this->load->view('_layouts/layout_login', $this->data);
     }
@@ -585,7 +585,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = 'Forgot Password';
+		$this->data['page_title'] = 'Forgot Password?';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/forgot_password', $this->data, true);
         $this->load->view('_layouts/layout_login', $this->data);
     }
@@ -631,7 +631,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = 'Set New Password';
+		$this->data['page_title'] = 'Create New Password';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/reset_password', $this->data, true);
         $this->load->view('_layouts/layout_login', $this->data);
     }
