@@ -312,6 +312,28 @@ class Example extends CI_Controller {
         }
     }
 
+    function datepicker() {
+        if ($this->input->post('form_action') == 'add') {
+            if ($this->validate_bs_dp_data('add') == true) {
+                $this->common_lib->set_flash_message('Validation Successful','alert-success');
+                redirect(current_url());
+            }
+        }
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/bootstrap_datepicker', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+    
+    function validate_bs_dp_data($action = NULL) {
+        $this->form_validation->set_rules('first_name', 'first name', 'required');
+        $this->form_validation->set_rules('selected_date', 'calendar date selection', 'required');
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
 
 ?>

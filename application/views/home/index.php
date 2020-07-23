@@ -31,12 +31,12 @@
                             <?php } ?>
                             <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
                             <a target="_blank" href="<?php echo $dashboard_stat['timesheet_user']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                                Employees logged task current month
+                                Employees logged task *
                                 <span class="badge badge-dark badge-pill"><?php echo $dashboard_stat['timesheet_user']['count'];?></span>
                             </a>
                             <?php } ?>
                             <a target="_blank" href="<?php echo $dashboard_stat['timesheet_days']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                                Days you logged tasks in current month *
+                                Days you logged task *
                                 <span class="badge badge-info badge-pill"><?php echo $dashboard_stat['timesheet_days']['count'];?></span>
                             </a>
                             <a target="_blank" href="<?php echo $dashboard_stat['leave_to_approve']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
@@ -57,7 +57,7 @@
                             <?php } ?>
                             <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
                             <a target="_blank" href="<?php echo $dashboard_stat['user_applied_leave']['url'];?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                                Leave approved in current month
+                                Leave approved *
                                 <span class="badge badge-info badge-pill"><?php echo $dashboard_stat['user_applied_leave']['count'];?></span>
                             </a>
                             <?php } ?>
@@ -72,7 +72,7 @@
                         </div>
                         <div></div>
                     </div>
-                    <div class="col-12 my-2 small text-sm-center text-lg-right text-muted">* Calculated based on your timesheet data of current month.</div>
+                    <div class="col-12 my-2 small text-sm-center text-lg-right text-muted">* Statistics of current month.</div>
 
                     <?php /* foreach($dashboard_stat as $key=>$data) { ?>
                         <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>

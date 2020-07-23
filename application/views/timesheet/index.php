@@ -27,7 +27,7 @@
                         <?php echo form_hidden('selected_date',set_value('selected_date')); ?>
                         <div class="form-row">
                             <div class="col-lg-4">
-                                <label class="required">Select Date(s)</label>
+                                <label class="required">Select Dates</label>
                                 <?php echo $cal; ?>
                                 <div class="small my-2">
                                     <div class="d-inline-block"><span

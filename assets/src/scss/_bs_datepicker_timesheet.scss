@@ -1,0 +1,29 @@
+.bs-datepicker-timesheet {
+    .datepicker-inline {
+        .table-condensed {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: $spacer;
+            background-color: $table-bg; // Reset for nesting within parents with `background-color`.
+            th,
+            td {
+                padding: .5rem;
+                vertical-align: top;
+                border-top: 0;
+            }
+            thead th {
+                vertical-align: bottom;
+                border-bottom: (2 * $table-border-width) solid $table-border-color;
+            }
+            tbody+tbody {
+                border-top: 0;
+            }
+        }
+    }
+    .datepicker table tr td.highlighted {
+        background: #ffcbd0;
+    }
+    .datepicker table tr td.green {
+        background: #c0f5b0;
+    }
+}

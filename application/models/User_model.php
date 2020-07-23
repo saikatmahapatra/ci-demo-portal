@@ -540,6 +540,95 @@ class User_model extends CI_Model {
         $result = $query->result_array();
         return array('num_rows' => $num_rows, 'data_rows' => $result);
     }
+
+    function get_employees($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE, $userType = NULL, $show_archived = NULL) {
+        if ($dataTable == TRUE){
+            $this->db->select('t1.id, t1.user_emp_id, t1.user_firstname, t1.user_lastname, t1.user_email, t1.user_phone1,t1.user_profile_pic,t4.designation_name');
+        }else{
+            $this->db->select('t1.*,t2.role_name, t2.role_weight,t3.department_name, t4.designation_name, t5.employment_type_name');
+        }
+        if($show_archived == FALSE || $show_archived == NULL) {
+            $this->db->where('t1.user_status !=', 'A');
+        }
+
+        if ($id) {
+            $this->db->where('t1.id', $id);
+        }
+        if ($userType) {
+            $this->db->where('t1.user_type', $userType);
+        }
+        $this->db->join('roles t2', 't1.user_role=t2.id', 'left');
+        $this->db->join('departments t3', 't1.user_department=t3.id', 'left');
+        $this->db->join('designations t4', 't1.user_designation=t4.id', 'left');
+        $this->db->join('employment_types t5', 't1.user_employment_type=t5.id', 'left');
+        ####################################################################
+        ##################### Display using Data Table #####################
+        ####################################################################
+        if ($dataTable == TRUE) {
+            //set column field database for datatable orderable
+            $column_order = array(
+                't1.user_firstname',
+                't1.user_emp_id',
+                't4.designation_name',
+                't1.user_email',
+                NULL
+            );
+            //set column field database(table column name) for datatable searchable
+            $column_search = array(
+                't1.user_firstname',
+                't1.user_emp_id',
+                't1.user_lastname',
+                't1.user_email',
+                't1.user_email_secondary',
+                't1.user_phone1',
+                't1.user_phone2',
+                't2.role_name',
+				't3.department_name',
+				't4.designation_name',
+            );
+            // default order
+            $order = array(
+                't1.user_firstname' => 'asc'
+            );
+            $i = 0;
+            foreach ($column_search as $item) { // loop column
+                if (isset($_REQUEST['search']['value'])) { // if datatable send POST for search
+                    if ($i === 0) { // first loop
+                        $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
+                        $this->db->like($item, $_REQUEST['search']['value']);
+                    } else {
+                        $this->db->or_like($item, $_REQUEST['search']['value']);
+                    }
+                    if (count($column_search) - 1 == $i) { //last loop
+                        $this->db->group_end(); //close bracket
+                    }
+                }
+                $i++;
+            }
+            if (isset($_REQUEST['order'])) { // here order processing
+                $this->db->order_by($column_order[$_REQUEST['order']['0']['column']], $_REQUEST['order']['0']['dir']);
+            } else if (isset($order)) {
+                $this->db->order_by(key($order), $order[key($order)]);
+            }
+            //Paging, checkPaging flag added for counting filtered rows without limit offset
+            if (($checkPaging == TRUE) && (isset($_REQUEST['length']) && $_REQUEST['length'] != -1)) {
+                $this->db->limit($_REQUEST['length'], $_REQUEST['start']);
+            }//End of paging
+        }//if $dataTable
+        ####################################################################
+        ##################### Display using Data Table Ends ################
+        ####################################################################
+        else {
+            if ($limit) {
+                $this->db->limit($limit, $offset);
+            }
+        }
+        $query = $this->db->get('users t1');
+        #echo $this->db->last_query();
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return array('num_rows' => $num_rows, 'data_rows' => $result);
+    }
 	
 	function get_user_profile_pic($id = NULL) {
         $this->db->select('t1.user_profile_pic');

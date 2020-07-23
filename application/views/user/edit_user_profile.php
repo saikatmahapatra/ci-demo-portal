@@ -183,9 +183,9 @@
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-row">
 				<?php if($row['id'] != $this->common_lib->get_sess_user('id')){?>
-						<label class="form-group col-lg-6">
+						<div class="form-group col-lg-6">
 							<label for="user_status" class="required">Account Status</label>
 							<div class="">
 								<div class="custom-control custom-radio custom-control-inline">
@@ -205,7 +205,12 @@
 								</div>
 							</div>
 							<?php echo form_error('user_status'); ?>
-						</label>
+						</div>
+						<div class="form-group col-lg-6">
+							<label for="status_reason" class="optional">Reason for Inactive Account</label>
+							<?php echo form_dropdown('status_reason', array(''=>'Select', 'N'=>'No Access - New User','B'=>'Revoke Access Temporarily', 'D'=>'Revoke Access Permanently - No Longer Employed'), isset($_POST['status_reason']) ? set_value('status_reason') : '' , array( 'class' => 'form-control' )); ?>
+							<?php echo form_error('status_reason'); ?>
+						</div>
 						<?php } else{
 							echo form_hidden('user_status', $row['user_status']);
 						} ?>
@@ -213,7 +218,7 @@
 
 				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
 				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="btn btn-light ci-btn-cancel">Cancel</a>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn btn-outline-danger">Delete Account</a>
+				<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn btn-outline-danger">Delete Account</a> -->
 				<?php echo form_close(); ?>
 			
 			</label><!--./card-body-->

@@ -47,7 +47,7 @@
                     <table class="table ci-table table-sm table-striped w-100">
                         <thead class="">
                             <tr>
-                                <th scope="col">Uploaded Document(s)</th>
+                                <th scope="col">Uploaded Documents</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
 body {
     //margin-top: 4rem;
-    background-color: #f1f1f1;
+    background-color: #eee;
 }
 
 body.login {
     margin-top: 4rem;
-    background-color: #f1f1f1;
+    background-color: #eee;
 }
 
 #loader-wrapper {
@@ -130,28 +130,28 @@ $to) {
 
 .dp {
     //transition: all 0.2s ease-in-out;
-    height: 140px;
-    width: 140px;
+    height: 100px;
+    width: 100px;
     // name initial dp
     border-radius: 50% !important;
     background: $name-dp-background-color;
     color: $name-dp-text-color;
-    line-height: 140px;
+    line-height: 100px;
     font-size: 2rem;
     text-align: center;
     //background: linear-gradient($red, $white);
 }
 
 .people-dp {
-    height: 80px;
-    width: 80px;
+    height: 50px;
+    width: 50px;
     cursor: pointer; // as link is there
     // name initial dp
     border-radius: 50% !important;
     background: $name-dp-background-color;
     color: $name-dp-text-color;
-    line-height: 80px;
-    font-size: 1.25rem;
+    line-height: 50px;
+    font-size: .975rem;
     text-align: center;
 }
 

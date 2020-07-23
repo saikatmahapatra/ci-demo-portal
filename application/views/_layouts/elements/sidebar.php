@@ -13,7 +13,7 @@
                     $user_dp = "assets/uploads/user/profile_pic/".$profile_pic;
                     if (file_exists(FCPATH . $user_dp)) {
                         $img_src = $user_dp;
-                        $show_name_dp = false;
+                        $show_name_dp = true;
                     }else{
                         $img_src = $default_path;
                         $show_name_dp = true;
@@ -32,12 +32,7 @@
             ?>
         </div>
         <?php } else {?>
-            <div class="sidebar-user-dp mx-auto d-block">
-            <?php
-                echo isset($sess_user_firstname) ? substr($sess_user_firstname, 0, 1) : '-';
-                echo isset($sess_user_lastname) ? substr($sess_user_lastname, 0, 1) : '-';
-            ?>
-            </div>
+            <img class="sidebar-user-dp rounded mx-auto d-block" src="<?php echo base_url($img_src);?>">
         <?php } ?>
         <div class="text-center mt-2"><?php echo $sess_user_firstname.' '.$sess_user_lastname; ?></div>
         </a>
@@ -117,6 +112,7 @@
             <a href="#" class="article"><?php echo $this->config->item('app_version');?></a>
         </li>
     </ul>
-    <div class="small text-center px-3"><?php echo $this->config->item('app_admin_copy_right');?></div>
+        <div class="small text-center px-3">Self Service Portal</div>
+        <div class="small text-center px-3"><?php echo $this->config->item('app_admin_copy_right');?></div>
     <?php } ?>
 </nav>
