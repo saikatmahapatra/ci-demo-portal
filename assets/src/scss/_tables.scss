@@ -23,7 +23,8 @@
 //     }
 // }
 #employees-datatable {
-    tr td a.no-style {
+    a.emp-name,
+    a.emp-phone {
         color: inherit;
         &:hover {
             color: inherit;
