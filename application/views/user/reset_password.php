@@ -4,8 +4,8 @@
 			<div class="card-body mt-4 mb-2">
 				<div class="text-center mb-5">
 					<img class="logo-login" src="<?php echo base_url('assets/dist/img/logo-dark.png');?>">
-					<!-- <h1 class="page-title mt-2 d-none"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1> -->
-					<div class="text-muted mt-2"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></div>
+					<h1 class="mt-2 h4 font-weight-light"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
+					<!-- <div class="text-muted mt-2"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></div> -->
 				</div>
 				<?php echo isset($alert_message) ? $alert_message : ''; ?>
 
