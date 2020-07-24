@@ -4,7 +4,7 @@
     <div class="col-lg-12">
         <?php echo isset($alert_message) ? $alert_message : ''; ?>
         <div class="card ci-card">
-            <div class="card-header">Event Calendar</div>
+            <div class="card-header">Calendar</div>
             <div class="card-body">
                 <div id="ci_full_calendar"></div>
             </div>

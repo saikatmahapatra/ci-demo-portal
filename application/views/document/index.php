@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-lg-5 mb-3">
         <div class="card ci-card">
-            <div class="card-header">Upload Files</div>
+            <div class="card-header">Form</div>
             <div class="card-body">
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <?php echo form_open_multipart(current_url(), array('method' => 'post', 'class'=>'ci-form','name' => 'myform','id' => 'myform','role' => 'form'));?>
@@ -41,7 +41,7 @@
 
     <div class="col-lg-7 mb-3">
         <div class="card ci-card">
-            <div class="card-header">My Uploaded Files</div>
+            <div class="card-header">Data Table</div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table ci-table table-sm table-striped w-100">
