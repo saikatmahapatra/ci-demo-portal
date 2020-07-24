@@ -22,3 +22,11 @@
 //         padding: $table-cell-padding-sm;
 //     }
 // }
+#employees-datatable {
+    tr td a.no-style {
+        color: inherit;
+        &:hover {
+            color: inherit;
+        }
+    }
+}
