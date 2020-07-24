@@ -1,45 +1,7 @@
 <nav id="sidebar" class="<?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? 'active' : ''; ?>">
     <div class="sidebar-header">
-        <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
-            <?php   
-                $img_src = "";
-                $default_path = "";
-                $show_name_dp = true;
-                $sess_user_firstname = $this->session->userdata['sess_user']['user_firstname'];
-                $sess_user_lastname = $this->session->userdata['sess_user']['user_lastname'];
-                $sess_designation_name = $this->session->userdata['sess_user']['designation_name'];
-                $profile_pic = $this->session->userdata['sess_user']['user_profile_pic'];
-                if(isset($profile_pic)){
-                    $user_dp = "assets/uploads/user/profile_pic/".$profile_pic;
-                    if (file_exists(FCPATH . $user_dp)) {
-                        $img_src = $user_dp;
-                        $show_name_dp = true;
-                    }else{
-                        $img_src = $default_path;
-                        $show_name_dp = true;
-                    }
-                }else{
-                    $img_src = $default_path;
-                    $show_name_dp = true;
-                }
-            ?>
-        <a href="<?php echo base_url('user/profile');?>">
-        <?php if($show_name_dp === true) { ?>
-        <div class="sidebar-user-dp mx-auto d-block">
-            <?php
-                echo isset($sess_user_firstname) ? substr($sess_user_firstname, 0, 1) : '-';
-                echo isset($sess_user_lastname) ? substr($sess_user_lastname, 0, 1) : '';
-            ?>
-        </div>
-        <?php } else {?>
-            <img class="sidebar-user-dp rounded mx-auto d-block" src="<?php echo base_url($img_src);?>">
-        <?php } ?>
-        <div class="text-center mt-2"><?php echo $sess_user_firstname.' '.$sess_user_lastname; ?></div>
-        </a>
+        <h3>Employee Portal</h3>
         <div id="locksidebar" class="d-none d-md-block float-right"><?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? $this->common_lib->get_icon('right_arrow') : $this->common_lib->get_icon('left_arrow'); ?></div>
-
-        <?php } ?>
-        
     </div>
     
     <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
@@ -48,9 +10,9 @@
             <?php //echo isset($this->session->userdata['sess_user']['user_firstname']) ? 'Hi, '.$this->session->userdata['sess_user']['user_firstname'].' !' :'';?>
         </p> -->
         <li class=""><!--/.active-->
-            <a href="<?php echo base_url($this->router->directory); ?>"><?php echo $this->common_lib->get_icon('home'); ?> Dashboard</a>
+            <a href="<?php echo base_url($this->router->directory); ?>"><?php echo $this->common_lib->get_icon('home'); ?> Home</a>
         </li>
-        <!-- <li><a href="<?php echo base_url('event_calendar'); ?>"><?php //echo $this->common_lib->get_icon('calendar'); ?> Event Calendar</a></li> -->
+        <!-- <li><a href="<?php echo base_url('event_calendar'); ?>"><?php echo $this->common_lib->get_icon('calendar'); ?> Event Calendar</a></li> -->
         <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
         <li class="">
             <a href="#adminSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><?php echo $this->common_lib->get_icon('admin_user'); ?> Administrator</a>
@@ -112,7 +74,7 @@
             <a href="#" class="article"><?php echo $this->config->item('app_version');?></a>
         </li>
     </ul>
-        <div class="small text-center px-3">Self Service Portal</div>
+        <!-- <div class="small text-center px-3">Self Service Portal</div> -->
         <div class="small text-center px-3"><?php echo $this->config->item('app_admin_copy_right');?></div>
     <?php } ?>
 </nav>
