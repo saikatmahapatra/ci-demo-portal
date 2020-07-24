@@ -24,7 +24,8 @@
 // }
 #employees-datatable {
     a.emp-name,
-    a.emp-phone {
+    a.emp-phone,
+    a.emp-email {
         color: inherit;
         &:hover {
             color: inherit;

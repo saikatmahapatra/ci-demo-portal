@@ -200,7 +200,7 @@ class User extends CI_Controller {
             $row[] = $result['user_emp_id'];
             $email_arr = explode('@',$result['user_email']);
             $masked_domain = '@'.substr($email_arr[1], 0, 3).'****'.substr($email_arr[1], -3, 3);
-            $row[] = '<div title="'.$result['user_email'].'">'.$result['user_email'].'</div>';
+            $row[] = '<a class="emp-email" href="mailto:'.$result['user_email'].'">'.$result['user_email'].'</a>';
             $row[] = '<a class="emp-phone" href="tel:'.$result['user_phone1'].'">'.$result['user_phone1'].'</a>';
             $data[] = $row;
         }

@@ -9,7 +9,7 @@
 				<table id="employees-datatable" class="table ci-table table-striped w-100">
 					<thead class="">
 						<tr>
-							<th>Employee Name</th>
+							<th>Name</th>
 							<!-- <th>Designation</th> -->
 							<th>Emp ID</th>
 							<th>Email</th>
