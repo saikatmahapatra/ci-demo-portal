@@ -195,13 +195,13 @@ class User extends CI_Controller {
             }
 
             //$row[] = '<div>'.$img. $result['user_firstname'] . ' ' . $result['user_lastname'].'</div>';
-            $row[] = '<div><div class="media"><a target="_blank" href="'.base_url('user/profile/'.$result['id']).'">'.$img.'</a><div class="media-body"><div><a target="_blank" href="'.base_url('user/profile/'.$result['id']).'">'.$result['user_firstname'] . ' ' . $result['user_lastname'].'</a></div><div class="small">'.$result['designation_name'].'</div></div></div></div>';
+            $row[] = '<div><div class="media"><a class="emp-name" target="_blank" href="'.base_url('user/profile/'.$result['id']).'">'.$img.'</a><div class="media-body"><div><a class="emp-name" target="_blank" href="'.base_url('user/profile/'.$result['id']).'">'.$result['user_firstname'] . ' ' . $result['user_lastname'].'</a></div><div class="small">'.$result['designation_name'].'</div></div></div></div>';
             //$row[] = $result['designation_name'];
             $row[] = $result['user_emp_id'];
             $email_arr = explode('@',$result['user_email']);
             $masked_domain = '@'.substr($email_arr[1], 0, 3).'****'.substr($email_arr[1], -3, 3);
             $row[] = '<div title="'.$result['user_email'].'">'.$result['user_email'].'</div>';
-            $row[] = '<a href="tel:'.$result['user_phone1'].'">'.$result['user_phone1'].'</a>';
+            $row[] = '<a class="emp-phone" href="tel:'.$result['user_phone1'].'">'.$result['user_phone1'].'</a>';
             $data[] = $row;
         }
 
@@ -347,7 +347,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = 'Sign in to your account to continue.';
+		$this->data['page_title'] = 'Sign in to continue';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/login', $this->data, true);
         $this->load->view('_layouts/layout_login', $this->data);
     }
