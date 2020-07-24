@@ -9,7 +9,7 @@
 <label class="row">
 	<label class="col-lg-9">
 		<label class="card ci-card">
-			<div class="card-header">Edit Profile</div>
+			<div class="card-header">Form</div>
 			<label class="card-body">
 				<?php if($this->session->userdata['sess_user']['user_role'] == 1) {?>
 				<div class="d-flex mb-2">
