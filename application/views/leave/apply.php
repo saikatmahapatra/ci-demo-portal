@@ -8,19 +8,10 @@
 <div class="row">
     <div class="col-lg-9">
         <div class="card ci-card">
-            <div class="card-header">Leave Application Form</div>
+            <div class="card-header">Form</div>
             <div class="card-body">
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
-
-                <div class="d-flex mb-2">
-                    <div class="align-self-end ml-auto"> 
-                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('history'); ?> Leave History</a>
-
-                        <a href="<?php echo base_url($this->router->directory.'user/edit_approvers');?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('user_settings'); ?> Change Approvers</a>
-                    </div>
-                </div>
-                
-                <div class="form-text ci-form-help-text text-muted bg-light py-2 my-4">
+                <div class="form-text ci-form-help-text text-muted bg-light py-2 mb-3">
                         <ul class="mb-0">
                         <?php foreach($system_msg as $key=>$val){?>
                             <li class="<?php echo $val['css'];?>"><?php echo $val['txt'];?></li>
@@ -92,6 +83,11 @@
                 <button type="submit" <?php echo ($system_msg_error_counter >0 ) ? 'disabled="disabled"' : '';  ?>
                     class="btn ci-btn-primary btn-primary">Submit</button>
                 <?php echo form_close(); ?>
+
+                <div class="align-self-end mt-3"> 
+                    <a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="d-flex">View Leave History</a>
+                    <a href="<?php echo base_url($this->router->directory.'user/edit_approvers');?>" class="d-flex">Change Approvers</a>
+                </div>
             </div>
             <!--/.card-body-->
         </div>

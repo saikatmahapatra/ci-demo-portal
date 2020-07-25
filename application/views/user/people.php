@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card ci-card">
-			<div class="card-header">List of Employees</div>
+			<div class="card-header">Data Table</div>
 			<div class="card-body">
 			<div class="table-responsive">
 				<table id="employees-datatable" class="table ci-table table-striped w-100">

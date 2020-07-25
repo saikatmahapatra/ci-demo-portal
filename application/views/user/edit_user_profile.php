@@ -9,12 +9,12 @@
 <label class="row">
 	<label class="col-lg-9">
 		<label class="card ci-card">
-			<div class="card-header">Edit Profile</div>
+			<div class="card-header">Form</div>
 			<label class="card-body">
 				<?php if($this->session->userdata['sess_user']['user_role'] == 1) {?>
 				<div class="d-flex mb-2">
                     <div class="align-self-end ml-auto">
-                        <a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('left_arrow'); ?> Back to Employee List</a>
+                        <a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="back-to-list"><?php echo $this->common_lib->get_icon('left_arrow'); ?> Back to Employee List</a>
                     </div>
 				</div>
 				<?php } ?>

@@ -6,12 +6,12 @@ $row = $rows[0];
 <div class="row">
     <div class="col-lg-9">
         <div class="card ci-card">
-            <div class="card-header">Edit Holiday</div>
+            <div class="card-header">Form</div>
             <div class="card-body">
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="d-flex mb-2">
                     <div class="align-self-end ml-auto"> 
-                        <a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('left_arrow'); ?> Back to List</a>
+                        <a href="<?php echo base_url($this->router->directory.$this->router->class);?>" class="back-to-list"><?php echo $this->common_lib->get_icon('left_arrow'); ?> Back to List</a>
                     </div>
                 </div>
 

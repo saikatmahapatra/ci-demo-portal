@@ -3,12 +3,12 @@
 <div class="row">
     <div class="col-lg-8">
         <div class="card ci-card">
-            <div class="card-header">Add or Update Leave Balance</div>
+            <div class="card-header">Form</div>
             <div class="card-body">
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="d-flex mb-2">
                     <div class="align-self-end ml-auto"> 
-                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/view_leave_balance');?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('left_arrow'); ?> Back to List</a>
+                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/view_leave_balance');?>" class="back-to-list"><?php echo $this->common_lib->get_icon('left_arrow'); ?> Back to List</a>
                     </div>
                 </div>
                 <?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => 'ci-form-leavebalance',)); ?>

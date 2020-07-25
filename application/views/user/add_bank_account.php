@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-lg-9">
         <div class="card ci-card">
-            <div class="card-header">Add Salary Account</div>
+            <div class="card-header">Form</div>
             <div class="card-body">
             
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
