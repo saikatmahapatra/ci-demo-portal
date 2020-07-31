@@ -88,6 +88,8 @@ class Project extends CI_Controller {
             
             $row[] = $result['project_name'];
             $row[] = $result['project_number'];
+            $row[] = $this->common_lib->display_date($result['project_start_date']);
+            $row[] = $this->common_lib->display_date($result['project_end_date']);
             //$row[] = $result['tc'];
             $row[] = '<span class="'.$this->data['arr_status_flag'][$result['project_status']]['css'].'">'.$this->data['arr_status_flag'][$result['project_status']]['text'].'</span>';
             //add html for action
@@ -134,7 +136,11 @@ class Project extends CI_Controller {
                     'project_number' => $this->input->post('project_number'),
                     'project_name' => $this->input->post('project_name'),
                     'project_desc' => $this->input->post('project_desc'),
-                    'project_status' => $this->input->post('project_status')
+                    'project_status' => $this->input->post('project_status'),
+                    'project_start_date' => $this->common_lib->convert_to_mysql($this->input->post('project_start_date')),
+                    'project_end_date' => $this->common_lib->convert_to_mysql($this->input->post('project_end_date')),
+                    'created_on' => date('Y-m-d H:i:s'),
+                    'created_by' => $this->sess_user_id
                 );
                 $insert_id = $this->project_model->insert($postdata);
                 if ($insert_id) {
@@ -160,7 +166,11 @@ class Project extends CI_Controller {
                     'project_number' => $this->input->post('project_number'),
                     'project_name' => $this->input->post('project_name'),
                     'project_desc' => $this->input->post('project_desc'),
-                    'project_status' => $this->input->post('project_status')
+                    'project_status' => $this->input->post('project_status'),
+                    'project_start_date' => $this->common_lib->convert_to_mysql($this->input->post('project_start_date')),
+                    'project_end_date' => $this->common_lib->convert_to_mysql($this->input->post('project_end_date')),
+                    'updated_on' => date('Y-m-d H:i:s'),
+                    'updated_by' => $this->sess_user_id
                 );
                 $where_array = array('id' => $this->input->post('id'));
                 $res = $this->project_model->update($postdata, $where_array);
@@ -192,11 +202,26 @@ class Project extends CI_Controller {
     function validate_form_data($action = NULL) {		
         $this->form_validation->set_rules('project_number', 'project code', 'required');			
         $this->form_validation->set_rules('project_name', 'project name', 'required');			
+        $this->form_validation->set_rules('project_start_date', 'start date', 'required');			
+        $this->form_validation->set_rules('project_end_date', 'end date', 'required|callback_validate_days_diff');			
         $this->form_validation->set_rules('project_status', 'project status', 'required');				
 		$this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;
         } else {
+            return false;
+        }
+    }
+
+    function validate_days_diff(){
+        $from_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('project_start_date'))); // or your date as well
+        $to_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('project_end_date')));
+        $datediff = ($to_date - $from_date);
+        $no_day = round($datediff / (60 * 60 * 24));
+        if($no_day >= 0 ){
+            return true;
+        }else{
+            $this->form_validation->set_message('validate_days_diff', 'Invalid date range.');
             return false;
         }
     }

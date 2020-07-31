@@ -29,6 +29,20 @@ $row = $rows[0];
                 </div>
 
                 <div class="form-row">
+                    <div class="form-group col-lg-4">
+                        <label for="project_start_date" class="required">Start Date</label>
+                        <?php echo form_input(array('name' => 'project_start_date','value' => isset($_POST['project_start_date']) ? set_value('project_start_date') : $this->common_lib->display_date($row['project_start_date']),'id' => 'project_start_date','class' => 'form-control', 'placeholder'=>'dd-mm-yyyy', 'readonly'=>'readonly')); ?>
+                        <?php echo form_error('project_start_date'); ?>
+                    </div>
+                
+                    <div class="form-group col-lg-4">
+                        <label for="project_end_date" class="required">End Date</label>
+                        <?php echo form_input(array('name' => 'project_end_date','value' => isset($_POST['project_end_date']) ? set_value('project_end_date') : $this->common_lib->display_date($row['project_end_date']),'id' => 'project_end_date','class' => 'form-control', 'placeholder'=>'dd-mm-yyyy', 'readonly'=>'readonly')); ?>
+                        <?php echo form_error('project_end_date'); ?>
+                    </div>
+                </div>
+
+                <div class="form-row">
                     <div class="form-group col-lg-12">
                         <label for="project_desc" class="optional">Description</label>
                         <?php echo form_textarea(array('name' => 'project_desc','value' => (isset($_POST['project_desc']) ? set_value('project_desc') : $row['project_desc']),'class' => 'form-control textarea','id' => 'project_desc', 'maxlength'=> '150', 'rows' => '2','cols' => '50','placeholder' => 'briefly describe in 150 characters')); ?>
