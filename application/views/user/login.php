@@ -1,27 +1,37 @@
-<div class="row">
-	<div class="col">
-		<div class="card ci-card card-login mx-auto">
-			<div class="card-body mt-4 mb-2">
-				<div class="text-center mb-5">
-					<img class="logo-login" src="<?php echo base_url('assets/dist/img/logo-dark.png');?>">
-					<h1 class="mt-2 h4 font-weight-light"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-				</div>
+<div class="row justify-content-center">
+	<div class="col-lg-5">
+		<div class="card shadow-lg border-0 rounded-lg mt-5">
+			<div class="card-header"><h3 class="text-center font-weight-light my-4"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h3></div>
+			<div class="card-body">
 				<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<?php echo form_open(current_url(), array('method' => 'post', 'class'=>'')); ?>
-					<?php echo form_hidden('form_action', 'login'); ?>
+				<?php echo form_hidden('form_action', 'login'); ?>
 					<div class="form-group">
-						<!-- <label for="user_email">Username or Email</label> -->
-						<?php echo form_input(array('name' => 'user_email', 'value' => set_value('user_email'),'id' => 'user_email','class' => 'form-control','placeholder' => 'Username','maxlength' => '100','autofocus' => true,));?>
+						<label class="small mb-1" for="user_email">Email</label>
+						<?php echo form_input(array('name' => 'user_email', 'value' => set_value('user_email'),'id' => 'user_email','class' => 'form-control py-4','placeholder' => 'Enter email address','maxlength' => '100','autofocus' => true,));?>
 						<?php echo form_error('user_email'); ?>
 					</div>
+
 					<div class="form-group">
-						<!-- <label for="user_email">Password</label> -->
-						<?php echo form_password(array('name' => 'user_password','value' => set_value('user_password'),'id' =>'user_password','placeholder' => 'Password','class' => 'form-control','maxlength' => '16'));?>
+						<label class="small mb-1" for="user_password">Password</label>
+						<?php echo form_password(array('name' => 'user_password','value' => set_value('user_password'),'id' =>'user_password','placeholder' => 'Enter password','class' => 'form-control py-4','maxlength' => '16'));?>
 						<?php echo form_error('user_password'); ?>
 					</div>
-					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Sign In','class' => 'btn ci-btn-primary btn-primary btn-block'));?>
-					<?php echo form_close(); ?>
-					<p class="my-2 text-center"><a href="<?php echo base_url($this->router->class.'/forgot_password');?>">Forgot password?</a></p>
+
+					<div class="form-group">
+						<div class="custom-control custom-checkbox">
+							<input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
+							<label class="custom-control-label" for="rememberPasswordCheck">Remember password</label>
+						</div>
+					</div>
+					<div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+						<a class="small" href="<?php echo base_url($this->router->class.'/forgot_password');?>">Forgot password?</a>
+						<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Sign In','class' => 'btn ci-btn-primary btn-primary'));?>
+					</div>
+				<?php echo form_close(); ?>
+			</div>
+			<div class="card-footer text-center">
+				<div class="small"><a href="#">Need an account? Sign up!</a></div>
 			</div>
 		</div>
 	</div>
