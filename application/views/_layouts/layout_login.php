@@ -23,44 +23,46 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'); ?>"></script>
     <![endif]-->
 </head>
-
-<body class="login body-with-sidebar-layout" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>" onloadstart="">
-    <?php //echo $el_navbar; ?>
-    <main role="main" class="container d-flex flex-column">
-        <?php echo $maincontent; ?>
-    </main>
-    <footer class="footer">
+<body class="bg-secondary" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>" onloadstart="">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <?php echo $maincontent; ?>
+                </div>
+            </main>
+        </div>
+        <div id="layoutAuthentication_footer">
         <?php echo $el_footer; ?>
-    </footer>
-    
-    <?php echo $el_scroll_to_top; ?>
-    <?php echo $el_loader; ?>
-    <?php echo $el_confirmation_modal; ?>
-
+        </div>
+        <?php echo $el_scroll_to_top; ?>
+        <?php echo $el_loader; ?>
+        <?php echo $el_confirmation_modal; ?>
+    </div>
     <!-- jQuery -->    
-	<script type="text/javascript" src="<?php echo base_url('assets/vendors/jquery/dist/jquery.min.js'); ?>"></script>	
+    <script type="text/javascript" src="<?php echo base_url('assets/vendors/jquery/dist/jquery.min.js'); ?>"></script>	
     <!-- Bootstrap dependency popper.js -->
     <script src="<?php echo base_url('assets/vendors/popper.js/dist/umd/popper.min.js'); ?>"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo base_url('assets/vendors/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>   
+    <script src="<?php echo base_url('assets/vendors/bootstrap/dist/js/bootstrap.bundle.min.js'); ?>"></script>   
     
-	
-	<!-- jQuery DataTables Core JavaScript -->
+    
+    <!-- jQuery DataTables Core JavaScript -->
     <script src="<?php echo base_url('assets/vendors/datatables.net/js/jquery.dataTables.js'); ?>"></script>    
     <!-- Bootstrap4 DataTables JavaScript -->
     <script src="<?php echo base_url('assets/vendors/datatables.net-bs4/js/dataTables.bootstrap4.js'); ?>"></script>    
-	<!--Select 2-->
+    <!--Select 2-->
     <script src="<?php echo base_url('assets/vendors/select2/dist/js/select2.min.js');?>"></script>	
-	<!-- Datepicker JS -->
-	<script src="<?php echo base_url('assets/vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js');?>"></script>	
+    <!-- Datepicker JS -->
+    <script src="<?php echo base_url('assets/vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js');?>"></script>	
     <!-- CK Editor -->
     <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>	
-	<!-- Pace JS for page load progress -->
+    <!-- Pace JS for page load progress -->
     <script src="<?php echo base_url('assets/vendors/pace-js/pace.min.js'); ?>"></script>
     <!-- Font Awesome JS -->
     <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/solid.min.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/fontawesome.min.js');?>"></script>
-	<!--Application Specific JS Loading Through Controllers-->
+    <!--Application Specific JS Loading Through Controllers-->
     <?php echo isset($app_js) ? $app_js : ''; ?>
 </body>
 </html>
