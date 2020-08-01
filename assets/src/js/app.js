@@ -360,38 +360,19 @@ function initPage() {
     // Bootstrap popover
     $('[data-toggle="popover"]').popover();
 
-    //Add random CSS class using JS
-    /*var classes = ["badge badge-primary", "badge badge-success", "badge badge-info", "badge badge-warning", "badge badge-dark", "badge badge-dark", "badge badge-danger"];
-    $(".tagcloud a").each(function() {
-        $(this).addClass(classes[~~(Math.random() * classes.length)]);
-    });*/
+    // Add active state to sidbar nav links
+    var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
+    $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
+        if (this.href === path) {
+            $(this).addClass("active");
+        }
+    });
 
-
-    // var treeviewMenu = $('.menu');
-
-    // // Toggle Sidebar
-    // $('[data-toggle="sidebar"]').click(function(event) {
-    //     event.preventDefault();
-    //     $('.app').toggleClass('sidenav-toggled');
-    // });
-
-    // $('.mega-menu-toggle').click(function(event) {
-    //     event.preventDefault();
-    //     $(this).toggleClass('mm-toggled');
-    // });
-
-    // // Activate sidebar treeview toggle
-    // $("[data-toggle='treeview']").click(function(event) {
-    //     event.preventDefault();
-    //     if (!$(this).parent().hasClass('is-expanded')) {
-    //         treeviewMenu.find("[data-toggle='treeview']").parent().removeClass('is-expanded');
-    //     }
-    //     $(this).parent().toggleClass('is-expanded');
-    // });
-
-    // User Reminder Modal
-    reminderModal();
-
+    // Toggle the side navigation
+    $("#sidebarToggle").on("click", function(e) {
+        e.preventDefault();
+        $("body").toggleClass("sb-sidenav-toggled");
+    });
 }
 // End of initPage() i.e. document ready
 
