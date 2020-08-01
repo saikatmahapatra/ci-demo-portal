@@ -362,4 +362,48 @@ class Timesheet_model extends CI_Model {
         return array('num_rows' => $num_rows, 'data_rows' => $result);
     }
 
+    function validate_project_end_date($id) {
+        $allow_timesheet_entry = false;
+        $data = array(
+            'allow_timesheet_entry' => $allow_timesheet_entry,
+            'id' => '',
+            'project_start_date' => '',
+            'project_start_date' => ''
+        );
+        $result = array();
+        $this->db->select('
+        t1.id,
+        t1.project_start_date,
+        t1.project_end_date
+        ');
+        $this->db->where('t1.id', $id);
+        $query = $this->db->get('projects as t1');
+        //print_r($this->db->last_query()); die();
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        if(sizeof($result) > 0) {
+            if(isset($result[0]['project_end_date'])) {
+                $datediff = ( strtotime($result[0]['project_end_date']) - strtotime(date('Y-m-d')) );
+                $no_day = round($datediff / (60 * 60 * 24));
+                if($no_day >=0 ) {
+                    $allow_timesheet_entry = true;
+                } else {
+                    $allow_timesheet_entry = false;
+                }
+                
+            } else {
+                $allow_timesheet_entry = true;
+            }
+
+            $data = array(
+                'allow_timesheet_entry' => $allow_timesheet_entry,
+                'id' => isset($result[0]['id']) ? $result[0]['id'] : '',
+                'project_start_date' => isset($result[0]['project_start_date']) ? $result[0]['project_start_date'] : '',
+                'project_end_date' => isset($result[0]['project_end_date']) ? $result[0]['project_end_date'] : ''
+            );
+
+        }
+        return $data;
+    }
+
 }
