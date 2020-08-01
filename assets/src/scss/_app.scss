@@ -1,16 +1,3 @@
-// @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
-// @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
-body {
-    //margin-top: 4rem;
-    background-color: #eee;
-}
-
-body.login {
-    margin-top: 4rem;
-    background-color: #eee;
-}
-
 #loader-wrapper {
     position: fixed;
     display: none;
@@ -37,67 +24,8 @@ body.login {
     margin: -16px 0 0 -16px;
 }
 
-@mixin linear-gradient($from,
-$to) {
-    background: $to;
-    background: -moz-linear-gradient(top, $from 0%, $to 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $from), color-stop(100%, $to));
-    background: -webkit-linear-gradient(top, $from 0%, $to 100%);
-    background: -o-linear-gradient(top, $from 0%, $to 100%);
-    background: linear-gradient(to bottom, $from 0%, $to 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,
-    startColorstr=#{$from},
-    endColorstr=#{$to})
-}
-
-.logo {
-    width: 65px;
-}
-
-.logo-login {
-    width: 150px;
-}
-
-.nav-logo {
-    width: 180px;
-    @media (max-width: 576px) {
-        width: 130px;
-    }
-}
-
-.navbar-brand-centered-logo {
-    padding: 0;
-    img {
-        width: 150px;
-        @media (max-width: 576px) {
-            width: 150px;
-        }
-    }
-    margin: 0 auto;
-}
-
-.page-title {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    font-weight: 300;
-}
-
-// Extra small devices (portrait phones, less than 576px)
-// No media query since this is the default in Bootstrap
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {}
-
 //Scroll To Top
-.scrollup {
+.scroll-to-top {
     width: 40px;
     height: 40px;
     position: fixed;
@@ -110,32 +38,15 @@ $to) {
     }
 }
 
-// T&C
-.tnc-content {
-    font-size: .75rem;
-    h1,
-    h2 {
-        font-size: 1rem;
-    }
-}
-
-// Images
-.thumbnail {
-    margin-bottom: 20px;
-    padding: 0px;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
-}
-
+// Profile, Employee List
 .dp {
     //transition: all 0.2s ease-in-out;
     height: 100px;
     width: 100px;
     // name initial dp
     border-radius: 50% !important;
-    background: $name-dp-background-color;
-    color: $name-dp-text-color;
+    background: $gray-300;
+    color: $gray-600;
     line-height: 100px;
     font-size: 2rem;
     text-align: center;
@@ -148,52 +59,9 @@ $to) {
     cursor: pointer; // as link is there
     // name initial dp
     border-radius: 50% !important;
-    background: $name-dp-background-color;
-    color: $name-dp-text-color;
+    background: $gray-300;
+    color: $gray-600;
     line-height: 50px;
     font-size: .975rem;
     text-align: center;
-}
-
-.more-less {
-    float: right;
-    color: #212121;
-}
-
-.ci-dl {
-    dt {
-        font-weight: 400;
-        color: $gray-600;
-    }
-}
-
-.disabled {
-    opacity: .5;
-}
-
-.no-pointer {
-    pointer-events: none;
-}
-
-.disabled-item {
-    border: 1px solid $red;
-}
-
-.user-profile-section {
-    margin: 10px 0px 15px 0px;
-    .section-heading {
-        color: $gray-600;
-        font-weight: 700;
-        font-size: 90%;
-    }
-}
-
-.no-gutters {
-    margin-right: 0;
-    margin-left: 0;
-}
-
-.footer {
-    height: 50px;
-    padding: 1rem;
 }

@@ -1,23 +1,18 @@
-// Import Custom variable first
-@import 'vars';
-// Import variables to override bootstrap 4 built in variables
-@import 'customize-bootstrap';
-// Bootstrap 4 SCSS
+// Import Custom Variables
+@import "variables.scss";
+// Import Bootstrap
 @import '../../../node_modules/bootstrap/scss/bootstrap';
-//Custom CSS - This App Specific CSS
-@import '_app';
-@import '_nav';
-@import '_navbar';
-@import '_sidebar';
-// @import '_notification';
-@import '_breadcrumb';
-// @import '_bs_mega_menu';
-@import '_dropdown';
-@import '_pace_js';
-@import '_cards';
-@import '_forms';
-@import '_tables';
-@import '_ci_calendar';
-@import '_ci_wizards';
-@import '_full-calendar';
-@import '_bs_datepicker_timesheet';
+// Import Custom SCSS
+@import "global.scss";
+@import "app.scss";
+// Layout
+@import "layout/authentication.scss";
+@import "layout/dashboard-default.scss";
+@import "layout/dashboard-fixed.scss";
+@import "layout/error.scss";
+// Navigation
+@import "navigation/nav.scss";
+@import "navigation/topnav.scss";
+@import "navigation/sidenav/sidenav.scss";
+@import "navigation/sidenav/sidenav-dark.scss";
+@import "navigation/sidenav/sidenav-light.scss";
