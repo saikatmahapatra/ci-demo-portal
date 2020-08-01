@@ -177,7 +177,7 @@ class Timesheet extends CI_Controller {
         if($action != 'edit'){
             $this->form_validation->set_rules('selected_date', 'date selection', 'required|callback_check_selected_days');
         }
-        $this->form_validation->set_rules('project_id', 'project', 'required');
+        $this->form_validation->set_rules('project_id', 'project', 'required|callback_check_project_end_date');
         $this->form_validation->set_rules('task_id_1', 'task', 'required');
 
         // gt 2 as -Select- also treating as array
@@ -214,6 +214,22 @@ class Timesheet extends CI_Controller {
             $this->form_validation->set_message('check_selected_days', 'You are not allowed to log task for '.$not_allowed_days_str.'. Please unselect the date(s).');
             return false;
         }
+    }
+
+    function check_project_end_date($id){
+        if($id){
+            $data = array();
+            $data = $this->timesheet_model->validate_project_end_date($id);
+            if($data['allow_timesheet_entry']){
+                return true;
+            }else{
+                $this->form_validation->set_message('check_project_end_date', 'You are not allowed to log tasks for the selected project. This project was ended by '.$this->common_lib->display_date($data['project_end_date']).'. Please contact to your HR/admin for any clarification.');
+                return false;
+            }
+        } else {
+            return true;
+        }
+		
     }
 		
 	function timesheet_stats(){		

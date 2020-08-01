@@ -18,7 +18,19 @@ function domReady() {
     }
     //Add, Edit View:
     if (ROUTER_METHOD == 'add' || ROUTER_METHOD == 'edit') {
+        $('#project_start_date').datepicker({
+            format: "dd-mm-yyyy",
+            weekStart: 1,
+            autoclose: true,
+            container: $('#project_start_date').parent()
+        });
 
+        $('#project_end_date').datepicker({
+            format: "dd-mm-yyyy",
+            weekStart: 1,
+            autoclose: true,
+            container: $('#project_end_date').parent()
+        });
     }
 
     if (ROUTER_METHOD == 'project_tasks') {

@@ -20,6 +20,8 @@
                             <tr>
                                 <th scope="col">Project</th>
                                 <th scope="col">Code</th>
+                                <th scope="col">Start Date</th>
+                                <th scope="col">End Date</th>
                                 <!-- <th scope="col">Tagged Tasks</th> -->
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>

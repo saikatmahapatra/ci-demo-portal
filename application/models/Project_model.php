@@ -56,15 +56,19 @@ class Project_model extends CI_Model {
             //set column field database for datatable orderable
             $column_order = array(
                 't1.project_name',
-                't1.project_desc',
+                't1.project_number',
+                't1.project_start_date',
+                't1.project_end_date',
                 't1.project_status',
                 NULL,
-            );            
+            );
             //set column field database(table column name) for datatable searchable
             $column_search = array(
                 't1.project_name',
                 't1.project_desc',
                 't1.project_status',
+                't1.project_start_date',
+                't1.project_end_date',
                 );
              // default order
             $order = array(
