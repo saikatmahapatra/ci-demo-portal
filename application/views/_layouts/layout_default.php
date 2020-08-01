@@ -33,17 +33,36 @@
     <![endif]-->
 </head>
 
-<body class="body-with-sidebar-layout" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
-	
-<div class="wrapper">
-        <!-- Sidebar  -->
-        <?php echo $el_sidebar; ?>
-        <!-- Page Content  -->
-        <div id="content" class="">
-            <?php echo $el_navbar; ?>
-            <?php echo $maincontent; ?>
-        </div> <!--/#content-->
-    </div>
+<body class="sb-nav-fixed" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
+    <?php echo $el_navbar; ?>
+    <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <?php echo $el_sidebar; ?>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4">Sidenav Light</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Sidenav Light</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                This page is an example of using the light side navigation option. By appending the
+                                <code>.sb-sidenav-light</code>
+                                class to the
+                                <code>.sb-sidenav</code>
+                                class, the side navigation will take on a light color scheme. The
+                                <code>.sb-sidenav-dark</code>
+                                is also available for a darker option.
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <?php echo $el_footer; ?>
+            </div>
+        </div>
     <?php echo $el_scroll_to_top; ?>
     <?php echo $el_loader; ?>
     <?php echo $el_confirmation_modal; ?>
