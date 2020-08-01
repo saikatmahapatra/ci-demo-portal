@@ -2,7 +2,6 @@
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted"><?php echo $this->config->item('app_admin_copy_right');?></div>
-            <div class="text-muted"><?php echo $this->config->item('app_version');?></div>
             <div>
                 <a href="#">Privacy Policy</a>
                 &middot;
