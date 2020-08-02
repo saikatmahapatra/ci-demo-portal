@@ -285,12 +285,12 @@ class User extends CI_Controller {
             $action_html = '';
             
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
-                'class' => 'btn btn-sm btn-datatable btn-light text-secondary',
+                'class' => 'btn btn-datatable btn-icon btn-transparent-dark ',
                 'title' => 'Edit'
             ));
             $action_html.='&nbsp;';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), $this->common_lib->get_icon('info','dt_action_icon'), array(
-                'class' => 'btn btn-sm btn-datatable btn-light text-secondary',
+                'class' => 'btn btn-datatable btn-icon btn-transparent-dark ',
                 'title' => 'Details'
                 
             ));
