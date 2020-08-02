@@ -1,3 +1,8 @@
+// Body
+body {
+    background-color: #eff3f9;
+}
+
 // JQUERY PACE Loader
 .pace {
     pointer-events: none;
@@ -174,12 +179,25 @@
 }
 
 // Table Style
+.datatable {
+    font-size: 0.85rem;
+}
+
 .table.ci-table.dataTable {
     clear: both;
     margin-top: 0px !important;
     margin-bottom: 0px !important;
     max-width: none !important;
     border-collapse: collapse !important;
+    thead th,
+    tfoot th {
+        font-weight: 600;
+        color: $primary;
+    }
+}
+
+.datatable.table-bordered {
+    border: 1px solid #e3e6ec;
 }
 
 .dataTables_wrapper {
@@ -340,6 +358,54 @@
 }
 
 // CI - Cards Style
+.ci-card {
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(31, 45, 65, 0.15);
+    border: 1px solid rgba(31, 45, 65, 0.125);
+    border-radius: 0.35rem;
+    background-color: $white;
+    .card-body {
+        flex: 1 1 auto;
+        padding: 1.25rem;
+    }
+    .card-header {
+        color: $primary;
+        padding: 1rem 1.35rem;
+        font-weight: 500;
+        border-bottom: 1px solid rgba(31, 45, 65, 0.125);
+        background-color: rgba(31, 45, 65, 0.03);
+        &:first-child {
+            border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+        }
+    }
+    .card-footer {
+        background-color: $white;
+        border-top: none;
+    }
+}
+
+.user-profile-page-card {
+    .emp-name {
+        font-size: 1.25rem;
+        margin-top: 15px;
+    }
+    .dp-section {
+        text-align: center;
+    }
+}
+
+.profile-card-conntainer {
+    margin-bottom: 15px;
+    .ci-card,
+    .card {
+        .card-body {
+            padding: 5px 15px 15px 15px;
+            .other-info {
+                font-size: 80%;
+            }
+        }
+    }
+}
+
 // BS - Date Time Picker
 .bs-datepicker-timesheet {
     .datepicker-inline {
