@@ -26,7 +26,7 @@
 					</div>
 					<div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
 						<a class="small" href="<?php echo base_url($this->router->class.'/forgot_password');?>">Forgot password?</a>
-						<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Sign In','class' => 'btn ci-btn-primary btn-primary'));?>
+						<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Login','class' => 'btn ci-btn-primary btn-primary'));?>
 					</div>
 				<?php echo form_close(); ?>
 			</div>

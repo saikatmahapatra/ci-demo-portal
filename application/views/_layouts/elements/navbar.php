@@ -31,7 +31,7 @@
                     <div class="dropdown-divider"></div>			
                     <a class="dropdown-item"  href="<?php echo base_url('user/profile/'); ?>">My Profile</a>
                     <a class="dropdown-item" href="<?php echo base_url('user/change_password'); ?>">Change Password</a>
-                    <a class="dropdown-item" href="<?php echo base_url('user/logout'); ?>">Sign Out</a>
+                    <a class="dropdown-item" href="<?php echo base_url('user/logout'); ?>">Logout</a>
                 </div>
             </li>
             <?php } ?>

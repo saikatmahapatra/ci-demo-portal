@@ -347,7 +347,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = 'Sign in to continue';
+		$this->data['page_title'] = 'Login';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/login', $this->data, true);
         $this->load->view('_layouts/layout_login', $this->data);
     }
@@ -356,10 +356,10 @@ class User extends CI_Controller {
         $this->profile();
     }
 
-    function auth_error() {        
+    function auth_error() {
 		$this->data['page_title'] = 'Authorization Error Occured';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/auth_error', $this->data, true);
-        $this->load->view('_layouts/layout_default', $this->data);
+        $this->load->view('_layouts/layout_error', $this->data);
     }
 
     function validate_login_form_data() {

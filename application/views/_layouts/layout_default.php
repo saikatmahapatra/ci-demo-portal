@@ -107,47 +107,23 @@
 	<!--Application Specific JS Loading Through Controllers-->
     <?php echo isset($app_js) ? $app_js : ''; ?>
     <script type="text/javascript">
-        $(document).ready(function () {
-            // $("#sidebar").mCustomScrollbar({
-            //     theme: "minimal"
-            // });
-            // static nav
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-
-            //fixed nav
-            // $('#sidebarCollapse').on('click', function () {
-            //     $('#sidebar, #content').toggleClass('active');
-            //     $('.collapse.in').toggleClass('in');
-            //     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            // });
-
-            // overlaynav
-            // $('#dismiss, .overlay').on('click', function () {
-            //     $('#sidebar').removeClass('active');
-            //     $('.overlay').removeClass('active');
-            // });
-
-            // $('#sidebarCollapse').on('click', function () {
-            //     $('#sidebar').addClass('active');
-            //     $('.overlay').addClass('active');
-            //     $('.collapse.in').toggleClass('in');
-            //     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            // });
-            $('#locksidebar').on('click', function(){
-                var xhr = new Ajax();
-                xhr.url = SITE_URL + ROUTER_DIRECTORY + 'home' + '/sidebar_toggle';
-                xhr.data = {active: true};
-                var promise = xhr.init();
-                promise.done(function(response) {
-                    window.location.reload(); 
-                });
-                promise.always(function() {
-                    //window.location.reload();
-                });
-            });
-        });
+        // $(document).ready(function () {
+        //     $('#sidebarCollapse').on('click', function () {
+        //         $('#sidebar').toggleClass('active');
+        //     });
+        //     $('#locksidebar').on('click', function(){
+        //         var xhr = new Ajax();
+        //         xhr.url = SITE_URL + ROUTER_DIRECTORY + 'home' + '/sidebar_toggle';
+        //         xhr.data = {active: true};
+        //         var promise = xhr.init();
+        //         promise.done(function(response) {
+        //             window.location.reload(); 
+        //         });
+        //         promise.always(function() {
+        //             //window.location.reload();
+        //         });
+        //     });
+        // });
     </script>
 </body>
 </html>

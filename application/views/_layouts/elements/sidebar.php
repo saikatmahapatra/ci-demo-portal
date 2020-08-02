@@ -29,7 +29,7 @@
             </div>
             <?php } ?>
 
-            <div class="sb-sidenav-menu-heading">Navigation</div>
+            <div class="sb-sidenav-menu-heading">ESS MENU</div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts_1" aria-expanded="false" aria-controls="collapseLayouts_1">
                 <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('organization'); ?></div>
                 My Organization
@@ -73,7 +73,7 @@
                 <a class="nav-link" href="<?php echo base_url('user/profile');?>">My Profile</a>
                 <a class="nav-link" href="<?php echo base_url('document');?>">My Documents</a>
                 <a class="nav-link" href="<?php echo base_url('user/change_password');?>">Change Password</a>
-                <a class="nav-link" href="<?php echo base_url('user/logout');?>">Sign Out</a>
+                <a class="nav-link" href="<?php echo base_url('user/logout');?>">Logout</a>
                 </nav>
             </div>
             <!-- <div class="sb-sidenav-menu-heading">Addons</div>
