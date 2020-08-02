@@ -44,7 +44,7 @@
             <div class="card-header">Data Table</div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table ci-table table-sm table-bordered w-100">
+                    <table class="table ci-table table-bordered table-hover w-100">
                         <thead class="">
                             <tr>
                                 <th scope="col">Uploaded Documents</th>

@@ -180,17 +180,15 @@ body {
 }
 
 // Table Style
-.datatable {
-    font-size: 0.85rem;
+.table.ci-table,
+.datatable.ci-table {
+    font-size: 0.975rem;
     .btn-datatable {
         height: 20px !important;
         width: 20px !important;
         font-size: 0.75rem;
         border-radius: 0.35rem !important;
     }
-}
-
-.table.ci-table.dataTable {
     clear: both;
     margin-top: 0px !important;
     margin-bottom: 0px !important;
