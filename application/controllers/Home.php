@@ -51,7 +51,7 @@ class Home extends CI_Controller {
 		// load Breadcrumbs
 		$this->load->library('breadcrumbs');
 		// add breadcrumbs. push() - Append crumb to stack
-		$this->breadcrumbs->push('Home', '/');		
+		$this->breadcrumbs->push('Home', base_url());
         $this->data['breadcrumbs'] = $this->breadcrumbs->show();
         
         $this->data['content_type'] = array(
@@ -68,10 +68,6 @@ class Home extends CI_Controller {
 		
 		// Check user permission by permission name mapped to db
         // $is_authorized = $this->common_lib->is_auth('cms-list-view');
-			
-		$this->breadcrumbs->push('View','/');
-		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-
         // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
 		$result_array = $this->cms_model->get_contents(NULL, NULL, NULL, FALSE, FALSE);
 		$total_num_rows = $result_array['num_rows'];
@@ -144,7 +140,7 @@ class Home extends CI_Controller {
 		// Check user permission by permission name mapped to db
         // $is_authorized = $this->common_lib->is_auth('cms-list-view');
 			
-		$this->breadcrumbs->push('View','/');				
+		$this->breadcrumbs->push('View','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
         $id = $this->uri->segment(3);		
 		$result_array = $this->cms_model->get_contents($id, NULL, NULL, FALSE, FALSE);

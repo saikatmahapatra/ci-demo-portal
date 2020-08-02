@@ -19,7 +19,7 @@
                         </div>
                         <button type="submit" class="btn ci-btn-primary btn-primary">Import Data</button>
                     <?php echo form_close(); ?>
-                    <div class="form-text ci-form-help-text text-muted">Note: Only xls file is allowed with maximum 2MB of size. To import leave balance data you need to "Export Data" first & modify the excel file to import it.</div>
+                    <div class="form-text small text-muted">Note: Only xls file is allowed with maximum 2MB of size. To import leave balance data you need to "Export Data" first & modify the excel file to import it.</div>
                 </div>
                 
                 <div class="d-flex mb-2">

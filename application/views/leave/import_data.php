@@ -11,7 +11,7 @@
                 <label for="user_id" class="required">File</label>
                 <?php echo form_upload(array('name' => 'userfile', 'id' => 'userfile','class' => 'form-control', 'required'=>'required', 'accept' =>'.xls, .xlsx'));?>
                 <?php echo form_error('userfile'); ?>
-                <div class="form-text ci-form-help-text text-muted">Only .xls, .xlxs formats are supported. Imporatable file should have specific format. Please follow the format while importing records.</div>
+                <div class="form-text small text-muted">Only .xls, .xlxs formats are supported. Imporatable file should have specific format. Please follow the format while importing records.</div>
             </div>
         </div>
         <button type="submit" class="btn ci-btn-primary btn-primary">Submit</button>

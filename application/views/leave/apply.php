@@ -1,7 +1,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-<p><?php echo $this->common_lib->get_icon('question'); ?> Looking for help or information? Click <a class=""
+<p class="small"><?php echo $this->common_lib->get_icon('question'); ?> Looking for help or information? Click <a class=""
         href="#" data-toggle="modal" id="view_leave_balance_update_details" data-target="#leaveBalanceModal">here to
         read.</a></p>
 
@@ -11,7 +11,7 @@
             <div class="card-header">Form</div>
             <div class="card-body">
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
-                <div class="form-text ci-form-help-text text-muted bg-light py-2 mb-3">
+                <div class="form-text small text-muted bg-light py-2 mb-3">
                         <ul class="mb-0">
                         <?php foreach($system_msg as $key=>$val){?>
                             <li class="<?php echo $val['css'];?>"><?php echo $val['txt'];?></li>

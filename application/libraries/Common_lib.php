@@ -625,6 +625,7 @@ class Common_lib {
             'status' => 'fa-circle',
             'tick' => 'fa-check',
             'home' => 'fa-home',
+            'dashboard' => 'fa-tachometer-alt',
             'calendar' => 'fa-calendar',
             'user_account' => 'fa-user',
             'admin_user' => 'fa-lock',

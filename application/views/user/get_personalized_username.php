@@ -14,7 +14,7 @@
 					<div class="form-group mb-3">
 						<label for="user_name">Set Your Username</label>
 						<?php echo form_input(array('name' => 'user_name','value' => set_value('user_name'),'id' => 'user_name','class'=> 'form-control','placeholder' => 'Example: jhonsmith17','maxlength' => '32','autofocus' => true));?>	
-						<div class="form-text ci-form-help-text text-muted">Username should be 5 to 32 characters in length.</div>
+						<div class="form-text small text-muted">Username should be 5 to 32 characters in length.</div>
 						<?php echo form_error('user_name'); ?>
 					</div>
 					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-lg ci-btn-primary btn-primary btn-block'));?>
