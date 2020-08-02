@@ -199,9 +199,42 @@ body {
         font-weight: 600;
         color: $primary;
     }
+    .btn-icon {
+        padding: 0;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 100%;
+        flex-shrink: 0;
+    }
+    .btn-transparent-dark {
+        color: $white;
+        background-color: transparent;
+        border-color: transparent;
+        color: rgba(31, 45, 65, 0.5) !important;
+        &:hover {
+            color: $white;
+            background-color: rgba(31, 45, 65, 0.1);
+            border-color: transparent;
+        }
+        &:focus {
+            color: $white;
+            background-color: rgba(31, 45, 65, 0.1);
+            border-color: transparent;
+            box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+        }
+    }
+    tbody tr td {
+        .badge {
+            font-weight: 500;
+        }
+    }
 }
 
-.datatable.table-bordered {
+.dataTable.table-hover tbody tr:hover {
+    background-color: rgba(227, 230, 236, 0.25);
+}
+
+.dataTable.table-bordered {
     border: 1px solid #e3e6ec;
 }
 
