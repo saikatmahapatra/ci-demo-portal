@@ -75,6 +75,7 @@ body {
 
 // Page Title 
 .page-title {
+    font-size: 1.5rem;
     margin-top: 1.5rem;
 }
 
@@ -181,6 +182,12 @@ body {
 // Table Style
 .datatable {
     font-size: 0.85rem;
+    .btn-datatable {
+        height: 20px !important;
+        width: 20px !important;
+        font-size: 0.75rem;
+        border-radius: 0.35rem !important;
+    }
 }
 
 .table.ci-table.dataTable {
