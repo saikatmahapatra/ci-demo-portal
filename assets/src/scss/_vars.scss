@@ -1,0 +1,24 @@
+// Custom Variables (user defined variables)
+//-----------------------------------------------------
+// Microsoft metro menu color
+$color_purple: #5133AB;
+$color_red: #AC193D;
+$color_orange: #DC572E;
+$color_green: #00A600;
+$color_blue: #2672EC;
+$bootstrap3_blue: #337ab7;
+// Brand primary color
+$brand-primary-color: #0061f2;
+//CI Calendar
+$calendar-border: #ced4da;
+$calendar-heading-bg: #ced4da;
+$day_selected: lighten($color_blue, 30%);
+$calendar-week-bg: #ced4da;
+$calendar-grid-border: lighten(#000, 70%);
+$today-highlight: $color_blue;
+$holiday: lighten($color_red, 40%);
+$leave: lighten($color_orange, 20%);
+$has-data: lighten($color_green, 50%);
+// Name initial DP
+$name-dp-background-color: #dee2e6;
+$name-dp-text-color: #6c757d;
