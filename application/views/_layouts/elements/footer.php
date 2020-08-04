@@ -8,5 +8,8 @@
                 <a href="#">Terms &amp; Conditions</a>
             </div>
         </div>
+        <div class="footer-server-info small text-right">
+            <?php echo $this->config->item('app_version');?>
+        </div>
     </div>
 </footer>

@@ -53,6 +53,6 @@ $config['app_faq'] = array(
 
 $config['app_copy_right'] = '&copy; '.date('Y').' United Exploration India Private Limited. All Rights Reserved.';
 $config['app_admin_copy_right'] = 'Copyright &copy; '.date('Y').' <a href="http://unitedexploration.co.in" target="_blank">United Exploration</a>';
-$config['app_version'] = 'App Version 9.0'; // Recommended format CIVerMajor.RelVer.UIVer
+$config['app_version'] = 'Version v10.0.0'; // Recommended format CIVerMajor.RelVer.UIVer
 
 
