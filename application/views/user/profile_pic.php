@@ -57,9 +57,10 @@
 							<?php echo form_error('userfile'); ?>
 							<div class="form-text small text-muted bg-light p-1">						
 								<ul>
-									<li>The image should be in <span class="font-weight-bold">.jpg, .jpeg</span> format and should be less than <span class="font-weight-bold">1 MB</span> in size. Verify the quality and size of the image before uploading it.</li>
+									<li>Only <span class="font-weight-bold">.jpg, .jpeg</span> image extensions are allowed.</li>
+									<li>Image file size should not exceed <span class="font-weight-bold">300 KB.</span></li>
 									<li>Upload your individual photo and not a group photo or logo/animation or cartoon etc.</li>
-									<li>Upload photos taken in professional attire only.</li>							
+									<li>Upload photos taken in professional attire only.</li>
 									<li>Photos must have plain back ground.</li>
 									<li>You can delete the uploaded photo anytime if you want.</li>
 								</ul>						
