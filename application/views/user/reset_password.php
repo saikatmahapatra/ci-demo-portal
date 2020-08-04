@@ -32,7 +32,7 @@
 			</div>
 			<div class="card-footer text-center">
 				<div class="small"><a href="<?php echo base_url($this->router->class.'/login');?>">Return to login</a></div>
-				<div class="small"><a href="#">Need an account? Sign up!</a></div>
+				<div class="small"><a href="<?php echo base_url('user/create_my_account'); ?>">Need an account? Sign up!</a></div>
 			</div>
 		</div>
 	</div>

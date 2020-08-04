@@ -61,7 +61,7 @@
                                 <th scope="col">L2 Approver</th>
                                 <th scope="col">Duration</th>
                                 <th scope="col">Status</th>
-                                <th scope="col"></th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -160,7 +160,7 @@
                                 <th scope="col">L2 Approver</th>
                                 <th scope="col">Duration</th>
                                 <th scope="col">Status</th>
-                                <th scope="col"></th>
+                                <th scope="col">Action</th>
                             </tr>
                         </tfoot>
                     </table>

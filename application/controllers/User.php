@@ -372,6 +372,12 @@ class User extends CI_Controller {
             return false;
         }
     }
+
+    function create_my_account() {
+		$this->data['page_title'] = "Create Account";
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/create_my_account', $this->data, true);
+        $this->load->view('_layouts/layout_login', $this->data);
+    }
 	
 	function create_account() {
 		########### Validate User Auth #############

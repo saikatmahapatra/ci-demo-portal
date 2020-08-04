@@ -83,7 +83,7 @@
                                 <th scope="col">Task</th>
                                 <th scope="col">Hours</th>
                                 <th scope="col">Task Description</th>
-                                <th scope="col"></th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -129,7 +129,7 @@
                                 <th scope="col">Task</th>
                                 <th scope="col">Hours</th>
                                 <th scope="col">Task Description</th>
-                                <th scope="col"></th>
+                                <th scope="col">Action</th>
                             </tr>
                         </tfoot>
                     </table>

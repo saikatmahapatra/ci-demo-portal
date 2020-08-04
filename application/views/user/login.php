@@ -31,7 +31,7 @@
 				<?php echo form_close(); ?>
 			</div>
 			<div class="card-footer text-center">
-				<div class="small"><a href="#">Need an account? Sign up!</a></div>
+				<div class="small"><a href="<?php echo base_url('user/create_my_account'); ?>">Need an account? Sign up!</a></div>
 			</div>
 		</div>
 	</div>
