@@ -1361,7 +1361,7 @@ class User extends CI_Controller {
             $upload_param = array(
                 'upload_path' => $upload_path, // original upload folder
                 'allowed_types' => $allowed_ext, // allowed file types,
-                'max_size' => '2048', // max 1MB size,
+                'max_size' => '300', // 300kb,
                 'file_new_name' => $upload_related_to_id . '_' . md5($upload_file_type_name . '_' . time()),
 				'thumb_img_require' => TRUE,
 				'thumb_img_path'=>$upload_path,
