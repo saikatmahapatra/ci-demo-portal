@@ -6,8 +6,7 @@
 				<img class="mb-4 img-error" src="<?php echo base_url('assets/dist/img/error-404-monochrome.svg');?>" />
 				<p class="lead">This requested URL was not found on this server.</p>
 				<a href="<?php echo base_url();?>">
-					<i class="fas fa-arrow-left mr-1"></i>
-					Return to Dashboard
+					Go to Dashboard <i class="fas fa-arrow-right ml-1"></i>
 				</a>
 			</div>
 		</div>

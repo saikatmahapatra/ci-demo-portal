@@ -7,8 +7,7 @@
 				<p class="lead">Unauthorized</p>
 				<p>Access to this resource is denied. You are not authorized to access the rosource.</p>
 				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/login');?>">
-					<i class="fas fa-arrow-left mr-1"></i>
-					Login to continue
+					Login to continue <i class="fas fa-arrow-right ml-1"></i>
 				</a>
 			</div>
 		</div>
