@@ -4,7 +4,7 @@
 			<div class="card-header"><h3 class="font-weight-light my-4"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h3></div>
 			<div class="card-body">
 				<div class="alert alert-warning">
-					Sorry! We're to process your request. Please contact to your local HR/Admin for further details.
+					Sorry! We're unable to process your request. Please contact to your local HR/Admin for further details.
 				</div>
 			</div>
 			<div class="card-footer text-center">
