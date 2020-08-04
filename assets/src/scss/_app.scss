@@ -1,16 +1,58 @@
 // @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
-// @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+//@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
+//@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+// Body
 body {
-    //margin-top: 4rem;
-    background-color: #eee;
+    background-color: #eff3f9;
 }
 
-body.login {
-    margin-top: 4rem;
-    background-color: #eee;
+.footer-dark {
+    color: $gray-600;
 }
 
+.shadow {
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(31, 45, 65, 0.15) !important;
+}
+
+.shadow-right {
+    box-shadow: 0.15rem 0 1.75rem 0 rgba(31, 45, 65, 0.15);
+}
+
+.bg-gradient-primary-to-secondary {
+    background-color: $primary;
+    background-image: linear-gradient(135deg, $primary 0%, rgba(105, 0, 199, 0.8) 100%);
+}
+
+// JQUERY PACE Loader
+.pace {
+    pointer-events: none;
+    user-select: none;
+    .pace-progress {
+        background: #a9289a;
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        right: 100%;
+        width: 100%;
+        height: 2px
+    }
+    .pace-progress-inner {
+        display: block;
+        position: absolute;
+        right: 0;
+        width: 100px;
+        height: 100%;
+        box-shadow: 0 0 10px #a9289a, 0 0 5px #a9289a;
+        opacity: 1;
+        transform: rotate(3deg) translate(0px, -4px)
+    }
+}
+
+.pace-inactive {
+    display: none;
+}
+
+// AJAX - Loader
 #loader-wrapper {
     position: fixed;
     display: none;
@@ -37,67 +79,8 @@ body.login {
     margin: -16px 0 0 -16px;
 }
 
-@mixin linear-gradient($from,
-$to) {
-    background: $to;
-    background: -moz-linear-gradient(top, $from 0%, $to 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $from), color-stop(100%, $to));
-    background: -webkit-linear-gradient(top, $from 0%, $to 100%);
-    background: -o-linear-gradient(top, $from 0%, $to 100%);
-    background: linear-gradient(to bottom, $from 0%, $to 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,
-    startColorstr=#{$from},
-    endColorstr=#{$to})
-}
-
-.logo {
-    width: 65px;
-}
-
-.logo-login {
-    width: 150px;
-}
-
-.nav-logo {
-    width: 180px;
-    @media (max-width: 576px) {
-        width: 130px;
-    }
-}
-
-.navbar-brand-centered-logo {
-    padding: 0;
-    img {
-        width: 150px;
-        @media (max-width: 576px) {
-            width: 150px;
-        }
-    }
-    margin: 0 auto;
-}
-
-.page-title {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    font-weight: 300;
-}
-
-// Extra small devices (portrait phones, less than 576px)
-// No media query since this is the default in Bootstrap
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {}
-
 //Scroll To Top
-.scrollup {
+.scroll-to-top {
     width: 40px;
     height: 40px;
     position: fixed;
@@ -110,32 +93,22 @@ $to) {
     }
 }
 
-// T&C
-.tnc-content {
-    font-size: .75rem;
-    h1,
-    h2 {
-        font-size: 1rem;
-    }
+// Page Title 
+.page-title {
+    font-size: 1.75rem;
+    margin-top: 1.5rem;
+    font-weight: 400;
 }
 
-// Images
-.thumbnail {
-    margin-bottom: 20px;
-    padding: 0px;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
-}
-
+// Profile, Employee List
 .dp {
     //transition: all 0.2s ease-in-out;
     height: 100px;
     width: 100px;
     // name initial dp
     border-radius: 50% !important;
-    background: $name-dp-background-color;
-    color: $name-dp-text-color;
+    background: $gray-300;
+    color: $gray-600;
     line-height: 100px;
     font-size: 2rem;
     text-align: center;
@@ -148,18 +121,100 @@ $to) {
     cursor: pointer; // as link is there
     // name initial dp
     border-radius: 50% !important;
-    background: $name-dp-background-color;
-    color: $name-dp-text-color;
+    background: $gray-300;
+    color: $gray-600;
     line-height: 50px;
     font-size: .975rem;
     text-align: center;
 }
 
-.more-less {
-    float: right;
-    color: #212121;
+// Form Style
+// .form-control,
+// .custom-select {
+//     &:focus {
+//         border-color: $primary;
+//         box-shadow: 0 0 0 0.0625rem $primary;
+//     }
+// }
+// .custom-control-input {
+//     ~.custom-control-label {
+//         &::before {
+//             border-color: $primary;
+//         }
+//     }
+//     &:focus {
+//         ~.custom-control-label::before {
+//             border-color: $primary;
+//             box-shadow: 0 0 0 0.0625rem $primary;
+//         }
+//     }
+// }
+// .custom-file-input {
+//     &:focus {
+//         ~.custom-file-label {
+//             border-color: $primary;
+//             box-shadow: 0 0 0 0.0625rem $primary;
+//         }
+//     }
+// }
+label.optional::after {
+    content: ' optional';
+    font-size: 0.875rem;
+    color: $gray-500;
 }
 
+.validation-error {
+    color: $red;
+    font-size: 0.875rem;
+}
+
+.select2-selection {
+    height: calc(2.0625rem + 2px) !important;
+}
+
+.select2-container .select2-selection--multiple {
+    display: inline-table !important;
+    width: 100%;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered,
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 31px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 33px !important;
+}
+
+.select2-container--default .select2-selection--single {
+    border: $input-border-width solid $input-border-color !important;
+    // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+    @if $enable-rounded {
+        // Manually use the if/else instead of the mixin to account for iOS override
+        border-radius: $input-border-radius;
+    }
+    @else {
+        // Otherwise undo the iOS default
+        border-radius: 0;
+    }
+    @include box-shadow($input-box-shadow);
+    @include transition($input-transition);
+    // Unstyle the caret on `<select>`s in IE10+.
+    &::-ms-expand {
+        background-color: transparent;
+        border: 0;
+    }
+    // Customize the `:focus` state to imitate native WebKit styles.
+    @include form-control-focus();
+}
+
+.ci-select2 {
+    .select2-container {
+        max-width: 100%;
+    }
+}
+
+// Data List Grid
 .ci-dl {
     dt {
         font-weight: 400;
@@ -179,21 +234,434 @@ $to) {
     border: 1px solid $red;
 }
 
-.user-profile-section {
-    margin: 10px 0px 15px 0px;
-    .section-heading {
-        color: $gray-600;
-        font-weight: 700;
-        font-size: 90%;
+// Table Style
+.table.ci-table,
+.datatable.ci-table {
+    font-size: 95%;
+    .btn-datatable {
+        height: 20px !important;
+        width: 20px !important;
+        font-size: 0.75rem;
+        border-radius: 0.35rem !important;
+    }
+    clear: both;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    max-width: none !important;
+    border-collapse: collapse !important;
+    thead th,
+    tfoot th {
+        font-weight: 600;
+        color: $primary;
+    }
+    .btn-icon {
+        padding: 0;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 100%;
+        flex-shrink: 0;
+    }
+    .btn-transparent-dark {
+        color: $white;
+        //background-color: rgba(31, 45, 65, .085);
+        border-color: transparent;
+        color: rgba(31, 45, 65, 0.5) !important;
+        &:hover {
+            color: $white;
+            background-color: rgba(31, 45, 65, 0.1);
+            border-color: transparent;
+        }
+        &:focus {
+            color: $white;
+            background-color: rgba(31, 45, 65, 0.1);
+            border-color: transparent;
+            box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+        }
+    }
+    tbody tr td {
+        .badge {
+            font-weight: 500;
+        }
     }
 }
 
-.no-gutters {
-    margin-right: 0;
-    margin-left: 0;
+.dataTable.table-hover tbody tr:hover {
+    background-color: rgba(227, 230, 236, 0.25);
 }
 
-.footer {
-    height: 50px;
-    padding: 1rem;
+.dataTable.table-bordered {
+    border: 1px solid #e3e6ec;
+}
+
+.dataTables_wrapper {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#employees-datatable {
+    .media {
+        a {
+            text-decoration: none;
+        }
+    }
+    a.emp-name,
+    a.emp-phone,
+    a.emp-email {
+        color: inherit;
+        &:hover {
+            color: inherit;
+        }
+    }
+}
+
+// CI - Calendar - Timesheet
+.ci-calendar {
+    border: 1px solid $calendar-grid-border;
+    th {
+        //background: $calendar-heading-bg;
+        color: $gray-700;
+        vertical-align: center !important;
+        text-align: center;
+        border-top: 1px solid $calendar-grid-border;
+        //border-top: none;
+    }
+    tr.wk_nm {
+        //background: $calendar-week-bg;
+    }
+    td {
+        text-align: center;
+        border: 1px solid $calendar-grid-border;
+        vertical-align: center !important;
+    }
+    td[data-calday='allowed_day'].day {
+        cursor: pointer;
+        a {
+            color: inherit;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+    td[data-calday='disabled_day'] {
+        opacity: 0.5;
+        cursor: default !important;
+        background: $gray-200;
+    }
+    .highlight {
+        background: $today-highlight;
+        color: $white;
+    }
+    .prevcell a,
+    .nextcell a {
+        color: $gray-900 !important;
+        text-decoration: none !important;
+    }
+    .day.selected {
+        background: $day_selected !important;
+    }
+    .day.holiday {
+        background: $holiday;
+    }
+    .day.leave {
+        background: $leave;
+    }
+    .day.filled {
+        background: $has-data;
+    }
+}
+
+.i-today {
+    background-color: $today-highlight;
+}
+
+.i-selected {
+    background-color: $day_selected;
+}
+
+.i-leave {
+    background-color: $leave;
+}
+
+.i-holiday {
+    background-color: $holiday;
+}
+
+.i-disabled-date {
+    background-color: $gray-200;
+}
+
+.i-has-data {
+    background-color: $has-data;
+}
+
+// CI - JQURY Full Calendar
+#ci_full_calendar {
+    .fc-header-toolbar {
+        h2 {
+            font-size: 1rem;
+            font-weight: 400;
+        }
+    }
+    .fc-title {
+        font-size: 13px;
+    }
+    .fc-header-toolbar {
+        h2 {
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        // .fc-button {
+        //     padding: 0.25rem 0.5rem;
+        //     font-size: 0.875rem;
+        //     line-height: 1.5;
+        // }
+    }
+    .fc-widget-header {
+        font-size: .875rem;
+    }
+    // Worked
+    // .fc-event {
+    //     width: 17px;
+    //     border-radius: 11px;
+    // }
+    // .fc-content {
+    //     color: rgba(255, 0, 0, 0.01);
+    // }
+}
+
+// CI - Process Wizard
+.ci-wizard {
+    padding: 0 0 10px 0;
+    >.ci-wizard-step {
+        padding: 0;
+        position: relative;
+        @media(max-width: 575px) {
+            margin-top: 15px;
+            margin-bottom: 30px;
+            padding-top: 15px;
+        }
+        +.ci-wizard-step {}
+        .ci-wizard-stepnum {
+            color: $gray-700;
+        }
+        .ci-wizard-info {
+            color: $gray-700;
+            label {
+                cursor: pointer;
+            }
+        }
+        > {
+            .ci-wizard-dot {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                display: block;
+                background: lighten($yellow, 30%);
+                top: 45px;
+                left: 50%;
+                margin-top: -15px;
+                margin-left: -15px;
+                border-radius: 50%;
+                @media(max-width: 575px) {
+                    top: 0px;
+                }
+                &:after {
+                    content: ' ';
+                    width: 14px;
+                    height: 14px;
+                    background: $yellow;
+                    border-radius: 50px;
+                    position: absolute;
+                    top: 8px;
+                    left: 8px;
+                }
+            }
+            .ci-wizard-dot.A {
+                background: lighten($green, 30%);
+                &:after {
+                    background: $green;
+                }
+            }
+            .ci-wizard-dot.R {
+                background: lighten($red, 30%);
+                &:after {
+                    background: $red;
+                }
+            }
+            .progress {
+                position: relative;
+                border-radius: 0px;
+                height: 8px;
+                box-shadow: none;
+                margin: 20px 0;
+                @media(max-width: 575px) {
+                    display: none;
+                }
+                >.progress-bar {
+                    width: 0px;
+                    box-shadow: none;
+                    background: lighten($yellow, 30%);
+                }
+            }
+        }
+        &.complete>.progress>.progress-bar {
+            width: 100%;
+        }
+        &.active>.progress>.progress-bar {
+            width: 50%;
+        }
+        &:first-child.active>.progress>.progress-bar {
+            width: 0%;
+        }
+        &:last-child.active>.progress>.progress-bar {
+            width: 100%;
+        }
+        &.disabled>.ci-wizard-dot {
+            background-color: $gray-300;
+            &:after {
+                opacity: 0;
+            }
+        }
+        &:first-child>.progress {
+            left: 50%;
+            width: 50%;
+        }
+        &:last-child>.progress {
+            width: 50%;
+        }
+        &.disabled a.ci-wizard-dot {
+            pointer-events: none;
+        }
+    }
+}
+
+// Step
+.step {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    .step-item {
+        flex: 1 1 0;
+        position: relative;
+        text-align: center;
+        &:not(:first-child) {
+            &::before {
+                background-color: #687281;
+                content: "";
+                height: 0.125rem;
+                left: -50%;
+                position: absolute;
+                top: 0.4375rem;
+                width: 100%;
+                z-index: 0;
+            }
+        }
+        .step-item-link {
+            color: #687281;
+            position: relative;
+            display: inline-block;
+            padding-top: 1.25rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            text-decoration: none;
+            z-index: 1;
+            &::before {
+                background-color: #687281;
+                border: 0.125rem solid #fff;
+                border-radius: 100%;
+                content: "";
+                display: block;
+                height: 1rem;
+                width: 1rem;
+                left: 50%;
+                position: absolute;
+                top: 0;
+                transform: translateX(-50%);
+                z-index: 1;
+            }
+        }
+    }
+    .step-item.active a::before {
+        background: #fff;
+        border: 0.125rem solid #687281;
+    }
+    .step-item.active~.step-item::before {
+        background: #d7dce3;
+    }
+}
+
+// CI - Cards Style
+.ci-card {
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(31, 45, 65, 0.15);
+    border: 1px solid rgba(31, 45, 65, 0.125);
+    border-radius: 0.35rem;
+    background-color: $white;
+    .card-body {
+        flex: 1 1 auto;
+        padding: 1.25rem;
+    }
+    .card-header {
+        color: $primary;
+        padding: 1rem 1.35rem;
+        font-weight: 500;
+        border-bottom: 1px solid rgba(31, 45, 65, 0.125);
+        background-color: rgba(31, 45, 65, 0.03);
+        &:first-child {
+            border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+        }
+    }
+    .card-footer {
+        background-color: $white;
+        border-top: none;
+    }
+}
+
+.user-profile-page-card {
+    .dp-section {
+        text-align: center;
+    }
+}
+
+.profile-card-conntainer {
+    margin-bottom: 15px;
+    .ci-card,
+    .card {
+        .card-body {
+            padding: 5px 15px 15px 15px;
+            .other-info {
+                font-size: 80%;
+            }
+        }
+    }
+}
+
+// BS - Date Time Picker
+.bs-datepicker-timesheet {
+    .datepicker-inline {
+        .table-condensed {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: $spacer;
+            background-color: $table-bg; // Reset for nesting within parents with `background-color`.
+            th,
+            td {
+                padding: .5rem;
+                vertical-align: top;
+                border-top: 0;
+            }
+            thead th {
+                vertical-align: bottom;
+                border-bottom: (2 * $table-border-width) solid $table-border-color;
+            }
+            tbody+tbody {
+                border-top: 0;
+            }
+        }
+    }
+    .datepicker table tr td.highlighted {
+        background: #ffcbd0;
+    }
+    .datepicker table tr td.green {
+        background: #c0f5b0;
+    }
 }

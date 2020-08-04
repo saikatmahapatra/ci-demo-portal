@@ -33,17 +33,37 @@
     <![endif]-->
 </head>
 
-<body class="body-with-sidebar-layout" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
-	
-<div class="wrapper">
-        <!-- Sidebar  -->
-        <?php echo $el_sidebar; ?>
-        <!-- Page Content  -->
-        <div id="content" class="">
-            <?php echo $el_navbar; ?>
-            <?php echo $maincontent; ?>
-        </div> <!--/#content-->
-    </div>
+<body class="sb-nav-fixed" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
+    <?php echo $el_navbar; ?>
+    <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <?php echo $el_sidebar; ?>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <?php echo $maincontent; ?>
+                        <!-- <h1 class="mt-4">Sidenav Light</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Sidenav Light</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                This page is an example of using the light side navigation option. By appending the
+                                <code>.sb-sidenav-light</code>
+                                class to the
+                                <code>.sb-sidenav</code>
+                                class, the side navigation will take on a light color scheme. The
+                                <code>.sb-sidenav-dark</code>
+                                is also available for a darker option.
+                            </div>
+                        </div> -->
+                    </div>
+                </main>
+                <?php echo $el_footer; ?>
+            </div>
+        </div>
     <?php echo $el_scroll_to_top; ?>
     <?php echo $el_loader; ?>
     <?php echo $el_confirmation_modal; ?>
@@ -87,47 +107,23 @@
 	<!--Application Specific JS Loading Through Controllers-->
     <?php echo isset($app_js) ? $app_js : ''; ?>
     <script type="text/javascript">
-        $(document).ready(function () {
-            // $("#sidebar").mCustomScrollbar({
-            //     theme: "minimal"
-            // });
-            // static nav
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-
-            //fixed nav
-            // $('#sidebarCollapse').on('click', function () {
-            //     $('#sidebar, #content').toggleClass('active');
-            //     $('.collapse.in').toggleClass('in');
-            //     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            // });
-
-            // overlaynav
-            // $('#dismiss, .overlay').on('click', function () {
-            //     $('#sidebar').removeClass('active');
-            //     $('.overlay').removeClass('active');
-            // });
-
-            // $('#sidebarCollapse').on('click', function () {
-            //     $('#sidebar').addClass('active');
-            //     $('.overlay').addClass('active');
-            //     $('.collapse.in').toggleClass('in');
-            //     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            // });
-            $('#locksidebar').on('click', function(){
-                var xhr = new Ajax();
-                xhr.url = SITE_URL + ROUTER_DIRECTORY + 'home' + '/sidebar_toggle';
-                xhr.data = {active: true};
-                var promise = xhr.init();
-                promise.done(function(response) {
-                    window.location.reload(); 
-                });
-                promise.always(function() {
-                    //window.location.reload();
-                });
-            });
-        });
+        // $(document).ready(function () {
+        //     $('#sidebarCollapse').on('click', function () {
+        //         $('#sidebar').toggleClass('active');
+        //     });
+        //     $('#locksidebar').on('click', function(){
+        //         var xhr = new Ajax();
+        //         xhr.url = SITE_URL + ROUTER_DIRECTORY + 'home' + '/sidebar_toggle';
+        //         xhr.data = {active: true};
+        //         var promise = xhr.init();
+        //         promise.done(function(response) {
+        //             window.location.reload(); 
+        //         });
+        //         promise.always(function() {
+        //             //window.location.reload();
+        //         });
+        //     });
+        // });
     </script>
 </body>
 </html>

@@ -295,15 +295,15 @@ class Timesheet extends CI_Controller {
 			$html = '';
 			//add html for action
             $action_html = '';
-            $action_html.= '<a href="#" title="Details" class="btn btn-sm btn-light mr-1 text-secondary" data-toggle="modal" data-target="#timesheetDetailsInfoModal" data-date="'.$this->common_lib->display_date($result['timesheet_date']).'" data-emp="'.$this->common_lib->get_sess_user('user_firstname').' '.$this->common_lib->get_sess_user('user_lastname').'" data-project="'.$result['project_name'].'-'.$result['project_number'].'" data-task="'.$result['task_name'].'" data-hour="'.$result['timesheet_hours'].'" data-desc="'.$result['timesheet_description'].'">'.$this->common_lib->get_icon('info', 'dt_action_icon').'</a>';
+            $action_html.= '<a href="#" title="Details" class="btn btn-datatable btn-icon btn-transparent-dark" data-toggle="modal" data-target="#timesheetDetailsInfoModal" data-date="'.$this->common_lib->display_date($result['timesheet_date']).'" data-emp="'.$this->common_lib->get_sess_user('user_firstname').' '.$this->common_lib->get_sess_user('user_lastname').'" data-project="'.$result['project_name'].'-'.$result['project_number'].'" data-task="'.$result['task_name'].'" data-hour="'.$result['timesheet_hours'].'" data-desc="'.$result['timesheet_description'].'">'.$this->common_lib->get_icon('info', 'dt_action_icon').'</a>';
 
             if(($year == $current_year) && ($month == $current_month)){
                 $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
-                    'class' => 'btn btn-sm btn-light mr-1 text-secondary',
+                    'class' => 'btn btn-datatable btn-icon btn-transparent-dark',
                     'title' => 'Edit',
                 ));
                 $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), $this->common_lib->get_icon('delete','dt_action_icon'), array(
-                    'class' => 'btn btn-sm btn-light mr-1 text-secondary btn-delete',
+                    'class' => 'btn btn-datatable btn-icon btn-transparent-dark btn-delete',
                     'data-confirmation'=>false,
                     'data-confirmation-message'=>'Are you sure, you want to delete this?',
                     'title' => 'Delete',

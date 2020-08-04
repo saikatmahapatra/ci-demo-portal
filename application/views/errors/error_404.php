@@ -1,11 +1,14 @@
-<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-<div class="row">
-	<div class="col-lg-12">
-		<div class="card ci-card">
-			<div class="card-body">
-            <div class="alert alert-danger"><?php echo $this->common_lib->get_icon('warning'); ?> Sorry! The requested page could not found.</div>
-            <a href="<?php echo base_url();?>" class="btn btn-outline-secondary">Go to home</a>
-			</div><!--/.card-body-->
-		</div><!--/.card-->
+<!-- <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1> -->
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-6">
+			<div class="text-center mt-4">
+				<img class="mb-4 img-error" src="<?php echo base_url('assets/dist/img/error-404-monochrome.svg');?>" />
+				<p class="lead">This requested URL was not found on this server.</p>
+				<a href="<?php echo base_url();?>">
+					Go to Dashboard <i class="fas fa-arrow-right ml-1"></i>
+				</a>
+			</div>
+		</div>
 	</div>
 </div>

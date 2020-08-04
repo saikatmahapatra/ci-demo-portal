@@ -1,6 +1,6 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-<p><?php echo $this->common_lib->get_icon('question'); ?> Looking for help or information? Click <a class=""
+<p class="small"><?php echo $this->common_lib->get_icon('question'); ?> Looking for help or information? Click <a class=""
         href="#" data-toggle="modal" data-target="#timesheetCalModal">here to read.</a></p>
 
 <div class="row">
@@ -107,7 +107,7 @@
                     <div class="mt-3 tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
 
                         <div class="table-responsive">
-                            <table id="timesheet-datatable" class="table ci-table table-sm table-striped w-100">
+                            <table id="timesheet-datatable" class="table ci-table table-bordered table-hover w-100">
                                 <thead class="">
                                     <tr>
                                         <th scope="col">Date</th>
@@ -119,6 +119,16 @@
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
+                                <tfoot class="">
+                                    <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Project</th>
+                                        <th scope="col">Task</th>
+                                        <th scope="col">Hours</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
 

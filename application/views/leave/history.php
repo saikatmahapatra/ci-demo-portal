@@ -16,17 +16,17 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table ci-table table-sm table-striped w-100">
+                    <table class="table ci-table table-bordered table-hover w-100">
                         <thead class="">
                             <tr>
                                 <th scope="col">Application No</th>
-                                <th scope="col">Leave Type</th>
-                                <th scope="col">From Date</th>
-                                <th scope="col">To Date</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">From</th>
+                                <th scope="col">To</th>
                                 <th scope="col">Days</th>
                                 <th scope="col">Status</th>
                                 <!-- <th scope="col">Reason</th>-->
-                                <th scope="col"></th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,13 +43,13 @@
                                 <td><?php echo $this->common_lib->display_date($row['leave_to_date']);?></td>
                                 <td><?php echo $row['applied_for_days_count'];?></td>
                                 <td>
-                                    <span class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>">
+                                    <span class="<?php echo $leave_status_arr[$row['leave_status']]['badge_css'];?>">
                                         <?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
                                 </td>
                                 <!-- <td><?php echo isset($row['leave_reason']) ? word_limiter($row['leave_reason'], 5) : '';?></td> -->
                                 <td>
                                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/history');?>"
-                                        class="btn btn-sm btn-light text-secondary" 
+                                        class="btn btn-datatable btn-icon btn-transparent-dark" 
                                         title="Details"><?php echo $this->common_lib->get_icon('info'); ?></a>
                                 </td>
                             </tr>
@@ -65,6 +65,18 @@
 			}
 			?>
                         </tbody>
+                        <tfoot class="">
+                            <tr>
+                                <th scope="col">Application No</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">From</th>
+                                <th scope="col">To</th>
+                                <th scope="col">Days</th>
+                                <th scope="col">Status</th>
+                                <!-- <th scope="col">Reason</th>-->
+                                <th scope="col">Action</th>
+                            </tr>
+                        </tfoot>
                     </table>
                     <div class="float-right"><?php echo $pagination_link; ?></div>
                 </div>

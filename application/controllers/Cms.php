@@ -52,9 +52,9 @@ class Cms extends CI_Controller {
         $this->data['breadcrumbs'] = $this->breadcrumbs->show();
         
         $this->data['arr_status_flag'] = array(
-            'Y'=>array('text'=>'Active', 'css'=>''),
-            'N'=>array('text'=>'Inactive', 'css'=>''),
-            'A'=>array('text'=>'Archived', 'css'=>'')
+            'Y'=>array('text'=>'Active', 'css'=>'badge badge-success badge-pill'),
+            'N'=>array('text'=>'Inactive', 'css'=>'badge badge-warning badge-pill'),
+            'A'=>array('text'=>'Archived', 'css'=>'badge badge-danger badge-pill')
         );
 		
 		//Pagination
@@ -131,12 +131,12 @@ class Cms extends CI_Controller {
             //add html for action
             $action_html = '';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' .$result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
-                'class' => 'btn btn-sm btn-light text-secondary',
+                'class' => 'btn btn-datatable btn-icon btn-transparent-dark ',
                 'title' => 'Edit',
             ));
             $action_html.='&nbsp;';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), $this->common_lib->get_icon('delete','dt_action_icon'), array(
-                'class' => 'btn btn-sm btn-light text-secondary btn-delete',
+                'class' => 'btn btn-datatable btn-icon btn-transparent-dark  btn-delete',
 				'data-confirmation'=>true,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',
                 'title' => 'Delete',

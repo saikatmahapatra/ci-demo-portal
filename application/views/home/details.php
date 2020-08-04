@@ -16,7 +16,7 @@ $row = $data_rows[0];
 						<?php echo $this->common_lib->display_date($row['content_created_on'],true,null); ?>
 				</div>
 				<?php echo isset($row['content_text']) ? $row['content_text'] : '';?>
-				<a href="<?php echo $redirect_back_url; ?>" class=""><?php echo $this->common_lib->get_icon('left_back'); ?> Go back to dashboard</a>
+				<a href="<?php echo $redirect_back_url; ?>" class=""><?php echo $this->common_lib->get_icon('left_arrow'); ?> <?php echo ($this->uri->segment(4) == 'all_news') ? 'All News' : 'Return to dashboard'; ?></a>
 			</div><!--/.card-body-->
 		</div><!--/.card-->
 	</div>

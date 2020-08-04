@@ -11,7 +11,7 @@
             <div class="form-group col-12">
                 <label for="user_email" class="required">Email</label>
                 <?php echo form_input(array('name' => 'user_email', 'value' => set_value('user_email'),'id' => 'user_email','class' => 'form-control', 'placeholder' => '','minlength' => '','maxlength' => '','aria-describedby'=>'emailHelpBlock')); ?>
-                <div id="emailHelpBlock" class="form-text ci-form-help-text text-muted">We will not
+                <div id="emailHelpBlock" class="form-text small text-muted">We will not
                     share your email to any third party websites.</div>
                 <?php echo form_error('user_email'); ?>
             </div>
@@ -21,7 +21,7 @@
             <div class="form-group col-12">
                 <label for="user_password" class="required">Password</label>
                 <?php echo form_password(array('name' => 'user_password','value' => set_value('user_password'),'id' => 'user_password', 'class' => 'form-control', 'placeholder' => '', 'minlength' => '8','maxlength' => '20', 'aria-describedby'=>'passwordHelpBlock')); ?>
-                <div id="passwordHelpBlock" class="form-text ci-form-help-text text-muted">Your password
+                <div id="passwordHelpBlock" class="form-text small text-muted">Your password
                     must be 8-20 characters long, contain letters and numbers, and must not contain
                     spaces, special characters, or emoji.</div>
                 <?php echo form_error('user_password'); ?>
@@ -67,7 +67,7 @@
                     <?php echo form_upload(array('name' => 'userfile', 'id' => 'userfile', 'class' => 'custom-file-input', 'aria-describedby'=>'uploaderHelpBlock')); ?>
                     <label class="custom-file-label" for="userfile">Choose file</label>
                 </div>
-                <div id="emailHelpBlock" class="form-text ci-form-help-text text-muted">doc, docx, pdf,
+                <div id="emailHelpBlock" class="form-text small text-muted">doc, docx, pdf,
                     jpg, png formats are supported. File size should not exceed 2 MB</div>
                 <?php echo form_error('userfile'); ?>
             </div>

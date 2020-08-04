@@ -76,9 +76,9 @@ class User extends CI_Controller {
         );
 
         $this->data['user_status_arr'] = array(
-            'N'=>array('text'=>'Inactive', 'css'=>''),
-            'A'=>array('text'=>'Closed', 'css'=>''),
-            'Y'=>array('text'=>'Active', 'css'=>'')
+            'N'=>array('text'=>'Inactive', 'css'=>'badge badge-warning badge-pill'),
+            'A'=>array('text'=>'Closed', 'css'=>'badge badge-danger badge-pill'),
+            'Y'=>array('text'=>'Active', 'css'=>'badge badge-success badge-pill')
         );
     }
 
@@ -195,13 +195,13 @@ class User extends CI_Controller {
             }
 
             //$row[] = '<div>'.$img. $result['user_firstname'] . ' ' . $result['user_lastname'].'</div>';
-            $row[] = '<div><div class="media"><a class="emp-nameX" target="_blank" href="'.base_url('user/profile/'.$result['id']).'">'.$img.'</a><div class="media-body"><div><a class="emp-nameX" target="_blank" href="'.base_url('user/profile/'.$result['id']).'">'.$result['user_firstname'] . ' ' . $result['user_lastname'].'</a></div><div class="small">'.$result['designation_name'].'</div></div></div></div>';
+            $row[] = '<div><div class="media"><a class="emp-nameX" target="_blank" href="'.base_url('user/profile/'.$result['id']).'">'.$img.'</a><div class="media-body"><div><a class="emp-name" target="_blank" href="'.base_url('user/profile/'.$result['id']).'">'.$result['user_firstname'] . ' ' . $result['user_lastname'].'</a></div><div class="small text-muted">'.$result['designation_name'].'</div></div></div></div>';
             //$row[] = $result['designation_name'];
             $row[] = $result['user_emp_id'];
             $email_arr = explode('@',$result['user_email']);
             $masked_domain = '@'.substr($email_arr[1], 0, 3).'****'.substr($email_arr[1], -3, 3);
-            $row[] = '<a class="emp-emailX" href="mailto:'.$result['user_email'].'">'.$result['user_email'].'</a>';
-            $row[] = '<a class="emp-phoneX" href="tel:'.$result['user_phone1'].'">'.$result['user_phone1'].'</a>';
+            $row[] = '<a class="emp-email" href="mailto:'.$result['user_email'].'">'.$result['user_email'].'</a>';
+            $row[] = '<a class="emp-phone" href="tel:'.$result['user_phone1'].'">'.$result['user_phone1'].'</a>';
             $data[] = $row;
         }
 
@@ -285,12 +285,12 @@ class User extends CI_Controller {
             $action_html = '';
             
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
-                'class' => 'btn btn-sm btn-light text-secondary',
+                'class' => 'btn btn-datatable btn-icon btn-transparent-dark ',
                 'title' => 'Edit'
             ));
             $action_html.='&nbsp;';
             $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), $this->common_lib->get_icon('info','dt_action_icon'), array(
-                'class' => 'btn btn-sm btn-light text-secondary',
+                'class' => 'btn btn-datatable btn-icon btn-transparent-dark ',
                 'title' => 'Details'
                 
             ));
@@ -347,7 +347,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = 'Sign in to continue';
+		$this->data['page_title'] = 'Login';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/login', $this->data, true);
         $this->load->view('_layouts/layout_login', $this->data);
     }
@@ -356,10 +356,10 @@ class User extends CI_Controller {
         $this->profile();
     }
 
-    function auth_error() {        
+    function auth_error() {
 		$this->data['page_title'] = 'Authorization Error Occured';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/auth_error', $this->data, true);
-        $this->load->view('_layouts/layout_default', $this->data);
+        $this->load->view('_layouts/layout_error', $this->data);
     }
 
     function validate_login_form_data() {
@@ -371,6 +371,12 @@ class User extends CI_Controller {
         } else {
             return false;
         }
+    }
+
+    function create_my_account() {
+		$this->data['page_title'] = "Create Account";
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/create_my_account', $this->data, true);
+        $this->load->view('_layouts/layout_login', $this->data);
     }
 	
 	function create_account() {
@@ -1355,7 +1361,7 @@ class User extends CI_Controller {
             $upload_param = array(
                 'upload_path' => $upload_path, // original upload folder
                 'allowed_types' => $allowed_ext, // allowed file types,
-                'max_size' => '2048', // max 1MB size,
+                'max_size' => '300', // 300kb,
                 'file_new_name' => $upload_related_to_id . '_' . md5($upload_file_type_name . '_' . time()),
 				'thumb_img_require' => TRUE,
 				'thumb_img_path'=>$upload_path,

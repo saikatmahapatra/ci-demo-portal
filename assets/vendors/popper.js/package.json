@@ -1,27 +1,28 @@
 {
-  "_from": "popper.js@^1.14.3",
-  "_id": "popper.js@1.14.3",
+  "_from": "popper.js@latest",
+  "_id": "popper.js@1.16.1",
   "_inBundle": false,
-  "_integrity": "sha1-FDj5jQRqz3tNeM1QK/QYrGTU8JU=",
+  "_integrity": "sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==",
   "_location": "/popper.js",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "tag",
     "registry": true,
-    "raw": "popper.js@^1.14.3",
+    "raw": "popper.js@latest",
     "name": "popper.js",
     "escapedName": "popper.js",
-    "rawSpec": "^1.14.3",
+    "rawSpec": "latest",
     "saveSpec": null,
-    "fetchSpec": "^1.14.3"
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/popper.js/-/popper.js-1.14.3.tgz",
-  "_shasum": "1438f98d046acf7b4d78cd502bf418ac64d4f095",
-  "_spec": "popper.js@^1.14.3",
-  "_where": "D:\\__Saikat\\Project\\ci-demo-app",
+  "_resolved": "https://registry.npmjs.org/popper.js/-/popper.js-1.16.1.tgz",
+  "_shasum": "2a223cb3dc7b6213d740e40372be40de43e65b1b",
+  "_spec": "popper.js@latest",
+  "_where": "E:\\Projects\\united-emp-portal",
   "author": {
     "name": "Federico Zivolo",
     "email": "federico.zivolo@gmail.com"
@@ -36,7 +37,7 @@
       "url": "https://github.com/FezVrasta/popper.js/graphs/contributors"
     }
   ],
-  "deprecated": false,
+  "deprecated": "You can find the new Popper v2 at @popperjs/core, this package is dedicated to the legacy v1",
   "description": "A kickass library to manage your poppers",
   "devDependencies": {
     "@popperjs/bundle": "^1.0.2",
@@ -46,6 +47,10 @@
     "eslint": "^4.1.1",
     "nuget-publish": "^1.0.3",
     "typescript": "^2.7.1"
+  },
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/popperjs"
   },
   "homepage": "https://popper.js.org",
   "keywords": [
@@ -69,7 +74,7 @@
     "micromatch": "^3.0.3"
   },
   "scripts": {
-    "build": "node bundle.js",
+    "build": "node bundle.js && cp index.js.flow dist/umd/popper.js.flow",
     "coverage": "COVERAGE=true yarn test",
     "lint": "eslint .",
     "postpublish": "nuget-publish && ./bower-publish.sh",
@@ -80,6 +85,8 @@
     "test": "popper-karma",
     "test:dev": "BROWSERS=Chrome NODE_ENV=development yarn test"
   },
+  "sideEffects": false,
   "types": "index.d.ts",
-  "version": "1.14.3"
+  "unpkg": "dist/umd/popper.min.js",
+  "version": "1.16.1"
 }

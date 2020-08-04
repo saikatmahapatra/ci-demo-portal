@@ -18,7 +18,7 @@
             <?php echo form_error('email'); ?>
         </div>
         <div class="form-group">
-            <label for="phone_number" class="optional">Mobile Number</label>
+            <label for="phone_number" class="optional">Phone Number</label>
             <?php echo form_input(array( 'name' => 'phone_number', 'value' => set_value('phone_number'), 'id' => 'phone_number', 'class' => 'form-control', 'placeholder' => '10-digit mobile number', 'maxlength' => '10', )); ?>
             <?php echo form_error('phone_number'); ?>
         </div>

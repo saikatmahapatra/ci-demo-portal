@@ -17,7 +17,7 @@ $row = $data_rows[0];
                     <dd class="col-lg-10"><?php echo $row['leave_req_id'];?></dd>
                     <dt class="col-lg-2">Status</dt>
                     <dd class="col-lg-10">
-                        <?php echo $leave_status_arr[$row['leave_status']]['text'];?>
+                        <span class="<?php echo $leave_status_arr[$row['leave_status']]['badge_css'];?>"><?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
                     </dd>
                     <dt class="col-lg-2">Applied on</dt>
                     <dd class="col-lg-10">
@@ -128,7 +128,7 @@ $row = $data_rows[0];
 								?>
                             <label <?php echo $set_attributes; ?> class="">
                                 <?php echo $edit_icon;?>
-                                <?php echo isset($row['leave_status']) ? '<span class="'.$leave_status_arr[$row['leave_status']]['css'].'">'.$leave_status_arr[$row['leave_status']]['text'].'</span>' : ''; ?>
+                                <?php echo isset($row['leave_status']) ? '<span class="">'.$leave_status_arr[$row['leave_status']]['text'].'</span>' : ''; ?>
                             </label>
                             <div class="small">
                                 <?php echo $this->common_lib->display_date($row['cancellation_datetime'], true);?></div>
@@ -182,7 +182,7 @@ $row = $data_rows[0];
 
                             <label <?php echo $set_attributes; ?> class="">
                                 <?php echo $edit_icon;?>
-                                <?php echo isset($row['supervisor_approver_status']) ? '<span class="'.$leave_status_arr[$row['supervisor_approver_status']]['css'].'">'.$leave_status_arr[$row['supervisor_approver_status']]['text'].'</span>' : ''; ?>
+                                <?php echo isset($row['supervisor_approver_status']) ? '<span class="">'.$leave_status_arr[$row['supervisor_approver_status']]['text'].'</span>' : ''; ?>
                             </label>
 
                             <div class="small">
@@ -238,7 +238,7 @@ $row = $data_rows[0];
 
                             <label <?php echo $set_attributes; ?> class="">
                                 <?php echo $edit_icon;?>
-                                <?php echo isset($row['director_approver_status']) ? '<span class="'.$leave_status_arr[$row['director_approver_status']]['css'].'">'.$leave_status_arr[$row['director_approver_status']]['text'].'</span>': ''; ?>
+                                <?php echo isset($row['director_approver_status']) ? '<span class="">'.$leave_status_arr[$row['director_approver_status']]['text'].'</span>': ''; ?>
                             </label>
 
                             <div class="small">

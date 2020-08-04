@@ -1,8 +1,15 @@
-<div class="small">
-    <div class="text-muted text-center">
-        <!-- <img class="logo" src="<?php echo base_url('assets/dist/img/logo-dark.png');?>"> -->
-        <?php echo $this->config->item('app_admin_copy_right');?>
-        <br>
-        <?php echo $this->config->item('app_version');?>
+<footer class="py-4 mt-auto footer-dark">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-between small">
+            <div class=""><?php echo $this->config->item('app_admin_copy_right');?></div>
+            <div>
+                <a href="#">Privacy Policy</a>
+                &middot;
+                <a href="#">Terms &amp; Conditions</a>
+            </div>
+        </div>
+        <div class="footer-server-info small text-right">
+            <?php echo $this->config->item('app_version');?>
+        </div>
     </div>
-</div>
+</footer>

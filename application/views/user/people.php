@@ -6,7 +6,7 @@
 			<div class="card-header">Data Table</div>
 			<div class="card-body">
 			<div class="table-responsive">
-				<table id="employees-datatable" class="table ci-table table-striped w-100">
+				<table id="employees-datatable" class="table ci-table table-bordered w-100">
 					<thead class="">
 						<tr>
 							<th>Name</th>
@@ -17,6 +17,15 @@
 						</tr>
 					</thead>
 					<tbody></tbody>
+					<tfoot class="">
+						<tr>
+							<th>Name</th>
+							<!-- <th>Designation</th> -->
+							<th>Emp ID</th>
+							<th>Email</th>
+							<th>Phone</th>
+						</tr>
+					</tfoot>
 				</table>
 				</div><!--/.table-responsive-->
 			</div><!--./card-body-->

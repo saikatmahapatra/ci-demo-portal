@@ -43,7 +43,7 @@
 
                 <div class="form-row">
                     <div class="form-group col-lg-6">
-                        <label for="contact_person_phone1" class="required">Mobile Number</label>
+                        <label for="contact_person_phone1" class="required">Phone Number</label>
                         <?php echo form_input(array('name' => 'contact_person_phone1','value' => set_value('contact_person_phone1'),'id' => 'contact_person_phone1','class' => 'form-control','maxlength' => '10','placeholder'=>'',)); ?>
                         <?php echo form_error('contact_person_phone1'); ?>
                     </div>

@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table id="cms-datatable" class="table ci-table table-sm table-striped w-100">
+                    <table id="cms-datatable" class="table ci-table table-bordered table-hover w-100">
                         <thead class="">
                             <tr>
                                 <th scope="col">Title</th>
@@ -26,6 +26,16 @@
                             </tr>
                         </thead>
                         <tbody></tbody>
+                        <tfoot class="">
+                            <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Created on</th>
+                                <th scope="col">Created by</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
                 <!--/.table-responsive-->

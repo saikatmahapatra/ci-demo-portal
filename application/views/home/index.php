@@ -1,6 +1,5 @@
-<?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-
+<?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <?php if(isset($profile_msg) && sizeof($profile_msg > 0)){ ?>
 <div class="row <?php echo ($display_reminder_modal == 'false') ? 'd-none' : ''; ?>" id="userReminderModal" data-display="<?php echo $display_reminder_modal; ?>">
     <div class="col-lg-12">
@@ -15,7 +14,7 @@
 </div>
 <?php } ?>
 
-<div class="row dashboard-card-widgets">
+<div class="row dashboard-card-widgets mb-4">
     <div class="col-lg-12">
         <div class="card ci-card">
             <div class="card-header">Statistics</div>
@@ -145,7 +144,7 @@
     </div>
     <div class="col-lg-4 mb-3">
         <div class="card news-card ci-card">
-            <div class="card-header">Notice Board</div>
+            <div class="card-header">Recent News</div>
             <div class="card-body p-0">
                 <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>
                 <div class="list-group list-group-flush px-0">
@@ -162,8 +161,8 @@
                 </div>
                 <?php } ?>
             </div>
-            <div class="card-footer">
-                <?php echo $pagination_link;?>
+            <div class="card-footer text-center">
+                <a class="btn btn-primary" href="<?php echo base_url('home/all_news');?>">More...</a>
             </div>
         </div><!--/.card-->
     </div>

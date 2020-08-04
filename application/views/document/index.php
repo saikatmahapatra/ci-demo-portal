@@ -20,7 +20,7 @@
                     <div class="form-group col-12">
                         <label for="userfile" class="required">Select File</label>
                         <?php echo form_upload(array('name' => 'userfile', 'id' => 'userfile','class' => 'form-control','aria-describedby'=>'docHelp'));?>
-                        <div id="docHelp" class="form-text ci-form-help-text text-muted bg-light">
+                        <div id="docHelp" class="form-text small text-muted bg-light">
                             <ul>
                                 <li>Only png, jpg, jpeg, doc, docx, pdf files are allowed.</li>
                                 <li>File size should not larger than 1 MB(1024 KB).</li>
@@ -44,7 +44,7 @@
             <div class="card-header">Data Table</div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table ci-table table-sm table-striped w-100">
+                    <table class="table ci-table table-bordered table-hover w-100">
                         <thead class="">
                             <tr>
                                 <th scope="col">Uploaded Documents</th>
@@ -88,6 +88,11 @@
                             </tr>
                             <?php }?>
                         </tbody>
+                        <tfoot class="">
+                            <tr>
+                                <th scope="col">Uploaded Documents</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
                 <!--/.table-responsive-->

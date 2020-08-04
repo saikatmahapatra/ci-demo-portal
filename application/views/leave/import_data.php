@@ -11,7 +11,7 @@
                 <label for="user_id" class="required">File</label>
                 <?php echo form_upload(array('name' => 'userfile', 'id' => 'userfile','class' => 'form-control', 'required'=>'required', 'accept' =>'.xls, .xlsx'));?>
                 <?php echo form_error('userfile'); ?>
-                <div class="form-text ci-form-help-text text-muted">Only .xls, .xlxs formats are supported. Imporatable file should have specific format. Please follow the format while importing records.</div>
+                <div class="form-text small text-muted">Only .xls, .xlxs formats are supported. Imporatable file should have specific format. Please follow the format while importing records.</div>
             </div>
         </div>
         <button type="submit" class="btn ci-btn-primary btn-primary">Submit</button>
@@ -20,7 +20,7 @@
 
         <div class="table-responsive mt-3">
             <h2>Leave Balance Master</h2>
-            <table id="leave_balance_datatable" class="table ci-table table-sm table-striped w-100">
+            <table id="leave_balance_datatable" class="table ci-table table-bordered table-hover w-100">
                 <thead class="">
                     <tr>
                         <th scope="col">Employee</th>
@@ -33,6 +33,17 @@
                     </tr>
                 </thead>
                 <tbody></tbody>
+                <tfoot class="">
+                    <tr>
+                        <th scope="col">Employee</th>
+                        <th scope="col">Balance for month</th>
+                        <th scope="col">CL</th>
+                        <th scope="col">PL</th>
+                        <th scope="col">SL</th>
+                        <th scope="col">OL</th>
+                        <th scope="col">Created/Updated on</th>
+                    </tr>
+                </tfoot>
             </table>
         </div>
         <!--/.table-responsive-->

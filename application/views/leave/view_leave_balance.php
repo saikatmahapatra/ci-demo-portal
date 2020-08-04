@@ -7,7 +7,7 @@
             <div class="card-body">           
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 
-            <div class="export-form ">
+            <div class="export-form mb-4">
                 <div id="import_result_msg"></div>
                 <?php echo form_open_multipart(current_url(), array( 'method' => 'post','class'=>'form-inline','name' => '','id' => 'import_form',)); ?>
                     <?php echo form_hidden('form_action', 'leave_balance_import'); ?>
@@ -19,7 +19,7 @@
                         </div>
                         <button type="submit" class="btn ci-btn-primary btn-primary">Import Data</button>
                     <?php echo form_close(); ?>
-                    <div class="form-text ci-form-help-text text-muted">Note: Only xls file is allowed with maximum 2MB of size. To import leave balance data you need to "Export Data" first & modify the excel file to import it.</div>
+                    <div class="form-text small text-muted">Note: Only xls file is allowed with maximum 2MB of size. To import leave balance data you need to "Export Data" first & modify the excel file to import it.</div>
                 </div>
                 
                 <div class="d-flex mb-2">
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table id="view-leave-bal-datatable" class="table ci-table table-sm table-striped w-100">
+                    <table id="view-leave-bal-datatable" class="table ci-table table-bordered table-hover w-100">
                         <thead class="">
                             <tr>
                                 <th scope="col">Emp ID</th>
@@ -51,6 +51,20 @@
                             </tr>
                         </thead>
                         <tbody></tbody>
+                        <tfoot class="">
+                            <tr>
+                                <th scope="col">Emp ID</th>
+                                <th scope="col">Employee Name</th>
+                                <th scope="col">CL</th>
+                                <th scope="col">PL</th>
+                                <th scope="col">SL</th>
+                                <th scope="col">CO</th>
+                                <!-- <th scope="col">OL</th> -->
+                                <th scope="col">Import Date</th>
+                                <th scope="col">Created On</th>
+                                <th scope="col">Updated On</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
                 <!--/.table-responsive-->

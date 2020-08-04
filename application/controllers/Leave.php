@@ -60,13 +60,13 @@ class Leave extends CI_Controller {
             'HD2' => 'Half Day - Second Half (HD2)'
         );
 		$this->data['leave_status_arr'] = array(
-            'B'=>array('text'=>'Applied', 'css'=>'text-primary'),
-            'O'=>array('text'=>'Processing', 'css'=>'text-info'),
-            'A'=>array('text'=>'Approved', 'css'=>'text-success'),
-            'R'=>array('text'=>'Rejected', 'css'=>'text-danger'),
-            'P'=>array('text'=>'Pending', 'css'=>'text-secondary'),
-            'C'=>array('text'=>'Cancelled', 'css'=>'text-warning'),
-            'X'=>array('text'=>'Cancel Requested', 'css'=>'text-warning'),
+            'B'=>array('text'=>'Applied', 'badge_css'=>'badge badge-primary badge-pill', 'css'=>'text-primary'),
+            'O'=>array('text'=>'Processing', 'badge_css'=>'badge badge-info badge-pill', 'css'=>'text-info'),
+            'A'=>array('text'=>'Approved', 'badge_css'=>'badge badge-success badge-pill', 'css'=>'text-success'),
+            'R'=>array('text'=>'Rejected', 'badge_css'=>'badge badge-danger badge-pill', 'css'=>'text-danger'),
+            'P'=>array('text'=>'Pending', 'badge_css'=>'badge badge-secondary badge-pill', 'css'=>'text-secondary'),
+            'C'=>array('text'=>'Cancelled', 'badge_css'=>'badge badge-warning badge-pill', 'css'=>'text-warning'),
+            'X'=>array('text'=>'Cancel Requested', 'badge_css'=>'badge badge-warning badge-pill', 'css'=>'text-warning')
         );
         
 		//View Page Config
