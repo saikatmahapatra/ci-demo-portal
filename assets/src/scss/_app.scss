@@ -7,19 +7,7 @@ body {
 }
 
 .footer-dark {
-    color: rgba(255, 255, 255, 0.6);
-    a {
-        color: rgba(255, 255, 255, 0.6);
-    }
-}
-
-#layoutAuthentication_footer {
-    footer {
-        color: rgba(255, 255, 255, 0.6);
-        a {
-            color: rgba(255, 255, 255, 0.6);
-        }
-    }
+    color: $gray-600;
 }
 
 .shadow {

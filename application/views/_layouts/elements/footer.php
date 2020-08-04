@@ -1,4 +1,4 @@
-<footer class="py-4 mt-auto">
+<footer class="py-4 mt-auto footer-dark">
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between small">
             <div class=""><?php echo $this->config->item('app_admin_copy_right');?></div>
