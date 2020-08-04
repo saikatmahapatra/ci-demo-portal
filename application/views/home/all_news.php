@@ -21,9 +21,6 @@
                     <?php echo $pagination_link; ?>
                     <a href="<?php echo base_url(); ?>" class=""><?php echo $this->common_lib->get_icon('left_arrow'); ?> Return to dashboard</a>
                 </div>
-
-                
-                
             </div>
         </div><!--/.card-->
     </div>
