@@ -23,6 +23,14 @@
                             </tr>
                         </thead>
                         <tbody></tbody>
+                        <tfoot class="">
+                            <tr>
+                                <th scope="col">Task</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
                 <!--/.table-responsive-->

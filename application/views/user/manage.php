@@ -26,13 +26,24 @@
 								<th>Name</th>
 								<th>Emp ID</th>
 								<th>Email</th>
-								<th>Mobile</th>
+								<th>Phone</th>
 								<th>Designation</th>
 								<th>Status</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody></tbody>
+						<tfoot class="">
+							<tr>
+								<th>Name</th>
+								<th>Emp ID</th>
+								<th>Email</th>
+								<th>Phone</th>
+								<th>Designation</th>
+								<th>Status</th>
+								<th>Action</th>
+							</tr>
+						</tfoot>
 					</table>
 				</div><!--/.table-responsive-->
 			</div><!--./card-body-->

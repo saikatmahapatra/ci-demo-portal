@@ -9,12 +9,13 @@ $color_blue: #2672EC;
 $bootstrap3_blue: #337ab7;
 // Brand primary color
 $brand-primary-color: #0061f2;
+$primary: $brand-primary-color !default;
 //CI Calendar
 $calendar-border: #ced4da;
 $calendar-heading-bg: #ced4da;
 $day_selected: lighten($color_blue, 30%);
 $calendar-week-bg: #ced4da;
-$calendar-grid-border: lighten(#000, 70%);
+$calendar-grid-border: #ced4da;
 $today-highlight: $color_blue;
 $holiday: lighten($color_red, 40%);
 $leave: lighten($color_orange, 20%);

@@ -119,6 +119,16 @@
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
+                                <tfoot class="">
+                                    <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Project</th>
+                                        <th scope="col">Task</th>
+                                        <th scope="col">Hours</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
 

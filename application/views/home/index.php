@@ -144,7 +144,7 @@
     </div>
     <div class="col-lg-4 mb-3">
         <div class="card news-card ci-card">
-            <div class="card-header">Notice Board</div>
+            <div class="card-header">Recent News</div>
             <div class="card-body p-0">
                 <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>
                 <div class="list-group list-group-flush px-0">
@@ -161,8 +161,8 @@
                 </div>
                 <?php } ?>
             </div>
-            <div class="card-footer">
-                <?php echo $pagination_link;?>
+            <div class="card-footer text-center">
+                <a class="btn btn-primary" href="<?php echo base_url('home/all_news');?>">View More...</a>
             </div>
         </div><!--/.card-->
     </div>

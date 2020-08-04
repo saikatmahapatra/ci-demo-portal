@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
 	<div class="col-lg-5">
 		<div class="card shadow-lg border-0 rounded-lg mt-5">
-			<div class="card-header"><h3 class="text-center font-weight-light my-4"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h3></div>
+			<div class="card-header"><h3 class="font-weight-light my-4"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h3></div>
 			<div class="card-body">
 				<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<!-- <div class="small mb-3 text-muted">Enter your email address and we will send you an OTP to reset your password.</div> -->

@@ -25,6 +25,15 @@
                             </tr>
                         </thead>
                         <tbody></tbody>
+                        <tfoot class="">
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Day</th>
+                                <th scope="col">Occasion</th>
+                                <th scope="col">Holiday Type</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
                 <!--/.table-responsive-->

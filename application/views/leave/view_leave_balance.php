@@ -7,7 +7,7 @@
             <div class="card-body">           
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 
-            <div class="export-form ">
+            <div class="export-form mb-4">
                 <div id="import_result_msg"></div>
                 <?php echo form_open_multipart(current_url(), array( 'method' => 'post','class'=>'form-inline','name' => '','id' => 'import_form',)); ?>
                     <?php echo form_hidden('form_action', 'leave_balance_import'); ?>
@@ -51,6 +51,20 @@
                             </tr>
                         </thead>
                         <tbody></tbody>
+                        <tfoot class="">
+                            <tr>
+                                <th scope="col">Emp ID</th>
+                                <th scope="col">Employee Name</th>
+                                <th scope="col">CL</th>
+                                <th scope="col">PL</th>
+                                <th scope="col">SL</th>
+                                <th scope="col">CO</th>
+                                <!-- <th scope="col">OL</th> -->
+                                <th scope="col">Import Date</th>
+                                <th scope="col">Created On</th>
+                                <th scope="col">Updated On</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
                 <!--/.table-responsive-->

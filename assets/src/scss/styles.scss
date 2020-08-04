@@ -1,5 +1,9 @@
+// Import User Defined Custom Variables
+@import "vars.scss";
 // Import Custom Variables
 @import "variables.scss";
+// Import Bootstrap customized(style overridden) variable
+@import 'customize-bootstrap.scss';
 // Import Bootstrap
 @import '../../../node_modules/bootstrap/scss/bootstrap';
 // Import Custom SCSS

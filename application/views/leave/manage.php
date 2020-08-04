@@ -121,11 +121,11 @@
                                     <?php echo ' to '.$this->common_lib->display_date($row['leave_to_date']);?>
                                     <?php //echo ', '.$row['applied_for_days_count'].' day(s)';?></td>
                                 <td><span
-                                        class="<?php echo $leave_status_arr[$row['leave_status']]['css'];?>"><?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
+                                        class="<?php echo $leave_status_arr[$row['leave_status']]['badge_css'];?>"><?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
                                 </td>
                                 <td>
                                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));?>"
-                                        class="btn btn-sm btn-light text-secondary" 
+                                        class="btn btn-datatable btn-icon btn-transparent-dark" 
                                         title="Details"><?php echo $this->common_lib->get_icon('info', 'dt_action_icon');?></a>
 
                                 </td>
@@ -151,6 +151,18 @@
 			}
 			?>
                         </tbody>
+                        <tfoot class="">
+                            <tr>
+                                <th scope="col">Application No</th>
+                                <th scope="col">Leave Type</th>
+                                <th scope="col">Applicant</th>
+                                <th scope="col">L1 Approver</th>
+                                <th scope="col">L2 Approver</th>
+                                <th scope="col">Duration</th>
+                                <th scope="col">Status</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </tfoot>
                     </table>
                     <div class="float-right"><?php echo $pagination_link; ?></div>
                 </div>

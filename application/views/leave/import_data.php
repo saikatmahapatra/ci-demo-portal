@@ -33,6 +33,17 @@
                     </tr>
                 </thead>
                 <tbody></tbody>
+                <tfoot class="">
+                    <tr>
+                        <th scope="col">Employee</th>
+                        <th scope="col">Balance for month</th>
+                        <th scope="col">CL</th>
+                        <th scope="col">PL</th>
+                        <th scope="col">SL</th>
+                        <th scope="col">OL</th>
+                        <th scope="col">Created/Updated on</th>
+                    </tr>
+                </tfoot>
             </table>
         </div>
         <!--/.table-responsive-->

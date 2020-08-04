@@ -88,6 +88,11 @@
                             </tr>
                             <?php }?>
                         </tbody>
+                        <tfoot class="">
+                            <tr>
+                                <th scope="col">Uploaded Documents</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
                 <!--/.table-responsive-->

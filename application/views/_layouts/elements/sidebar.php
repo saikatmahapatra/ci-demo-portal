@@ -1,4 +1,4 @@
-<nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
+<nav class="sb-sidenav accordion sb-sidenav-light shadow-right" id="sidenavAccordion">
     <div class="sb-sidenav-menu">
         <div class="nav">
             <div class="sb-sidenav-menu-heading">Core</div>
@@ -41,7 +41,7 @@
                 <a class="nav-link" href="<?php echo base_url('user/people');?>">Employees</a>
                 <a class="nav-link" href="<?php echo base_url('user/reportee_employee'); ?>">My Reportees</a>
                 <a class="nav-link" href="<?php echo base_url('home/policy'); ?>">HR Policies</a>
-                <a class="nav-link" href="<?php echo base_url('holiday/view');?>">Holidays List </a>
+                <a class="nav-link" href="<?php echo base_url('holiday/view');?>">Holiday List </a>
                 </nav>
             </div>
 

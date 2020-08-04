@@ -23,7 +23,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'); ?>"></script>
     <![endif]-->
 </head>
-<body class="bg-secondary" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>" onloadstart="">
+<body class="bg-primary" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>" onloadstart="">
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>

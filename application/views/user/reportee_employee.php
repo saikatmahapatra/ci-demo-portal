@@ -72,6 +72,14 @@
 							}
 						?>
 						</tbody>
+						<tfoot class="">
+							<tr>
+								<th scope="col">Emp ID</th>
+								<th scope="col">Name</th>
+								<th scope="col">Designation</th>
+								<th scope="col">Action</th>
+							</tr>
+						</tfoot>
 					</table>
 				</div>
 				<div class="col-lg-12"><?php echo isset($pagination_link) ? $pagination_link : '' ;?></div>

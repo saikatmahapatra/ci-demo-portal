@@ -53,9 +53,9 @@ class Project extends CI_Controller {
          $this->load->library('pagination');
          
          $this->data['arr_status_flag'] = array(
-            'Y'=>array('text'=>'Active', 'css'=>''),
-            'N'=>array('text'=>'Inactive', 'css'=>''),
-            'A'=>array('text'=>'Archived', 'css'=>'')
+            'Y'=>array('text'=>'Active', 'css'=>'badge badge-success badge-pill'),
+            'N'=>array('text'=>'Inactive', 'css'=>'badge badge-warning badge-pill'),
+            'A'=>array('text'=>'Archived', 'css'=>'badge badge-danger badge-pill')
         );
 		
     }

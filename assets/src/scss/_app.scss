@@ -1,6 +1,33 @@
+// @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+//@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
+//@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
 // Body
 body {
     background-color: #eff3f9;
+}
+
+.footer-dark {
+    color: rgba(255, 255, 255, 0.6);
+    a {
+        color: rgba(255, 255, 255, 0.6);
+    }
+}
+
+#layoutAuthentication_footer {
+    footer {
+        color: rgba(255, 255, 255, 0.6);
+        a {
+            color: rgba(255, 255, 255, 0.6);
+        }
+    }
+}
+
+.shadow {
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(31, 45, 65, 0.15) !important;
+}
+
+.shadow-right {
+    box-shadow: 0.15rem 0 1.75rem 0 rgba(31, 45, 65, 0.15);
 }
 
 .bg-gradient-primary-to-secondary {
@@ -114,9 +141,43 @@ body {
 }
 
 // Form Style
+// .form-control,
+// .custom-select {
+//     &:focus {
+//         border-color: $primary;
+//         box-shadow: 0 0 0 0.0625rem $primary;
+//     }
+// }
+// .custom-control-input {
+//     ~.custom-control-label {
+//         &::before {
+//             border-color: $primary;
+//         }
+//     }
+//     &:focus {
+//         ~.custom-control-label::before {
+//             border-color: $primary;
+//             box-shadow: 0 0 0 0.0625rem $primary;
+//         }
+//     }
+// }
+// .custom-file-input {
+//     &:focus {
+//         ~.custom-file-label {
+//             border-color: $primary;
+//             box-shadow: 0 0 0 0.0625rem $primary;
+//         }
+//     }
+// }
+label.optional::after {
+    content: ' optional';
+    font-size: 0.875rem;
+    color: $gray-500;
+}
+
 .validation-error {
     color: $red;
-    font-size: 80%;
+    font-size: 0.875rem;
 }
 
 .select2-selection {
@@ -188,7 +249,7 @@ body {
 // Table Style
 .table.ci-table,
 .datatable.ci-table {
-    font-size: 0.975rem;
+    font-size: 95%;
     .btn-datatable {
         height: 20px !important;
         width: 20px !important;
@@ -214,7 +275,7 @@ body {
     }
     .btn-transparent-dark {
         color: $white;
-        background-color: transparent;
+        //background-color: rgba(31, 45, 65, .085);
         border-color: transparent;
         color: rgba(31, 45, 65, 0.5) !important;
         &:hover {
@@ -250,6 +311,11 @@ body {
 }
 
 #employees-datatable {
+    .media {
+        a {
+            text-decoration: none;
+        }
+    }
     a.emp-name,
     a.emp-phone,
     a.emp-email {
@@ -258,6 +324,86 @@ body {
             color: inherit;
         }
     }
+}
+
+// CI - Calendar - Timesheet
+.ci-calendar {
+    border: 1px solid $calendar-grid-border;
+    th {
+        //background: $calendar-heading-bg;
+        color: $gray-700;
+        vertical-align: center !important;
+        text-align: center;
+        border-top: 1px solid $calendar-grid-border;
+        //border-top: none;
+    }
+    tr.wk_nm {
+        //background: $calendar-week-bg;
+    }
+    td {
+        text-align: center;
+        border: 1px solid $calendar-grid-border;
+        vertical-align: center !important;
+    }
+    td[data-calday='allowed_day'].day {
+        cursor: pointer;
+        a {
+            color: inherit;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+    td[data-calday='disabled_day'] {
+        opacity: 0.5;
+        cursor: default !important;
+        background: $gray-200;
+    }
+    .highlight {
+        background: $today-highlight;
+        color: $white;
+    }
+    .prevcell a,
+    .nextcell a {
+        color: $gray-900 !important;
+        text-decoration: none !important;
+    }
+    .day.selected {
+        background: $day_selected !important;
+    }
+    .day.holiday {
+        background: $holiday;
+    }
+    .day.leave {
+        background: $leave;
+    }
+    .day.filled {
+        background: $has-data;
+    }
+}
+
+.i-today {
+    background-color: $today-highlight;
+}
+
+.i-selected {
+    background-color: $day_selected;
+}
+
+.i-leave {
+    background-color: $leave;
+}
+
+.i-holiday {
+    background-color: $holiday;
+}
+
+.i-disabled-date {
+    background-color: $gray-200;
+}
+
+.i-has-data {
+    background-color: $has-data;
 }
 
 // CI - JQURY Full Calendar
@@ -401,6 +547,61 @@ body {
     }
 }
 
+// Step
+.step {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    .step-item {
+        flex: 1 1 0;
+        position: relative;
+        text-align: center;
+        &:not(:first-child) {
+            &::before {
+                background-color: #687281;
+                content: "";
+                height: 0.125rem;
+                left: -50%;
+                position: absolute;
+                top: 0.4375rem;
+                width: 100%;
+                z-index: 0;
+            }
+        }
+        .step-item-link {
+            color: #687281;
+            position: relative;
+            display: inline-block;
+            padding-top: 1.25rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            text-decoration: none;
+            z-index: 1;
+            &::before {
+                background-color: #687281;
+                border: 0.125rem solid #fff;
+                border-radius: 100%;
+                content: "";
+                display: block;
+                height: 1rem;
+                width: 1rem;
+                left: 50%;
+                position: absolute;
+                top: 0;
+                transform: translateX(-50%);
+                z-index: 1;
+            }
+        }
+    }
+    .step-item.active a::before {
+        background: #fff;
+        border: 0.125rem solid #687281;
+    }
+    .step-item.active~.step-item::before {
+        background: #d7dce3;
+    }
+}
+
 // CI - Cards Style
 .ci-card {
     box-shadow: 0 0.15rem 1.75rem 0 rgba(31, 45, 65, 0.15);
@@ -428,10 +629,6 @@ body {
 }
 
 .user-profile-page-card {
-    .emp-name {
-        font-size: 1.25rem;
-        margin-top: 15px;
-    }
     .dp-section {
         text-align: center;
     }

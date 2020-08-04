@@ -17,6 +17,15 @@
 						</tr>
 					</thead>
 					<tbody></tbody>
+					<tfoot class="">
+						<tr>
+							<th>Name</th>
+							<!-- <th>Designation</th> -->
+							<th>Emp ID</th>
+							<th>Email</th>
+							<th>Phone</th>
+						</tr>
+					</tfoot>
 				</table>
 				</div><!--/.table-responsive-->
 			</div><!--./card-body-->

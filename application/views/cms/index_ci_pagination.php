@@ -15,8 +15,8 @@
 				<thead class="">
 					<tr>
 						<th scope="col">Title</th>
-						<th scope="col">Content Type</th>
-						<th scope="col">Text/Content</th>
+						<th scope="col">Type</th>
+						<th scope="col">Description</th>
 						<th scope="col">Status</th>
 						<th scope="col">Action</th>
 					</tr>
@@ -39,6 +39,15 @@
 				}
 				?>
 				</tbody>
+				<tfoot class="">
+					<tr>
+						<th scope="col">Title</th>
+						<th scope="col">Type</th>
+						<th scope="col">Description</th>
+						<th scope="col">Status</th>
+						<th scope="col">Action</th>
+					</tr>
+				</tfoot>
 			</table>
 			
 		</th><!--/.table-responsive-->

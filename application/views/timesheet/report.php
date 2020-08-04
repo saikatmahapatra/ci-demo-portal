@@ -98,7 +98,7 @@
                                 <td><?php echo $row['timesheet_hours'];?></td>
                                 <td><?php echo character_limiter($row['timesheet_description'], 30);?></td>
                                 <td>
-                                    <button class="btn btn-sm btn-light text-secondary" data-toggle="modal" data-target="#timesheetDetailsInfoModal" data-date="<?php echo $this->common_lib->display_date($row['timesheet_date']);?>" data-emp="<?php echo $row['user_firstname'].' '.$row['user_lastname'];?>" data-project="<?php echo $row['project_name'].'-'.$row['project_number'];?>" data-task="<?php echo $row['task_name'];?>" data-hour="<?php echo $row['timesheet_hours'];?>" data-desc="<?php echo $row['timesheet_description'];?>">
+                                    <button class="btn btn-datatable btn-icon btn-transparent-dark" data-toggle="modal" data-target="#timesheetDetailsInfoModal" data-date="<?php echo $this->common_lib->display_date($row['timesheet_date']);?>" data-emp="<?php echo $row['user_firstname'].' '.$row['user_lastname'];?>" data-project="<?php echo $row['project_name'].'-'.$row['project_number'];?>" data-task="<?php echo $row['task_name'];?>" data-hour="<?php echo $row['timesheet_hours'];?>" data-desc="<?php echo $row['timesheet_description'];?>">
                                         <?php echo $this->common_lib->get_icon('info', 'dt_action_icon');?>
                                     </button>
                                 </td>
@@ -121,6 +121,17 @@
 				}
 				?>
                         </tbody>
+                        <tfoot class="">
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Employee</th>
+                                <th scope="col">Project</th>
+                                <th scope="col">Task</th>
+                                <th scope="col">Hours</th>
+                                <th scope="col">Task Description</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </tfoot>
                     </table>
                     <?php echo isset($pagination_link) ? $pagination_link : ''; ?>
                 </div>

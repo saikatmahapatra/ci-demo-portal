@@ -31,6 +31,13 @@
 					}
 				?>
 				</tbody>
+				<tfoot class="">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Option</th>
+					<th scope="col">Value</th>
+				</tr>
+				</tfoot>
 			</table>
 		</div>
             </div>
