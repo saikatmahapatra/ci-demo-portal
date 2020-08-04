@@ -162,7 +162,7 @@
                 <?php } ?>
             </div>
             <div class="card-footer text-center">
-                <a class="btn btn-primary" href="<?php echo base_url('home/all_news');?>">View More...</a>
+                <a class="btn btn-primary" href="<?php echo base_url('home/all_news');?>">More...</a>
             </div>
         </div><!--/.card-->
     </div>
