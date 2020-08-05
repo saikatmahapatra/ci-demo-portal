@@ -823,10 +823,10 @@ class User extends CI_Controller {
 		$this->data['econtact'] = $this->user_model->get_user_emergency_contacts(NULL,$user_id);
         $this->data['education'] = $this->user_model->get_user_education(NULL, $user_id);
         $this->data['job_exp'] = $this->user_model->get_user_work_experience(NULL, $user_id);
-        $this->data['user_national_identifiers'] = $this->user_model->get_user_national_identifiers($this->sess_user_id);
+        $this->data['user_national_identifiers'] = $this->user_model->get_user_national_identifiers($user_id);
         $this->data['bank_details'] = $this->user_model->get_user_bank_account_details(NULL, $user_id);
         
-        $this->data['approvers'] = $this->user_model->get_user_approvers($this->sess_user_id);
+        $this->data['approvers'] = $this->user_model->get_user_approvers($user_id);
         //print_r($this->data['approvers']); 
 		$this->data['page_title'] = ($is_self_account == true) ? "My Profile" : "Employee Profile";
         $this->data['maincontent'] = $this->load->view($this->router->class.'/profile', $this->data, true);
