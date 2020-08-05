@@ -35,16 +35,12 @@
                 <main>
                     <div class="container">
                         <div class="row justify-content-center">
-                            <div class="col-lg-6">
+                            <div class="col-lg-9">
                                 <div class="text-center mt-4">
-                                    <!-- <h1 class="display-1">503</h1>
-				                    <p class="lead">Service Unavailable</p> -->
+                                    <h1 class="display-1">503</h1>
+				                    <p class="lead">Service Unavailable</p>
                                     <img class="mb-4 img-error" src="assets/dist/img/503-error-service-unavailable-pana.svg" />
-                                    <p class="lead">Sorry for the inconvenience. We're performing some maintenance at the moment. Service would be resumed by 23:59:59 hrs.</p>
-                                    <a href="index.php">
-                                        <i class="fas fa-arrow-left mr-1"></i>
-                                        Return to Dashboard
-                                    </a>
+                                    <p class="lead">Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can always <a target="blank" href="http://unitedexploration.co.in/contact-us/">contact us</a>, otherwise we&rsquo;ll be back online shortly!</p>
                                 </div>
                             </div>
                         </div>
