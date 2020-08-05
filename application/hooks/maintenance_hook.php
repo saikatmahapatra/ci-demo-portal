@@ -14,7 +14,7 @@ class Maintenance_hook
             include(APPPATH.'config/config.php');
             
             if(isset($config['maintenance_mode']) && $config['maintenance_mode'] === TRUE){
-                include(APPPATH.'views/maintenance.php');
+                include(FCPATH.'/maintenance.php');
                 exit;
             }
         }
