@@ -20,8 +20,8 @@ $hook['pre_controller'][] = array(
 );
 
 $hook['pre_system'][] = array(
-  'class'     => 'maintenance_hook',
+  'class'     => 'site_down',
   'function' => 'offline_check',
-  'filename' => 'maintenance_hook.php',
+  'filename' => 'site_down.php',
   'filepath' => 'hooks'
 );
