@@ -37,8 +37,10 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-6">
                                 <div class="text-center mt-4">
-                                    <img class="mb-4 img-error" src="assets/src/img/503-error-service-unavailable-pana.svg" />
-                                    <p class="lead">This requested URL was not found on this server.</p>
+                                    <!-- <h1 class="display-1">503</h1>
+				                    <p class="lead">Service Unavailable</p> -->
+                                    <img class="mb-4 img-error" src="assets/dist/img/503-error-service-unavailable-pana.svg" />
+                                    <p class="lead">Sorry for the inconvenience. We're performing some maintenance at the moment. Service would be resumed by 23:59:59 hrs.</p>
                                     <a href="index.php">
                                         <i class="fas fa-arrow-left mr-1"></i>
                                         Return to Dashboard
