@@ -523,7 +523,7 @@
 											<?php } //foreach ?>
 											<?php }else {?>
 											<div class="row">
-												<div class="col-lg-12">No documents uploaded...</div>
+												<div class="col-lg-12">Unable to fetch information.</div>
 											</div>
 											<?php }?>
 									</div>
