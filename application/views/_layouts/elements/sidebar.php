@@ -6,6 +6,12 @@
                 <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('dashboard'); ?></div>
                 Dashboard
             </a>
+
+            <a class="nav-link" href="<?php echo base_url('event_calendar'); ?>">
+                <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('calendar'); ?></div>
+                My Calendar
+            </a>
+            
             <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
             <div class="sb-sidenav-menu-heading">Admin HR</div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayoutsAdmin" aria-expanded="false" aria-controls="collapseLayoutsAdmin">
@@ -37,7 +43,6 @@
             </a>
             <div class="collapse" id="collapseLayouts_1" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="<?php echo base_url('event_calendar'); ?>">Event Calendar</a>
                 <a class="nav-link" href="<?php echo base_url('user/people');?>">Employees</a>
                 <a class="nav-link" href="<?php echo base_url('user/reportee_employee'); ?>">My Reportees</a>
                 <a class="nav-link" href="<?php echo base_url('home/policy'); ?>">HR Policies</a>
