@@ -399,25 +399,19 @@ label.optional::after {
 
 // CI - JQURY Full Calendar
 #ci_full_calendar {
-    .fc-header-toolbar {
-        h2 {
-            font-size: 1rem;
-            font-weight: 400;
-        }
-    }
     .fc-title {
         font-size: 13px;
     }
     .fc-header-toolbar {
         h2 {
-            font-size: 1rem;
+            font-size: 1.25rem;
             font-weight: 400;
         }
-        // .fc-button {
-        //     padding: 0.25rem 0.5rem;
-        //     font-size: 0.875rem;
-        //     line-height: 1.5;
-        // }
+        .fc-button {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
     }
     .fc-widget-header {
         font-size: .875rem;

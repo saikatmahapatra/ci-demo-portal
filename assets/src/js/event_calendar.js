@@ -31,9 +31,9 @@ function loadEventCalendarData() {
         themeSystem: 'standard', // bootstrap
         height: 'auto',
         header: {
-            left: 'title',
-            center: '',
-            right: 'prev,today,dayGridMonth,listMonth,next'
+            left: '',
+            center: 'title',
+            right: 'prev,dayGridMonth,listMonth,next'
         },
         timeZone: 'local',
         defaultDate: new Date(),
@@ -50,8 +50,8 @@ function loadEventCalendarData() {
         eventClick: function(info) {
             info.jsEvent.preventDefault();
             console.log(info);
-            if(info.event.url.length>0){
-                window.open(info.event.url,'_blank');
+            if (info.event.url.length > 0) {
+                window.open(info.event.url, '_blank');
             }
             // var modal_header_html = '';
             // modal_header_html += info.event.start + ' - ' + info.event.end + '<br>';
