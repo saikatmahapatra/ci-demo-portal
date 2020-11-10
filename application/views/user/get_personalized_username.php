@@ -1,5 +1,5 @@
 <div class="row align-items-center justify-content-center no-gutters min-vh-100">
-	<div class="card ci-card col-lg-7">
+	<div class="card  col-lg-7">
 		<div class="card-body">
 			<h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 			<div class="text-muted mb-2">Now you can create your personalized username. Once you create an user name you can either login using email or username.</div>

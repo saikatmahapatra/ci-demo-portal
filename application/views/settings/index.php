@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-lg-9">
-        <div class="card ci-card">
+        <div class="card ">
 			<div class="card-header">Data Table</div>
             <div class="card-body">
                 
@@ -43,7 +43,7 @@
             </div>
             <!--/.card-body-->
         </div>
-        <!--/.card ci-card-->
+        <!--/.card -->
 
     </div>
     <!--/.col-->

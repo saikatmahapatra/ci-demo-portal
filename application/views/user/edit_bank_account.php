@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="col-lg-9">
-        <div class="card ci-card">
+        <div class="card ">
             <div class="card-header">Form</div>
             <div class="card-body">
             

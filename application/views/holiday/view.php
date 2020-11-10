@@ -2,7 +2,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-lg-8">
-		<div class="card ci-card">
+		<div class="card ">
 			<div class="card-header">List of Holidays <?php echo date('Y');?></div>
 			<div class="card-body">
 				<div class="table-responsive">

@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="card ci-card">
+        <div class="card ">
             <div class="card-header">Log Tasks</div>
             <div class="card-body">
             
@@ -140,7 +140,7 @@
             </div>
             <!--/.card-body-->
         </div>
-        <!--/.card ci-card-->
+        <!--/.card -->
 
     </div>
     <!--/.col-->

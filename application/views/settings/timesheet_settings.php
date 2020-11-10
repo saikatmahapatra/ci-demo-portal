@@ -5,7 +5,7 @@ $row = $options;
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
     <div class="col-lg-9">
-        <div class="card ci-card">
+        <div class="card ">
             <div class="card-header">Form</div>
             <div class="card-body">
                 
@@ -66,7 +66,7 @@ $row = $options;
             </div>
             <!--/.card-body-->
         </div>
-        <!--/.card ci-card-->
+        <!--/.card -->
     </div>
     <!--/.col-->
 </div>

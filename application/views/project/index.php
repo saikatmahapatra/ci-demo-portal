@@ -2,7 +2,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
     <div class="col-lg-12">
-        <div class="card ci-card"> 
+        <div class="card "> 
             <div class="card-header">Data Table</div>
             <div class="card-body">
            
@@ -34,7 +34,7 @@
             </div>
             <!--/.card-body-->
         </div>
-        <!--/.card ci-card-->
+        <!--/.card -->
     </div>
     <!--/.col-->
 </div>

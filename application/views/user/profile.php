@@ -86,7 +86,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-lg-12">
-		<div class="card ci-card ci-dl user-profile-page-card">
+		<div class="card  ci-dl user-profile-page-card">
 			<div class="card-header">Information</div>
 			<div class="card-body">
 				
