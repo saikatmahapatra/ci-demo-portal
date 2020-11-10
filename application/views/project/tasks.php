@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table id="task-datatable" class="table  table-bordered table-hover w-100">
+                    <table id="task-datatable" class="table ci-table table-bordered table-hover w-100">
                         <thead class="">
                             <tr>
                                 <th scope="col">Task</th>

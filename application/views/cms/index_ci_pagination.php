@@ -11,7 +11,7 @@
 		</div>	
 			
 		<th class="table-responsive">
-			<table class="table  table-bordered table-hover w-100">
+			<table class="table ci-table table-bordered table-hover w-100">
 				<thead class="">
 					<tr>
 						<th scope="col">Title</th>
