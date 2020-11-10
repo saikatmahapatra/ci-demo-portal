@@ -235,9 +235,9 @@ label.optional::after {
 }
 
 // Table Style
-.table.ci-table,
-.datatable.ci-table {
-    font-size: 95%;
+.table,
+.datatable {
+    //font-size: 95%;
     .btn-datatable {
         height: 20px !important;
         width: 20px !important;
@@ -621,7 +621,6 @@ label.optional::after {
 
 .profile-card-conntainer {
     margin-bottom: 15px;
-    .ci-card,
     .card {
         .card-body {
             padding: 5px 15px 15px 15px;

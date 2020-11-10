@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table id="holiday-datatable" class="table ci-table table-bordered table-hover w-100">
+                    <table id="holiday-datatable" class="table  table-bordered table-hover w-100">
                         <thead class="">
                             <tr>
                                 <th scope="col">Date</th>
