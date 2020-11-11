@@ -20,7 +20,7 @@
 
 				<div class="table-responsive">
 
-					<table id="user-datatable" class="table  table-bordered table-hover w-100">
+					<table id="user-datatable" class="table ci-table  table-bordered table-hover w-100">
 						<thead class="">
 							<tr>
 								<th>Name</th>

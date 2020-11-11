@@ -237,7 +237,7 @@ label.optional::after {
 
 // Table Style
 .table,
-table.datatable {
+table.dataTable.ci-table {
     font-size: 95%;
     .btn-datatable {
         height: 20px !important;
@@ -253,7 +253,7 @@ table.datatable {
     thead th,
     tfoot th {
         font-weight: 600;
-        color: $primary;
+        font-size: 14px;
     }
     .btn-icon {
         padding: 0;
