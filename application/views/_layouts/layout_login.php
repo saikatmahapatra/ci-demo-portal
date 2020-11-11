@@ -23,22 +23,10 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'); ?>"></script>
     <![endif]-->
 </head>
-<body class="" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>" onloadstart="">
-    <div id="layoutAuthentication">
-        <div id="layoutAuthentication_content">
-            <main>
-                <div class="container">
-                    <?php echo $maincontent; ?>
-                </div>
-            </main>
-        </div>
-        <div id="layoutAuthentication_footer">
-        <?php echo $el_footer; ?>
-        </div>
-        <?php echo $el_scroll_to_top; ?>
-        <?php echo $el_loader; ?>
-        <?php echo $el_confirmation_modal; ?>
-    </div>
+<body class="text-center authentication-layout" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>" onloadstart="">
+    <?php echo $maincontent; ?>
+    <?php echo $el_scroll_to_top; ?>
+    <?php echo $el_loader; ?>
     <!-- jQuery -->    
     <script type="text/javascript" src="<?php echo base_url('assets/vendors/jquery/dist/jquery.min.js'); ?>"></script>	
     <!-- Bootstrap dependency popper.js -->
