@@ -2,7 +2,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row justify-content-center">
     <div class="col-lg-12">
-        <div class="card ci-card">
+        <div class="card ">
             <div class="card-header">Data Table</div>
             <div class="card-body">
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table id="cms-datatable" class="table ci-table table-bordered table-hover w-100">
+                    <table id="cms-datatable" class="table ci-table  table-bordered table-hover w-100">
                         <thead class="">
                             <tr>
                                 <th scope="col">Title</th>
@@ -42,7 +42,7 @@
             </div>
             <!--/.card-body-->
         </div>
-        <!--/.card ci-card-->
+        <!--/.card -->
     </div>
     <!--/.col-->
 </div>

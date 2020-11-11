@@ -2,7 +2,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
     <div class="col-lg-5 mb-3">
-        <div class="card ci-card">
+        <div class="card ">
             <div class="card-header">Form</div>
             <div class="card-body">
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -23,7 +23,7 @@
                         <div id="docHelp" class="form-text small text-muted bg-light">
                             <ul>
                                 <li>Only png, jpg, jpeg, doc, docx, pdf files are allowed.</li>
-                                <li>File size should not larger than 1 MB(1024 KB).</li>
+                                <li>File size should not larger than 300 KB.</li>
                             </ul>
                         </div>
                         <?php echo form_error('userfile'); ?>
@@ -34,20 +34,21 @@
             </div>
             <!--/.card-body-->
         </div>
-        <!--/.card ci-card-->
+        <!--/.card -->
 
     </div>
     <!--/.col-->
 
     <div class="col-lg-7 mb-3">
-        <div class="card ci-card">
+        <div class="card ">
             <div class="card-header">Data Table</div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table ci-table table-bordered table-hover w-100">
+                    <table class="table ci-table  table-bordered table-hover w-100">
                         <thead class="">
                             <tr>
-                                <th scope="col">Uploaded Documents</th>
+                                <th scope="col">Document</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,17 +68,19 @@
 								}
 							?>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-light btn-delete-file mr-3"
-                                        data-confirmation="1"
-                                        data-confirmation-message="Are you sure, you want to delete this?"
-                                        data-upload_id="<?php echo $upload['id'];?>"
-                                        title="Delete"
-                                        data-path="<?php echo $file_path;?>"><?php echo $this->common_lib->get_icon('delete'); ?></a>
                                     <a href="<?php echo $file_src;?>"
-                                        title="<?php echo $upload['upload_file_type_name'];?>"
-                                        data-file-name="<?php echo $upload['upload_file_name']; ?>"
-                                        class="<?php echo $btn_class;?>"
-                                        target="_new"><?php echo $arr_upload_file_type_name[$upload['upload_file_type_name']]; ?></a>
+                                    title="<?php echo $upload['upload_file_type_name'];?>"
+                                    data-file-name="<?php echo $upload['upload_file_name']; ?>"
+                                    class="<?php echo $btn_class;?>"
+                                    target="_new"><?php echo $arr_upload_file_type_name[$upload['upload_file_type_name']]; ?></a>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-datatable btn-icon btn-transparent-dark btn-delete-file mr-3"
+                                    data-confirmation="1"
+                                    data-confirmation-message="Are you sure, you want to delete this?"
+                                    data-upload_id="<?php echo $upload['id'];?>"
+                                    title="Delete"
+                                    data-path="<?php echo $file_path;?>"><?php echo $this->common_lib->get_icon('delete'); ?></a>
                                 </td>
 
                             </tr>
@@ -90,7 +93,8 @@
                         </tbody>
                         <tfoot class="">
                             <tr>
-                                <th scope="col">Uploaded Documents</th>
+                                <th scope="col">Document</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -99,7 +103,7 @@
             </div>
             <!--/.card-body-->
         </div>
-        <!--/.card ci-card-->
+        <!--/.card -->
     </div>
     <!--/.col-->
 

@@ -2,11 +2,11 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-lg-12">
-		<div class="card ci-card">
+		<div class="card ">
 			<div class="card-header">Data Table</div>
 			<div class="card-body">
 			<div class="table-responsive">
-				<table id="employees-datatable" class="table ci-table table-bordered w-100">
+				<table id="employees-datatable" class="table ci-table  table-bordered w-100">
 					<thead class="">
 						<tr>
 							<th>Name</th>

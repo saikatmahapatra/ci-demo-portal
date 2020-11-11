@@ -2,13 +2,13 @@
 
 <div class="row">
     <div class="col-lg-9">
-        <div class="card ci-card">
+        <div class="card ">
 			<div class="card-header">Data Table</div>
             <div class="card-body">
                 
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="table-responsive">
-			<table class="table ci-table table-bordered table-hover w-100">
+			<table class="table ci-table  table-bordered table-hover w-100">
 				<thead class="">
 				<tr>
 					<th scope="col">#</th>
@@ -43,7 +43,7 @@
             </div>
             <!--/.card-body-->
         </div>
-        <!--/.card ci-card-->
+        <!--/.card -->
 
     </div>
     <!--/.col-->

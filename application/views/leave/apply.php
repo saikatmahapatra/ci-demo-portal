@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="col-lg-9">
-        <div class="card ci-card">
+        <div class="card ">
             <div class="card-header">Form</div>
             <div class="card-body">
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -91,7 +91,7 @@
             </div>
             <!--/.card-body-->
         </div>
-        <!--/.card ci-card-->
+        <!--/.card -->
 
     </div>
     <!--/.col-->
@@ -122,7 +122,7 @@
                         <li>For leave balance debit, credit related issues or information please contact to your HR.
                         </li>
                     </ul>
-                    <table class="table ci-table table-bordered table-hover w-100">
+                    <table class="table ci-table  table-bordered table-hover w-100">
                         <thead class="">
                             <tr>
                                 <th scope="col">Casual Leave (CL)</th>

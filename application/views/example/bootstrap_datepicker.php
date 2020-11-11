@@ -1,5 +1,5 @@
 <h1 class="page-title">Bootstrap Datepicker</h1>
-<div class="card ci-card">
+<div class="card ">
     <div class="card-header">
         Datepicker
     </div>

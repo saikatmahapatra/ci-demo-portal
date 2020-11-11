@@ -146,7 +146,7 @@ class Event_calendar_model extends CI_Model {
               $data2[$key]['borderColor'] = '#99caff'; // #007bff blue
               $data2[$key]['backgroundColor'] = '#d8ebff'; // 80% lighten of border
               $data2[$key]['textColor'] = '#212529';
-              $data2[$key]['url'] = base_url('timesheet/edit/'.$val['id']);
+              //$data2[$key]['url'] = base_url('timesheet/edit/'.$val['id']);
               //$data2[$key]['allDay'] = false;
               $data2[$key]['extendedProps'] = array(
                 'event_type' => 'Timesheet',

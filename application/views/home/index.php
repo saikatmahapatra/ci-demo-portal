@@ -16,7 +16,7 @@
 
 <div class="row dashboard-card-widgets mb-4">
     <div class="col-lg-12">
-        <div class="card ci-card">
+        <div class="card ">
             <div class="card-header">Statistics</div>
             <div class="card-body">
                 <div class="row">
@@ -112,7 +112,7 @@
 
 <div class="row">
     <div class="col-lg-8 mb-3">
-        <div class="card ci-card">
+        <div class="card ">
             <div class="card-header">Calendar</div>
             <div class="card-body">
                 <div id="ci_full_calendar"></div>
@@ -143,7 +143,7 @@
         </div>
     </div>
     <div class="col-lg-4 mb-3">
-        <div class="card news-card ci-card">
+        <div class="card news-card ">
             <div class="card-header">Recent News</div>
             <div class="card-body p-0">
                 <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>

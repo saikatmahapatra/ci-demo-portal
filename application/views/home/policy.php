@@ -2,7 +2,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
     <div class="col-lg-12">
-        <div class="card ci-card">
+        <div class="card ">
             <div class="card-header">Information Card</div>
             <div class="card-body">
                 <?php if(isset($data_rows) && sizeof($data_rows> 0)){ ?>

@@ -47,15 +47,16 @@ class Document extends CI_Controller {
 		// $this->data['breadcrumbs'] = $this->breadcrumbs->show();
         
         $this->data['arr_upload_file_type_name'] = array(
-            "" => "Select",
+            "" => "Document Type",
             "address_proof" => "Address Proof",
             "govt_id_proof" => "Govt. ID Proof",
-            "medical_fit_certificate" => "Medical Fit Certificate",
+            "medical_fit_certificate" => "Medical Certificate",
             "10_marksheet" => "10th Mark Sheet",
             "12_marksheet" => "12th Mark Sheet",
             "graduation_marksheet" => "Graduation Mark Sheet (Final Semistar)",
             "pg_marksheet" => "PG Marksheet (Final Semistar)",
-            "work_exp_letter" => "Work Experience Letter",
+            "work_exp_letter" => "Work Experience Letter(s)",
+            "resume" => "Resume"
         );
         ksort($this->data['arr_upload_file_type_name']);
 
@@ -101,7 +102,7 @@ class Document extends CI_Controller {
             $upload_param = array(
                 'upload_path' => $upload_path, // original upload folder
                 'allowed_types' => $allowed_ext, // allowed file types,
-                'max_size' => '1024', // max 1MB size,
+                'max_size' => '300', // max 300KB,
                 'file_new_name' => $upload_related_to_id . '_' . $upload_file_type_name . '_' . time(),
             );
             $upload_result = $this->common_lib->upload_file('userfile', $upload_param);

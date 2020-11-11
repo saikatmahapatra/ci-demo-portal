@@ -36,7 +36,7 @@ $config['app_logo_name_admin_dashboard'] = 'Portal Admin';
 $config['app_logo_name_dashboard'] = '<b>eP</b>ortal';
 $config['app_logo_name_dashboard_xs'] = '<b>U</b>Aadmin';
 
-$config['app_html_title'] = 'ESS Portal';
+$config['app_html_title'] = 'My App :: UEIPL';
 $config['app_admin_html_title'] = 'United Exploration India Pvt. Ltd.';
 
 $config['app_meta_keywords'] = 'UEIPL, United Exploration Kolkata, GIS Company Kolkata, Coal Mining Consultancy Kolkata, Web GIS company Kolkata, Mining Company';
@@ -51,8 +51,8 @@ $config['app_faq'] = array(
     array('question'=>'Can I edit the task details I have logged ?', 'answer'=>'Yes. You can update the task details, project, activity, hours etc details.'),
 );
 
-$config['app_copy_right'] = '&copy; '.date('Y').' United Exploration India Private Limited. All Rights Reserved.';
-$config['app_admin_copy_right'] = 'Copyright &copy; '.date('Y').' <a href="http://unitedexploration.co.in" target="_blank">United Exploration</a>';
-$config['app_version'] = 'Version v10.0.0'; // Recommended format CIVerMajor.RelVer.UIVer
+$config['app_copy_right'] = '&copy; '.date('Y').' United Exploration. All Rights Reserved.';
+$config['app_admin_copy_right'] = 'Copyright &copy; '.date('Y').' United Exploration.</a>';
+$config['app_version'] = 'App v10.0.0'; // Recommended format CIVerMajor.RelVer.UIVer
 
 

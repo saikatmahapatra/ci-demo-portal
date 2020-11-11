@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="card ci-card">
+        <div class="card ">
             <div class="card-header">Log Tasks</div>
             <div class="card-body">
             
@@ -107,7 +107,7 @@
                     <div class="mt-3 tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
 
                         <div class="table-responsive">
-                            <table id="timesheet-datatable" class="table ci-table table-bordered table-hover w-100">
+                            <table id="timesheet-datatable" class="table ci-table  table-bordered table-hover w-100">
                                 <thead class="">
                                     <tr>
                                         <th scope="col">Date</th>
@@ -140,7 +140,7 @@
             </div>
             <!--/.card-body-->
         </div>
-        <!--/.card ci-card-->
+        <!--/.card -->
 
     </div>
     <!--/.col-->

@@ -3,7 +3,7 @@
  * Check whether the site is offline or not.
  *
  */
-class Maintenance_hook
+class Site_down
 {
     public function __construct(){
         log_message('debug','Accessing maintenance hook!');
@@ -14,7 +14,7 @@ class Maintenance_hook
             include(APPPATH.'config/config.php');
             
             if(isset($config['maintenance_mode']) && $config['maintenance_mode'] === TRUE){
-                include(APPPATH.'views/maintenance.php');
+                include(FCPATH.'/site_down.php');
                 exit;
             }
         }

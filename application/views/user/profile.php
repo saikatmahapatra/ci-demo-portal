@@ -86,7 +86,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-lg-12">
-		<div class="card ci-card ci-dl user-profile-page-card">
+		<div class="card  ci-dl user-profile-page-card">
 			<div class="card-header">Information</div>
 			<div class="card-body">
 				
@@ -140,7 +140,7 @@
 						<?php if($is_self_account == true) { ?>
 						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><?php //echo $this->common_lib->get_icon('camera'); ?> Change Photo</a>
 						<?php } ?>
-						<div class="h5">
+						<div class="h4">
 							<?php
 								echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
 								echo isset($row['user_lastname']) ? $row['user_lastname'] : '';
@@ -185,7 +185,7 @@
 						<div class="tab-content" id="nav-tabContent">
 							<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="nav-1">
 								<div class="row mt-3">
-									<div class="col-lg-12">										
+									<div class="col-lg-12">
 										<dl class="row">
 											<dt class="col-lg-3">Name</dt>
 											<dd class="col-lg-9">
@@ -257,8 +257,8 @@
 										<?php if(isset($address)){
 											foreach($address as $key=>$addr){
 											?>
-											<div class="user-profile-section">
-												<div class="section-heading">
+											<div class="my-4">
+												<div class="my-2 h6">
 													<?php echo isset($address_type[$addr['address_type']]) ? $address_type[$addr['address_type']] : 'Address'; ?>
 
 													<?php if($is_self_account == true) { ?>
@@ -296,8 +296,8 @@
 										<?php if(isset($education)){
 											foreach($education as $key=>$edu){
 											?>
-											<div class="user-profile-section">
-												<div class="section-heading">
+											<div class="my-4">
+												<div class="my-2 h6">
 												<?php echo isset($edu['qualification_name'])?$edu['qualification_name']: ' ';?> - <?php echo isset($edu['degree_name'])?$edu['degree_name']:'';?>
 												<?php echo isset($edu['academic_from_year']) ? '('.$edu['academic_from_year'].'-'.$edu['academic_to_year'].')':'';?>
 												<?php if($is_self_account == true) { ?>
@@ -330,8 +330,8 @@
 										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
 									<?php } ?>
 
-											<div class="user-profile-section">
-												<div class="section-heading">
+											<div class="my-4">
+												<div class="my-2 h6">
 													<?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?>
 													
 												</div>
@@ -347,8 +347,8 @@
 											<?php if(isset($job_exp)){
 												foreach($job_exp as $key=>$row){
 												?>
-												<div class="user-profile-section">
-														<div class="section-heading">
+												<div class="my-4">
+														<div class="my-2 h6">
 															<?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?>
 															<?php if($is_self_account == true) { ?>		
 															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
@@ -393,8 +393,8 @@
 										<?php if(isset($bank_details)){
 											foreach($bank_details as $key=>$row){
 											?>
-												<div class="user-profile-section">
-													<div class="section-heading">
+												<div class="my-4">
+													<div class="my-2 h6">
 														<?php echo isset($row['bank_name'])? $row['bank_name']: ' ';?>
 														<?php echo isset($row['ifsc_code']) ? '('.$row['ifsc_code'].')' : '-'; ?>
 														<?php if($is_self_account == true) { ?>	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>	<?php } ?>
@@ -455,8 +455,8 @@
 											if(isset($econtact) && sizeof($econtact)>0){
 												foreach($econtact as $key=>$con){
 												?>
-												<div class="user-profile-section">
-													<div class="section-heading">
+												<div class="my-4">
+													<div class="my-2 h6">
 														<?php echo isset($con['contact_person_name'])?$con['contact_person_name']: ' ';?>
 														<?php if($is_self_account == true) { ?>
 															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_emergency_contact/'.$con["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
@@ -523,7 +523,7 @@
 											<?php } //foreach ?>
 											<?php }else {?>
 											<div class="row">
-												<div class="col-lg-12">No documents uploaded...</div>
+												<div class="col-lg-12">Unable to fetch information.</div>
 											</div>
 											<?php }?>
 									</div>

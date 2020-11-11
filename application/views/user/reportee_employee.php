@@ -2,7 +2,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
 	<div class="col-lg-12">
-		<div class="card ci-card">
+		<div class="card ">
 			<div class="card-header">Data Table</div>
 			<div class="card-body">
 			
@@ -40,7 +40,7 @@
 					<div class="alert alert-info">
 					<?php echo $this->common_lib->get_icon('info'); ?> You are either L1 or L2 approver for Leave request management for the below associates. If you find any irrelevant information please get in touch with HR for further process and clarification.
 					</div>
-					<table class="table ci-table table-bordered table-hover w-100">
+					<table class="table ci-table  table-bordered table-hover w-100">
 						<thead class="">
 						<tr>
 							<th scope="col">Emp ID</th>

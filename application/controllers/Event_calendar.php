@@ -65,7 +65,7 @@ class Event_calendar extends CI_Controller {
 			
 		$this->breadcrumbs->push('View','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		$this->data['page_title'] = 'Event Calendar';
+		$this->data['page_title'] = 'My Calendar';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -77,6 +77,16 @@ class Event_calendar extends CI_Controller {
 
         $json_response = $this->event_calendar_model->get_events($start_date, $end_date, $user_id);
         echo $json_response; die();
+    }
+
+    function apply_leave() {
+        $this->session->set_userdata('post_leave_apply_redirect_url', base_url('event_calendar'));
+        redirect(base_url('leave/apply'));
+    }
+
+    function log_timesheet() {
+        $this->session->set_userdata('post_task_log_redirect_url', base_url('event_calendar'));
+        redirect(base_url('timesheet'));
     }
 }
 ?>

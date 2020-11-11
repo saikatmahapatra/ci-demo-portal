@@ -6,7 +6,7 @@ $row = $data_rows[0];
 
 <div class="row">
 	<div class="col-lg-12">
-		<div class="card ci-card">
+		<div class="card ">
 		<div class="card-header">Information</div>
 			<div class="card-body">
 			<div class="card-title mb-2 font-weight-bold"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></div>

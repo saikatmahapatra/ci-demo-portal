@@ -2,7 +2,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
     <div class="col-lg-12">
-        <div class="card ci-card">
+        <div class="card ">
             <div class="card-header">Search Data</div>
             <div class="card-body">
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -51,7 +51,7 @@
                             Cancelled</span>
                     </div>
                     <!--/.status-icon-group status-icon-justify-->
-                    <table class="table ci-table table-bordered table-hover w-100">
+                    <table class="table ci-table  table-bordered table-hover w-100">
                         <thead class="">
                             <tr>
                                 <th scope="col">Application No</th>
@@ -170,7 +170,7 @@
             </div>
             <!--/.card-body-->
         </div>
-        <!--/.card ci-card-->
+        <!--/.card -->
 
     </div>
     <!--/.col-->

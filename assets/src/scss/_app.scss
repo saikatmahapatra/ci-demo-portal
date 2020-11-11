@@ -3,7 +3,7 @@
 //@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
 // Body
 body {
-    background-color: #eff3f9;
+    //background-color: #eff3f9;
 }
 
 .footer-dark {
@@ -97,6 +97,7 @@ body {
 .page-title {
     font-size: 1.75rem;
     margin-top: 1.5rem;
+    margin-bottom: 2rem;
     font-weight: 400;
 }
 
@@ -235,8 +236,8 @@ label.optional::after {
 }
 
 // Table Style
-.table.ci-table,
-.datatable.ci-table {
+.table,
+table.dataTable.ci-table {
     font-size: 95%;
     .btn-datatable {
         height: 20px !important;
@@ -252,7 +253,7 @@ label.optional::after {
     thead th,
     tfoot th {
         font-weight: 600;
-        color: $primary;
+        font-size: 14px;
     }
     .btn-icon {
         padding: 0;
@@ -281,6 +282,9 @@ label.optional::after {
     tbody tr td {
         .badge {
             font-weight: 500;
+        }
+        a {
+            color: inherit;
         }
     }
 }
@@ -396,25 +400,19 @@ label.optional::after {
 
 // CI - JQURY Full Calendar
 #ci_full_calendar {
-    .fc-header-toolbar {
-        h2 {
-            font-size: 1rem;
-            font-weight: 400;
-        }
-    }
     .fc-title {
         font-size: 13px;
     }
     .fc-header-toolbar {
         h2 {
-            font-size: 1rem;
+            font-size: 1.25rem;
             font-weight: 400;
         }
-        // .fc-button {
-        //     padding: 0.25rem 0.5rem;
-        //     font-size: 0.875rem;
-        //     line-height: 1.5;
-        // }
+        .fc-button {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
     }
     .fc-widget-header {
         font-size: .875rem;
@@ -591,11 +589,11 @@ label.optional::after {
 }
 
 // CI - Cards Style
-.ci-card {
-    box-shadow: 0 0.15rem 1.75rem 0 rgba(31, 45, 65, 0.15);
-    border: 1px solid rgba(31, 45, 65, 0.125);
-    border-radius: 0.35rem;
-    background-color: $white;
+.card {
+    //box-shadow: 0 0.15rem 1.75rem 0 rgba(31, 45, 65, 0.15);
+    //border: 1px solid rgba(31, 45, 65, 0.125);
+    //border-radius: 0.35rem;
+    //background-color: $white;
     .card-body {
         flex: 1 1 auto;
         padding: 1.25rem;
@@ -624,7 +622,6 @@ label.optional::after {
 
 .profile-card-conntainer {
     margin-bottom: 15px;
-    .ci-card,
     .card {
         .card-body {
             padding: 5px 15px 15px 15px;
