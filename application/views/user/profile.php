@@ -87,7 +87,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card  ci-dl user-profile-page-card">
-			<div class="card-header">Information</div>
+			<div class="card-header"><?php echo $this->common_lib->get_icon('card'); ?> Information</div>
 			<div class="card-body">
 				
 				<?php if($this->session->userdata['sess_user']['user_role'] == 1 && !$is_self_account) {?>

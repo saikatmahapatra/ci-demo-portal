@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ">
-            <div class="card-header">Search Data</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('search_data'); ?> Search Data</div>
             <div class="card-body">
             
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>

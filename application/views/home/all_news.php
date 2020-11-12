@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-lg-9">
         <div class="card news-card ">
-            <div class="card-header">Organizational Announcements</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('notice_board'); ?> Organizational Announcements</div>
             <div class="card-body">
                 <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>
                 <div class="list-group list-group-flush">

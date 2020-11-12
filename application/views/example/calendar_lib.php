@@ -17,7 +17,7 @@
 
 	<div class="col-lg-9">
 	<?php echo isset($alert_message) ? $alert_message : ''; ?>
-		<h2>Form</h2>
+		<h2><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</h2>
 		<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form form-timesheet','name' => '','id' => 'ci-form-timesheet',)); ?>
 		<?php echo form_hidden('form_action', 'add'); ?>		  
 		<?php echo form_hidden('selected_date',set_value('selected_date')); ?>		  

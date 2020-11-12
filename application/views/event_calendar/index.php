@@ -4,7 +4,7 @@
     <div class="col-lg-12">
         <?php echo isset($alert_message) ? $alert_message : ''; ?>
         <div class="card ">
-            <div class="card-header">Calendar</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('calendar'); ?> Calendar</div>
             <div class="card-body">
 
             <div class="btn-group mb-4" role="group" aria-label="Basic example">

@@ -9,7 +9,7 @@
 <label class="row">
 	<label class="col-lg-9">
 		<label class="card ">
-			<div class="card-header">Form</div>
+			<div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
 			<label class="card-body">
 				<?php if($this->session->userdata['sess_user']['user_role'] == 1) {?>
 				<div class="d-flex mb-2">
