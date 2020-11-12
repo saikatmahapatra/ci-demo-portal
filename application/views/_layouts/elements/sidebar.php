@@ -1,4 +1,4 @@
-<nav class="sb-sidenav accordion sb-sidenav-light shadow-right" id="sidenavAccordion">
+<nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
     <div class="sb-sidenav-menu">
         <div class="nav my-3">
             <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
