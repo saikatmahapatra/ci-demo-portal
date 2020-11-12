@@ -23,7 +23,7 @@
             </div>
             <?php } ?>
             </div>
-            <div class="card-footer text-center">
+            <div class="card-footer text-center pt-0">
                 <a class="btn btn-primary btn-sm" href="<?php echo base_url('home/all_news');?>">Show more</a>
             </div>
         </div><!--/.card-->
@@ -75,9 +75,9 @@
                     <?php } ?>
                     <div class="media">
                         <a class="d-flex" href="<?php echo $dashboard_stat['leave_to_approve']['url'];?>">
-                            <i class="fa fa-fw fa-list-ul fa-2x align-middle" aria-hidden="true" style="color: #6c757d;"></i>
+                            <i class="fa fa-fw fa-list-ul fa-2x align-middle" aria-hidden="true" style="color: #0062cc;"></i>
                             <div class="media-body">
-                                <span class="count"><?php echo $dashboard_stat['leave_to_approve']['count'];?></span> leave awaiting for your aproval
+                                <span class="count"><?php echo $dashboard_stat['leave_to_approve']['count'];?></span> leaves need your aproval
                             </div>
                         </a>
                     </div>
@@ -85,7 +85,7 @@
                         <a class="d-flex" href="<?php echo $dashboard_stat['timesheet_days']['url'];?>">
                             <i class="fa fa-fw fa-calendar fa-2x align-middle" aria-hidden="true" style="color: #dc3545;"></i>
                             <div class="media-body">
-                                <span class="count"><?php echo $dashboard_stat['timesheet_days']['count'];?></span> days you logged task*
+                                <span class="count"><?php echo $dashboard_stat['timesheet_days']['count'];?></span> days tasks you've logged *
                             </div>
                         </a>
                     </div>
@@ -93,15 +93,15 @@
                         <a class="d-flex" href="<?php echo $dashboard_stat['timesheet_hrs']['url'];?>">
                             <i class="fa fa-fw fa-clock-o fa-2x align-middle" aria-hidden="true" style="color: #007bff;"></i>
                             <div class="media-body">
-                                <span class="count"><?php echo $dashboard_stat['timesheet_hrs']['count'];?></span> hrs you logged tasks
+                                <span class="count"><?php echo $dashboard_stat['timesheet_hrs']['count'];?></span> hrs tasks you've logged
                             </div>
                         </a>
                     </div>
                     <div class="media">
                         <a class="d-flex" href="<?php echo $dashboard_stat['timesheet_avg_hrs']['url'];?>">
-                            <i class="fa fa-fw fa-code fa-2x align-middle" aria-hidden="true" style="color: #0062cc;"></i>
+                            <i class="fa fa-fw fa-code fa-2x align-middle" aria-hidden="true" style="color: #6c757d;"></i>
                             <div class="media-body">
-                                <span class="count"><?php echo $dashboard_stat['timesheet_avg_hrs']['count'];?></span> hrs avg. you logged
+                                <span class="count"><?php echo $dashboard_stat['timesheet_avg_hrs']['count'];?></span> hrs avg. you've logged
                             </div>
                         </a>
                     </div>
@@ -117,6 +117,10 @@
         <div class="card ">
             <div class="card-header"><?php echo $this->common_lib->get_icon('calendar'); ?> Calendar</div>
             <div class="card-body">
+                <div class="btn-group mb-4" role="group" aria-label="Basic example">
+                    <a href="<?php echo base_url('event_calendar/log_timesheet'); ?>" class="btn btn-sm btn-secondary"><?php echo $this->common_lib->get_icon('timesheet'); ?> Log Timesheet</a>
+                    <a href="<?php echo base_url('event_calendar/apply_leave'); ?>" class="btn btn-sm btn-secondary"><?php echo $this->common_lib->get_icon('leave'); ?> Apply Leave</a>
+                </div>
                 <div id="ci_full_calendar"></div>
             </div>
             <!-- Button trigger modal -->
