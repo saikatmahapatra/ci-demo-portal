@@ -1,5 +1,6 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
+
 <?php if(isset($profile_msg) && sizeof($profile_msg > 0)){ ?>
 <div class="row <?php echo ($display_reminder_modal == 'false') ? 'd-none' : ''; ?>" id="userReminderModal" data-display="<?php echo $display_reminder_modal; ?>">
     <div class="col-lg-12">

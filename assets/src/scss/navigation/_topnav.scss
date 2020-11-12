@@ -10,10 +10,11 @@
         margin: 0;
     }
     &.navbar-dark {
-        #sidebarToggle {
+        #sidebarToggle,
+        .navbar-nav .nav-link {
             color: $topnav-dark-toggler-color;
             &:hover {
-                color: fade-out($white, 0);
+                color: $white;
             }
         }
     }

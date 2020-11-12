@@ -6,7 +6,7 @@
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
-            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+            <input class="form-control" type="text" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2" />
             <div class="input-group-append">
                 <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
             </div>
@@ -17,8 +17,9 @@
         <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
             <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown_5" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"><?php echo $this->common_lib->get_icon('user_account'); ?> 
-                    <?php //echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?>
+                    aria-expanded="false">
+                    <?php echo $this->common_lib->get_icon('user_account'); ?>
+                    <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname']:'Guest';?>
                     </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown_5">
                     <div class="dropdown-item welcome-user-container">

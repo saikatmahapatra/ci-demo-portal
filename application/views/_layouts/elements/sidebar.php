@@ -1,7 +1,13 @@
 <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
+    <!-- <div style="border-bottom: 1px solid rgba(31, 45, 65, 0.125);">
+        <form class="d-none d-md-inline-block form-inline ml-3 my-3">
+        <input class="form-control" type="text" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2" />
+        </form>
+    </div> -->
+    
     <div class="sb-sidenav-menu">
-        <div class="nav my-3">
-            <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
+        <div class="nav my-4">
+            <!-- <div class="sb-sidenav-menu-heading">Navigation</div> -->
             <a class="nav-link nav-link-bold" href="<?php echo base_url($this->router->directory); ?>">
                 <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('dashboard'); ?></div>
                 Dashboard
