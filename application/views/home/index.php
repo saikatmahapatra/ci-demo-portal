@@ -1,22 +1,34 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 
-<?php if(isset($profile_msg) && sizeof($profile_msg > 0)){ ?>
-<div class="row <?php echo ($display_reminder_modal == 'false') ? 'd-none' : ''; ?>" id="userReminderModal" data-display="<?php echo $display_reminder_modal; ?>">
-    <div class="col-lg-12">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        You can improve your profile details by adding <?php echo implode(', ', $profile_msg);?>
-        <a href="<?php echo base_url('user/profile');?>" class="btn btn-sm btn-outline-secondary">Update Now</a>
-        <button type="button" class="close btn_remind_later" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
+<div class="row mb-3">
+    <div class="col-md-8">
+        <div class="card news-card ">
+            <div class="card-header">Organizational Announcements</div>
+            <div class="card-body">
+            
+            <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>
+            <div class="list-group list-group-flush">
+                <?php foreach($data_rows as $key=>$row) { ?>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                        <div class="mb-1"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></div>
+                        <small class="d-none d-md-block  text-muted"><?php echo $this->common_lib->relative_time($row['content_created_on'],true,null); ?></small>
+                        </div>
+                        <!-- <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p> -->
+                        <small class="d-xs-block d-md-none text-muted"><?php echo $this->common_lib->relative_time($row['content_created_on'],true,null); ?></small>
+                        <small class="text-muted">by <?php echo isset($row['user_firstname']) ? $row['user_firstname'].' '.$row['user_lastname'] : '';?></small>
+                    </a>
+                <?php }  ?>
+            </div>
+            <?php } ?>
+            </div>
+            <div class="card-footer text-center">
+                <a class="btn btn-primary btn-sm" href="<?php echo base_url('home/all_news');?>">Show more</a>
+            </div>
+        </div><!--/.card-->
     </div>
-</div>
-<?php } ?>
-
-<div class="row dashboard-card-widgets mb-4">
-    <div class="col-lg-12">
+    <div class="col-md-4">
         <div class="card ">
             <div class="card-header">Statistics</div>
             <div class="card-body">
@@ -111,8 +123,8 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-lg-8 mb-3">
+<div class="row mb-3">
+    <div class="col">
         <div class="card ">
             <div class="card-header">Calendar</div>
             <div class="card-body">
@@ -142,29 +154,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-lg-4 mb-3">
-        <div class="card news-card ">
-            <div class="card-header">Recent News</div>
-            <div class="card-body p-0">
-                <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>
-                <div class="list-group list-group-flush px-0">
-                <?php foreach($data_rows as $key=>$row) { ?>
-                    <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id']);?>" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                        <div class="mb-1 h6"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></div>
-                        </div>
-                        <div class="mb-1"><?php echo isset($row['content_text']) ? character_limiter(($this->common_lib->remove_empty_p($row['content_text'])), 80) : '';?></div>
-                        <small class="text-muted"><?php echo $this->common_lib->relative_time($row['content_created_on'],true,null); ?></small>
-                        <small class="text-muted">by <?php echo isset($row['user_firstname']) ? $row['user_firstname'].' '.$row['user_lastname'] : '';?></small>
-                    </a>
-                <?php }  ?>
-                </div>
-                <?php } ?>
-            </div>
-            <div class="card-footer text-center">
-                <a class="btn btn-primary" href="<?php echo base_url('home/all_news');?>">More...</a>
-            </div>
-        </div><!--/.card-->
     </div>
 </div>

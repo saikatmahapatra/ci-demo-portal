@@ -23,7 +23,7 @@
             <a class="nav-link nav-link-bold collapsed" href="#" data-toggle="collapse" data-target="#collapseLayoutsAdmin" aria-expanded="false" aria-controls="collapseLayoutsAdmin">
                 <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('admin_user'); ?></div>
                 Administrator
-                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
             </a>
             <div class="collapse" id="collapseLayoutsAdmin" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
@@ -45,7 +45,7 @@
             <a class="nav-link nav-link-bold collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts_1" aria-expanded="false" aria-controls="collapseLayouts_1">
                 <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('organization'); ?></div>
                 My Organization
-                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
             </a>
             <div class="collapse" id="collapseLayouts_1" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
@@ -63,7 +63,7 @@
             <a class="nav-link nav-link-bold collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts_2" aria-expanded="false" aria-controls="collapseLayouts_2">
                 <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('leave'); ?></div>
                 Leave
-                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
             </a>
             <div class="collapse" id="collapseLayouts_2" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
@@ -77,7 +77,7 @@
             <a class="nav-link nav-link-bold collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts_3" aria-expanded="false" aria-controls="collapseLayouts_3">
                 <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('user_account'); ?></div>
                 My Account
-                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
             </a>
             <div class="collapse" id="collapseLayouts_3" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
@@ -89,11 +89,11 @@
             </div>
             <!-- <div class="sb-sidenav-menu-heading">Addons</div>
             <a class="nav-link" href="charts.html">
-                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                <div class="sb-nav-link-icon"><i class="fa fa-chart-area"></i></div>
                 Charts
             </a>
             <a class="nav-link" href="tables.html">
-                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                <div class="sb-nav-link-icon"><i class="fa fa-table"></i></div>
                 Tables
             </a> -->
         </div>

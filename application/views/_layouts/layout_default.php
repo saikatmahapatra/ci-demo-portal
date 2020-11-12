@@ -6,7 +6,8 @@
     <link href="<?php echo base_url('assets/dist/css/styles.min.css?time='.time()); ?>" rel="stylesheet">
 	
     <!-- Font Awesome Icons -->
-    <link href="<?php echo base_url('assets/vendors/font-awesome-free/css/fontawesome.min.css');?>" rel="stylesheet">    
+    <!-- <link href="<?php echo base_url('assets/vendors/font-awesome-free/css/fontawesome.min.css');?>" rel="stylesheet">     -->
+    <link href="<?php echo base_url('assets/vendors/font-awesome/css/font-awesome.min.css');?>" rel="stylesheet">
     <!-- jQuery DataTables Core CSS -->    
     <link href="<?php //echo base_url('assets/vendors/datatables.net-dt/css/jquery.dataTables.css');?>" rel="stylesheet">
     <!-- Bootstrap 4 DataTables CSS -->    
@@ -100,8 +101,8 @@
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/timegrid/main.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/list/main.js');?>"></script>
     <!-- Font Awesome JS -->
-    <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/solid.min.js');?>"></script>
-    <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/fontawesome.min.js');?>"></script>
+    <!-- <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/solid.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/fontawesome.min.js');?>"></script> -->
     <!-- jQuery Custom Scroller CDN -->
     <!-- <script src="<?php echo base_url('assets/vendors/malihu-custom-scrollbar-plugin/js/jquery.mCustomScrollbar.concat.min.js');?>"></script> -->
 	<!--Application Specific JS Loading Through Controllers-->
