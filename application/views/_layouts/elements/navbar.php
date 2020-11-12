@@ -3,8 +3,8 @@
     <!-- <img class="mx-auto" src="<?php echo base_url('assets/dist/img/logo-nav.png');?>" alt="Logo" width="48px">  -->
     My App</a>
     <button class="btn btn-link order-1 order-lg-0" id="sidebarToggle">
-        <!-- <i class="navmenu-icon fas fa-bars"></i> -->
-        <span class="navmenu-icon navbar-toggler-icon"></span>
+        <i class="navmenu-icon fa fa-bars"></i>
+        <!-- <span class="navmenu-icon navbar-toggler-icon"></span> -->
     </button>
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">

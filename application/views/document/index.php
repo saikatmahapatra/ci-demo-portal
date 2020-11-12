@@ -41,7 +41,7 @@
 
     <div class="col-lg-7 mb-3">
         <div class="card ">
-            <div class="card-header">Data Table</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('table'); ?> Data Table</div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table ci-table  table-bordered table-hover w-100">

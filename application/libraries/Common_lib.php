@@ -628,9 +628,9 @@ class Common_lib {
             'dashboard' => 'fa-dashboard',
             'calendar' => 'fa-calendar-o',
             'user_account' => 'fa-user',
-            'admin_user' => 'fa-cogs',
+            'admin_user' => 'fa-gear',
             'organization' => 'fa-briefcase',
-            'leave' => 'fa-paper-plane',
+            'leave' => 'fa-plane',
             'leave_status' => 'fa-circle-notch fa-xs',
             'timesheet' => 'fa-calendar-check-o',
             'question' => 'fa-question',
@@ -652,6 +652,11 @@ class Common_lib {
             'settings' => 'fa-cogs',
             'user_settings' => 'fa-user-cog',
             'history' => 'fa-history',
+            'table' => 'fa-table',
+            'form-control' => 'fa-check-square-o',
+            'bs-card' => 'fa-info-circle',
+            'notice_board' => 'fa-bullhorn',
+            'stat' => 'fa-line-chart'
         );
         $icon_name = isset($icon_name_arr[$name]) ? $icon_name_arr[$name] : 'not-found';
         return '<i class="'.$icon_style.' fa-fw '.$icon_name.' '.$css_class.'" aria-hidden="true"></i>';

@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card ">
-			<div class="card-header">Data Table</div>
+			<div class="card-header"><?php echo $this->common_lib->get_icon('table'); ?> Data Table</div>
 			<div class="card-body">
 			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
