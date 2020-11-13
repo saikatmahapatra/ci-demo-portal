@@ -6,7 +6,8 @@
     <link href="<?php echo base_url('assets/dist/css/styles.min.css?time='.time()); ?>" rel="stylesheet">
     
 	<!-- Font Awesome Icons -->
-    <link href="<?php echo base_url('assets/vendors/font-awesome-free/css/fontawesome.min.css');?>" rel="stylesheet">   
+    <!-- <link href="<?php echo base_url('assets/vendors/font-awesome-free/css/fontawesome.min.css');?>" rel="stylesheet">    -->
+    <link href="<?php echo base_url('assets/vendors/font-awesome/css/font-awesome.min.css');?>" rel="stylesheet">
     <!-- jQuery DataTables Core CSS -->    
     <link href="<?php //echo base_url('assets/vendors/datatables.net-dt/css/jquery.dataTables.css');?>" rel="stylesheet">
     <!-- Bootstrap 4 DataTables CSS -->    
@@ -48,8 +49,8 @@
     <!-- Pace JS for page load progress -->
     <script src="<?php echo base_url('assets/vendors/pace-js/pace.min.js'); ?>"></script>
     <!-- Font Awesome JS -->
-    <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/solid.min.js');?>"></script>
-    <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/fontawesome.min.js');?>"></script>
+    <!-- <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/solid.min.js');?>"></script> -->
+    <!-- <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/fontawesome.min.js');?>"></script> -->
     <!--Application Specific JS Loading Through Controllers-->
     <?php echo isset($app_js) ? $app_js : ''; ?>
 </body>

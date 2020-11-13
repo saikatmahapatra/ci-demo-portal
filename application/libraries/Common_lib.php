@@ -604,19 +604,19 @@ class Common_lib {
     }
 
     function get_icon($name, $css_class = NULL, $style  = NULL){
-        $icon_style = 'fas';
+        $icon_style = 'fa';
         if($style) {
             $icon_style = $style;
         }
         $icon_name_arr = array(
-            'email' => 'fa-envelope',
+            'email' => 'fa-envelope-o',
             'username' => 'fa-user',
             'password' => 'fa-lock',
             'otp' => 'fa-key',
             'search' => 'fa-search',
-            'plus' => 'fa-plus-circle',
+            'plus' => 'fa-plus',
             'minus' => 'fa-minus',
-            'edit' => 'fa-pencil-alt',
+            'edit' => 'fa-pencil',
             'delete' => 'fa-times',
             'close' => 'fa-times',
             'download' => 'fa-download',
@@ -625,14 +625,14 @@ class Common_lib {
             'status' => 'fa-circle',
             'tick' => 'fa-check',
             'home' => 'fa-home',
-            'dashboard' => 'fa-tachometer-alt',
+            'dashboard' => 'fa-dashboard',
             'calendar' => 'fa-calendar',
             'user_account' => 'fa-user',
-            'admin_user' => 'fa-lock',
+            'admin_user' => 'fa-gear',
             'organization' => 'fa-briefcase',
-            'leave' => 'fa-paper-plane',
+            'leave' => 'fa-plane',
             'leave_status' => 'fa-circle-notch fa-xs',
-            'timesheet' => 'fa-calendar-check',
+            'timesheet' => 'fa-calendar-check-o',
             'question' => 'fa-question',
             'warning' => 'fa-exclamation-triangle',
             'sidebar_toggle' => 'fa-align-left',
@@ -652,6 +652,15 @@ class Common_lib {
             'settings' => 'fa-cogs',
             'user_settings' => 'fa-user-cog',
             'history' => 'fa-history',
+            'table' => 'fa-table',
+            'form_icon' => 'fa-check-square-o',
+            'card' => 'fa-info-circle',
+            'notice_board' => 'fa-bullhorn',
+            'stat' => 'fa-line-chart',
+            'holiday_calendar' => 'fa-calendar',
+            'search_data' => 'fa-search',
+            'hide_sidebar' => 'fa-arrow-left',
+            'show_sidebar' => 'fa-arrow-right'
         );
         $icon_name = isset($icon_name_arr[$name]) ? $icon_name_arr[$name] : 'not-found';
         return '<i class="'.$icon_style.' fa-fw '.$icon_name.' '.$css_class.'" aria-hidden="true"></i>';

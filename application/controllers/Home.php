@@ -183,7 +183,7 @@ class Home extends CI_Controller {
                 $this->data['redirect_back_url'] = site_url('home/all_news');
             }
         }
-        $this->data['page_title'] = 'Notice Board';
+        $this->data['page_title'] = 'Organizational Announcement';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/details', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

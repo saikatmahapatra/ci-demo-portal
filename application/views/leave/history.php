@@ -3,15 +3,15 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ">
-            <div class="card-header">Data Table</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('table'); ?> Data Table</div>
             <div class="card-body">
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
         
                 <div class="d-flex mb-2">
                     <div class="align-self-end ml-auto"> 
-                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>" class="btn btn-outline-success"><?php echo $this->common_lib->get_icon('leave'); ?> Apply Leave</a>
+                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>" class="btn btn-sm btn-success"><?php echo $this->common_lib->get_icon('leave'); ?> Apply Leave</a>
 
-                        <a href="<?php echo base_url($this->router->directory.'user/edit_approvers');?>" class="btn btn-outline-secondary"><?php echo $this->common_lib->get_icon('user_settings'); ?> Change Approvers</a>
+                        <a href="<?php echo base_url($this->router->directory.'user/edit_approvers');?>" class="btn btn-sm btn-secondary"><?php echo $this->common_lib->get_icon('user_settings'); ?> Change Approvers</a>
                     </div>
                 </div>
 

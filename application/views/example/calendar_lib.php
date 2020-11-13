@@ -12,12 +12,12 @@
 			<div class="d-inline-block"><span class="i-leave pr-2 pl-2 m-1"></span>Leave</div>
 			<div class="d-inline-block"><span class="i-holiday pr-2 pl-2 m-1"></span>Holiday</div>
 		</div>
-		<div class="mt-2"><a id="clear_selected_days" class="btn btn-outline-secondary btn-sm" href="#">Clear all selected days</a></div>
+		<div class="mt-2"><a id="clear_selected_days" class="btn btn-sm btn-secondary btn-sm" href="#">Clear all selected days</a></div>
 	</div>
 
 	<div class="col-lg-9">
 	<?php echo isset($alert_message) ? $alert_message : ''; ?>
-		<h2>Form</h2>
+		<h2><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</h2>
 		<?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form form-timesheet','name' => '','id' => 'ci-form-timesheet',)); ?>
 		<?php echo form_hidden('form_action', 'add'); ?>		  
 		<?php echo form_hidden('selected_date',set_value('selected_date')); ?>		  

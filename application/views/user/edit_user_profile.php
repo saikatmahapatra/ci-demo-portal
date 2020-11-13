@@ -9,7 +9,7 @@
 <label class="row">
 	<label class="col-lg-9">
 		<label class="card ">
-			<div class="card-header">Form</div>
+			<div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
 			<label class="card-body">
 				<?php if($this->session->userdata['sess_user']['user_role'] == 1) {?>
 				<div class="d-flex mb-2">
@@ -218,7 +218,7 @@
 
 				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
 				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="btn btn-light ci-btn-cancel">Cancel</a>
-				<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn btn-outline-danger">Delete Account</a> -->
+				<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn btn-sm btn-danger">Delete Account</a> -->
 				<?php echo form_close(); ?>
 			
 			</label><!--./card-body-->

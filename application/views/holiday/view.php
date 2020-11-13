@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-8">
 		<div class="card ">
-			<div class="card-header">List of Holidays <?php echo date('Y');?></div>
+			<div class="card-header"><?php echo $this->common_lib->get_icon('holiday_calendar'); ?> List of Holidays <?php echo date('Y');?></div>
 			<div class="card-body">
 				<div class="table-responsive">
 					<table class="table ci-table  table-bordered table-hover w-100">

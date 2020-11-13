@@ -6,7 +6,8 @@
     <link href="<?php echo base_url('assets/dist/css/styles.min.css?time='.time()); ?>" rel="stylesheet">
 	
     <!-- Font Awesome Icons -->
-    <link href="<?php echo base_url('assets/vendors/font-awesome-free/css/fontawesome.min.css');?>" rel="stylesheet">    
+    <!-- <link href="<?php echo base_url('assets/vendors/font-awesome-free/css/fontawesome.min.css');?>" rel="stylesheet">     -->
+    <link href="<?php echo base_url('assets/vendors/font-awesome/css/font-awesome.min.css');?>" rel="stylesheet">
     <!-- jQuery DataTables Core CSS -->    
     <link href="<?php //echo base_url('assets/vendors/datatables.net-dt/css/jquery.dataTables.css');?>" rel="stylesheet">
     <!-- Bootstrap 4 DataTables CSS -->    
@@ -33,7 +34,7 @@
     <![endif]-->
 </head>
 
-<body class="sb-nav-fixed" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
+<body class="sb-nav-fixed <?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? 'sb-sidenav-toggled' : ''; ?>" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
     <?php echo $el_navbar; ?>
     <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
@@ -100,30 +101,28 @@
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/timegrid/main.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/list/main.js');?>"></script>
     <!-- Font Awesome JS -->
-    <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/solid.min.js');?>"></script>
-    <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/fontawesome.min.js');?>"></script>
+    <!-- <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/solid.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/vendors/font-awesome-free/js/fontawesome.min.js');?>"></script> -->
     <!-- jQuery Custom Scroller CDN -->
     <!-- <script src="<?php echo base_url('assets/vendors/malihu-custom-scrollbar-plugin/js/jquery.mCustomScrollbar.concat.min.js');?>"></script> -->
 	<!--Application Specific JS Loading Through Controllers-->
     <?php echo isset($app_js) ? $app_js : ''; ?>
     <script type="text/javascript">
-        // $(document).ready(function () {
-        //     $('#sidebarCollapse').on('click', function () {
-        //         $('#sidebar').toggleClass('active');
-        //     });
-        //     $('#locksidebar').on('click', function(){
-        //         var xhr = new Ajax();
-        //         xhr.url = SITE_URL + ROUTER_DIRECTORY + 'home' + '/sidebar_toggle';
-        //         xhr.data = {active: true};
-        //         var promise = xhr.init();
-        //         promise.done(function(response) {
-        //             window.location.reload(); 
-        //         });
-        //         promise.always(function() {
-        //             //window.location.reload();
-        //         });
-        //     });
-        // });
+        $(document).ready(function () {
+            $('#locksidebar').on('click', function(e){
+                e.preventDefault();
+                var xhr = new Ajax();
+                xhr.url = SITE_URL + ROUTER_DIRECTORY + 'home' + '/sidebar_toggle';
+                xhr.data = {active: true};
+                var promise = xhr.init();
+                promise.done(function(response) {
+                    window.location.reload(); 
+                });
+                promise.always(function() {
+                    //window.location.reload();
+                });
+            });
+        });
     </script>
 </body>
 </html>

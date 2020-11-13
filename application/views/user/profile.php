@@ -87,7 +87,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card  ci-dl user-profile-page-card">
-			<div class="card-header">Information</div>
+			<div class="card-header"><?php echo $this->common_lib->get_icon('card'); ?> Information</div>
 			<div class="card-body">
 				
 				<?php if($this->session->userdata['sess_user']['user_role'] == 1 && !$is_self_account) {?>
@@ -252,7 +252,7 @@
 								<div class="row mt-3">
 									<div class="col-lg-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
+										<a class="btn btn-sm btn-success btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
 										<?php } ?>
 										<?php if(isset($address)){
 											foreach($address as $key=>$addr){
@@ -290,7 +290,7 @@
 								<div class="row mt-3">
 									<div class="col-lg-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
+										<a class="btn btn-sm btn-success btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
 										<?php } ?>
 										
 										<?php if(isset($education)){
@@ -327,7 +327,7 @@
 								<div class="row mt-3">
 									<div class="col-lg-12">
 									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
+										<a class="btn btn-sm btn-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
 									<?php } ?>
 
 											<div class="my-4">
@@ -375,7 +375,7 @@
 								<div class="row mt-3">
 									<div class="col-lg-12">
 									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
+										<a class="btn btn-sm btn-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
 									<?php } ?>
 										<?php //print_r($bank_details);?>
 										<?php $uni = isset($user_national_identifiers) ? $user_national_identifiers[0] : ''; ?>
@@ -445,7 +445,7 @@
 								<div class="row mt-3">
 									<div class="col-lg-12">
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-outline-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
+										<a class="btn btn-sm btn-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
 										<?php } ?>
 
 
@@ -517,7 +517,7 @@
 														}
 													?>
 													
-													<a data-target="window" target="_new" href="<?php echo $file_src;?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-outline-secondary <?php echo $btn_class;?>"><?php echo $this->common_lib->get_icon('download'); ?> View</a>
+													<a data-target="window" target="_new" href="<?php echo $file_src;?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-sm btn-secondary <?php echo $btn_class;?>"><?php echo $this->common_lib->get_icon('download'); ?> View</a>
 												</div>
 											</div>
 											<?php } //foreach ?>

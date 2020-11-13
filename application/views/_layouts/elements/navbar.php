@@ -1,14 +1,17 @@
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary shadow">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
     <a class="navbar-brand" href="<?php echo base_url($this->router->directory); ?>">
     <!-- <img class="mx-auto" src="<?php echo base_url('assets/dist/img/logo-nav.png');?>" alt="Logo" width="48px">  -->
     My App</a>
-    <button class="btn btn-link order-1 order-lg-0" id="sidebarToggle" href="#"><i class="navmenu-icon fas fa-bars"></i></button>
+    <button class="btn btn-link order-1 order-lg-0" id="sidebarToggle">
+        <!-- <i class="navmenu-icon fa fa-bars"></i> -->
+        <span class="navmenu-icon navbar-toggler-icon"></span>
+    </button>
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
-            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+            <input class="form-control" type="text" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2" />
             <div class="input-group-append">
-                <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
+                <button class="btn btn-light" type="button"><i class="fa fa-search"></i></button>
             </div>
         </div>
     </form>
@@ -17,8 +20,9 @@
         <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>
             <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown_5" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"><?php echo $this->common_lib->get_icon('user_account'); ?> 
-                    <?php //echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname']:'Guest';?>
+                    aria-expanded="false">
+                    <?php echo $this->common_lib->get_icon('user_account'); ?>
+                    <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname']:'Guest';?>
                     </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown_5">
                     <div class="dropdown-item welcome-user-container">

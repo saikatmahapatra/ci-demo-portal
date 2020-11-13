@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ">
-            <div class="card-header">Search Data</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('search_data'); ?> Search Data</div>
             <div class="card-body">
             
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -67,7 +67,7 @@
                         <input type="hidden" name="q_project" value="<?php echo $this->input->get('q_project');?>">
                         <input type="hidden" name="from_date" value="<?php echo $this->input->get('from_date');?>">
                         <input type="hidden" name="to_date" value="<?php echo $this->input->get('to_date');?>">
-                        <button type="submit" class="btn btn-outline-secondary"> <?php echo $this->common_lib->get_icon('download'); ?> Download</button>
+                        <button type="submit" class="btn btn-sm btn-secondary"> <?php echo $this->common_lib->get_icon('download'); ?> Download</button>
                         <?php echo form_close(); ?>
                         <?php } ?>
                     </div>

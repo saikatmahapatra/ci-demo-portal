@@ -662,3 +662,26 @@ table.dataTable.ci-table {
         background: #c0f5b0;
     }
 }
+
+// List Group Style
+.list-group-item-action {
+    padding-left: 5px;
+    padding-right: 5px;
+    color: $gray-900;
+}
+
+// Dashboard Stats
+.dashboard-stat {
+    a {
+        color: inherit !important;
+        text-decoration: none;
+    }
+    .media {
+        font-size: .875rem;
+        padding: .75rem 0rem;
+        .count {
+            font-weight: 300;
+            font-size: 1.25rem;
+        }
+    }
+}

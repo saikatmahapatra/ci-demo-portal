@@ -18,9 +18,10 @@
             .nav-link {
                 display: flex;
                 align-items: center;
-                padding-top: 0.75rem;
-                padding-bottom: 0.75rem;
+                // padding-top: 0.75rem;
+                // padding-bottom: 0.75rem;
                 position: relative;
+                font-size: 90%;
                 .sb-nav-link-icon {
                     font-size: 0.9rem;
                 }
@@ -35,9 +36,10 @@
                     }
                 }
             }
-            // .nav-link-bold {
-            //     font-weight: 700;
-            // }
+            .nav-link-bold {
+                //font-weight: 500;
+                font-size: 100%;
+            }
             .sb-sidenav-menu-nested {
                 margin-left: 1.5rem;
                 flex-direction: column;

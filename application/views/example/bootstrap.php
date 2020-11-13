@@ -62,13 +62,13 @@
 	<button type="button" class="btn btn-danger">.btn-danger</button>
 	<button type="button" class="btn btn-warning">.btn-warning</button>
 	<button type="button" class="btn btn-info">.btn-info</button>
-	<button type="button" class="btn btn-outline-secondary">.btn-outline-secondary</button>
+	<button type="button" class="btn btn-sm btn-secondary">.btn-sm btn-secondary</button>
 	<button type="button" class="btn btn-dark">.btn-dark</button>
 	<button type="button" class="btn btn-link">.btn-link</button>
 
 	<h2 class="h3 mb-3 font-weight-normal">Button Outline</h1>
-	<button type="button" class="btn btn-outline-primary">.btn .btn-outline-primary</button>
-	<button type="button" class="btn btn-outline-secondary">btn-outline-secondary</button>
+	<button type="button" class="btn btn-sm btn-primary">.btn .btn-sm btn-primary</button>
+	<button type="button" class="btn btn-sm btn-secondary">btn-sm btn-secondary</button>
 
 	<h2 class="h3 mb-3 font-weight-normal">Progress Bar</h1>        
 	<div class="progress">
@@ -149,7 +149,7 @@
 				<div class="card-body">
 					<h5 class="card-title">Card title</h5>
 					<p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					<a href="#" class="btn btn-outline-secondary">.btn-outline-secondary</a>
+					<a href="#" class="btn btn-sm btn-secondary">.btn-sm btn-secondary</a>
 				</div>
 				<div class="card-footer">
 					<button class="btn ci-btn-primary btn-primary btn-sm">.ci-btn-primary btn-primary</button>

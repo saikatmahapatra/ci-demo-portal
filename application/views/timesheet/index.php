@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ">
-            <div class="card-header">Log Tasks</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
             
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -42,7 +42,7 @@
                                     <div class="d-inline-block"><span class="i-disabled-date pr-2 pl-2 m-1"></span>Disabled
                                     </div>
                                 </div>
-                                <div class="mb-2"><a id="clear_selected_days" class="btn btn-outline-secondary btn-sm"
+                                <div class="mb-2"><a id="clear_selected_days" class="btn btn-sm btn-secondary btn-sm"
                                         href="#">Clear selected dates</a></div>
                                 <?php echo form_error('selected_date'); ?>
                             </div>
