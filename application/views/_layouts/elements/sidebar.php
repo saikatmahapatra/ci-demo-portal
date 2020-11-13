@@ -5,7 +5,7 @@
         </form>
     </div> -->
     <div class="d-flex justify-content-end my-2 mx-2">
-        <button title="<?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? 'Show sidebar always' : 'Hide sidebar always'; ?>" type="button" id="locksidebar" class="btn btn-sm btn-light d-none d-sm-block"><?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? $this->common_lib->get_icon('show_sidebar') : $this->common_lib->get_icon('hide_sidebar'); ?></button>
+        <button title="<?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? 'Show sidebar always' : 'Hide sidebar always'; ?>" type="button" id="locksidebar" class="btn btn-sm btn-light d-none d-sm-block text-secondary"><?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? $this->common_lib->get_icon('show_sidebar') : $this->common_lib->get_icon('hide_sidebar'); ?></button>
     </div>
     <div class="sb-sidenav-menu">
         <div class="nav mt-3 mb-4">
