@@ -53,6 +53,6 @@ $config['app_faq'] = array(
 
 $config['app_copy_right'] = '&copy; '.date('Y').' United Exploration. All Rights Reserved.';
 $config['app_admin_copy_right'] = 'Copyright &copy; '.date('Y').' United Exploration.</a>';
-$config['app_version'] = 'App v10.0.0'; // Recommended format CIVerMajor.RelVer.UIVer
+$config['app_version'] = 'App v11.0'; // Recommended format CIVerMajor.RelVer.UIVer
 
 
