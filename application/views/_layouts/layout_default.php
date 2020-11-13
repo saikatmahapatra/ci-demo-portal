@@ -34,7 +34,7 @@
     <![endif]-->
 </head>
 
-<body class="sb-nav-fixed" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
+<body class="sb-nav-fixed <?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? 'sb-sidenav-toggled' : ''; ?>" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>">
     <?php echo $el_navbar; ?>
     <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
@@ -108,23 +108,21 @@
 	<!--Application Specific JS Loading Through Controllers-->
     <?php echo isset($app_js) ? $app_js : ''; ?>
     <script type="text/javascript">
-        // $(document).ready(function () {
-        //     $('#sidebarCollapse').on('click', function () {
-        //         $('#sidebar').toggleClass('active');
-        //     });
-        //     $('#locksidebar').on('click', function(){
-        //         var xhr = new Ajax();
-        //         xhr.url = SITE_URL + ROUTER_DIRECTORY + 'home' + '/sidebar_toggle';
-        //         xhr.data = {active: true};
-        //         var promise = xhr.init();
-        //         promise.done(function(response) {
-        //             window.location.reload(); 
-        //         });
-        //         promise.always(function() {
-        //             //window.location.reload();
-        //         });
-        //     });
-        // });
+        $(document).ready(function () {
+            $('#locksidebar').on('click', function(e){
+                e.preventDefault();
+                var xhr = new Ajax();
+                xhr.url = SITE_URL + ROUTER_DIRECTORY + 'home' + '/sidebar_toggle';
+                xhr.data = {active: true};
+                var promise = xhr.init();
+                promise.done(function(response) {
+                    window.location.reload(); 
+                });
+                promise.always(function() {
+                    //window.location.reload();
+                });
+            });
+        });
     </script>
 </body>
 </html>

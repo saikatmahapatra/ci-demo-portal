@@ -658,7 +658,9 @@ class Common_lib {
             'notice_board' => 'fa-bullhorn',
             'stat' => 'fa-line-chart',
             'holiday_calendar' => 'fa-calendar',
-            'search_data' => 'fa-search'
+            'search_data' => 'fa-search',
+            'hide_sidebar' => 'fa-arrow-left',
+            'show_sidebar' => 'fa-arrow-right'
         );
         $icon_name = isset($icon_name_arr[$name]) ? $icon_name_arr[$name] : 'not-found';
         return '<i class="'.$icon_style.' fa-fw '.$icon_name.' '.$css_class.'" aria-hidden="true"></i>';
