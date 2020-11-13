@@ -85,7 +85,7 @@
                         <a class="d-flex" href="<?php echo $dashboard_stat['timesheet_days']['url'];?>">
                             <i class="fa fa-fw fa-calendar fa-2x align-middle" aria-hidden="true" style="color: #dc3545;"></i>
                             <div class="media-body">
-                                <span class="count"><?php echo $dashboard_stat['timesheet_days']['count'];?></span> days tasks you've logged *
+                                <span class="count"><?php echo $dashboard_stat['timesheet_days']['count'];?></span> days tasks you've logged*
                             </div>
                         </a>
                     </div>

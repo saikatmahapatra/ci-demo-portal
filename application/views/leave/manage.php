@@ -136,7 +136,7 @@
 			else{
 				?>
                             <tr>
-                                <td colspan="7">
+                                <td colspan="8">
                                     <?php if($this->input->get_post('form_action') === 'search') {
                                         ?>
                                         <div class="mt-3 alert alert-danger"><?php echo $this->common_lib->get_icon('warning'); ?> No result found based on your search criteria. Please search again.</div>
