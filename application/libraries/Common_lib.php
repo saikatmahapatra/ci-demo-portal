@@ -57,8 +57,8 @@ class Common_lib {
      * @return string
      */
     function add_javascript($files = array()) {
-		$file_path = 'assets/src/js/';
-		$ext = '.js'; // .js | .min.js
+		$file_path = 'assets/dist/js/';
+		$ext = '.min.js'; // .js | .min.js
         $common_files = array(
             'ajax',
             'app'
@@ -627,7 +627,7 @@ class Common_lib {
             'home' => 'fa-home',
             'dashboard' => 'fa-dashboard',
             'calendar' => 'fa-calendar',
-            'user_account' => 'fa-user',
+            'user_account' => 'fa-user-circle',
             'admin_user' => 'fa-gear',
             'organization' => 'fa-briefcase',
             'leave' => 'fa-plane',
