@@ -688,8 +688,11 @@ table.dataTable.ci-table {
 
 // Table top action btn link
 .action-link {
+    text-decoration: none;
     &:hover {
         text-decoration: none;
+        background-color: #f8f9fa;
+        border-color: #f8f9fa;
     }
     &:focus {
         box-shadow: none;
