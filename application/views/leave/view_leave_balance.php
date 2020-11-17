@@ -24,18 +24,18 @@
                 
                 <div class="d-flex mb-2">
                     <div class="align-self-end ml-auto">
-                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/leave_balance');?>" class="btn btn-sm btn-success"> <?php echo $this->common_lib->get_icon('plus'); ?> Add or Update</a>
+                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/leave_balance');?>" class="btn btn-sm btn-link action-link"> <?php echo $this->common_lib->get_icon('plus'); ?> Add or Update</a>
 
                         <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'd-inline-block', 'name' => 'download_data')); ?>
 						<input type="hidden" name="form_action" value="download">
                         
-                        <button type="submit" class="btn btn-sm btn-secondary"> <?php echo $this->common_lib->get_icon('download'); ?> Export Data</button>
+                        <button type="submit" class="btn btn-sm btn-link action-link"> <?php echo $this->common_lib->get_icon('download'); ?> Export Data</button>
                         <?php echo form_close(); ?>
                     </div>
                 </div>
 
                 <div class="table-responsive">
-                    <table id="view-leave-bal-datatable" class="table ci-table  table-bordered table-hover w-100">
+                    <table id="view-leave-bal-datatable" class="table ci-table  table-bordered table-striped w-100">
                         <thead class="">
                             <tr>
                                 <th scope="col">Emp ID</th>

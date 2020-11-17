@@ -88,8 +88,8 @@ body {
     bottom: 50px;
     right: 5px;
     display: none;
-    .svg-inline--fa.fa-fw {
-        width: 100%;
+    .fa-fw {
+        width: auto;
     }
 }
 
@@ -97,7 +97,7 @@ body {
 .page-title {
     font-size: 1.75rem;
     margin-top: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     font-weight: 400;
 }
 
@@ -683,5 +683,18 @@ table.dataTable.ci-table {
             font-weight: 300;
             font-size: 1.25rem;
         }
+    }
+}
+
+// Table top action btn link
+.action-link {
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+        //background-color: #f8f9fa;
+        //border-color: #f8f9fa;
+    }
+    &:focus {
+        box-shadow: none;
     }
 }

@@ -57,8 +57,8 @@ class Common_lib {
      * @return string
      */
     function add_javascript($files = array()) {
-		$file_path = 'assets/src/js/';
-		$ext = '.js'; // .js | .min.js
+		$file_path = 'assets/dist/js/';
+		$ext = '.min.js'; // .js | .min.js
         $common_files = array(
             'ajax',
             'app'
@@ -627,11 +627,11 @@ class Common_lib {
             'home' => 'fa-home',
             'dashboard' => 'fa-dashboard',
             'calendar' => 'fa-calendar',
-            'user_account' => 'fa-user',
+            'user_account' => 'fa-user-circle',
             'admin_user' => 'fa-gear',
             'organization' => 'fa-briefcase',
             'leave' => 'fa-plane',
-            'leave_status' => 'fa-circle-notch fa-xs',
+            'leave_status' => 'fa-circle-o fa-xs',
             'timesheet' => 'fa-calendar-check-o',
             'question' => 'fa-question',
             'warning' => 'fa-exclamation-triangle',
@@ -640,6 +640,7 @@ class Common_lib {
             'right_arrow' => 'fa-arrow-right',
             'scroll_up' => 'fa-arrow-up',
             'left_back' => 'fa-chevron-left',
+            'right_fwd' => 'fa-chevron-right',
             'camera' => 'fa-camera',
             'address' => 'fa-map-marker',
             'education' => 'fa-certificate',
@@ -650,7 +651,7 @@ class Common_lib {
             'other_info' => 'fa-list-ul',
             'setting' => 'fa-cog',
             'settings' => 'fa-cogs',
-            'user_settings' => 'fa-user-cog',
+            'user_settings' => 'fa-gear',
             'history' => 'fa-history',
             'table' => 'fa-table',
             'form_icon' => 'fa-check-square-o',
@@ -662,7 +663,7 @@ class Common_lib {
             'hide_sidebar' => 'fa-arrow-left',
             'show_sidebar' => 'fa-arrow-right'
         );
-        $icon_name = isset($icon_name_arr[$name]) ? $icon_name_arr[$name] : 'not-found';
+        $icon_name = isset($icon_name_arr[$name]) ? $icon_name_arr[$name] : 'fa-question';
         return '<i class="'.$icon_style.' fa-fw '.$icon_name.' '.$css_class.'" aria-hidden="true"></i>';
     }
 

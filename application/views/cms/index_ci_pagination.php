@@ -6,12 +6,12 @@
 
 		<div class="d-flex mb-2">
 			<div class="align-self-end ml-auto"> 
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="btn btn-sm btn-success"> <?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/add');?>" class="btn btn-sm btn-link action-link"> <?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
 			</div>
 		</div>	
 			
 		<th class="table-responsive">
-			<table class="table ci-table  table-bordered table-hover w-100">
+			<table class="table ci-table  table-bordered table-striped w-100">
 				<thead class="">
 					<tr>
 						<th scope="col">Title</th>

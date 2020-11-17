@@ -237,12 +237,12 @@ function autoCloseAlertMessage(autoClose) {
 function scrollToTop(minHeight, scrollSpeed) {
     $(window).scroll(function() {
         if ($(this).scrollTop() > minHeight) {
-            $('.scrollup').fadeIn();
+            $('#scrollup').fadeIn();
         } else {
-            $('.scrollup').fadeOut();
+            $('#scrollup').fadeOut();
         }
     });
-    $('.scrollup').click(function() {
+    $('#scrollup').click(function() {
         $("html, body").animate({
             scrollTop: 0
         }, scrollSpeed);

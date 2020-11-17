@@ -11,6 +11,14 @@
             <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
+                <div class="d-flex mb-2">
+                    <div class="align-self-end ml-auto"> 
+                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="btn btn-sm btn-link action-link"><?php echo $this->common_lib->get_icon('history'); ?> Leave History</a>
+
+                        <a href="<?php echo base_url($this->router->directory.'user/edit_approvers');?>" class="btn btn-sm btn-link action-link"><?php echo $this->common_lib->get_icon('user_settings'); ?> Change Approvers</a>
+                    </div>
+                </div>
+
                 <div class="form-text small text-muted bg-light py-2 mb-3">
                         <ul class="mb-0">
                         <?php foreach($system_msg as $key=>$val){?>
@@ -83,11 +91,6 @@
                 <button type="submit" <?php echo ($system_msg_error_counter >0 ) ? 'disabled="disabled"' : '';  ?>
                     class="btn ci-btn-primary btn-primary">Submit</button>
                 <?php echo form_close(); ?>
-
-                <div class="align-self-end mt-3"> 
-                    <a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="d-flex">View Leave History</a>
-                    <a href="<?php echo base_url($this->router->directory.'user/edit_approvers');?>" class="d-flex">Change Approvers</a>
-                </div>
             </div>
             <!--/.card-body-->
         </div>
@@ -122,7 +125,7 @@
                         <li>For leave balance debit, credit related issues or information please contact to your HR.
                         </li>
                     </ul>
-                    <table class="table ci-table  table-bordered table-hover w-100">
+                    <table class="table ci-table  table-bordered table-striped w-100">
                         <thead class="">
                             <tr>
                                 <th scope="col">Casual Leave (CL)</th>

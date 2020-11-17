@@ -51,7 +51,7 @@
                             Cancelled</span>
                     </div>
                     <!--/.status-icon-group status-icon-justify-->
-                    <table class="table ci-table  table-bordered table-hover w-100">
+                    <table class="table ci-table  table-bordered table-striped w-100">
                         <thead class="">
                             <tr>
                                 <th scope="col">Application No</th>
@@ -136,7 +136,7 @@
 			else{
 				?>
                             <tr>
-                                <td colspan="7">
+                                <td colspan="8">
                                     <?php if($this->input->get_post('form_action') === 'search') {
                                         ?>
                                         <div class="mt-3 alert alert-danger"><?php echo $this->common_lib->get_icon('warning'); ?> No result found based on your search criteria. Please search again.</div>

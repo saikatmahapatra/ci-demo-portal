@@ -120,9 +120,9 @@ class Event_calendar_model extends CI_Model {
             $data1[$key]['start'] = $val['holiday_date'];
             //$data1[$key]['overlap'] = false;
             //$data1[$key]['rendering'] = 'background';
-            $data1[$key]['borderColor'] = '#ef91a8'; // red 60%
-            $data1[$key]['backgroundColor'] = '#f9d6de'; // 80% lighten of border
-            $data1[$key]['textColor'] = '#212529';
+            $data1[$key]['borderColor'] = '#dc3545';
+            $data1[$key]['backgroundColor'] = '#dc3545';
+            $data1[$key]['textColor'] = '#fff';
             $data1[$key]['extendedProps'] = array(
                 'event_type' => ($val['holiday_type'] == 'C' ? 'Holiday' : 'Optional Holiday'),
                 'event_type_css' => 'badge badge-danger',
@@ -143,9 +143,9 @@ class Event_calendar_model extends CI_Model {
               $data2[$key]['start'] = $val['timesheet_date'];
               //$data2[$key]['overlap'] = false;
               //$data2[$key]['rendering'] = 'background';
-              $data2[$key]['borderColor'] = '#99caff'; // #007bff blue
-              $data2[$key]['backgroundColor'] = '#d8ebff'; // 80% lighten of border
-              $data2[$key]['textColor'] = '#212529';
+              $data2[$key]['borderColor'] = '#6610f2';
+              $data2[$key]['backgroundColor'] = '#6610f2';
+              $data2[$key]['textColor'] = '#fff';
               //$data2[$key]['url'] = base_url('timesheet/edit/'.$val['id']);
               //$data2[$key]['allDay'] = false;
               $data2[$key]['extendedProps'] = array(
@@ -175,9 +175,9 @@ class Event_calendar_model extends CI_Model {
               //$data3[$key]['end'] = $val['leave_to_date'].'T23:59:59';
               $end_date_bug_fix = date('Y-m-d', strtotime('+1 day', strtotime($val['leave_to_date'])));
               $data3[$key]['end'] = $end_date_bug_fix.'T23:59:59'; //to fix bug of
-              $data3[$key]['borderColor'] = '#fecba1'; // orange
-              $data3[$key]['backgroundColor'] = '#feebdb'; // 80% lighten of border
-              $data3[$key]['textColor'] = '#212529';
+              $data3[$key]['borderColor'] = '#fd7e14'; // orange
+              $data3[$key]['backgroundColor'] = '#fd7e14'; // 80% lighten of border
+              $data3[$key]['textColor'] = '#fff';
               $data3[$key]['allDay'] = true;
               $data3[$key]['url'] = base_url('leave/details/'.$val['id'].'/'.$val['leave_req_id']);
               $data3[$key]['extendedProps'] = array(
