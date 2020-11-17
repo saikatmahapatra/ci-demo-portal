@@ -21,7 +21,7 @@
                 <?php } ?>
                 <div class="mx-3 my-4">
                     <?php echo $pagination_link; ?>
-                    <a href="<?php echo base_url(); ?>" class=""><?php echo $this->common_lib->get_icon('left_arrow'); ?> Return to dashboard</a>
+                    <a href="<?php echo base_url(); ?>" class="btn btn-sm btn-link action-link"><?php echo $this->common_lib->get_icon('left_back'); ?> Return to dashboard</a>
                 </div>
             </div>
         </div><!--/.card-->

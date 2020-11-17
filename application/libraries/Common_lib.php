@@ -640,6 +640,7 @@ class Common_lib {
             'right_arrow' => 'fa-arrow-right',
             'scroll_up' => 'fa-arrow-up',
             'left_back' => 'fa-chevron-left',
+            'right_fwd' => 'fa-chevron-right',
             'camera' => 'fa-camera',
             'address' => 'fa-map-marker',
             'education' => 'fa-certificate',

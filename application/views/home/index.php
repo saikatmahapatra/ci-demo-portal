@@ -24,7 +24,7 @@
             <?php } ?>
             </div>
             <div class="card-footer text-center pt-0">
-                <a class="btn btn-primary btn-sm" href="<?php echo base_url('home/all_news');?>">Show more</a>
+                <a class="btn btn-sm btn-link action-link" href="<?php echo base_url('home/all_news');?>">View more <?php echo $this->common_lib->get_icon('right_fwd'); ?></a>
             </div>
         </div><!--/.card-->
     </div>
@@ -93,7 +93,7 @@
                         <a class="d-flex" href="<?php echo $dashboard_stat['timesheet_hrs']['url'];?>">
                             <i class="fa fa-fw fa-clock-o fa-2x align-middle" aria-hidden="true" style="color: #6610f2;"></i>
                             <div class="media-body">
-                                <span class="count"><?php echo $dashboard_stat['timesheet_hrs']['count'];?></span> hrs tasks you've logged
+                                <span class="count"><?php echo $dashboard_stat['timesheet_hrs']['count'];?></span> hrs tasks you've logged*
                             </div>
                         </a>
                     </div>
@@ -101,7 +101,7 @@
                         <a class="d-flex" href="<?php echo $dashboard_stat['timesheet_avg_hrs']['url'];?>">
                             <i class="fa fa-fw fa-code fa-2x align-middle" aria-hidden="true" style="color: #343a40;"></i>
                             <div class="media-body">
-                                <span class="count"><?php echo $dashboard_stat['timesheet_avg_hrs']['count'];?></span> hrs avg. you've logged
+                                <span class="count"><?php echo $dashboard_stat['timesheet_avg_hrs']['count'];?></span> hrs avg./day you've logged*
                             </div>
                         </a>
                     </div>

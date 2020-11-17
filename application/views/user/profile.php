@@ -93,7 +93,7 @@
 				<?php if($this->session->userdata['sess_user']['user_role'] == 1 && !$is_self_account) {?>
 				<div class="d-flex mb-2">
 					<div class="align-self-end ml-auto">
-						<a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="back-to-list"><?php echo $this->common_lib->get_icon('left_arrow'); ?> Return to Employee List</a>
+						<a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="back-to-list btn btn-sm btn-link action-link"><?php echo $this->common_lib->get_icon('left_back'); ?> Return to Employee List</a>
 					</div>
 				</div>
 				<?php } ?>
@@ -238,10 +238,10 @@
 											<dd class="col-lg-9"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : '-'; ?></dd>
 										</dl><!--/dl.row-->
 										<?php if($is_self_account == true) { ?>
-											<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><?php echo $this->common_lib->get_icon('edit'); ?> Edit Basic Information</a>
+											<a class="btn btn-sm btn-link action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><?php echo $this->common_lib->get_icon('edit'); ?> Edit Info</a>
 										<?php } ?>
 										<?php if($is_self_account == true) {?>
-											<div class="text-muted small my-3">* If you see any incorrect information, please contact to your HR for further help.</div>
+											<div class="text-muted small mt-2">* If you see any incorrect information, please contact to your HR for further help.</div>
 										<?php } ?>
 									</div>
 								</div>
@@ -251,14 +251,11 @@
 							<div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="nav-2">
 								<div class="row mt-3">
 									<div class="col-lg-12">
-										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-sm btn-success btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
-										<?php } ?>
 										<?php if(isset($address)){
 											foreach($address as $key=>$addr){
 											?>
-											<div class="my-4">
-												<div class="my-2 h6">
+											<div class="mb-3">
+												<div class="mb-2 h6">
 													<?php echo isset($address_type[$addr['address_type']]) ? $address_type[$addr['address_type']] : 'Address'; ?>
 
 													<?php if($is_self_account == true) { ?>
@@ -280,6 +277,9 @@
 											<?php
 											}
 										}?>
+										<?php if($is_self_account == true) { ?>
+										<a class="btn btn-sm btn-link action-link btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Address</a>
+										<?php } ?>
 									</div>
 								</div>
 							</div> <!--/#tab-2-->
@@ -289,15 +289,11 @@
 							<div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="nav-3">
 								<div class="row mt-3">
 									<div class="col-lg-12">
-										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-sm btn-success btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
-										<?php } ?>
-										
 										<?php if(isset($education)){
 											foreach($education as $key=>$edu){
 											?>
-											<div class="my-4">
-												<div class="my-2 h6">
+											<div class="mb-3">
+												<div class="mb-2 h6">
 												<?php echo isset($edu['qualification_name'])?$edu['qualification_name']: ' ';?> - <?php echo isset($edu['degree_name'])?$edu['degree_name']:'';?>
 												<?php echo isset($edu['academic_from_year']) ? '('.$edu['academic_from_year'].'-'.$edu['academic_to_year'].')':'';?>
 												<?php if($is_self_account == true) { ?>
@@ -317,6 +313,9 @@
 											<?php
 											}
 										}?>
+										<?php if($is_self_account == true) { ?>
+										<a class="btn btn-sm btn-link action-link btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Education</a>
+										<?php } ?>
 									</div>
 								</div>
 							</div> <!--/#tab-3-->
@@ -326,12 +325,8 @@
 							<div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="nav-4">
 								<div class="row mt-3">
 									<div class="col-lg-12">
-									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-sm btn-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
-									<?php } ?>
-
-											<div class="my-4">
-												<div class="my-2 h6">
+											<div class="mb-3">
+												<div class="mb-2 h6">
 													<?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?>
 													
 												</div>
@@ -365,6 +360,10 @@
 												<?php
 												}
 											}?>
+									
+									<?php if($is_self_account == true) { ?>
+										<a class="btn btn-sm btn-link action-link btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Experience</a>
+									<?php } ?>
 									</div>
 								</div>
 							</div><!--/#tab-4-->
@@ -374,9 +373,6 @@
 							<div class="tab-pane fade" id="tab-5" role="tabpanel" aria-labelledby="nav-5">
 								<div class="row mt-3">
 									<div class="col-lg-12">
-									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-sm btn-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
-									<?php } ?>
 										<?php //print_r($bank_details);?>
 										<?php $uni = isset($user_national_identifiers) ? $user_national_identifiers[0] : ''; ?>
 										
@@ -393,8 +389,8 @@
 										<?php if(isset($bank_details)){
 											foreach($bank_details as $key=>$row){
 											?>
-												<div class="my-4">
-													<div class="my-2 h6">
+												<div class="mb-3">
+													<div class="mb-2 h6">
 														<?php echo isset($row['bank_name'])? $row['bank_name']: ' ';?>
 														<?php echo isset($row['ifsc_code']) ? '('.$row['ifsc_code'].')' : '-'; ?>
 														<?php if($is_self_account == true) { ?>	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>	<?php } ?>
@@ -412,6 +408,9 @@
 											<?php
 											}
 										}?>
+										<?php if($is_self_account == true) { ?>
+										<a class="btn btn-sm btn-link action-link btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Account</a>
+									<?php } ?>
 									</div>
 								</div>
 							</div><!--/#tab-5-->
@@ -444,19 +443,12 @@
 							<div class="tab-pane fade" id="tab-7" role="tabpanel" aria-labelledby="nav-7">
 								<div class="row mt-3">
 									<div class="col-lg-12">
-										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-sm btn-success btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
-										<?php } ?>
-
-
-
-
 										<?php 
 											if(isset($econtact) && sizeof($econtact)>0){
 												foreach($econtact as $key=>$con){
 												?>
-												<div class="my-4">
-													<div class="my-2 h6">
+												<div class="mb-3">
+													<div class="mb-2 h6">
 														<?php echo isset($con['contact_person_name'])?$con['contact_person_name']: ' ';?>
 														<?php if($is_self_account == true) { ?>
 															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_emergency_contact/'.$con["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
@@ -480,6 +472,9 @@
 												<?php
 											}
 										?>
+										<?php if($is_self_account == true) { ?>
+										<a class="btn btn-sm btn-link action-link btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Emergency Contact</a>
+										<?php } ?>
 									</div>
 								</div>
 							</div> <!--/#tab-7-->
@@ -517,7 +512,7 @@
 														}
 													?>
 													
-													<a data-target="window" target="_new" href="<?php echo $file_src;?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm view-download-btn btn-sm btn-secondary <?php echo $btn_class;?>"><?php echo $this->common_lib->get_icon('download'); ?> View</a>
+													<a data-target="window" target="_new" href="<?php echo $file_src;?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm btn-link action-link view-download-btn <?php echo $btn_class;?>"><?php echo $this->common_lib->get_icon('download'); ?> View</a>
 												</div>
 											</div>
 											<?php } //foreach ?>

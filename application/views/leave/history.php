@@ -9,9 +9,9 @@
         
                 <div class="d-flex mb-2">
                     <div class="align-self-end ml-auto"> 
-                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>" class="btn btn-sm btn-success"><?php echo $this->common_lib->get_icon('leave'); ?> Apply Leave</a>
+                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>" class="btn btn-sm btn-link action-link"><?php echo $this->common_lib->get_icon('leave'); ?> Apply Leave</a>
 
-                        <a href="<?php echo base_url($this->router->directory.'user/edit_approvers');?>" class="btn btn-sm btn-secondary"><?php echo $this->common_lib->get_icon('user_settings'); ?> Change Approvers</a>
+                        <a href="<?php echo base_url($this->router->directory.'user/edit_approvers');?>" class="btn btn-sm btn-link action-link"><?php echo $this->common_lib->get_icon('user_settings'); ?> Change Approvers</a>
                     </div>
                 </div>
 
