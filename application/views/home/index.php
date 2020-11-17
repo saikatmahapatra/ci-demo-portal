@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-8 mb-3">
         <div class="card news-card ">
-            <div class="card-header"><?php echo $this->common_lib->get_icon('notice_board'); ?> Organisation Announcements</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('notice_board'); ?> Organization Announcements</div>
             <div class="card-body">
             
             <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>
