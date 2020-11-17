@@ -685,3 +685,14 @@ table.dataTable.ci-table {
         }
     }
 }
+
+// Table top action btn link
+.action-link {
+    font-weight: 500;
+    &:hover {
+        text-decoration: none;
+    }
+    &:focus {
+        box-shadow: none;
+    }
+}
