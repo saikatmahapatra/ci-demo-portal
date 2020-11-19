@@ -252,8 +252,9 @@ table.dataTable.ci-table {
     border-collapse: collapse !important;
     thead th,
     tfoot th {
-        font-weight: 600;
-        font-size: 14px;
+        font-weight: 500;
+        font-size: .875rem;
+        color: $gray-700;
     }
     .btn-icon {
         padding: 0;
