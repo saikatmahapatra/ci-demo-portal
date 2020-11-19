@@ -322,6 +322,7 @@ table.dataTable.ci-table {
 // CI - Calendar - Timesheet
 .ci-calendar {
     border: 1px solid $calendar-grid-border;
+    max-width: 300px !important;
     th {
         //background: $calendar-heading-bg;
         color: $gray-700;
