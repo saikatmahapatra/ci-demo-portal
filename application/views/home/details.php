@@ -7,9 +7,9 @@ $row = $data_rows[0];
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card ">
-		<div class="card-header"><?php echo $this->common_lib->get_icon('card'); ?> Information</div>
+		<div class="card-header"><?php echo $this->common_lib->get_icon('card'); ?> Info</div>
 			<div class="card-body">
-			<div class="card-title mb-2 font-weight-bold"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></div>
+			<div class="card-title news-details-card-title mb-2"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></div>
 				<div class="text-muted small mb-3">
 						<?php echo isset($row['user_firstname']) ? 'Published by <a href="'.base_url('user/profile/'.$row['content_created_by']).'" target="_blank">'.$row['user_firstname'] : '';?>
 						<?php echo isset($row['user_lastname']) ? $row['user_lastname']."</a> on " : '';?>
