@@ -111,7 +111,7 @@ body {
     background: $gray-300;
     color: $gray-600;
     line-height: 100px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
     //background: linear-gradient($red, $white);
 }
@@ -620,6 +620,10 @@ table.dataTable.ci-table {
 .user-profile-page-card {
     .dp-section {
         text-align: center;
+    }
+    .profile-full-name {
+        font-size: 1.5rem;
+        font-weight: 300;
     }
 }
 

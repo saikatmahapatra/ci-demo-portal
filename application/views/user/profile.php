@@ -87,7 +87,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card  ci-dl user-profile-page-card">
-			<div class="card-header"><?php echo $this->common_lib->get_icon('user_account'); ?> Profile Information</div>
+			<div class="card-header"><?php echo $this->common_lib->get_icon('user_account'); ?> Profile</div>
 			<div class="card-body">
 				
 				<?php if($this->session->userdata['sess_user']['user_role'] == 1 && !$is_self_account) {?>
@@ -140,7 +140,7 @@
 						<?php if($is_self_account == true) { ?>
 						<a class="small" href="<?php echo base_url($this->router->directory.$this->router->class.'/profile_pic');?>"><?php //echo $this->common_lib->get_icon('camera'); ?> Change Photo</a>
 						<?php } ?>
-						<div class="h4">
+						<div class="profile-full-name">
 							<?php
 								echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
 								echo isset($row['user_lastname']) ? $row['user_lastname'] : '';
