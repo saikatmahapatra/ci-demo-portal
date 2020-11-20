@@ -24,7 +24,7 @@
             <!-- <div class="sb-sidenav-menu-heading">Admin HR</div> -->
             <a class="nav-link nav-link-bold collapsed" href="#" data-toggle="collapse" data-target="#collapseLayoutsAdmin" aria-expanded="false" aria-controls="collapseLayoutsAdmin">
                 <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('admin_user'); ?></div>
-                Administrator
+                Admin
                 <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
             </a>
             <div class="collapse" id="collapseLayoutsAdmin" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
