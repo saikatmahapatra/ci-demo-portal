@@ -1,15 +1,11 @@
 <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
-    <!-- <div style="border-bottom: 1px solid rgba(31, 45, 65, 0.125);">
-        <form class="d-none d-md-inline-block form-inline ml-3 my-3">
-        <input class="form-control" type="text" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2" />
-        </form>
-    </div> -->
-    <div class="d-flex justify-content-end my-2 mx-2">
-        <button title="<?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? 'Show sidebar always' : 'Hide sidebar always'; ?>" type="button" id="locksidebar" class="btn btn-sm btn-light d-none d-sm-block text-secondary"><?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? $this->common_lib->get_icon('show_sidebar') : $this->common_lib->get_icon('hide_sidebar'); ?></button>
-    </div>
+    
     <div class="sb-sidenav-menu">
-        <div class="nav mt-3 mb-4">
-            <!-- <div class="sb-sidenav-menu-heading">Navigation</div> -->
+        <div class="nav ">
+            <div class="sb-sidenav-menu-heading">
+                <img width="64px" class="logo-sidebar" src="<?php echo base_url('assets/dist/img/logo-nav.png');?>" alt="UEIPL">
+                <div>United Exploration</div>
+            </div>
             <a class="nav-link nav-link-bold" href="<?php echo base_url($this->router->directory); ?>">
                 <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('dashboard'); ?></div>
                 Dashboard
@@ -100,8 +96,9 @@
             </a> -->
         </div>
     </div>
-    <!-- <div class="sb-sidenav-footer">
-        <div class="small">Logged in as:</div>
-        <div class=""><?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname'].' '.$this->session->userdata['sess_user']['user_lastname'] : 'Guest';?></div>
-    </div> -->
+    <div class="sb-sidenav-footer">
+    <div class="d-flex justify-content-end my-0 mx-0">
+        <a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? 'Show sidebar' : 'Hide sidebar'; ?>" id="locksidebar" class="d-none d-sm-block text-secondary"><?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? $this->common_lib->get_icon('show_sidebar') : $this->common_lib->get_icon('hide_sidebar'); ?></a>
+    </div>
+    </div>
 </nav>

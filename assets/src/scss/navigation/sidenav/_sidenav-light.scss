@@ -3,7 +3,8 @@
 .sb-sidenav-light {
     background-color: $sidenav-light-bg;
     color: $sidenav-light-color;
-    border-right: 1px solid rgba(31, 45, 65, 0.125);
+    //border-right: 1px solid rgba(31, 45, 65, 0.125);
+    border-right: 1px solid $sidenav-light-bg;
     .sb-sidenav-menu {
         .sb-sidenav-menu-heading {
             color: $sidenav-light-heading-color;
