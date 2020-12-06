@@ -365,7 +365,13 @@ function initPage() {
     $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
         if (this.href === path) {
             $(this).addClass("active");
+            var parentObj = '';
+            if ($(this).parents('div[data-parent]')) {
+                parentObj = $(this).parents('div[data-parent]');
+                $('a.nav-link[data-target="#' + parentObj.attr('id') + '"]').addClass("active");
+            }
         }
+
     });
 
     // Toggle the side navigation
