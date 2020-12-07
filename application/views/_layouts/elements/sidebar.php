@@ -3,8 +3,7 @@
     <div class="sb-sidenav-menu">
         <div class="nav ">
             <div class="sb-sidenav-menu-heading">
-                <!-- <img width="64px" class="logo-sidebar" src="<?php echo base_url('assets/dist/img/logo-nav.png');?>" alt="UEIPL">
-                <div>United Exploration</div> -->
+                <div>United Exploration</div>
             </div>
             <a class="nav-link" href="<?php echo base_url($this->router->directory); ?>">
                 <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('dashboard'); ?></div>
