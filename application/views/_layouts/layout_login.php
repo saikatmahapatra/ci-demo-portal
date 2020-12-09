@@ -20,10 +20,10 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'); ?>"></script>
     <![endif]-->
 </head>
-<body class="authentication-layout" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>" onloadstart="">
-    <div class="container-fluid pt-4">
+<body class="login-layout" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>" onloadstart="">
+    <div class="container">
         <?php echo $maincontent; ?>
-        <?php echo $el_footer; ?>
+        <?php //echo $el_footer; ?>
         <?php echo $el_scroll_to_top; ?>
         <?php echo $el_loader; ?>
     </div>
