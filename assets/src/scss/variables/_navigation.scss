@@ -10,14 +10,14 @@ $sidenav-dark-heading-color: fade-out($white, 0.75);
 $sidenav-dark-link-color: fade-out($white, 0.5);
 $sidenav-dark-link-active-color: $white;
 $sidenav-dark-icon-color: fade-out($white, 0.75);
-$sidenav-dark-footer-bg: $gray-800;
+$sidenav-dark-footer-bg: $gray-900;
 // -- Sidenav Light
 $sidenav-light-bg: #f4f5f7;
 $sidenav-light-color: $gray-900;
 $sidenav-light-heading-color: $gray-500;
 $sidenav-light-link-color: $sidenav-light-color;
 $sidenav-light-link-active-color: $primary;
-$sidenav-light-icon-color: $gray-600;
+$sidenav-light-icon-color: $gray-500;
 $sidenav-light-footer-bg: #f4f5f7;
 // Color variables for the topnav
 $topnav-dark-toggler-color: fade-out($white, .25);

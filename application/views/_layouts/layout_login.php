@@ -20,10 +20,14 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'); ?>"></script>
     <![endif]-->
 </head>
-<body class="text-center authentication-layout" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>" onloadstart="">
-    <?php echo $maincontent; ?>
-    <?php echo $el_scroll_to_top; ?>
-    <?php echo $el_loader; ?>
+<body class="login-layout" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>" onloadstart="">
+    <div class="container">
+        <?php echo $maincontent; ?>
+        <?php //echo $el_footer; ?>
+        <?php echo $el_scroll_to_top; ?>
+        <?php echo $el_loader; ?>
+    </div>
+
     <!-- jQuery -->    
     <script type="text/javascript" src="<?php echo base_url('assets/vendors/jquery/dist/jquery.min.js'); ?>"></script>	
     <!-- Bootstrap dependency popper.js -->

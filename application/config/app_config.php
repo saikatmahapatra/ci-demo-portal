@@ -36,7 +36,7 @@ $config['app_logo_name_admin_dashboard'] = 'Portal Admin';
 $config['app_logo_name_dashboard'] = '<b>eP</b>ortal';
 $config['app_logo_name_dashboard_xs'] = '<b>U</b>Aadmin';
 
-$config['app_html_title'] = 'My App :: UEIPL';
+$config['app_html_title'] = 'UEIPL - My App';
 $config['app_admin_html_title'] = 'United Exploration India Pvt. Ltd.';
 
 $config['app_meta_keywords'] = 'UEIPL, United Exploration Kolkata, GIS Company Kolkata, Coal Mining Consultancy Kolkata, Web GIS company Kolkata, Mining Company';

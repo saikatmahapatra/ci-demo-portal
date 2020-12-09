@@ -562,15 +562,22 @@ table.dataTable.ci-table {
 }
 
 // CI - Cards Style
+.login-card-wrapper {
+    //max-width: 360px;
+    .card {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    }
+}
+
 .card {
     //box-shadow: 0 0.15rem 1.75rem 0 rgba(31, 45, 65, 0.15);
     //border: 1px solid rgba(31, 45, 65, 0.125);
     //border-radius: 0.35rem;
     //background-color: $white;
-    .card-body {
-        flex: 1 1 auto;
-        padding: 1.25rem;
-    }
+    // .card-body {
+    //     flex: 1 1 auto;
+    //     padding: 1.25rem;
+    // }
     .card-header {
         color: $primary;
         padding: 1rem 1.35rem;
