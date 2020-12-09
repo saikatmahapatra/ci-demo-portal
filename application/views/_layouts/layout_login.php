@@ -21,7 +21,7 @@
     <![endif]-->
 </head>
 <body class="authentication-layout" data-controller="<?php echo $this->router->class; ?>" data-method="<?php echo $this->router->method; ?>" onloadstart="">
-    <div class="container pt-4">
+    <div class="container-fluid pt-4">
         <?php echo $maincontent; ?>
         <?php echo $el_footer; ?>
         <?php echo $el_scroll_to_top; ?>
