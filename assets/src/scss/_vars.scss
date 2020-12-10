@@ -10,6 +10,16 @@ $bootstrap3_blue: #337ab7;
 // Brand primary color
 $brand-primary-color: #1a73e8;
 $primary: $brand-primary-color !default;
+$font-family-sans-serif: 'Roboto',
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+"Helvetica Neue",
+Arial,
+sans-serif;
+$font-size-base: 0.9375rem;
+$small-font-size: 0.875rem;
 //CI Calendar
 $calendar-border: #ced4da;
 $calendar-heading-bg: #ced4da;
