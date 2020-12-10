@@ -1,5 +1,5 @@
 <div class="row justify-content-center align-items-center" style="height:100vh">
-   <div class="col-sm-6 col-lg-4">
+   <div class="col-sm-6 col-lg-4 login-card-wrapper">
       <div class="card">
          <div class="card-header"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></div>
          <div class="card-body">
@@ -33,7 +33,7 @@
             <?php echo form_close(); ?>
          </div>
 	  </div>
-	  <div class="text-center text-muted mt-1">
+	  <div class="text-center text-muted mt-3">
         <div><?php echo $this->config->item('app_admin_copy_right');?></div>
         <div><?php echo $this->config->item('app_version');?></div>
       </div>

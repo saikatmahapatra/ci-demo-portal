@@ -655,6 +655,7 @@ table.dataTable.ci-table {
     padding-left: 5px;
     padding-right: 5px;
     color: $gray-900;
+    border: none;
 }
 
 // Dashboard Stats
@@ -664,11 +665,11 @@ table.dataTable.ci-table {
         text-decoration: none;
     }
     .media {
-        font-size: .875rem;
+        //font-size: .875rem;
         padding: .75rem 0rem;
         .count {
-            font-weight: 300;
-            font-size: 1.25rem;
+            //font-weight: 300;
+            //font-size: 1.25rem;
         }
     }
 }
