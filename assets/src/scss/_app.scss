@@ -678,6 +678,12 @@ table.dataTable.ci-table {
             //font-size: 1.25rem;
         }
     }
+    .dash-stat-icon {
+        font-size: 1.5rem;
+        color: $gray-500;
+        vertical-align: middle;
+        margin-right: 5px;
+    }
 }
 
 // Table top action btn link
