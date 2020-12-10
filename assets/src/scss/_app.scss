@@ -569,6 +569,12 @@ table.dataTable.ci-table {
     }
 }
 
+.news-card {
+    .card-body {
+        padding-bottom: 0;
+    }
+}
+
 .card {
     //box-shadow: 0 0.15rem 1.75rem 0 rgba(31, 45, 65, 0.15);
     //border: 1px solid rgba(31, 45, 65, 0.125);

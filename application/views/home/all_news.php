@@ -1,7 +1,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
-    <div class="col-lg-9">
-        <div class="card news-card ">
+    <div class="col-md-12">
+        <div class="card news-card">
             <div class="card-header"><?php echo $this->common_lib->get_icon('notice_board'); ?> Organization Announcements</div>
             <div class="card-body">
                 <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>
@@ -19,7 +19,7 @@
                 <?php }  ?>
                 </div>
                 <?php } ?>
-                <div class="mx-3 my-4">
+                <div class="my-2">
                     <?php echo $pagination_link; ?>
                     <a href="<?php echo base_url(); ?>" class="btn btn-link action-link"><?php echo $this->common_lib->get_icon('left_back'); ?> Return to dashboard</a>
                 </div>
