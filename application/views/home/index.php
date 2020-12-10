@@ -36,9 +36,8 @@
                     <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
                         <div class="media">
                             <a class="d-flex" href="<?php echo $dashboard_stat['user']['url'];?>">
-                                <i class="fa fa-fw fa-user fa-2x align-middle" aria-hidden="true" style="color: #0062cc;"></i>
                                 <div class="media-body">
-                                    <span class="count"><?php echo $dashboard_stat['user']['count'];?></span> employees
+                                <i class="fa fa-fw dash-stat-icon fa-users align-middle" aria-hidden="true" style="color:#1a73e8;"></i> <span class="count"><?php echo $dashboard_stat['user']['count'];?></span> employees
                                 </div>
                             </a>
                         </div>
@@ -46,9 +45,8 @@
                     <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
                         <div class="media">
                             <a class="d-flex" href="<?php echo $dashboard_stat['project']['url'];?>">
-                                <i class="fa fa-fw fa-puzzle-piece fa-2x align-middle" aria-hidden="true" style="color: #fd7e14;"></i>
                                 <div class="media-body">
-                                    <span class="count"><?php echo $dashboard_stat['project']['count'];?></span> projects
+                                <i class="fa fa-fw dash-stat-icon fa-puzzle-piece" aria-hidden="true" style="color:#fd7e14;"></i> <span class="count"><?php echo $dashboard_stat['project']['count'];?></span> projects
                                 </div>
                             </a>
                         </div>
@@ -56,9 +54,8 @@
                     <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
                         <div class="media">
                             <a class="d-flex" href="<?php echo $dashboard_stat['timesheet_user']['url'];?>">
-                                <i class="fa fa-fw fa-check-square-o fa-2x align-middle" aria-hidden="true" style="color: #6f42c1;"></i>
                                 <div class="media-body">
-                                    <span class="count"><?php echo $dashboard_stat['timesheet_user']['count'];?></span> employees logged task*
+                                <i class="fa fa-fw dash-stat-icon fa-check-square-o" aria-hidden="true" style="color: #6f42c1;"></i> <span class="count"><?php echo $dashboard_stat['timesheet_user']['count'];?></span> employees logged task*
                                 </div>
                             </a>
                         </div>
@@ -66,42 +63,37 @@
                     <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
                         <div class="media">
                             <a class="d-flex" href="<?php echo $dashboard_stat['user_applied_leave']['url'];?>">
-                                <i class="fa fa-fw fa-plane fa-2x align-middle" aria-hidden="true" style="color: #28a745;"></i>
                                 <div class="media-body">
-                                    <span class="count"><?php echo $dashboard_stat['user_applied_leave']['count'];?></span> leaves approved
+                                <i class="fa fa-fw dash-stat-icon fa-plane" aria-hidden="true" style="color:#28a745;"></i> <span class="count"><?php echo $dashboard_stat['user_applied_leave']['count'];?></span> leaves approved
                                 </div>
                             </a>
                         </div>
                     <?php } ?>
                     <div class="media">
                         <a class="d-flex" href="<?php echo $dashboard_stat['leave_to_approve']['url'];?>">
-                            <i class="fa fa-fw fa-plane fa-2x align-middle" aria-hidden="true" style="color: #0062cc;"></i>
                             <div class="media-body">
-                                <span class="count"><?php echo $dashboard_stat['leave_to_approve']['count'];?></span> leaves need your aproval
+                            <i class="fa fa-fw dash-stat-icon fa-plane" aria-hidden="true" style="color: #0062cc;"></i> <span class="count"><?php echo $dashboard_stat['leave_to_approve']['count'];?></span> leaves need your aproval
                             </div>
                         </a>
                     </div>
                     <div class="media">
                         <a class="d-flex" href="<?php echo $dashboard_stat['timesheet_days']['url'];?>">
-                            <i class="fa fa-fw fa-calendar fa-2x align-middle" aria-hidden="true" style="color: #dfad17;"></i>
                             <div class="media-body">
-                                <span class="count"><?php echo $dashboard_stat['timesheet_days']['count'];?></span> days tasks you've logged*
+                            <i class="fa fa-fw dash-stat-icon fa-calendar" aria-hidden="true" style="color: #dfad17;"></i> <span class="count"><?php echo $dashboard_stat['timesheet_days']['count'];?></span> days tasks you've logged*
                             </div>
                         </a>
                     </div>
                     <div class="media">
                         <a class="d-flex" href="<?php echo $dashboard_stat['timesheet_hrs']['url'];?>">
-                            <i class="fa fa-fw fa-clock-o fa-2x align-middle" aria-hidden="true" style="color: #6610f2;"></i>
                             <div class="media-body">
-                                <span class="count"><?php echo $dashboard_stat['timesheet_hrs']['count'];?></span> hrs tasks you've logged*
+                            <i class="fa fa-fw dash-stat-icon fa-clock-o" aria-hidden="true" style="color: #6610f2;"></i> <span class="count"><?php echo $dashboard_stat['timesheet_hrs']['count'];?></span> hrs tasks you've logged*
                             </div>
                         </a>
                     </div>
                     <div class="media">
                         <a class="d-flex" href="<?php echo $dashboard_stat['timesheet_avg_hrs']['url'];?>">
-                            <i class="fa fa-fw fa-code fa-2x align-middle" aria-hidden="true" style="color: #343a40;"></i>
                             <div class="media-body">
-                                <span class="count"><?php echo $dashboard_stat['timesheet_avg_hrs']['count'];?></span> hrs avg./day you've logged*
+                            <i class="fa fa-fw dash-stat-icon fa-code" aria-hidden="true" style="color:#6c757d;"></i><span class="count"><?php echo $dashboard_stat['timesheet_avg_hrs']['count'];?></span> hrs avg./day you've logged*
                             </div>
                         </a>
                     </div>
