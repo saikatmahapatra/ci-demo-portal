@@ -93,7 +93,7 @@
 				<?php if($this->session->userdata['sess_user']['user_role'] == 1 && !$is_self_account) {?>
 				<div class="d-flex mb-2">
 					<div class="align-self-end ml-auto">
-						<a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="back-to-list btn btn-sm btn-link action-link"><?php echo $this->common_lib->get_icon('left_back'); ?> Return to Employee List</a>
+						<a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="back-to-list btn btn-link action-link"><?php echo $this->common_lib->get_icon('left_back'); ?> Return to Employee List</a>
 					</div>
 				</div>
 				<?php } ?>
@@ -238,7 +238,7 @@
 											<dd class="col-lg-9"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : '-'; ?></dd>
 										</dl><!--/dl.row-->
 										<?php if($is_self_account == true) { ?>
-											<a class="btn btn-sm btn-link action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><?php echo $this->common_lib->get_icon('edit'); ?> Edit Info</a>
+											<a class="btn btn-link action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><?php echo $this->common_lib->get_icon('edit'); ?> Edit Info</a>
 										<?php } ?>
 										<?php if($is_self_account == true) {?>
 											<div class="text-muted small mt-2">* If you see any incorrect information, please contact to your HR for further help.</div>
@@ -260,7 +260,7 @@
 
 													<?php if($is_self_account == true) { ?>
 														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
-														<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-light btn-sm"><?php echo $this->common_lib->get_icon('delete'); ?> Delete</a> -->
+														<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-light "><?php echo $this->common_lib->get_icon('delete'); ?> Delete</a> -->
 													<?php } ?>
 												</div>
 												<div>
@@ -278,7 +278,7 @@
 											}
 										}?>
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-sm btn-link action-link btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Address</a>
+										<a class="btn btn-link action-link " href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Address</a>
 										<?php } ?>
 									</div>
 								</div>
@@ -314,7 +314,7 @@
 											}
 										}?>
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-sm btn-link action-link btn-sm" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Education</a>
+										<a class="btn btn-link action-link " href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Education</a>
 										<?php } ?>
 									</div>
 								</div>
@@ -362,7 +362,7 @@
 											}?>
 									
 									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-sm btn-link action-link btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Experience</a>
+										<a class="btn btn-link action-link  mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Experience</a>
 									<?php } ?>
 									</div>
 								</div>
@@ -409,7 +409,7 @@
 											}
 										}?>
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-sm btn-link action-link btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Account</a>
+										<a class="btn btn-link action-link  mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Account</a>
 									<?php } ?>
 									</div>
 								</div>
@@ -473,7 +473,7 @@
 											}
 										?>
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-sm btn-link action-link btn-sm mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Emergency Contact</a>
+										<a class="btn btn-link action-link  mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Emergency Contact</a>
 										<?php } ?>
 									</div>
 								</div>
@@ -512,7 +512,7 @@
 														}
 													?>
 													
-													<a data-target="window" target="_new" href="<?php echo $file_src;?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-sm btn-link action-link view-download-btn <?php echo $btn_class;?>"><?php echo $this->common_lib->get_icon('download'); ?> View</a>
+													<a data-target="window" target="_new" href="<?php echo $file_src;?>" data-file-name="<?php echo $upload['upload_file_name']; ?>" class="btn btn-link action-link view-download-btn <?php echo $btn_class;?>"><?php echo $this->common_lib->get_icon('download'); ?> View</a>
 												</div>
 											</div>
 											<?php } //foreach ?>

@@ -18,7 +18,7 @@
 						<?php echo form_error('user_name'); ?>
 					</div>
 					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-lg ci-btn-primary btn-primary btn-block'));?>
-					<a href="<?php echo base_url('/home');?>" class="btn btn-lg btn-sm btn-secondary btn-block">Go to Dashboard</a>
+					<a href="<?php echo base_url('/home');?>" class="btn btn-lg  btn-secondary btn-block">Go to Dashboard</a>
 				<?php echo form_close(); ?>
 				</div>
 			</div>

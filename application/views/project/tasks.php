@@ -8,7 +8,7 @@
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="d-flex mb-2">
                     <div class="align-self-end ml-auto"> 
-                    <a href="<?php echo base_url($this->router->directory.$this->router->class.'/add_task');?>" class="btn btn-sm btn-link action-link"> <?php echo $this->common_lib->get_icon('plus'); ?>
+                    <a href="<?php echo base_url($this->router->directory.$this->router->class.'/add_task');?>" class="btn btn-link action-link"> <?php echo $this->common_lib->get_icon('plus'); ?>
                         Add New</a>
                     </div>
                 </div>

@@ -12,7 +12,7 @@
 			<div class="d-inline-block"><span class="i-leave pr-2 pl-2 m-1"></span>Leave</div>
 			<div class="d-inline-block"><span class="i-holiday pr-2 pl-2 m-1"></span>Holiday</div>
 		</div>
-		<div class="mt-2"><a id="clear_selected_days" class="btn btn-sm btn-light" href="#">Clear all selected days</a></div>
+		<div class="mt-2"><a id="clear_selected_days" class="btn  btn-light" href="#">Clear all selected days</a></div>
 	</div>
 
 	<div class="col-lg-9">

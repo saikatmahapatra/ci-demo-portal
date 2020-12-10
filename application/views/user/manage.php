@@ -9,11 +9,11 @@
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<div class="d-flex mb-2">
 					<div class="align-self-end ml-auto"> 
-						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="btn btn-sm btn-link action-link"> <?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
+						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/create_account');?>" class="btn btn-link action-link"> <?php echo $this->common_lib->get_icon('plus'); ?> Add New</a>
 
 						<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'd-inline-block', 'name' => 'download_data')); ?>
 						<input type="hidden" name="form_action" value="download">
-						<button type="submit" class="btn btn-sm btn-link action-link"> <?php echo $this->common_lib->get_icon('download'); ?> Download</button>
+						<button type="submit" class="btn btn-link action-link"> <?php echo $this->common_lib->get_icon('download'); ?> Download</button>
 					<?php echo form_close(); ?>
 					</div>
 				</div>
