@@ -13,7 +13,7 @@ $approver = sizeof($approvers)>0 ? $approvers[0] : null;
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="d-flex mb-2">
                     <div class="align-self-end ml-auto"> 
-                    <a href="<?php echo base_url($this->router->directory.'leave/apply');?>" class="btn btn-sm btn-link action-link"><?php echo $this->common_lib->get_icon('leave'); ?> Apply Leave</a>
+                    <a href="<?php echo base_url($this->router->directory.'leave/apply');?>" class="btn btn-link action-link"><?php echo $this->common_lib->get_icon('leave'); ?> Apply Leave</a>
                     </div>
                 </div>
 				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form',

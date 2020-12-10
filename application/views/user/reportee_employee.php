@@ -40,7 +40,7 @@
 					<div class="alert alert-info">
 					<?php echo $this->common_lib->get_icon('info'); ?> You are either L1 or L2 approver for Leave request management for the below associates. If you find any irrelevant information please get in touch with HR for further process and clarification.
 					</div>
-					<table class="table ci-table  table-bordered table-striped w-100">
+					<table class="table ci-table   table-striped w-100">
 						<thead class="">
 						<tr>
 							<th scope="col">Emp ID</th>
@@ -64,7 +64,7 @@
 										<?php echo isset($row['designation_name']) ? $row['designation_name'] : '-';?>
 									</td>
 									<td>
-										<a target="_blank" href="<?php echo base_url($this->router->directory.'timesheet/report?redirected_from=reportee_id&q_emp='.$row['user_id']); ?>" class="btn btn-sm btn-info">Timesheet Report</a>
+										<a target="_blank" href="<?php echo base_url($this->router->directory.'timesheet/report?redirected_from=reportee_id&q_emp='.$row['user_id']); ?>" class="btn  btn-info">Timesheet Report</a>
 									</td>
 								</tr>
 								<?php

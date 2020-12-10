@@ -62,13 +62,13 @@
 	<button type="button" class="btn btn-danger">.btn-danger</button>
 	<button type="button" class="btn btn-warning">.btn-warning</button>
 	<button type="button" class="btn btn-info">.btn-info</button>
-	<button type="button" class="btn btn-sm btn-secondary">.btn-sm btn-secondary</button>
+	<button type="button" class="btn  btn-secondary">. btn-secondary</button>
 	<button type="button" class="btn btn-dark">.btn-dark</button>
 	<button type="button" class="btn btn-link">.btn-link</button>
 
 	<h2 class="h3 mb-3 font-weight-normal">Button Outline</h1>
-	<button type="button" class="btn btn-sm btn-primary">.btn .btn-sm btn-primary</button>
-	<button type="button" class="btn btn-sm btn-secondary">btn-sm btn-secondary</button>
+	<button type="button" class="btn  btn-primary">.btn . btn-primary</button>
+	<button type="button" class="btn  btn-secondary"> btn-secondary</button>
 
 	<h2 class="h3 mb-3 font-weight-normal">Progress Bar</h1>        
 	<div class="progress">
@@ -114,7 +114,7 @@
 					<div class="card-news-time-auther">
 						<span class="text-muted small">Administrator, 20/09/2018 10.34am</span>
 					</div>
-					<div class="card-news-body">All the three Xiaomi phones come with face unlock support and run MIUI 9.6 on top of Android Oreo, but Xiaomi promises to upgrade all the Redmi 6 series phones to MIUI 10 very soon <a class="btn btn-sm ci-btn-primary btn-primary" href="#">View details</a></div>						
+					<div class="card-news-body">All the three Xiaomi phones come with face unlock support and run MIUI 9.6 on top of Android Oreo, but Xiaomi promises to upgrade all the Redmi 6 series phones to MIUI 10 very soon <a class="btn  ci-btn-primary btn-primary" href="#">View details</a></div>						
 			</div><!--/.card-news-->				
 		</div>
 		
@@ -124,7 +124,7 @@
 					<div class="card-news-time-auther">
 						<span class="text-muted small">Administrator, 20/09/2018 10.34am</span>
 					</div>
-					<div class="card-news-body">All the three Xiaomi phones come with face unlock support and run MIUI 9.6 on top of Android Oreo, but Xiaomi promises to upgrade all the Redmi 6 series phones to MIUI 10 very soon <a class="btn btn-sm ci-btn-primary btn-primary" href="#">View details</a></div>						
+					<div class="card-news-body">All the three Xiaomi phones come with face unlock support and run MIUI 9.6 on top of Android Oreo, but Xiaomi promises to upgrade all the Redmi 6 series phones to MIUI 10 very soon <a class="btn  ci-btn-primary btn-primary" href="#">View details</a></div>						
 			</div><!--/.card-news-->				
 		</div>
 		
@@ -149,11 +149,11 @@
 				<div class="card-body">
 					<h5 class="card-title">Card title</h5>
 					<p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					<a href="#" class="btn btn-sm btn-secondary">.btn-sm btn-secondary</a>
+					<a href="#" class="btn  btn-secondary">. btn-secondary</a>
 				</div>
 				<div class="card-footer">
-					<button class="btn ci-btn-primary btn-primary btn-sm">.ci-btn-primary btn-primary</button>
-					<button class="btn btn-secondary btn-sm">.btn-secondary</button>
+					<button class="btn ci-btn-primary btn-primary ">.ci-btn-primary btn-primary</button>
+					<button class="btn btn-secondary ">.btn-secondary</button>
 				</div>
 			</div>
 		</div>

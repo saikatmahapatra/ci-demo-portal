@@ -67,14 +67,14 @@
                         <input type="hidden" name="q_project" value="<?php echo $this->input->get('q_project');?>">
                         <input type="hidden" name="from_date" value="<?php echo $this->input->get('from_date');?>">
                         <input type="hidden" name="to_date" value="<?php echo $this->input->get('to_date');?>">
-                        <button type="submit" class="btn btn-sm btn-link action-link"> <?php echo $this->common_lib->get_icon('download'); ?> Download</button>
+                        <button type="submit" class="btn btn-link action-link"> <?php echo $this->common_lib->get_icon('download'); ?> Download</button>
                         <?php echo form_close(); ?>
                         <?php } ?>
                     </div>
                 </div>
 
                 <div class="table-responsive mt-3">
-                    <table class="table ci-table  table-bordered table-striped w-100">
+                    <table class="table ci-table   table-striped w-100">
                         <thead class="">
                             <tr>
                                 <th scope="col">Date</th>

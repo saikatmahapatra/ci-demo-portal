@@ -42,7 +42,7 @@
                                     <div class="d-inline-block"><span class="i-disabled-date pr-2 pl-2 m-1"></span>Disabled
                                     </div>
                                 </div>
-                                <div class="mb-2"><a id="clear_selected_days" class="btn btn-sm btn-outline-secondary"
+                                <div class="mb-2"><a id="clear_selected_days" class="btn  btn-outline-secondary"
                                         href="#">Clear selected dates</a></div>
                                 <?php echo form_error('selected_date'); ?>
                             </div>
@@ -107,7 +107,7 @@
                     <div class="mt-3 tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
 
                         <div class="table-responsive">
-                            <table id="timesheet-datatable" class="table ci-table  table-bordered table-striped w-100">
+                            <table id="timesheet-datatable" class="table ci-table   table-striped w-100">
                                 <thead class="">
                                     <tr>
                                         <th scope="col">Date</th>

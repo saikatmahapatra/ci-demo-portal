@@ -9,7 +9,7 @@
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="d-flex mb-2">
                     <div class="align-self-end ml-auto">
-                        <a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="back-to-list btn btn-sm btn-link action-link"><?php echo $this->common_lib->get_icon('left_back'); ?> Return to Employee List</a>
+                        <a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="back-to-list btn btn-link action-link"><?php echo $this->common_lib->get_icon('left_back'); ?> Return to Employee List</a>
                     </div>
 				</div>
                 <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form','name' => 'form','id' => 'form',));?>

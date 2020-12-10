@@ -45,7 +45,7 @@
 						?>
 
 						<?php if(isset($profile_pic) && sizeof($profile_pic)>0){ ?>
-							<div class="edit"><a class="btn btn-sm btn-light my-2" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><?php echo $this->common_lib->get_icon('delete'); ?> Remove</a></div>
+							<div class="edit"><a class="btn btn-link action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><?php echo $this->common_lib->get_icon('delete'); ?> Remove</a></div>
 						<?php } ?>
 					</div>
 					<div class="col-lg-8">

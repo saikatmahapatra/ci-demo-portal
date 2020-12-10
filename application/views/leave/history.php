@@ -9,14 +9,14 @@
         
                 <div class="d-flex mb-2">
                     <div class="align-self-end ml-auto"> 
-                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>" class="btn btn-sm btn-link action-link"><?php echo $this->common_lib->get_icon('leave'); ?> Apply Leave</a>
+                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/apply');?>" class="btn btn-link action-link"><?php echo $this->common_lib->get_icon('leave'); ?> Apply Leave</a>
 
-                        <a href="<?php echo base_url($this->router->directory.'user/edit_approvers');?>" class="btn btn-sm btn-link action-link"><?php echo $this->common_lib->get_icon('user_settings'); ?> Change Approvers</a>
+                        <a href="<?php echo base_url($this->router->directory.'user/edit_approvers');?>" class="btn btn-link action-link"><?php echo $this->common_lib->get_icon('user_settings'); ?> Change Approvers</a>
                     </div>
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table ci-table  table-bordered table-striped w-100">
+                    <table class="table ci-table   table-striped w-100">
                         <thead class="">
                             <tr>
                                 <th scope="col">Application No</th>

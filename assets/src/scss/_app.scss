@@ -1,6 +1,6 @@
 // @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
 //@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
-//@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
 // Body
 body {
     //background-color: #eff3f9;
@@ -569,6 +569,12 @@ table.dataTable.ci-table {
     }
 }
 
+.news-card {
+    .card-body {
+        padding-bottom: 0;
+    }
+}
+
 .card {
     //box-shadow: 0 0.15rem 1.75rem 0 rgba(31, 45, 65, 0.15);
     //border: 1px solid rgba(31, 45, 65, 0.125);
@@ -655,6 +661,7 @@ table.dataTable.ci-table {
     padding-left: 5px;
     padding-right: 5px;
     color: $gray-900;
+    border: none;
 }
 
 // Dashboard Stats
@@ -664,11 +671,11 @@ table.dataTable.ci-table {
         text-decoration: none;
     }
     .media {
-        font-size: .875rem;
+        //font-size: .875rem;
         padding: .75rem 0rem;
         .count {
-            font-weight: 300;
-            font-size: 1.25rem;
+            //font-weight: 300;
+            //font-size: 1.25rem;
         }
     }
 }
