@@ -19,7 +19,7 @@
                <?php echo form_error('user_password'); ?>
             </div>
             <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Log In','class' => 'btn ci-btn-primary btn-primary btn-block btn-lg'));?>
-            <div class="text-center mt-4"><a href="<?php echo base_url($this->router->class.'/forgot_password');?>">Forgotten password?</a></div>
+            <div class="text-center mt-4"><a href="<?php echo base_url($this->router->class.'/forgot_password');?>">Forgot password?</a></div>
             <?php echo form_close(); ?>
          </div>
       </div>
