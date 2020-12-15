@@ -25,7 +25,8 @@ $config['app_email_footer'] = $html_email_footer;
 
 // App name, other static texts
 $config['app_html_title'] = 'UEIPL - MyApp';
-$config['app_admin_html_title'] = 'United Exploration India Pvt. Ltd.';
+$config['app_html_title_admin'] = '';
+$config['app_name'] = 'MyApp';
 
 // Site Meta
 $config['app_meta_keywords'] = 'Employee Portal, ESS Portal, Self Service Portal, Employee Login, Timesheet Portal';
