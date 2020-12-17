@@ -350,18 +350,13 @@ class User_model extends CI_Model {
     }
 
     function get_user_role_permission($role_id) {
-        $this->db->select('t1.id,t1.permission_id,t2.role_name,t2.role_weight,t3.permission_name,t3.permission_description');
-        $this->db->join('roles as t2', 't1.role_id=t2.id', 'left');
-        $this->db->join('permissions as t3', 't1.permission_id=t3.id', 'left');
-        $this->db->where(array('t1.role_id' => $role_id));
-        $query = $this->db->get('role_permission as t1');
-        //echo $this->db->last_query();
+        $this->db->select('t1.id, t1.role_code, t1.role_code, t1.role_permissions');
+        $this->db->where(array('t1.id' => $role_id));
+        $query = $this->db->get('role_permissions as t1');
         $result = $query->result_array();
         $main_res = array();
-        if (isset($result) && sizeof($result) > 0) {
-            foreach ($result as $key => $value) {
-                $main_res[] = $value['permission_name'];
-            }
+        if (isset($result) && sizeof($result) > 0 &&  strlen($result[0]['role_permissions']) > 0) {
+            $main_res = explode(',', $result[0]['role_permissions']);
         }
         return $main_res;
     }

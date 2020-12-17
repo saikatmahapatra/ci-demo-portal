@@ -363,7 +363,7 @@ class Common_lib {
      * @param type $redirect
      * @param type $redirect_uri
      */
-    function is_auth($check_permissions, $redirect = TRUE, $redirect_uri = NULL) {
+    function is_auth($check_permissions = array(), $redirect = TRUE, $redirect_uri = NULL) {
         $match_count = 0;
         $result = array('is_authorized' => FALSE, 'status' => '0', 'message' => 'checking permission');
         $user_role_id = $this->CI->session->userdata['sess_user']['user_role'];
