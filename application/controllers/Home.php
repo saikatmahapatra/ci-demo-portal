@@ -242,6 +242,16 @@ class Home extends CI_Controller {
         echo $json_response; die();
     }
 
+    function apply_leave() {
+        $this->session->set_userdata('post_leave_apply_redirect_url', base_url('home'));
+        redirect(base_url('leave/apply'));
+    }
+
+    function log_timesheet() {
+        $this->session->set_userdata('post_task_log_redirect_url', base_url('home'));
+        redirect(base_url('timesheet'));
+    }
+
     function sidebar_toggle(){
         $result = array('result'=>'error');
         if(isset($this->session->userdata['sess_hide_sidebar_md'])) {
