@@ -10,10 +10,10 @@
                 Dashboard
             </a>
 
-            <a class="nav-link" href="<?php echo base_url('event_calendar'); ?>">
+            <!-- <a class="nav-link" href="<?php echo base_url('event_calendar'); ?>">
                 <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('calendar'); ?></div>
                 My Calendar
-            </a>
+            </a> -->
             
             <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
             <!-- <div class="sb-sidenav-menu-heading">Admin HR</div> -->
@@ -79,7 +79,7 @@
             <div class="collapse" id="collapseLayouts_3" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
                 <a class="nav-link" href="<?php echo base_url('user/profile');?>">My Profile</a>
-                <a class="nav-link" href="<?php echo base_url('document');?>">My Documents</a>
+                <a class="nav-link" href="<?php echo base_url('user/my_documents');?>">My Documents</a>
                 <a class="nav-link" href="<?php echo base_url('user/change_password');?>">Change Password</a>
                 <a class="nav-link" href="<?php echo base_url('user/logout');?>">Logout</a>
                 </nav>

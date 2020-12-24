@@ -40,7 +40,6 @@ class Home extends CI_Controller {
 
         $this->load->model('home_model');
         $this->load->model('cms_model');
-        $this->load->model('event_calendar_model');
 
         $this->id = $this->uri->segment(3);
 
@@ -239,7 +238,7 @@ class Home extends CI_Controller {
         $start_date = $this->input->get_post('start');
         $end_date = $this->input->get_post('end');
 
-        $json_response = $this->event_calendar_model->get_events($start_date, $end_date, $user_id);
+        $json_response = $this->home_model->get_events($start_date, $end_date, $user_id);
         echo $json_response; die();
     }
 
