@@ -898,7 +898,7 @@ class Project extends CI_Controller {
         $this->load->view('_layouts/layout_default', $this->data);
     }
 
-    function validate_search_form_data($data) {        
+    function validate_search_form_data($data) {
         $this->form_validation->set_data($data);
         $this->form_validation->set_rules('from_date', 'from date', 'required');
         $this->form_validation->set_rules('to_date', 'to date', 'required|callback_validate_timesheet_days_diff');
@@ -924,18 +924,18 @@ class Project extends CI_Controller {
             $no_day = round($datediff / (60 * 60 * 24))+1;
             if($no_day >= 1 ){
                 if($no_day > $settings['timesheet_report_max_date_range']){
-                    $this->form_validation->set_message('validate_days_diff', 'Date range should be less than '. $settings['timesheet_report_max_date_range'].' days.');
+                    $this->form_validation->set_message('validate_timesheet_days_diff', 'Date range should be less than '. $settings['timesheet_report_max_date_range'].' days.');
                     return false;
                 }else{
                     return true;
                 }
                 
             }else{
-                $this->form_validation->set_message('validate_days_diff', 'Invalid date range.');
+                $this->form_validation->set_message('validate_timesheet_days_diff', 'Invalid date range.');
                 return false;
             }
         }else{
-            $this->form_validation->set_message('validate_days_diff', 'Filter range not found in DB');
+            $this->form_validation->set_message('validate_timesheet_days_diff', 'Filter range not found in DB');
             return false;
         }
         
