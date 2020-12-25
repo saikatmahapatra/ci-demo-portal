@@ -31,7 +31,7 @@
                     <!-- <a class="nav-link" href="<?php echo base_url('user/create_account'); ?>">New Employee</a> -->
                     <a class="nav-link" href="<?php echo base_url('leave/manage'); ?>">Leave Management</a>
                     <a class="nav-link" href="<?php echo base_url('leave/view_leave_balance'); ?>">Leave Balance</a>
-                    <a class="nav-link" href="<?php echo base_url('timesheet/report'); ?>">Timesheet Report</a>
+                    <a class="nav-link" href="<?php echo base_url('project/timesheet_report'); ?>">Timesheet Report</a>
                     <a class="nav-link" href="<?php echo base_url('project'); ?>">Projects</a>
                     <a class="nav-link" href="<?php echo base_url('project/tasks'); ?>">Tasks</a>
                 </nav>
@@ -53,7 +53,7 @@
                 </nav>
             </div>
 
-            <a class="nav-link" href="<?php echo base_url('timesheet'); ?>">
+            <a class="nav-link" href="<?php echo base_url('project/timesheet'); ?>">
                 <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('timesheet'); ?></div>
                 Timesheet
             </a>

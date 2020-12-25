@@ -91,20 +91,20 @@ class Home extends CI_Controller {
 		
         // Dashboard Stats
         $dashboard_stat = array();
-        $this->load->model('timesheet_model');
+        $this->load->model('project_model');
         $stat_user_count = $this->home_model->get_user_count();
         $stat_projects_count = $this->home_model->get_user_projects();
         $stat_timesheet_user = $this->home_model->get_user_of_timesheet();
         $stat_user_applied_leave = $this->home_model->get_user_applied_leave_count();
         $stat_user_approved_leave = $this->home_model->get_user_approved_leave_count();
         $stat_pending_leave_action = $this->home_model->get_pending_leave_action_count($this->sess_user_id);
-        $stat_user_timesheet_stat = $this->timesheet_model->get_timesheet_stats(date('Y'), date('m'), $this->sess_user_id);
+        $stat_user_timesheet_stat = $this->project_model->get_timesheet_stats(date('Y'), date('m'), $this->sess_user_id);
 
         $dashboard_stat['user'] = array('target_role' => '1', 'heading'=>'Employees', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-primary', 'icon'=>'', 'count'=>$stat_user_count['data_rows'][0]['total'], 'url' => base_url('user/manage'));
 
         $dashboard_stat['project'] = array('target_role' => '1', 'heading'=>'Projects', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-secondary', 'icon'=>'', 'count'=>$stat_projects_count['data_rows'][0]['total'], 'url' => base_url('project'));
 
-        $dashboard_stat['timesheet_user'] = array('target_role' => '1', 'heading'=>'Logged Task Current Month', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-success', 'icon'=>'', 'count'=>$stat_timesheet_user['data_rows'][0]['total'], 'url' => base_url('timesheet/report'));
+        $dashboard_stat['timesheet_user'] = array('target_role' => '1', 'heading'=>'Logged Task Current Month', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-success', 'icon'=>'', 'count'=>$stat_timesheet_user['data_rows'][0]['total'], 'url' => base_url('project/timesheet_report'));
         
         $dashboard_stat['user_applied_leave'] = array('target_role' => '1', 'heading'=>'Leave Approved', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-info', 'icon'=>'', 'count'=>$stat_user_approved_leave['data_rows'][0]['total'].'/'.$stat_user_applied_leave['data_rows'][0]['total'], 'url' => base_url('leave/manage'));
 

@@ -314,7 +314,7 @@ class Home_model extends CI_Model {
               $data2[$key]['borderColor'] = '#6610f2';
               $data2[$key]['backgroundColor'] = '#6610f2';
               $data2[$key]['textColor'] = '#fff';
-              //$data2[$key]['url'] = base_url('timesheet/edit/'.$val['id']);
+              //$data2[$key]['url'] = base_url('project/edit_timesheet/'.$val['id']);
               //$data2[$key]['allDay'] = false;
               $data2[$key]['extendedProps'] = array(
                 'event_type' => 'Timesheet',
