@@ -33,8 +33,6 @@ class Holiday extends CI_Controller {
         
         $this->load->model('holiday_model');
         $this->id = $this->uri->segment(3);
-        //View Page Config
-		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
         $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
 		
 		// load Breadcrumbs

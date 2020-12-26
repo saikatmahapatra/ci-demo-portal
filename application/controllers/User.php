@@ -21,22 +21,16 @@ class User extends CI_Controller {
             $this->router->class
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
-
-        //View Page Config
-		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
         $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
         $this->data['datatable']['dt_id']= array('heading'=>'Data Table','cols'=>array());
-		
 		// load Breadcrumbs
 		$this->load->library('breadcrumbs');
 		// add breadcrumbs. push() - Append crumb to stack
 		$this->breadcrumbs->push('Home', '/home');
 		//$this->breadcrumbs->push('User', '/user/manage');		
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		
 		// Address Types
 		$this->data['address_type'] = array('P'=>'Permanent Address','C'=>'Present Address');
-		
 		//User Roles drop down
 		$this->data['arr_roles'] = $this->user_model->get_user_role_dropdown();
 		$this->data['arr_designations'] = $this->user_model->get_designation_dropdown('Y');

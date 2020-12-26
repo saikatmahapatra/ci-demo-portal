@@ -68,11 +68,7 @@ class Leave extends CI_Controller {
             'C'=>array('text'=>'Cancelled', 'badge_css'=>'badge badge-warning badge-pill', 'css'=>'text-warning'),
             'X'=>array('text'=>'Cancel Requested', 'badge_css'=>'badge badge-warning badge-pill', 'css'=>'text-warning')
         );
-        
-		//View Page Config
-		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
 		$this->data['page_title'] = $this->router->class.' : '.$this->router->method;
-        
     }
 
     function index(){

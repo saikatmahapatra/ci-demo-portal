@@ -30,9 +30,6 @@ class Cms extends CI_Controller {
         $this->load->model('cms_model');
         $this->id = $this->uri->segment(3);
         $this->data['arr_content_type'] = $this->cms_model->get_pagecontent_type();
-
-        //View Page Config
-		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
         $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
 		
 		// load Breadcrumbs

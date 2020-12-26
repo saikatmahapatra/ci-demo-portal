@@ -33,8 +33,7 @@ class Home extends CI_Controller {
 
         // Load required js files for this controller
         $javascript_files = array(
-            'home',
-            'event_calendar'
+            $this->router->class
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
 
@@ -42,9 +41,6 @@ class Home extends CI_Controller {
         $this->load->model('cms_model');
 
         $this->id = $this->uri->segment(3);
-
-        //View Page Config
-		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
         $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
 		
 		// load Breadcrumbs
