@@ -10,10 +10,10 @@
                 Dashboard
             </a>
 
-            <a class="nav-link" href="<?php echo base_url('event_calendar'); ?>">
+            <!-- <a class="nav-link" href="<?php echo base_url('event_calendar'); ?>">
                 <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('calendar'); ?></div>
                 My Calendar
-            </a>
+            </a> -->
             
             <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
             <!-- <div class="sb-sidenav-menu-heading">Admin HR</div> -->
@@ -25,13 +25,12 @@
             <div class="collapse" id="collapseLayoutsAdmin" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
                     <a class="nav-link" href="<?php echo base_url('user/manage'); ?>">Employees</a>
-                    <!-- <a class="nav-link" href="<?php echo base_url('cms/add'); ?>">New Content</a> -->
                     <a class="nav-link" href="<?php echo base_url('cms'); ?>">Contents</a>
-                    <a class="nav-link" href="<?php echo base_url('holiday'); ?>">Holiday Calendar</a>
+                    <a class="nav-link" href="<?php echo base_url('cms/manage_holidays'); ?>">Holiday Management</a>
                     <!-- <a class="nav-link" href="<?php echo base_url('user/create_account'); ?>">New Employee</a> -->
                     <a class="nav-link" href="<?php echo base_url('leave/manage'); ?>">Leave Management</a>
                     <a class="nav-link" href="<?php echo base_url('leave/view_leave_balance'); ?>">Leave Balance</a>
-                    <a class="nav-link" href="<?php echo base_url('timesheet/report'); ?>">Timesheet Report</a>
+                    <a class="nav-link" href="<?php echo base_url('project/timesheet_report'); ?>">Timesheet Report</a>
                     <a class="nav-link" href="<?php echo base_url('project'); ?>">Projects</a>
                     <a class="nav-link" href="<?php echo base_url('project/tasks'); ?>">Tasks</a>
                 </nav>
@@ -49,11 +48,11 @@
                 <a class="nav-link" href="<?php echo base_url('user/people');?>">Employees</a>
                 <a class="nav-link" href="<?php echo base_url('user/reportee_employee'); ?>">My Reportees</a>
                 <a class="nav-link" href="<?php echo base_url('home/policy'); ?>">HR Policies</a>
-                <a class="nav-link" href="<?php echo base_url('holiday/view');?>">Holiday List </a>
+                <a class="nav-link" href="<?php echo base_url('cms/list_of_holidays');?>">Holiday List </a>
                 </nav>
             </div>
 
-            <a class="nav-link" href="<?php echo base_url('timesheet'); ?>">
+            <a class="nav-link" href="<?php echo base_url('project/timesheet'); ?>">
                 <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('timesheet'); ?></div>
                 Timesheet
             </a>
@@ -79,7 +78,7 @@
             <div class="collapse" id="collapseLayouts_3" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
                 <a class="nav-link" href="<?php echo base_url('user/profile');?>">My Profile</a>
-                <a class="nav-link" href="<?php echo base_url('document');?>">My Documents</a>
+                <a class="nav-link" href="<?php echo base_url('user/my_documents');?>">My Documents</a>
                 <a class="nav-link" href="<?php echo base_url('user/change_password');?>">Change Password</a>
                 <a class="nav-link" href="<?php echo base_url('user/logout');?>">Logout</a>
                 </nav>

@@ -33,19 +33,14 @@ class Home extends CI_Controller {
 
         // Load required js files for this controller
         $javascript_files = array(
-            'home',
-            'event_calendar'
+            $this->router->class
         );
         $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
 
         $this->load->model('home_model');
         $this->load->model('cms_model');
-        $this->load->model('event_calendar_model');
 
         $this->id = $this->uri->segment(3);
-
-        //View Page Config
-		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
         $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
 		
 		// load Breadcrumbs
@@ -92,30 +87,30 @@ class Home extends CI_Controller {
 		
         // Dashboard Stats
         $dashboard_stat = array();
-        $this->load->model('timesheet_model');
+        $this->load->model('project_model');
         $stat_user_count = $this->home_model->get_user_count();
         $stat_projects_count = $this->home_model->get_user_projects();
         $stat_timesheet_user = $this->home_model->get_user_of_timesheet();
         $stat_user_applied_leave = $this->home_model->get_user_applied_leave_count();
         $stat_user_approved_leave = $this->home_model->get_user_approved_leave_count();
         $stat_pending_leave_action = $this->home_model->get_pending_leave_action_count($this->sess_user_id);
-        $stat_user_timesheet_stat = $this->timesheet_model->get_timesheet_stats(date('Y'), date('m'), $this->sess_user_id);
+        $stat_user_timesheet_stat = $this->project_model->get_timesheet_stats(date('Y'), date('m'), $this->sess_user_id);
 
         $dashboard_stat['user'] = array('target_role' => '1', 'heading'=>'Employees', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-primary', 'icon'=>'', 'count'=>$stat_user_count['data_rows'][0]['total'], 'url' => base_url('user/manage'));
 
         $dashboard_stat['project'] = array('target_role' => '1', 'heading'=>'Projects', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-secondary', 'icon'=>'', 'count'=>$stat_projects_count['data_rows'][0]['total'], 'url' => base_url('project'));
 
-        $dashboard_stat['timesheet_user'] = array('target_role' => '1', 'heading'=>'Logged Task Current Month', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-success', 'icon'=>'', 'count'=>$stat_timesheet_user['data_rows'][0]['total'], 'url' => base_url('timesheet/report'));
+        $dashboard_stat['timesheet_user'] = array('target_role' => '1', 'heading'=>'Logged Task Current Month', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-success', 'icon'=>'', 'count'=>$stat_timesheet_user['data_rows'][0]['total'], 'url' => base_url('project/timesheet_report'));
         
         $dashboard_stat['user_applied_leave'] = array('target_role' => '1', 'heading'=>'Leave Approved', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-info', 'icon'=>'', 'count'=>$stat_user_approved_leave['data_rows'][0]['total'].'/'.$stat_user_applied_leave['data_rows'][0]['total'], 'url' => base_url('leave/manage'));
 
         $dashboard_stat['leave_to_approve'] = array('target_role' => '', 'heading'=>'Leave to Approve', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-warning', 'icon'=>'', 'count'=>$stat_pending_leave_action['data_rows'][0]['total'], 'url' => base_url('leave/manage'));
 
-        $dashboard_stat['timesheet_days'] = array('target_role' => '', 'heading'=>'Days You Logged *', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-danger', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['total_days'], 'url' => base_url('timesheet'));
+        $dashboard_stat['timesheet_days'] = array('target_role' => '', 'heading'=>'Days You Logged *', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-danger', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['total_days'], 'url' => base_url('project/timesheet'));
 
-        $dashboard_stat['timesheet_hrs'] = array('target_role' => '', 'heading'=>'Your Logged Hours *', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-primary', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['total_hrs'] ? $stat_user_timesheet_stat['stat_data']['total_hrs'] : 0, 'url' => base_url('timesheet'));
+        $dashboard_stat['timesheet_hrs'] = array('target_role' => '', 'heading'=>'Your Logged Hours *', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-primary', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['total_hrs'] ? $stat_user_timesheet_stat['stat_data']['total_hrs'] : 0, 'url' => base_url('project/timesheet'));
 
-        $dashboard_stat['timesheet_avg_hrs'] = array('target_role' => '', 'heading'=>'Your Average Logged Hours *', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-secondary', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['avg_hrs'] ? $stat_user_timesheet_stat['stat_data']['avg_hrs'] : 0, 'url' => base_url('timesheet'));
+        $dashboard_stat['timesheet_avg_hrs'] = array('target_role' => '', 'heading'=>'Your Average Logged Hours *', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-secondary', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['avg_hrs'] ? $stat_user_timesheet_stat['stat_data']['avg_hrs'] : 0, 'url' => base_url('project/timesheet'));
 
         $this->data['dashboard_stat'] = $dashboard_stat;
         // Dashboard Stats
@@ -239,8 +234,18 @@ class Home extends CI_Controller {
         $start_date = $this->input->get_post('start');
         $end_date = $this->input->get_post('end');
 
-        $json_response = $this->event_calendar_model->get_events($start_date, $end_date, $user_id);
+        $json_response = $this->home_model->get_events($start_date, $end_date, $user_id);
         echo $json_response; die();
+    }
+
+    function apply_leave() {
+        $this->session->set_userdata('post_leave_apply_redirect_url', base_url('home'));
+        redirect(base_url('leave/apply'));
+    }
+
+    function log_timesheet() {
+        $this->session->set_userdata('post_task_log_redirect_url', base_url('home'));
+        redirect(base_url('project/timesheet'));
     }
 
     function sidebar_toggle(){

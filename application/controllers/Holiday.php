@@ -33,8 +33,6 @@ class Holiday extends CI_Controller {
         
         $this->load->model('holiday_model');
         $this->id = $this->uri->segment(3);
-        //View Page Config
-		$this->data['view_dir'] = 'site/'; // inner view and layout directory name inside application/view
         $this->data['page_title'] = $this->router->class.' : '.$this->router->method;
 		
 		// load Breadcrumbs
@@ -67,14 +65,14 @@ class Holiday extends CI_Controller {
 		// Get logged  in user id
         $this->sess_user_id = $this->common_lib->get_sess_user('id');
 			
-		$this->breadcrumbs->push('View','/');				
+		$this->breadcrumbs->push('View','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		$this->data['page_title'] = 'Manage Holidays';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
 	
-	function render_datatable() {
+	function render_holiday_datatable() {
         //Total rows - Refer to model method definition
         $result_array = $this->holiday_model->get_rows();
         $total_rows = $result_array['num_rows'];

@@ -110,8 +110,8 @@
             <div class="card-header"><?php echo $this->common_lib->get_icon('calendar'); ?> Calendar</div>
             <div class="card-body">
                 <div class="btn-group mb-4" role="group" aria-label="Basic example">
-                    <a href="<?php echo base_url('event_calendar/log_timesheet'); ?>" class="btn  btn-outline-secondary"><?php echo $this->common_lib->get_icon('timesheet'); ?> Log Timesheet</a>
-                    <a href="<?php echo base_url('event_calendar/apply_leave'); ?>" class="btn  btn-outline-secondary"><?php echo $this->common_lib->get_icon('leave'); ?> Apply Leave</a>
+                    <a href="<?php echo base_url('home/log_timesheet'); ?>" class="btn  btn-outline-secondary"><?php echo $this->common_lib->get_icon('timesheet'); ?> Log Timesheet</a>
+                    <a href="<?php echo base_url('home/apply_leave'); ?>" class="btn  btn-outline-secondary"><?php echo $this->common_lib->get_icon('leave'); ?> Apply Leave</a>
                 </div>
                 <div id="ci_full_calendar"></div>
             </div>

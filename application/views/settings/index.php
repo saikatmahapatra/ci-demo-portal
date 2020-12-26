@@ -1,12 +1,14 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 
 <div class="row">
-    <div class="col-lg-9">
+    <div class="col-md-12">
+	<div class="my-3">
+	<a  class="btn btn-outline-secondary" href="<?php echo base_url('settings/timesheet_settings');?>">Timesheet settings</a>
+	</div>
         <div class="card ">
-			<div class="card-header"><?php echo $this->common_lib->get_icon('table'); ?> Data Table</div>
+			<div class="card-header"><?php echo $this->common_lib->get_icon('table'); ?> Table</div>
             <div class="card-body">
-                
-                <?php echo isset($alert_message) ? $alert_message : ''; ?>
+			<?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="table-responsive">
 			<table class="table ci-table   table-striped w-100">
 				<thead class="">

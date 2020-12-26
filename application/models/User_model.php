@@ -62,7 +62,7 @@ class User_model extends CI_Model {
         if ($userType) {
             $this->db->where('t1.user_type', $userType);
         }
-        $this->db->join('roles t2', 't1.user_role=t2.id', 'left');
+        $this->db->join('role_permissions t2', 't1.user_role=t2.id', 'left');
         $this->db->join('departments t3', 't1.user_department=t3.id', 'left');
         $this->db->join('designations t4', 't1.user_designation=t4.id', 'left');
         $this->db->join('employment_types t5', 't1.user_employment_type=t5.id', 'left');
@@ -72,7 +72,7 @@ class User_model extends CI_Model {
         if ($dataTable == TRUE) {
             //set column field database for datatable orderable
             $column_order = array(
-                't1.user_firstname',                
+                't1.user_firstname',
                 't1.user_emp_id',
                 't4.designation_name',
                 't1.user_email',
@@ -144,7 +144,7 @@ class User_model extends CI_Model {
         $auth_result = array('status' => $login_status, 'message' => $message, 'data' => $loggedin_data);
 
         $this->db->select('t1.id,t1.user_email, t1.user_firstname,t1.user_lastname,t1.user_role,t1.user_profile_pic,t1.user_status,t1.user_status,t2.role_name,t2.role_weight,t1.user_login_date_time, t1.user_emp_id, t3.designation_name');
-		$this->db->join('roles t2', 't1.user_role=t2.id');
+		$this->db->join('role_permissions t2', 't1.user_role=t2.id');
 		$this->db->join('designations t3', 't1.user_designation=t3.id', 'left');
         $this->db->where(array(
             't1.user_email' => $user_email,
@@ -272,7 +272,7 @@ class User_model extends CI_Model {
     function get_user_role($role_id) {
         $this->db->select('t1.*');
         $this->db->where(array('id' => $role_id));
-        $query = $this->db->get('roles as t1');
+        $query = $this->db->get('role_permissions as t1');
         $result = $query->result_array();
         return $result;
     }
@@ -280,8 +280,8 @@ class User_model extends CI_Model {
 	function get_user_role_dropdown() {
         $result = array();
         $this->db->select('id,role_name,role_weight');
-        $this->db->where('role_active','Y');
-        $query = $this->db->get('roles');
+        $this->db->where('role_status','Y');
+        $query = $this->db->get('role_permissions');
         $result = array('' => 'Select');
         if ($query->num_rows()) {
             $res = $query->result();
@@ -350,18 +350,13 @@ class User_model extends CI_Model {
     }
 
     function get_user_role_permission($role_id) {
-        $this->db->select('t1.id,t1.permission_id,t2.role_name,t2.role_weight,t3.permission_name,t3.permission_description');
-        $this->db->join('roles as t2', 't1.role_id=t2.id', 'left');
-        $this->db->join('permissions as t3', 't1.permission_id=t3.id', 'left');
-        $this->db->where(array('t1.role_id' => $role_id));
-        $query = $this->db->get('role_permission as t1');
-        //echo $this->db->last_query();
+        $this->db->select('t1.id, t1.role_code, t1.role_code, t1.role_permissions');
+        $this->db->where(array('t1.id' => $role_id));
+        $query = $this->db->get('role_permissions as t1');
         $result = $query->result_array();
         $main_res = array();
-        if (isset($result) && sizeof($result) > 0) {
-            foreach ($result as $key => $value) {
-                $main_res[] = $value['permission_name'];
-            }
+        if (isset($result) && sizeof($result) > 0 &&  strlen($result[0]['role_permissions']) > 0) {
+            $main_res = explode(',', $result[0]['role_permissions']);
         }
         return $main_res;
     }
@@ -525,7 +520,7 @@ class User_model extends CI_Model {
             $this->db->or_like('t4.designation_name', $search_keywords);
             $this->db->group_end();
         }
-        $this->db->join('roles t2', 't1.user_role=t2.id', 'left');
+        $this->db->join('role_permissions t2', 't1.user_role=t2.id', 'left');
 		$this->db->join('departments t3', 't1.user_department=t3.id', 'left');
         $this->db->join('designations t4', 't1.user_designation=t4.id', 'left');
         $this->db->join('employment_types t5', 't1.user_employment_type=t5.id', 'left');
@@ -558,7 +553,7 @@ class User_model extends CI_Model {
         if ($userType) {
             $this->db->where('t1.user_type', $userType);
         }
-        $this->db->join('roles t2', 't1.user_role=t2.id', 'left');
+        $this->db->join('role_permissions t2', 't1.user_role=t2.id', 'left');
         $this->db->join('departments t3', 't1.user_department=t3.id', 'left');
         $this->db->join('designations t4', 't1.user_designation=t4.id', 'left');
         $this->db->join('employment_types t5', 't1.user_employment_type=t5.id', 'left');

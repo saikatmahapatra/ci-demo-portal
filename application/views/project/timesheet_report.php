@@ -10,7 +10,7 @@
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <ul><?php echo validation_errors(); ?></ul>
 
-                <?php echo form_open(site_url('timesheet/report'), array( 'method' => 'get','class'=>'ci-form','name' => '','id' => 'timesheet-search-form')); ?>
+                <?php echo form_open(site_url('project/timesheet_report'), array( 'method' => 'get','class'=>'ci-form','name' => '','id' => 'timesheet-search-form')); ?>
                 <?php echo form_hidden('form_action', 'search'); ?>
                 <?php 
                 if(($this->input->get('redirected_from')=='reportee_id')){

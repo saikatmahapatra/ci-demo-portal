@@ -4,7 +4,7 @@
     </button>
     <a class="navbar-brand" href="<?php echo base_url(); ?>">
     <!-- <img class="mx-auto" src="<?php echo base_url('assets/dist/img/logo-nav.png');?>" alt="Logo" width="48px">  -->
-    MyApp</a>
+    <?php echo $this->config->item('app_name');?></a>
     
     <ul class="navbar-nav ml-auto mr-0">
         <?php if (isset($this->session->userdata['sess_user']['id'])) {   ?>

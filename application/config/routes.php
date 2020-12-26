@@ -50,7 +50,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'home';
-$route['admin'] = 'user/administrator'; /*No need to put slash(/)*/
-$route['administrator'] = 'user/administrator'; /*No need to put slash(/)*/
 $route['404_override'] = 'errors/page_not_found';
 $route['translate_uri_dashes'] = FALSE;
