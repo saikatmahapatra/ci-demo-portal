@@ -25,9 +25,8 @@
             <div class="collapse" id="collapseLayoutsAdmin" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
                     <a class="nav-link" href="<?php echo base_url('user/manage'); ?>">Employees</a>
-                    <!-- <a class="nav-link" href="<?php echo base_url('cms/add'); ?>">New Content</a> -->
                     <a class="nav-link" href="<?php echo base_url('cms'); ?>">Contents</a>
-                    <a class="nav-link" href="<?php echo base_url('holiday'); ?>">Holiday Calendar</a>
+                    <a class="nav-link" href="<?php echo base_url('cms/manage_holidays'); ?>">Holiday Management</a>
                     <!-- <a class="nav-link" href="<?php echo base_url('user/create_account'); ?>">New Employee</a> -->
                     <a class="nav-link" href="<?php echo base_url('leave/manage'); ?>">Leave Management</a>
                     <a class="nav-link" href="<?php echo base_url('leave/view_leave_balance'); ?>">Leave Balance</a>
@@ -49,7 +48,7 @@
                 <a class="nav-link" href="<?php echo base_url('user/people');?>">Employees</a>
                 <a class="nav-link" href="<?php echo base_url('user/reportee_employee'); ?>">My Reportees</a>
                 <a class="nav-link" href="<?php echo base_url('home/policy'); ?>">HR Policies</a>
-                <a class="nav-link" href="<?php echo base_url('holiday/view');?>">Holiday List </a>
+                <a class="nav-link" href="<?php echo base_url('cms/list_of_holidays');?>">Holiday List </a>
                 </nav>
             </div>
 

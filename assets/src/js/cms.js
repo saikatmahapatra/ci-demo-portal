@@ -11,6 +11,17 @@ function domReady() {
     if (ROUTER_METHOD == 'index') {
         renderDataTable();
     }
+    if (ROUTER_METHOD == 'manage_holidays') {
+        renderHolidayDataTable();
+    }
+    if (ROUTER_METHOD == 'add_holiday' || ROUTER_METHOD == 'edit_holiday') {
+        //Display Start end date picker 
+        $('.holiday-datepicker').datepicker({
+            format: "yyyy-mm-dd",
+            weekStart: 1,
+            autoclose: true
+        });
+    }
     //Add, Edit View:
     if (ROUTER_METHOD == 'add' || ROUTER_METHOD == 'edit') {
         // Classic CK Editor
@@ -54,6 +65,28 @@ function renderDataTable() {
         // Load data for the table's content from an Ajax source
         ajax: {
             url: SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/render_datatable',
+        },
+        //Set column definition initialisation properties.
+        columnDefs: [{
+            targets: [-1], //last column
+            orderable: false, //set not orderable
+        }, ],
+    });
+}
+
+function renderHolidayDataTable() {
+    table = $('#holiday-datatable').DataTable({
+        /*dom: 'Bfrtip',
+        buttons: [
+        	'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+        iDisplayLength: 10,*/
+        processing: true, //Feature control the processing indicator.
+        serverSide: true, //Feature control DataTables' server-side processing mode.
+        order: [], //Initial no order.
+        // Load data for the table's content from an Ajax source
+        ajax: {
+            url: SITE_URL + ROUTER_DIRECTORY + ROUTER_CLASS + '/render_holiday_datatable',
         },
         //Set column definition initialisation properties.
         columnDefs: [{

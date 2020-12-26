@@ -18,19 +18,10 @@ class Cms extends CI_Controller {
 			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
             redirect($this->router->directory.'user/login');
         }
-
-        //Has logged in user permission to access this page or method?        
-        $this->common_lib->is_auth(array(
-            'default-super-admin-access',
-            'default-admin-access'
-        ));
-
         // Get logged  in user id
         $this->sess_user_id = $this->common_lib->get_sess_user('id');
-
         //Render header, footer, navbar, sidebar etc common elements of templates
         $this->common_lib->init_template_elements();
-
         // Load required js files for this controller
         $javascript_files = array(
             $this->router->class
@@ -56,20 +47,23 @@ class Cms extends CI_Controller {
             'N'=>array('text'=>'Inactive', 'css'=>'badge badge-warning badge-pill'),
             'A'=>array('text'=>'Archived', 'css'=>'badge badge-danger badge-pill')
         );
-		
+		$this->data['arr_holiday_type'] = array(''=>'Select','C'=>'Calendar','O'=>'Optional');
 		//Pagination
 		 $this->load->library('pagination');
 		
     }
 
     function index() {
-        // Check user permission by permission name mapped to db
-        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
+        //Has logged in user permission to access this page or method?        
+        $this->common_lib->is_auth(array(
+            'default-super-admin-access',
+            'default-admin-access'
+        ));
 		
 		// Get logged  in user id
         $this->sess_user_id = $this->common_lib->get_sess_user('id');
 			
-		$this->breadcrumbs->push('View','/');				
+		$this->breadcrumbs->push('View','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		$this->data['page_title'] = 'Posts';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
@@ -77,8 +71,11 @@ class Cms extends CI_Controller {
     }
 	
 	function index_ci_pagination() {
-        // Check user permission by permission name mapped to db
-        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
+        //Has logged in user permission to access this page or method?
+        $this->common_lib->is_auth(array(
+            'default-super-admin-access',
+            'default-admin-access'
+        ));
 			
 		$this->breadcrumbs->push('View','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
@@ -158,9 +155,11 @@ class Cms extends CI_Controller {
     }
 
     function add() {
-        //Check user permission by permission name mapped to db
-        //$is_authorized = $this->common_lib->is_auth('cms-add');
-        //$this->data['page_title'] = "Add Page Content";
+        //Has logged in user permission to access this page or method?
+        $this->common_lib->is_auth(array(
+            'default-super-admin-access',
+            'default-admin-access'
+        ));
 		$this->breadcrumbs->push('Add','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
         if ($this->input->post('form_action') == 'insert') {
@@ -197,9 +196,11 @@ class Cms extends CI_Controller {
     }
 
     function edit() {
-        //Check user permission by permission name mapped to db
-        //$is_authorized = $this->common_lib->is_auth('cms-edit');
-		//$this->data['page_title'] = "Edit Page Content";
+        //Has logged in user permission to access this page or method?
+        $this->common_lib->is_auth(array(
+            'default-super-admin-access',
+            'default-admin-access'
+        ));
 		$this->breadcrumbs->push('Edit','/');				
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
         if ($this->input->post('form_action') == 'update') {
@@ -239,9 +240,11 @@ class Cms extends CI_Controller {
     }
 
     function delete() {
-        //Check user permission by permission name mapped to db
-        //$is_authorized = $this->common_lib->is_auth('cms-delete');
-
+        //Has logged in user permission to access this page or method?
+        $this->common_lib->is_auth(array(
+            'default-super-admin-access',
+            'default-admin-access'
+        ));
         $where_array = array('id' => $this->id);
         $res = $this->cms_model->delete($where_array);
         if ($res) {
@@ -299,6 +302,180 @@ class Cms extends CI_Controller {
         $this->email->send();
         //echo $this->email->print_debugger();
         //die();
+    }
+
+    function manage_holidays() {
+        //Has logged in user permission to access this page or method?        
+        $this->common_lib->is_auth(array(
+            'default-super-admin-access',
+            'default-admin-access',
+            'default-holiday-access',
+        ));
+		$this->breadcrumbs->push('View','/');
+		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
+		$this->data['page_title'] = 'Manage Holidays';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/manage_holidays', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function render_holiday_datatable() {
+        //Has logged in user permission to access this page or method?        
+        $this->common_lib->is_auth(array(
+            'default-super-admin-access',
+            'default-admin-access',
+            'default-holiday-access',
+        ));
+        //Total rows - Refer to model method definition
+        $result_array = $this->cms_model->get_holiday_data_rows();
+        $total_rows = $result_array['num_rows'];
+
+        // Total filtered rows - check without limit query. Refer to model method definition
+        $result_array = $this->cms_model->get_holiday_data_rows(NULL, NULL, NULL, TRUE, FALSE);
+        $total_filtered = $result_array['num_rows'];
+
+        // Data Rows - Refer to model method definition
+        $result_array = $this->cms_model->get_holiday_data_rows(NULL, NULL, NULL, TRUE);
+        $data_rows = $result_array['data_rows'];
+        $data = array();
+        $no = $_REQUEST['start'];
+        foreach ($data_rows as $result) {
+            $no++;
+            $row = array();
+            $row[] = $this->common_lib->display_date($result['holiday_date'], null, null, 'd-M-Y');
+            $row[] = $this->common_lib->display_date($result['holiday_date'], null, null, 'D');
+            $row[] = $result['holiday_description'];
+            $row[] = $this->data['arr_holiday_type'][$result['holiday_type']];
+            //add html for action
+            $action_html = '';
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_holiday/' . $result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
+                'class' => 'btn btn-datatable btn-icon btn-transparent-dark ',
+                'title' => 'Edit',
+            ));
+            $action_html.='&nbsp;';
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete_holiday/' . $result['id']), $this->common_lib->get_icon('delete','dt_action_icon'), array(
+                'class' => 'btn btn-datatable btn-icon btn-transparent-dark  btn-delete',
+				'data-confirmation'=>true,
+				'data-confirmation-message'=>'Are you sure, you want to delete this?',
+                'title' => 'Delete',
+            ));
+
+            $row[] = $action_html;
+            $data[] = $row;
+        }
+
+        /* jQuery Data Table JSON format */
+        $output = array(
+            'draw' => isset($_REQUEST['draw']) ? $_REQUEST['draw'] : '',
+            'recordsTotal' => $total_rows,
+            'recordsFiltered' => $total_filtered,
+            'data' => $data,
+        );
+        //output to json format
+        echo json_encode($output);
+    }
+
+    function add_holiday() {
+        //Has logged in user permission to access this page or method?        
+        $this->common_lib->is_auth(array(
+            'default-super-admin-access',
+            'default-admin-access',
+            'default-holiday-access',
+        ));
+		$this->breadcrumbs->push('Add','/');
+		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
+        if ($this->input->post('form_action') == 'insert') {
+            if ($this->validate_holiday_form_data('add') == true) {
+                $postdata = array(
+                    'holiday_date' => $this->common_lib->convert_to_mysql($this->input->post('holiday_date')),
+                    'holiday_description' => $this->input->post('holiday_description'),
+                    'holiday_type' => $this->input->post('holiday_type')
+                );
+                $insert_id = $this->cms_model->insert($postdata, 'holidays');
+                if ($insert_id) {
+                    $this->common_lib->set_flash_message('Data Added Successfully.','alert-success');
+                    redirect($this->router->directory.$this->router->class.'/manage_holidays');
+                }
+            }
+        }
+		$this->data['page_title'] = 'Add New Holiday';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/add_holiday', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function edit_holiday() {
+        //Has logged in user permission to access this page or method?        
+        $this->common_lib->is_auth(array(
+            'default-super-admin-access',
+            'default-admin-access',
+            'default-holiday-access',
+        ));
+		$this->breadcrumbs->push('Edit','/');
+        $this->data['breadcrumbs'] = $this->breadcrumbs->show();
+        if ($this->input->post('form_action') == 'update') {
+            if ($this->validate_holiday_form_data('edit') == true) {
+                $postdata = array(
+                    'holiday_date' => $this->common_lib->convert_to_mysql($this->input->post('holiday_date')),
+                    'holiday_description' => $this->input->post('holiday_description'),
+                    'holiday_type' => $this->input->post('holiday_type')
+                );
+                $where_array = array('id' => $this->input->post('id'));
+                $res = $this->cms_model->update($postdata, $where_array, 'holidays');
+                if ($res) {
+                    $this->common_lib->set_flash_message('Data Updated Successfully.','alert-success');
+                    redirect($this->router->directory.$this->router->class.'/manage_holidays');
+                }
+            }
+        }
+        $result_array = $this->cms_model->get_holiday_data_rows($this->uri->segment(3));
+        $this->data['rows'] = $result_array['data_rows'];
+		$this->data['page_title'] = 'Edit Holiday';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_holiday', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function delete_holiday() {
+        //Has logged in user permission to access this page or method?        
+        $this->common_lib->is_auth(array(
+            'default-super-admin-access',
+            'default-admin-access',
+            'default-holiday-access',
+        ));
+        $where_array = array('id' => $this->id);
+        $res = $this->cms_model->delete($where_array, 'holidays');
+        if ($res) {
+            $this->common_lib->set_flash_message('Data Deleted Successfully.','alert-success');
+            redirect($this->router->directory.$this->router->class.'/manage_holidays');
+        }
+    }
+
+    function validate_holiday_form_data($action = NULL) {
+		if($action == 'add'){			
+			$this->form_validation->set_rules('holiday_date', 'holiday date', 'required|is_unique[holidays.holiday_date]',array(
+                'is_unique'     => 'This %s already exists.'
+        ));
+		}
+		if($action == 'edit'){
+			$this->form_validation->set_rules('holiday_date', 'holiday date', 'required');
+		}
+        $this->form_validation->set_rules('holiday_description', 'holiday occasion', 'required');
+        $this->form_validation->set_rules('holiday_type', 'holiday type', 'required');
+
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+	
+	function list_of_holidays() {
+		$this->breadcrumbs->push('View','/');
+		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
+		$result_array = $this->cms_model->get_holidays(NULL, NULL, NULL, FALSE, FALSE);
+        $this->data['data_rows'] = $result_array['data_rows'];
+		$this->data['page_title'] = 'Holiday List';
+        $this->data['maincontent'] = $this->load->view($this->router->class.'/list_of_holidays', $this->data, true);
+        $this->load->view('_layouts/layout_default', $this->data);
     }
 }
 ?>

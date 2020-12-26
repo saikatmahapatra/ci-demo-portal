@@ -67,14 +67,14 @@ class Holiday extends CI_Controller {
 		// Get logged  in user id
         $this->sess_user_id = $this->common_lib->get_sess_user('id');
 			
-		$this->breadcrumbs->push('View','/');				
+		$this->breadcrumbs->push('View','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
 		$this->data['page_title'] = 'Manage Holidays';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
 	
-	function render_datatable() {
+	function render_holiday_datatable() {
         //Total rows - Refer to model method definition
         $result_array = $this->holiday_model->get_rows();
         $total_rows = $result_array['num_rows'];
