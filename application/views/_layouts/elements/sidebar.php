@@ -6,19 +6,19 @@
                 <div>United Exploration</div>
             </div>
             <a class="nav-link" href="<?php echo base_url($this->router->directory); ?>">
-                <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('dashboard'); ?></div>
+                <div class="sb-nav-link-icon"><?php echo $this->app_lib->get_icon('dashboard'); ?></div>
                 Dashboard
             </a>
 
             <!-- <a class="nav-link" href="<?php echo base_url('event_calendar'); ?>">
-                <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('calendar'); ?></div>
+                <div class="sb-nav-link-icon"><?php echo $this->app_lib->get_icon('calendar'); ?></div>
                 My Calendar
             </a> -->
             
             <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
             <!-- <div class="sb-sidenav-menu-heading">Admin HR</div> -->
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayoutsAdmin" aria-expanded="false" aria-controls="collapseLayoutsAdmin">
-                <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('admin_user'); ?></div>
+                <div class="sb-nav-link-icon"><?php echo $this->app_lib->get_icon('admin_user'); ?></div>
                 Admin
                 <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
             </a>
@@ -39,7 +39,7 @@
 
             <!-- <div class="sb-sidenav-menu-heading">ESS MENU</div> -->
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts_1" aria-expanded="false" aria-controls="collapseLayouts_1">
-                <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('organization'); ?></div>
+                <div class="sb-nav-link-icon"><?php echo $this->app_lib->get_icon('organization'); ?></div>
                 My Organization
                 <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
             </a>
@@ -53,11 +53,11 @@
             </div>
 
             <a class="nav-link" href="<?php echo base_url('project/timesheet'); ?>">
-                <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('timesheet'); ?></div>
+                <div class="sb-nav-link-icon"><?php echo $this->app_lib->get_icon('timesheet'); ?></div>
                 Timesheet
             </a>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts_2" aria-expanded="false" aria-controls="collapseLayouts_2">
-                <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('leave'); ?></div>
+                <div class="sb-nav-link-icon"><?php echo $this->app_lib->get_icon('leave'); ?></div>
                 Leave
                 <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
             </a>
@@ -71,7 +71,7 @@
             </div>
 
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts_3" aria-expanded="false" aria-controls="collapseLayouts_3">
-                <div class="sb-nav-link-icon"><?php echo $this->common_lib->get_icon('user_account'); ?></div>
+                <div class="sb-nav-link-icon"><?php echo $this->app_lib->get_icon('user_account'); ?></div>
                 My Account
                 <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
             </a>
@@ -96,7 +96,7 @@
     </div>
     <div class="sb-sidenav-footer">
     <div class="d-flex justify-content-end my-0 mx-0">
-        <a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? 'Show sidebar' : 'Hide sidebar'; ?>" id="locksidebar" class="d-none d-sm-block text-secondary"><?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? $this->common_lib->get_icon('show_sidebar') : $this->common_lib->get_icon('hide_sidebar'); ?></a>
+        <a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? 'Show sidebar' : 'Hide sidebar'; ?>" id="locksidebar" class="d-none d-sm-block text-secondary"><?php echo isset($this->session->userdata['sess_hide_sidebar_md']) ? $this->app_lib->get_icon('show_sidebar') : $this->app_lib->get_icon('hide_sidebar'); ?></a>
     </div>
     </div>
 </nav>

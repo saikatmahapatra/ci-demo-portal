@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-lg-9">
         <div class="card ">
-            <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
+            <div class="card-header"><?php echo $this->app_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
             
             <?php echo isset($alert_message) ? $alert_message : ''; ?>

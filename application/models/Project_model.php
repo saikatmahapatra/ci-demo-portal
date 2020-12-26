@@ -589,10 +589,10 @@ class Project_model extends CI_Model {
                 $this->db->where('t1.project_id', $cond['q_project']);
             }
             if($cond['from_date']){
-                $this->db->where('t1.timesheet_date >=', $this->common_lib->convert_to_mysql($cond['from_date']));
+                $this->db->where('t1.timesheet_date >=', $this->app_lib->convert_to_mysql($cond['from_date']));
             }
             if($cond['to_date']){
-                $this->db->where('t1.timesheet_date <=', $this->common_lib->convert_to_mysql($cond['to_date']));
+                $this->db->where('t1.timesheet_date <=', $this->app_lib->convert_to_mysql($cond['to_date']));
             }
         }
         $this->db->order_by('t1.timesheet_date','desc');	

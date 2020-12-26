@@ -3,12 +3,12 @@
 <div class="row">
     <div class="col-lg-8">
         <div class="card ">
-            <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
+            <div class="card-header"><?php echo $this->app_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="d-flex mb-2">
                     <div class="align-self-end ml-auto"> 
-                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/view_leave_balance');?>" class="back-to-list btn btn-link action-link"><?php echo $this->common_lib->get_icon('left_back'); ?> Return to List</a>
+                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/view_leave_balance');?>" class="back-to-list btn btn-link action-link"><?php echo $this->app_lib->get_icon('left_back'); ?> Return to List</a>
                     </div>
                 </div>
                 <?php echo form_open(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => 'ci-form-leavebalance',)); ?>

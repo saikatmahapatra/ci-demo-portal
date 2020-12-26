@@ -13,26 +13,26 @@ class Settings extends CI_Controller {
         parent::__construct();
 
         //Check if any user logged in else redirect to login
-        $is_logged_in = $this->common_lib->is_logged_in();
+        $is_logged_in = $this->app_lib->is_logged_in();
         if ($is_logged_in == FALSE) {
 			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
             redirect($this->router->directory.'user/login');
         }
 
         //Has logged in user permission to access this page or method?        
-        $this->common_lib->is_auth(array(
+        $this->app_lib->is_auth(array(
             'default-super-admin-access',
             'default-admin-access'
         ));
         // Get logged  in user id
-        $this->sess_user_id = $this->common_lib->get_sess_user('id');
+        $this->sess_user_id = $this->app_lib->get_sess_user('id');
         //Render header, footer, navbar, sidebar etc common elements of templates
-        $this->common_lib->init_template_elements();
+        $this->app_lib->init_template_elements();
         $this->load->model('settings_model');
     }
 
     function index() {
-        $this->sess_user_id = $this->common_lib->get_sess_user('id');
+        $this->sess_user_id = $this->app_lib->get_sess_user('id');
         $this->data['page_title'] = 'Site Settings';
         $this->data['rows'] = $this->settings_model->get_option();
         $this->data['maincontent'] = $this->load->view($this->router->class.'/index', $this->data, true);
@@ -40,7 +40,7 @@ class Settings extends CI_Controller {
     }
 
     function timesheet_settings() {
-        $this->sess_user_id = $this->common_lib->get_sess_user('id');
+        $this->sess_user_id = $this->app_lib->get_sess_user('id');
         $this->data['page_title'] = 'Timesheet Settings';
         $options = array(
             'timesheet_apply_settings',
@@ -65,7 +65,7 @@ class Settings extends CI_Controller {
                 );
                 $db_res = $this->settings_model->update_options($postdata);
                // if($db_res){
-                    $this->common_lib->set_flash_message('Options Updated Successfully.','alert-success');
+                    $this->app_lib->set_flash_message('Options Updated Successfully.','alert-success');
                     redirect(current_url());
                 //}
             }
