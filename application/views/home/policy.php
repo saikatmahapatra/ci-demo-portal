@@ -3,12 +3,12 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ">
-            <div class="card-header"><?php echo $this->common_lib->get_icon('card'); ?> Info</div>
+            <div class="card-header"><?php echo $this->app_lib->get_icon('card'); ?> Info</div>
             <div class="card-body">
                 <?php if(isset($data_rows) && sizeof($data_rows> 0)){ ?>
                 <?php foreach($data_rows as $key=>$row) { ?>
                     <div class="card-title mb-2 news-details-card-title"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></div>
-                    <div class="text-muted small mb-3">Published on <?php echo $this->common_lib->display_date($row['content_created_on'],true,null); ?></div>
+                    <div class="text-muted small mb-3">Published on <?php echo $this->app_lib->display_date($row['content_created_on'],true,null); ?></div>
                     <div class="mt-3">
                         <?php echo isset($row['content_text']) ? trim($row['content_text']) : '';?>
                     </div>

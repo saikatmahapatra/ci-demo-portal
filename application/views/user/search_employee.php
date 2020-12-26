@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card ">
-			<div class="card-header"><?php echo $this->common_lib->get_icon('search_data'); ?> Search</div>
+			<div class="card-header"><?php echo $this->app_lib->get_icon('search_data'); ?> Search</div>
 			<div class="card-body">
 			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -18,7 +18,7 @@
 						)); ?>
 						<?php echo form_error('q'); ?>
 						<div class="input-group-append">
-							<button class="btn" type="submit"><?php echo $this->common_lib->get_icon('search'); ?></button>
+							<button class="btn" type="submit"><?php echo $this->app_lib->get_icon('search'); ?></button>
 						</div>
 					</div>
 				<?php echo form_close(); ?>
@@ -27,7 +27,7 @@
 				<?php
 				if(isset($data_rows) && sizeof($data_rows)<=0){
 					?>
-					<div class="text-muted"><?php echo $this->common_lib->get_icon('warning'); ?> No results found.</div>
+					<div class="text-muted"><?php echo $this->app_lib->get_icon('warning'); ?> No results found.</div>
 					<?php
 				}
 				?>

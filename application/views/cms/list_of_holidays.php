@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-8">
 		<div class="card ">
-			<div class="card-header"><?php echo $this->common_lib->get_icon('holiday_calendar'); ?> List of Holidays <?php echo date('Y');?></div>
+			<div class="card-header"><?php echo $this->app_lib->get_icon('holiday_calendar'); ?> List of Holidays <?php echo date('Y');?></div>
 			<div class="card-body">
 				<div class="table-responsive">
 					<table class="table ci-table   table-striped w-100">
@@ -24,11 +24,11 @@
 								<tr class="">
 									<!-- <td scope="row"><?php echo $count;?></td> -->
 									<td>
-										<?php echo $this->common_lib->display_date($row['holiday_date'], null, null, 'M d, Y'); ?>
+										<?php echo $this->app_lib->display_date($row['holiday_date'], null, null, 'M d, Y'); ?>
 										<?php //echo $row['holiday_type']=='O' ? '<span class="text-danger font-weight-bold h5">*</span>' : '' ;?>
 									</td>
 									<td>
-										<?php echo $this->common_lib->display_date($row['holiday_date'], null, null, 'D'); ?>
+										<?php echo $this->app_lib->display_date($row['holiday_date'], null, null, 'D'); ?>
 									</td>
 									<!-- <td><?php echo $arr_holiday_type[$row['holiday_type']]; ?></td> -->
 									<td>

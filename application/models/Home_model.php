@@ -276,7 +276,7 @@ class Home_model extends CI_Model {
         $start = $this->input->get_post('start');
         $end = $this->input->get_post('end');        
         $cond = array(
-            'user_id' => $this->common_lib->get_sess_user('id'),
+            'user_id' => $this->app_lib->get_sess_user('id'),
         );
 
         $data1 = array();

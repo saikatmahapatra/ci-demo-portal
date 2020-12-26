@@ -13,29 +13,29 @@ class Home extends CI_Controller {
         parent::__construct();
 
         //Check if any user logged in else redirect to login
-        $is_logged_in = $this->common_lib->is_logged_in();
+        $is_logged_in = $this->app_lib->is_logged_in();
         if ($is_logged_in == FALSE) {
 			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
             redirect($this->router->directory.'user/login');
         }
 
         //Has logged in user permission to access this page or method?        
-        /*$this->common_lib->is_auth(array(
+        /*$this->app_lib->is_auth(array(
             'default-super-admin-access',
             'default-admin-access'
         ));*/
 
         // Get logged  in user id
-        $this->sess_user_id = $this->common_lib->get_sess_user('id');
+        $this->sess_user_id = $this->app_lib->get_sess_user('id');
 
         //Render header, footer, navbar, sidebar etc common elements of templates
-        $this->common_lib->init_template_elements();
+        $this->app_lib->init_template_elements();
 
         // Load required js files for this controller
         $javascript_files = array(
             $this->router->class
         );
-        $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
+        $this->data['app_js'] = $this->app_lib->add_javascript($javascript_files);
 
         $this->load->model('home_model');
         $this->load->model('cms_model');
@@ -59,10 +59,10 @@ class Home extends CI_Controller {
 
     function index() {
         // Check user permission by permission name mapped to db
-        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
+        // $is_authorized = $this->app_lib->is_auth('cms-list-view');
 		
 		// Check user permission by permission name mapped to db
-        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
+        // $is_authorized = $this->app_lib->is_auth('cms-list-view');
         // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
 		// $result_array = $this->cms_model->get_contents(NULL, NULL, NULL, FALSE, FALSE);
 		// $total_num_rows = $result_array['num_rows'];
@@ -77,7 +77,7 @@ class Home extends CI_Controller {
 		
 		// $page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
 		// $offset = ($page*$per_page);
-		// $this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
+		// $this->data['pagination_link'] = $this->app_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
 		//end of pagination config
         
 
@@ -141,7 +141,7 @@ class Home extends CI_Controller {
 		
 		$page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
 		$offset = ($page*$per_page);
-		$this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
+		$this->data['pagination_link'] = $this->app_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
 		//end of pagination config
 
         // Data Rows - Refer to model method definition
@@ -154,10 +154,10 @@ class Home extends CI_Controller {
     
 	function details() {
         // Check user permission by permission name mapped to db
-        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
+        // $is_authorized = $this->app_lib->is_auth('cms-list-view');
 		
 		// Check user permission by permission name mapped to db
-        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
+        // $is_authorized = $this->app_lib->is_auth('cms-list-view');
 			
 		$this->breadcrumbs->push('View','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
@@ -195,10 +195,10 @@ class Home extends CI_Controller {
 
     function policy() {
         // Check user permission by permission name mapped to db
-        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
+        // $is_authorized = $this->app_lib->is_auth('cms-list-view');
 		
 		// Check user permission by permission name mapped to db
-        // $is_authorized = $this->common_lib->is_auth('cms-list-view');
+        // $is_authorized = $this->app_lib->is_auth('cms-list-view');
 			
 		$this->breadcrumbs->push('View','/');				
         $this->data['breadcrumbs'] = $this->breadcrumbs->show();
@@ -218,7 +218,7 @@ class Home extends CI_Controller {
 		
 		$page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
 		$offset = ($page*$per_page);
-		$this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
+		$this->data['pagination_link'] = $this->app_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
         //end of pagination config
         
         // Data Rows - Refer to model method definition
