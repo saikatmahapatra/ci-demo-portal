@@ -106,11 +106,11 @@ class Home extends CI_Controller {
 
         $dashboard_stat['leave_to_approve'] = array('target_role' => '', 'heading'=>'Leave to Approve', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-warning', 'icon'=>'', 'count'=>$stat_pending_leave_action['data_rows'][0]['total'], 'url' => base_url('leave/manage'));
 
-        $dashboard_stat['timesheet_days'] = array('target_role' => '', 'heading'=>'Days You Logged *', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-danger', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['total_days'], 'url' => base_url('timesheet'));
+        $dashboard_stat['timesheet_days'] = array('target_role' => '', 'heading'=>'Days You Logged *', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-danger', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['total_days'], 'url' => base_url('project/timesheet'));
 
-        $dashboard_stat['timesheet_hrs'] = array('target_role' => '', 'heading'=>'Your Logged Hours *', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-primary', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['total_hrs'] ? $stat_user_timesheet_stat['stat_data']['total_hrs'] : 0, 'url' => base_url('timesheet'));
+        $dashboard_stat['timesheet_hrs'] = array('target_role' => '', 'heading'=>'Your Logged Hours *', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-primary', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['total_hrs'] ? $stat_user_timesheet_stat['stat_data']['total_hrs'] : 0, 'url' => base_url('project/timesheet'));
 
-        $dashboard_stat['timesheet_avg_hrs'] = array('target_role' => '', 'heading'=>'Your Average Logged Hours *', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-secondary', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['avg_hrs'] ? $stat_user_timesheet_stat['stat_data']['avg_hrs'] : 0, 'url' => base_url('timesheet'));
+        $dashboard_stat['timesheet_avg_hrs'] = array('target_role' => '', 'heading'=>'Your Average Logged Hours *', 'info_text'=>'','text_css'=>'','bg_css'=>'', 'digit_css'=>'text-secondary', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['avg_hrs'] ? $stat_user_timesheet_stat['stat_data']['avg_hrs'] : 0, 'url' => base_url('project/timesheet'));
 
         $this->data['dashboard_stat'] = $dashboard_stat;
         // Dashboard Stats
@@ -245,7 +245,7 @@ class Home extends CI_Controller {
 
     function log_timesheet() {
         $this->session->set_userdata('post_task_log_redirect_url', base_url('home'));
-        redirect(base_url('timesheet'));
+        redirect(base_url('project/timesheet'));
     }
 
     function sidebar_toggle(){
