@@ -11,7 +11,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Common_lib {
+class App_lib {
 
     var $CI;
     var $data;
