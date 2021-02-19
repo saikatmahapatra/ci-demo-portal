@@ -14,11 +14,11 @@
 							'name' => 'q',
 							'id' => 'q',
 							'class' => 'form-control',
-							'placeholder' => 'Search by employee name, email, phone, designation',
+							'placeholder' => 'Name/Email/Phone/Designation',
 						)); ?>
 						<?php echo form_error('q'); ?>
 						<div class="input-group-append">
-							<button class="btn" type="submit"><?php echo $this->app_lib->get_icon('search'); ?></button>
+							<button class="btn btn-secondary" type="submit"><?php echo $this->app_lib->get_icon('search'); ?></button>
 						</div>
 					</div>
 				<?php echo form_close(); ?>
@@ -41,8 +41,8 @@
 						$img_src = "";
 						$default_path = "";
 						$show_name_dp = true;
-						if(isset($row['user_profile_pic'])){					
-							$user_dp = "assets/uploads/user/profile_pic/".$row['user_profile_pic'];					
+						if(isset($row['user_profile_pic'])){
+							$user_dp = "assets/uploads/user/profile_pic/".$row['user_profile_pic'];
 							if (file_exists(FCPATH . $user_dp)) {
 								$img_src = $user_dp;
 								$show_name_dp = false;
@@ -66,12 +66,12 @@
 						
 
 						<div class="col-lg-12">
-							<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile/'.$row['id']);?>" class="user-profile-card-people">
-							<div class="media border rounded my-2 p-2">
+							<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile/'.$row['id']);?>" class=""> -->
+							<div class="media border rounded p-3 my-2">
 									<?php 
 										if($show_name_dp === true) {
 											?>
-											<div class="people-dp mx-auto d-block mt-2">
+											<div class="align-self-center people-dp mr-3">
 											<?php
 												//echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 												echo isset($row['user_firstname']) ? substr($row['user_firstname'], 0, 1) : 'NO';
@@ -81,13 +81,13 @@
 											<?php
 										} else {
 											?>
-											<img class="people-dp rounded mx-auto d-block mt-2" src="<?php echo base_url($img_src);?>" onclick="window.open('<?php echo base_url('user/profile/'.$row['id']);?>');">
+											<img class="align-self-center people-dp mr-3" src="<?php echo base_url($img_src);?>" onclick="window.open('<?php echo base_url('user/profile/'.$row['id']);?>');">
 											<?php
 										}
 									?>
 								<div class="media-body">
 									<div class=""><?php echo $row['user_firstname'].' '.$row['user_lastname']; ?><?php echo ' ('.$row['user_emp_id'].')'; ?></div>
-									<div class="small"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '' ; ?></div>
+									<div class="small text-muted"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '' ; ?></div>
 									<?php
 									$email_id = explode('@',$row['user_email']);
 									?>
@@ -95,7 +95,7 @@
 									<div class="small"><a href="tel:<?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?>"><?php echo isset($row['user_phone1']) ? $row['user_phone1'] : ''; ?></a></div>
 								</div>
 							</div>
-							</a>
+							<!-- </a> -->
 						</div>
 
 						<?php if ($count%3 == 0){ echo '</div>'; } ?>

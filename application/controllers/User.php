@@ -210,43 +210,52 @@ class User extends CI_Controller {
         echo json_encode($output);
     }
 
-    function search_employee() {        
+    function search_employee() {
         $is_logged_in = $this->app_lib->is_logged_in();
         if ($is_logged_in == FALSE) {
 			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
             redirect($this->router->directory.$this->router->class.'/login');
-        }               
+        }
 		$this->breadcrumbs->push('People', '/');		
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-        
-        
         $search_keywords = NULL;
-        if($this->input->get_post('form_action') == 'search'){
-            $search_keywords = $this->input->get_post('q');
-            // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
-            $result_array = $this->user_model->get_users(NULL, NULL, NULL, $search_keywords, 'U');
-            $total_num_rows = $result_array['num_rows'];
-            
-            //pagination config
-            $additional_segment = $this->router->class.'/'.$this->router->method;
-            $per_page = 15;
-            $config['uri_segment'] = 4;
-            $config['num_links'] = 1;
-            $config['use_page_numbers'] = TRUE;
-            //$this->pagination->initialize($config);
-            
-            $page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
-            $offset = ($page*$per_page);
-            $this->data['pagination_link'] = $this->app_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
-            //end of pagination config
-            // Data Rows - Refer to model method definition
-            $result_array = $this->user_model->get_users(NULL, $per_page, $offset, $search_keywords, 'U');
-            $this->data['data_rows'] = $result_array['data_rows'];
+        if ($this->validate_search_employee_form_data() == true) {
+            if($this->input->get_post('form_action') == 'search'){
+                $search_keywords = $this->input->get_post('q');
+                // Display using CI Pagination: Total filtered rows - check without limit query. Refer to model method definition		
+                $result_array = $this->user_model->get_users(NULL, NULL, NULL, $search_keywords, 'U');
+                $total_num_rows = $result_array['num_rows'];
+                
+                //pagination config
+                $additional_segment = $this->router->class.'/'.$this->router->method;
+                $per_page = 15;
+                $config['uri_segment'] = 4;
+                $config['num_links'] = 1;
+                $config['use_page_numbers'] = TRUE;
+                //$this->pagination->initialize($config);
+                
+                $page = ($this->uri->segment(4)) ? ($this->uri->segment(4)-1) : 0;
+                $offset = ($page*$per_page);
+                $this->data['pagination_link'] = $this->app_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
+                //end of pagination config
+                // Data Rows - Refer to model method definition
+                $result_array = $this->user_model->get_users(NULL, $per_page, $offset, $search_keywords, 'U');
+                $this->data['data_rows'] = $result_array['data_rows'];
+            }
         }
-		
 		$this->data['page_title'] = 'Search Employees';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/search_employee', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
+    }
+
+    function validate_search_employee_form_data() {
+        $this->form_validation->set_rules('a', ' ', 'required');
+        $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
+        if ($this->form_validation->run() == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     function render_datatable() {
