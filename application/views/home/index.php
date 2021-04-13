@@ -1,6 +1,49 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
-
+<?php if(isset($sliders) && sizeof($sliders)>0){ ?>
+<div class="row my-4">
+	<div class="col-sm-12">
+		<div id="demo" class="carousel slide" data-ride="carousel">
+		<ul class="carousel-indicators">
+			<?php foreach($sliders as $key=> $row){ ?>
+				<li data-target="#demo" data-slide-to="<?php echo $key;?>"></li>
+			<?php }?>
+		</ul>
+		<div class="carousel-inner w-100 h-100">
+			<?php foreach($sliders as $key=> $row){ ?>
+				<?php
+					$img_src = "";
+					$default_path = "assets/src/img/no-image.png";
+					if(isset($row['upload_file_name'])){					
+						$banner_img = "assets/uploads/banner_img/".$row['upload_file_name'];					
+						if (file_exists(FCPATH . $banner_img)) {
+							$img_src = $banner_img;
+						}else{
+							$img_src = $default_path;
+						}
+					}else{
+						$img_src = $default_path;
+					}
+				?>
+				<div class="carousel-item <?php echo ($key==0)? 'active': '';?>">
+					<img src="<?php echo base_url($img_src);?>">
+					<div class="carousel-caption">
+						<h3><?php echo isset($row['upload_text_1']) ? $row['upload_text_1'] : '';?></h3>
+						<p><?php echo isset($row['upload_text_2']) ? $row['upload_text_2'] : '';?></p>
+					</div>   
+				</div><!--/.carousel-item-->
+			<?php }?>
+		</div><!--/.carousel-inner-->
+		<a class="carousel-control-prev" href="#demo" data-slide="prev">
+			<span class="carousel-control-prev-icon"></span>
+		</a>
+		<a class="carousel-control-next" href="#demo" data-slide="next">
+			<span class="carousel-control-next-icon"></span>
+		</a>
+		</div>
+	</div><!--/.col-->
+</div><!--/.row-->
+<?php } ?>
 <div class="row">
     <div class="col-md-8 mb-3">
         <div class="card news-card ">

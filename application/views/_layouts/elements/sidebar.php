@@ -27,7 +27,7 @@
                     <a class="nav-link" href="<?php echo base_url('user/manage'); ?>">Employees</a>
                     <a class="nav-link" href="<?php echo base_url('cms'); ?>">Contents</a>
                     <a class="nav-link" href="<?php echo base_url('cms/manage_holidays'); ?>">Holiday Management</a>
-                    <!-- <a class="nav-link" href="<?php echo base_url('user/create_account'); ?>">New Employee</a> -->
+                    <a class="nav-link" href="<?php echo base_url('cms/manage_banner'); ?>">Image Slider Manager</a>
                     <a class="nav-link" href="<?php echo base_url('leave/manage'); ?>">Leave Management</a>
                     <a class="nav-link" href="<?php echo base_url('leave/view_leave_balance'); ?>">Leave Balance</a>
                     <a class="nav-link" href="<?php echo base_url('project/timesheet_report'); ?>">Timesheet Report</a>

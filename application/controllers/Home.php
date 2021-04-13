@@ -80,6 +80,8 @@ class Home extends CI_Controller {
 		// $this->data['pagination_link'] = $this->app_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
 		//end of pagination config
         
+        //Carousel Slider
+		$this->data['sliders'] = $this->cms_model->get_slider();
 
         // Data Rows - Refer to model method definition
         $result_array = $this->cms_model->get_top_contents(NULL, 5, 0, FALSE, TRUE);
