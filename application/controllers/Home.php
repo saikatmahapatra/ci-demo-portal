@@ -149,7 +149,7 @@ class Home extends CI_Controller {
         // Data Rows - Refer to model method definition
         $result_array = $this->cms_model->get_contents(NULL, $per_page, $offset, FALSE, TRUE);
         $this->data['data_rows'] = $result_array['data_rows'];
-        $this->data['page_title'] = 'Organization Announcements';
+        $this->data['page_title'] = 'News';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/all_news', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -178,7 +178,7 @@ class Home extends CI_Controller {
                 $this->data['redirect_back_url'] = site_url('home/all_news');
             }
         }
-        $this->data['page_title'] = 'Organization Announcements';
+        $this->data['page_title'] = 'News';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/details', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

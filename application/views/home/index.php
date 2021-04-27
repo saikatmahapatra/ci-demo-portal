@@ -50,7 +50,7 @@
 <div class="row">
     <div class="col-md-8 mb-3">
         <div class="card news-card ">
-            <div class="card-header"><?php echo $this->common_lib->get_icon('notice_board'); ?> Organization Announcements</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('notice_board'); ?> News</div>
             <div class="card-body">
             
             <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>
@@ -69,7 +69,7 @@
             </div>
             <?php } ?>
             </div>
-            <div class="card-footer text-center pt-0">
+            <div class="text-center pt-0">
                 <a class="btn btn-link action-link" href="<?php echo base_url('home/all_news');?>">View more <?php echo $this->common_lib->get_icon('right_fwd'); ?></a>
             </div>
         </div><!--/.card-->

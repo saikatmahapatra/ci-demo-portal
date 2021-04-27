@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card news-card">
-            <div class="card-header"><?php echo $this->common_lib->get_icon('notice_board'); ?> Organization Announcements</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('notice_board'); ?> News</div>
             <div class="card-body">
                 <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>
                 <div class="list-group list-group-flush">
