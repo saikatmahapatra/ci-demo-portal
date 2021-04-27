@@ -627,7 +627,7 @@ class App_lib {
             'home' => 'fa-home',
             'dashboard' => 'fa-dashboard',
             'calendar' => 'fa-calendar',
-            'user_account' => 'fa-user-circle',
+            'user_account' => 'fa-user',
             'admin_user' => 'fa-gear',
             'organization' => 'fa-briefcase',
             'leave' => 'fa-plane',

@@ -22,6 +22,10 @@
     <link href="<?php echo base_url('assets/vendors/fullcalendar/packages/list/main.css');?>" rel="stylesheet" />
     <?php } ?>
 
+    <?php if($this->router->class == 'cms' && ($this->router->method == 'add_banner' || $this->router->method == 'edit_banner')) {?>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css" />
+    <?php } ?>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -77,6 +81,58 @@
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/daygrid/main.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/timegrid/main.js');?>"></script>
     <script src="<?php echo base_url('assets/vendors/fullcalendar/packages/list/main.js');?>"></script>
+    <?php } ?>
+
+    <?php if($this->router->class == 'cms' && ($this->router->method == 'add_banner' || $this->router->method == 'edit_banner')) {?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $image_crop = $('#img_prev').croppie({
+                enableExif: false,
+                viewport: {
+                    width: 325,
+                    height: 75,
+                    type: 'square' // circle
+                },
+                boundary: {
+                    width: 350,
+                    height: 100
+                }
+            });
+
+            $('#userfile').on('change', function () {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    $image_crop.croppie('bind', {
+                        url: event.target.result
+                    }).then(function () {
+                        
+                    });
+                }
+                reader.readAsDataURL(this.files[0]);
+                $('#imageModel').modal('show');
+            });
+
+            $('.crop_my_image').click(function (event) {
+                $image_crop.croppie('result', {
+                    type: 'canvas',
+                    size: 'viewport'
+                }).then(function (response) {
+                    $.ajax({
+                        type: 'post',
+                        url: "<?php echo base_url('cms/image_crop_upload'); ?>",
+                        data: {
+                            "image": response
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            $('#imageModel').modal('hide');
+                        }
+                    })
+                });
+            });
+        });
+    </script>
     <?php } ?>
 
 	<!--Application Specific JS Loading Through Controllers-->

@@ -3,6 +3,9 @@
 <?php if(isset($sliders) && sizeof($sliders)>0){ ?>
 <div class="row my-4">
 	<div class="col-sm-12">
+
+        
+
 		<div id="demo" class="carousel slide" data-ride="carousel">
 		<ul class="carousel-indicators">
 			<?php foreach($sliders as $key=> $row){ ?>

@@ -740,5 +740,10 @@ class Cms extends CI_Controller {
             
         }
     }
+
+    function image_crop_upload() {
+        print_r($_POST);
+        die();
+    }
 }
 ?>
