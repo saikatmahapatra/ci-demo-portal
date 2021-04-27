@@ -1,12 +1,12 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-<p class="small"><?php echo $this->app_lib->get_icon('question'); ?> Looking for help or information? Click <a class=""
+<p class="small"><?php echo $this->common_lib->get_icon('question'); ?> Looking for help or information? Click <a class=""
         href="#" data-toggle="modal" data-target="#timesheetCalModal">here to read.</a></p>
 
 <div class="row">
     <div class="col-lg-12">
         <div class="card ">
-            <div class="card-header"><?php echo $this->app_lib->get_icon('form_icon'); ?> Form</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
             
             <?php echo isset($alert_message) ? $alert_message : ''; ?>

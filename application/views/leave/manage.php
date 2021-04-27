@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card ">
-            <div class="card-header"><?php echo $this->app_lib->get_icon('search_data'); ?> Search Data</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('search_data'); ?> Search Data</div>
             <div class="card-body">
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <ul><?php echo validation_errors(); ?></ul>
@@ -44,10 +44,10 @@
 
                 <div class="table-responsive mt-3">
                     <div class="status-icon-group status-icon-justify mb-3">
-                        <span class=""><?php echo $this->app_lib->get_icon(' ', 'text-secondary fa-sm'); ?> Pending</span>
-                        <span class=""><?php echo $this->app_lib->get_icon('leave_status', 'text-success'); ?> Approved</span>
-                        <span class=""><?php echo $this->app_lib->get_icon('leave_status', 'text-danger'); ?> Rejected</span>
-                        <span class=""><?php echo $this->app_lib->get_icon('leave_status', 'text-warning'); ?>
+                        <span class=""><?php echo $this->common_lib->get_icon(' ', 'text-secondary fa-sm'); ?> Pending</span>
+                        <span class=""><?php echo $this->common_lib->get_icon('leave_status', 'text-success'); ?> Approved</span>
+                        <span class=""><?php echo $this->common_lib->get_icon('leave_status', 'text-danger'); ?> Rejected</span>
+                        <span class=""><?php echo $this->common_lib->get_icon('leave_status', 'text-warning'); ?>
                             Cancelled</span>
                     </div>
                     <!--/.status-icon-group status-icon-justify-->
@@ -84,15 +84,15 @@
                                 </td>
                                 <td>
                                     <?php 
-                                    $fa_icon = $this->app_lib->get_icon(' ', 'text-secondary fa-sm');
+                                    $fa_icon = $this->common_lib->get_icon(' ', 'text-secondary fa-sm');
                                     if($row['supervisor_approver_status'] == 'A'){
-                                        $fa_icon = $this->app_lib->get_icon('leave_status');
+                                        $fa_icon = $this->common_lib->get_icon('leave_status');
                                     }
                                     if($row['supervisor_approver_status'] == 'R'){
-                                        $fa_icon = $this->app_lib->get_icon('leave_status');
+                                        $fa_icon = $this->common_lib->get_icon('leave_status');
                                     }
                                     if($row['supervisor_approver_status'] == 'C'){
-                                        $fa_icon = $this->app_lib->get_icon('leave_status');
+                                        $fa_icon = $this->common_lib->get_icon('leave_status');
                                     }
                                     ?>
                                     <?php echo isset($row['supervisor_approver_status']) ? '<span class="'.$leave_status_arr[$row['supervisor_approver_status']]['css'].'">'.$fa_icon.'</span>' : ''; ?>
@@ -101,15 +101,15 @@
                                 </td>
                                 <td>
                                     <?php 
-                                        $fa_icon = $this->app_lib->get_icon(' ', 'text-secondary fa-sm');
+                                        $fa_icon = $this->common_lib->get_icon(' ', 'text-secondary fa-sm');
                                         if($row['director_approver_status'] == 'A'){
-                                            $fa_icon = $this->app_lib->get_icon('leave_status');
+                                            $fa_icon = $this->common_lib->get_icon('leave_status');
                                         }
                                         if($row['director_approver_status'] == 'R'){
-                                            $fa_icon = $this->app_lib->get_icon('leave_status');
+                                            $fa_icon = $this->common_lib->get_icon('leave_status');
                                         }
                                         if($row['director_approver_status'] == 'C'){
-                                            $fa_icon = $this->app_lib->get_icon('leave_status');
+                                            $fa_icon = $this->common_lib->get_icon('leave_status');
                                         }
                                     ?>
                                     <?php echo isset($row['director_approver_status']) ? '<span class="'.$leave_status_arr[$row['director_approver_status']]['css'].'">'.$fa_icon.'</span>': ''; ?>
@@ -117,8 +117,8 @@
                                     <?php echo isset($row['director_approver_lastname']) ? $row['director_approver_lastname'] : ''?>
                                 </td>
                                 <td>
-                                    <?php echo $this->app_lib->display_date($row['leave_from_date']);?>
-                                    <?php echo ' to '.$this->app_lib->display_date($row['leave_to_date']);?>
+                                    <?php echo $this->common_lib->display_date($row['leave_from_date']);?>
+                                    <?php echo ' to '.$this->common_lib->display_date($row['leave_to_date']);?>
                                     <?php //echo ', '.$row['applied_for_days_count'].' day(s)';?></td>
                                 <td><span
                                         class="<?php echo $leave_status_arr[$row['leave_status']]['badge_css'];?>"><?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
@@ -126,7 +126,7 @@
                                 <td>
                                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));?>"
                                         class="btn btn-datatable btn-icon btn-transparent-dark" 
-                                        title="Details"><?php echo $this->app_lib->get_icon('info', 'dt_action_icon');?></a>
+                                        title="Details"><?php echo $this->common_lib->get_icon('info', 'dt_action_icon');?></a>
 
                                 </td>
                             </tr>
@@ -139,10 +139,10 @@
                                 <td colspan="8">
                                     <?php if($this->input->get_post('form_action') === 'search') {
                                         ?>
-                                        <div class="mt-3 alert alert-danger"><?php echo $this->app_lib->get_icon('warning'); ?> No result found based on your search criteria. Please search again.</div>
+                                        <div class="mt-3 alert alert-danger"><?php echo $this->common_lib->get_icon('warning'); ?> No result found based on your search criteria. Please search again.</div>
                                         <?php
                                         } else {?>
-                                        <div class="mt-3 alert alert-info"><?php echo $this->app_lib->get_icon('warning'); ?> There are no leave requests awaiting for your approval. You can search leave records.</div>
+                                        <div class="mt-3 alert alert-info"><?php echo $this->common_lib->get_icon('warning'); ?> There are no leave requests awaiting for your approval. You can search leave records.</div>
                                         <?php
                                     }?>
                                 </td>

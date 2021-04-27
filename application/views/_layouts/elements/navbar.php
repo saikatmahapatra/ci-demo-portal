@@ -11,7 +11,7 @@
             <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown_5" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
-                    <?php echo $this->app_lib->get_icon('user_account'); ?>
+                    <?php echo $this->common_lib->get_icon('user_account'); ?>
                     <?php echo isset($this->session->userdata['sess_user']['user_firstname']) ? $this->session->userdata['sess_user']['user_firstname']:'Guest';?>
                     </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown_5">
@@ -21,7 +21,7 @@
                         <div class="small"><?php echo isset($this->session->userdata['sess_user']['user_emp_id']) ? 'Employee ID : '.$this->session->userdata['sess_user']['user_emp_id'] :'';?></div>
                         <div class="small"><?php echo isset($this->session->userdata['sess_user']['user_email']) ? $this->session->userdata['sess_user']['user_email'] :'';?></div>
                         <div class="small">Access Group: <?php echo isset($this->session->userdata['sess_user']['user_role_name']) ? $this->session->userdata['sess_user']['user_role_name'] :'';?></div>
-                        <div class="small">Last Login: <?php echo isset($this->session->userdata['sess_user']['user_login_date_time']) ? $this->app_lib->display_date($this->session->userdata['sess_user']['user_login_date_time'], true) :'';?></div>					
+                        <div class="small">Last Login: <?php echo isset($this->session->userdata['sess_user']['user_login_date_time']) ? $this->common_lib->display_date($this->session->userdata['sess_user']['user_login_date_time'], true) :'';?></div>					
                     </div><!--/.welcome-user-container-->
                     
                     <div class="dropdown-divider"></div>			

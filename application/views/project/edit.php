@@ -6,7 +6,7 @@ $row = $rows[0];
 <div class="row">
     <div class="col-lg-9">
         <div class="card ">
-            <div class="card-header"><?php echo $this->app_lib->get_icon('form_icon'); ?> Form</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
             
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -31,13 +31,13 @@ $row = $rows[0];
                 <div class="form-row">
                     <div class="form-group col-lg-4">
                         <label for="project_start_date" class="required">Start Date</label>
-                        <?php echo form_input(array('name' => 'project_start_date','value' => isset($_POST['project_start_date']) ? set_value('project_start_date') : $this->app_lib->display_date($row['project_start_date']),'id' => 'project_start_date','class' => 'form-control', 'placeholder'=>'dd-mm-yyyy', 'readonly'=>'readonly')); ?>
+                        <?php echo form_input(array('name' => 'project_start_date','value' => isset($_POST['project_start_date']) ? set_value('project_start_date') : $this->common_lib->display_date($row['project_start_date']),'id' => 'project_start_date','class' => 'form-control', 'placeholder'=>'dd-mm-yyyy', 'readonly'=>'readonly')); ?>
                         <?php echo form_error('project_start_date'); ?>
                     </div>
                 
                     <div class="form-group col-lg-4">
                         <label for="project_end_date" class="required">End Date</label>
-                        <?php echo form_input(array('name' => 'project_end_date','value' => isset($_POST['project_end_date']) ? set_value('project_end_date') : $this->app_lib->display_date($row['project_end_date']),'id' => 'project_end_date','class' => 'form-control', 'placeholder'=>'dd-mm-yyyy', 'readonly'=>'readonly')); ?>
+                        <?php echo form_input(array('name' => 'project_end_date','value' => isset($_POST['project_end_date']) ? set_value('project_end_date') : $this->common_lib->display_date($row['project_end_date']),'id' => 'project_end_date','class' => 'form-control', 'placeholder'=>'dd-mm-yyyy', 'readonly'=>'readonly')); ?>
                         <?php echo form_error('project_end_date'); ?>
                     </div>
                 </div>

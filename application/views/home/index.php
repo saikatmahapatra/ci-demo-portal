@@ -50,7 +50,7 @@
 <div class="row">
     <div class="col-md-8 mb-3">
         <div class="card news-card ">
-            <div class="card-header"><?php echo $this->app_lib->get_icon('notice_board'); ?> Organization Announcements</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('notice_board'); ?> Organization Announcements</div>
             <div class="card-body">
             
             <?php if( isset($data_rows) && sizeof($data_rows) > 0 ){ ?>
@@ -59,10 +59,10 @@
                     <a href="<?php echo base_url('home/details/'.$row['id']);?>" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                         <div class="mb-1"><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></div>
-                        <small class="d-none d-md-block  text-muted"><?php echo $this->app_lib->relative_time($row['content_created_on'],true,null); ?></small>
+                        <small class="d-none d-md-block  text-muted"><?php echo $this->common_lib->relative_time($row['content_created_on'],true,null); ?></small>
                         </div>
                         <!-- <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p> -->
-                        <small class="d-xs-block d-md-none text-muted"><?php echo $this->app_lib->relative_time($row['content_created_on'],true,null); ?></small>
+                        <small class="d-xs-block d-md-none text-muted"><?php echo $this->common_lib->relative_time($row['content_created_on'],true,null); ?></small>
                         <small class="text-muted">by <?php echo isset($row['user_firstname']) ? $row['user_firstname'].' '.$row['user_lastname'] : '';?></small>
                     </a>
                 <?php }  ?>
@@ -70,13 +70,13 @@
             <?php } ?>
             </div>
             <div class="card-footer text-center pt-0">
-                <a class="btn btn-link action-link" href="<?php echo base_url('home/all_news');?>">View more <?php echo $this->app_lib->get_icon('right_fwd'); ?></a>
+                <a class="btn btn-link action-link" href="<?php echo base_url('home/all_news');?>">View more <?php echo $this->common_lib->get_icon('right_fwd'); ?></a>
             </div>
         </div><!--/.card-->
     </div>
     <div class="col-md-4">
         <div class="card ">
-            <div class="card-header"><?php echo $this->app_lib->get_icon('stat'); ?> Statistics</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('stat'); ?> Statistics</div>
             <div class="card-body">
                 <div class="d-flex flex-column dashboard-stat">
                     <?php if ($this->session->userdata['sess_user']['user_role'] == 1) { ?>
@@ -153,11 +153,11 @@
 <div class="row mt-3">
     <div class="col">
         <div class="card ">
-            <div class="card-header"><?php echo $this->app_lib->get_icon('calendar'); ?> Calendar</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('calendar'); ?> Calendar</div>
             <div class="card-body">
                 <div class="btn-group mb-4" role="group" aria-label="Basic example">
-                    <a href="<?php echo base_url('home/log_timesheet'); ?>" class="btn  btn-outline-secondary"><?php echo $this->app_lib->get_icon('timesheet'); ?> Log Timesheet</a>
-                    <a href="<?php echo base_url('home/apply_leave'); ?>" class="btn  btn-outline-secondary"><?php echo $this->app_lib->get_icon('leave'); ?> Apply Leave</a>
+                    <a href="<?php echo base_url('home/log_timesheet'); ?>" class="btn  btn-outline-secondary"><?php echo $this->common_lib->get_icon('timesheet'); ?> Log Timesheet</a>
+                    <a href="<?php echo base_url('home/apply_leave'); ?>" class="btn  btn-outline-secondary"><?php echo $this->common_lib->get_icon('leave'); ?> Apply Leave</a>
                 </div>
                 <div id="ci_full_calendar"></div>
             </div>

@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-9">
 		<div class="card ">
-			<div class="card-header"><?php echo $this->app_lib->get_icon('form_icon'); ?> Form</div>
+			<div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
 			<div class="card-body">
 			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -32,8 +32,8 @@
 							?>
 							<div class="dp mx-auto d-block">
 							<?php
-								echo substr($this->app_lib->get_sess_user('user_firstname'), 0, 1);
-								echo substr($this->app_lib->get_sess_user('user_lastname'), 0, 1);
+								echo substr($this->common_lib->get_sess_user('user_firstname'), 0, 1);
+								echo substr($this->common_lib->get_sess_user('user_lastname'), 0, 1);
 							?>
 							</div>
 							<?php
@@ -45,7 +45,7 @@
 						?>
 
 						<?php if(isset($profile_pic) && sizeof($profile_pic)>0){ ?>
-							<div class="edit"><a class="btn btn-link action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><?php echo $this->app_lib->get_icon('delete'); ?> Remove</a></div>
+							<div class="edit"><a class="btn btn-link action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><?php echo $this->common_lib->get_icon('delete'); ?> Remove</a></div>
 						<?php } ?>
 					</div>
 					<div class="col-lg-8">
