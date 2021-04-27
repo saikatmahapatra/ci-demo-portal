@@ -99,7 +99,7 @@ class User extends CI_Controller {
         
 		$this->breadcrumbs->push('View', '/');		
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		$this->data['page_title'] = 'Manage Employees';
+		$this->data['page_title'] = 'Employees';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/manage', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -1087,7 +1087,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = "Edit Educational Qualification";
+		$this->data['page_title'] = "Edit Educational Details";
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_education', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -1164,7 +1164,7 @@ class User extends CI_Controller {
             }
         }
 	
-		$this->data['page_title'] = 'Edit Basic Information';
+		$this->data['page_title'] = 'Edit Basic Info';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_profile', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -1224,7 +1224,7 @@ class User extends CI_Controller {
             }
         }
 	
-		$this->data['page_title'] = 'Edit Employee Profile';
+		$this->data['page_title'] = 'Edit Employee';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_user_profile', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -1631,7 +1631,7 @@ class User extends CI_Controller {
                 }
             }
         }
-		$this->data['page_title'] = "Edit Previous Work Experiences";
+		$this->data['page_title'] = "Edit Work Experiences";
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_work_experience', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }

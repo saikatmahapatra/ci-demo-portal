@@ -310,7 +310,7 @@ class Cms extends CI_Controller {
         ));
 		$this->breadcrumbs->push('View','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		$this->data['page_title'] = 'Manage Holidays';
+		$this->data['page_title'] = 'Holidays';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/manage_holidays', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -558,7 +558,7 @@ class Cms extends CI_Controller {
 			
 		$this->breadcrumbs->push('View','/');
 		$this->data['breadcrumbs'] = $this->breadcrumbs->show();
-		$this->data['page_title'] = 'Image Slider Manager';
+		$this->data['page_title'] = 'Image Slider';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/manage_banner', $this->data, TRUE);
         $this->load->view('_layouts/layout_default', $this->data);
     }

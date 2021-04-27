@@ -311,7 +311,7 @@ class Leave extends CI_Controller {
         $result_array = $this->leave_model->get_rows(NULL, $per_page, $offset, FALSE, TRUE, $cond);
         $this->data['data_rows'] = $result_array['data_rows'];
 
-        $this->data['page_title'] = 'Leave Requests Management';
+        $this->data['page_title'] = 'Leave';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/manage', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -477,7 +477,7 @@ class Leave extends CI_Controller {
     }
 
     function details_process() {
-        $this->data['page_title'] = 'Manage Leave Request';
+        $this->data['page_title'] = 'Leave';
         $result_array = $this->leave_model->get_rows($this->id, NULL, NULL, FALSE, TRUE);
         $this->data['data_rows'] = $result_array['data_rows'];
         $this->data['maincontent'] = $this->load->view($this->router->class.'/details_process', $this->data, true);
@@ -1039,7 +1039,7 @@ class Leave extends CI_Controller {
 		if($this->input->post('form_action') == 'download'){
             $this->download_to_excel();
         }
-		$this->data['page_title'] = 'Leave Balance Table';
+		$this->data['page_title'] = 'Leave Balance';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/view_leave_balance', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
