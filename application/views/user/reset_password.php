@@ -1,7 +1,7 @@
 <div class="row justify-content-center align-items-center" style="height:100vh">
    <div class="col-sm-6 col-lg-4 login-card-wrapper">
       <div class="card">
-         <div class="card-header py-3 text-center h5"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></div>
+         <div class="card-header py-3 text-center"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></div>
          <div class="card-body">
             <div class="mb-2"><?php echo isset($alert_message) ? $alert_message : ''; ?></div>
             <div class="text-center mb-4"><a href="<?php echo base_url();?>"><img class="" src="<?php echo base_url('assets/dist/img/logo-nav.png');?>" alt="Logo" width="80"></a></div>

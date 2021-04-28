@@ -134,15 +134,21 @@ body {
 //         }
 //     }
 // }
-label.optional::after {
-    content: ' optional';
-    font-size: 0.875rem;
-    color: $gray-500;
+// label.optional::after {
+//     content: ' optional';
+//     font-size: 0.875rem;
+//     color: $gray-500;
+// }
+label.required::after {
+    content: ' *';
+    color: $form_red;
+    font-size: 1rem;
 }
 
 .validation-error {
-    color: $red;
+    color: $form_red;
     font-size: 0.875rem;
+    margin-top: 5px;
 }
 
 .select2-selection {
@@ -574,7 +580,7 @@ table.dataTable.ci-table {
         box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
         transition: all .2s;
     }
-    h4 {
+    .card-header {
         font-size: 1.25rem;
         font-weight: 400;
     }

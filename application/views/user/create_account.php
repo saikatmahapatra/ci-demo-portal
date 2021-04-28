@@ -31,7 +31,7 @@
 						<?php echo form_error('user_email'); ?>
 					</div>
 					<div class="form-group col-lg-6">
-						<label for="user_phone1" class="">Personal Phone</label>
+						<label for="user_phone1" class="required">Personal Phone</label>
 						<?php echo form_input(array( 'name' => 'user_phone1', 'value' => set_value('user_phone1'), 'id' => 'user_phone1', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => '', )); ?>
 						<?php echo form_error('user_phone1'); ?>
 					</div>
