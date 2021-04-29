@@ -4,7 +4,7 @@
 	<div class="col-lg-9">
 		
 		<div class="card ">
-			<div class="card-header"><?php echo $this->app_lib->get_icon('form_icon'); ?> Form</div>
+			<div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
 			<div class="card-body">
 			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -31,7 +31,7 @@
 						<?php echo form_error('user_email'); ?>
 					</div>
 					<div class="form-group col-lg-6">
-						<label for="user_phone1" class="">Personal Phone</label>
+						<label for="user_phone1" class="required">Personal Phone</label>
 						<?php echo form_input(array( 'name' => 'user_phone1', 'value' => set_value('user_phone1'), 'id' => 'user_phone1', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => '', )); ?>
 						<?php echo form_error('user_phone1'); ?>
 					</div>
@@ -110,8 +110,8 @@
 					
 				<?php echo form_hidden('user_role', 3); ?>
 
-				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="btn btn-light ci-btn-cancel">Cancel</a>
+				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="btn btn-light">Cancel</a>
 				<?php echo form_close(); ?>
 			
 			</div><!--./card-body-->

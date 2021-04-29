@@ -197,13 +197,13 @@ class Leave_model extends CI_Model {
         }
 
         if( (isset($cond['leave_from_date']) && !empty($cond['leave_from_date'])) && (isset($cond['leave_to_date']) && !empty($cond['leave_to_date'])) ){
-            //$this->db->where('t1.leave_from_date >=', $this->app_lib->convert_to_mysql($cond['leave_from_date']));
+            //$this->db->where('t1.leave_from_date >=', $this->common_lib->convert_to_mysql($cond['leave_from_date']));
 
-             $this->db->where('((t1.leave_from_date BETWEEN "'.$this->app_lib->convert_to_mysql($cond['leave_from_date']).'" AND "'.$this->app_lib->convert_to_mysql($cond['leave_to_date']).'") OR (t1.leave_to_date BETWEEN "'.$this->app_lib->convert_to_mysql($cond['leave_from_date']).'" AND "'.$this->app_lib->convert_to_mysql($cond['leave_to_date']).'"))');
+             $this->db->where('((t1.leave_from_date BETWEEN "'.$this->common_lib->convert_to_mysql($cond['leave_from_date']).'" AND "'.$this->common_lib->convert_to_mysql($cond['leave_to_date']).'") OR (t1.leave_to_date BETWEEN "'.$this->common_lib->convert_to_mysql($cond['leave_from_date']).'" AND "'.$this->common_lib->convert_to_mysql($cond['leave_to_date']).'"))');
         }
 
         // if(isset($cond['leave_to_date']) && !empty($cond['leave_to_date'])){
-        //     $this->db->where('t1.leave_to_date <=', $this->app_lib->convert_to_mysql($cond['leave_to_date']));
+        //     $this->db->where('t1.leave_to_date <=', $this->common_lib->convert_to_mysql($cond['leave_to_date']));
         // }
         $this->db->where_not_in('t5.user_status', array('N', 'A')); // dont show leave of ex, inactive usr
         $query = $this->db->get('leave_applications as t1');

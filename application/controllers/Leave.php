@@ -13,27 +13,27 @@ class Leave extends CI_Controller {
     function __construct() {
         parent::__construct();
         //Loggedin user details
-        $this->sess_user_id = $this->app_lib->get_sess_user('id');
-        $this->sess_user_emp_id = $this->app_lib->get_sess_user('user_emp_id'); 
+        $this->sess_user_id = $this->common_lib->get_sess_user('id');
+        $this->sess_user_emp_id = $this->common_lib->get_sess_user('user_emp_id'); 
         
         //Render header, footer, navbar, sidebar etc common elements of templates
-        $this->app_lib->init_template_elements();
+        $this->common_lib->init_template_elements();
         
         // Load required js files for this controller
         $javascript_files = array(
             $this->router->class
         );
-        $this->data['app_js'] = $this->app_lib->add_javascript($javascript_files);
+        $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
 		
 		//Check if any user logged in else redirect to login
-        $is_logged_in = $this->app_lib->is_logged_in();
+        $is_logged_in = $this->common_lib->is_logged_in();
         if ($is_logged_in == FALSE) {
 			$this->session->set_userdata('sess_post_login_redirect_url', current_url());
             redirect($this->router->directory.'user/login');
         }
 
         //Has logged in user permission to access this page or method?        
-        $this->app_lib->is_auth(array(
+        $this->common_lib->is_auth(array(
             'default-super-admin-access',
             'default-admin-access',
             'default-user-access'
@@ -131,18 +131,18 @@ class Leave extends CI_Controller {
         if ($this->input->post('form_action') == 'add') {
             //print_r($_POST);die();
             if ($this->validate_form_data('add') == true && $system_msg_error_counter == 0) {  
-                $from_date = strtotime($this->app_lib->convert_to_mysql($this->input->post('leave_from_date'))); // or your date as well
-                $to_date = strtotime($this->app_lib->convert_to_mysql($this->input->post('leave_to_date')));
+                $from_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('leave_from_date'))); // or your date as well
+                $to_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('leave_to_date')));
                 $datediff = ($to_date - $from_date);
                 $no_day = round($datediff / (60 * 60 * 24));
                 //die();
-                $leave_request_id = date('mdy').$this->app_lib->generate_rand_id(4, FALSE);
+                $leave_request_id = date('mdy').$this->common_lib->generate_rand_id(4, FALSE);
 				$postdata = array(
                     'leave_req_id' => $leave_request_id,
                     'leave_type' => $this->input->post('leave_type'),
                     'leave_reason' => $this->input->post('leave_reason'),
-                    'leave_from_date' => $this->app_lib->convert_to_mysql($this->input->post('leave_from_date')),
-                    'leave_to_date' => $this->app_lib->convert_to_mysql($this->input->post('leave_to_date')),
+                    'leave_from_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_from_date')),
+                    'leave_to_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_to_date')),
                     'applied_for_days_count' => ($no_day+1),
                     'user_id' => $this->sess_user_id,
                     'leave_created_on' => date('Y-m-d H:i:s'),
@@ -163,21 +163,21 @@ class Leave extends CI_Controller {
                 );
                 $insert_id = $this->leave_model->insert($postdata);
                 if ($insert_id) {
-                    $this->app_lib->set_flash_message('You have applied leave successfully. Please note your leave request no <strong>'.$leave_request_id.'</strong> for future references. You will get email notification informing leave status. For more details go to '.anchor(base_url('leave/history'),'My Leave History'),'alert-success');
+                    $this->common_lib->set_flash_message('You have applied leave successfully. Please note your leave request no <strong>'.$leave_request_id.'</strong> for future references. You will get email notification informing leave status. For more details go to '.anchor(base_url('leave/history'),'My Leave History'),'alert-success');
 
                     ######## Send Email to Applicant ###########
                     $result_array = $this->leave_model->get_rows($insert_id, NULL, NULL, FALSE, TRUE);
                     $data = $result_array['data_rows'][0];
                     //print_r($data);
                     //die();
-                    $to = $this->app_lib->get_sess_user('user_email');
+                    $to = $this->common_lib->get_sess_user('user_email');
                     $from = $this->config->item('app_admin_email');
                     $from_name = $this->config->item('app_admin_email_name');
                     $applicant_name = $data['user_firstname'].' '.$data['user_lastname'];
                     $leave_status = $this->data['leave_status_arr'][$data['leave_status']]['text'];
                     $leave_type = $this->data['leave_type_arr'][$data['leave_type']];
                     $leave_term = $this->data['leave_term_arr'][$data['leave_term']];
-                    $leave_from_to = $this->app_lib->display_date($data['leave_from_date']).' to '.$this->app_lib->display_date($data['leave_to_date']);
+                    $leave_from_to = $this->common_lib->display_date($data['leave_from_date']).' to '.$this->common_lib->display_date($data['leave_to_date']);
                     $leave_reason = $data['leave_reason'];
                     $applied_for_days_count = $data['applied_for_days_count'];
                     
@@ -228,7 +228,7 @@ class Leave extends CI_Controller {
                     $leave_type = $this->data['leave_type_arr'][$data['leave_type']];
                     $leave_term = $this->data['leave_term_arr'][$data['leave_term']];
                     $applicant_name = $data['user_firstname'].' '.$data['user_lastname'];
-                    $leave_from_to = $this->app_lib->display_date($data['leave_from_date']).' to '.$this->app_lib->display_date($data['leave_to_date']);
+                    $leave_from_to = $this->common_lib->display_date($data['leave_from_date']).' to '.$this->common_lib->display_date($data['leave_to_date']);
                     $leave_reason = $data['leave_reason'];
                     $applied_for_days_count = $data['applied_for_days_count'];
 
@@ -259,7 +259,7 @@ class Leave extends CI_Controller {
         $config['num_links'] = 2;
         $page = ($this->uri->segment($config['uri_segment'])) ? ($this->uri->segment($config['uri_segment'])-1) : 0;
         $offset = ($page*$per_page);
-        $this->data['pagination_link'] = $this->app_lib->render_pagination($total_num_rows, $per_page);
+        $this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page);
         //Pagination config ends here
         
 
@@ -304,14 +304,14 @@ class Leave extends CI_Controller {
         $page = ($this->uri->segment($config['uri_segment'])) ? ($this->uri->segment($config['uri_segment'])-1) : 0;
         $offset = ($page*$per_page);
         $additional_segment = $this->router->directory.$this->router->class.'/'.$this->router->method;
-        $this->data['pagination_link'] = $this->app_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
+        $this->data['pagination_link'] = $this->common_lib->render_pagination($total_num_rows, $per_page, $additional_segment);
         //Pagination config ends here
 
         // Data Rows - Refer to model method definition
         $result_array = $this->leave_model->get_rows(NULL, $per_page, $offset, FALSE, TRUE, $cond);
         $this->data['data_rows'] = $result_array['data_rows'];
 
-        $this->data['page_title'] = 'Leave Requests Management';
+        $this->data['page_title'] = 'Leave';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/manage', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -368,8 +368,8 @@ class Leave extends CI_Controller {
     }
 
     function validate_days_diff(){
-        $from_date = strtotime($this->app_lib->convert_to_mysql($this->input->post('leave_from_date'))); // or your date as well
-        $to_date = strtotime($this->app_lib->convert_to_mysql($this->input->post('leave_to_date')));
+        $from_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('leave_from_date'))); // or your date as well
+        $to_date = strtotime($this->common_lib->convert_to_mysql($this->input->post('leave_to_date')));
         $datediff = ($to_date - $from_date);
         $no_day = round($datediff / (60 * 60 * 24));
         if($no_day >= 0 ){
@@ -382,8 +382,8 @@ class Leave extends CI_Controller {
 
     function is_leave_exists_in_date_range(){
         $cond = array(
-            'from_date' => $this->app_lib->convert_to_mysql($this->input->post('leave_from_date')),
-            'to_date' => $this->app_lib->convert_to_mysql($this->input->post('leave_to_date')),
+            'from_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_from_date')),
+            'to_date' => $this->common_lib->convert_to_mysql($this->input->post('leave_to_date')),
             'user_id' => $this->sess_user_id,
             'leave_status' => array('O', 'A')
         );
@@ -417,23 +417,23 @@ class Leave extends CI_Controller {
         foreach ($data_rows as $result) {
             $no++;
             $row = array();
-            //$row[] = $this->app_lib->display_date($result['timesheet_date']);
+            //$row[] = $this->common_lib->display_date($result['timesheet_date']);
             //$row[] = $result['project_name'];
             //$row[] = $result['task_name'];
             //$row[] = $result['timesheet_hours'];
             //$row[] = $result['timesheet_review_status'];
 			
-			$html = '<div class="font-weight-bold">'.$this->app_lib->display_date($result['timesheet_date']).' <span class="float-right">'.$result['timesheet_hours'].' hrs</span></div>';			
+			$html = '<div class="font-weight-bold">'.$this->common_lib->display_date($result['timesheet_date']).' <span class="float-right">'.$result['timesheet_hours'].' hrs</span></div>';			
 			$html.= '<div class="small">'.$result['project_name'].'<span class="float-right">'.$result['task_name'].'</span></div>';			
 			
             
             //add html for action
             $action_html = '<span class="float-right">';
-            /*$action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), $this->app_lib->get_icon('edit', 'dt_action_icon'), array(
+            /*$action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
                 'class' => 'text-dark',
                 'title' => 'Edit',
             ));*/            
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), $this->app_lib->get_icon('delete','dt_action_icon'), array(
+            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), $this->common_lib->get_icon('delete','dt_action_icon'), array(
                 'class' => 'text-danger',
 				'data-confirmation'=>false,
 				'data-confirmation-message'=>'Are you sure, you want to delete this?',
@@ -463,7 +463,7 @@ class Leave extends CI_Controller {
         $where_array = array('id' => $this->id);
         $res = $this->leave_model->delete($where_array);
         if ($res) {
-            $this->app_lib->set_flash_message('Leave Entry Deleted Successfully','alert-success');
+            $this->common_lib->set_flash_message('Leave Entry Deleted Successfully','alert-success');
             redirect($this->router->directory.$this->router->class.'');
         }
     }
@@ -477,7 +477,7 @@ class Leave extends CI_Controller {
     }
 
     function details_process() {
-        $this->data['page_title'] = 'Manage Leave Request';
+        $this->data['page_title'] = 'Leave';
         $result_array = $this->leave_model->get_rows($this->id, NULL, NULL, FALSE, TRUE);
         $this->data['data_rows'] = $result_array['data_rows'];
         $this->data['maincontent'] = $this->load->view($this->router->class.'/details_process', $this->data, true);
@@ -486,7 +486,7 @@ class Leave extends CI_Controller {
 
     function leave_balance() {
         // Check user permission by permission name mapped to db
-        $is_authorized = $this->app_lib->is_auth(array(
+        $is_authorized = $this->common_lib->is_auth(array(
             'crud-leave-balance'
         ));  
         $this->data['page_title'] = 'Leave Balance';
@@ -509,7 +509,7 @@ class Leave extends CI_Controller {
                     $where = array('id' => $this->input->post('id'));
                     $insert_id = $this->leave_model->update($postdata, $where, 'leave_balance');
                     if ($insert_id) {
-                        $this->app_lib->set_flash_message('Leave Balance Updated Successfully.','alert-success');
+                        $this->common_lib->set_flash_message('Leave Balance Updated Successfully.','alert-success');
                         redirect(current_url());
                     }
                 }else{
@@ -525,7 +525,7 @@ class Leave extends CI_Controller {
                     );
                     $insert_id = $this->leave_model->insert($postdata, 'leave_balance');
                     if ($insert_id) {
-                        $this->app_lib->set_flash_message('Leave Balance Added Successfully.','alert-success');
+                        $this->common_lib->set_flash_message('Leave Balance Added Successfully.','alert-success');
                         redirect(current_url());
                     }
                 }
@@ -540,7 +540,7 @@ class Leave extends CI_Controller {
 
     function import_data() {
         // Check user permission by permission name mapped to db
-        $is_authorized = $this->app_lib->is_auth(array(
+        $is_authorized = $this->common_lib->is_auth(array(
             'crud-leave-balance'
         ));  
         $this->data['page_title'] = 'Leave Balance Import/Export';
@@ -786,7 +786,7 @@ class Leave extends CI_Controller {
                 $message = array('is_valid'=>false, 'updated'=>false, 'insert_id'=>'','msg'=>validation_errors(),'css'=>''); 
             }
         }
-        $this->app_lib->set_flash_message($message['msg'],$message['css']);
+        $this->common_lib->set_flash_message($message['msg'],$message['css']);
         echo json_encode($message); die();
     }
 
@@ -920,14 +920,14 @@ class Leave extends CI_Controller {
         ///echo '<pre>';
         //print_r($data);
         //die();
-        $to = $this->app_lib->get_sess_user('user_email');
+        $to = $this->common_lib->get_sess_user('user_email');
         $from = $this->config->item('app_admin_email');
         $from_name = $this->config->item('app_admin_email_name');
         $applicant_name = $data['user_firstname'].' '.$data['user_lastname'];
         $leave_status = $this->data['leave_status_arr'][$data['leave_status']]['text'];
         $leave_type = $this->data['leave_type_arr'][$data['leave_type']];
         $leave_term = $this->data['leave_term_arr'][$data['leave_term']];
-        $leave_from_to = $this->app_lib->display_date($data['leave_from_date']).' to '.$this->app_lib->display_date($data['leave_to_date']);
+        $leave_from_to = $this->common_lib->display_date($data['leave_from_date']).' to '.$this->common_lib->display_date($data['leave_to_date']);
         $leave_reason = $data['leave_reason'];
         $leave_request_id = $data['leave_req_id'];
         $applied_for_days_count = $data['applied_for_days_count'];
@@ -978,18 +978,18 @@ class Leave extends CI_Controller {
         
         $message_table.='<td>L1 Approver </td>';
         $message_table.='<td>:</td>';
-        $message_table.='<td>'.$this->data['leave_status_arr'][$data['supervisor_approver_status']]['text'].'<br>'.$data['supervisor_approver_firstname'].' '.$data['supervisor_approver_lastname'].'<br>'.$data['supervisor_approver_comment'].'<br>'.$this->app_lib->display_date($data['supervisor_approver_datetime'], true).'</td>';
+        $message_table.='<td>'.$this->data['leave_status_arr'][$data['supervisor_approver_status']]['text'].'<br>'.$data['supervisor_approver_firstname'].' '.$data['supervisor_approver_lastname'].'<br>'.$data['supervisor_approver_comment'].'<br>'.$this->common_lib->display_date($data['supervisor_approver_datetime'], true).'</td>';
         $message_table.='</tr>';
 
         $message_table.='<td>L2 Approver </td>';
         $message_table.='<td>:</td>';
-        $message_table.='<td>'.$this->data['leave_status_arr'][$data['director_approver_status']]['text'].'<br>'.$data['director_approver_firstname'].' '.$data['director_approver_lastname'].'<br>'.$data['director_approver_comment'].'<br>'.$this->app_lib->display_date($data['director_approver_datetime'], true).'</td>';
+        $message_table.='<td>'.$this->data['leave_status_arr'][$data['director_approver_status']]['text'].'<br>'.$data['director_approver_firstname'].' '.$data['director_approver_lastname'].'<br>'.$data['director_approver_comment'].'<br>'.$this->common_lib->display_date($data['director_approver_datetime'], true).'</td>';
         $message_table.='</tr>';
         $message_table.='<tr>';
 
         $message_table.='<td>Cancel Requested </td>';
         $message_table.='<td>:</td>';
-        $message_table.='<td>'.($data['cancel_requested'] == 'Y' ? 'Leave Cancel Requested' : 'No').'<br>'.$this->app_lib->display_date($data['cancel_request_datetime'], true).'</td>';
+        $message_table.='<td>'.($data['cancel_requested'] == 'Y' ? 'Leave Cancel Requested' : 'No').'<br>'.$this->common_lib->display_date($data['cancel_request_datetime'], true).'</td>';
         $message_table.='</tr>';
 
         $message_table.='</tbody>';
@@ -1033,13 +1033,13 @@ class Leave extends CI_Controller {
     }
 
     function view_leave_balance() {
-        $is_authorized = $this->app_lib->is_auth(array(
+        $is_authorized = $this->common_lib->is_auth(array(
             'crud-leave-balance'
         ));
 		if($this->input->post('form_action') == 'download'){
             $this->download_to_excel();
         }
-		$this->data['page_title'] = 'Leave Balance Table';
+		$this->data['page_title'] = 'Leave Balance';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/view_leave_balance', $this->data, true);
         $this->load->view('_layouts/layout_default', $this->data);
     }
@@ -1068,9 +1068,9 @@ class Leave extends CI_Controller {
             $row[] = ($result['sl'] == NULL) ? '--' : $result['sl'];
             $row[] = ($result['co'] == NULL) ? '--' : $result['co'];
             //$row[] = ($result['ol'] == NULL) ? '--' : $result['ol'];
-            $row[] = $this->app_lib->display_date($result['balance_date'], false);
-            $row[] = $this->app_lib->display_date($result['created_on'], true);
-            $row[] = $this->app_lib->display_date($result['updated_on'], true);
+            $row[] = $this->common_lib->display_date($result['balance_date'], false);
+            $row[] = $this->common_lib->display_date($result['created_on'], true);
+            $row[] = $this->common_lib->display_date($result['updated_on'], true);
             $data[] = $row;
         }
 

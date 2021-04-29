@@ -9,7 +9,7 @@ $row = $rows[0];
 <div class="row">
     <div class="col-lg-9">
         <div class="card ">
-            <div class="card-header"><?php echo $this->app_lib->get_icon('form_icon'); ?> Form</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
             
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -21,7 +21,7 @@ $row = $rows[0];
                 <div class="form-row">
                     <div class="form-group col-lg-12">
                         <label for="project_id" class="required">Task Date</label>
-                        <?php echo form_input(array('name' => 'timesheet_hours','value' => $this->app_lib->display_date($row['timesheet_date'], NULL, NULL),'id' => 'timesheet_hours','class' => 'form-control','maxlength' => '5','placeholder' => 'DD-MM-YYYY', 'disabled'=>'disabled'));?>
+                        <?php echo form_input(array('name' => 'timesheet_hours','value' => $this->common_lib->display_date($row['timesheet_date'], NULL, NULL),'id' => 'timesheet_hours','class' => 'form-control','maxlength' => '5','placeholder' => 'DD-MM-YYYY', 'disabled'=>'disabled'));?>
                         <div class="text-muted small">You can't change task log date.</div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@ $row = $rows[0];
                     </div>
 
                     <div class="form-group col-lg-6">
-                        <label id="task_id_2" for="task_id_2" class="required">Sub Task</label>
+                        <label id="task_id_2" for="task_id_2" class="">Sub Task</label>
                         <?php echo form_dropdown('task_id_2', $arr_task_id_2, (isset($_POST['task_id_2']) ? set_value('task_id_2') : $row['task_id_2']), array('class' => 'form-control', 'id' => 'dd_sub_tasks'));?>
                         <?php echo form_error('task_id_2'); ?>
                     </div>
@@ -57,16 +57,16 @@ $row = $rows[0];
 
                 <div class="form-row">
                     <div class="form-group col-lg-12">
-                        <label for="timesheet_description" class="required">Additional Note</label>
+                        <label for="timesheet_description" class="required">Description</label>
                         <?php //echo form_input(array('name' => 'timesheet_description','value' => (isset($_POST['timesheet_description']) ? set_value('timesheet_description') : $row['timesheet_description']),'id' => 'timesheet_description','class' => 'form-control', 'maxlength' => '200','placeholder' => 'briefly describe in 200 characters')); ?>
                         <?php echo form_textarea(array('name' => 'timesheet_description','value' => (isset($_POST['timesheet_description']) ? set_value('timesheet_description') : $row['timesheet_description']),'class' => 'form-control textarea', 'maxlength'=> '200', 'id' => 'timesheet_description','rows' => '2','cols' => '50','placeholder' => 'briefly describe in 200 characters')); ?>
                         <?php echo form_error('timesheet_description'); ?>
                     </div>
                 </div>
 
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/timesheet');?>"
-                    class="btn btn-light ci-btn-cancel">Cancel</a>
+                    class="btn btn-light">Cancel</a>
                 <?php echo form_close(); ?>
             </div>
             <!--/.card-body-->

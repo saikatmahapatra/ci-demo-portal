@@ -9,12 +9,12 @@
 <label class="row">
 	<label class="col-lg-9">
 		<label class="card ">
-			<div class="card-header"><?php echo $this->app_lib->get_icon('form_icon'); ?> Form</div>
+			<div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
 			<label class="card-body">
 				<?php if($this->session->userdata['sess_user']['user_role'] == 1) {?>
 				<div class="d-flex mb-2">
                     <div class="align-self-end ml-auto">
-                        <a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="back-to-list btn btn-link action-link"><?php echo $this->app_lib->get_icon('left_back'); ?> Return to Employee List</a>
+                        <a href="<?php echo base_url($this->router->directory.'user/manage');?>" class="back-to-list btn btn-link action-link"><?php echo $this->common_lib->get_icon('left_back'); ?> Return to Employee List</a>
                     </div>
 				</div>
 				<?php } ?>
@@ -114,7 +114,7 @@
 				<div class="form-row">
 						<div class="form-group col-lg-6">
 							<label for="user_dob" class="required">Date of Birth</label>
-							<?php echo form_input(array( 'name' => 'user_dob', 'value' => isset($_POST['user_dob']) ? set_value('user_dob') : $this->app_lib->display_date($row['user_dob']), 'id' => 'user_dob', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => 'dd-mm-yyyy', 'autocomplete'=>'off', 'readonly'=>true )); ?>
+							<?php echo form_input(array( 'name' => 'user_dob', 'value' => isset($_POST['user_dob']) ? set_value('user_dob') : $this->common_lib->display_date($row['user_dob']), 'id' => 'user_dob', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => 'dd-mm-yyyy', 'autocomplete'=>'off', 'readonly'=>true )); ?>
 							<?php echo form_error('user_dob');?>
 						</div>
 						<div class="form-group col-lg-6">
@@ -172,7 +172,7 @@
 				<div class="form-row">
 					<div class="form-group col-lg-6">
 						<label for="user_doj" class="optional">Date of Joining </label>
-						<?php echo form_input(array( 'name' => 'user_doj', 'value' => isset($_POST['user_doj']) ? set_value('user_doj') : $this->app_lib->display_date($row['user_doj']), 'id' => 'user_doj', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => '', 'autocomplete'=>'off', 'readonly'=>true )); ?>
+						<?php echo form_input(array( 'name' => 'user_doj', 'value' => isset($_POST['user_doj']) ? set_value('user_doj') : $this->common_lib->display_date($row['user_doj']), 'id' => 'user_doj', 'maxlength' => '10', 'class' => 'form-control', 'placeholder' => '', 'autocomplete'=>'off', 'readonly'=>true )); ?>
 						<?php echo form_error('user_doj'); ?>
 					</div>
 
@@ -184,7 +184,7 @@
 				</div>
 
 				<div class="form-row">
-				<?php if($row['id'] != $this->app_lib->get_sess_user('id')){?>
+				<?php if($row['id'] != $this->common_lib->get_sess_user('id')){?>
 						<div class="form-group col-lg-6">
 							<label for="user_status" class="required">Account Status</label>
 							<div class="">
@@ -216,9 +216,9 @@
 						} ?>
 				</div>
 
-				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
-				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="btn btn-light ci-btn-cancel">Cancel</a>
-				<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn  btn-danger">Delete Account</a> -->
+				<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
+				<a href="<?php echo base_url($this->router->directory.$this->router->class.'/manage');?>" class="btn btn-light">Cancel</a>
+				<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/close_account/'.@$this->encrypt->encode($row['id']));?>" class="btn btn-danger">Delete Account</a> -->
 				<?php echo form_close(); ?>
 			
 			</label><!--./card-body-->

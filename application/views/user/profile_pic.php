@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-9">
 		<div class="card ">
-			<div class="card-header"><?php echo $this->app_lib->get_icon('form_icon'); ?> Form</div>
+			<div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
 			<div class="card-body">
 			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -32,8 +32,8 @@
 							?>
 							<div class="dp mx-auto d-block">
 							<?php
-								echo substr($this->app_lib->get_sess_user('user_firstname'), 0, 1);
-								echo substr($this->app_lib->get_sess_user('user_lastname'), 0, 1);
+								echo substr($this->common_lib->get_sess_user('user_firstname'), 0, 1);
+								echo substr($this->common_lib->get_sess_user('user_lastname'), 0, 1);
 							?>
 							</div>
 							<?php
@@ -45,14 +45,14 @@
 						?>
 
 						<?php if(isset($profile_pic) && sizeof($profile_pic)>0){ ?>
-							<div class="edit"><a class="btn btn-link action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><?php echo $this->app_lib->get_icon('delete'); ?> Remove</a></div>
+							<div class="edit"><a class="btn btn-link action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><?php echo $this->common_lib->get_icon('delete'); ?> Remove</a></div>
 						<?php } ?>
 					</div>
 					<div class="col-lg-8">
 						<?php echo form_open_multipart(current_url(), array('method' => 'post', 'class'=>'ci-form','role' => 'form'));?>
 						<?php echo form_hidden('form_action', 'file_upload'); ?>
 						<div class="form-group">
-							<label for="userfile" class="control-label">Select File</label>
+							<label for="userfile" class="required control-label">Select File</label>
 							<?php echo form_upload(array('name' => 'userfile', 'id' => 'userfile','class' => 'form-control',));?>
 							<?php echo form_error('userfile'); ?>
 							<div class="form-text small text-muted bg-light p-1">						
@@ -67,8 +67,8 @@
 							</div>
 							<?php echo isset($upload_error_message) ? $upload_error_message : ''; ?>
 						</div>
-						<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Upload','class' => 'btn ci-btn-primary btn-primary'));?>
-						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="btn btn-light ci-btn-cancel">Cancel</a>
+						<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Upload','class' => 'btn btn-primary'));?>
+						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="btn btn-light">Cancel</a>
 						<?php echo form_close(); ?>
 					</div>
 				</div>

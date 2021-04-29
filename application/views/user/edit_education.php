@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="col-lg-9">
 		<div class="card ">
-      <div class="card-header"><?php echo $this->app_lib->get_icon('form_icon'); ?> Form</div>
+      <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
 			<div class="card-body">
 			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -53,8 +53,8 @@
 				</div>
 			</div>
 			
-			<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
-			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="btn btn-light ci-btn-cancel">Cancel</a>
+			<?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
+			<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="btn btn-light">Cancel</a>
         <?php echo form_close(); ?>
 			
 			</div><!--./card-body-->
@@ -79,7 +79,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="btnAddDegree" class="btn ci-btn-primary btn-primary">Save changes</button>
+        <button type="button" id="btnAddDegree" class="btn btn-primary">Save changes</button>
         
       </div>
     </div>
@@ -104,7 +104,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="btnAddSpecialization" class="btn ci-btn-primary btn-primary">Save changes</button>
+        <button type="button" id="btnAddSpecialization" class="btn btn-primary">Save changes</button>
         
       </div>
     </div>
@@ -129,7 +129,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="btnAddInst" class="btn ci-btn-primary btn-primary">Save changes</button>
+        <button type="button" id="btnAddInst" class="btn btn-primary">Save changes</button>
         
       </div>
     </div>

@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-6">
 		<div class="card ">
-            <div class="card-header"><?php echo $this->app_lib->get_icon('form_icon'); ?> Form</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
 			<div class="card-body">
             
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -28,7 +28,7 @@
             <?php echo form_error('confirm_user_new_password'); ?>
         </div>
 
-        <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
+        <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
         <?php echo form_close(); ?>
 				
 			</div><!--./card-body-->

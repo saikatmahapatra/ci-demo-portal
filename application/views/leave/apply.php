@@ -1,21 +1,21 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-<p class="small"><?php echo $this->app_lib->get_icon('question'); ?> Looking for help or information? Click <a class=""
+<p class="small"><?php echo $this->common_lib->get_icon('question'); ?> Looking for help or information? Click <a class=""
         href="#" data-toggle="modal" id="view_leave_balance_update_details" data-target="#leaveBalanceModal">here to
         read.</a></p>
 
 <div class="row">
     <div class="col-lg-9">
         <div class="card ">
-            <div class="card-header"><?php echo $this->app_lib->get_icon('form_icon'); ?> Form</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="d-flex mb-2">
                     <div class="align-self-end ml-auto"> 
-                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="btn btn-link action-link"><?php echo $this->app_lib->get_icon('history'); ?> Leave History</a>
+                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/history');?>" class="btn btn-link action-link"><?php echo $this->common_lib->get_icon('history'); ?> Leave History</a>
 
-                        <a href="<?php echo base_url($this->router->directory.'user/edit_approvers');?>" class="btn btn-link action-link"><?php echo $this->app_lib->get_icon('user_settings'); ?> Change Approvers</a>
+                        <a href="<?php echo base_url($this->router->directory.'user/edit_approvers');?>" class="btn btn-link action-link"><?php echo $this->common_lib->get_icon('user_settings'); ?> Change Approvers</a>
                     </div>
                 </div>
 
@@ -89,7 +89,7 @@
                 </div> -->
 
                 <button type="submit" <?php echo ($system_msg_error_counter >0 ) ? 'disabled="disabled"' : '';  ?>
-                    class="btn ci-btn-primary btn-primary">Submit</button>
+                    class="btn btn-primary">Submit</button>
                 <?php echo form_close(); ?>
             </div>
             <!--/.card-body-->
@@ -144,23 +144,23 @@
                 </div>
                 <div class="">
                     Balance added on :
-                    <?php echo isset($leave_balance[0]['created_on']) ? $this->app_lib->display_date($leave_balance[0]['created_on'],true) : '-'; ?>
+                    <?php echo isset($leave_balance[0]['created_on']) ? $this->common_lib->display_date($leave_balance[0]['created_on'],true) : '-'; ?>
                 </div>
                 <div class="">
                     Balance updated on :
-                    <?php echo isset($leave_balance[0]['updated_on']) ? $this->app_lib->display_date($leave_balance[0]['updated_on'],true) : '-'; ?>
+                    <?php echo isset($leave_balance[0]['updated_on']) ? $this->common_lib->display_date($leave_balance[0]['updated_on'],true) : '-'; ?>
                 </div>
                 <div>
                     CL auto credited on :
-                    <?php echo isset($leave_balance[0]['cl_updated_by_cron_on']) ? $this->app_lib->display_date($leave_balance[0]['cl_updated_by_cron_on'],true) : '-'; ?>
+                    <?php echo isset($leave_balance[0]['cl_updated_by_cron_on']) ? $this->common_lib->display_date($leave_balance[0]['cl_updated_by_cron_on'],true) : '-'; ?>
                 </div>
                 <div>
                     PL auto credited on :
-                    <?php echo isset($leave_balance[0]['pl_updated_by_cron_on']) ? $this->app_lib->display_date($leave_balance[0]['pl_updated_by_cron_on'],true) : '-'; ?>
+                    <?php echo isset($leave_balance[0]['pl_updated_by_cron_on']) ? $this->common_lib->display_date($leave_balance[0]['pl_updated_by_cron_on'],true) : '-'; ?>
                 </div>
                 <!-- <div>
 					OL auto credited on : 
-					<?php echo isset($leave_balance[0]['ol_updated_by_cron_on']) ? $this->app_lib->display_date($leave_balance[0]['ol_updated_by_cron_on'],true) : '-'; ?>
+					<?php echo isset($leave_balance[0]['ol_updated_by_cron_on']) ? $this->common_lib->display_date($leave_balance[0]['ol_updated_by_cron_on'],true) : '-'; ?>
 				</div> -->
             </div>
             <div class="modal-footer">

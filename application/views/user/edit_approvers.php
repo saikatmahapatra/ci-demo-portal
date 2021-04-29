@@ -7,13 +7,13 @@ $approver = sizeof($approvers)>0 ? $approvers[0] : null;
 <div class="row">
 	<div class="col-lg-9">
 		<div class="card ">
-            <div class="card-header"><?php echo $this->app_lib->get_icon('form_icon'); ?> Form</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
 			<div class="card-body">
             
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="d-flex mb-2">
                     <div class="align-self-end ml-auto"> 
-                    <a href="<?php echo base_url($this->router->directory.'leave/apply');?>" class="btn btn-link action-link"><?php echo $this->app_lib->get_icon('leave'); ?> Apply Leave</a>
+                    <a href="<?php echo base_url($this->router->directory.'leave/apply');?>" class="btn btn-link action-link"><?php echo $this->common_lib->get_icon('leave'); ?> Apply Leave</a>
                     </div>
                 </div>
 				<?php echo form_open(current_url(), array('method' => 'post', 'class' => 'ci-form',
@@ -47,7 +47,7 @@ $approver = sizeof($approvers)>0 ? $approvers[0] : null;
                             </div>
                         </div>
 
-                    <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
+                    <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
                 <?php echo form_close(); ?>
 			
 			</div><!--./card-body-->

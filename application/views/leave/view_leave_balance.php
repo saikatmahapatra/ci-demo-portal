@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card "> 
-            <div class="card-header"><?php echo $this->app_lib->get_icon('table'); ?> Data Table</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('table'); ?> Data Table</div>
             <div class="card-body">           
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 
@@ -17,19 +17,19 @@
                             <?php echo form_upload(array('name' => 'userfile', 'id' => 'userfile','class' => 'form-control mx-2', 'required'=>'required', 'accept' =>'.xls, .xlsx'));?>
                             <?php echo form_error('userfile'); ?>
                         </div>
-                        <button type="submit" class="btn ci-btn-primary btn-primary">Import Data</button>
+                        <button type="submit" class="btn btn-primary">Import Data</button>
                     <?php echo form_close(); ?>
                     <div class="form-text small text-muted">Note: Only xls file is allowed with maximum 2MB of size. To import leave balance data you need to "Export Data" first & modify the excel file to import it.</div>
                 </div>
                 
                 <div class="d-flex mb-2">
                     <div class="align-self-end ml-auto">
-                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/leave_balance');?>" class="btn btn-link action-link"> <?php echo $this->app_lib->get_icon('plus'); ?> Add or Update</a>
+                        <a href="<?php echo base_url($this->router->directory.$this->router->class.'/leave_balance');?>" class="btn btn-link action-link"> <?php echo $this->common_lib->get_icon('plus'); ?> Add or Update</a>
 
                         <?php echo form_open(current_url(), array('method' => 'post', 'class' => 'd-inline-block', 'name' => 'download_data')); ?>
 						<input type="hidden" name="form_action" value="download">
                         
-                        <button type="submit" class="btn btn-link action-link"> <?php echo $this->app_lib->get_icon('download'); ?> Export Data</button>
+                        <button type="submit" class="btn btn-link action-link"> <?php echo $this->common_lib->get_icon('download'); ?> Export Data</button>
                         <?php echo form_close(); ?>
                     </div>
                 </div>

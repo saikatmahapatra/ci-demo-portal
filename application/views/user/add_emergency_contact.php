@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-lg-9">
         <div class="card ">
-            <div class="card-header"><?php echo $this->app_lib->get_icon('form_icon'); ?> Form</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
                 
                 <?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -54,10 +54,10 @@
                     </div>
                 </div>
                 <?php if($has_add_limit){ ?>
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'content' => 'Submit','class' => 'btn btn-primary'));?>
                 <?php } ?>
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>"
-                    class="btn btn-light ci-btn-cancel">Cancel</a>
+                    class="btn btn-light">Cancel</a>
                 <?php echo form_close(); ?>
             </div>
             <!--./card-body-->

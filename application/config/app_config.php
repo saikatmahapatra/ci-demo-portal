@@ -24,7 +24,7 @@ $config['app_email_header'] = $html_email_header;
 $config['app_email_footer'] = $html_email_footer;
 
 // App name, other static texts
-$config['app_html_title'] = 'UEIPL - MyApp';
+$config['app_html_title'] = 'MyApp - United Exploration India';
 $config['app_html_title_admin'] = '';
 $config['app_name'] = 'MyApp';
 

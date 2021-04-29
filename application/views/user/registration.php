@@ -64,7 +64,7 @@
             </div>
             <?php echo form_error('user_gender'); ?>
         </div>
-        <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Create Account','class' => 'btn ci-btn-primary btn-primary'));?>
+        <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Create Account','class' => 'btn btn-primary'));?>
         <a class="" href="<?php echo base_url($this->router->directory.$this->router->class.'/login');?>">Login</a>
         <?php echo form_close(); ?>
         <!--/.card-body-->

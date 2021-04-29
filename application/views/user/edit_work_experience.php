@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-lg-9">
         <div class="card ">
-            <div class="card-header"><?php echo $this->app_lib->get_icon('form_icon'); ?> Form</div>
+            <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
             
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
@@ -27,13 +27,13 @@
                 <div class="form-row">
                     <div class="form-group col-lg-6">
                         <label for="from_date" class="required">From Date</label>
-                        <?php echo form_input(array( 'name' => 'from_date', 'value' => isset($_POST['from_date']) ? set_value('from_date') : $this->app_lib->display_date($row['from_date']), 'id' => 'from_date', 'maxlength' => '10', 'class' => 'form-control job-exp-datepicker', 'placeholder' => '', 'autocomplete'=>'off', 'readonly'=>true )); ?>
+                        <?php echo form_input(array( 'name' => 'from_date', 'value' => isset($_POST['from_date']) ? set_value('from_date') : $this->common_lib->display_date($row['from_date']), 'id' => 'from_date', 'maxlength' => '10', 'class' => 'form-control job-exp-datepicker', 'placeholder' => '', 'autocomplete'=>'off', 'readonly'=>true )); ?>
                         <?php echo form_error('from_date'); ?>
                     </div>
 
                     <div class="form-group col-lg-6">
                         <label for="to_date" class="required">To Date</label>
-                        <?php echo form_input(array( 'name' => 'to_date', 'value' => isset($_POST['to_date']) ? set_value('to_date') : $this->app_lib->display_date($row['to_date']), 'id' => 'to_date', 'maxlength' => '10', 'class' => 'form-control job-exp-datepicker', 'placeholder' => '', 'autocomplete'=>'off', 'readonly'=>true )); ?>
+                        <?php echo form_input(array( 'name' => 'to_date', 'value' => isset($_POST['to_date']) ? set_value('to_date') : $this->common_lib->display_date($row['to_date']), 'id' => 'to_date', 'maxlength' => '10', 'class' => 'form-control job-exp-datepicker', 'placeholder' => '', 'autocomplete'=>'off', 'readonly'=>true )); ?>
                         <?php echo form_error('to_date'); ?>
                     </div>
                 </div>
@@ -46,9 +46,9 @@
                     </div>
                 </div>
 
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn ci-btn-primary btn-primary'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>"
-                    class="btn btn-light ci-btn-cancel">Cancel</a>
+                    class="btn btn-light">Cancel</a>
                 <?php echo form_close(); ?>
 
             </div>
@@ -78,7 +78,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="btnaddCompany" class="btn ci-btn-primary btn-primary">Save changes</button>
+                <button type="button" id="btnaddCompany" class="btn btn-primary">Save changes</button>
 
             </div>
         </div>
@@ -104,7 +104,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="btnaddDesignation" class="btn ci-btn-primary btn-primary">Save changes</button>
+                <button type="button" id="btnaddDesignation" class="btn btn-primary">Save changes</button>
 
             </div>
         </div>

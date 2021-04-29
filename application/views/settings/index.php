@@ -6,7 +6,7 @@
 	<a  class="btn btn-outline-secondary" href="<?php echo base_url('settings/timesheet_settings');?>">Timesheet settings</a>
 	</div>
         <div class="card ">
-			<div class="card-header"><?php echo $this->app_lib->get_icon('table'); ?> Table</div>
+			<div class="card-header"><?php echo $this->common_lib->get_icon('table'); ?> Table</div>
             <div class="card-body">
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <div class="table-responsive">

@@ -11,14 +11,14 @@ class Errors extends CI_Controller {
         parent::__construct();
         
         //Loggedin user details
-        //$this->sess_user_id = $this->app_lib->get_sess_user('id');        
+        //$this->sess_user_id = $this->common_lib->get_sess_user('id');        
         
         //Render header, footer, navbar, sidebar etc common elements of templates
-        $this->app_lib->init_template_elements();
+        $this->common_lib->init_template_elements();
         
         // Load required js files for this controller
         $javascript_files = array();
-        $this->data['app_js'] = $this->app_lib->add_javascript($javascript_files);
+        $this->data['app_js'] = $this->common_lib->add_javascript($javascript_files);
 		
 		//View Page Config
 		$this->data['page_title'] = $this->router->class.' : '.$this->router->method;

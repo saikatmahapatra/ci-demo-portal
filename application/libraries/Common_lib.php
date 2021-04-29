@@ -11,7 +11,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class App_lib {
+class Common_lib {
 
     var $CI;
     var $data;
@@ -627,7 +627,7 @@ class App_lib {
             'home' => 'fa-home',
             'dashboard' => 'fa-dashboard',
             'calendar' => 'fa-calendar',
-            'user_account' => 'fa-user-circle',
+            'user_account' => 'fa-user',
             'admin_user' => 'fa-gear',
             'organization' => 'fa-briefcase',
             'leave' => 'fa-plane',
