@@ -106,16 +106,12 @@ body {
 }
 
 // Form Style
-form {
-    .form-control,
-    .custom-select {
-        height: 38px;
-        @media(max-width: 575px) {
-            height: 42px;
-        }
-    }
-}
-
+// form {
+//     .form-control,
+//     .custom-select {
+//         height: 42px;
+//     }
+// }
 // label.optional::after {
 //     content: ' optional';
 //     font-size: 0.875rem;
@@ -713,7 +709,7 @@ table.dataTable.ci-table {
     // $btn-font-size-lg,
     // $btn-line-height-lg,
     // $btn-border-radius-lg);
-    min-width: 120px;
+    min-width: 100px;
     @media(max-width: 575px) {
         display: block;
         width: 100%;
