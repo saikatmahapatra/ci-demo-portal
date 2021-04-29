@@ -45,7 +45,7 @@
                         <?php echo form_error('ol'); ?>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <button type="submit" data-button-type="submit" class="btn btn-lg btn-primary">Save Changes</button>
                 <?php echo form_close(); ?>
             </div>
             <!--/.card-body-->

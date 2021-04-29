@@ -87,7 +87,7 @@
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" data-button-type="submit" class="btn btn-lg btn-primary">Submit</button>
                             </div>
                             <!--/.col-lg-6-->
                         </div>
@@ -202,8 +202,8 @@
         </dl>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Send message</button> -->
+        <button type="button" class="btn btn-lg btn-light" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-lg btn-primary">Send message</button> -->
       </div>
     </div>
   </div>

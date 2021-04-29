@@ -715,3 +715,27 @@ table.dataTable.ci-table {
         box-shadow: none;
     }
 }
+
+[data-button-type="cancel"] {
+    margin-left: 15px;
+    border: 1px solid $gray-500;
+    &:hover {
+        border: 1px solid $gray-500;
+    }
+}
+
+[data-button-type="submit"],
+[data-button-type="cancel"] {
+    // @include button-size($btn-padding-y-lg,
+    // $btn-padding-x-lg,
+    // $btn-font-size-lg,
+    // $btn-line-height-lg,
+    // $btn-border-radius-lg);
+    min-width: 130px;
+    @media(max-width: 575px) {
+        display: block;
+        width: 100%;
+        margin-bottom: 15px;
+        margin-left: 0px;
+    }
+}

@@ -24,7 +24,7 @@
                <?php echo form_password(array( 'name' => 'confirm_user_new_password', 'value' => set_value('confirm_user_new_password'), 'id' => 'confirm_user_new_password', 'placeholder' => 'Re-enter password', 'class' => 'form-control py-4', 'maxlength' => '20', )); ?>
                <?php echo form_error('confirm_user_new_password'); ?>
             </div>
-            <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn btn-primary btn-block btn-lg'));?>
+            <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn btn-lg btn-primary btn-block btn-lg'));?>
             <div class="text-center mt-4">
                <a href="<?php echo base_url($this->router->class.'/login');?>">Go to login</a> <br>
                <a href="<?php echo base_url($this->router->class.'/forgot_password');?>">Re-send Email OTP</a>

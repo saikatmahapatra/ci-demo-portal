@@ -43,9 +43,9 @@
                     </div>
                 </div>
 
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn btn-lg btn-primary'));?>
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>"
-                    class="btn btn-light" data-button-type="cancel">Cancel</a>
+                    class="btn btn-lg btn-light" data-button-type="cancel">Cancel</a>
                 <?php echo form_close(); ?>
             </div>
             <!--./card-body-->
@@ -73,7 +73,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="btnaddCompany" class="btn btn-primary">Save changes</button>
+                <button type="button" id="btnaddCompany" class="btn btn-lg btn-primary">Save changes</button>
 
             </div>
         </div>
@@ -98,7 +98,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="btnaddDesignation" class="btn btn-primary">Save changes</button>
+                <button type="button" id="btnaddDesignation" class="btn btn-lg btn-primary">Save changes</button>
 
             </div>
         </div>

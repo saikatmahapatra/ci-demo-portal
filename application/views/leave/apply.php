@@ -88,8 +88,8 @@
                     </div>
                 </div> -->
 
-                <button type="submit" <?php echo ($system_msg_error_counter >0 ) ? 'disabled="disabled"' : '';  ?>
-                    class="btn btn-primary">Submit</button>
+                <button type="submit" data-button-type="submit" <?php echo ($system_msg_error_counter >0 ) ? 'disabled="disabled"' : '';  ?>
+                    class="btn btn-lg btn-primary">Submit</button>
                 <?php echo form_close(); ?>
             </div>
             <!--/.card-body-->

@@ -37,9 +37,9 @@
                     <?php //echo form_error('leave_status'); ?>
                 </div>
 
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Search','class' => 'btn btn-primary mb-2 mr-2'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Search','class' => 'btn btn-lg btn-primary mb-2 mr-2'));?>
                 <?php //echo form_input(array('name' => 'reset_btn','type' => 'reset','value' => 'Reset','class' => 'btn btn-secondary', 'id' => 'reset_leave_search_form'));?>
-                <a href="<?php echo base_url('leave/manage');?>" class="btn btn-light mb-2">Reset</a>
+                <a href="<?php echo base_url('leave/manage');?>" class="btn btn-lg btn-light mb-2">Reset</a>
                 <?php echo form_close(); ?>
 
                 <div class="table-responsive mt-3">
