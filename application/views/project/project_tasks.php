@@ -27,10 +27,10 @@
                     </div>
                 </div>
 
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Save Changes','class' => 'btn ci-btn-primary btn-primary'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Save Changes','class' => 'btn btn-primary'));?>
 
                 <a href="<?php echo base_url($this->router->directory.$this->router->class);?>"
-                    class="btn btn-light ci-btn-cancel">Cancel</a>
+                    class="btn btn-light">Cancel</a>
                 <?php echo form_close(); ?>
             </div>
             <!--/.card-body-->

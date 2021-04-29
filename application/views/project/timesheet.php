@@ -43,7 +43,7 @@
                                     <div class="d-inline-block"><span class="i-disabled-date pr-2 pl-2 m-1"></span>Disabled
                                     </div>
                                 </div>
-                                <div class="mb-2"><a id="clear_selected_days" class="btn  btn-outline-secondary"
+                                <div class="mb-2"><a id="clear_selected_days" class="btn btn-outline-secondary"
                                         href="#">Clear selected dates</a></div>
                                 
                             </div>
@@ -87,7 +87,7 @@
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn ci-btn-primary btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                             <!--/.col-lg-6-->
                         </div>

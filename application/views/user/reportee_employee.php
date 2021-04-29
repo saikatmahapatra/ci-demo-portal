@@ -64,7 +64,7 @@
 										<?php echo isset($row['designation_name']) ? $row['designation_name'] : '-';?>
 									</td>
 									<td>
-										<a target="_blank" href="<?php echo base_url($this->router->directory.'project/timesheet_report?redirected_from=reportee_id&q_emp='.$row['user_id']); ?>" class="btn  btn-info">Timesheet Report</a>
+										<a target="_blank" href="<?php echo base_url($this->router->directory.'project/timesheet_report?redirected_from=reportee_id&q_emp='.$row['user_id']); ?>" class="btn btn-info">Timesheet Report</a>
 									</td>
 								</tr>
 								<?php

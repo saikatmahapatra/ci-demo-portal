@@ -47,7 +47,7 @@
                         <?php //echo form_error('q_project'); ?>
                     </div>
                     <div class="form-group col-md-2">
-                    <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Search','class' => 'btn ci-btn-primary btn-primary mb-2 mr-2'));?>
+                    <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Search','class' => 'btn btn-primary mb-2 mr-2'));?>
                     <?php echo form_button(array('name' => 'reset_btn','type' => 'reset','content' => 'Reset','class' => 'btn btn-light mb-2','id'=>'reset_timesheet_form'));?>
                     </div>
                 </div>

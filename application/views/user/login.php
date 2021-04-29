@@ -18,7 +18,7 @@
                <?php echo form_password(array('name' => 'user_password','value' => set_value('user_password'),'id' =>'user_password','placeholder' => 'Enter password','class' => 'form-control py-4','maxlength' => '16'));?>
                <?php echo form_error('user_password'); ?>
             </div>
-            <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Log In','class' => 'btn ci-btn-primary btn-primary btn-block btn-lg'));?>
+            <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Log In','class' => 'btn btn-primary btn-block btn-lg'));?>
             <div class="text-center mt-4"><a href="<?php echo base_url($this->router->class.'/forgot_password');?>">Forgot password?</a></div>
             <?php echo form_close(); ?>
          </div>

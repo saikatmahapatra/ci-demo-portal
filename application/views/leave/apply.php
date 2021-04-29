@@ -89,7 +89,7 @@
                 </div> -->
 
                 <button type="submit" <?php echo ($system_msg_error_counter >0 ) ? 'disabled="disabled"' : '';  ?>
-                    class="btn ci-btn-primary btn-primary">Submit</button>
+                    class="btn btn-primary">Submit</button>
                 <?php echo form_close(); ?>
             </div>
             <!--/.card-body-->
