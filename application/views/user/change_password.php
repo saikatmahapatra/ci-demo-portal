@@ -28,7 +28,7 @@
             <?php echo form_error('confirm_user_new_password'); ?>
         </div>
 
-        <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn btn-lg btn-primary'));?>
+        <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn  btn-primary'));?>
         <?php echo form_close(); ?>
 				
 			</div><!--./card-body-->

@@ -129,7 +129,7 @@ label.required::after {
 
 .validation-error {
     color: $form_red;
-    font-size: 0.875rem;
+    font-size: 14px;
     margin-top: 5px;
 }
 
@@ -713,7 +713,7 @@ table.dataTable.ci-table {
     // $btn-font-size-lg,
     // $btn-line-height-lg,
     // $btn-border-radius-lg);
-    min-width: 130px;
+    min-width: 120px;
     @media(max-width: 575px) {
         display: block;
         width: 100%;

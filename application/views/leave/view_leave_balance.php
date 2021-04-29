@@ -17,7 +17,7 @@
                             <?php echo form_upload(array('name' => 'userfile', 'id' => 'userfile','class' => 'form-control mx-2', 'required'=>'required', 'accept' =>'.xls, .xlsx'));?>
                             <?php echo form_error('userfile'); ?>
                         </div>
-                        <button type="submit" data-button-type="submit" class="btn btn-lg btn-primary">Import Data</button>
+                        <button type="submit" data-button-type="submit" class="btn  btn-primary">Import Data</button>
                     <?php echo form_close(); ?>
                     <div class="form-text small text-muted">Note: Only xls file is allowed with maximum 2MB of size. To import leave balance data you need to "Export Data" first & modify the excel file to import it.</div>
                 </div>

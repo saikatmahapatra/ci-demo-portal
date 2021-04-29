@@ -67,8 +67,8 @@
 							</div>
 							<?php echo isset($upload_error_message) ? $upload_error_message : ''; ?>
 						</div>
-						<?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Upload','class' => 'btn btn-lg btn-primary'));?>
-						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="btn btn-lg btn-light" data-button-type="cancel">Cancel</a>
+						<?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Upload','class' => 'btn  btn-primary'));?>
+						<a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>" class="btn  btn-light" data-button-type="cancel">Cancel</a>
 						<?php echo form_close(); ?>
 					</div>
 				</div>

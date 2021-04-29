@@ -47,8 +47,8 @@
                         <?php //echo form_error('q_project'); ?>
                     </div>
                     <div class="form-group col-md-2">
-                    <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Search','class' => 'btn btn-lg btn-primary mb-2 mr-2'));?>
-                    <?php echo form_button(array('name' => 'reset_btn','type' => 'reset','content' => 'Reset','class' => 'btn btn-lg btn-light mb-2','id'=>'reset_timesheet_form'));?>
+                    <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Search','class' => 'btn  btn-primary mb-2 mr-2'));?>
+                    <?php echo form_button(array('name' => 'reset_btn','type' => 'reset','content' => 'Reset','class' => 'btn  btn-light mb-2','id'=>'reset_timesheet_form'));?>
                     </div>
                 </div>
                     
@@ -169,8 +169,8 @@
         </dl>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-lg btn-light" data-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-lg btn-primary">Send message</button> -->
+        <button type="button" class="btn  btn-light" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn  btn-primary">Send message</button> -->
       </div>
     </div>
   </div>
