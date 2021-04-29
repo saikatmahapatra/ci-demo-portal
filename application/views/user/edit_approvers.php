@@ -47,7 +47,7 @@ $approver = sizeof($approvers)>0 ? $approvers[0] : null;
                             </div>
                         </div>
 
-                    <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
+                    <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
                 <?php echo form_close(); ?>
 			
 			</div><!--./card-body-->

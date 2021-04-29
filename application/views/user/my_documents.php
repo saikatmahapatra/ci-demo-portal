@@ -29,7 +29,7 @@
                         <?php echo form_error('userfile'); ?>
                     </div>
                 </div>
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
                 <?php echo form_close(); ?>
             </div>
             <!--/.card-body-->

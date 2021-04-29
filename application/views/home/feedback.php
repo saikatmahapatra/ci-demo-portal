@@ -71,7 +71,7 @@
         
 		<?php
 		echo form_submit(array(
-			'name' => 'submit',
+			'name' => 'submit', 'data-button-type' => 'submit',
 			'value' => 'Submit',
 			'class' => 'btn btn-primary',
 		));
