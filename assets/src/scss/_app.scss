@@ -106,34 +106,13 @@ body {
 }
 
 // Form Style
-// .form-control,
-// .custom-select {
-//     &:focus {
-//         border-color: $primary;
-//         box-shadow: 0 0 0 0.0625rem $primary;
-//     }
-// }
-// .custom-control-input {
-//     ~.custom-control-label {
-//         &::before {
-//             border-color: $primary;
-//         }
-//     }
-//     &:focus {
-//         ~.custom-control-label::before {
-//             border-color: $primary;
-//             box-shadow: 0 0 0 0.0625rem $primary;
-//         }
-//     }
-// }
-// .custom-file-input {
-//     &:focus {
-//         ~.custom-file-label {
-//             border-color: $primary;
-//             box-shadow: 0 0 0 0.0625rem $primary;
-//         }
-//     }
-// }
+form {
+    .form-control,
+    .custom-select {
+        height: 42px;
+    }
+}
+
 // label.optional::after {
 //     content: ' optional';
 //     font-size: 0.875rem;
