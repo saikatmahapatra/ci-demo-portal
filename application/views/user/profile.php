@@ -238,7 +238,7 @@
 											<dd class="col-md-9"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : '-'; ?></dd>
 										</dl><!--/dl.row-->
 										<?php if($is_self_account == true) { ?>
-											<a class="btn btn-link action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><?php echo $this->common_lib->get_icon('edit'); ?> Edit Info</a>
+											<a class="btn btn-primary action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>">Edit basic info</a>
 										<?php } ?>
 										<?php if($is_self_account == true) {?>
 											<div class="text-muted small mt-2">* If you see any incorrect information, please contact to your HR for further help.</div>
@@ -254,12 +254,12 @@
 										<?php if(isset($address)){
 											foreach($address as $key=>$addr){
 											?>
-											<div class="mb-3">
+											<div class="mb-4">
 												<div class="mb-2 h6">
 													<?php echo isset($address_type[$addr['address_type']]) ? $address_type[$addr['address_type']] : 'Address'; ?>
 
 													<?php if($is_self_account == true) { ?>
-														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
+														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="card-action-link btn btn-sm btn-light small"> Edit</a>
 														<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-light "><?php echo $this->common_lib->get_icon('delete'); ?> Delete</a> -->
 													<?php } ?>
 												</div>
@@ -278,7 +278,7 @@
 											}
 										}?>
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-link action-link " href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Address</a>
+										<a class="btn btn-primary action-link " href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>">Add new address</a>
 										<?php } ?>
 									</div>
 								</div>
@@ -297,7 +297,7 @@
 												<?php echo isset($edu['qualification_name'])?$edu['qualification_name']: ' ';?> - <?php echo isset($edu['degree_name'])?$edu['degree_name']:'';?>
 												<?php echo isset($edu['academic_from_year']) ? '('.$edu['academic_from_year'].'-'.$edu['academic_to_year'].')':'';?>
 												<?php if($is_self_account == true) { ?>
-													<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
+													<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="card-action-link btn btn-sm btn-light small">Edit</a>
 												<?php } ?>
 												</div>
 												<div>
@@ -314,7 +314,7 @@
 											}
 										}?>
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-link action-link " href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Education</a>
+										<a class="btn btn-primary action-link " href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"> Add new education</a>
 										<?php } ?>
 									</div>
 								</div>
@@ -346,7 +346,7 @@
 														<div class="my-2 h6">
 															<?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?>
 															<?php if($is_self_account == true) { ?>		
-															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="card-action-link btn btn-sm btn-light small">Edit</a>
 															<?php } ?>
 														</div>
 														<div class="">
@@ -362,7 +362,7 @@
 											}?>
 									
 									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-link action-link  mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Experience</a>
+										<a class="btn btn-primary action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"> Add new experience</a>
 									<?php } ?>
 									</div>
 								</div>
@@ -393,7 +393,7 @@
 													<div class="mb-2 h6">
 														<?php echo isset($row['bank_name'])? $row['bank_name']: ' ';?>
 														<?php echo isset($row['ifsc_code']) ? '('.$row['ifsc_code'].')' : '-'; ?>
-														<?php if($is_self_account == true) { ?>	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>	<?php } ?>
+														<?php if($is_self_account == true) { ?>	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="card-action-link btn btn-sm btn-light small">Edit</a>	<?php } ?>
 													</div>
 													<div class="text-muted small">
 													<?php echo isset($row['account_uses'])? $account_uses[$row['account_uses']]: ' ';?>
@@ -409,7 +409,7 @@
 											}
 										}?>
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-link action-link  mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Account</a>
+										<a class="btn btn-primary action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>">Add new account</a>
 									<?php } ?>
 									</div>
 								</div>
@@ -451,8 +451,8 @@
 													<div class="mb-2 h6">
 														<?php echo isset($con['contact_person_name'])?$con['contact_person_name']: ' ';?>
 														<?php if($is_self_account == true) { ?>
-															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_emergency_contact/'.$con["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
-															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_emergency_contact/'.$con["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('delete'); ?> Delete</a>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_emergency_contact/'.$con["id"]);?>" class="card-action-link btn btn-sm btn-light small"> Edit</a>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_emergency_contact/'.$con["id"]);?>" class="card-action-link btn btn-sm btn-light small">Delete</a>
 														<?php } ?>
 													</div>
 													<div class="text-muted small"><?php echo isset($con['relationship']) ? $con['relationship']: '';?></div>													
@@ -473,7 +473,7 @@
 											}
 										?>
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-link action-link  mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Emergency Contact</a>
+										<a class="btn btn-primary action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"> Add new emergency contact</a>
 										<?php } ?>
 									</div>
 								</div>
