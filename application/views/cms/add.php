@@ -2,7 +2,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 
 <div class="row">
-    <div class="col-lg-9">
+    <div class="col-md-9">
         <div class="card ">
             <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
@@ -16,13 +16,13 @@
                 <?php echo form_hidden('form_action', 'insert'); ?>
 
                 <div class="form-row">
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-md-4">
                         <label for="content_type" class="required">Type</label>
                         <?php echo form_dropdown('content_type', $arr_content_type, set_value('content_type'), array('class' => 'form-control',));?>
                         <?php echo form_error('content_type'); ?>
                     </div>
                 
-                    <div class="form-group col-lg-8">
+                    <div class="form-group col-md-8">
                         <label for="content_title" class="required">Title</label>
                         <?php echo form_input(array('name' => 'content_title', 'value' => set_value('content_title'), 'id' => 'content_title', 'class' => 'form-control', 'placeholder' => ''));?>
                         <?php echo form_error('content_title'); ?>

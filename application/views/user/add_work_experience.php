@@ -1,7 +1,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
-    <div class="col-lg-9">
+    <div class="col-md-9">
         <div class="card ">
             <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
@@ -22,13 +22,13 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="from_date" class="required">From Date</label>
                         <?php echo form_input(array( 'name' => 'from_date', 'value' => set_value('from_date'), 'id' => 'from_date', 'maxlength' => '10', 'class' => 'form-control job-exp-datepicker', 'placeholder' => '', 'autocomplete'=>'off', 'readonly'=>true )); ?>
                         <?php echo form_error('from_date'); ?>
                     </div>
 
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="to_date" class="required">To Date</label>
                         <?php echo form_input(array( 'name' => 'to_date', 'value' => set_value('to_date'), 'id' => 'to_date', 'maxlength' => '10', 'class' => 'form-control job-exp-datepicker', 'placeholder' => '', 'autocomplete'=>'off', 'readonly'=>true )); ?>
                         <?php echo form_error('to_date'); ?>
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="form-row d-none">
-                    <div class="form-group col-lg-12">
+                    <div class="form-group col-md-12">
                         <label for="job_description" class="">Key Roles </label>
                         <?php echo form_textarea(array('name' => 'job_description','value' => set_value('job_description'),'class' => 'form-control','id' => 'job_description','rows' => '2','cols' => '50','placeholder' => 'Describe roles')); ?>
                         <?php echo form_error('job_description'); ?>

@@ -4,7 +4,7 @@ $row = $rows[0];
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
-    <div class="col-lg-9">
+    <div class="col-md-9">
         <div class="card ">
             <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
@@ -17,7 +17,7 @@ $row = $rows[0];
 
 			
 			<div class="form-row">			
-				<div class="form-group col-lg-12">
+				<div class="form-group col-md-12">
 					<?php
 						$img_src = "";
 						$default_path = "assets/src/img/no-image.png";
@@ -37,7 +37,7 @@ $row = $rows[0];
 			</div>
 			
 			<div class="form-row">			
-				<div class="form-group col-lg-12">									
+				<div class="form-group col-md-12">									
 					<label for="userfile" class="">Image (Only 1200x300 dimensions are allowed)</label>
 					<?php
 						echo form_upload(array(
@@ -52,7 +52,7 @@ $row = $rows[0];
 			</div>
 			
 			<div class="form-row">
-				<div class="form-group col-lg-12">									
+				<div class="form-group col-md-12">									
 					<label for="upload_text_1" class="">Text Line 1 (Optional)</label>
 					<?php echo form_input(array('name' => 'upload_text_1', 'value' => (isset($_POST['upload_text_1']) ? set_value('upload_text_1') : $row['upload_text_1']), 'id' => 'upload_text_1', 'class' => 'form-control', 'placeholder' => ''));?>
 					<?php echo form_error('upload_text_1'); ?>
@@ -60,7 +60,7 @@ $row = $rows[0];
 			</div>
 			
 			<div class="form-row">
-				<div class="form-group col-lg-12">									
+				<div class="form-group col-md-12">									
 					<label for="upload_text_2" class="">Text Line 2 (Optional)</label>
 					<?php echo form_input(array('name' => 'upload_text_2', 'value' => (isset($_POST['upload_text_2']) ? set_value('upload_text_2') : $row['upload_text_2']), 'id' => 'upload_text_2', 'class' => 'form-control', 'placeholder' => ''));?>
 					<?php echo form_error('upload_text_2'); ?>
@@ -69,7 +69,7 @@ $row = $rows[0];
 			
 
 			<div class="form-row">
-				<div class="form-group col-lg-12">									
+				<div class="form-group col-md-12">									
 					<label for="upload_status" class="required">Status</label>
 					<?php //echo form_dropdown('upload_status', array('Y'=>'Yes','N'=>'No'), (isset($_POST['upload_status']) ? set_value('upload_status') : $row['upload_status']), array('class' => 'form-control')); ?>
 						<!--<div class="">-->

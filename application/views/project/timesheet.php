@@ -4,7 +4,7 @@
         href="#" data-toggle="modal" data-target="#timesheetCalModal">here to read.</a></p>
 
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-md-12">
         <div class="card ">
             <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
@@ -26,7 +26,7 @@
                         <?php echo form_hidden('form_action', 'add'); ?>
                         <?php echo form_hidden('selected_date',set_value('selected_date')); ?>
                         <div class="form-row">
-                            <div class="col-lg-4">
+                            <div class="col-md-4">
                                 <label class="required">Select Dates</label>
                                 <div class="mb-2"><?php echo form_error('selected_date'); ?></div>
                                 <?php echo $cal; ?>
@@ -47,9 +47,9 @@
                                         href="#">Clear selected dates</a></div>
                                 
                             </div>
-                            <!--/.col-lg-3-->
+                            <!--/.col-md-3-->
 
-                            <div class="col-lg-6 offset-lg-1">
+                            <div class="col-md-6 offset-lg-1">
 
                                 <div class="form-row">
                                     <div class="form-group col-12">
@@ -60,20 +60,20 @@
                                 </div>
 
                                 <div class="form-row">
-                                    <div class="form-group col-lg-6">
+                                    <div class="form-group col-md-6">
                                         <label for="task_id_1" class="required">Task</label>
                                         <?php echo form_dropdown('task_id_1', $arr_task_id_1, set_value('task_id_1'), array('class' => 'form-control', 'id' => 'dd_tasks', 'data-render-target'=>'task_id_2', 'data-order'=>'2'));?>
                                         <?php echo form_error('task_id_1'); ?>
                                     </div>
 
-                                    <div class="form-group col-lg-6">
+                                    <div class="form-group col-md-6">
                                         <label id="task_id_2" for="task_id_2" class="">Sub Task</label>
                                         <?php echo form_dropdown('task_id_2', $arr_task_id_2, set_value('task_id_2'), array('class' => 'form-control', 'id' => 'dd_sub_tasks'));?>
                                         <?php echo form_error('task_id_2'); ?>
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-lg-6">
+                                    <div class="form-group col-md-6">
                                         <label for="timesheet_hours" class="required">Hours</label>
                                         <?php echo form_input(array('name' => 'timesheet_hours', 'value' => set_value('timesheet_hours'),'id' => 'timesheet_hours', 'class' => 'form-control','maxlength' => '3','placeholder' => '0.0',)); ?>
                                         <?php echo form_error('timesheet_hours'); ?>
@@ -89,7 +89,7 @@
 
                                 <button type="submit" data-button-type="submit" class="btn btn-lg btn-primary">Submit</button>
                             </div>
-                            <!--/.col-lg-6-->
+                            <!--/.col-md-6-->
                         </div>
 
                         <div class="mt-3 d-none">
@@ -189,16 +189,16 @@
       </div>
       <div class="modal-body">
         <dl class="row">
-            <dt class="col-lg-3">Employee</dt>
-            <dd class="col-lg-9" id="ts_emp_name"></dd>
-            <dt class="col-lg-3">Project</dt>
-            <dd class="col-lg-9" id="ts_project"></dd>
-            <dt class="col-lg-3">Task</dt>
-            <dd class="col-lg-9" id="ts_task"></dd>
-            <dt class="col-lg-3">Hours</dt>
-            <dd class="col-lg-9" id="ts_hours"></dd>
-            <dt class="col-lg-3">Description</dt>
-            <dd class="col-lg-9" id="ts_desc"></dd>
+            <dt class="col-md-3">Employee</dt>
+            <dd class="col-md-9" id="ts_emp_name"></dd>
+            <dt class="col-md-3">Project</dt>
+            <dd class="col-md-9" id="ts_project"></dd>
+            <dt class="col-md-3">Task</dt>
+            <dd class="col-md-9" id="ts_task"></dd>
+            <dt class="col-md-3">Hours</dt>
+            <dd class="col-md-9" id="ts_hours"></dd>
+            <dt class="col-md-3">Description</dt>
+            <dd class="col-md-9" id="ts_desc"></dd>
         </dl>
       </div>
       <div class="modal-footer">

@@ -5,7 +5,7 @@
 
 
 
-    <div class="col-lg-8">
+    <div class="col-md-8">
         <div class="card ">
             <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
@@ -17,7 +17,7 @@
 
 				
 				<div class="form-row">
-					<div class="form-group col-lg-12">
+					<div class="form-group col-md-12">
 						<label for="userfile" class="required">Image</label>
 						<?php
 							echo form_upload(array(
@@ -32,7 +32,7 @@
 				</div>
 				
 				<div class="form-row">
-					<div class="form-group col-lg-12">
+					<div class="form-group col-md-12">
 						<label for="content_title" class="">Text Line 1 (Optional)</label>
 						<?php echo form_input(array('name' => 'upload_text_1', 'value' => set_value('upload_text_1'), 'id' => 'upload_text_1', 'class' => 'form-control', 'placeholder' => ''));?>
 						<?php echo form_error('upload_text_1'); ?>
@@ -40,7 +40,7 @@
 				</div>
 				
 				<div class="form-row">
-					<div class="form-group col-lg-12">									
+					<div class="form-group col-md-12">									
 						<label for="content_title" class="">Text Line 2 (Optional)</label>
 						<?php echo form_input(array('name' => 'upload_text_2', 'value' => set_value('upload_text_2'), 'id' => 'upload_text_2', 'class' => 'form-control', 'placeholder' => ''));?>
 						<?php echo form_error('upload_text_2'); ?>

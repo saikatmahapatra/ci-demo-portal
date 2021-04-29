@@ -1,14 +1,14 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
-	<div class="col-lg-9">
+	<div class="col-md-9">
 		<div class="card ">
 			<div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
 			<div class="card-body">
 			
 			<?php echo isset($alert_message) ? $alert_message : ''; ?>
 				<div class="row">
-					<div class="col-lg-4 profile-pic">
+					<div class="col-md-4 profile-pic">
 						<?php
 						$img_src = "";
 						$default_path = "";
@@ -48,7 +48,7 @@
 							<div class="edit"><a class="btn btn-link action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_profile_pic/'.$profile_pic);?>"><?php echo $this->common_lib->get_icon('delete'); ?> Remove</a></div>
 						<?php } ?>
 					</div>
-					<div class="col-lg-8">
+					<div class="col-md-8">
 						<?php echo form_open_multipart(current_url(), array('method' => 'post', 'class'=>'ci-form','role' => 'form'));?>
 						<?php echo form_hidden('form_action', 'file_upload'); ?>
 						<div class="form-group">

@@ -6,7 +6,7 @@
         read.</a></p>
 
 <div class="row">
-    <div class="col-lg-9">
+    <div class="col-md-9">
         <div class="card ">
             <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
@@ -45,12 +45,12 @@
                 <?php echo form_hidden('form_action', 'add'); ?>
 
                 <div class="form-row">
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-md-4">
                         <label for="leave_from_date" class="required">From Date</label>
                         <?php echo form_input(array('name' => 'leave_from_date','value' => set_value('leave_from_date'),'id' => 'leave_from_date','class' => 'form-control', 'placeholder'=>'dd-mm-yyyy', 'readonly'=>'readonly')); ?>
                         <?php echo form_error('leave_from_date'); ?>
                     </div>
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-md-4">
                         <label for="leave_to_date" class="required">To Date</label>
                         <?php echo form_input(array('name' => 'leave_to_date','value' => set_value('leave_to_date'),'id' => 'leave_to_date','class' => 'form-control', 'placeholder'=>'dd-mm-yyyy', 'readonly'=>'readonly')); ?>
                         <?php echo form_error('leave_to_date'); ?>
@@ -64,12 +64,12 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-md-4">
                         <label for="leave_type" class="required">Leave Type</label>
                         <?php echo form_dropdown('leave_type', $leave_type_arr, set_value('leave_type'), array('class' => 'form-control')); ?>
                         <?php echo form_error('leave_type'); ?>
                     </div>
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-md-4">
                         <label for="leave_term" class="required">Leave Slot</label>
                         <?php echo form_dropdown('leave_term', $leave_term_arr, set_value('leave_term'), array('class' => 'form-control')); ?>
                         <?php echo form_error('leave_term'); ?>
@@ -77,7 +77,7 @@
                 </div>
 
                 <!-- <div class="form-row">
-                    <div class="form-group col-lg-12">
+                    <div class="form-group col-md-12">
                         <div class="custom-control custom-checkbox my-1 mr-sm-2">
                             <?php //$cb_is_checked = $this->input->post('leave_term') === 'H';
 							//echo form_checkbox('leave_term', 'H', $cb_is_checked, array('id' => 'trems','class' => 'custom-control-input'));

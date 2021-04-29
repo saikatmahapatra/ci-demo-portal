@@ -109,7 +109,10 @@ body {
 form {
     .form-control,
     .custom-select {
-        height: 42px;
+        height: 38px;
+        @media(max-width: 575px) {
+            height: 42px;
+        }
     }
 }
 

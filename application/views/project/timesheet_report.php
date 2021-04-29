@@ -2,7 +2,7 @@
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-md-12">
         <div class="card ">
             <div class="card-header"><?php echo $this->common_lib->get_icon('search_data'); ?> Search Data</div>
             <div class="card-body">
@@ -156,16 +156,16 @@
       </div>
       <div class="modal-body">
         <dl class="row">
-            <dt class="col-lg-3">Employee</dt>
-            <dd class="col-lg-9" id="ts_emp_name"></dd>
-            <dt class="col-lg-3">Project</dt>
-            <dd class="col-lg-9" id="ts_project"></dd>
-            <dt class="col-lg-3">Task</dt>
-            <dd class="col-lg-9" id="ts_task"></dd>
-            <dt class="col-lg-3">Hours</dt>
-            <dd class="col-lg-9" id="ts_hours"></dd>
-            <dt class="col-lg-3">Description</dt>
-            <dd class="col-lg-9" id="ts_desc"></dd>
+            <dt class="col-md-3">Employee</dt>
+            <dd class="col-md-9" id="ts_emp_name"></dd>
+            <dt class="col-md-3">Project</dt>
+            <dd class="col-md-9" id="ts_project"></dd>
+            <dt class="col-md-3">Task</dt>
+            <dd class="col-md-9" id="ts_task"></dd>
+            <dt class="col-md-3">Hours</dt>
+            <dd class="col-md-9" id="ts_hours"></dd>
+            <dt class="col-md-3">Description</dt>
+            <dd class="col-md-9" id="ts_desc"></dd>
         </dl>
       </div>
       <div class="modal-footer">

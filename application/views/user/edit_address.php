@@ -2,7 +2,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
-    <div class="col-lg-9">
+    <div class="col-md-9">
         <div class="card ">
             <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
@@ -45,36 +45,36 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="locality" class="required">Locality / Area Name</label>
                         <?php echo form_input(array('name' => 'locality','value' => isset($_POST['locality']) ? set_value('locality') : $row['locality'],'id' => 'locality','class' => 'form-control','placeholder'=>''));?>
                         <?php echo form_error('locality'); ?>
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="city" class="required">City / District / Town</label>
                         <?php echo form_input(array('name' => 'city','value' =>isset($_POST['city']) ? set_value('city') : $row['city'],'id' => 'city','class' => 'form-control','maxlength' => '30','placeholder'=>'',));?>
                         <?php echo form_error('city'); ?>
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="state" class="required">State / Union Territory</label>
                         <?php echo form_dropdown('state', $arr_states, isset($_POST['state']) ? set_value('state') : $row['state'], array('class' => 'form-control','id' => 'state'));?>
                         <?php echo form_error('state'); ?>
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="zip" class="required">Pin Code</label>
                         <?php echo form_input(array('name' => 'zip','value' => isset($_POST['zip']) ? set_value('zip') : $row['zip'],'id' => 'zip','class' => 'form-control','maxlength' => '6','placeholder'=>''));?>
                         <?php echo form_error('zip'); ?>
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="phone1" class="optional">Phone </label>
                         <?php echo form_input(array('name' => 'phone1','value' => isset($_POST['phone1']) ? set_value('phone1') : $row['phone1'],'id' => 'phone1','class' => 'form-control','maxlength' => '15','placeholder'=>'',)); ?>
                         <?php echo form_error('phone1'); ?>
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="landmark" class="optional">Landmark </label>
                         <?php echo form_input(array('name' => 'landmark','value' => isset($_POST['landmark']) ? set_value('landmark') : $row['landmark'],'id' => 'landmark','class' => 'form-control','maxlength' => '100','placeholder'=>'',)); ?>
                         <?php echo form_error('landmark'); ?>
