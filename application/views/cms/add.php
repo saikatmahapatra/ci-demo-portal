@@ -71,9 +71,9 @@
                         </div>
                     </div>
                 </div>
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn  btn-primary'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
                 <a href="<?php echo base_url($this->router->directory.$this->router->class);?>"
-                    class="btn  btn-light" data-button-type="cancel">Cancel</a>
+                    class="btn btn-light" data-button-type="cancel">Cancel</a>
                 <?php echo form_close(); ?>
             </div>
             <!--/.card-body-->

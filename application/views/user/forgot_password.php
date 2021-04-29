@@ -13,7 +13,7 @@
                <?php echo form_input(array('name' => 'user_email', 'value' => set_value('user_email'),'id' => 'user_email','class' => 'form-control','placeholder' => 'Enter email address','maxlength' => '100','autofocus' => true));?>
                <?php echo form_error('user_email'); ?>
             </div>
-            <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn  btn-primary btn-block '));?>
+            <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn btn-lg btn-primary btn-block '));?>
             <div class="text-center mt-4"><a href="<?php echo base_url($this->router->class.'/login');?>">Go to login</a></div>
             <?php echo form_close(); ?>
          </div>

@@ -18,7 +18,7 @@
                <?php echo form_password(array('name' => 'user_password','value' => set_value('user_password'),'id' =>'user_password','placeholder' => 'Enter password','class' => 'form-control','maxlength' => '16'));?>
                <?php echo form_error('user_password'); ?>
             </div>
-            <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Log In','class' => 'btn  btn-primary btn-block '));?>
+            <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Log In','class' => 'btn btn-lg btn-primary btn-block '));?>
             <div class="text-center mt-4"><a href="<?php echo base_url($this->router->class.'/forgot_password');?>">Forgot password?</a></div>
             <?php echo form_close(); ?>
          </div>

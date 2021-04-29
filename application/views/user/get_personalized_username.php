@@ -17,8 +17,8 @@
 						<div class="form-text small text-muted">Username should be 5 to 32 characters in length.</div>
 						<?php echo form_error('user_name'); ?>
 					</div>
-					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn   btn-primary btn-block'));?>
-					<a href="<?php echo base_url('/home');?>" class="btn   btn-secondary btn-block">Go to Dashboard</a>
+					<?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn  btn-primary btn-block'));?>
+					<a href="<?php echo base_url('/home');?>" class="btn  btn-secondary btn-block">Go to Dashboard</a>
 				<?php echo form_close(); ?>
 				</div>
 			</div>
