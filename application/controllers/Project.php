@@ -586,7 +586,7 @@ class Project extends CI_Controller {
         }
 
         $this->form_validation->set_rules('timesheet_hours', 'hours', 'required|numeric|less_than_equal_to[9]|greater_than[0]');
-        $this->form_validation->set_rules('timesheet_description', 'additional note', 'required|max_length[200]');
+        $this->form_validation->set_rules('timesheet_description', 'description', 'required|max_length[200]');
         $this->form_validation->set_error_delimiters('<div class="validation-error">', '</div>');
         if ($this->form_validation->run() == true) {
             return true;

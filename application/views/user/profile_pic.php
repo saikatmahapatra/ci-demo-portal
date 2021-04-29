@@ -52,7 +52,7 @@
 						<?php echo form_open_multipart(current_url(), array('method' => 'post', 'class'=>'ci-form','role' => 'form'));?>
 						<?php echo form_hidden('form_action', 'file_upload'); ?>
 						<div class="form-group">
-							<label for="userfile" class="control-label">Select File</label>
+							<label for="userfile" class="required control-label">Select File</label>
 							<?php echo form_upload(array('name' => 'userfile', 'id' => 'userfile','class' => 'form-control',));?>
 							<?php echo form_error('userfile'); ?>
 							<div class="form-text small text-muted bg-light p-1">						

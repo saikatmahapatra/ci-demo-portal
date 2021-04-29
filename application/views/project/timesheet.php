@@ -28,6 +28,7 @@
                         <div class="form-row">
                             <div class="col-lg-4">
                                 <label class="required">Select Dates</label>
+                                <div class="mb-2"><?php echo form_error('selected_date'); ?></div>
                                 <?php echo $cal; ?>
                                 <div class="small my-2">
                                     <div class="d-inline-block"><span
@@ -44,7 +45,7 @@
                                 </div>
                                 <div class="mb-2"><a id="clear_selected_days" class="btn  btn-outline-secondary"
                                         href="#">Clear selected dates</a></div>
-                                <?php echo form_error('selected_date'); ?>
+                                
                             </div>
                             <!--/.col-lg-3-->
 
@@ -66,7 +67,7 @@
                                     </div>
 
                                     <div class="form-group col-lg-6">
-                                        <label id="task_id_2" for="task_id_2" class="required">Sub Task</label>
+                                        <label id="task_id_2" for="task_id_2" class="">Sub Task</label>
                                         <?php echo form_dropdown('task_id_2', $arr_task_id_2, set_value('task_id_2'), array('class' => 'form-control', 'id' => 'dd_sub_tasks'));?>
                                         <?php echo form_error('task_id_2'); ?>
                                     </div>
@@ -80,7 +81,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-12">
-                                        <label for="timesheet_description" class="">Additional Note</label>
+                                        <label for="timesheet_description" class="required">Description</label>
                                         <?php echo form_textarea(array('name' => 'timesheet_description','value' => set_value('timesheet_description'),'class' => 'form-control textarea', 'maxlength'=> '200', 'id' => 'timesheet_description','rows' => '2','cols' => '50','placeholder' => 'briefly describe in 200 characters')); ?>
                                         <?php echo form_error('timesheet_description'); ?>
                                     </div>
