@@ -1,7 +1,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
-    <div class="col-lg-9">
+    <div class="col-md-9">
         <div class="card ">
             <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
@@ -41,24 +41,24 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="locality" class="required">Locality / Area Name</label>
                         <?php echo form_input(array('name' => 'locality','value' => set_value('locality'),'id' => 'locality','class' => 'form-control','placeholder'=>''));?>
                         <?php echo form_error('locality'); ?>
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="city" class="required">City / District / Town</label>
                         <?php echo form_input(array('name' => 'city','value' =>set_value('city'),'id' => 'city','class' => 'form-control','maxlength' => '30','placeholder'=>'',));?>
                         <?php echo form_error('city'); ?>
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="state" class="required">State / Union Territory</label>
                         <?php echo form_dropdown('state', $arr_states, set_value('state') , array('class' => 'form-control','id' => 'state'));?>
                         <?php echo form_error('state'); ?>
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="zip" class="required">Pin Code</label>
                         <?php echo form_input(array('name' => 'zip','value' => set_value('zip'),'id' => 'zip','class' => 'form-control','maxlength' => '6','placeholder'=>''));?>
                         <?php echo form_error('zip'); ?>
@@ -67,21 +67,21 @@
 
 
                 <div class="form-row">
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="phone1" class="optional">Phone </label>
                         <?php echo form_input(array('name' => 'phone1','value' => set_value('phone1'),'id' => 'phone1','class' => 'form-control','maxlength' => '15','placeholder'=>'',));?>
                         <?php echo form_error('phone1'); ?>
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="landmark" class="optional">Landmark </label>
                         <?php echo form_input(array('name' => 'landmark','value' => set_value('landmark'),'id' => 'landmark','class' => 'form-control','maxlength' => '100','placeholder'=>'',));?>
                         <?php echo form_error('landmark'); ?>
                     </div>
                 </div>
 
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>"
-                    class="btn btn-light">Cancel</a>
+                    class="btn btn-light" data-button-type="cancel">Cancel</a>
                 <?php echo form_close(); ?>
             </div>
             <!--/.card-body-->

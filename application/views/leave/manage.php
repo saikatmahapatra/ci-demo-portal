@@ -1,7 +1,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-md-12">
         <div class="card ">
             <div class="card-header"><?php echo $this->common_lib->get_icon('search_data'); ?> Search Data</div>
             <div class="card-body">
@@ -37,7 +37,7 @@
                     <?php //echo form_error('leave_status'); ?>
                 </div>
 
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Search','class' => 'btn btn-primary mb-2 mr-2'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Search','class' => 'btn btn-primary mb-2 mr-2'));?>
                 <?php //echo form_input(array('name' => 'reset_btn','type' => 'reset','value' => 'Reset','class' => 'btn btn-secondary', 'id' => 'reset_leave_search_form'));?>
                 <a href="<?php echo base_url('leave/manage');?>" class="btn btn-light mb-2">Reset</a>
                 <?php echo form_close(); ?>

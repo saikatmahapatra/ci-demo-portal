@@ -85,7 +85,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
-	<div class="col-lg-12">
+	<div class="col-md-12">
 		<div class="card  ci-dl user-profile-page-card">
 			<div class="card-header"><?php echo $this->common_lib->get_icon('user_account'); ?> Profile</div>
 			<div class="card-body">
@@ -147,7 +147,7 @@
 							?>
 						</div>
 						<div class="small text-muted"><?php echo isset($row['designation_name']) ? $row['designation_name'] : ''; ?></div>						
-					</div><!--/.col-lg-3-->
+					</div><!--/.col-md-3-->
 					<div class="col-12 mt-3">
 						<nav>
 							<div class="nav nav-tabs ci-nav-tab" id="nav-tab" role="tablist">
@@ -185,10 +185,10 @@
 						<div class="tab-content" id="nav-tabContent">
 							<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="nav-1">
 								<div class="row mt-3">
-									<div class="col-lg-12">
+									<div class="col-md-12">
 										<dl class="row">
-											<dt class="col-lg-3">Name</dt>
-											<dd class="col-lg-9">
+											<dt class="col-md-3">Name</dt>
+											<dd class="col-md-9">
 												<?php
 												echo isset($row['user_title']) ? $row['user_title'] . '&nbsp;' : '';
 												echo isset($row['user_firstname']) ? $row['user_firstname'] . '&nbsp;' : '';
@@ -197,33 +197,33 @@
 												?>
 											</dd>
 
-											<dt class="col-lg-3">Employee ID</dt>
-											<dd class="col-lg-9"><?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : '-'; ?></dd>
+											<dt class="col-md-3">Employee ID</dt>
+											<dd class="col-md-9"><?php echo isset($row['user_emp_id']) ? $row['user_emp_id'] : '-'; ?></dd>
 
-											<dt class="col-lg-3">Designation</dt>
-											<dd class="col-lg-9"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
+											<dt class="col-md-3">Designation</dt>
+											<dd class="col-md-9"><?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?></dd>
 
-											<dt class="col-lg-3">Employment Type</dt>
-											<dd class="col-lg-9"><?php echo isset($row['employment_type_name']) ? $row['employment_type_name'] : '-'; ?></dd>
+											<dt class="col-md-3">Employment Type</dt>
+											<dd class="col-md-9"><?php echo isset($row['employment_type_name']) ? $row['employment_type_name'] : '-'; ?></dd>
 
-											<dt class="col-lg-3">Department</dt>
-											<dd class="col-lg-9"><?php echo isset($row['department_name']) ? $row['department_name'] : '-'; ?></dd>
+											<dt class="col-md-3">Department</dt>
+											<dd class="col-md-9"><?php echo isset($row['department_name']) ? $row['department_name'] : '-'; ?></dd>
 										
-											<dt class="col-lg-3">Date of Joining</dt>
-											<dd class="col-lg-9"><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></dd>
+											<dt class="col-md-3">Date of Joining</dt>
+											<dd class="col-md-9"><?php echo isset($row['user_doj']) ? $this->common_lib->display_date($row['user_doj']) : '-'; ?></dd>
 
-											<dt class="col-lg-3">Work Email</dt>
-											<dd class="col-lg-9"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?></a></dd>
-											<dt class="col-lg-3">Work Phone</dt>
-											<dd class="col-lg-9"><?php echo isset($row['user_phone2']) && strlen($row['user_phone2']) > 0 ? $row['user_phone2'] : '-'; ?></dd>
+											<dt class="col-md-3">Work Email</dt>
+											<dd class="col-md-9"><a href="mailto:<?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?>"><?php echo isset($row['user_email']) ? $row['user_email'] : '-'; ?></a></dd>
+											<dt class="col-md-3">Work Phone</dt>
+											<dd class="col-md-9"><?php echo isset($row['user_phone2']) && strlen($row['user_phone2']) > 0 ? $row['user_phone2'] : '-'; ?></dd>
 										
-											<dt class="col-lg-3">Personal Email</dt>
-											<dd class="col-lg-9"><a href="mailto:<?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?>"><?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?></a></dd>			
-											<dt class="col-lg-3">Personal Phone</dt>
-											<dd class="col-lg-9"><?php echo isset($row['user_phone1']) && strlen(isset($row['user_phone1'])) > 0 ? $row['user_phone1'] : '-'; ?></dd>
+											<dt class="col-md-3">Personal Email</dt>
+											<dd class="col-md-9"><a href="mailto:<?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?>"><?php echo isset($row['user_email_secondary']) ? $row['user_email_secondary'] : '-'; ?></a></dd>			
+											<dt class="col-md-3">Personal Phone</dt>
+											<dd class="col-md-9"><?php echo isset($row['user_phone1']) && strlen(isset($row['user_phone1'])) > 0 ? $row['user_phone1'] : '-'; ?></dd>
 											
-											<dt class="col-lg-3"><?php echo ($is_self_account == true) ? "Date of Birth" : "Birth Day";?></dt>
-											<dd class="col-lg-9">
+											<dt class="col-md-3"><?php echo ($is_self_account == true) ? "Date of Birth" : "Birth Day";?></dt>
+											<dd class="col-md-9">
 											<?php if($is_self_account == true) {?>	
 											<?php echo isset($row['user_dob']) ? $this->common_lib->display_date($row['user_dob']) : '-'; ?>
 											<?php } else{?>
@@ -231,14 +231,14 @@
 											<?php } ?>
 											</dd>
 
-											<dt class="col-lg-3">Gender</dt>
-											<dd class="col-lg-9"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : '-'; ?></dd>
+											<dt class="col-md-3">Gender</dt>
+											<dd class="col-md-9"><?php echo isset($row['user_gender']) ? (($row['user_gender'] == 'M') ? 'Male' : 'Female') : '-'; ?></dd>
 										
-											<dt class="col-lg-3">Blood Group</dt>
-											<dd class="col-lg-9"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : '-'; ?></dd>
+											<dt class="col-md-3">Blood Group</dt>
+											<dd class="col-md-9"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : '-'; ?></dd>
 										</dl><!--/dl.row-->
 										<?php if($is_self_account == true) { ?>
-											<a class="btn btn-link action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><?php echo $this->common_lib->get_icon('edit'); ?> Edit Info</a>
+											<a class="btn btn-primary action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>">Edit basic info</a>
 										<?php } ?>
 										<?php if($is_self_account == true) {?>
 											<div class="text-muted small mt-2">* If you see any incorrect information, please contact to your HR for further help.</div>
@@ -250,16 +250,16 @@
 							<?php if($display_address == true){  ?>
 							<div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="nav-2">
 								<div class="row mt-3">
-									<div class="col-lg-12">
+									<div class="col-md-12">
 										<?php if(isset($address)){
 											foreach($address as $key=>$addr){
 											?>
-											<div class="mb-3">
+											<div class="mb-4">
 												<div class="mb-2 h6">
 													<?php echo isset($address_type[$addr['address_type']]) ? $address_type[$addr['address_type']] : 'Address'; ?>
 
 													<?php if($is_self_account == true) { ?>
-														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
+														<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_address/'.$addr["id"]);?>" class="card-action-link btn btn-sm btn-light small"> Edit</a>
 														<!-- <a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_address/'.$addr["id"]);?>" class="btn btn-light "><?php echo $this->common_lib->get_icon('delete'); ?> Delete</a> -->
 													<?php } ?>
 												</div>
@@ -278,7 +278,7 @@
 											}
 										}?>
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-link action-link " href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Address</a>
+										<a class="btn btn-primary action-link " href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>">Add new address</a>
 										<?php } ?>
 									</div>
 								</div>
@@ -288,7 +288,7 @@
 							<?php if($display_education == true){  ?>
 							<div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="nav-3">
 								<div class="row mt-3">
-									<div class="col-lg-12">
+									<div class="col-md-12">
 										<?php if(isset($education)){
 											foreach($education as $key=>$edu){
 											?>
@@ -297,7 +297,7 @@
 												<?php echo isset($edu['qualification_name'])?$edu['qualification_name']: ' ';?> - <?php echo isset($edu['degree_name'])?$edu['degree_name']:'';?>
 												<?php echo isset($edu['academic_from_year']) ? '('.$edu['academic_from_year'].'-'.$edu['academic_to_year'].')':'';?>
 												<?php if($is_self_account == true) { ?>
-													<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
+													<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_education/'.$edu["id"]);?>" class="card-action-link btn btn-sm btn-light small">Edit</a>
 												<?php } ?>
 												</div>
 												<div>
@@ -314,7 +314,7 @@
 											}
 										}?>
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-link action-link " href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Education</a>
+										<a class="btn btn-primary action-link " href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"> Add new education</a>
 										<?php } ?>
 									</div>
 								</div>
@@ -324,7 +324,7 @@
 							<?php if($display_experience == true){  ?>
 							<div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="nav-4">
 								<div class="row mt-3">
-									<div class="col-lg-12">
+									<div class="col-md-12">
 											<div class="mb-3">
 												<div class="mb-2 h6">
 													<?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?>
@@ -346,7 +346,7 @@
 														<div class="my-2 h6">
 															<?php echo isset($row['designation_name']) ? $row['designation_name'] : '-'; ?>
 															<?php if($is_self_account == true) { ?>		
-															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_work_experience/'.$row["id"]);?>" class="card-action-link btn btn-sm btn-light small">Edit</a>
 															<?php } ?>
 														</div>
 														<div class="">
@@ -362,7 +362,7 @@
 											}?>
 									
 									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-link action-link  mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Experience</a>
+										<a class="btn btn-primary action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"> Add new experience</a>
 									<?php } ?>
 									</div>
 								</div>
@@ -372,17 +372,17 @@
 							<?php if($display_salary_ac == true){  ?>
 							<div class="tab-pane fade" id="tab-5" role="tabpanel" aria-labelledby="nav-5">
 								<div class="row mt-3">
-									<div class="col-lg-12">
+									<div class="col-md-12">
 										<?php //print_r($bank_details);?>
 										<?php $uni = isset($user_national_identifiers) ? $user_national_identifiers[0] : ''; ?>
 										
 										<dl class="row">
-											<dt class="col-lg-3">PAN No</dt>
-											<dd class="col-lg-9">
+											<dt class="col-md-3">PAN No</dt>
+											<dd class="col-md-9">
 												<?php echo isset($uni['user_pan_no']) ? $uni['user_pan_no'] : '-';?>
 											</dd>
-											<dt class="col-lg-3">UAN No (PF)</dt>
-											<dd class="col-lg-9">
+											<dt class="col-md-3">UAN No (PF)</dt>
+											<dd class="col-md-9">
 												<?php echo isset($uni['user_uan_no']) ? $uni['user_uan_no'] : '-';?>
 											</dd>
 										</dl>
@@ -393,7 +393,7 @@
 													<div class="mb-2 h6">
 														<?php echo isset($row['bank_name'])? $row['bank_name']: ' ';?>
 														<?php echo isset($row['ifsc_code']) ? '('.$row['ifsc_code'].')' : '-'; ?>
-														<?php if($is_self_account == true) { ?>	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>	<?php } ?>
+														<?php if($is_self_account == true) { ?>	<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_bank_account/'.$row["id"]);?>" class="card-action-link btn btn-sm btn-light small">Edit</a>	<?php } ?>
 													</div>
 													<div class="text-muted small">
 													<?php echo isset($row['account_uses'])? $account_uses[$row['account_uses']]: ' ';?>
@@ -409,7 +409,7 @@
 											}
 										}?>
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-link action-link  mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Account</a>
+										<a class="btn btn-primary action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>">Add new account</a>
 									<?php } ?>
 									</div>
 								</div>
@@ -419,20 +419,20 @@
 							<?php if($display_others == true){  ?>
 								<div class="tab-pane fade" id="tab-6" role="tabpanel" aria-labelledby="nav-6">
 									<div class="row mt-3">
-										<div class="col-lg-12">
+										<div class="col-md-12">
 											<dl class="row">
-												<dt class="col-lg-3">Account status</dt>
-												<dd class="col-lg-9">
+												<dt class="col-md-3">Account status</dt>
+												<dd class="col-md-9">
 													<?php echo isset($user_row['user_status']) ? $user_status_arr[$user_row['user_status']]['text'] : '-'; ?>
 												</dd>
-												<dt class="col-lg-3">Registered on</dt>
-												<dd class="col-lg-9"><?php echo isset($user_row['user_registration_date']) ? $this->common_lib->display_date($user_row['user_registration_date'],true) : '-'; ?></dd>
+												<dt class="col-md-3">Registered on</dt>
+												<dd class="col-md-9"><?php echo isset($user_row['user_registration_date']) ? $this->common_lib->display_date($user_row['user_registration_date'],true) : '-'; ?></dd>
 											
-												<dt class="col-lg-3">Registered from IP</dt>
-												<dd class="col-lg-9"><?php echo isset($user_row['user_registration_ip']) ? $user_row['user_registration_ip'] : '-'; ?></dd>
+												<dt class="col-md-3">Registered from IP</dt>
+												<dd class="col-md-9"><?php echo isset($user_row['user_registration_ip']) ? $user_row['user_registration_ip'] : '-'; ?></dd>
 
-												<dt class="col-lg-3">Last login</dt>
-												<dd class="col-lg-9"><?php echo isset($user_row['user_login_date_time']) ? $this->common_lib->display_date($user_row['user_login_date_time'],true) : '-'; ?></dd>									
+												<dt class="col-md-3">Last login</dt>
+												<dd class="col-md-9"><?php echo isset($user_row['user_login_date_time']) ? $this->common_lib->display_date($user_row['user_login_date_time'],true) : '-'; ?></dd>									
 											</dl>
 										</div>
 									</div>
@@ -442,7 +442,7 @@
 							<?php if($display_emergency_contact == true){  ?>
 							<div class="tab-pane fade" id="tab-7" role="tabpanel" aria-labelledby="nav-7">
 								<div class="row mt-3">
-									<div class="col-lg-12">
+									<div class="col-md-12">
 										<?php 
 											if(isset($econtact) && sizeof($econtact)>0){
 												foreach($econtact as $key=>$con){
@@ -451,8 +451,8 @@
 													<div class="mb-2 h6">
 														<?php echo isset($con['contact_person_name'])?$con['contact_person_name']: ' ';?>
 														<?php if($is_self_account == true) { ?>
-															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_emergency_contact/'.$con["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('edit'); ?> Edit</a>
-															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_emergency_contact/'.$con["id"]);?>" class="card-action-link small"><?php echo $this->common_lib->get_icon('delete'); ?> Delete</a>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_emergency_contact/'.$con["id"]);?>" class="card-action-link btn btn-sm btn-light small"> Edit</a>
+															<a href="<?php echo base_url($this->router->directory.$this->router->class.'/delete_emergency_contact/'.$con["id"]);?>" class="card-action-link btn btn-sm btn-light small">Delete</a>
 														<?php } ?>
 													</div>
 													<div class="text-muted small"><?php echo isset($con['relationship']) ? $con['relationship']: '';?></div>													
@@ -473,7 +473,7 @@
 											}
 										?>
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-link action-link  mb-3" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Emergency Contact</a>
+										<a class="btn btn-primary action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"> Add new emergency contact</a>
 										<?php } ?>
 									</div>
 								</div>
@@ -483,14 +483,14 @@
 							<?php if($display_uploaded_files == true){  ?>
 							<div class="tab-pane fade" id="tab-8" role="tabpanel" aria-labelledby="nav-8">
 								<div class="row mt-3">
-									<div class="col-lg-12">
+									<div class="col-md-12">
 										<?php
 											if (isset($all_uploads) && sizeof($all_uploads) > 0) {
 												foreach ($all_uploads as $key => $upload) {
 											?>
 											<div class="file-container row my-2" id="upload_grid_<?php echo $upload['id']; ?>">
-												<div class="col-lg-6"><?php echo $arr_upload_file_type_name[$upload['upload_file_type_name']]; ?></div>
-												<div class="col-lg-4">
+												<div class="col-md-6"><?php echo $arr_upload_file_type_name[$upload['upload_file_type_name']]; ?></div>
+												<div class="col-md-4">
 													<div class="small">
 														<div class="text-muted">
 															<?php echo 'Uploaded on '.$this->common_lib->display_date($upload['upload_datetime'], true); ?>
@@ -500,7 +500,7 @@
 														</div>							
 													</div>
 												</div>
-												<div class="col-lg-2">
+												<div class="col-md-2">
 													<?php
 														$file_path = 'assets/uploads/'.$upload_related_to.'/docs/' . $upload_object_user_id . '/' . $upload['upload_file_name'];
 														if (file_exists(FCPATH . $file_path)) {
@@ -518,7 +518,7 @@
 											<?php } //foreach ?>
 											<?php }else {?>
 											<div class="row">
-												<div class="col-lg-12">Unable to fetch information.</div>
+												<div class="col-md-12">Unable to fetch information.</div>
 											</div>
 											<?php }?>
 									</div>
@@ -527,7 +527,7 @@
 							<?php }  ?>
 
 						</div><!--/.tab-content-->
-					</div><!--/.col-lg-9-->
+					</div><!--/.col-md-9-->
 				</div><!--/.row-->
 			</div><!--./card-body-->
 		</div><!--/.card-->

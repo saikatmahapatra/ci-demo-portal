@@ -1,7 +1,7 @@
 <!-- <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1> -->
 <div class="container">
 	<div class="row justify-content-center">
-		<div class="col-lg-6">
+		<div class="col-md-6">
 			<div class="text-center mt-4">
 				<!-- <h1 class="display-1">401</h1>
 				<p class="lead">Unauthorized</p> -->

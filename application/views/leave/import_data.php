@@ -1,7 +1,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-md-12">
         <?php echo isset($alert_message) ? $alert_message : ''; ?>
         <?php echo form_open_multipart(current_url(), array( 'method' => 'post','class'=>'ci-form','name' => '','id' => 'import_form',)); ?>
         <?php echo form_hidden('form_action', 'leave_balance_import'); ?>
@@ -14,7 +14,7 @@
                 <div class="form-text small text-muted">Only .xls, .xlxs formats are supported. Imporatable file should have specific format. Please follow the format while importing records.</div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" data-button-type="submit" class="btn btn-primary">Submit</button>
         <?php echo form_close(); ?>
 
 

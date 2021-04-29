@@ -5,7 +5,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 
 <div class="row">
-    <div class="col-lg-9">
+    <div class="col-md-9">
         <div class="card ">
             <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
@@ -15,13 +15,13 @@
                 <?php echo form_hidden('form_action', 'add'); ?>
                 <h6 class="card-subtitle mb-2 text-muted">National Identification (Govt ID)</h6>
                 <div class="form-row">
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="user_pan_no" class="optional">PAN Number</label>
                         <?php echo form_input(array('name' => 'user_pan_no','value' => isset($_POST['user_pan_no']) ? set_value('user_pan_no') : $uni['user_pan_no'],'id' => 'user_pan_no','maxlength' => '10','class' => 'form-control text-uppercase','placeholder' => '','autocomplete'=>'off'));?>
                         <?php echo form_error('user_pan_no'); ?>
                     </div>
                 
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="user_uan_no" class="optional">UAN No</label>
                         <?php echo form_input(array('name' => 'user_uan_no','value' => isset($_POST['user_uan_no']) ? set_value('user_uan_no') : $uni['user_uan_no'],'id' => 'user_uan_no','maxlength' => '12','class' => 'form-control','placeholder' => '','autocomplete'=>'off',));?>
                         <?php echo form_error('user_uan_no'); ?>
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-lg-12">
+                    <div class="form-group col-md-12">
                         <label for="bank_id" class="required">Bank</label>
                         <?php echo form_dropdown('bank_id', $arr_banks, set_value('bank_id'), array('class' => 'form-control','id' => 'bank_id'));?>
                         <?php echo form_error('bank_id'); ?>
@@ -61,13 +61,13 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="bank_account_no" class="required">Account No</label>
                         <?php echo form_input(array('name' => 'bank_account_no','value' => set_value('bank_account_no'),'id' => 'bank_account_no','maxlength' => '16','class' => 'form-control','placeholder' => '','autocomplete'=>'off')); ?>
                         <?php echo form_error('bank_account_no'); ?>
                     </div>
                 
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="confirm_bank_account_no" class="required">Confirm Account No</label>
                         <?php echo form_input(array('name' => 'confirm_bank_account_no','value' => set_value('confirm_bank_account_no'),'id' => 'confirm_bank_account_no','maxlength' => '16','class' => 'form-control','placeholder' => '','autocomplete'=>'off',)); ?>
                         <?php echo form_error('confirm_bank_account_no'); ?>
@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="ifsc_code" class="required">IFSC Code</label>
                         <?php echo form_input(array('name' => 'ifsc_code','value' => set_value('ifsc_code'),'id' => 'ifsc_code','maxlength' => '11','class' => 'form-control text-uppercase','placeholder' => '','autocomplete'=>'off',));?>
                         <?php echo form_error('ifsc_code'); ?>
@@ -107,9 +107,9 @@
                         <?php echo form_error('account_type'); ?>
                     </div>
                 </div>
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>"
-                    class="btn btn-light">Cancel</a>
+                    class="btn btn-light" data-button-type="cancel">Cancel</a>
                 <?php echo form_close(); ?>
 
             </div>

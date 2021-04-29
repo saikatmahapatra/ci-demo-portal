@@ -4,7 +4,7 @@ $row = $rows[0];
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
-    <div class="col-lg-9">
+    <div class="col-md-9">
         <div class="card ">
             <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
@@ -15,13 +15,13 @@ $row = $rows[0];
                 <?php echo form_hidden('id', $row['id']); ?>
 
                 <div class="form-row">
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-md-4">
                         <label for="project_number" class="required">Project Number</label>
                         <?php echo form_input(array('name' => 'project_number', 'value' => (isset($_POST['project_number']) ? set_value('project_number') : $row['project_number']), 'id' => 'project_number', 'class' => 'form-control', 'placeholder' => '','maxlength'=>'15'));?>
                         <?php echo form_error('project_number'); ?>
                     </div>
                 
-                    <div class="form-group col-lg-8">
+                    <div class="form-group col-md-8">
                         <label for="project_name" class="required">Project Name</label>
                         <?php echo form_input(array('name' => 'project_name', 'value' => (isset($_POST['project_name']) ? set_value('project_name') : $row['project_name']), 'id' => 'project_name', 'class' => 'form-control', 'placeholder' => ''));?>
                         <?php echo form_error('project_name'); ?>
@@ -29,13 +29,13 @@ $row = $rows[0];
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-md-4">
                         <label for="project_start_date" class="required">Start Date</label>
                         <?php echo form_input(array('name' => 'project_start_date','value' => isset($_POST['project_start_date']) ? set_value('project_start_date') : $this->common_lib->display_date($row['project_start_date']),'id' => 'project_start_date','class' => 'form-control', 'placeholder'=>'dd-mm-yyyy', 'readonly'=>'readonly')); ?>
                         <?php echo form_error('project_start_date'); ?>
                     </div>
                 
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-md-4">
                         <label for="project_end_date" class="required">End Date</label>
                         <?php echo form_input(array('name' => 'project_end_date','value' => isset($_POST['project_end_date']) ? set_value('project_end_date') : $this->common_lib->display_date($row['project_end_date']),'id' => 'project_end_date','class' => 'form-control', 'placeholder'=>'dd-mm-yyyy', 'readonly'=>'readonly')); ?>
                         <?php echo form_error('project_end_date'); ?>
@@ -43,7 +43,7 @@ $row = $rows[0];
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-lg-12">
+                    <div class="form-group col-md-12">
                         <label for="project_desc" class="optional">Description</label>
                         <?php echo form_textarea(array('name' => 'project_desc','value' => (isset($_POST['project_desc']) ? set_value('project_desc') : $row['project_desc']),'class' => 'form-control textarea','id' => 'project_desc', 'maxlength'=> '150', 'rows' => '2','cols' => '50','placeholder' => 'briefly describe in 150 characters')); ?>
                         <?php echo form_error('project_desc'); ?>
@@ -51,7 +51,7 @@ $row = $rows[0];
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-lg-12">
+                    <div class="form-group col-md-12">
                         <label for="project_status" class="required">Status</label>
                         <div class="">
                             <div class="custom-control custom-radio custom-control-inline">
@@ -76,10 +76,10 @@ $row = $rows[0];
                     </div>
                 </div>
 
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
 
                 <a href="<?php echo base_url($this->router->directory.$this->router->class);?>"
-                    class="btn btn-light">Cancel</a>
+                    class="btn btn-light" data-button-type="cancel">Cancel</a>
                 <?php echo form_close(); ?>
             </div>
             <!--/.card-body-->

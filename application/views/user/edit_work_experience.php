@@ -3,7 +3,7 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
 <div class="row">
-    <div class="col-lg-9">
+    <div class="col-md-9">
         <div class="card ">
             <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
@@ -25,13 +25,13 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="from_date" class="required">From Date</label>
                         <?php echo form_input(array( 'name' => 'from_date', 'value' => isset($_POST['from_date']) ? set_value('from_date') : $this->common_lib->display_date($row['from_date']), 'id' => 'from_date', 'maxlength' => '10', 'class' => 'form-control job-exp-datepicker', 'placeholder' => '', 'autocomplete'=>'off', 'readonly'=>true )); ?>
                         <?php echo form_error('from_date'); ?>
                     </div>
 
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-md-6">
                         <label for="to_date" class="required">To Date</label>
                         <?php echo form_input(array( 'name' => 'to_date', 'value' => isset($_POST['to_date']) ? set_value('to_date') : $this->common_lib->display_date($row['to_date']), 'id' => 'to_date', 'maxlength' => '10', 'class' => 'form-control job-exp-datepicker', 'placeholder' => '', 'autocomplete'=>'off', 'readonly'=>true )); ?>
                         <?php echo form_error('to_date'); ?>
@@ -39,16 +39,16 @@
                 </div>
 
                 <div class="form-row d-none">
-                    <div class="form-group col-lg-12">
+                    <div class="form-group col-md-12">
                         <label for="job_description" class="optional">Key Roles </label>
                         <?php echo form_textarea(array('name' => 'job_description','value' => isset($_POST['job_description']) ? set_value('job_description') : $row['job_description'],'class' => 'form-control','id' => 'job_description','rows' => '2','cols' => '50','placeholder' => 'Describe roles')); ?>
                         <?php echo form_error('job_description'); ?>
                     </div>
                 </div>
 
-                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
+                <?php echo form_button(array('name' => 'submit_btn','type' => 'submit', 'data-button-type' => 'submit','content' => 'Submit','class' => 'btn btn-primary'));?>
                 <a href="<?php echo base_url($this->router->directory.$this->router->class.'/profile');?>"
-                    class="btn btn-light">Cancel</a>
+                    class="btn btn-light" data-button-type="cancel">Cancel</a>
                 <?php echo form_close(); ?>
 
             </div>
