@@ -48,6 +48,7 @@ class Common_lib {
         $this->CI->data['el_scroll_to_top'] = $this->CI->load->view('_layouts/elements/scroll_to_top', '', true);
         $this->CI->data['el_loader'] = $this->CI->load->view('_layouts/elements/loader', '', true);
         $this->CI->data['el_confirmation_modal'] = $this->CI->load->view('_layouts/elements/confirmation_modal', '', true);
+        $this->CI->data['el_common_alerts'] = $this->CI->load->view('_layouts/elements/common_alerts', '', true);
         return $this->CI->data;
     }
 
