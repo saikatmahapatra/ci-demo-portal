@@ -238,7 +238,7 @@
 											<dd class="col-md-9"><?php echo isset($row['user_blood_group']) ? $row['user_blood_group'] : '-'; ?></dd>
 										</dl><!--/dl.row-->
 										<?php if($is_self_account == true) { ?>
-											<a class="btn btn-primary action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>">Edit basic info</a>
+											<a class="btn btn-outline-dark  action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/edit_profile');?>"><?php echo $this->common_lib->get_icon('edit'); ?> Edit Basic Info</a>
 										<?php } ?>
 										<?php if($is_self_account == true) {?>
 											<div class="text-muted small mt-2">* If you see any incorrect information, please contact to your HR for further help.</div>
@@ -278,7 +278,7 @@
 											}
 										}?>
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-primary action-link " href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>">Add new address</a>
+										<a class="btn btn-outline-dark  action-link " href="<?php echo base_url($this->router->directory.$this->router->class.'/add_address');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Address</a>
 										<?php } ?>
 									</div>
 								</div>
@@ -314,7 +314,7 @@
 											}
 										}?>
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-primary action-link " href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"> Add new education</a>
+										<a class="btn btn-outline-dark  action-link " href="<?php echo base_url($this->router->directory.$this->router->class.'/add_education');?>"> <?php echo $this->common_lib->get_icon('plus'); ?> Add New Education</a>
 										<?php } ?>
 									</div>
 								</div>
@@ -362,7 +362,7 @@
 											}?>
 									
 									<?php if($is_self_account == true) { ?>
-										<a class="btn btn-primary action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"> Add new experience</a>
+										<a class="btn btn-outline-dark  action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_work_experience');?>"> <?php echo $this->common_lib->get_icon('plus'); ?> Add New Experience</a>
 									<?php } ?>
 									</div>
 								</div>
@@ -409,7 +409,7 @@
 											}
 										}?>
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-primary action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>">Add new account</a>
+										<a class="btn btn-outline-dark  action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_bank_account');?>"><?php echo $this->common_lib->get_icon('plus'); ?> Add New Account</a>
 									<?php } ?>
 									</div>
 								</div>
@@ -473,7 +473,7 @@
 											}
 										?>
 										<?php if($is_self_account == true) { ?>
-										<a class="btn btn-primary action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"> Add new emergency contact</a>
+										<a class="btn btn-outline-dark  action-link" href="<?php echo base_url($this->router->directory.$this->router->class.'/add_emergency_contact');?>"> <?php echo $this->common_lib->get_icon('plus'); ?> Add New Contact</a>
 										<?php } ?>
 									</div>
 								</div>
