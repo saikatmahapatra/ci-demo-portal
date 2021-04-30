@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-12">
-                                        <label for="timesheet_description" class="required">Description</label>
+                                        <label for="timesheet_description" class="required">Task Description</label>
                                         <?php echo form_textarea(array('name' => 'timesheet_description','value' => set_value('timesheet_description'),'class' => 'form-control textarea', 'maxlength'=> '200', 'id' => 'timesheet_description','rows' => '2','cols' => '50','placeholder' => 'briefly describe in 200 characters')); ?>
                                         <?php echo form_error('timesheet_description'); ?>
                                     </div>

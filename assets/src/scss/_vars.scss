@@ -1,36 +1,51 @@
-// Custom Variables (user defined variables)
+// Import Bootstrap variables for use within theme
+@import "../../../node_modules/bootstrap/scss/functions.scss";
+@import "../../../node_modules/bootstrap/scss/variables.scss";
 //-----------------------------------------------------
-// Microsoft metro menu color
-$color_purple: #5133AB;
-$color_red: #AC193D;
-$color_orange: #DC572E;
-$color_green: #00A600;
-$color_blue: #2672EC;
-$bootstrap3_blue: #337ab7;
-// Brand primary color
-$brand-primary-color: #0061f2;
-$primary: $brand-primary-color !default;
-$font-family-sans-serif: 'Roboto',
--apple-system,
-BlinkMacSystemFont,
-"Segoe UI",
-Roboto,
-"Helvetica Neue",
-Arial,
-sans-serif;
-$font-size-base: 0.9375rem;
-//$small-font-size: 0.875rem;
-//CI Calendar
+// Custom Variables (user defined variables)
+// You can use Bootstrap defined color variables
+//-----------------------------------------------------
+//------------ Timesheet Calendar
 $calendar-border: #ced4da;
 $calendar-heading-bg: #ced4da;
-$day_selected: lighten($color_blue, 30%);
+$day_selected: lighten($blue, 30%);
 $calendar-week-bg: #ced4da;
 $calendar-grid-border: #ced4da;
-$today-highlight: $color_blue;
-$holiday: lighten($color_red, 40%);
-$leave: lighten($color_orange, 20%);
-$has-data: lighten($color_green, 50%);
-// Name initial DP
+$today-highlight: $blue;
+$holiday: lighten($red, 40%);
+$leave: lighten($orange, 20%);
+$has-data: lighten($green, 50%);
+//-------------- Name initial DP
 $name-dp-background-color: #dee2e6;
 $name-dp-text-color: #6c757d;
-$form_red: red;
+$form_red: $red;
+//-------------- Adjust column spacing for symmetry
+$spacer: 1rem;
+$grid-gutter-width: $spacer * 1.5;
+//--------------- Spacing variables for navigation
+$topnav-base-height: 50px;
+$sidenav-base-width: 250px;
+//--------------- Z index variables
+$zindex-content: 1037 !default;
+$zindex-sidenav: 1038 !default;
+$zindex-topnav: 1039 !default;
+//--------------- Color variables for the sidenav
+// -- Sidenav Dark
+$sidenav-dark-bg: $gray-900;
+$sidenav-dark-color: fade-out($white, 0.5);
+$sidenav-dark-heading-color: fade-out($white, 0.75);
+$sidenav-dark-link-color: fade-out($white, 0.5);
+$sidenav-dark-link-active-color: $white;
+$sidenav-dark-icon-color: fade-out($white, 0.75);
+$sidenav-dark-footer-bg: $gray-900;
+// -- Sidenav Light
+$sidenav-light-bg: #f4f5f7;
+$sidenav-light-color: $gray-900;
+$sidenav-light-heading-color: $gray-500;
+$sidenav-light-link-color: $sidenav-light-color;
+$sidenav-light-link-active-color: $primary;
+$sidenav-light-icon-color: $gray-500;
+$sidenav-light-footer-bg: #f4f5f7;
+// Color variables for the topnav
+$topnav-dark-toggler-color: fade-out($white, .25);
+$topnav-light-toggler-color: $gray-900;

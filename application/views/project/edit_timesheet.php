@@ -57,7 +57,7 @@ $row = $rows[0];
 
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label for="timesheet_description" class="required">Description</label>
+                        <label for="timesheet_description" class="required">Task Description</label>
                         <?php //echo form_input(array('name' => 'timesheet_description','value' => (isset($_POST['timesheet_description']) ? set_value('timesheet_description') : $row['timesheet_description']),'id' => 'timesheet_description','class' => 'form-control', 'maxlength' => '200','placeholder' => 'briefly describe in 200 characters')); ?>
                         <?php echo form_textarea(array('name' => 'timesheet_description','value' => (isset($_POST['timesheet_description']) ? set_value('timesheet_description') : $row['timesheet_description']),'class' => 'form-control textarea', 'maxlength'=> '200', 'id' => 'timesheet_description','rows' => '2','cols' => '50','placeholder' => 'briefly describe in 200 characters')); ?>
                         <?php echo form_error('timesheet_description'); ?>

@@ -43,6 +43,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
+                        <?php //echo $el_common_alerts; ?>
                         <?php echo $maincontent; ?>
                     </div>
                 </main>
