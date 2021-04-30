@@ -662,7 +662,8 @@ class Common_lib {
             'holiday_calendar' => 'fa-calendar',
             'search_data' => 'fa-search',
             'hide_sidebar' => 'fa-2x fa-angle-double-left',
-            'show_sidebar' => 'fa-2x fa-angle-double-right'
+            'show_sidebar' => 'fa-2x fa-angle-double-right',
+            'ellipsis' => 'fa-ellipsis-v'
         );
         $icon_name = isset($icon_name_arr[$name]) ? $icon_name_arr[$name] : 'fa-question';
         return '<i class="'.$icon_style.' fa-fw '.$icon_name.' '.$css_class.'" aria-hidden="true"></i>';

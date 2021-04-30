@@ -717,3 +717,17 @@ table.dataTable.ci-table {
         margin-left: 0px;
     }
 }
+
+.data-table-action-dropdown {
+    button.dropdown-toggle {
+        min-width: 45px;
+        &::after {
+            content: none;
+        }
+    }
+    .dropdown-item {
+        &:active {
+            color: $white;
+        }
+    }
+}
