@@ -1,9 +1,10 @@
 //
-// Override Bootstrap 4.x Variables
-//-----------------------------------------------------
-//$primary: $brand-primary-color !default;
+// Override Bootstrap 4.x Variables before importing Bootstrap's _variables.scss
+//-------------------------------------------------------------------------------
+// Bootstrap defined color variables
+$primary: #0061f2;
 // Customize typographic styles
-//$font-size-base: 0.9375rem;
+$font-size-base: 0.9375rem;
 //$small-font-size: 0.875rem;
 $font-family-sans-serif: 'Roboto',
 -apple-system,
@@ -17,5 +18,5 @@ $link-color: $primary;
 //$nav-tabs-link-active-color: $primary;
 //$nav-tabs-link-active-border-color: $primary;
 //form-control, button padding like lg
-//$input-btn-padding-y: .5rem !default;
+$input-btn-padding-y: .5rem !default;
 //$input-btn-padding-x: 1rem !default;
