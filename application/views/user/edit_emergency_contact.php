@@ -18,7 +18,7 @@
 					<?php echo form_error('contact_person_name'); ?>
 				</div>
 				<div class="form-group col-md-6">
-					<label for="relationship_with_contact" class="required">Relationship with Contact</label>
+					<label for="relationship_with_contact" class="required">Relationship</label>
 					<?php echo form_dropdown('relationship_with_contact', $arr_relationship, isset($_POST['relationship_with_contact']) ? set_value('relationship_with_contact') : $row['relationship_with_contact'] , array('class' => 'form-control','id' => 'relationship_with_contact'));?>
 					<?php echo form_error('relationship_with_contact'); ?>
 				</div>

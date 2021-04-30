@@ -618,7 +618,7 @@ class Common_lib {
             'plus' => 'fa-plus',
             'minus' => 'fa-minus',
             'edit' => 'fa-pencil',
-            'delete' => 'fa-times',
+            'delete' => 'fa-trash',
             'close' => 'fa-times',
             'download' => 'fa-download',
             'info' => 'fa-info',
