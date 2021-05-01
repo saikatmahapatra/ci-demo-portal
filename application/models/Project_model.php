@@ -564,6 +564,7 @@ class Project_model extends CI_Model {
     function get_report_data($id = NULL, $limit = NULL, $offset = NULL, $cond) {
         $result = array();
         $this->db->select('
+        t1.id,
         t1.timesheet_date,
         t1.timesheet_hours,
         t1.timesheet_description,

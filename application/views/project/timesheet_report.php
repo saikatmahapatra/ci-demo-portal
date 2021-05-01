@@ -90,6 +90,7 @@
                             <?php if(isset($data_rows)){ ?>
                             <?php if(sizeof($data_rows)>0) { ?>
                             <?php foreach($data_rows as $row){ ?>
+                            <?php //print_r ($row); ?>
                             <tr>
                                 <td><?php echo $this->common_lib->display_date($row['timesheet_date']);?></td>
                                 <td><?php echo $row['user_firstname'].' '.$row['user_lastname'];?></td>
@@ -98,9 +99,12 @@
                                 <td><?php echo $row['timesheet_hours'];?></td>
                                 <td><?php echo character_limiter($row['timesheet_description'], 30);?></td>
                                 <td>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark" data-toggle="modal" data-target="#timesheetDetailsInfoModal" data-date="<?php echo $this->common_lib->display_date($row['timesheet_date']);?>" data-emp="<?php echo $row['user_firstname'].' '.$row['user_lastname'];?>" data-project="<?php echo $row['project_name'].'-'.$row['project_number'];?>" data-task="<?php echo $row['task_name'];?>" data-hour="<?php echo $row['timesheet_hours'];?>" data-desc="<?php echo $row['timesheet_description'];?>">
-                                        <?php echo $this->common_lib->get_icon('info', 'dt_action_icon');?>
-                                    </button>
+                                    <div class="data-table-action-dropdown dropdown">
+                                        <button class="btn btn-dt-action btn-light dropdown-toggle" type="button" id="dropdownMenuButton_<?php echo $row['id'];?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $this->common_lib->get_icon('ellipsis','dt_action_icon'); ?></button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_<?php echo $row['id'];?>">
+                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#timesheetDetailsInfoModal" data-date="<?php echo $this->common_lib->display_date($row['timesheet_date']);?>" data-emp="<?php echo $row['user_firstname'].' '.$row['user_lastname'];?>" data-project="<?php echo $row['project_name'].'-'.$row['project_number'];?>" data-task="<?php echo $row['task_name'];?>" data-hour="<?php echo $row['timesheet_hours'];?>" data-desc="<?php echo $row['timesheet_description'];?>">Details</a>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             <?php } // end foreach?>
