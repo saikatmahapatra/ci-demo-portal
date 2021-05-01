@@ -124,9 +124,12 @@
                                         class="<?php echo $leave_status_arr[$row['leave_status']]['badge_css'];?>"><?php echo $leave_status_arr[$row['leave_status']]['text'];?></span>
                                 </td>
                                 <td>
-                                    <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));?>"
-                                        class="btn btn-light btn-sm"><?php echo $this->common_lib->get_icon('info', 'dt_action_icon');?>Details</a>
-
+                                    <div class="data-table-action-dropdown dropdown">
+                                        <button class="btn btn-dt-action btn-light dropdown-toggle" type="button" id="dropdownMenuButton_<?php echo $row['id'];?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $this->common_lib->get_icon('ellipsis','dt_action_icon'); ?></button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_<?php echo $row['id'];?>">
+                                        <a class="dropdown-item" href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));?>">Details</a>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             <?php
