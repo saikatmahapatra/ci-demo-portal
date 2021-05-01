@@ -122,21 +122,13 @@ class Cms extends CI_Controller {
             $row[] = $this->common_lib->display_date($result['content_created_on'], true);
             $row[] = '<span title="'.$result['user_firstname'].' '.$result['user_lastname'].'">'.$result['user_emp_id'].'</span>';
             $row[] = '<span class="'.$this->data['arr_status_flag'][$result['content_status']]['css'].'"> '.$this->data['arr_status_flag'][$result['content_status']]['text'].'</span>';
-            //add html for action
-            $action_html = '';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' .$result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
-                'class' => 'btn btn-datatable btn-icon btn-transparent-dark ',
-                'title' => 'Edit',
-            ));
-            $action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), $this->common_lib->get_icon('delete','dt_action_icon'), array(
-                'class' => 'btn btn-datatable btn-icon btn-transparent-dark  btn-delete',
-				'data-confirmation'=>true,
-				'data-confirmation-message'=>'Are you sure, you want to delete this?',
-                'title' => 'Delete',
-            ));
-
-            $row[] = $action_html;
+            $row[] = '<div class="data-table-action-dropdown dropdown">
+                <button class="btn btn-dt-action btn-light dropdown-toggle" type="button" id="dropdownMenuButton_'.$result['id'].'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$this->common_lib->get_icon('ellipsis','dt_action_icon').'</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_'.$result['id'].'">
+                <a class="dropdown-item" href="'.base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']).'">Edit</a>
+                <a class="dropdown-item" href="'.base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']).'">Delete</a>
+                </div>
+            </div>';
             $data[] = $row;
         }
 
@@ -342,21 +334,13 @@ class Cms extends CI_Controller {
             $row[] = $this->common_lib->display_date($result['holiday_date'], null, null, 'D');
             $row[] = $result['holiday_description'];
             $row[] = $this->data['arr_holiday_type'][$result['holiday_type']];
-            //add html for action
-            $action_html = '';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_holiday/' . $result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
-                'class' => 'btn btn-datatable btn-icon btn-transparent-dark ',
-                'title' => 'Edit',
-            ));
-            $action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete_holiday/' . $result['id']), $this->common_lib->get_icon('delete','dt_action_icon'), array(
-                'class' => 'btn btn-datatable btn-icon btn-transparent-dark  btn-delete',
-				'data-confirmation'=>true,
-				'data-confirmation-message'=>'Are you sure, you want to delete this?',
-                'title' => 'Delete',
-            ));
-
-            $row[] = $action_html;
+            $row[] = $row[] = '<div class="data-table-action-dropdown dropdown">
+                <button class="btn btn-dt-action btn-light dropdown-toggle" type="button" id="dropdownMenuButton_'.$result['id'].'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$this->common_lib->get_icon('ellipsis','dt_action_icon').'</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_'.$result['id'].'">
+                <a class="dropdown-item" href="'.base_url($this->router->directory.$this->router->class.'/edit_holiday/' . $result['id']).'">Edit</a>
+                <a class="dropdown-item" href="'.base_url($this->router->directory.$this->router->class.'/delete_holiday/' . $result['id']).'">Delete</a>
+                </div>
+            </div>';;
             $data[] = $row;
         }
 
@@ -516,25 +500,13 @@ class Cms extends CI_Controller {
             //$row[] = $result['upload_mime_type'];
             //$row[] = $this->common_lib->display_date($result['upload_datetime'], TRUE);
             $row[] = isset($result['upload_status']) ? $this->data['arr_status_flag'][$result['upload_status']]['text'] : '';
-            //add html for action
-            $action_html = '';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_banner/' .$result['id']), '<i class="fa fa-fw fa-pencil" aria-hidden="TRUE"></i>', array(
-                'class' => 'btn btn-sm btn-outline-secondary',
-                'data-toggle' => 'tooltip',
-                'data-original-title' => 'Edit',
-                'title' => 'Edit',
-            ));
-            $action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete_banner/' . $result['id'].'/'.$result['upload_file_name']), '<i class="fa fa-fw fa-trash-o" aria-hidden="TRUE"></i>', array(
-                'class' => 'btn btn-sm btn-outline-danger btn-delete',
-				'data-confirmation'=>TRUE,
-				'data-confirmation-message'=>'Are you sure, you want to delete this?',
-                'data-toggle' => 'tooltip',
-                'data-original-title' => 'Delete',
-                'title' => 'Delete',
-            ));
-
-            $row[] = $action_html;
+            $row[] = '<div class="data-table-action-dropdown dropdown">
+                <button class="btn btn-dt-action btn-light dropdown-toggle" type="button" id="dropdownMenuButton_'.$result['id'].'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$this->common_lib->get_icon('ellipsis','dt_action_icon').'</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_'.$result['id'].'">
+                <a class="dropdown-item" href="'.base_url($this->router->directory.$this->router->class.'/edit_banner/' . $result['id']).'">Edit</a>
+                <a class="dropdown-item" href="'.base_url($this->router->directory.$this->router->class.'/delete_banner/' . $result['id']).'">Delete</a>
+                </div>
+            </div>';
             $data[] = $row;
         }
 

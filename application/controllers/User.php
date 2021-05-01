@@ -285,25 +285,13 @@ class User extends CI_Controller {
             $row[] = $result['user_phone1'];
             $row[] = $result['designation_name'];
             $row[] = '<span class="'.$this->data['user_status_arr'][$result['user_status']]['css'].'">'.$this->data['user_status_arr'][$result['user_status']]['text'].'</span>';
-            // $action_html = '';
-            
-            // $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
-            //     'class' => 'btn btn-datatable btn-icon btn-transparent-dark ',
-            //     'title' => 'Edit'
-            // ));
-            // $action_html.='&nbsp;';
-            // $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']), $this->common_lib->get_icon('info','dt_action_icon'), array(
-            //     'class' => 'btn btn-datatable btn-icon btn-transparent-dark ',
-            //     'title' => 'Details'
-                
-            // ));
             $row[] = '<div class="data-table-action-dropdown dropdown">
-            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton_'.$result['id'].'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$this->common_lib->get_icon('ellipsis','dt_action_icon').'</button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_'.$result['id'].'">
-              <a class="dropdown-item" href="'.base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']).'">Edit</a>
-              <a class="dropdown-item" href="'.base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']).'">View Profile</a>
-            </div>
-          </div>';
+                <button class="btn btn-dt-action btn-light dropdown-toggle" type="button" id="dropdownMenuButton_'.$result['id'].'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$this->common_lib->get_icon('ellipsis','dt_action_icon').'</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_'.$result['id'].'">
+                <a class="dropdown-item" href="'.base_url($this->router->directory.$this->router->class.'/edit_user_profile/' . $result['id']).'">Edit</a>
+                <a class="dropdown-item" href="'.base_url($this->router->directory.$this->router->class.'/profile/' . $result['id']).'">View Profile</a>
+                </div>
+            </div>';
             $data[] = $row;
         }
 

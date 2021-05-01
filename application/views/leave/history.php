@@ -49,8 +49,7 @@
                                 <!-- <td><?php echo isset($row['leave_reason']) ? word_limiter($row['leave_reason'], 5) : '';?></td> -->
                                 <td>
                                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/history');?>"
-                                        class="btn btn-datatable btn-icon btn-transparent-dark" 
-                                        title="Details"><?php echo $this->common_lib->get_icon('info'); ?></a>
+                                        class="btn btn-light btn-sm"><?php echo $this->common_lib->get_icon('info'); ?>Details</a>
                                 </td>
                             </tr>
                             <?php

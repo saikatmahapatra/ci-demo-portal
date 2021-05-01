@@ -125,8 +125,7 @@
                                 </td>
                                 <td>
                                     <a href="<?php echo base_url($this->router->directory.$this->router->class.'/details/'.$row['id'].'/'.$row['leave_req_id'].'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));?>"
-                                        class="btn btn-datatable btn-icon btn-transparent-dark" 
-                                        title="Details"><?php echo $this->common_lib->get_icon('info', 'dt_action_icon');?></a>
+                                        class="btn btn-light btn-sm"><?php echo $this->common_lib->get_icon('info', 'dt_action_icon');?>Details</a>
 
                                 </td>
                             </tr>

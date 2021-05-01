@@ -87,26 +87,12 @@ class Project extends CI_Controller {
             $row[] = $this->common_lib->display_date($result['project_end_date']);
             //$row[] = $result['tc'];
             $row[] = '<span class="'.$this->data['arr_status_flag'][$result['project_status']]['css'].'">'.$this->data['arr_status_flag'][$result['project_status']]['text'].'</span>';
-            //add html for action
-            $action_html = '';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' .$result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
-                'class' => 'btn btn-datatable btn-icon btn-transparent-dark ',
-                'title' => 'Edit',
-            ));
-            // $action_html.='&nbsp;';
-            // $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/project_tasks/pid/' .$result['id']), $this->common_lib->get_icon('list', 'dt_action_icon'), array(
-            //     'class' => 'btn btn-datatable btn-icon btn-transparent-dark ',
-            //     'title' => 'Tasks',
-            // ));
-            /*$action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), $this->common_lib->get_icon('delete','dt_action_icon') Delete', array(
-                'class' => 'btn btn-datatable btn-icon btn-transparent-dark  btn-delete',
-				'data-confirmation'=>true,
-				'data-confirmation-message'=>'Are you sure, you want to delete this?',
-                'title' => 'Delete',
-            ));*/
-
-            $row[] = $action_html;
+            $row[] = '<div class="data-table-action-dropdown dropdown">
+                <button class="btn btn-dt-action btn-light dropdown-toggle" type="button" id="dropdownMenuButton_'.$result['id'].'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$this->common_lib->get_icon('ellipsis','dt_action_icon').'</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_'.$result['id'].'">
+                <a class="dropdown-item" href="'.base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']).'">Edit</a>
+                </div>
+            </div>';
             $data[] = $row;
         }
 
@@ -263,22 +249,12 @@ class Project extends CI_Controller {
             $row[] = (isset($result['subtask_parent_name']) ? $result['subtask_parent_name'].' > ' : '').$result['task_name'];
             $row[] = ($result['level'] == '1') ? 'Task' : 'Subtask';
             $row[] = '<span class="'.$this->data['arr_status_flag'][$result['task_status']]['css'].'">'.$this->data['arr_status_flag'][$result['task_status']]['text'].'</span>';
-            
-            //add html for action
-            $action_html = '';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_task/' .$result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
-                'class' => 'btn btn-datatable btn-icon btn-transparent-dark ',
-                'title' => 'Edit',
-            ));
-            /*$action_html.='&nbsp;';
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), $this->common_lib->get_icon('delete','dt_action_icon') Delete', array(
-                'class' => 'btn btn-datatable btn-icon btn-transparent-dark  btn-delete',
-				'data-confirmation'=>true,
-				'data-confirmation-message'=>'Are you sure, you want to delete this?',
-                'title' => 'Delete',
-            ));*/
-
-            $row[] = $action_html;
+            $row[] = '<div class="data-table-action-dropdown dropdown">
+                <button class="btn btn-dt-action btn-light dropdown-toggle" type="button" id="dropdownMenuButton_'.$result['id'].'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$this->common_lib->get_icon('ellipsis','dt_action_icon').'</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_'.$result['id'].'">
+                <a class="dropdown-item" href="'.base_url($this->router->directory.$this->router->class.'/edit_task/' . $result['id']).'">Edit</a>
+                </div>
+            </div>';
             $data[] = $row;
         }
 
@@ -691,23 +667,19 @@ class Project extends CI_Controller {
             $row[] = '<span>'.$result['task_name'].'</span>';
             $row[] = $result['timesheet_hours'];
             $row[] = character_limiter($result['timesheet_description'], 30);
-			$html = '';
-			//add html for action
-            $action_html = '';
-            $action_html.= '<a href="#" title="Details" class="btn btn-datatable btn-icon btn-transparent-dark" data-toggle="modal" data-target="#timesheetDetailsInfoModal" data-date="'.$this->common_lib->display_date($result['timesheet_date']).'" data-emp="'.$this->common_lib->get_sess_user('user_firstname').' '.$this->common_lib->get_sess_user('user_lastname').'" data-project="'.$result['project_name'].'-'.$result['project_number'].'" data-task="'.$result['task_name'].'" data-hour="'.$result['timesheet_hours'].'" data-desc="'.$result['timesheet_description'].'">'.$this->common_lib->get_icon('info', 'dt_action_icon').'</a>';
+			
+            $action_html = '<div class="data-table-action-dropdown dropdown">
+                <button class="btn btn-dt-action btn-light dropdown-toggle" type="button" id="dropdownMenuButton_'.$result['id'].'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$this->common_lib->get_icon('ellipsis','dt_action_icon').'</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_'.$result['id'].'">
+                
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#timesheetDetailsInfoModal" data-date="'.$this->common_lib->display_date($result['timesheet_date']).'" data-emp="'.$this->common_lib->get_sess_user('user_firstname').' '.$this->common_lib->get_sess_user('user_lastname').'" data-project="'.$result['project_name'].'-'.$result['project_number'].'" data-task="'.$result['task_name'].'" data-hour="'.$result['timesheet_hours'].'" data-desc="'.$result['timesheet_description'].'">View Details</a>';
+                if(($year == $current_year) && ($month == $current_month)){
+                    $action_html.= '<a class="dropdown-item" href="'.base_url($this->router->directory.$this->router->class.'/edit_timesheet/' . $result['id']).'">Edit</a>
+                    <a class="dropdown-item" href="'.base_url($this->router->directory.$this->router->class.'/delete_timesheet/' . $result['id']).'">Delete</a>'; 
+                }
 
-            if(($year == $current_year) && ($month == $current_month)){
-                $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit_timesheet/' . $result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
-                    'class' => 'btn btn-datatable btn-icon btn-transparent-dark',
-                    'title' => 'Edit',
-                ));
-                $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete_timesheet/' . $result['id']), $this->common_lib->get_icon('delete','dt_action_icon'), array(
-                    'class' => 'btn btn-datatable btn-icon btn-transparent-dark btn-delete',
-                    'data-confirmation'=>false,
-                    'data-confirmation-message'=>'Are you sure, you want to delete this?',
-                    'title' => 'Delete',
-                ));
-            }
+            $action_html.='</div>
+            </div>';
             $row[] = $action_html;
             $data[] = $row;
         }
@@ -796,7 +768,7 @@ class Project extends CI_Controller {
 
         if($is_editable == false) {
             $this->common_lib->set_flash_message('You will not be able to edit the selected work log.','alert-danger');
-            redirect($this->router->directory.$this->router->class.'');
+            redirect($this->router->directory.$this->router->class.'/timesheet');
         }
 		$this->data['page_title'] = 'Edit Timesheet';
         $this->data['maincontent'] = $this->load->view($this->router->class.'/edit_timesheet', $this->data, true);

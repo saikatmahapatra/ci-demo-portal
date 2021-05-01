@@ -1,6 +1,6 @@
 <?php //echo isset($breadcrumbs) ? $breadcrumbs : ''; ?>
 <h1 class="page-title"><?php echo isset($page_title) ? $page_title : 'Page Heading'; ?></h1>
-<p class="small"><?php echo $this->common_lib->get_icon('question'); ?> Looking for help or information? Click <a class=""
+<p class="small d-none"><?php echo $this->common_lib->get_icon('question'); ?> Looking for help or information? Click <a class=""
         href="#" data-toggle="modal" data-target="#timesheetCalModal">here to read.</a></p>
 
 <div class="row">
@@ -15,7 +15,7 @@
                         <a class="nav-item nav-link active" id="nav-add-tab" data-toggle="tab" href="#nav-add"
                             role="tab" aria-controls="nav-add" aria-selected="true">Log Tasks</a>
                         <a class="nav-item nav-link" id="nav-list-tab" data-toggle="tab" href="#nav-list" role="tab"
-                            aria-controls="nav-list" aria-selected="false">Logged Tasks</a>
+                            aria-controls="nav-list" aria-selected="false">View Logged Task</a>
                     </div>
                 </nav>
 

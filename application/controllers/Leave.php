@@ -398,67 +398,6 @@ class Leave extends CI_Controller {
         }
     }
 	
-	function render_datatable() {
-		$year = $this->input->get_post('year') ? $this->input->get_post('year') : date('Y');
-		$month = $this->input->get_post('month') ? $this->input->get_post('month') : date('m');	
-        //Total rows - Refer to model method definition
-        $result_array = $this->leave_model->get_rows(NULL, NULL, NULL, FALSE, FALSE, TRUE, $year, $month);
-        $total_rows = $result_array['num_rows'];
-
-        // Total filtered rows - check without limit query. Refer to model method definition
-        $result_array = $this->leave_model->get_rows(NULL, NULL, NULL, TRUE, FALSE, TRUE, $year, $month);
-        $total_filtered = $result_array['num_rows'];
-
-        // Data Rows - Refer to model method definition
-        $result_array = $this->leave_model->get_rows(NULL, NULL, NULL, TRUE, TRUE, TRUE, $year, $month);
-        $data_rows = $result_array['data_rows'];
-        $data = array();
-        $no = $_REQUEST['start'];
-        foreach ($data_rows as $result) {
-            $no++;
-            $row = array();
-            //$row[] = $this->common_lib->display_date($result['timesheet_date']);
-            //$row[] = $result['project_name'];
-            //$row[] = $result['task_name'];
-            //$row[] = $result['timesheet_hours'];
-            //$row[] = $result['timesheet_review_status'];
-			
-			$html = '<div class="font-weight-bold">'.$this->common_lib->display_date($result['timesheet_date']).' <span class="float-right">'.$result['timesheet_hours'].' hrs</span></div>';			
-			$html.= '<div class="small">'.$result['project_name'].'<span class="float-right">'.$result['task_name'].'</span></div>';			
-			
-            
-            //add html for action
-            $action_html = '<span class="float-right">';
-            /*$action_html.= anchor(base_url($this->router->directory.$this->router->class.'/edit/' . $result['id']), $this->common_lib->get_icon('edit', 'dt_action_icon'), array(
-                'class' => 'text-dark',
-                'title' => 'Edit',
-            ));*/            
-            $action_html.= anchor(base_url($this->router->directory.$this->router->class.'/delete/' . $result['id']), $this->common_lib->get_icon('delete','dt_action_icon'), array(
-                'class' => 'text-danger',
-				'data-confirmation'=>false,
-				'data-confirmation-message'=>'Are you sure, you want to delete this?',
-                'title' => 'Delete',
-            ));
-			$action_html.='</span>';
-			$html.= '<div>'.$result['timesheet_description'].' '.$action_html.'</div>';		
-			//$html.=$action_html;
-
-            //$row[] = $action_html;
-			$row[] = $html;
-            $data[] = $row;
-        }
-
-        /* jQuery Data Table JSON format */
-        $output = array(
-            'draw' => isset($_REQUEST['draw']) ? $_REQUEST['draw'] : '',
-            'recordsTotal' => $total_rows,
-            'recordsFiltered' => $total_filtered,
-            'data' => $data,
-        );
-        //output to json format
-        echo json_encode($output);
-    }
-	
 	function delete() {		
         $where_array = array('id' => $this->id);
         $res = $this->leave_model->delete($where_array);
