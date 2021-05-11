@@ -10,7 +10,7 @@
             <div class="card-body">
 
             <div class="alert alert-info">
-                <div><?php echo $this->common_lib->get_icon('info'); ?> You have filled timesheet for <span class="font-weight-bold" id="total_days">0.0</span> <span class="font-weight-bold">days</span> of selected month. Total working effort is <span class="font-weight-bold" id="total_hrs">0.0</span> <span class="font-weight-bold">hours.</span></div>
+                <div><?php echo $this->common_lib->get_icon('info'); ?> You have filled timesheet for <span class="font-weight-bold" id="total_days">0.0</span> <span class="font-weight-bold">days</span> of the selected month. Your total working effort is <span class="font-weight-bold" id="total_hrs">0.0</span> <span class="font-weight-bold">hours.</span></div>
             </div>
             
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
