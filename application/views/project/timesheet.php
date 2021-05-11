@@ -8,6 +8,10 @@
         <div class="card ">
             <div class="card-header"><?php echo $this->common_lib->get_icon('form_icon'); ?> Form</div>
             <div class="card-body">
+
+            <div class="alert alert-info">
+                <div><?php echo $this->common_lib->get_icon('info'); ?> You have filled timesheet for <span class="font-weight-bold" id="total_days">0.0</span> <span class="font-weight-bold">days</span> of selected month. Total working effort is <span class="font-weight-bold" id="total_hrs">0.0</span> <span class="font-weight-bold">hours.</span></div>
+            </div>
             
             <?php echo isset($alert_message) ? $alert_message : ''; ?>
                 <nav>
@@ -92,6 +96,7 @@
                             <!--/.col-md-6-->
                         </div>
 
+                        <?php /* ?>
                         <div class="mt-3 d-none">
                             <h6>Monthly Timesheet Statistics: </h6>
                             <div class="">You have logged tasks for : <span id="total_days">0.0</span> days</div>
@@ -100,6 +105,7 @@
                                 hrs/day
                             </div>
                         </div>
+                        <?php */ ?>
 
                         <?php echo form_close(); ?>
                     </div>
