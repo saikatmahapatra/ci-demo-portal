@@ -584,7 +584,7 @@ class User_model extends CI_Model {
             );
             // default order
             $order = array(
-                't1.user_firstname' => 'asc'
+                't1.user_login_date_time' => 'desc'
             );
             $i = 0;
             foreach ($column_search as $item) { // loop column
