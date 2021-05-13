@@ -57,8 +57,7 @@
                 <?php foreach($data_rows as $key=>$row) { ?>
                     <div class="news-item mb-3">
                         <div><a href="<?php echo base_url('home/details/'.$row['id']);?>" class=""><?php echo isset($row['content_title']) ? $row['content_title'] : '';?></a></div>
-                        <div class="small text-muted"><?php echo $this->common_lib->relative_time($row['content_created_on'],true,null); ?></div>
-                        <div class="small text-muted">by <?php echo isset($row['user_firstname']) ? $row['user_firstname'].' '.$row['user_lastname'] : '';?></div>
+                        <div class="small text-muted"><?php echo $this->common_lib->relative_time($row['content_created_on'],true,null); ?> by <?php echo isset($row['user_firstname']) ? $row['user_firstname'].' '.$row['user_lastname'] : '';?></div>
                     </div>
                 <?php }  ?>
             <?php } ?>
@@ -123,6 +122,7 @@
                             </div>
                         </a>
                     </div>
+                    <?php /* ?>
                     <div class="media">
                         <a class="d-flex" href="<?php echo $dashboard_stat['timesheet_hrs']['url'];?>">
                             <div class="media-body">
@@ -137,6 +137,7 @@
                             </div>
                         </a>
                     </div>
+                    <?php */ ?>
                 </div>
                 <div class="my-2 small text-muted">* Statistics of current month.</div>
             </div>
