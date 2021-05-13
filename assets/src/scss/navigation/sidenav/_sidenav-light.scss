@@ -11,7 +11,8 @@
         }
         .nav-link {
             color: $sidenav-light-link-color;
-            .sb-nav-link-icon {
+            .sb-nav-link-icon,
+            .sb-sidenav-collapse-arrow {
                 color: $sidenav-light-icon-color;
             }
             .sb-sidenav-collapse-arrow {
@@ -19,10 +20,15 @@
             }
             &:hover {
                 color: $sidenav-light-link-active-color;
+                .sb-nav-link-icon,
+                .sb-sidenav-collapse-arrow {
+                    color: $sidenav-light-link-active-color;
+                }
             }
             &.active {
                 color: $sidenav-light-link-active-color;
-                .sb-nav-link-icon {
+                .sb-nav-link-icon,
+                .sb-sidenav-collapse-arrow {
                     color: $sidenav-light-link-active-color;
                 }
             }
