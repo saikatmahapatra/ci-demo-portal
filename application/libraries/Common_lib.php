@@ -692,14 +692,14 @@ class Common_lib {
         $this->CI->lang->load('date');
         //$this->CI->load->helper('language');
         if(!is_numeric($datetime)) {
-            $val = explode(" ",$datetime);
-            $date = explode("-",$val[0]);
-            $time = explode(":",$val[1]);
+            $val = explode(' ',$datetime);
+            $date = explode('-',$val[0]);
+            $time = explode(':',$val[1]);
             $datetime = mktime($time[0],$time[1],$time[2],$date[1],$date[2],$date[0]);
         }
         $difference = time() - $datetime;
-        $periods = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
-        $lengths = array("60","60","24","7","4.35","12","10");
+        $periods = array('second', 'minute', 'hour', 'day', 'week', 'month', 'year', 'decade');
+        $lengths = array('60','60','24','7','4.35','12','10');
 
         if ($difference > 0) { 
             //$ending = $this->CI->lang->line('date_ago');
@@ -719,7 +719,7 @@ class Common_lib {
         } else {
             $period = strtolower($this->CI->lang->line('date_'.$periods[$j]));
         }
-        return "$difference $period $ending";
+        return $difference.' '.$period.' '.$ending;
     }
 
 }
