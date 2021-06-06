@@ -16,8 +16,8 @@ $config['admin_view_dir'] = 'admin/'; //application/views/admin/
 $config['app_admin_email'] = 'portal@unitedexploration.co.in';
 $config['app_admin_email_cc'] = '';
 $config['app_admin_email_bcc'] = '';
-$config['app_admin_email_name'] = 'UEIPL ESS Portal';
-$config['app_email_subject_prefix'] = 'ESS Portal -';
+$config['app_admin_email_name'] = 'UEIPL MyApp';
+$config['app_email_subject_prefix'] = 'MyApp -';
 $html_email_header = '';
 $html_email_footer = '<div id="message_footer" style="margin-top: 5px; font-size: 11px;"><p>* To view the message, please use an HTML compatible email viewer. This is a system generated email. Please do not reply.</p></div>';
 $config['app_email_header'] = $html_email_header;
